@@ -1,0 +1,11 @@
+# Apache HTTP server .htaccess file
+
+# For this file to work,
+# AllowOveride must be properly set 
+# in the Apache main configuration file: httpd.conf
+
+# This prohibits browsers from accessing all files in the directory it is placed in.
+<Files *>
+    Order allow,deny
+    Deny from all
+</Files>
