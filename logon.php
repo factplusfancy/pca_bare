@@ -33,13 +33,6 @@ if (!$_POST) { // Echo form for entering credentials
     echo $Zfpf->xhtml_contents_header_1c('PSM-CAP Log On', FALSE, $FixedLeftContents).'<h1>
     Log On</h1><p>
     <b>You may only logon with '.MAX_SESSIONS_ZFPF.' device(s) at a time.</b></p>';
-    // TO DO FOR PRODUCTION VERSION -- remove
-    // This credential is created by /includes/templates/demo_7.php -- which may inserted during setup by running file setup_demos_7-9.php
-    echo '<p>
-    <a href="contact.htm">Contact us</a> for credentials. Or, to log on to a demo with view-only privileges, use<br />
-    username: UserDemo11<br />
-    password: User_Demo_11_</p>';
-    // TO DO FOR PRODUCTION VERSION -- end remove
     if ((@parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) == '/psm')
         echo '
         <form action="https://factplusfancy.com/pcademo/logon.php" method="post">';  // SPECIAL CASE: for factplusfancy.com/psm app.yaml redirect
@@ -240,19 +233,11 @@ if (isset($_POST['logon'])) { // Do logon checks
         exit; // Don't save and exit.
     }
     else {
-        $OkayToLogOn = TRUE; // TO DO FOR PRODUCTION VERSION -- consider preventing logon without 2-step, then every user needs a recorded email address to log on.
-        // TO DO FOR PRODUCTION VERSION, start: replace with log of logons, IP address...
-        // TO DO FOR PRODUCTION VERSION Option: error_log(@$Zfpf->error_prefix_1c().' successful logon'); // Prefer avoid adding to error log.
+        $OkayToLogOn = TRUE; 
+        // TO DO FOR PRODUCTION VERSION Consider preventing logon without 2-step, then every user needs a recorded email address to log on.
+        // TO DO FOR PRODUCTION VERSION Consider adding a log of logons, their IP addresses...
         // TO DO FOR PRODUCTION VERSION Also: consider checking IP address for all logons, send email (to admin?) if not in typical location.
-        $EmailAddresses[0] = 'info@factplusfancy.com';
-        $Subject = 'PSM-CAP: Logon by...';
-	    $Body = '<p>
-	    k0user: '.$_SESSION['t0user']['k0user'].'<br />
-	    '.$Zfpf->user_identification_1c().'</p><p>
-	    This email is temporary measure to track log-ons during app low-use period.</p>';
-	    $Body = $Zfpf->email_body_append_1c($Body, '', '', '');
-	    $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
-	    // TO DO FOR PRODUCTION VERSION, end: replace with...
+        // TO DO FOR PRODUCTION VERSION Option: error_log(@$Zfpf->error_prefix_1c().' successful logon'); // Prefer avoid adding to error log.
     }
 }
 elseif (isset($_POST['two_step'])) {
