@@ -57,14 +57,22 @@ $arZfpf = new arZfpf;
 $htmlFormArray = $arZfpf->ar_html_form_array();
 
 //Left hand Table of contents
-if (isset($_POST['ar_o1']) or isset($_POST['ar_i0n']) or isset($_POST['ar_o1_from']) or isset($_POST['undo_confirm_post_1e']) or isset($_POST['modify_confirm_post_1e']))
+if (isset($_POST['ar_i0n']))
     $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'] = array(
         'c5name' => 'Name',
         'c5status' => 'Status',
         'c5priority' => 'Priority',
         'c5affected_entity' => 'Affected entity',
-        'c5citation' => 'Citations',
-        'c6observations' => 'Observations',
+        'c6deficiency' => 'Deficiency',
+        'c6details' => 'Additional information',
+    );
+
+if (isset($_POST['ar_o1']) or isset($_POST['ar_o1_from']) or isset($_POST['undo_confirm_post_1e']) or isset($_POST['modify_confirm_post_1e']))
+    $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'] = array(
+        'c5name' => 'Name',
+        'c5status' => 'Status',
+        'c5priority' => 'Priority',
+        'c5affected_entity' => 'Affected entity',
         'c6deficiency' => 'Deficiency',
         'c6details' => 'Additional information',
         'c5ts_target' => 'Target resolution timing',
@@ -78,8 +86,8 @@ if (isset($_POST['ar_o1']) or isset($_POST['ar_i0n']) or isset($_POST['ar_o1_fro
 // Download currently listed actions as a comma delimited file, aka comma-separated values (csv).
 if (isset($_GET['ar_download_csv'])) {
     // Generate the CSV string in $FileAsString
-    $Fields = array('c5name', 'c5status', 'c5priority', 'c5affected_entity', 'c5citation', 'c6observations', 'c6deficiency', 'c6details', 'c6notes', 'c6bfn_supporting', 'c6nymd_leader', 'c6nymd_ae_leader');
-    $FileAsString = '"Name"|"Status"|"Priority"|"Affected Entity"|"Rule Citation"|"Observations"|"Deficiencies"|"Details or Resolution Options"|"Resolution Methods and Any Deficiency Modifications"|"Supporting Documents Uploaded"|"Assigned-To Leader Approval"|"Affected-Entity PSM Leader Approval"
+    $Fields = array('c5name', 'c5status', 'c5priority', 'c5affected_entity', 'c6deficiency', 'c6details', 'c6notes', 'c6bfn_supporting', 'c6nymd_leader', 'c6nymd_ae_leader');
+    $FileAsString = '"Name"|"Status"|"Priority"|"Affected Entity"|"Deficiencies"|"Details or Resolution Options"|"Resolution Methods and Any Deficiency Modifications"|"Supporting Documents Uploaded"|"Assigned-To Leader Approval"|"Affected-Entity PSM Leader Approval"
 '; // First line of CSV file, holding column headings of future spreadsheet. Enclose everything but delimiter in quotes so delimiter can be in text.
     if (isset($_SESSION['Scratch']['ActionRows'])) foreach ($_SESSION['Scratch']['ActionRows'] as $VA) {
         foreach ($Fields as $VB) {
@@ -264,8 +272,6 @@ if (isset($_POST['ar_i0n'])) {
         'c5priority' => $EncryptedNothing,
         'c5affected_entity' => $EncryptedNothing,
         'k0affected_entity' => 0,
-        'c5citation' => $EncryptedNothing,
-        'c6observations' => $EncryptedNothing,
         'c6deficiency' => $EncryptedNothing,
         'c6details' => $EncryptedNothing,
         'c5ts_target' => $EncryptedNothing,
