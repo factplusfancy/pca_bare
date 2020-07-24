@@ -8,7 +8,7 @@ james.hadley@factplusfancy.com
 (1.1) Install Git, if not already installed. See: 
     https://git-scm.com/downloads
     https://git-scm.com/download/linux
-(1.1.1) On Ubuntu, for the latest stable upstream Git version... 
+(1.1.1) On Ubuntu, to install the latest stable upstream Git version: 
     $ sudo add-apt-repository ppa:git-core/ppa
     $ sudo apt-get update
     $ sudo apt-get install git
@@ -48,7 +48,7 @@ Notes:
 
 (3.1) Read and address comments in PSM-CAP App file: directory_path_settings.php
 
-(3.2) Read and address all comments labeled "// TO DO FOR PRODUCTION VERSION", for example, in PSM-CAP App files:
+(3.2) Read and address all comments labeled "TO DO FOR PRODUCTION VERSION", in PSM-CAP App files:
     logon.php
     setup.php
     includes/CoreZfpf.php
@@ -67,7 +67,7 @@ Notes:
     PASSWORD1_ZFPF to PASSWORD4_ZFPF
 
 => remember to:
-|| KEEP COPIES OF THE PASSWORD YOU USE TO GENERATE THE ENCRYPTION KEY 
+|| KEEP COPIES OF THE PASSWORD YOU USE TO GENERATE THE ENCRYPTION KEY (used in PHP constant BINARY_KEY_ZFPF)
 || IN SAFE AND SECURE PLACES. 
 || YOUR DATA WILL BE LOST FOREVER IF YOU LOSE THIS.
 
@@ -85,7 +85,7 @@ Notes:
 
 (4) Deploy and customize the PSM-CAP App (the app). 
 Notes:
-- For your DBMS deployment, you will need the password for a username with administrative privileges to do these steps.
+- For your DBMS deployment, you will need the password for a username with administrative privileges to complete the steps below.
 - The default MySQL admin username is "root".
 
 (4.1) In whatever directory you put the app's files, point your Web browser at PSM-CAP App file setup.php and follow the instructions there. 
@@ -105,5 +105,6 @@ for example /var/www/html/pca/ by default on some Linux operating systems, point
 
 (4.4) Point your browser at logon.php, logon with the username and password you created in setup.php, and follow the app's instructions to setups owners, facilities, and processes. Using the example in Step 4.1, above, point your browser at:
     http://localhost/pca/logon.php
+    
     Note: contact james.hadley@factplusfancy.com for free template files to automate setup of owners, facilities, processes, and some admin users.
 
