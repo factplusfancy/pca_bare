@@ -837,7 +837,7 @@ class CoreZfpf {
             <title>'.$Title.'</title>
             <meta name="description" content="PSM-CAP App" />
             <meta name="keywords" content="PSM-CAP App" />
-            <link rel="stylesheet" href="/fpf.css" type="text/css" />
+            <link rel="stylesheet" href="fpf.css" type="text/css" />
             <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
             <!--[if lte IE 6]>
                 <style type="text/css">
