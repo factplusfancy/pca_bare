@@ -109,6 +109,8 @@ if (isset($_GET['ar_i1m_draft_unassociated'])) {
     $Zfpf->save_and_exit_1c();
 }
 elseif (isset($_GET['ar_i1m_all'])) {
+    if ($_SESSION['Scratch']['PlainText']['SecurityToken'] != 'ar_i1m.php') // Others cases (audit, incident, PHA) cannot view closed actions.
+        $Zfpf->send_to_contents_1c(); // Don't eject
     $SpecialConditions = array('k0user_of_ae_leader', '>=', 0); // See app schema.
     $Conditions = $arZfpf->conditions_state_picked($SpecialConditions);
     list($_SESSION['SelectResults']['t0action'], $RowsReturned) = $Zfpf->one_shot_select_1s('t0action', $Conditions);
