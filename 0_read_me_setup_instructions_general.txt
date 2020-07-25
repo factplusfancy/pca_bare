@@ -4,6 +4,15 @@ Fact Fancy, LLC
 Newton, Massachusetts, USA
 james.hadley@factplusfancy.com
 
+You may view a demo of the deployed app at:
+https://factplusfancy.com/psm
+
+This app is:
+ * Provided for free, as is. 
+ * Use at your own risk. 
+ * Absolutely no warranty.
+
+To setup the app, you may:
 (1) Clone the PSM-CAP App files from GitHub to the directory ("folder" on Microsoft Windows) where you want to host the app. 
 (1.1) Install Git, if not already installed. See: 
     https://git-scm.com/downloads
@@ -107,4 +116,9 @@ for example /var/www/html/pca/ by default on some Linux operating systems, point
     http://localhost/pca/logon.php
     
     Note: contact james.hadley@factplusfancy.com for free template files to automate setup of owners, facilities, processes, and some admin users.
+
+
+*** LEGAL NOTICES *** 
+
+Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
