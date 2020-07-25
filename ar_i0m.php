@@ -9,6 +9,7 @@ require INCLUDES_DIRECTORY_PATH_ZFPF.'/CoreZfpf.php';
 $Zfpf = new CoreZfpf;
 $Zfpf->session_check_1c();
 
+$Zfpf->session_cleanup_1c(); // Needed becaused called from left-hand contents, like administer1.php
 // General security check.
 // SPECIAL CASE: None
 //      No security token because called from left-hand contents. 

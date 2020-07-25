@@ -13,33 +13,21 @@ $Zfpf->session_check_1c();
 
 // General security check.
 // Cannot screen for process being set because Action Register can apply contractor-, owner-, facility-, or process-wide.
-if (!isset($_SESSION['Scratch']['PlainText']['SecurityToken']) or 
-    !isset($_SESSION['t0user_practice']) or 
+// User may arrive here with any of below security tolkens
+if (
+    !isset($_SESSION['Scratch']['PlainText']['SecurityToken']) or 
     (
-        !isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar']) and
+        $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'ar_i1m.php' and
         (
-            $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'ar_i1m.php' or
-            (!isset($_SESSION['Selected']['k0action']) and !isset($_SESSION['SelectResults']['t0action']))
-        ) and
-        (
-            $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'audit_i1m.php' or // View only case, where $_SESSION['Selected']['k0action'] is overwriten after echoing.
-            !isset($_SESSION['Selected']['k0audit']) or 
-            !isset($_SESSION['SR']['t0action']) or 
-            !isset($_GET['ar_o1']) or
-            isset($_SESSION['Selected']['k0action'])
+            !isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar']) or
+            (
+                $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'audit_i1m.php' and 
+                $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'incident_i1m.php' and
+                $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'pha_i1m.php'
+            )
         )
     ) or
-    (
-        isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar']) and
-        (
-            isset($_SESSION['Selected']['k0action']) or 
-            !isset($_SESSION['Selected']) or
-            ($_SESSION['Scratch']['PlainText']['action_ifrom_ar'] != 'obsresult' and $_SESSION['Scratch']['PlainText']['action_ifrom_ar'] != 'incident' and $_SESSION['Scratch']['PlainText']['action_ifrom_ar'] != 'scenario') or
-            ($_SESSION['Scratch']['PlainText']['action_ifrom_ar'] == 'obsresult' and $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'audit_i1m.php') or
-            ($_SESSION['Scratch']['PlainText']['action_ifrom_ar'] == 'incident' and $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'incident_i1m.php') or
-            ($_SESSION['Scratch']['PlainText']['action_ifrom_ar'] == 'scenario' and $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'pha_i1m.php')
-        )
-    )
+    !isset($_SESSION['t0user_practice'])
 )
     $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
 
@@ -66,7 +54,6 @@ if (isset($_POST['ar_i0n']))
         'c6deficiency' => 'Deficiency',
         'c6details' => 'Additional information',
     );
-
 if (isset($_POST['ar_o1']) or isset($_POST['ar_o1_from']) or isset($_POST['undo_confirm_post_1e']) or isset($_POST['modify_confirm_post_1e']))
     $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'] = array(
         'c5name' => 'Name',
@@ -516,7 +503,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
         $_SESSION['Selected'] = $SR[0];
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     // Additional security check.
-    if ($_SESSION['Selected']['k0user_of_ae_leader'] < -1 or ($who_is_editing != '[A new database row is being created.]' and !$EditAuth) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
+    if ($_SESSION['Scratch']['PlainText']['SecurityToken'] != 'ar_i1m.php' or $_SESSION['Selected']['k0user_of_ae_leader'] < -1 or ($who_is_editing != '[A new database row is being created.]' and !$EditAuth) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
         $Zfpf->send_to_contents_1c(); // Don't eject
     // Get useful information
     if ($_SESSION['Selected']['k0user_of_ae_leader'] == -1) // See app schema. Cannot be -2 in this context because that's handled by the recommending report (PHA, audit...)

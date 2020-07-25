@@ -36,7 +36,7 @@ class arZfpf {
         if ($Context == 'Draft proposed action unassociated' or $Context == 'obsresult' or $Context == 'incident' or $Context == 'scenario') {
             $Required['c5name'] = REQUIRED_FIELD_ZFPF;
             $Required['c5affected_entity'] = REQUIRED_FIELD_ZFPF;
-            $Legend['c6deficiency'] = '<a id="c6deficiency"></a>Deficiency summary. Optional but recommended -- if it\'s not broke, don\'t fix it.';
+            $Legend['c6deficiency'] = '<a id="c6deficiency"></a>Deficiency summary. Optional but recommended -- if it\'s not broke, don\'t fix it';
             $Legend['c6details'] = '<a id="c6details"></a>Additional information, including any resolution options (for fixing what is wrong)';
             if ($Context == 'Draft proposed action unassociated' or $Context == 'obsresult' or $Context == 'incident') {
                 $Legend['c5priority'] = '<a id="c5priority"></a>Priority';
@@ -304,11 +304,12 @@ class arZfpf {
             <a class="toc" href="ar_io03.php?ar_i1m_contractor">Contractor actions only</a><br />';
         $Message .= '</p><p>';
         // Need at least INSERT global privileges to start a new record and suppress if user is selecting an open action to associate with an audit, PHA, etc.
-        if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != LOW_PRIVILEGES_ZFPF and !isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar']))
+        $GlobalDBMSPrivileges = $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']);
+        if ($GlobalDBMSPrivileges != LOW_PRIVILEGES_ZFPF and !isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar']))
             $Message .= '
             Propose a new action unassociated with a recommending report.<br />
             <input type="submit" name="ar_i0n" value="Propose unassociated action" />';
-        else
+        elseif ($GlobalDBMSPrivileges == LOW_PRIVILEGES_ZFPF)
             $Message .= '
             <b>Global Privileges Notice</b>: You have privileges to neither create nor edit PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.';
         $Message .= '</p><p>
