@@ -13,7 +13,7 @@ This app is:
 * Absolutely no warranty.
 * See the Apache License, Version 2.0, legal notice at the bottom of this README document.
 
-To setup the app, you may:
+To set up the app, you may:
 (1) Clone the PSM-CAP App files from GitHub to the directory, 
 "folder" on Microsoft Windows, where you want to host the app. 
 
@@ -25,7 +25,7 @@ To setup the app, you may:
     $ sudo apt-get install git
     https://git-scm.com/download/linux
 
-(1.2) For example, to clone from the command line, with a unix-like operating system:
+(1.2) For example, to clone from the command line, with a Unix-like operating system:
     $ git clone https://github.com/factplusfancy/pca_bare /var/www/html/pca
 
 (1.3) For background, see: 
@@ -119,7 +119,7 @@ and not accessible to the public, for example,
     front_controller.php
 
 (3.5) Add and commit the above changes using Git. 
-For example, with a unix-like operating system:
+For example, with a Unix-like operating system:
     $ cd /var/www/html/pca
     $ git add --all
     $ git commit -m 'deployment specific changes'
@@ -149,21 +149,21 @@ follow the instructions there, for example:
 (4.3) Use Git to remove setup.php, setup_nh3r_practices.php, and any other setup files 
 from the document root, if needed for security, such as if the document root is 
 accessible to the public for a production deployment. 
-For example, with a unix-like operating system:
+For example, with a Unix-like operating system:
     $ cd /var/www/html/pca
     $ git rm setup.php
     $ git rm setup_nh3r_practices.php
     $ git commit -m 'removed setup files for security'
 
 (4.4) Point your browser at logon.php, logon with the username and password 
-you created in setup.php, and follow the app's instructions to setups owners, 
-facilities, and processes. 
+you created in setup.php, and follow the app's instructions 
+to set up owners, facilities, and processes. 
 Using the example in Step 4.1, above, point your browser at:
     http://localhost/pca/logon.php
 
 You may contact 
 james.hadley@factplusfancy.com 
-for free template files to automate setup of 
+for free template files to automate set up of 
 owners, facilities, processes, and some admin users.
 
 
