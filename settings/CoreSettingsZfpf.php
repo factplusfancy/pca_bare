@@ -2,7 +2,12 @@
 // *** LEGAL NOTICES *** 
 // Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-// PRE-SETUP INSTRUCTIONS:
+// TO DO FOR PRODUCTION VERSION -- PRE-SETUP INSTRUCTIONS:
+// ** VERY IMPORTANT FOR SECURITY **
+// Ensure this file, or the entire /settings/ directory is safe and secure, and not accessible to the public, for example,
+//  - by placing it outside the document root in a safe and secure directory or
+//  - by limiting access to only the app's server, such as with .htaccess or app.yaml files, and
+//    - by encrypting it so that only the app has access.
 // Replace all cases of ChangeThisDefault below with strong passwords
 // Review "options variables" below.
 // Change the other constant definitions below as needed.
@@ -18,7 +23,7 @@
 //    INCLUDES_DIRECTORY_PATH_ZFPF
 
 
-// options variables: uncomment one per variable -- START
+// TO DO FOR PRODUCTION VERSION -- options variables: uncomment one per variable -- START
 
 $OptionFiles = 'local';
 // $OptionFiles = 'GAE_PHP5';
@@ -29,7 +34,7 @@ $OptionZipDownloadsWorks = FALSE;
 // $OptionHazSub = 'generic';
 $OptionHazSub = 'anhydrous_ammonia_refrigeration';
 
-// options variables -- END 
+// TO DO FOR PRODUCTION VERSION -- options variables -- END 
 
 // Time zone options are listed at https://www.php.net/manual/en/timezones.php
 define('DEFAULT_TIME_ZONE_ZFPF', 'America/Chicago');
@@ -42,7 +47,7 @@ if ($OptionFiles == 'local') // Development machine. Works on Ubuntu.
     define('USER_FILES_DIRECTORY_PATH_ZFPF', '/var/www/html/user_files');
 elseif ($OptionFiles == 'GAE_PHP5') // Google Cloud Storage, bucket name: fpf-static-1.appspot.com
     define('USER_FILES_DIRECTORY_PATH_ZFPF', 'gs://fpf-static-1.appspot.com/pcaNAME/user_files');
-// TO DO 2019-05-29 FOR PRODUCTION -- KEEP OUTSIDE SERVED-DOCUMENT ROOT IF POSSIBLE. But, the 2020-02-14 app.yaml serves nothing in /pca/ sub-directories.
+// TO DO FOR PRODUCTION VERSION -- keep outside served-document root if possible; otherwise, keep in a safe and secure directory.
 
 // Option ZIP: allow, if possible, downloading multiple files in zip folder versus allow user to only download one file at a time.
 define('ZIP_DOWNLOAD_WORKS_ZFPF', $OptionZipDownloadsWorks);
@@ -186,7 +191,7 @@ define('MIN_MID_PRIVILEGE_OPTIONS_ZFPF', array(NO_PRIVILEGES_ZFPF, MID_PRIVILEGE
 define('MIN_MAX_PRIVILEGE_OPTIONS_ZFPF', array(NO_PRIVILEGES_ZFPF, MAX_PRIVILEGES_ZFPF)); // Can still have NO_PRIVILEGES_ZFPF;
 define('GLOBAL_DBMS_OPTIONS_ZFPF', array(LOW_PRIVILEGES_ZFPF, MID_PRIVILEGES_ZFPF, MAX_PRIVILEGES_ZFPF)); // With NO_PRIVILEGES_ZFPF user couldn't log on or view anything. So, != LOW_PRIVILEGES_ZFPF means has at least INSERT global privileges.
 */
-// TO DO 2019-05-29 Can replace below with above constants, once no need for pre- PHP 7 compatibility.
+// TO DO FOR PRODUCTION VERSION -- 2019-05-29 Can replace below with above constants, once no need for pre- PHP 7 compatibility.
 // For pre- PHP 7.0 compatibility, the arrays below are saved in the session variable and used like constants.
 $_SESSION['PlainText']['ALL_PRIVILEGE_OPTIONS_ZFPF'] = array(NO_PRIVILEGES_ZFPF, LOW_PRIVILEGES_ZFPF, MID_PRIVILEGES_ZFPF, MAX_PRIVILEGES_ZFPF);
 $_SESSION['PlainText']['MIN_MID_PRIVILEGE_OPTIONS_ZFPF'] = array(NO_PRIVILEGES_ZFPF, MID_PRIVILEGES_ZFPF, MAX_PRIVILEGES_ZFPF); // Can still have NO_PRIVILEGES_ZFPF

@@ -78,9 +78,10 @@ To setup the app, you may:
         setup.php
         includes/CoreZfpf.php
         includes/FilesZfpf.php
+        settings/CoreSettingsZfpf.php 
 
 (3.3) In PSM-CAP App file: 
-    /settings/CoreSettingsZfpf.php 
+    settings/CoreSettingsZfpf.php 
 
 (3.3.1) change the definitions for the following PHP constants:
     USER_FILES_DIRECTORY_PATH_ZFPF      || for example, change pcaNAME
@@ -107,6 +108,13 @@ To setup the app, you may:
         $OptionFiles = 'local'; // for a local deployment, with user files saved at /var/www/html/user_files 
         $OptionZipDownloadsWorks = FALSE; // cannot download multiple, zipped, files at once
         $OptionHazSub = 'anhydrous_ammonia_refrigeration'; // tailors the app's wording for ammonia-refrigeration systems
+
+(3.3.3) Also, VERY IMPORTANT, ensure this file (CoreSettingsZfpf.php), 
+    or the entire /settings/ directory is safe and secure, 
+    and not accessible to the public, for example,
+    - by placing it outside the document root in a safe and secure directory, or
+    - by limiting access to only the app's server, such as with .htaccess or app.yaml files, and
+    - by encrypting it so that only the app has access.
 
 (3.4) If using a front controller, read and address comments in file: 
     front_controller.php
