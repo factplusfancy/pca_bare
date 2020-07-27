@@ -18,14 +18,9 @@ if (
     !isset($_SESSION['Scratch']['PlainText']['SecurityToken']) or 
     (
         $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'ar_i1m.php' and
-        (
-            !isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar']) or
-            (
-                $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'audit_i1m.php' and 
-                $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'incident_i1m.php' and
-                $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'pha_i1m.php'
-            )
-        )
+        $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'audit_i1m.php' and 
+        $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'incident_i1m.php' and
+        $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'pha_i1m.php'
     ) or
     !isset($_SESSION['t0user_practice'])
 )
