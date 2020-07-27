@@ -320,9 +320,6 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     // Additional security check 1.
     if ($_SESSION['Selected']['k0audit'] >= 100000 and (!isset($_SESSION['StatePicked']['t0process']) or $_SESSION['Selected']['k0process'] != $_SESSION['StatePicked']['t0process']['k0process']))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
-    // Additional security check 2.
-    if (($who_is_editing != '[A new database row is being created.]' and (!$EditAuth or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
     if (isset($_POST['audit_o1_from']) or isset($_POST['leader_approval_1']))
         $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records'); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error. Edit lock for isset($_POST['change_leader_1']) is done in change_leader_2, so it can be cleared in change_leader_1. Not needed for leader_approval_c1
     // Get useful information
@@ -361,6 +358,10 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
+
+    // Additional security check 2. Must be after the above view_audit_actions, so users without $EditAuth can view audit actions.
+    if (($who_is_editing != '[A new database row is being created.]' and (!$EditAuth or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
+        $Zfpf->send_to_contents_1c(); // Don't eject
 
     // discard_draft_audit code
     if (isset($_POST['discard_draft_audit_1'])) {
