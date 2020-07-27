@@ -40,8 +40,8 @@ if (!$_POST) { // Echo form for entering credentials
         echo '
         <form action="logon.php" method="post">'; // APP_DIRECTORY_PATH_ZFPF doesn't point to same spot as unix socket localhost
     echo '<p>
-        Username: <input type="text" name="username" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
-        Password: <input type="password" name="password" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
+        Username (no trailing spaces, unless part of the username): <input type="text" name="username" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
+        Password (no trailing spaces, unless part of the password): <input type="password" name="password" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
         <input type="submit" name="logon" value="Log on -- authorized-users only" /></p><p>
         The PSM-CAP App causes a cookie to be downloaded to your browser, mainly to verify that you have logged in.
         </p>
