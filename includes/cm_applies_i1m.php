@@ -28,7 +28,7 @@ list($_SESSION['SelectResults']['t0change_management'], $RowsReturned['t0change_
 $Zfpf->close_connection_1s($DBMSresource);
 if ($RowsReturned['t0change_management'] > 0) {
     $Message = '<form action="cms_io03.php" method="post"><h2> Change Name</h2><p>
-    <b>Unapproved applicability-determinations</b><br />';
+    <b>Unapproved applicability determinations</b><br />';
     // Sort $_SESSION['SelectResults']['t0change_management'] descending (SORT_DESC) by k0change_management, which will sort newest to oldest due to time-stamp embedded in k0change_management.
     foreach ($_SESSION['SelectResults']['t0change_management'] as $V) {
         $k0change_management[] = $V['k0change_management'];
