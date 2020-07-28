@@ -32,14 +32,8 @@ if (!$_POST) { // Echo form for entering credentials
     |Log On</p>'; // Don't give any option here that might indicate a user is already logged on
     echo $Zfpf->xhtml_contents_header_1c('PSM-CAP Log On', FALSE, $FixedLeftContents).'<h1>
     Log On</h1><p>
-    <b>You may only logon with '.MAX_SESSIONS_ZFPF.' device(s) at a time.</b></p>';
-    if ((@parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) == '/psm')
-        echo '
-        <form action="https://factplusfancy.com/pcademo/logon.php" method="post">';  // SPECIAL CASE: for factplusfancy.com/psm app.yaml redirect
-    else
-        echo '
-        <form action="logon.php" method="post">'; // APP_DIRECTORY_PATH_ZFPF doesn't point to same spot as unix socket localhost
-    echo '<p>
+    <b>You may only logon with '.MAX_SESSIONS_ZFPF.' device(s) at a time.</b></p>
+        <form action="logon.php" method="post"><p>
         Username (no trailing spaces, unless part of the username): <input type="text" name="username" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
         Password (no trailing spaces, unless part of the password): <input type="password" name="password" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
         <input type="submit" name="logon" value="Log on -- authorized-users only" /></p><p>
