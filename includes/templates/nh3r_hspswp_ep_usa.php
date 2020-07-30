@@ -374,21 +374,30 @@ $EAPpractice = array(
 (3) sweeps, if safe, while leaving and headcount, 
 (4) any needed shutdown of critical plant equipment before evacuating (may reference leak mitigation and emergency shutdown procedures), 
 (5) calls to needed emergency responders, such as the local fire department and a contractor, pre-qualified to provide emergency response, 
-(6) any rescue or medical duties of employees, 
-(7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to (7.1) local (typically 911), (7.2) state, and (7.3) federal (the National Response Center) emergency-response authorities, 
+(6) any rescue or medical duties done by employees, 
+(7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to 
+(7.1) local (typically 911), 
+(7.2) state, and 
+(7.3) federal (the National Response Center) emergency-response authorities, 
 (8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs), 
 (9) advanced coordination with local emergency responders, including 
 (9.1) at least yearly checking that the emergency plan of the community where the facility is located has up-to-date information on 
 (9.1.1) facility contacts, 
-(9.1.2) facility hazardous-substance quantities, 
+(9.1.2) facility hazardous-substance quantities and typical approximate locations, 
 (9.1.3) facility hazardous-substance risks and any other risks (high temperatures and pressures and so forth), and 
 (9.1.4) any facility resources helpful during incidents, 
-(9.2) when a change occurs at the facility that may affect offsite-response plans, such as contact information, building access, materials locations, and so forth, promptly notifying the local emergency responders, and 
-(9.3) at least yearly exercising of emergency-response notification mechanisms by inviting the local emergency responders (and any contracted responders) to tour the facility or to complete any other reasonable preparedness efforts they request, including providing access to facility site maps and floor plans with details relevant to emergency response and, if requested, a copy of the facility Emergency Action Plan, 
+(9.2) promptly notifying the local emergency responders when a change occurs at the facility that may affect offsite-response plans, such as 
+(9.2.1) changes to the information listed under Item 9.1 above or 
+(9.2.2) changes to the Emergency Action Plan, 
+(9.3) at least yearly exercising of emergency-response notification mechanisms by inviting the local emergency responders (and any contracted responders) to tour the facility or to complete any other reasonable preparedness efforts they request, including providing access to facility site maps and floor plans with details relevant to emergency response and, if requested, a copy of the facility Emergency Action Plan, and 
+(9.4) documenting this advanced coordination with local emergency responders (Items 9.1 to 9.3), such as with copies of email exchanges describing 
+(9.4.1) who the Owner/Operator coordinated with, including names, phone numbers, email addresses, and organizational affiliations, 
+(9.4.2) the dates of coordination efforts, and 
+(9.4.3) the nature of coordination efforts, 
 (10) emergency-actions training, drills, and their documentation, at least 
 (10.1) when an employee is first assigned to a job, 
-(10.2) when an employee\'s responsibilities under the plan change, 
-(10.3) when the plan changes, and typically 
+(10.2) when an employee\'s responsibilities under the Emergency Action Plan change, 
+(10.3) when the Emergency Action Plan changes, and typically 
 (10.4) yearly drills or refreshers, and 
 (11) all other applicable requirements in 29 CFR 1910.38 and other relevant rules, depending on any other hazardous substances and circumstances at the facility, covering, for example, medical emergencies, earthquakes, hurricanes, tornadoes, bomb threats, and so forth.'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
@@ -431,8 +440,8 @@ $fragment_practice = array(  // PSM fragments k0 start at 1, CAP fragments k0 st
         'k0practice' => $EAPpractice[0]['k0practice']
     ),
     1 => array(
-        'k0fragment' => 1173, // 40 CFR 68.90 and 68.93 Applicability and Community Emergency-Response Option
-        'k0practice' => $EAPpractice[0]['k0practice']
+        'k0fragment' => 1173, // 40 CFR 68.90 Applicability
+        'k0practice' => $EAPpractice[0]['k0practice'] // See below for more Emergency Action Plan to CAP fragment links
     ),
     2 => array(
         'k0fragment' => 112,
@@ -646,6 +655,14 @@ $fragment_practice = array(  // PSM fragments k0 start at 1, CAP fragments k0 st
     54 => array(
         'k0fragment' => 1106,
         'k0practice' => $practices[17]['k0practice'] // Initial Startup and Normal Shutdown
+    ),
+    55 => array(
+        'k0fragment' => 1195, // 40 CFR 68.93 Emergency coordination (Owner/Operator with community)
+        'k0practice' => $EAPpractice[0]['k0practice']
+    ),
+    56 => array(
+        'k0fragment' => 1196, // 40 CFR 68.96(a) Notification exercises is covered by the Emergency Action Plan description above.
+        'k0practice' => $EAPpractice[0]['k0practice']
     )
 );
 // Handle the safety and health information included in all hazardous-substance procedures and in the piping-opening permit form.

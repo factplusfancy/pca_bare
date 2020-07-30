@@ -284,7 +284,15 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (5) mist eliminator -- inspect/note/fix as needed, 
 (6) visible-without-disassembly portions of the steel tubes -- inspect/note/fix if blemishes, corrosion, excessive scale, biofilms (slimy growths...), or, if galvanized, white powdery cells (white rust), 
 (7) water sump and water-pump strainers -- inspect/note/fix and clean out as needed, 
-(8) supports, from the condenser to the foundation (if independently supported), roof, or building-structural supports that carry its loads -- inspect/note/fix any corrosion, wear, cracking, warping, stretching, bending, sagging, deteriorating, loose or missing fasteners, loose or missing rods, hangers, or other support components, roof damage, cracking or spalling structural concrete, shifting foundations, or other signs of damage or excessive loads. 
+(8) supports, from the condenser to the foundation (if independently supported), roof, or building-structural supports that carry its loads -- inspect/note/fix any 
+(8.1) corrosion, wear, cracking, warping, stretching, bending, sagging, or deteriorating, 
+(8.2) loose or missing fasteners, 
+(8.3) loose or missing rods, hangers, or other support components, 
+(8.4) roof damage, 
+(8.5) damage to or problems with load-carrying building-structural supports near where any of the condenser supports are attached, 
+(8.6) cracking, creep, efflorescence, sagging, or spalling of structural concrete, 
+(8.7) shifting foundations, or 
+(8.8) other indications of excessive loads, damage, or problems. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -377,7 +385,15 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5name' => $Zfpf->encrypt_1c('Forced-Air Evaporators (for air cooling), Yearly'),
     'c5number' => $Zfpf->encrypt_1c('HHHAUU'),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
-(1) supports, from the evaporator package\'s housing to the foundation (if independently supported), floor, or building-structural supports that carry its loads, including any grating and flooring for mechanical penthouses -- inspect/note/fix any corrosion, wear, cracking, warping, stretching, bending, sagging, deteriorating, loose or missing fasteners, loose or missing rods, hangers, or other support components, roof or floor damage, damage to load-carrying building-structural supports near where any of the evaporator supports are attached, cracking or spalling structural concrete, shifting foundations, or other signs of damage or excessive loads, 
+(1) supports, from the evaporator package\'s housing to the foundation (if independently supported), floor, or building-structural supports that carry its loads, including any grating and flooring for mechanical penthouses -- inspect/note/fix any 
+(1.1) corrosion, wear, cracking, warping, stretching, bending, sagging, or deteriorating, 
+(1.2) loose or missing fasteners, 
+(1.3) loose or missing rods, hangers, or other support components, 
+(1.4) roof or floor damage, 
+(1.5) damage to or problems with load-carrying building-structural supports near where any of the forced-air evaporator supports are attached, 
+(1.6) cracking, creep, efflorescence, sagging, or spalling of structural concrete, 
+(1.7) shifting foundations, or 
+(1.8) other indications of excessive loads, damage, or problems, 
 (2) any guarding or barricades for protection from impacts and traffic -- inspect/note/fix if missing, damaged, or inadequate, 
 (3) any defrosting system, by observing one complete defrost from before the liquid-supply solenoid valve closes until after it reopens and the fans start -- inspect/note/fix 
 (3.1) odd sounds, 
@@ -426,7 +442,15 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5name' => $Zfpf->encrypt_1c('Make-up Air Units (that include evaporator coils), Yearly'),
     'c5number' => $Zfpf->encrypt_1c('HHHAXX'),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
-(1) supports, from the make-up air unit\'s enclosure to the foundation (if independently supported), roof, floor, or building-structural supports that carry its load -- inspect/note/fix any corrosion, wear, cracking, warping, stretching, bending, sagging, deteriorating, loose or missing fasteners, loose or missing rods, hangers, or other support components, roof or floor damage, damage to load-carrying building-structural supports near where any of the package\'s supports are attached, cracking or spalling structural concrete, shifting foundations, or other signs of damage or excessive loads, 
+(1) supports, from the make-up air unit\'s enclosure to the foundation (if independently supported), roof, floor, or building-structural supports that carry its load -- inspect/note/fix any 
+(1.1) corrosion, wear, cracking, warping, stretching, bending, sagging, or deteriorating, 
+(1.2) loose or missing fasteners, 
+(1.3) loose or missing rods, hangers, or other support components, 
+(1.4) roof or floor damage, 
+(1.5) damage to or problems with load-carrying building-structural supports near where any of the make-up air unit supports are attached, 
+(1.6) cracking, creep, efflorescence, sagging, or spalling of structural concrete, 
+(1.7) shifting foundations, or 
+(1.8) other indications of excessive loads, damage, or problems, 
 (2) any guarding or barricades for protection from impacts and traffic -- inspect/note/fix if missing, damaged, or inadequate, 
 (3) any defrosting system, by observing one complete defrost from before the liquid-supply solenoid valve closes until after it reopens and the fans start -- inspect/note/fix 
 (3.1) odd sounds, 
@@ -465,7 +489,15 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5name' => $Zfpf->encrypt_1c('Liquid-Cooling Evaporators, Yearly'),
     'c5number' => $Zfpf->encrypt_1c('HHHAZZ'),
     'c6description' => $Zfpf->encrypt_1c('For a description these evaporators, see the Liquid-Cooling Evaporators, Every 6 Months, PSM-CAP compliance practice. Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
-(1) supports, from the manufacturer-supplied package or similar, such as the enclosure or tank, to the foundation (if independently supported), roof, floor, or building-structural supports that carry its load -- inspect/note/fix any corrosion, wear, cracking, warping, stretching, bending, sagging, deteriorating, loose or missing fasteners, loose or missing rods, hangers, or other support components, roof or floor damage, damage to load-carrying building-structural supports near where the package\'s supports are attached, cracking or spalling structural concrete, shifting foundations, or other signs of damage or excessive loads, 
+(1) supports, from the manufacturer-supplied package or similar, such as the enclosure or tank, to the foundation (if independently supported), roof, floor, or building-structural supports that carry its load -- inspect/note/fix any 
+(1.1) corrosion, wear, cracking, warping, stretching, bending, sagging, or deteriorating, 
+(1.2) loose or missing fasteners, 
+(1.3) loose or missing rods, hangers, or other support components, 
+(1.4) roof or floor damage, 
+(1.5) damage to or problems with load-carrying building-structural supports near where any of the liquid-cooling evaporator supports are attached, 
+(1.6) cracking, creep, efflorescence, sagging, or spalling of structural concrete, 
+(1.7) shifting foundations, or 
+(1.8) other indications of excessive loads, damage, or problems, 
 (2) any guarding or barricades for protection from impacts and traffic -- inspect/note/fix if missing, damaged, or inadequate, 
 (3) any defrosting or clean-in-place systems, by observing one complete defrost and/or cleaning from before the liquid-supply solenoid valve closes until after it reopens and the liquid-cooling evaporator fully re-starts -- inspect/note/fix 
 (3.1) odd sounds, 
@@ -483,7 +515,15 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5name' => $Zfpf->encrypt_1c('Pressure Vessels, Yearly'),
     'c5number' => $Zfpf->encrypt_1c('HHHBAA'),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
-(1) supports, from the pressure vessel to the foundation (if independently supported), roof, floor, or building-structural supports that carry its load -- inspect/note/fix any corrosion, wear, cracking, warping, stretching, bending, sagging, deteriorating, loose or missing fasteners, loose or missing rods, hangers, or other support components, roof or floor damage, damage to load-carrying building-structural supports near where any pressure-vessel supports are attached, cracking or spalling structural concrete, shifting foundations, or other signs of damage or excessive loads, 
+(1) supports, from the pressure vessel to the foundation (if independently supported), roof, floor, or building-structural supports that carry its load -- inspect/note/fix any 
+(1.1) corrosion, wear, cracking, warping, stretching, bending, sagging, or deteriorating, 
+(1.2) loose or missing fasteners, 
+(1.3) loose or missing rods, hangers, or other support components, 
+(1.4) roof or floor damage, 
+(1.5) damage to or problems with load-carrying building-structural supports near where any of the pressure-vessel supports are attached, 
+(1.6) cracking, creep, efflorescence, sagging, or spalling of structural concrete, 
+(1.7) shifting foundations, or 
+(1.8) other indications of excessive loads, damage, or problems, 
 (2) any guarding or barricades for protection from impacts and traffic -- inspect/note/fix if missing, damaged, or inadequate, 
 (3) exterior surface, including nozzles for piping connections -- complete ITM per the Insulation, Paint, and Underlying Steel Sub-practice, 
 (4) any sight glasses -- complete ITM per the Sight Glass Sub-practice, 
@@ -515,8 +555,15 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (1) supports, from the piping\'s insulation protective jacket or its paint to the foundation (if independently supported), roof, floor, or building-structural supports that carry its load -- inspect/note/fix 
 (1.1) any missing saddles (below insulation), 
 (1.2) any piping that rests directly on fixed supports so that its paint is rubbing off, 
-(1.3) any evidence of past movement (such as piping not on the supports, crooked or twisted piping or supports, and so forth), or 
-(1.4) corrosion, wear, cracking, warping, stretching, bending, sagging, deteriorating, loose or missing fasteners, loose or missing rods, hangers, or other support components, roof or floor damage, damage to load-carrying building-structural supports near where any piping supports are attached, cracking or spalling structural concrete, shifting foundations, or other signs of damage or excessive loads, 
+(1.3) any evidence of past movement (such as piping not on the supports, crooked or twisted piping or supports, and so forth), 
+(1.4) corrosion, wear, cracking, warping, stretching, bending, sagging, or deteriorating, 
+(1.5) loose or missing fasteners, 
+(1.6) loose or missing rods, hangers, or other support components, 
+(1.7) roof or floor damage, 
+(1.8) damage to or problems with load-carrying building-structural supports near where any of the piping supports are attached, 
+(1.9) cracking, creep, efflorescence, sagging, or spalling of structural concrete, 
+(1.10) shifting foundations, or 
+(1.11) other indications of excessive loads, damage, or problems,  
 (2) any guarding or barricades for protection from impacts and traffic -- inspect/note/fix if missing, damaged, or inadequate, 
 (3) exterior surface, including valve bodies -- complete ITM per the Insulation, Paint, and Underlying Steel Sub-practice, 
 (4) any sight glasses -- complete ITM per the Sight Glass Sub-practice, 
