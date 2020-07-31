@@ -525,31 +525,46 @@ Asked about this during tours and discussions.')
 (6) not enough wind indicators, such as wind socks or pennants, for everyone exiting buildings or work areas to see the wind direction.')
     ),
     50 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Emergency Action Plan documents -- checked if the plan(s) covered the following requirements from 29 CFR 1910.38 (items 1 to 6 and 10), release reporting per CERCLA and EPCRA (item 7), good practices (item 8), and 40 CFR 68.90, .93, and .96(a) (item 9): 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Emergency Action Plan documents -- checked if the plan(s) addressed 
+(A) the full range of potential incidents and 
+(B) in the USA, employee safety per 29 CFR 1910.38 (Items 1 to 6 and 10), release reporting per CERCLA and EPCRA (Item 7), good practices (Item 8), community-responder coordination per 40 CFR 68.90, 68.93, and 68.96(a) (Item 9), and identifying offsite "hazards which may result from ... releases" per the Clean Air Act 112(r)(1) General Duty Clause (Item 9.1.5), including, 
+for anhydrous ammonia: 
 (1) "what to do if I smell ammonia or notice other hazards" -- such as how to notify facility management and individual move-to-safety, 
 (2) determining and communicating routes to safe locations inside (shelter-in-place) or outside (evacuation), 
 (3) sweeps, if safe, while leaving and headcount, 
 (4) any needed shutdown of critical plant equipment before evacuating (may reference leak mitigation and emergency shutdown procedures), 
-(5) phone numbers for calls to Owner/Operator management and needed emergency responders, such as the local fire department and a contractor, pre-qualified to provide emergency response, 
-(6) any rescue or medical duties of employees, 
+(5) calls to needed emergency responders, such as the local fire department and a contractor, pre-qualified to provide emergency response, 
+(6) any rescue or medical duties done by employees, 
 (7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to 
 (7.1) local (typically 911), 
 (7.2) state, and 
 (7.3) federal (the National Response Center) emergency-response authorities, 
 (8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs), 
 (9) advanced coordination with local emergency responders, including 
-(9.1) at least yearly checking that the emergency plan of the community where the facility is located has up-to-date information on 
+(9.1) at least yearly checking, and attempting to ensure, that the emergency plan of the community where the facility is located has up-to-date information on 
 (9.1.1) facility contacts, 
-(9.1.2) facility hazardous-substance quantities, 
-(9.1.3) facility hazardous-substance risks and any other risks (high temperatures and pressures and so forth), and 
-(9.1.4) any facility resources helpful during incidents, 
-(9.2) when a change occurs at the facility that may affect offsite-response plans, such as contact information, building access, materials locations, and so forth, promptly notifying the local emergency responders, and 
-(9.3) at least yearly exercising of emergency-response notification mechanisms by inviting the local emergency responders (and any contracted responders) to tour the facility or to complete any other reasonable preparedness efforts they request, including providing access to facility site maps and floor plans with details relevant to emergency response and, if requested, a copy of the facility Emergency Action Plan, 
+(9.1.2) facility hazardous-substance quantities and typical approximate locations, 
+(9.1.3) facility hazardous-substance risks and any other risks (high temperatures and pressures and so forth), 
+(9.1.4) any facility resources helpful during incidents, and
+(9.1.5) a reasonably accurate worst-case release scenario and offsite-consequences evaluation for the facility, such as 
+(9.1.5.1) a distance-to-endpoint output by the U.S. EPA\'s RMP*Comp program based on either the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' maximum-intended inventory or the volume of the largest pressure vessel in the '.HAZSUB_PROCESS_NAME_ZFPF.', 
+(9.1.5.2) a circle on a map, centered at a potential release point at the facility, such as the refrigerating-machinery room, showing with reasonable detail the area within the distance-to-endpoint, 
+(9.1.5.3) a residential human population estimate within the distance-to-endpoint, and 
+(9.1.5.4) a list of schools, hospitals, prisons, major commercial, office, or industrial areas, parks, wildlife preserves, wilderness areas, and similar within the distance-to-endpoint, 
+(9.2) promptly notifying the local emergency responders when a change occurs at the facility that may affect offsite-response plans, such as 
+(9.2.1) changes to the information listed under Item 9.1 above or 
+(9.2.2) changes to the Emergency Action Plan, 
+(9.3) at least yearly exercising of emergency-response notification mechanisms by inviting the local emergency responders (and any contracted responders) to tour the facility or to complete any other reasonable preparedness efforts they request, including providing access to facility site maps and floor plans with details relevant to emergency response and, if requested, a copy of the facility Emergency Action Plan, and 
+(9.4) documenting this advanced coordination with local emergency responders (Items 9.1 to 9.3), such as with copies of email exchanges describing 
+(9.4.1) who the Owner/Operator coordinated with, including names, phone numbers, email addresses, and organizational affiliations, 
+(9.4.2) the dates of coordination efforts, and 
+(9.4.3) the nature of coordination efforts, 
 (10) emergency-actions training, drills, and their documentation, at least 
 (10.1) when an employee is first assigned to a job, 
-(10.2) when an employee\'s responsibilities under the plan change, 
-(10.3) when the plan changes, and typically 
-(10.4) yearly drills or refreshers. Checked a sample of records documenting above items 9 and 10, advanced coordination with local emergency responders and training, respectively.')
+(10.2) when an employee\'s responsibilities under the Emergency Action Plan change, 
+(10.3) when the Emergency Action Plan changes, and typically 
+(10.4) yearly drills or refreshers, and 
+(11) all other applicable requirements in 29 CFR 1910.38 and other relevant rules, depending on any other hazardous substances and circumstances at the facility, covering, for example, medical emergencies, earthquakes, hurricanes, tornadoes, bomb threats, and so forth.')
     ),
     51 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Emergency-response discussions, equipment, and documents -- if facility employees plan to do emergency response, 

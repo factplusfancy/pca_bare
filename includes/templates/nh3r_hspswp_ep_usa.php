@@ -369,7 +369,10 @@ $EAPpractice = array(
     0 => array(
         'c5name' => $Zfpf->encrypt_1c('Emergency Action Plan'),
         'c5number' => $Zfpf->encrypt_1c('LLLAAA'),
-        'c6description' => $Zfpf->encrypt_1c('Plan covering the full range of potential incidents, including, for ammonia: 
+        'c6description' => $Zfpf->encrypt_1c('Plan that addresses 
+(A) the full range of potential incidents and 
+(B) in the USA, employee safety per 29 CFR 1910.38 (Items 1 to 6 and 10), release reporting per CERCLA and EPCRA (Item 7), good practices (Item 8), community-responder coordination per 40 CFR 68.90, 68.93, and 68.96(a) (Item 9), and identifying offsite "hazards which may result from ... releases" per the Clean Air Act 112(r)(1) General Duty Clause (Item 9.1.5), including, 
+for anhydrous ammonia: 
 (1) "what to do if I smell ammonia or notice other hazards" -- such as how to notify facility management and individual move-to-safety, 
 (2) determining and communicating routes to safe locations inside (shelter-in-place) or outside (evacuation), 
 (3) sweeps, if safe, while leaving and headcount, 
@@ -382,11 +385,16 @@ $EAPpractice = array(
 (7.3) federal (the National Response Center) emergency-response authorities, 
 (8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs), 
 (9) advanced coordination with local emergency responders, including 
-(9.1) at least yearly checking that the emergency plan of the community where the facility is located has up-to-date information on 
+(9.1) at least yearly checking, and attempting to ensure, that the emergency plan of the community where the facility is located has up-to-date information on 
 (9.1.1) facility contacts, 
 (9.1.2) facility hazardous-substance quantities and typical approximate locations, 
-(9.1.3) facility hazardous-substance risks and any other risks (high temperatures and pressures and so forth), and 
-(9.1.4) any facility resources helpful during incidents, 
+(9.1.3) facility hazardous-substance risks and any other risks (high temperatures and pressures and so forth), 
+(9.1.4) any facility resources helpful during incidents, and
+(9.1.5) a reasonably accurate worst-case release scenario and offsite-consequences evaluation for the facility, such as 
+(9.1.5.1) a distance-to-endpoint output by the U.S. EPA\'s RMP*Comp program based on either the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' maximum-intended inventory or the volume of the largest pressure vessel in the '.HAZSUB_PROCESS_NAME_ZFPF.', 
+(9.1.5.2) a circle on a map, centered at a potential release point at the facility, such as the refrigerating-machinery room, showing with reasonable detail the area within the distance-to-endpoint, 
+(9.1.5.3) a residential human population estimate within the distance-to-endpoint, and 
+(9.1.5.4) a list of schools, hospitals, prisons, major commercial, office, or industrial areas, parks, wildlife preserves, wilderness areas, and similar within the distance-to-endpoint, 
 (9.2) promptly notifying the local emergency responders when a change occurs at the facility that may affect offsite-response plans, such as 
 (9.2.1) changes to the information listed under Item 9.1 above or 
 (9.2.2) changes to the Emergency Action Plan, 
