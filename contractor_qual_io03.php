@@ -33,7 +33,7 @@ $htmlFormArray = array(
         'add_field'
     ),
     'c6chemicals' => array(
-        '<a id="c6chemicals"></a>Hazardous-substance experience. Indicate below the materials that your current employees have experience with on projects similar to work planned at the Facility.',
+        '<a id="c6chemicals"></a>Hazardous-substance experience. Indicate below the materials that your current employees have experience with on projects similar to work planned at the facility.',
         '',
         array(
             array('Ammonia, Anhydrous', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
