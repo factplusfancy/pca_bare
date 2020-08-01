@@ -70,7 +70,7 @@ if (isset($_SESSION['StatePicked']['t0owner']) and isset($_SESSION['t0user_owner
     $Message .= '<br />
     <b><a class="toc" href="glossary.php#contractor" target="_blank">Contractors:</b></a><br />
     <a class="toc" href="contractor_i0m.php">- Contractor and owner-contractor records -- insert new, update, or view current and history.</a><br />
-    See also "Contractors (on or adjacent to hazardous-substance processes)" in the <a class="toc" href="contents0.php">Contents</a><br/>';
+    See also "Contractors (on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.')" in the <a class="toc" href="contents0.php">Contents</a><br/>';
     // c5p_facility
     $Message .= '<br />
     <b><a class="toc" href="glossary.php#facility" target="_blank">Facilities:</a></b><br />';

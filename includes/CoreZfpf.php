@@ -1425,7 +1425,7 @@ class CoreZfpf {
     // Remaining information comes from the $_SESSION['StatePicked'] context.
     // Returns, decrypted, an associative array with keys:
     //      AEscope           -- Allowed values: 'Owner-wide', 'Contractor-wide', 'Facility-wide', or 'Process-wide'
-    //      AETypeAndName     -- example: 'Owner/Operator: Hazardous-Substance Handlers, Inc.' or 'Process: Ammonia-Refrigeration System'
+    //      AETypeAndName     -- example: 'Owner/Operator: My Company, Inc.' or 'Process: Stuff in Tanks and Piping'
     //      AEFullDescription -- example: 'Process: X in Facility Y owned by Z' or 'Contractor: A'
     //      AELeader_k0user   -- the k0user key for the affected-entity (AE) leader.
     //      AELeaderName      -- the user_job_info_1c() output

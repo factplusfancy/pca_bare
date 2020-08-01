@@ -49,7 +49,7 @@ $htmlFormArray = array(
         'upload_files'
     ),
     'c6bfn_injury_records' => array(
-        '<a id="c6bfn_injury_records"></a><b>Injury or illness records.</b> For any injuries or illnesses related to a contractor individual\'s work on or adjacent to a hazardous-substance process that required medical treatment beyond first aid, the Owner/Operator shall either make a record or shall obtain and check the quality of the record the contractor made. Often, both Owner/Operator and contractor policies describe their thresholds for injury or illness recordkeeping, which may include near misses, and which may be stored in separate medical-records systems. Unless prohibited by medical-records confidentiality rules, you may upload injury or illness reports here, or upload a reference to a separate medical-records system where this information is located',
+        '<a id="c6bfn_injury_records"></a><b>Injury or illness records.</b> For any injuries or illnesses related to a contractor individual\'s work on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.' that required medical treatment beyond first aid, the Owner/Operator shall either make a record or shall obtain and check the quality of the record the contractor made. Often, both Owner/Operator and contractor policies describe their thresholds for injury or illness recordkeeping, which may include near misses, and which may be stored in separate medical-records systems. Unless prohibited by medical-records confidentiality rules, you may upload injury or illness reports here, or upload a reference to a separate medical-records system where this information is located',
         '',
         MAX_FILE_SIZE_ZFPF,
         'upload_files'

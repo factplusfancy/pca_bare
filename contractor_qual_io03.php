@@ -103,13 +103,13 @@ $htmlFormArray = array(
 // Left-hand contents
 if (!isset($_POST['contractor_qual_i2']))
     $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'] = array(
-	    'organization' => 'Contractor Information',
+	    'organization' => 'Contractor Info',
 	    'c6prior_work' => 'References',
-	    'c6chemicals' => 'Hazardous-substance experience', 
+	    'c6chemicals' => 'Experience', 
 	    'c6safety_programs' => 'Safety programs',  
 	    'c6training_method' => 'Training and testing', 
-	    'c6emr' => 'Experience Modification Rating',
-	    'c6injury_illness' => 'Injuries and illnesses',
+	    'c6emr' => 'EMR',
+	    'c6injury_illness' => 'Injuries',
 	    'c6bfn_fatalities' => 'Fatalities',
 	    'c6bfn_law_violations' => 'Law violations'
     );

@@ -49,7 +49,7 @@ $htmlFormArray = array(
         ''
     ),
     'c5hazards_overview' => array(
-        'Did this training cover an overview of the hazardous-substance process and its hazards', 
+        'Did this training cover an overview of the '.HAZSUB_PROCESS_NAME_ZFPF.' and its hazards', 
         REQUIRED_FIELD_ZFPF, 
         C5_MAX_BYTES_ZFPF, 
         'radio',
@@ -62,7 +62,7 @@ $htmlFormArray = array(
     ),
     'c5injuries_illness' => array(
         '<a id="c5injuries_illness"></a><b>Trainee:</b><br />
-        In the last three years, have you had any injuries or illnesses related to your work on or near the hazardous-substance process',
+        In the last three years, have you had any injuries or illnesses related to your work on or near the '.HAZSUB_PROCESS_NAME_ZFPF,
         REQUIRED_FIELD_ZFPF,
         C5_MAX_BYTES_ZFPF,
         'radio',

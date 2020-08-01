@@ -55,7 +55,7 @@ $htmlFormArray = array(
     ),
     'k0user_of_leader' => array(
         '<a id="k0user_of_leader"></a><b>Investigation team.</b> Include on the team:<br />
-        (A) one person knowledgeable about the hazardous-substance process involved in the incident,<br />
+        (A) one person knowledgeable about the '.HAZSUB_PROCESS_NAME_ZFPF.' involved in the incident,<br />
         (B) an employee of any contractor whose work was involved in the incident, and<br />
         (C) anyone else needed to thoroughly understand the incident, including its causes and preventing a recurrence.<br /><br />
         Team-leader name, job title, and organization',

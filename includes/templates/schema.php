@@ -717,7 +717,7 @@ $Schema = array(
         'k0action',
         'c5who_is_editing'
     ),
-    't0certify' => array( // General table for certifications liked to a process. Use for hazardous-substance procedure (HSP) and safe-work practice (SWP) certification.
+    't0certify' => array( // General table for certifications liked to a process. Use for hazardous-substance procedures and safe-work practices "current and accurate" certification.
         'k0certify',
         'k0process',
         'k0user_of_ae_leader', // 0 while draft and k0user of process PSM leader, the affected-entity (AE) leader, once approved.

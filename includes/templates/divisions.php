@@ -36,7 +36,7 @@ $divisions = array(
     ),
     7 => array( // GGG
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Contractors (on or adjacent to hazardous-substance processes)'),
+        'c5name' => $Zfpf->encrypt_1c('Contractors (on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.')'),
         'c5citation' => $EncryptedNothing
     ),
     8 => array( // HHH
