@@ -976,7 +976,7 @@ class CoreZfpf {
                     echo $Return.'</div>
                     <div class="text"><a id="top"></a>
                     <div class="ff">PSM-CAP App</div>
-                    <div class="erc">process-safety management and chemical-accident prevention</div><p></p><p>
+                    <p class="spacer">&nbsp;</p><p>
                     No rules have been recorded in the database, and this PSM-CAP App will not work until this needed content is added.</p><p>
                     Normally these are included in the database at installation.</p><p>
                     <a href="logoff.php">Log off</a> and contact your supervisor or a PSM-CAP App administrator for assistance.</p>
@@ -1016,7 +1016,7 @@ class CoreZfpf {
     public function xhtml_footer_1c($FixedLeft = TRUE) {
         $Return = '
         <div class="footer">
-        process-safety management and chemical-accident prevention</div>
+        process safety management | chemical accident prevention</div>
         <p class="alignright"><a id="bottom"></a>
         Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0.<br />
         <b>Provided for free, as is. Use at your own risk. Absolutely no warranty.</b></p>';
