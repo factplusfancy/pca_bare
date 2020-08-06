@@ -4,7 +4,7 @@
 // Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 $divisions = array(
-    1 => array( // AAA -- For the Cheesehead division method only, these letters are the prefixes used for numbering pratices, see templates/practices.php and schema t0practice:c5number. For all rules/divisions, they are the prefixes for numbering fragments within divisions, see templates/fragment_division.php and schema t0fragment_division:c5number.
+    1 => array( // AAA -- For the Cheesehead division method only, these letters are the prefixes used for numbering practices, see templates/practices.php and schema t0practice:c5number. For the OSHA PSM and EPA CAP rules, they are the prefixes for numbering fragments within divisions, see templates/fragment_division.php and schema t0fragment_division:c5number.
         'k0rule' => $rules[1]['k0rule'], // $rules[1] is the Cheesehead division method.
         'c5name' => $Zfpf->encrypt_1c('Management system'),
         'c5citation' => $EncryptedNothing
