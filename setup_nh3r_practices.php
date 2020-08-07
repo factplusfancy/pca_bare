@@ -81,10 +81,12 @@ if (isset($_POST['setup_more'])) {
     }
     $EncryptedLowPrivileges = $Zfpf->encrypt_1c(LOW_PRIVILEGES_ZFPF);
     $Encrypted_document_i1m_php = $Zfpf->encrypt_1c('document_i1m.php');
-    // TO DO comment out any already-installed templates before running this file.
-    // TO DO or uncomment all if re-installing after dropping database. Run in batches. Google Cloud can handle limited amount.
+    // TO DO FOR PRODUCTION VERSION  Comment out any already-installed templates before running this file.
+    // TO DO FOR PRODUCTION VERSION  or uncomment all if re-installing after dropping database. 
+    // TO DO FOR PRODUCTION VERSION  Run in batches if server times out.
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_hspswp_ep_usa.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_itm.php';
+    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_general_duty.php'; // Must run after nh3r_hspswp_ep_usa.php and nh3r_itm.php, to include their practices.
     $Zfpf->close_connection_1s($DBMSresource);
     unset($_SESSION['t0user']); // Avoid interference with next logon.
     echo ' done.</p><p>
