@@ -123,7 +123,7 @@ if (isset($_POST['audit_i0n']) or isset($_POST['audit_template'])) {
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
         // Overwrite the array elements below with their template values. Other elements remain as initialized by i0n code.
         $_SESSION['Selected']['c5name'] = $_SESSION['SelectResults']['t0audit'][$CheckedPost]['c5name'];
-        $_SESSION['Selected']['c6nymd_leader'] = $Zfpf->encrypt_1c($_SESSION['SelectResults']['t0audit'][$CheckedPost]['k0audit']); // See schema.
+        $_SESSION['Selected']['c6nymd_leader'] = $Zfpf->encrypt_1c($_SESSION['SelectResults']['t0audit'][$CheckedPost]['k0audit']); // See schema and $SourceTemplateKey below.
         $_SESSION['Selected']['c6howtoinstructions'] = $_SESSION['SelectResults']['t0audit'][$CheckedPost]['c6howtoinstructions'];
         $_SESSION['Selected']['c6background'] = $_SESSION['SelectResults']['t0audit'][$CheckedPost]['c6background'];
         $_SESSION['Selected']['c6audit_scope'] = $_SESSION['SelectResults']['t0audit'][$CheckedPost]['c6audit_scope'];

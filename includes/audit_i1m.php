@@ -27,7 +27,7 @@ if ($RowsReturned['t0audit'] > 0) {
             <input type="radio" name="selected" value="'.$K.'" ';
             if ($K == 0)
                 $TemplateAudits .= 'checked="checked" '; // Ensure something is posted.
-            $TemplateAudits .= '/>'.$Zfpf->decrypt_1c($V['c6nymd_leader']); // c6nymd_leader holds the template name. See /includes/templates/audit.php.
+            $TemplateAudits .= '/>'.$Zfpf->decrypt_1c($V['c5name']);
         }
         else {
             $ProcessAudits .= '<br />
@@ -77,7 +77,7 @@ if ($UserGlobalDBMSpriv == LOW_PRIVILEGES_ZFPF and $UserPracticePrivileges != MA
 $Message .= '
 </form>';
 echo $Zfpf->xhtml_contents_header_1c().'<h2>
-Audit, evaluation, inspection, and similar observation-based reports.</h2>
+Audit, hazard review, inspection, and similar observation-based reports.</h2>
 '.$Message.'
 <form action="contents0_s_practice.php" method="post"><p>
     <input type="submit" value="Go back" /></p>

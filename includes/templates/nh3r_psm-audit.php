@@ -7,17 +7,26 @@
 
 $AmmoniaRefrigerationAudit = array(
     1 => array(
-        'k0audit' => 1, // The ammonia-refrigeration (nh3r) audit template // Template keys must be less than 100000, see .../includes/audit_i1m.php
-        'c5name' => $Zfpf->encrypt_1c('PSM Audit'), // k0process is handled before SQL insert below.
+        'k0audit' => 1, // The ammonia-refrigeration (nh3r) audit and hazard review template // Template keys must be less than 100000, see .../includes/audit_i1m.php
+        'c5name' => $Zfpf->encrypt_1c('PSM audit and hazard review for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2020-08-07 template.'), // k0process is handled before SQL insert below.
         'c5ts_as_of' => $EncryptedNothing,
         'k0user_of_leader' => 0,
         'c6bfn_act_notice' => $EncryptedNothing,
         'c5ts_leader' => $EncryptedNothing,
-        'c6nymd_leader' => $Zfpf->encrypt_1c('Ammonia-refrigeration PSM audit, 2020-07-31 template. Includes GENERAL-DUTY CLAUSE HAZARD-REVIEW content. Provides sample-observation methods that can cover the "minimum system safety requirements" in IIAR 9-2020, which references IIAR 6-2019 and IIAR 7-2019, and the applicable editions of IIAR 2 and building codes, if properly interpreted and applied by the auditor(s), using the terminology of this PSM-CAP App.'), // Put template name and description here. Never overwritten because templates are never issued. (They may be edited)
+        'c6nymd_leader' => $EncryptedNothing,
         'k0user_of_certifier' => 0,
         'c5ts_certifier' => $EncryptedNothing,
         'c6nymd_certifier' => $EncryptedNothing,
         'c6howtoinstructions' => $Zfpf->encrypt_1c('
+
+NOTE. This 2020-08-07 template,
+if properly interpreted and applied by the auditor(s), using the terminology of this PSM-CAP App,
+provides sample-observation methods that may be used to check an ammonia-refrigeration system for compliance with: 
+(1) typical tort law "duty of care", 
+(2) the U.S. federal "general duty" laws for hazardous substances, namely Clean Air Act paragraph 112(r)(1) and Occupational Safety and Health Act of 1970, Section 5, Duties, 
+(3) the "minimum system safety requirements" described in International Institute of Ammonia Refrigeration (IIAR) standard IIAR 9-2020, which references IIAR 6-2019 and IIAR 7-2019, 
+(4) the applicable editions of IIAR 2 and building codes, and 
+(5) the U.S. federal PSM compliance audit regulations at 40 CFR 68.79 and 29 CFR 1910.119(o), administered by the EPA and OSHA, respectively. 
 
 RESOLUTION OF AUDIT FINDINGS. Respond to any imminently dangerous situations immediately upon discovery. Otherwise, resolve findings as promptly as practical. The PSM-CAP app records audit findings in its Action Register, so initiate resolution planning by assigning a responsible individual and target-resolution date for each finding, via the Action Register. The PSM final rule preamble indicates, "It is OSHA\'s intention that the actions to be taken as a result of the process hazard analysis recommendations be completed as soon as possible. In most cases, OSHA believes that employers will be able to complete these actions within a one to two year time frame, but notes that in unusual circumstances longer completion periods may be necessary." (57 Federal Register 6379, February 24, 1991) This guidance provides a reasonable time frame for resolving compliance audit findings as well.
 

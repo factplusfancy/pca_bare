@@ -662,8 +662,7 @@ $Schema = array(
         'k0user_of_leader', // The lead auditor k0 user, set by i0n to current user. See CoreZfpf::record_in_history_1c
         'c6bfn_act_notice',
         'c5ts_leader',
-        'c6nymd_leader', // This holds, encrypted: for template audits: the audit name (see /includes/templates/audit.php) and
-                         //                        for other audits: the source-template k0audit until first issued.
+        'c6nymd_leader', // This holds, encrypted, for non-template audits: the source-template k0audit until first issued.
         'k0user_of_certifier',  // 0 while draft, 1 when issued by lead auditor, or k0user of certifier. See includes/templates/practices.php $Practice[20] for certifier meaning.
                              // Only allow one draft audit per process. Once issued by lead auditor, audit cannot be edited, unless auditor-approval canceled.
                              // Certification here is an additional ower/operator step, but the auditor remains responsible for the audit and report quality.
