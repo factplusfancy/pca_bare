@@ -175,7 +175,7 @@ if (isset($_POST['setup'])) {
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_scenario_consequence.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_safeguard.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_scenario_safeguard.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_psm-audit.php';
+    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_psm-audit_etc.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/psm-audit_fragment.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_obstopic.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_psm-audit_obstopic.php';

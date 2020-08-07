@@ -3,9 +3,9 @@
 // *** LEGAL NOTICES ***  
 // Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-// TO DO -> When updating the sample-observation methods below for new editions of IIAR 6, 7 or 9, also 
-// TO DO    update the edition years in .../includes/templates/nh3r_psm-audit.php including in the 
-// TO DO    description starting with "Ammonia refrigeration PSM audit", warehoused in the c6nymd_leader field.
+// TO DO FOR PRODUCTION VERSION  When updating the sample-observation methods below for new editions of IIAR 2, IIAR 6, IIAR 7, or IIAR 9 
+// TO DO FOR PRODUCTION VERSION  also update the edition years in .../includes/templates/nh3r_psm-audit_etc.php including in the
+// TO DO FOR PRODUCTION VERSION  t0audit:c5name, t0audit:c6howtoinstructions, and t0audit:c6background fields.
 
 $NH3ROm = array( // Indent as done below for better display in HTML text areas and easier cut and paste to other documents. New lines help with tracking changes via git.
     1 => array(
@@ -596,17 +596,19 @@ for anhydrous ammonia:
 (5) checked if the facility\'s emergency-response plan (or Emergency Action Plan) covered the requirements in 40 CFR 68 Subpart E.')
     ),
     52 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('PSM-audit documents -- checked if the prior two audit reports and their resolution records, for the facility\'s '.HAZSUB_PROCESS_NAME_ZFPF.': 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Audit and hazard review documents for the facility\'s '.HAZSUB_PROCESS_NAME_ZFPF.' -- checked if the prior two audit and hazard review reports (the reports), their resolution records, and any required Owner/Operator certifications that relied on them: 
 (1) had been retained, 
-(2) included at least 
-(2.1) 29 CFR 1910.119 (OSHA\'s PSM) and 
-(2.2) 40 CFR 68, Subpart D (EPA\'s Program 3 Prevention Program) in their reported audit scopes, 
+(2) included in their reported audit scopes, at least 
+(2.1) general-duty law, and, if applicable, 
+(2.2) 40 CFR 68, Subpart C (EPA\'s Program 2 Prevention Program) or 
+(2.3) 40 CFR 68, Subpart D (EPA\'s Program 3 Prevention Program) and 
+(2.4) 29 CFR 1910.119 (OSHA\'s PSM), 
 (3) documented completion of these audit scopes following good practices, such as including a tour, discussions or interviews, and document reviews, 
-(4) had adequate certifications, 
-(5) described the qualifications of the auditor(s) and these included knowledge of the '.HAZSUB_PROCESS_NAME_ZFPF.' (possibly gained while at the facility for the audit if the auditor(s) were knowledgeable about similar '.HAZSUB_PROCESS_NAME_ZFPF.'s elsewhere), and 
-(6) showed that the Owner/Operator had 
-(6.1) promptly determined and documented an appropriate response to each audit finding and 
-(6.2) documented that deficiencies had been corrected.')
+(4) described the qualifications of the individual(s) who completed the audits and hazard reviews and these qualifications included knowledge of the '.HAZSUB_PROCESS_NAME_ZFPF.', possibly gained while at the facility for the audit and/or hazard review if the individual(s) had experience with similar '.HAZSUB_PROCESS_NAME_ZFPF.'s elsewhere, and 
+(5) showed that the Owner/Operator had 
+(5.1) promptly determined and documented an appropriate response to each finding in the reports, 
+(5.2) documented that deficiencies, discovered due to the reported findings, had been corrected, and 
+(5.3) adequately certified that they had evaluated compliance, if applicable (cases 2.2, 2.3, and 2.4 above).')
     ),
     53 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Maintenance employees or contractors not authorized to work on the '.HAZSUB_PROCESS_NAME_ZFPF.' -- if any at the facility, asked a sample of these individuals, 

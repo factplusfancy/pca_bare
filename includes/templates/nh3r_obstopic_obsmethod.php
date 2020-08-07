@@ -223,11 +223,8 @@ $AmmoniaRefrigPSMAuditOm = array(
     55 => array(
         'k0obstopic' => $NH3ROt[14]['k0obstopic'], // Inspection, Testing, and Maintenance Program and Records
         'k0obsmethod' => $NH3ROm[27]['k0obsmethod'],
-    ),
-    56 => array(
-        'k0obstopic' => $NH3ROt[18]['k0obstopic'], // PSM-Audit Compliance Practices and Records
-        'k0obsmethod' => $NH3ROm[27]['k0obsmethod'],
-    ),
+    ), 
+    // 56 skipped because it was removed 2020-08-07.
     57 => array(
         'k0obstopic' => $NH3ROt[19]['k0obstopic'], // Emergency Action Plan and Coordination with Community Compliance Practices and Records
         'k0obsmethod' => $NH3ROm[27]['k0obsmethod'],

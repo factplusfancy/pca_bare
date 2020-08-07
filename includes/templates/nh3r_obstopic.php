@@ -56,7 +56,7 @@ $NH3ROt = array(
         'c5name' => $Zfpf->encrypt_1c('Incident-Investigation Compliance Practices and Records')
     ),
     18 => array(
-        'c5name' => $Zfpf->encrypt_1c('PSM-Audit Compliance Practices and Records')
+        'c5name' => $Zfpf->encrypt_1c('Audit and Hazard Review Documents')
     ),
     19 => array(
         'c5name' => $Zfpf->encrypt_1c('Emergency Action Plan and Coordination with Community Compliance Practices and Records')
