@@ -88,7 +88,7 @@ class cmsZfpf {
 (3) welding-procedure specifications and qualification records, 
 (4) paint and insulation specifications, 
 (5) documentation of post-design changes (change orders), and so forth, 
-<b> after reviewing them as needed verify that they describe how to safely and legally complete changes to, as applicable: </b>
+<b> after reviewing them as needed to verify that they describe how to safely and legally complete changes to, as applicable: </b>
 (A) the '.HAZSUB_PROCESS_NAME_ZFPF.', including 
 (A.1) its instrumentation and controls and 
 (A.2) its primary-containment envelope, such as 
@@ -112,7 +112,7 @@ class cmsZfpf {
 (C.2) room and building envelopes or other protection from the weather, 
 (C.3) electrical systems, including 
 (C.3.1) any hazardous-location classifications and related engineering or administrative controls, 
-(C.4) other utilities, and so forth.', '', C5_MAX_BYTES_ZFPF, array('Typically needed if mechanical, structural, or other engineered/designed systems will be changed.', 'Design Review')),
+(C.4) other utilities, and so forth', '', C5_MAX_BYTES_ZFPF, array('Typically needed if mechanical, structural, or other engineered/designed systems will be changed.', 'Design Review')),
                 'c6notes_dr' => array('Design review notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_dr' => array('Design review supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_ehsr' => array('<a id="c6bfn_ehsr"></a><b>Environmental, health, and safety (EHS) Review</b>, leader', '', C5_MAX_BYTES_ZFPF, array('Typically needed if the change may affect environmental, health, or safety programs, equipment, or infrastructure.', 'EHS Review')),
@@ -129,9 +129,9 @@ class cmsZfpf {
                 'c6bfn_act_notice' => array('Activity Notice supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_psi' => array('<a id="c6bfn_psi"></a><b>Process-safety information (PSI) as-built documents</b>, leader for updating. Effort may include uploading, as applicable: 
 (1) as-built versions of all documents needed for the above design review, 
-(2) delivery documents plus manufacturer manuals and reports for everything installed, such as 
-(2.1) manufacturer manuals (or other documents) covering installation, operation, and maintenance, including for controls, compressors, instrumentation, pumps, and valves, 
-(2.2) insulation and paint manufacturer specifications or product descriptions, 
+(2) delivery documents plus manufacturers\' manuals, reports, or equivalent for everything installed, such as 
+(2.1) insulation and paint manufacturers\' specifications or product descriptions, 
+(2.2) manufacturers\' manuals or other documents covering materials of construction, installation, startup, operation, and maintenance, including for controls, compressors, instrumentation, pumps, and valves, 
 (2.3) piping material test reports, 
 (2.4) vessel data reports and shop drawings, and 
 <b>for the entire '.HAZSUB_PROCESS_NAME_ZFPF.', the updated </b>
@@ -162,30 +162,44 @@ Use the PHA division of this PSM-CAP App to add any needed subsystems, scenarios
 Training of contractor individuals may be done and documented by their contractor organization', '', C5_MAX_BYTES_ZFPF, array('', 'Training')),
                 'c6notes_training' => array('Training on hazardous-substance procedures and safe-work practices updates notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_training' => array('Training on hazardous-substance procedures and safe-work practices updates supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_hs_pm' => array('<a id="c6bfn_hs_pm"></a><b>Inspection, testing, and maintenance (ITM) program updates</b>, leader. Effort may include updates to ITM schedules, procedures/instructions, parts ordering systems, and recordkeeping and also training affected employees and contractors on these updates, as needed for the safe operation and mechanical integrity of the '.HAZSUB_PROCESS_NAME_ZFPF, '', C5_MAX_BYTES_ZFPF, array('', 'ITM')),
+                'k0user_of_hs_pm' => array('<a id="c6bfn_hs_pm"></a><b>Inspection, testing, and maintenance (ITM) program updates</b>, leader. Effort may include updates to, as needed: 
+(1) the work order or similar system, covering 
+(1.1) scheduling, 
+(1.2) summarizing the tasks, needed qualifications or training, methods, parts, and materials, 
+(1.3) recording any results, 
+(1.4) tracking resolution of any deficiencies, and 
+(1.5) recordkeeping and 
+(2) training affected employees and contractors on these updates, 
+as needed for the safe operation and mechanical integrity of the '.HAZSUB_PROCESS_NAME_ZFPF, '', C5_MAX_BYTES_ZFPF, array('', 'ITM')),
                 'c6notes_hs_pm' => array('ITM-program updates and training notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_hs_pm' => array('ITM-program updates and training documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_emergency' => array('<a id="c6bfn_emergency"></a><b>Emergency-plans updates and training</b>, leader. Effort may include updates to facility plans (Emergency Action Plan, any employee emergency-response plans, and so forth), training employees and contractors on these updates, and notifying offsite (community or contracted) emergency responders about potentially needed changes to their plans', '', C5_MAX_BYTES_ZFPF, array('', 'Emergency Planning')),
+                'k0user_of_emergency' => array('<a id="c6bfn_emergency"></a><b>Emergency-plans updates and training</b>, leader. Effort may include updates to, as needed:
+(1) facility plans, such as the
+(1.1) Emergency Action Plan, 
+(1.2) any employee emergency-response plans, and so forth, 
+(2) training employees and contractors on these updates, and 
+(3) notifying offsite (community or contracted) emergency responders about potentially needed changes to their plans', '', C5_MAX_BYTES_ZFPF, array('', 'Emergency Planning')),
                 'c6notes_emergency' => array('Emergency-plans updates and training notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_emergency' => array('Emergency-plans updates and training supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_iet' => array('<a id="c6bfn_iet"></a><b>Construction/fabrication inspection, examination, and testing (IET)</b>, leader. Effort may include requesting and uploading documentation of, for everything the change affected, as needed: 
+                'k0user_of_iet' => array('<a id="c6bfn_iet"></a><b>Construction/fabrication inspection, examination, and testing (IET)</b>, leader. Effort may include, as needed, requesting and uploading documentation that, for everything the change affected: 
 (1) "as-built satisfies design", such as 
-(1.1) inspection or observation of construction, 
-(1.2) material or other tests, 
-(1.3) representations or warranties from the contractor(s) who did the work, 
-(2) manufacturers\' installation and startup instructions were completed, such as for compressors, pumps, and so forth, 
-(3) leak tests, 
-(4) pressure tests, 
-(5) shaft alignment and other needed alignment, 
-(5) vibration analysis, 
-(7) welding inspections or tests, and so forth.', '', C5_MAX_BYTES_ZFPF, array('', 'IET')),
+(1.1) inspection or observation of construction reports, 
+(1.2) material or other test reports, 
+(1.3) written representations or warranties from the contractor(s) who did the work, and 
+(2) the following were satisfactorily completed:
+(2.1) manufacturers\' installation and startup instructions, such as for compressors, pumps, and so forth, 
+(2.2) leak tests, 
+(2.3) pressure tests, 
+(2.4) shaft alignment and other needed alignment, 
+(2.5) vibration analysis, 
+(2.6) welding inspections or tests, and so forth', '', C5_MAX_BYTES_ZFPF, array('', 'IET')),
                 'c6notes_iet' => array('Construction/fabrication inspection, examination, and testing notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_iet' => array('Construction/fabrication inspection, examination, and testing supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_implement' => array('<a id="c6bfn_implement"></a><b>Change final implementation and startup</b>, leader. Effort may include procedures for and supervision of special isolation, pump-down, venting, cleaning, tie-in, startup, and other tasks affecting piping or equipment that already contain hazardous substances', '', C5_MAX_BYTES_ZFPF, array('', 'Implementation')),
                 'c6notes_implement' => array('Change final implementation and startup notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_implement' => array('Change final implementation and startup supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_psr' => array('<a id="c6bfn_psr"></a><b>Startup Authorization</b>. This task includes: 
-(1) overall responsibility for, and resolving recommendations from, all change-management tasks, including any that were not assigned to others above, and 
+(1) overall responsibility for, and resolving recommendations from, all change-management tasks, including any that were not assigned above, and 
 (2) any other pre-startup safety review (PSR) tasks needed to verify that 
 (2.1) the '.HAZSUB_PROCESS_NAME_ZFPF.' and everything it depends on or affects, including buildings, structures, supports, piping, vessels, and equipment, as built, 
 (2.1.1) are suitable for their service and 
