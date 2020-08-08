@@ -68,8 +68,51 @@ class cmsZfpf {
                 ),
                 'c5ts_psr_requested' => array('Target date and time for startup authorization, which shall be before putting any hazardous substance into new or altered piping or equipment, if applicable', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF), // Note, this is not in schema order, to display at desired location, which works fine for this app.
                 'c5reason' => array('Reason for change', '', C5_MAX_BYTES_ZFPF),
-                'c6bfn_markup' => array('<a id="c6bfn_markup"></a><b>Full description of change</b>, such as (1) a project manual or (2) markups showing planned changes to the (2.1) process-safety information, (2.2) hazardous-substance procedures and safe-work practices, (2.3) inspection, testing, and maintenance (ITM) program, (2.4) emergency plans, and so forth', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_dr' => array('<a id="c6bfn_dr"></a><b>Design review</b>, leader. Effort may include uploading reviewed copies of all permit applications and permits (including building, mechanical, or other required permits), plans, specifications, and calculations (showing the edition of applicable codes and standards), welding-procedure specifications and qualification records, paint and insulation specifications, and so forth, <b>needed to</b> safely and legally complete changes to, as applicable, the process, its safety systems, and things it relies on, such as supports, structures, and utilities, and so forth. For example, this review should cover the change\'s affects on electrical-code compliance, including any hazardous-location classifications, pressure-relief systems, ventilation systems, sensors and detectors, alarms, automatic shutoffs (for compressors, pumps...), interlocks, suppression, other safety systems, piping, vessels, and other equipment (including supports, unusual temperatures, and thermal movement)', '', C5_MAX_BYTES_ZFPF, array('Typically needed if mechanical, structural, or other engineered/designed systems will be changed.', 'Design Review')),
+                'c6bfn_markup' => array('<a id="c6bfn_markup"></a><b>Full description of change</b>, such as: 
+(1) a project manual or 
+(2) markups showing planned changes to the 
+(2.1) process-safety information, 
+(2.2) hazardous-substance procedures and safe-work practices, 
+(2.3) inspection, testing, and maintenance (ITM) program, 
+(2.4) emergency plans, and so forth', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
+                'k0user_of_dr' => array('<a id="c6bfn_dr"></a><b>Design review</b>, leader. Effort may include uploading copies of, as needed: 
+(1) permit applications and permits, including building, electrical, environmental, hazardous substance, mechanical, and so forth, 
+(2) plans, specifications, and calculations, showing the edition of applicable codes and standards, and including 
+(2.1) any needed evaluations of performance -- such as contraction and expansion, corrosion, erosion, reactions (chemical, physical, or other), shocks, vibrations, and so forth -- over the anticipated normal and upset/failure ranges for 
+(2.1.1) temperature, 
+(2.1.2) pressure, 
+(2.1.3) flow, 
+(2.1.4) composition, 
+(2.1.5) any other relevant process parameters, and
+(2.1.6) relevant external conditions, including earthquakes/seismic, humidity, rain, salinity (sea spray, deicing...), sand or dust storms, snow, wind, and so forth, 
+(3) welding-procedure specifications and qualification records, 
+(4) paint and insulation specifications, 
+(5) documentation of post-design changes (change orders), and so forth, 
+<b> after reviewing them as needed verify that they describe how to safely and legally complete changes to, as applicable: </b>
+(A) the '.HAZSUB_PROCESS_NAME_ZFPF.', including 
+(A.1) its instrumentation and controls and 
+(A.2) its primary-containment envelope, such as 
+(A.2.1) piping and 
+(A.2.2) equipment, including compressors, pumps, and vessels, 
+(B) safety systems for the '.HAZSUB_PROCESS_NAME_ZFPF.', such as 
+(B.1) alarms, including audible and visible alarms and notification systems that call, text, or email Owner/Operator representatives, 
+(B.2) automatic shutoffs, including for compressors, pumps, valves, and so forth, 
+(B.3) interlocks, 
+(B.4) instrumentation and controls for safety systems, including sensors, detectors, microprocessors and so forth, 
+(B.5) pressure-relief systems, 
+(B.6) suppression systems, and 
+(B.7) ventilation systems, and so forth, and 
+(C) things the '.HAZSUB_PROCESS_NAME_ZFPF.' relies on, such as 
+(C.1) supports, including
+(C.1.1) hangers, rods, saddles, and so forth, 
+(C.1.2) building structures,  
+(C.1.3) other structures, 
+(C.1.4) foundations and geotechnical/subsurface conditions, and
+(C.1.5) all support-related fasteners, 
+(C.2) room and building envelopes or other protection from the weather, 
+(C.3) electrical systems, including 
+(C.3.1) any hazardous-location classifications and related engineering or administrative controls, 
+(C.4) other utilities, and so forth.', '', C5_MAX_BYTES_ZFPF, array('Typically needed if mechanical, structural, or other engineered/designed systems will be changed.', 'Design Review')),
                 'c6notes_dr' => array('Design review notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_dr' => array('Design review supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_ehsr' => array('<a id="c6bfn_ehsr"></a><b>Environmental, health, and safety (EHS) Review</b>, leader', '', C5_MAX_BYTES_ZFPF, array('Typically needed if the change may affect environmental, health, or safety programs, equipment, or infrastructure.', 'EHS Review')),
@@ -84,16 +127,39 @@ class cmsZfpf {
                 'k0user_of_act_notice' => array('<a id="c6bfn_act_notice"></a><b>Activity Notice</b> -- posting and filing, leader', '', C5_MAX_BYTES_ZFPF, array('', 'Activity Notice')),
                 'c6notes_act_notice' => array('Activity Notice notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_act_notice' => array('Activity Notice supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_psi' => array('<a id="c6bfn_psi"></a><b>Process-safety information (PSI) as-built documents</b>, leader for updating. Effort may include uploading: as-built versions of all documents needed for the design review; delivery documents plus manufacturer manuals and reports for installed materials, assemblies, and equipment (including manufacturer manuals covering installation, operation, and maintenance, material test reports, vessel data reports and shop drawings, insulation and paint specifications, and so forth); and -- for the entire '.HAZSUB_PROCESS_NAME_ZFPF.' -- updated flow diagrams, '.HAZSUB_NAME_ADJECTIVE_ZFPF.' inventories (and other process-material inventories maintained with the process-safety information), the piping and instrumentation diagram and component lists, material and energy balances, the Operating Limits, Deviation Consequences, Controls, and Safety Systems document(s), and any other process-safety information documents maintained for the entire '.HAZSUB_PROCESS_NAME_ZFPF, '', C5_MAX_BYTES_ZFPF, array('', 'PSI')),
+                'k0user_of_psi' => array('<a id="c6bfn_psi"></a><b>Process-safety information (PSI) as-built documents</b>, leader for updating. Effort may include uploading, as applicable: 
+(1) as-built versions of all documents needed for the above design review, 
+(2) delivery documents plus manufacturer manuals and reports for everything installed, such as 
+(2.1) manufacturer manuals (or other documents) covering installation, operation, and maintenance, including for controls, compressors, instrumentation, pumps, and valves, 
+(2.2) insulation and paint manufacturer specifications or product descriptions, 
+(2.3) piping material test reports, 
+(2.4) vessel data reports and shop drawings, and 
+<b>for the entire '.HAZSUB_PROCESS_NAME_ZFPF.', the updated </b>
+(3) flow diagram, 
+(4) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' maximum-intended inventory and 
+(4.1) any optional inventories of materials contained in the '.HAZSUB_PROCESS_NAME_ZFPF.', 
+(5) operating limits, deviation consequences, controls, and safety systems document(s), 
+(6) piping and instrumentation diagram and component list, 
+(7) material and energy balances, and 
+(8) any other needed PSI', '', C5_MAX_BYTES_ZFPF, array('', 'PSI')),
                 'c6notes_psi' => array('Process-safety information as-built documents notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_psi' => array('Process-safety information as-built documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_pha_amend' => array('<a id="c6bfn_pha"></a><b>Process-hazard analysis (PHA) amendment</b>, leader. Background: "New facilities" require a PHA amendment, whereas "modified facilities" do not per 29 CFR 1910.119(i)(2)(iii).  "Facility means the buildings, containers or equipment which contain a process," but neither "new" nor "modified" are defined by 29 CFR 1910.119(b). Opinions differ, but to be safe, amend the PHA if the change will add buildings, piping, vessels, or other equipment that are different enough from what the current PHA evaluated that additional scenarios are needed to evaluate their hazards. Option: amend the PHA as needed to keep it continuously up to date. Use the PHA division of this PSM-CAP App to add any needed subsystems, scenarios, or analysis to the PHA or other hazard identification and risk analysis', '', C5_MAX_BYTES_ZFPF, array('', 'PHA Amendment')),
+                'k0user_of_pha_amend' => array('<a id="c6bfn_pha"></a><b>Process-hazard analysis (PHA) amendment</b>, leader. Background: 
+"New facilities" require a PHA amendment, whereas "modified facilities" do not per 29 CFR 1910.119(i)(2)(iii). 
+"Facility means the buildings, containers or equipment which contain a process," but neither "new" nor "modified" are defined by 29 CFR 1910.119(b). 
+Opinions differ, but to be safe, amend the PHA if the change will add buildings, piping, vessels, or other equipment that are different enough from what the current PHA evaluated that additional scenarios are needed to evaluate their hazards. 
+Option: amend the PHA as needed to keep it continuously up to date. 
+Use the PHA division of this PSM-CAP App to add any needed subsystems, scenarios, or analysis to the PHA or other hazard identification and risk analysis', '', C5_MAX_BYTES_ZFPF, array('', 'PHA Amendment')),
                 'c6notes_pha_amend' => array('PHA amendment notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_pha_amend' => array('PHA amendment supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_hs_omp_swp' => array('<a id="c6bfn_hs_omp_swp"></a><b>Hazardous-substance procedures and safe-work practices updates</b>, leader', '', C5_MAX_BYTES_ZFPF, array('', 'Procedures')),
                 'c6notes_hs_omp_swp' => array('Hazardous-substance procedures and safe-work practices updates notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_hs_omp_swp' => array('Hazardous-substance procedures and safe-work practices updates supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_training' => array('<a id="c6bfn_training"></a><b>Training on hazardous-substance procedures and safe-work practices updates</b>, leader. Effort may include identifying employees or contractors who need to be trained on these updates, scheduling the training, and documenting the means used to verify that each of these employees or contractors understood their training on these updates. Training of contractor individuals may be done and documented by their contractor organization', '', C5_MAX_BYTES_ZFPF, array('', 'Training')),
+                'k0user_of_training' => array('<a id="c6bfn_training"></a><b>Training on hazardous-substance procedures and safe-work practices updates</b>, leader. Effort may include: 
+(1) identifying employees or contractors who need to be trained on these updates, 
+(2) scheduling the training, and 
+(3) documenting the means used to verify that each of these employees or contractors understood their training on these updates. 
+Training of contractor individuals may be done and documented by their contractor organization', '', C5_MAX_BYTES_ZFPF, array('', 'Training')),
                 'c6notes_training' => array('Training on hazardous-substance procedures and safe-work practices updates notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_training' => array('Training on hazardous-substance procedures and safe-work practices updates supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_hs_pm' => array('<a id="c6bfn_hs_pm"></a><b>Inspection, testing, and maintenance (ITM) program updates</b>, leader. Effort may include updates to ITM schedules, procedures/instructions, parts ordering systems, and recordkeeping and also training affected employees and contractors on these updates, as needed for the safe operation and mechanical integrity of the '.HAZSUB_PROCESS_NAME_ZFPF, '', C5_MAX_BYTES_ZFPF, array('', 'ITM')),
@@ -102,13 +168,35 @@ class cmsZfpf {
                 'k0user_of_emergency' => array('<a id="c6bfn_emergency"></a><b>Emergency-plans updates and training</b>, leader. Effort may include updates to facility plans (Emergency Action Plan, any employee emergency-response plans, and so forth), training employees and contractors on these updates, and notifying offsite (community or contracted) emergency responders about potentially needed changes to their plans', '', C5_MAX_BYTES_ZFPF, array('', 'Emergency Planning')),
                 'c6notes_emergency' => array('Emergency-plans updates and training notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_emergency' => array('Emergency-plans updates and training supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_iet' => array('<a id="c6bfn_iet"></a><b>Construction/fabrication inspection, examination, and testing (IET)</b>, leader. Effort may include uploading completed manufacturer startup checklists (for compressors, pumps...), pressure tests, leak tests, vibration analysis, alignment, welding inspections or tests, and so forth', '', C5_MAX_BYTES_ZFPF, array('', 'IET')),
+                'k0user_of_iet' => array('<a id="c6bfn_iet"></a><b>Construction/fabrication inspection, examination, and testing (IET)</b>, leader. Effort may include requesting and uploading documentation of, for everything the change affected, as needed: 
+(1) "as-built satisfies design", such as 
+(1.1) inspection or observation of construction, 
+(1.2) material or other tests, 
+(1.3) representations or warranties from the contractor(s) who did the work, 
+(2) manufacturers\' installation and startup instructions were completed, such as for compressors, pumps, and so forth, 
+(3) leak tests, 
+(4) pressure tests, 
+(5) shaft alignment and other needed alignment, 
+(5) vibration analysis, 
+(7) welding inspections or tests, and so forth.', '', C5_MAX_BYTES_ZFPF, array('', 'IET')),
                 'c6notes_iet' => array('Construction/fabrication inspection, examination, and testing notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_iet' => array('Construction/fabrication inspection, examination, and testing supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_implement' => array('<a id="c6bfn_implement"></a><b>Change final implementation and startup</b>, leader. Effort may include procedures for and supervision of special isolation, pump-down, venting, cleaning, tie-in, startup, and other tasks affecting piping or equipment that already contain hazardous substances', '', C5_MAX_BYTES_ZFPF, array('', 'Implementation')),
                 'c6notes_implement' => array('Change final implementation and startup notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_implement' => array('Change final implementation and startup supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_psr' => array('<a id="c6bfn_psr"></a><b>Startup Authorization</b>. This task includes overall responsibility for, and resolving recommendations from, all change-management tasks and any other pre-startup safety review (PSR) tasks needed to verify that the '.HAZSUB_PROCESS_NAME_ZFPF.' and everything it depends on or affects (including buildings, structures, supports, piping, vessels, and equipment), as built, are suitable for their service and are in accordance with their design specifications, all instructions from manufacturers of their component parts, and applicable legal requirements. <b>Before startup authorization, neither</b> put any hazardous substance into new or altered piping or equipment <b>nor</b> implement a change to the stage when training is needed on new or altered procedures, practices, or controls. Affected-entity leader', '', C5_MAX_BYTES_ZFPF, array('', 'Startup')),
+                'k0user_of_psr' => array('<a id="c6bfn_psr"></a><b>Startup Authorization</b>. This task includes: 
+(1) overall responsibility for, and resolving recommendations from, all change-management tasks, including any that were not assigned to others above, and 
+(2) any other pre-startup safety review (PSR) tasks needed to verify that 
+(2.1) the '.HAZSUB_PROCESS_NAME_ZFPF.' and everything it depends on or affects, including buildings, structures, supports, piping, vessels, and equipment, as built, 
+(2.1.1) are suitable for their service and 
+(2.1.2) are in accordance with their 
+(2.1.2.1) design specifications, 
+(2.1.2.2) all instructions from manufacturers of their component parts, and 
+(2.1.2.3) applicable legal requirements. 
+<b>Before startup authorization, neither </b>
+(A) put any hazardous substance into new or altered piping or equipment <b>nor </b>
+(B) implement a change to the stage when training is needed on new or altered procedures, practices, or controls. 
+Affected-entity leader', '', C5_MAX_BYTES_ZFPF, array('', 'Startup')),
                 'c6notes_psr' => array('Startup Authorization and PSR notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_psr' => array('Startup Authorization and PSR supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files')
             );
