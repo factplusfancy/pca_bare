@@ -16,12 +16,12 @@ $divisions = array(
     ),
     3 => array( // CCC
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Process-safety information covering design, materials, fabrication, construction, and installation'),
+        'c5name' => $Zfpf->encrypt_1c('Process safety information (PSI) covering design, materials, fabrication, construction, and installation'),
         'c5citation' => $EncryptedNothing
     ),
     4 => array( // DDD
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Process-hazard analysis (PHA) and any other hazard identification and risk analyses (HIRA)'),
+        'c5name' => $Zfpf->encrypt_1c('Process hazard analysis (PHA) and any other hazard identification and risk analyses (HIRA)'),
         'c5citation' => $EncryptedNothing
     ),
     5 => array( // EEE

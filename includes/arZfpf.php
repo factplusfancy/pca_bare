@@ -288,20 +288,20 @@ class arZfpf {
         <a class="toc" href="ar_io03.php?ar_i1m_priority">By priority</a><br />';
         if (isset($_SESSION['StatePicked']['t0process']['k0process'])) {
             $Message .= '
-            <a class="toc" href="ar_io03.php?ar_i1m_audit">Audit actions only</a><br />
-            <a class="toc" href="ar_io03.php?ar_i1m_incident">Incident-investigation actions only</a><br />
-            <a class="toc" href="ar_io03.php?ar_i1m_pha">PHA or HIRA actions only</a><br />
-            <a class="toc" href="ar_io03.php?ar_i1m_process">Process actions only</a><br />';
+            <a class="toc" href="ar_io03.php?ar_i1m_audit">Findings (from audits, hazard reviews...)</a><br />
+            <a class="toc" href="ar_io03.php?ar_i1m_incident">Incident investigation</a><br />
+            <a class="toc" href="ar_io03.php?ar_i1m_pha">PHA or HIRA</a><br />
+            <a class="toc" href="ar_io03.php?ar_i1m_process">Process</a><br />';
         }
         if (isset($_SESSION['StatePicked']['t0facility']['k0facility']))
             $Message .= '
-            <a class="toc" href="ar_io03.php?ar_i1m_facility">Facility actions only</a><br />';
+            <a class="toc" href="ar_io03.php?ar_i1m_facility">Facility</a><br />';
         if (isset($_SESSION['StatePicked']['t0owner']['k0owner']))
             $Message .= '
-            <a class="toc" href="ar_io03.php?ar_i1m_owner">Owner actions only</a><br />';
+            <a class="toc" href="ar_io03.php?ar_i1m_owner">Owner</a><br />';
         if (isset($_SESSION['StatePicked']['t0contractor']['k0contractor']))
             $Message .= '
-            <a class="toc" href="ar_io03.php?ar_i1m_contractor">Contractor actions only</a><br />';
+            <a class="toc" href="ar_io03.php?ar_i1m_contractor">Contractor</a><br />';
         $Message .= '</p><p>';
         // Need at least INSERT global privileges to start a new record and suppress if user is selecting an open action to associate with an audit, PHA, etc.
         $GlobalDBMSPrivileges = $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']);

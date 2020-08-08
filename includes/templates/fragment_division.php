@@ -470,7 +470,7 @@ $fragment_division = array(
         'k0division' => $divisions[11]['k0division'],
         'c5number' => $Zfpf->encrypt_1c('KKK111')
     ),
-    95 => array(
+    94 => array(
         'k0fragment' => $psm_fragments[116]['k0fragment'],
         'k0division' => $divisions[11]['k0division'],
         'c5number' => $Zfpf->encrypt_1c('KKK222')

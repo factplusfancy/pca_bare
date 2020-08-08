@@ -172,10 +172,10 @@ $practices = array(
         'c5require_file_privileges' => $EncryptedNothing
     ), */
     21 => array(
-        'c5name' => $Zfpf->encrypt_1c('PSM Audit Reports -- View, Create, Edit, Issue, and Certify'),
+        'c5name' => $Zfpf->encrypt_1c('PSM-Audit Reports -- View, Create, Edit, Issue, and Certify'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('KKKBBB'),
-        'c6description' => $Zfpf->encrypt_1c('View draft or issued PSM-audit reports. Create, edit, or issue a report. Complete certification of "have evaluated... to verify". To meet the PSM compliance-audit requirements, the audit shall be conducted by at least one person knowledgeable in the '.HAZSUB_PROCESS_NAME_ZFPF.'. Describe auditor qualifications and methods in the audit report. The certification is typically made by the process PSM leader -- which is how this app designates the responsible Owner/Operator representative, per its management system -- once the final PSM-audit report has been issued by the lead auditor. Interpretations vary on the extent of what needs to be certified; the template certification language in this app copies the somewhat ambiguous language in the OSHA and EPA rules. See the rules associated with this practice. This app retains PSM audit reports indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
+        'c6description' => $Zfpf->encrypt_1c('View draft or issued reports. Create, edit, or issue a report. To meet PSM requirements and good practices, the audit shall be conducted by at least one person knowledgeable in the '.HAZSUB_PROCESS_NAME_ZFPF.'. Describe auditor qualifications and methods in the report. Certify that the Owner/Operator has "evaluated compliance ... to verify that the [PSM] procedures and practices are adequate and are being followed". Once the report has been issued by the report leader, this certification is typically made by the process PSM leader, which is how the PSM-CAP App designates the responsible Owner/Operator representative, per the management system. Interpretations vary what needs to be certified; the certification language in the PSM-CAP App follows the wording in the PSM and CAP rules. The PSM-CAP App retains PSM-audit reports indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
         'c5require_file' => $Zfpf->encrypt_1c('audit_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ), /*  2018-10-03 JDH combined with practice above.
@@ -196,10 +196,10 @@ $practices = array(
         'c5require_file_privileges' => $EncryptedNothing
     ), */
     24 => array(
-        'c5name' => $Zfpf->encrypt_1c('Resolution of Audit Findings -- View Action Register'),
+        'c5name' => $Zfpf->encrypt_1c('Resolution of Findings -- View Action Register'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('KKKEEE'),
-        'c6description' => $Zfpf->encrypt_1c('The action register may be sorted by audit findings. It tracks their resolution.'),
+        'c6description' => $Zfpf->encrypt_1c('The action register may be sorted by findings. It tracks resolution of deficiencies reported in findings.'),
         'c5require_file' => $Zfpf->encrypt_1c('ar_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ), /*  2018-10-03 JDH combined with practice 20 above.

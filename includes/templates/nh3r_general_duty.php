@@ -5,7 +5,7 @@
 
 // General duty for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration).
 // This division method matches the Cheesehead division method, except the following.
-// (1) A five-year "hazard review" division replaces the PHA division, but includes compliance practices from the "PSM audit" division
+// (1) A "hazard review" division replaces the PHA division, but includes compliance practices from the "PSM audit" division
 // because a semi-quantitative PHA is not required, instead the PSM audit sample-observation methods, 
 // intended to cover IIAR 9 and much more, provide a checklist for a general-duty hazard review.
 // (2) It doesn't include the following Cheesehead divisions: 
@@ -160,19 +160,86 @@ foreach ($divisions as $VD)
 // Keys less than 100000 are reserved for templates.
 $PrimaryKey = get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_division', 't0fragment_division'); // Defined in setup_nh3r_practices.php
 foreach ($fragment_division as $V) {
-    $V['k0fragment_division'] = $PrimaryKey;
+    $V['k0fragment_division'] = ++$PrimaryKey;
     $V['c5who_is_editing'] = $EncryptedNobody;
     $Zfpf->insert_sql_1s($DBMSresource, 't0fragment_division', $V);
 }
 
-// TO DO 
-// TO DO practice_division > must include the nh3r_hspswp_ep_usa practices
-// TO DO populate $practices -- use method from includes/division011.php, Line ~109 to 170.
+// t0practice insert
+$NewPractices = array(
+    0 => array(
+        'c5name' => $Zfpf->encrypt_1c('Hazard-Review and Compliance-Audit Reports -- View, Create, Edit, Issue, and Certify'),
+        'c2standardized' => 'Owner Standard Practice',
+        'c5number' => $Zfpf->encrypt_1c('KKKAAA'),
+        'c6description' => $Zfpf->encrypt_1c('View draft or issued reports. Create, edit, or issue a report. To meet good practices, the hazard review and compliance audit shall be conducted by at least one person knowledgeable in the '.HAZSUB_PROCESS_NAME_ZFPF.'. Describe the hazard reviewer and compliance auditor qualifications and methods in the report. If required, certify that the Owner/Operator has "evaluated compliance ... to verify that the [Program 2 Prevention Program or similar] procedures and practices are adequate and are being followed"; this is typically optional for general-duty only facilities. The PSM-CAP App retains hazard-review and compliance-audit reports indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
+        'c5require_file' => $Zfpf->encrypt_1c('audit_i1m.php'),
+        'c5require_file_privileges' => $EncryptedLowPrivileges
+    )
+);
+$PrimaryKey = get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice'); // Defined in setup_nh3r_practices.php
+foreach ($NewPractices as $K => $V) {
+    $V['k0practice'] = ++$PrimaryKey;
+    $NewPractices[$K]['k0practice'] = $V['k0practice'];
+    $V['c5who_is_editing'] = $EncryptedNobody;
+    $Zfpf->insert_sql_1s($DBMSresource, 't0practice', $V);
+}
+
+// t0practice_division inserts
+$i = 0;
+foreach ($divisions as $VD) {
+    $Conditions = array();
+    $DivPractices = array();
+    // Map general duty to Cheesehead divisions
+    if ($VD['k0division'] == 51) // Management system
+        $Conditions[0] = array('k0division', '=', 1);
+    if ($VD['k0division'] == 52) // Employee participation
+        $Conditions[0] = array('k0division', '=', 2);
+    if ($VD['k0division'] == 53) // Process safety information
+        $Conditions[0] = array('k0division', '=', 3);
+    if ($VD['k0division'] == 54) { // Hazard review -- see items 1 and 2 in the comment at top of this file.
+        $DivPractices[]['k0practice'] = $NewPractices[0]['k0practice']; // above defined: Hazard-Review and Compliance-Audit Reports -- View, Create, Edit, Issue, and Certify
+        $DivPractices[]['k0practice'] = 24; // defined in includes/templates/practices.php: Resolution of Findings -- View Action Register
+    }
+    if ($VD['k0division'] == 55) // Hazardous-substance procedures and safe-work practices
+        $Conditions[0] = array('k0division', '=', 5);
+    if ($VD['k0division'] == 56) // Training on hazardous-substance procedures and safe-work practices
+        $Conditions[0] = array('k0division', '=', 6);
+    if ($VD['k0division'] == 57) // Contractors...
+        $Conditions[0] = array('k0division', '=', 7);
+    if ($VD['k0division'] == 58) // Inspection, testing, and maintenance (ITM) for safe operation and mechanical integrity
+        $Conditions[0] = array('k0division', '=', 8);
+    if ($VD['k0division'] == 59) // Change management (MOC-PSR)
+        $Conditions[0] = array('k0division', '=', 9);
+    if ($VD['k0division'] == 60) // Incident investigation
+        $Conditions[0] = array('k0division', '=', 10);
+    if ($VD['k0division'] == 61) // Emergency planning
+        $Conditions[0] = array('k0division', '=', 12); // Skipped 11, PSM audits, see item 2 in the comment at top of this file.
+    if ($Conditions) // Get all practices in Cheesehead division, if mapped to general-duty division.
+        list($SRPD, $RRPD) = $Zfpf->select_sql_1s($DBMSresource, 't0practice_division', $Conditions);
+        // TO DO FOR PRODUCTION VERSION  In setup context, there will only be standard practices.
+        // TO DO FOR PRODUCTION VERSION  If run after users have customized practices, need to filter for only standard practices.
+        // TO DO FOR PRODUCTION VERSION  See includes/templates/schema.php t0practice:c2standardized
+    if ($RRPD) foreach ($SRPD as $VPD)
+        $DivPractices[]['k0practice'] = $VPD['k0practice'];
+    if ($DivPractices) foreach ($DivPractices as $VP) {
+        $practice_division[] = array(
+            'k0practice' => $VP['k0practice'],
+            'k0division' => $VD['k0division']
+        );
+        $AllPractices[$i++] = $VP;
+    }
+}
+$PrimaryKey = get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division'); // Defined in setup_nh3r_practices.php
+foreach ($practice_division as $V) {
+    $V['k0practice_division'] = ++$PrimaryKey;
+    $V['c5who_is_editing'] = $EncryptedNobody;
+    $Zfpf->insert_sql_1s($DBMSresource, 't0practice_division', $V);
+}
 
 // t0fragment_practice inserts.
 // Each general-duty fragment maps to all general-duty practices
-foreach ($general_duty_fragments as $VF) 
-    foreach ($practices as $VP)
+foreach ($general_duty_fragments as $VF)
+    foreach ($AllPractices as $VP)
         $fragment_practice[] = array(
             'k0fragment' => $VF['k0fragment'],
             'k0practice' => $VP['k0practice']
@@ -184,5 +251,4 @@ foreach ($fragment_practice as $V) {
     $V['c5who_is_editing'] = $EncryptedNobody;
     $Zfpf->insert_sql_1s($DBMSresource, 't0fragment_practice', $V);
 }
-
 
