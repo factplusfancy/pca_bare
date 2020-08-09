@@ -125,7 +125,7 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
             else
                 $Message .= '
                 <b>'.$OtName.'</b><br />
-                No sample observation methods were found for this topic. Typically setup on installation. Contact app admin.';
+                No sample observation methods were found for this topic.';
             $Message .= '</p>';
         }
         $Zfpf->close_connection_1s($DBMSresource);

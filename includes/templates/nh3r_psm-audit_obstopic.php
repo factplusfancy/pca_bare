@@ -16,15 +16,19 @@ while ($i < 24) { // See includes/templates/nh3r_obstopic.php.
 }
 
 // Link obstopic to the Program 2 Prevention Program and general duty audit template.
+$PrimaryKey = 101; // Cannot use $i, like above. Start at 100, so keys will match.
 $i = 1;
 if (isset($V)) // Likely still set from prior loop.
     unset($V);
 while ($i < 24) { // See includes/templates/nh3r_obstopic.php.
     if ($i != 10) { // 10 is PHA. See includes/templates/nh3r_obstopic.php. Required for neither general duty only nor Program 2 Prevention Program compliance.
-        $V['k0audit_obstopic'] = $i;
+        $V['k0audit_obstopic'] = $PrimaryKey++;
         $V['k0audit'] = 2; // 2 is the k0audit of the Program 2 Prevention Program and general duty audit template.
         $V['k0obstopic'] = $i++; // k0obstopic 1 to 23 become part of the scope. See includes/templates/nh3r_obstopic.php.
         $V['c5who_is_editing'] = $EncryptedNobody;
         $Zfpf->insert_sql_1s($DBMSresource, 't0audit_obstopic', $V);
     }
+    else
+        $i++;
 }
+

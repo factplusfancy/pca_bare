@@ -36,7 +36,7 @@ if ($RowsReturned['t0audit'] > 0) {
                 $ProcessAudits .= 'checked="checked" '; // Ensure something is posted.
             $ProcessAudits .= '/>';
             if ($V['k0user_of_certifier'] == 0)
-                $ProcessAudits .= $Zfpf->decrypt_1c($V['c5name']).' working draft';
+                $ProcessAudits .= $Zfpf->decrypt_1c($V['c5name']).' [working draft]';
             else
                 $ProcessAudits .= $Zfpf->decrypt_1c($V['c5name']).' as of '.$Zfpf->timestamp_to_display_1c($Zfpf->decrypt_1c($V['c5ts_as_of'])); // The "as of" date serves like a name.
         }

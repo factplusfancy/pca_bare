@@ -110,7 +110,7 @@ For a pre-2010 '.HAZSUB_PROCESS_NAME_ZFPF.', this information may reasonably not
 (5) a safe discharge-to-atmosphere location(s), direction, and method, such as a tractor cap compatible with the RV piping material, 
 (6) a reasonable pressure difference (allowance) between pressure-limiting and pressure-relief devices, such as between the setpoints for the compressor high-pressure shutoff and the oil-separator pressure-relief valve, and 
 (7) that, if pressure-relief devices were protecting pressure vessels connected sufficiently to be at similar pressures during the design scenario, these pressure-relief devices had the same opening setpoint, at or below the lowest design pressure of all piping and equipment (including pressure vessels) that were so connected, for example, one setpoint for the low-side, at least 150 pounds per square inch (PSI), and one setpoint for the high-side, at least 250 PSI with evaporative condensers and 300 PSI with air-only condensers (IIAR 9-2020 7.2.2.1, 7.4.1, 7.4.2, and 7.4.3). 
-Quality depends on detailed measurements and calculations beyond this audit\'s scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used, such as the software or spreadsheet source. Checked a sample of as-built design documents for obvious errors.')
+Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used, such as the software or spreadsheet source. Checked a sample of as-built design documents for obvious errors.')
     ),
     17 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Pressure-relief system -- checked a sample of system for: 
@@ -162,7 +162,7 @@ Quality depends on detailed measurements and calculations beyond this audit\'s s
 (7) ventilation control via manual on/auto switch, ammonia sensors, and possibly temperature sensors, 
 (8) electrical-power supply for ventilation not shutoff by '.HAZSUB_PROCESS_NAME_ZFPF.' any emergency-stop switch/button, ammonia sensors, and similar, and 
 (9) alarms on loss of power or known failure of ventilation systems, that notify Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list). (IIAR 9-2020 7.3.13)
-Quality depends on detailed measurements and calculations beyond this audit\'s scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used. Checked a sample of as-built design documents for obvious errors.')
+Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used. Checked a sample of as-built design documents for obvious errors.')
     ),
     19 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Ventilation for refrigerating-machinery room(s) system -- with the responsible individual(s), per the Owner/Operator management system, cursorily looked over for and asked about:
@@ -180,7 +180,7 @@ Quality depends on detailed measurements and calculations beyond this audit\'s s
         'c6obsmethod' => $Zfpf->encrypt_1c('Energy balance -- discussed hot-weather performance of the '.HAZSUB_PROCESS_NAME_ZFPF.' with a person experienced with the facility\'s '.HAZSUB_PROCESS_NAME_ZFPF.'.')
     ),
     22 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Energy-balance documents -- checked for completeness by comparing to flow diagram. Checked a sample of the calculations for obvious errors. Material balances are not relevant to closed-loop '.HAZSUB_PROCESS_NAME_ZFPF.'s. Quality depends on detailed measurements and calculations beyond this audit\'s scope, so noted: (1) any documentation on competence of individual and organization that provided the energy-balance document, preferably as part of the document, and (2) the method used.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Energy-balance documents -- checked for completeness by comparing to flow diagram. Checked a sample of the calculations for obvious errors. Material balances are not relevant to closed-loop '.HAZSUB_PROCESS_NAME_ZFPF.'s. Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on competence of individual and organization that provided the energy-balance document, preferably as part of the document, and (2) the method used.')
     ),
     23 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Process-hazard analysis (PHA) -- checked a sample of scenarios, nodes, or other analysis building-blocks (and also the introductory text) in the latest PHA report for: 
@@ -211,7 +211,7 @@ Quality depends on detailed measurements and calculations beyond this audit\'s s
 (1) the latest PHA, 
 (2) recent inspection, testing, and maintenance (ITM), 
 (3) any incident investigations, and 
-(4) the latest completed PSM audit. 
+(4) the latest completed audit. 
 Asked about this during tours and discussions.')
     ),
     26 => array(
@@ -598,13 +598,13 @@ for anhydrous ammonia:
     52 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Audit and hazard review documents for the facility\'s '.HAZSUB_PROCESS_NAME_ZFPF.' -- checked if the prior two audit and hazard review reports (the reports), their resolution records, and any required Owner/Operator certifications that relied on them: 
 (1) had been retained, 
-(2) included in their reported audit scopes, at least 
+(2) included in their reported scopes an audit and hazard review of compliance with at least 
 (2.1) general-duty law, and, if applicable, 
 (2.2) 40 CFR 68, Subpart C (EPA\'s Program 2 Prevention Program) or 
 (2.3) 40 CFR 68, Subpart D (EPA\'s Program 3 Prevention Program) and 
 (2.4) 29 CFR 1910.119 (OSHA\'s PSM), 
-(3) documented completion of these audit scopes following good practices, such as including a tour, discussions or interviews, and document reviews, 
-(4) described the qualifications of the individual(s) who completed the audits and hazard reviews and these qualifications included knowledge of the '.HAZSUB_PROCESS_NAME_ZFPF.', possibly gained while at the facility for the audit and/or hazard review if the individual(s) had experience with similar '.HAZSUB_PROCESS_NAME_ZFPF.'s elsewhere, and 
+(3) documented completion of these scopes following good practices, such as including a tour, discussions or interviews, and document reviews, 
+(4) described the qualifications of the individual(s) who completed each audit and hazard review and these qualifications included knowledge of the '.HAZSUB_PROCESS_NAME_ZFPF.', possibly gained while at the facility for the audit and hazard review if the individual(s) had experience with similar '.HAZSUB_PROCESS_NAME_ZFPF.'s elsewhere, and 
 (5) showed that the Owner/Operator had 
 (5.1) promptly determined and documented an appropriate response to each finding in the reports, 
 (5.2) documented that deficiencies, discovered due to the reported findings, had been corrected, and 

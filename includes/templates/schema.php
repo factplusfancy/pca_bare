@@ -43,7 +43,7 @@ $Schema = array(
     ),
     't0user' => array(
         'k0user',
-        'k2username_hash',
+        'k2username_hash', // k2username_hash is not encrypted so SQL select can find it.
         's5password_hash',
         'c5ts_password',
         'c5p_global_dbms', // Allowed values: MAX_PRIVILEGES_ZFPF, MID_PRIVILEGES_ZFPF, and LOW_PRIVILEGES_ZFPF. See CoreZfpf.php function credentials_1s() and /settings/CoreSettingsZfpf.php

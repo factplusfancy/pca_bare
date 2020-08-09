@@ -116,43 +116,12 @@ if (isset($_POST['setup'])) {
     // k0user is the primary key, see fpf data type specifications for an explanation of why an 
     // auto-incremented integer is not used.
     echo 'Inserting new First PSM-CAP App Administrator into the new database instance...';
-    // Use the MDB2 data type "text" for binary database fields
-    // k0user and k2username_hash are not encrypted so that they can be used as keys.
-    // Do NOT change variables below without changing in required files.
-    $Nothing = '[Nothing has been recorded in this field.]';
-    $EncryptedNothing = $Zfpf->encrypt_1c($Nothing);
-    $EncryptedNobody = $Zfpf->encrypt_1c('[Nobody is editing.]');
-    $EncryptedCurrentTime = $Zfpf->encrypt_1c(time());
-    $EncryptedFullPrivileges = $Zfpf->encrypt_1c(MAX_PRIVILEGES_ZFPF);
-    $EncryptedNone = $Zfpf->encrypt_1c(NO_PRIVILEGES_ZFPF);
-    $EncryptedNotApplicable = $Zfpf->encrypt_1c('Not Applicable');
-    $_SESSION['t0user'] = array( // Put in session because templates call CoreZfpf::insert_sql_1s, which calls CoreZfpf::record_in_history_1c.
-        'k0user' => time().mt_rand(1000000, 9999999),
-        'k2username_hash' => $AppAdminCredentials['UsernameHash'],
-        's5password_hash' => $AppAdminCredentials['PasswordHashEncrypted'],
-        'c5ts_password' => $Zfpf->encrypt_1c(0),
-        'c5p_global_dbms' => $EncryptedFullPrivileges,
-        'c5app_admin' => $Zfpf->encrypt_1c('Yes'),
-        'c5ts_created' => $EncryptedCurrentTime,
-        'c5ts_logon_revoked' => $EncryptedNothing,
-        'c5ts_last_logon' => $Zfpf->encrypt_1c(0),
-        'c5attempts' => $Zfpf->encrypt_1c(0),
-        'c6active_sessions' => $Zfpf->encode_encrypt_1c(array()),
-        'c5name_family' => $EncryptedNothing,
-        'c5name_given1' => $Zfpf->encrypt_1c('Setup Admin'),
-        'c5name_given2' => $EncryptedNothing,
-        'c5personal_phone_mobile' => $EncryptedNothing,
-        'c5personal_phone_home' => $EncryptedNothing,
-        'c5e_contact_name' => $EncryptedNothing,
-        'c5e_contact_phone' => $EncryptedNothing,
-        'c5challenge_question1' => $EncryptedNothing,
-        's5cq_answer_hash1' => $EncryptedNothing,
-        'c5challenge_question2' => $EncryptedNothing,
-        's5cq_answer_hash2' => $EncryptedNothing,
-        'c5challenge_question3' => $EncryptedNothing,
-        's5cq_answer_hash3' => $EncryptedNothing,
-        'c5who_is_editing' => $EncryptedNobody
-    );
+    require INCLUDES_DIRECTORY_PATH_ZFPF.'/SetupZfpf.php';
+    $SetupZfpf = new SetupZfpf;
+    // Overwrite $_SESSION['t0user'] defined in includes/SetupZfpf.php with credentials for first app adin.
+    // Need $_SESSION['t0user'] defined here because templates call CoreZfpf::insert_sql_1s, which calls CoreZfpf::record_in_history_1c.
+    $_SESSION['t0user']['k2username_hash'] = $AppAdminCredentials['UsernameHash'];
+    $_SESSION['t0user']['s5password_hash'] = $AppAdminCredentials['PasswordHashEncrypted'];
     $Zfpf->insert_sql_1s($DBMSresource, 't0user', $_SESSION['t0user']);
     echo ' done.<br />';
     // INSERT PSM-CAP App template information. Order of require files below matters, later depend on earlier.
@@ -161,27 +130,15 @@ if (isset($_POST['setup'])) {
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/rules.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/divisions.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/psm_fragments.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/cap_fragments.php'; // cap_fragments extends the numbering of psm_fragments, to avoid identical keys inserted into fragments
+    foreach ($psm_fragments as $V)
+        $Zfpf->insert_sql_1s($DBMSresource, 't0fragment', $V);
+    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/cap_fragments.php';
+    foreach ($cap_fragments as $V)
+        $Zfpf->insert_sql_1s($DBMSresource, 't0fragment', $V);
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/fragment_division.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/practices.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/practice_division.php';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/fragment_practice.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_pha.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_subprocess.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_scenario.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_cause.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_scenario_cause.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_consequence.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_scenario_consequence.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_safeguard.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_scenario_safeguard.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_psm-audit_etc.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/psm-audit_fragment.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_obstopic.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_psm-audit_obstopic.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_obsmethod.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/nh3r_obstopic_obsmethod.php';
-    require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/psm-audit_f_nh3r_om.php';
     $Zfpf->close_connection_1s($DBMSresource);
     unset($_SESSION['t0user']); // Avoid interference with next logon.
     echo ' done.<br /></p>

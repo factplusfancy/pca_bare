@@ -825,7 +825,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 );
 // Populate t0practice and t0practice_division
 $practice_division = array(); // In case used by previously required file.
-$k0practice = get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice');
+$k0practice = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice');
 foreach ($practices as $K => $V) {
     $V['k0practice'] = ++$k0practice;
     $practices[$K]['k0practice'] = $k0practice; // needed later for practice_division and fragment_practice
@@ -840,7 +840,7 @@ $Divisions = array(
     23, // Mechanical Integrity in OSHA PSM
     36  // Mechanical Integrity in EPA CAP
 );
-$k0practice_division = get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division');
+$k0practice_division = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division');
 foreach ($Divisions as $VA) {
     foreach ($practice_division as $VB) {
         $VB['k0practice_division'] = ++$k0practice_division;
@@ -911,7 +911,7 @@ foreach ($GeneralFragments as $VA) {
             'k0practice' => $practices[$VB]['k0practice']
         );
 }
-$k0fragment_practice = get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_practice', 't0fragment_practice');
+$k0fragment_practice = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_practice', 't0fragment_practice');
 foreach ($fragment_practice as $V) {
     $V['k0fragment_practice'] = ++$k0fragment_practice;
     $V['c5who_is_editing'] = $EncryptedNobody;

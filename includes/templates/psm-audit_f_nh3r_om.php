@@ -702,8 +702,17 @@ $PSMAuFNH3ROm = array( // This array links to all the fragments asociated with t
     )
 );
 foreach ($PSMAuFNH3ROm as $K => $V) {
+    // PSM-audit and hazard-review report template
+    // for anyhdrous-ammonia mechanical refrigeration
     $V['k0audit_fragment_obsmethod'] = $K;
     $V['c5who_is_editing'] = $EncryptedNobody;
     $Zfpf->insert_sql_1s($DBMSresource, 't0audit_fragment_obsmethod', $V);
+    // Hazard-review and compliance-audit report template, for general duty only or EPA Program 2 Prevention Programs
+    // for anyhdrous-ammonia mechanical refrigeration
+    if ($K != 30 and $K != 31 and $K != 32 and $K != 33 and $K != 34 and $K != 35 and $K != 39 and $K != 40) {
+        $V['k0audit_fragment_obsmethod'] = $K + 1000; // Start primary keys for this template a 1001.
+        $V['k0audit_fragment'] = $V['k0audit_fragment'] + 1000; // See includes/templates/psm-audit_fragment.php
+        $Zfpf->insert_sql_1s($DBMSresource, 't0audit_fragment_obsmethod', $V);
+    }
 }
 

@@ -1411,9 +1411,6 @@ applicable laws, regulations, or executive orders concerning the release of that
     // 199 is next array number. 195 to 198 interspersed above.
 );
 foreach ($cap_fragments as $K => $V) {
-    $V['k0fragment'] = $K + 1000; // SPECIAL CASE. CAP fragments may use 1000 to 1999 here. Keys less than 100000 are reserved for templates.
-    $cap_fragments[$K]['k0fragment'] = $V['k0fragment'];
-    $V['c5who_is_editing'] = $EncryptedNobody;
-    $Zfpf->insert_sql_1s($DBMSresource, 't0fragment', $V);
+    $cap_fragments[$K]['k0fragment'] = $K + 1000; // SPECIAL CASE. CAP fragments may use 1000 to 1999 here. Keys less than 100000 are reserved for templates.
+    $cap_fragments[$K]['c5who_is_editing'] = $EncryptedNobody;
 }
-

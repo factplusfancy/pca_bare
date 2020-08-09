@@ -23,15 +23,15 @@
 //
 // This file must be run AFTER running includes/templates/nh3r_hspswp_ep_usa.php and nh3r_itm.php for their
 // compliance practices to be selected and mapped to the general duty for ammonia refrigeration divisions.
-// See setup_nh3r_practices.php
+// See setup_nh3r_2.php
 
 
 // t0rule insert
 $rules = array(
     4 => array( // As a convention, this is the 4th rule in PSM-CAP App. See /includes/templates/rules.php
         'c5name' => $Zfpf->encrypt_1c('General Duty for anhydrous-ammonia mechanical refrigeration'),
-        'c5citation' => $Zfpf->encrypt_1c('Tort law, negligence, and duty of care. In the USA, the Occupational Safety and Health Act of 1970, Section 5, 29 U.S. Code 654, and the Clean Air Act Amendments of 1990, which promulgated paragraph 112(r)(1) of the Clean Air Act, 42 U.S. Code 7412(r)(1)')
-    )
+        'c5citation' => $Zfpf->encrypt_1c('Tort law, negligence, and duty of care. In the USA, the Occupational Safety and Health Act of 1970, Section 5, 29 U.S. Code 654, and Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1)')
+    ) // The Clean Air Act Amendments of 1990 promulgated paragraph 112(r)(1) of the Clean Air Act.
 );
 foreach ($rules as $K => $V) {
     $V['k0rule'] = $K;
@@ -119,16 +119,16 @@ $general_duty_fragments = array(
     1 => array(
         'c5name' => $Zfpf->encrypt_1c('OSHA general duty'),
         'c5superseded' => $EncryptedNothing,
-        'c5citation' => $Zfpf->encrypt_1c('Occupational Safety and Health Act of 1970, Section 5, Public Law 91–596, December 29, 1970, 84 Statutes 1593, 29 U.S. Code 654'),
+        'c5citation' => $Zfpf->encrypt_1c('Occupational Safety and Health Act of 1970, Section 5, Public Law 91-596, December 29, 1970, 84 Statutes 1593, 29 U.S. Code 654'),
         'c6quote' => $Zfpf->encrypt_1c('Duties. (a) Each employer -- (1) shall furnish to each of his employees employment and a place of employment which are free from recognized hazards that are causing or are likely to cause death or serious physical harm to his employees; (2) shall comply with occupational safety and health standards promulgated under this chapter. (b) Each employee shall comply with occupational safety and health standards and all rules, regulations, and orders issued pursuant to this chapter which are applicable to his own actions and conduct.'),
-        'c5source' => $Zfpf->encrypt_1c('United States Code, 2011 Edition, https://www.govinfo.gov/content/pkg/USCODE-2011-title29/html/USCODE-2011-title29-chap15-sec654.htm and https://www.govinfo.gov/content/pkg/STATUTE-84/pdf/STATUTE-84-Pg1590.pdf and also https://www.osha.gov/laws-regs/oshact/completeoshact -- all three accessed August 6, 2020.')
+        'c5source' => $Zfpf->encrypt_1c('United States Code, 2011 Edition, https://www.govinfo.gov and https://www.osha.gov/laws-regs/oshact/completeoshact -- both accessed August 6, 2020.')
     ),
     2 => array(
         'c5name' => $Zfpf->encrypt_1c('EPA general duty'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('Clean Air Act Amendments of 1990, which promulgated paragraph 112(r)(1) of the Clean Air Act, 42 U.S. Code 7412(r)(1)'),
         'c6quote' => $Zfpf->encrypt_1c('(r) Prevention of accidental releases. (1) Purpose and general duty. It shall be the objective of the regulations and programs authorized under this subsection to prevent the accidental release and to minimize the consequences of any such release of any substance listed pursuant to paragraph (3) or any other extremely hazardous substance. The owners and operators of stationary sources producing, processing, handling or storing such substances have a general duty in the same manner and to the same extent as section 654 of title 29 [OSHA general duty] to identify hazards which may result from such releases using appropriate hazard assessment techniques, to design and maintain a safe facility taking such steps as are necessary to prevent releases, and to minimize the consequences of accidental releases which do occur. For purposes of this paragraph, the provisions of section 7604 of this title [citizen suits] shall not be available to any person or otherwise be construed to be applicable to this paragraph. Nothing in this section shall be interpreted, construed, implied or applied to create any liability or basis for suit for compensation for bodily injury or any other injury or property damages to any person which may result from accidental releases of such substances.'),
-        'c5source' => $Zfpf->encrypt_1c('United States Code, 2011 Edition, https://www.govinfo.gov/content/pkg/USCODE-2011-title42/html/USCODE-2011-title42-chap85-subchapI-partA-sec7412.htm -- accessed August 6, 2020')
+        'c5source' => $Zfpf->encrypt_1c('United States Code, 2011 Edition, https://www.govinfo.gov -- accessed August 6, 2020')
     ),
     3 => array(
         'c5name' => $Zfpf->encrypt_1c('Building codes and industry standards'),
@@ -158,7 +158,7 @@ foreach ($divisions as $VD)
         $Number = $Number + 100; // Leave room for inserting new entries between existing ones.
     }
 // Keys less than 100000 are reserved for templates.
-$PrimaryKey = get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_division', 't0fragment_division'); // Defined in setup_nh3r_practices.php
+$PrimaryKey = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_division', 't0fragment_division');
 foreach ($fragment_division as $V) {
     $V['k0fragment_division'] = ++$PrimaryKey;
     $V['c5who_is_editing'] = $EncryptedNobody;
@@ -176,7 +176,7 @@ $NewPractices = array(
         'c5require_file_privileges' => $EncryptedLowPrivileges
     )
 );
-$PrimaryKey = get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice'); // Defined in setup_nh3r_practices.php
+$PrimaryKey = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice');
 foreach ($NewPractices as $K => $V) {
     $V['k0practice'] = ++$PrimaryKey;
     $NewPractices[$K]['k0practice'] = $V['k0practice'];
@@ -185,6 +185,7 @@ foreach ($NewPractices as $K => $V) {
 }
 
 // t0practice_division inserts
+$PrimaryKey = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division');
 $i = 0;
 foreach ($divisions as $VD) {
     $Conditions = array();
@@ -219,21 +220,17 @@ foreach ($divisions as $VD) {
         // TO DO FOR PRODUCTION VERSION  In setup context, there will only be standard practices.
         // TO DO FOR PRODUCTION VERSION  If run after users have customized practices, need to filter for only standard practices.
         // TO DO FOR PRODUCTION VERSION  See includes/templates/schema.php t0practice:c2standardized
-    if ($RRPD) foreach ($SRPD as $VPD)
+    if ($RRPD) foreach ($SRPD as $VPD) {
         $DivPractices[]['k0practice'] = $VPD['k0practice'];
-    if ($DivPractices) foreach ($DivPractices as $VP) {
-        $practice_division[] = array(
-            'k0practice' => $VP['k0practice'],
-            'k0division' => $VD['k0division']
-        );
-        $AllPractices[$i++] = $VP;
+        $RRPD = FALSE;
     }
-}
-$PrimaryKey = get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division'); // Defined in setup_nh3r_practices.php
-foreach ($practice_division as $V) {
-    $V['k0practice_division'] = ++$PrimaryKey;
-    $V['c5who_is_editing'] = $EncryptedNobody;
-    $Zfpf->insert_sql_1s($DBMSresource, 't0practice_division', $V);
+    if ($DivPractices) foreach ($DivPractices as $VPD) {
+        $AllPractices[$i++] = $VPD;
+        $VPD['k0practice_division'] = ++$PrimaryKey;
+        $VPD['k0division'] = $VD['k0division'];
+        $VPD['c5who_is_editing'] = $EncryptedNobody;
+        $Zfpf->insert_sql_1s($DBMSresource, 't0practice_division', $VPD);
+    }
 }
 
 // t0fragment_practice inserts.
@@ -245,7 +242,7 @@ foreach ($general_duty_fragments as $VF)
             'k0practice' => $VP['k0practice']
         );
 // Keys less than 100000 are reserved for templates.
-$PrimaryKey = get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_practice', 't0fragment_practice'); // Defined in setup_nh3r_practices.php
+$PrimaryKey = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_practice', 't0fragment_practice');
 foreach ($fragment_practice as $V) {
     $V['k0fragment_practice'] = ++$PrimaryKey;
     $V['c5who_is_editing'] = $EncryptedNobody;

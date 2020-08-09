@@ -884,9 +884,7 @@ compliance audit, and document that deficiencies have been corrected.'),
     )
 );
 foreach ($psm_fragments as $K => $V) {
-    $V['k0fragment'] = $K; // SPECIAL CASE. PSM fragments may use 1 to 999 here. Keys less than 100000 are reserved for templates.
-    $psm_fragments[$K]['k0fragment'] = $V['k0fragment'];
-    $V['c5who_is_editing'] = $EncryptedNobody;
-    $Zfpf->insert_sql_1s($DBMSresource, 't0fragment', $V);
+    $psm_fragments[$K]['k0fragment'] = $K; // SPECIAL CASE. PSM fragments may use 1 to 999 here. Keys less than 100000 are reserved for templates.
+    $psm_fragments[$K]['c5who_is_editing'] = $EncryptedNobody;
 }
 

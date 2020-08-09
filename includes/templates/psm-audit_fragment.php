@@ -3,6 +3,8 @@
 // *** LEGAL NOTICES ***  
 // Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
+require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/psm_fragments.php';
+require INCLUDES_DIRECTORY_PATH_ZFPF.'/templates/cap_fragments.php';
 $PSMAuditFragment = array( // This array links to all the fragments asociated with the Cheesehead Division (skips intro, definitions, etc.)
     1 => array(
         'k0fragment' => $psm_fragments[14]['k0fragment'] // Plan of Action for Employee Participation
@@ -309,10 +311,19 @@ $PSMAuditFragment = array( // This array links to all the fragments asociated wi
     )
 );
 foreach ($PSMAuditFragment as $K => $V) {
+    // PSM-audit and hazard-review report template
+    // for anyhdrous-ammonia mechanical refrigeration
     $V['k0audit_fragment'] = $K;
-    $PSMAuditFragment[$K]['k0audit_fragment'] = $V['k0audit_fragment']; // Used for subsequently required files
-    $V['k0audit'] = 1; // The k0audit of the ammonia-refrigeration (nh3r) audit template
+    $PSMAuditFragment[$K]['k0audit_fragment'] = $V['k0audit_fragment']; // Used for subsequently required file: psm-audit_f_nh3r_om.php
+    $V['k0audit'] = 1; // See includes/template/nh3r_psm-audit_etc.php
     $V['c5who_is_editing'] = $EncryptedNobody;
     $Zfpf->insert_sql_1s($DBMSresource, 't0audit_fragment', $V);
+    // Hazard-review and compliance-audit report template, for general duty only or EPA Program 2 Prevention Programs
+    // for anyhdrous-ammonia mechanical refrigeration
+    if ($K < 22 or $K > 28) { // Exclude the PHA fragments, checklist hazard review is covered with compliance audit. Semi-quantitative not required.
+        $V['k0audit_fragment'] = $K + 1000; // Start primary keys for this template at 1001.
+        $V['k0audit'] = 2; // See includes/template/nh3r_psm-audit_etc.php
+        $Zfpf->insert_sql_1s($DBMSresource, 't0audit_fragment', $V);
+    }
 }
 
