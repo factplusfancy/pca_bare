@@ -118,16 +118,16 @@ IIAR Bulletin 116 (1992, superseded by IIAR 6-2019), "Guidelines for: Avoiding C
 
 IIAR updates and interpretations are available at the IIAR website http://iiar.org, under the "Technology and Standards" menu select "Standards Review" and then select "ANSI/IIAR Standards Interpretations". For the latest editions, under the "Store" menu select "Bulletins" or "Standards".'),
         'c6audit_scope' => $Zfpf->encrypt_1c('To get background for making the audit and hazard review more effective and to attempt to ensure that they covered everything that may later be viewed as needing to be audited and reviewed, the scope of the services described by this report included: 
-(1) a hazard review for compliance with the Owner/Operator\'s general duty under 
+(1) a hazard review to check if the Owner/Operator was fulling their general duty under 
 (1.1) tort law "duty of care" needed to avoid negligence -- for hazardous substances where the facility is located, and, in the USA, 
 (1.2) Occupational Safety and Health Act of 1970 Section 5, 29 U.S. Code 654, and 
-(1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), 
+(1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), and 
 (2) an audit of the Owner/Operator\'s compliance with
 (2.1) 29 CFR 1910.119 (the OSHA PSM standard), 
 (2.2) following portions of the EPA\'s Chemical Accident Prevention rule 
 (2.2.1) 40 CFR 68.15 Management System, 
 (2.2.2) 40 CFR 68.200 Recordkeeping, 
-(2.2.3) 40 CFR 68 Subpart D (the Program 3 Prevention Program -- by auditing compliance with the nearly identical OSHA PSM requirements), and 
+(2.2.3) 40 CFR 68, Subpart D (the Program 3 Prevention Program -- by auditing compliance with the nearly identical OSHA PSM requirements), and 
 (2.2.4) 40 CFR 68.90 to 68.96 (emergency preparedness), as applicable to the facility.
 
 The compliance verifications included with this report cite only the OSHA PSM standard. The EPA Program 3 Prevention Program requirements are nearly identical; the Program 3 Prevention Program substitutes:
@@ -184,7 +184,7 @@ provides sample-observation methods that may be used to check an '.HAZSUB_PROCES
 (2) the U.S. federal "general duty" laws for hazardous substances, namely Clean Air Act paragraph 112(r)(1) and Occupational Safety and Health Act of 1970, Section 5, Duties, 
 (3) the "minimum system safety requirements" described in International Institute of Ammonia Refrigeration (IIAR) standard IIAR 9-2020, which references IIAR 6-2019 and IIAR 7-2019, 
 (4) the applicable editions of IIAR 2 and building codes, and 
-(5) if completed at least every three years (instead of at least every five years for general duty only), the EPA\'s Program 2 Prevention Program requirements for compliance audits at 40 CFR 68.50.
+(5) if completed at least every three years (instead of at least every five years for general duty only), the EPA\'s Program 2 Prevention Program requirements for compliance audits at 40 CFR 68.58.
 
 RESOLUTION OF FINDINGS. Respond to any imminently dangerous situations immediately upon discovery. Otherwise, resolve findings as promptly as practical. The PSM-CAP app records findings in its Action Register, so initiate resolution planning by assigning a responsible individual and target-resolution date for each finding, via the Action Register. The PSM final rule preamble indicates, "It is OSHA\'s intention that the actions to be taken as a result of the process hazard analysis recommendations be completed as soon as possible. In most cases, OSHA believes that employers will be able to complete these actions within a one to two year time frame, but notes that in unusual circumstances longer completion periods may be necessary." (57 Federal Register 6379, February 24, 1991) This guidance provides a reasonable time frame for resolving compliance audit and hazard review findings as well.
 
@@ -279,14 +279,14 @@ IIAR Bulletin 116 (1992, superseded by IIAR 6-2019), "Guidelines for: Avoiding C
 
 IIAR updates and interpretations are available at the IIAR website http://iiar.org, under the "Technology and Standards" menu select "Standards Review" and then select "ANSI/IIAR Standards Interpretations". For the latest editions, under the "Store" menu select "Bulletins" or "Standards".'),
         'c6audit_scope' => $Zfpf->encrypt_1c('To get background for making the audit and hazard review more effective and to attempt to ensure that they covered everything that may later be viewed as needing to be audited and reviewed, the scope of the services described by this report included: 
-(1) a hazard review for compliance with the Owner/Operator\'s general duty under 
+(1) a hazard review to check if the Owner/Operator was fulling their general duty under 
 (1.1) tort law "duty of care" needed to avoid negligence -- for hazardous substances where the facility is located, and, in the USA, 
 (1.2) Occupational Safety and Health Act of 1970 Section 5, 29 U.S. Code 654, and 
-(1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), 
+(1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), and 
 (2) an audit of the Owner/Operator\'s compliance with following portions of the EPA\'s Chemical Accident Prevention rule 
 (2.1) 40 CFR 68.15 Management System, 
 (2.2) 40 CFR 68.200 Recordkeeping, 
-(2.3) 40 CFR 68 Subpart C (the Program 2 Prevention Program), if applicable to the facility, and 
+(2.3) 40 CFR 68, Subpart C (the Program 2 Prevention Program), if applicable to the facility, and 
 (2.4) 40 CFR 68.90 to 68.96 (emergency preparedness), if applicable to the facility. 
 
 The EPA\'s Hazard Assessment requirements at 40 CFR 68, Subpart B -- including the release scenarios, offsite consequences, and five-year accident history -- as well as its Risk Management Plan (RMP) reporting requirements at 40 CFR 68, Subpart G, do not need to be included in the scope because they are not aspects of 40 CFR 68 applicable to the Program 2 Prevention Program at 40 CFR 68, Subpart C. If the facility is subject to the Program 2 Prevention Program (10,000 pounds or more of anhydrous ammonia in the '.HAZSUB_PROCESS_NAME_ZFPF.' or co-located with it but subject to neither the Program 1 Prevention Program nor the Program 3 Prevention Program), the Owner/Operator is required to review, update, and resubmit the Hazard Assessment and the RMP every five years under 40 CFR 68.36 and 68.190. The scope did not include these five-year update tasks. 
