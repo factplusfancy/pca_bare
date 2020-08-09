@@ -45,7 +45,7 @@ else
 function lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType, $UserPracticePrivileges, $User) {
     $LimitsMessage = '';
     if ($EditLocked)
-        $LimitsMessage .= '<p><b>'.$who_is_editing.' is editing this '.$ReportType.'report.</b><br />
+        $LimitsMessage .= '<p><b>'.$who_is_editing.' is editing this report.</b><br />
         If needed, contact them to coordinate editing this record. You will not be able to edit it until they are done.</p>';
     if ($UserPracticePrivileges != MAX_PRIVILEGES_ZFPF) // !$EditAuth case 1 of 2
         $LimitsMessage .= '<p><b>
@@ -55,7 +55,7 @@ function lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType
         Global Privileges Notice</b>: You don\'t have privileges to edit PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.</p>';
     if ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes')
         $LimitsMessage .= '<p>
-        This is a template '.$ReportType.'report, which only app admins can edit. You are not an app admin.</p>';
+        This is a template report, which only app admins can edit. You are not an app admin.</p>';
     if ($_SESSION['Selected']['k0user_of_certifier'])
         $LimitsMessage .= '<p>
         <b>Issued by: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']).'</b><br />
@@ -79,10 +79,13 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
         unset($_SESSION['Scratch']['t0obsresult']);
     $Zfpf->clear_edit_lock_1c(); // Handles go back...
     $LimitsMessage = lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType, $UserPracticePrivileges, $User);
-    $Message = '<h2>
-    '.$ReportType.'Observations of<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    Observations of<br />
     '.$Process['AEFullDescription'].'</h2><p>
-    <a class="toc" href="glossary.php#obstopic" target="_blank">Observation topics</a> and sample observation methods in the current '.$ReportType.'scope are shown below. Select a topic or method to view any observation results.</p>';
+    <a class="toc" href="glossary.php#obstopic" target="_blank">Observation topics</a> and sample observation methods in the scope are shown below. Select a topic or method to view any observation results.</p>';
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     // Get observation topics (Ot) associated with the selected report.
     $Conditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit']);
@@ -132,10 +135,10 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
     }
     else
         $Message .= '<p>
-        No <a class="toc" href="glossary.php#obstopic" target="_blank">observation topics</a> have been included in the '.$ReportType.'scope. Contact app admin.</p>';
+        No <a class="toc" href="glossary.php#obstopic" target="_blank">observation topics</a> have been included in the scope. Contact app admin.</p>';
     if (!$LimitsMessage)
         $Message .= '<p>
-        <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Choose observation topics to include in the '.$ReportType.'scope.</a></p>';
+        <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Choose observation topics to include in the scope.</a></p>';
     $Message .= $LimitsMessage.'<p>
     <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
@@ -149,7 +152,7 @@ if (isset($_GET['choose_obstopic_1'])) {
         $Zfpf->send_to_contents_1c();
     $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records'); // Edit lock so someone else does try to add the same observation topic...
     $Message = '<h2>
-    <a class="toc" href="glossary.php#obstopic" target="_blank">Observation topics</a> in the '.$ReportType.'scope<br />
+    <a class="toc" href="glossary.php#obstopic" target="_blank">Observation topics</a> in the scope<br />
     '.$Process['AEFullDescription'].'</h2><p>
     If observations on a topic are already recorded in this report, that topic cannot be removed, so it is shown below without a checkbox.</p>
     <form action="obsresult_io03.php" method="post"><p>';
@@ -188,7 +191,7 @@ if (isset($_GET['choose_obstopic_1'])) {
             }
         }
         $Message .= '</p><p>
-        Uncheck <a class="toc" href="glossary.php#obstopic" target="_blank">observation topics</a> to remove them from the '.$ReportType.'scope. Check to add them.<br />
+        Uncheck <a class="toc" href="glossary.php#obstopic" target="_blank">observation topics</a> to remove them from the scope. Check to add them.<br />
         <input type="submit" name="choose_obstopic_2" value="Change to selected" /></p>';
     }
     else
@@ -231,8 +234,11 @@ if (isset($_POST['choose_obstopic_2'])) {
         }
     }
     $Zfpf->close_connection_1s($DBMSresource);
-    $Message = '<h2>
-    Changes to<a class="toc" href="glossary.php#obstopic" target="_blank">observation topics</a> in the '.$ReportType.'scope.</h2>';
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    Changes to<a class="toc" href="glossary.php#obstopic" target="_blank">observation topics</a> in the scope.</h2>';
     if ($Inserted)
         $Message .= '<p>
         <b>'.$Inserted.' added.</b></p>';
@@ -241,7 +247,7 @@ if (isset($_POST['choose_obstopic_2'])) {
         <b>'.$Deleted.' removed.</b></p>';
     elseif (!$Inserted)
         $Message .= '<p>
-        <b>No changes made.</b> Observation topics were neither added nor removed from the '.$ReportType.'scope.</p>';
+        <b>No changes made.</b> Observation topics were neither added nor removed from the scope.</p>';
     $Message .= '<p>
     <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Back to choose observation topics</a></p><p>
     <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
@@ -267,8 +273,11 @@ if (isset($_GET['Ot_all_Om_i0']) or isset($_POST['Ot_all_Om_i0'])) {
     }
     $Zfpf->clear_edit_lock_1c(); // Handles go back...
     $OtName = $Zfpf->decrypt_1c($_SESSION['Scratch']['t0obstopic']['c5name']);
-    $Message = '<h2>
-    '.$ReportType.'Sample Observation Methods<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    Sample Observation Methods<br />
     '.$Process['AEFullDescription'].'</h2><p>
     Insert new observations via the links below, to sample observation methods.<br />
     <a class="toc" href="obsresult_io03.php?Ot_all_Om_done_o1">To view results on the observation topic below, click here.</a></p>';
@@ -292,7 +301,7 @@ if (isset($_GET['Ot_all_Om_i0']) or isset($_POST['Ot_all_Om_i0'])) {
         $Message .= '</p>';
     }
     else
-        $Message .= '<p><b>None found.</b> No '.$OtName.', '.$ReportType.'sample observation methods have been recorded in this deployment of the app. Contact app admin.</p>';
+        $Message .= '<p><b>None found.</b> No '.$OtName.' sample observation methods have been recorded in this deployment of the app. Contact app admin.</p>';
     $Message .= '<p>
     <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
     <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
@@ -423,8 +432,11 @@ if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_
         $Zfpf->send_to_contents_1c('<p>An error occurred matching an observation result to a sample observation method. Contact app admin.</p>');
     $_SESSION['Scratch']['t0obsmethod'] = $SROm[0]; // Potentially used by PHP files the user may call later.
     $LimitsMessage = lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType, $UserPracticePrivileges, $User);
-    $Message = '<h2>
-    One '.$ReportType.'Observation of<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    One observation of<br />
     '.$Process['AEFullDescription'].'</h2><p>
     <i>Sample observation method:</i><br />
     '.$Zfpf->decrypt_1c($SROm[0]['c6obsmethod']).'</p>';
@@ -460,7 +472,7 @@ if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_
     if (!$LimitsMessage)
         $Message .= '<p>
         <a class="toc" href="obsresult_io03.php?obsresult_o1_from">Update this observation</a></p><p>
-        <a class="toc" href="obsresult_io03.php?obsresult_delete_1">Remove this observation from this '.$ReportType.'report</a></p>';
+        <a class="toc" href="obsresult_io03.php?obsresult_delete_1">Remove this observation from the report</a></p>';
     $Message .= '<p>
         <a class="toc" href="obsresult_io03.php?obsresult_history_o1">History of this record</a></p>';
     if (isset($_SESSION['Scratch']['t0obstopic'])) {
@@ -520,8 +532,11 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
     $Conditions[1] = array('k0audit', '=', $_SESSION['Selected']['k0audit'], '', 'AND');
     list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
     $LimitsMessage = lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType, $UserPracticePrivileges, $User);
-    $Message = '<h2>
-    '.$ReportType.'Observations of<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    Observations of<br />
     '.$Process['AEFullDescription'].'</h2><p>
     <i>Sample observation method:</i><br />
     '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0obsmethod']['c6obsmethod']).'</p>';
@@ -653,10 +668,13 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
 // obsresult_delete code
     if (isset($_GET['obsresult_delete_1'])) {
         $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records');
-        $Message = '<h2>
-        Remove observation from '.$ReportType.'report for<br />
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Remove observation from the report for<br />
         '.$Process['AEFullDescription'].'</h2><p>
-        <b>Confirm that you want to remove the observation below from this '.$ReportType.'report.</b></p><p>
+        <b>Confirm that you want to remove the observation below from this report.</b></p><p>
         The information below and a record of this removal will remain in this app\'s history tables.</p>';
         $Display = $Zfpf->select_to_display_1e($htmlFormArray, $_SESSION['Scratch']['t0obsresult'], TRUE);
         $Message .= $Zfpf->select_to_o1_html_1e($htmlFormArray, 'obsresult_io03.php', $_SESSION['Scratch']['t0obsresult'], $Display);
@@ -678,8 +696,11 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         $Affected = $Zfpf->one_shot_delete_1s('t0obsresult', $Conditions, TRUE); // If 3rd parameter true, will only delete one row.
         if ($Affected != 1)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
-        $Message = '<h2>
-        Removed observation from '.$ReportType.'report for<br />
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Removed observation from the report for<br />
         '.$Process['AEFullDescription'].'</h2><p>
         The app removed the observation.</p><p>
         <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
@@ -735,8 +756,11 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
     // END upload_files special case 1 of 3.
     if (isset($Display) and isset($_SESSION['Scratch']['htmlFormArray'])) { // This is simplification instead of repeating above $_POST cases or nesting within them.
         // Create HTML form
-        $Message = '<h2>
-        Edit this '.$ReportType.'observation of<br />
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Edit this observation of<br />
         '.$Process['AEFullDescription'].'</h2><p>
         Use exactly the same characters for each <a class="toc" href="glossary.php#obstopic" target="_blank">Specific-observation-topic unique identifiers (topic ID)</a>, whenever written. For example, an observation topic might be "compressors", with "Compressor RC1" as the topic ID. Be guided by the sample observation method but record the as-done observation method.</p>
         <form action="obsresult_io03.php" method="post" enctype="multipart/form-data" >'; // upload_files special case 2 of 3. To upload files via PHP, the following form attributes are required: method="post" enctype="multipart/form-data"

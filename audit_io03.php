@@ -208,8 +208,11 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
         $ReportType = '';
     // Extra left-hand contents only for o1 code
     $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['oacv_buttons'] = 'Observations, actions, and compliance verifications';
-    $Message = '<h2>
-    '.$ReportType.'Report for<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    Report for<br />
     '.$Process['AEFullDescription'].'</h2>
     '.$Zfpf->select_to_o1_html_1e($htmlFormArray, 'audit_io03.php', $_SESSION['Selected'], $Display);
     if ($_SESSION['Selected']['k0audit'] >= 100000) // Templates cannot have actions.
@@ -269,7 +272,7 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
             elseif ($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'] or $UserIsProcessPSMLeader) {
                 if ($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'])
                     $Message .= '<p>
-                    Issue this '.$ReportType.'report, including its observations and proposed actions, and permanently log the proposed actions in this app\'s action register.<br />
+                    Issue this report, including its observations and proposed actions, and permanently log the proposed actions in this app\'s action register.<br />
                     <input type="submit" name="leader_approval_1" value="Issue report"/></p>'; // TO DO give option to issue report with rule-fragment compliance verifications as well.
                 else
                     $Message .= '<p>
@@ -331,11 +334,14 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     // view_audit_actions code
     if (isset($_POST['view_audit_actions'])) {
         // Additional security check -- none possible: privileges to view audit also allow viewing list of its actions.
-        $Message = '<h2>
-        '.$ReportType.'Report for<br />
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Report for<br />
         '.$Process['AEFullDescription'].'</h2><p>
         <b>Actions, proposed or referenced.</b><br />
-        If a deficiency, found by the observations, can be resolved by completing an open action, already in this app\'s action register, this open action should be referenced. Otherwise, a proposed action should be drafted, which this app logs in its action register once this '.$ReportType.'report is issued by its report leader.</p>';
+        If a deficiency, found by the observations, can be resolved by completing an open action, already in this app\'s action register, this open action should be referenced. Otherwise, a proposed action should be drafted, which this app logs in its action register once this report is issued by its report leader.</p>';
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
         $ccsaZfpf = new ccsaZfpf;
         list($_SESSION['SR']['t0action'], $NotNeededMessage) = $ccsaZfpf->other_actions_in_audit($Zfpf); // Returns array with all actions in report because $_SESSION['Scratch']['t0obsresult'] isn't set.
@@ -368,15 +374,18 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         // Additional security check.
         if (!$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
             $Zfpf->send_to_contents_1c(); // Don't eject
-        echo $Zfpf->xhtml_contents_header_1c().'<h2>
-        Discard the draft '.$ReportType.'report you were just viewing?</h2><p>
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Discard the draft report you were just viewing?</h2><p>
         The information in the draft report will remain in this app\'s history tables, until they are purged per the Owner/Operator\'s policies.</p><p>
         A draft report may only be discarded by its report leader or the process PSM leader.</p>
         <form action="audit_io03.php" method="post"><p>
             <input type="submit" name="discard_draft_audit_2" value="Discard draft report" /></p><p>
             <input type="submit" name="audit_o1" value="Go back" /></p>
-        </form>
-        '.$Zfpf->xhtml_footer_1c();
+        </form>';
+        echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
     // discard_draft_audit_2 code
@@ -493,8 +502,12 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
         $Display['k0user_of_leader'] = $ReportLeader['NameTitle'].', '.$ReportLeader['Employer'];
         $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['obsresult'] = 'Observations';
-        $ApprovalText = '<h1>
-        '.$ReportType.'Report</h1>
+        $ApprovalText = '<h1>';
+        if ($ReportType)
+            $ApprovalText .= $ReportType.'<br />';
+        $ApprovalText .= '
+        Report for<br />
+        '.$Process['AEFullDescription'].'</h1>
         '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'<h1><a id="obsresult"></a>
         <a class="toc" href="glossary.php#obstopic" target="_blank">Observation results</a></h1>';
         // Get observation topics associated with the selected report.
@@ -654,25 +667,29 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         $Chain['EmailAddresses'][] = $ReportLeader['WorkEmail'];
         $Chain['DistributionList'] .= '<br />
         Report Leader: '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' '.$ReportLeader['WorkEmail'].'</p>';
-        $Subject = 'PSM-CAP: '.$ReportType.'Report '.$IssuedRetracted;
+        $Subject = 'PSM-CAP: '.$ReportType.'report '.$IssuedRetracted;
         $Body = '<p>
-        The report leader -- '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' -- '.$IssuedRetracted.' the '.$ReportType.'Report for:<br />
+        The report leader -- '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' -- '.$IssuedRetracted.' the '.$ReportType.'report for:<br />
         * '.$Process['AEFullDescription'].'</p>
         '.$ActionsNotRetracted;
         $Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $Chain['DistributionList']);
         $EmailSent = $Zfpf->send_email_1c($Chain['EmailAddresses'], $Subject, $Body);
-        echo $Zfpf->xhtml_contents_header_1c().'<h2>
-        '.$ReportType.'Report '.$IssuedRetracted.'</h2>
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Report '.$IssuedRetracted.' for<br />
+        '.$Process['AEFullDescription'].'</h2>
         '.$ActionsNotRetracted;
         if ($EmailSent)
-            echo '<p>You and others involved should soon receive an email confirming this.</p>';
+            $Message .= '<p>You and others involved should soon receive an email confirming this.</p>';
         else
-            echo '<p>Nobody was notified of this by email perhaps because no relevant email addresses were found. Check that your work email address is recorded in this app.</p>';
-        echo '
+            $Message .= '<p>Nobody was notified of this by email perhaps because no relevant email addresses were found. Check that your work email address is recorded in this app.</p>';
+        $Message .= '
         <form action="audit_io03.php" method="post"><p>
             <input type="submit" name="audit_o1" value="View report" /></p>
-        </form>
-        '.$Zfpf->xhtml_footer_1c();
+        </form>';
+        echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
 
@@ -686,7 +703,15 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             $ConfirmationButtonValue = 'Approve certification statement';
             $ApprovalText = '<h2>
             Owner/Operator Certification</h2><p>
-            On behalf of the Owner/Operator, I certify that as of '.$Zfpf->timestamp_to_display_1c($Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_as_of'])).' (the "as of" date approximately marking the compliance evaluation period) the Owner/Operator has evaluated '.$Process['AEFullDescription'].' for compliance with 29 CFR 1910.119 (OSHA PSM), 40 CFR 68.15 and 68.200 (Management System and Recordkeeping), 40 CFR 68 Subpart D (EPA Program 3 Prevention Program), and 40 CFR 68 Subpart E (emergency preparedness) to verify that the procedures and practices developed under the above regulations are adequate and are being followed, except as noted in the findings of the "as of" '.$Zfpf->timestamp_to_display_1c($Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_as_of'])).' '.$ReportType.'Report (or other PSM-related resolution worksheets, action registers, or similar). Note: you are not certifying the '.$ReportType.'Report, so its text is not reproduced here. What you are certifying is <b>only</b> what is described in the certification-statement above.</p>';
+            On behalf of '.$Zfpf->decrypt_1c($_SESSION['StatePicked']['t0owner']['c5name']).', the Owner/Operator,<br />
+            I certify that, on or about '.$Zfpf->timestamp_to_display_1c($Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_as_of'])).' (the "as of" date),<br />
+            the Owner/Operator evaluated<br />
+            '.$Process['AEFullDescription'].'<br />
+            for compliance with the rules described in the scope (the rules) of the<br />
+            '.$ReportType.'report, first communicated, in spoken or written form, to me on the "as of" date (the report),<br />
+            to verify that the procedures and practices developed under the rules are adequate and are being followed,<br />
+            except as described in the findings of the report or related action registers, resolution worksheets, or similar.<br />
+            Note: you are not certifying the '.$ReportType.'report itself, so its text is not reproduced here.</p>';
         }
         else {
             $ConfirmationButtonName = 'certifier_approval_c2';
@@ -920,8 +945,11 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     // END upload_files special case 1 of 3.
     if (isset($Display) and isset($_SESSION['Scratch']['htmlFormArray'])) { // This is simplification instead of repeating above $_POST cases or nesting within them.
         // Create HTML form
-        echo $Zfpf->xhtml_contents_header_1c().'<h2>
-        '.$ReportType.'Report for<br />
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Report for<br />
         '.$Process['AEFullDescription'].'</h2>
         <form action="audit_io03.php" method="post" enctype="multipart/form-data" >'; // upload_files special case 2 of 3. To upload files via PHP, the following form attributes are required: method="post" enctype="multipart/form-data"
         // Add "Generate an activity notice" option, for i1 display, if not a new record. Do here to keep out of history table.
@@ -929,22 +957,22 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         if ($who_is_editing != '[A new database row is being created.]') 
             $htmlFormArray['c6bfn_act_notice'][0] .= '<br />
             <a class="toc" href="audit_io03.php?act_notice_1">[Generate an activity notice]</a>';
-        echo $Zfpf->make_html_form_1e($htmlFormArray, $Display);
-        echo '<p>
+        $Message .= $Zfpf->make_html_form_1e($htmlFormArray, $Display);
+        $Message .= '<p>
             <input type="submit" name="audit_i2" value="Review what you typed into form" /><br />
             If you only wanted to upload files, you are done. Click on "Go back"</p>
         </form>'; // upload_files special case 3 of 3.
         if ($who_is_editing == '[A new database row is being created.]')
-            echo '
+            $Message .= '
             <form action="practice_o1.php" method="post"><p>
                 <input type="submit" value="Go back" /></p>
             </form>';
         else
-            echo '
+            $Message .= '
             <form action="audit_io03.php" method="post"><p>
                 <input type="submit" name="audit_o1" value="Go back" /></p>
             </form>';
-        echo $Zfpf->xhtml_footer_1c();
+        echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
     // i2 code, implements the review and confirmation HTML page.

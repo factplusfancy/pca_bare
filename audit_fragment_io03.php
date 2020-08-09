@@ -68,8 +68,11 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
     }
     if (!isset($Conditions))
         $Zfpf->send_to_contents_1c('<p>No rules found. Contact app admin. Typically setup on installation.</p>');
-    $Message = '<h2>
-    <a class="toc" href="glossary.php#fragment" target="_blank">Rule-fragment</a> '.$ReportType.'compliance verifications of<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    <a class="toc" href="glossary.php#fragment" target="_blank">Rule-fragment</a> compliance verifications for<br />
     '.$Process['AEFullDescription'].'</h2><p>
     Rule fragments sorted by:<br />
     <b>'.$RuleName.'</b></p>';
@@ -77,7 +80,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
         $Message .= '<p>
         Instead sort by:'.$OtherRules.'</p>';
     $Message .= '<p>
-    Rule fragments in <a class="toc" href="audit_io03.php?audit_o1#c6audit_scope">the '.$ReportType.'scope</a> are shown below. Also, compliance verification never applies to some parts of rules, like definitions.</a></p>';
+    Rule fragments in <a class="toc" href="audit_io03.php?audit_o1#c6audit_scope">the scope</a> are shown below. Also, compliance verification never applies to some parts of rules, like definitions.</a></p>';
     list($SRD, $RRD) = $Zfpf->select_sql_1s($DBMSresource, 't0division', $Conditions);
     if (!$RRD)
         $Zfpf->send_to_contents_1c('<p>No rule divisions found. Contact app admin. Typically setup on installation.</p>');
@@ -129,22 +132,22 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
     $Zfpf->close_connection_1s($DBMSresource);
     if (!$EditLocked and $EditAuth and !$_SESSION['Selected']['k0user_of_certifier'] and ($_SESSION['Selected']['k0audit'] >= 100000 or $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')) // Only app admins can edit templates.
         $Message .= '<p>
-        <a class="toc" href="audit_fragment_io03.php?choose_fragment_1">Change rule fragments in the '.$ReportType.'scope.</a></p>';
+        <a class="toc" href="audit_fragment_io03.php?choose_fragment_1">Change rule fragments in the scope.</a></p>';
     else {
         $Message .= '<p>
-        You cannot change the <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the '.$ReportType.'scope because:';
+        You cannot change the <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the scope because:';
         if ($EditLocked)
             $Message .= '<br />
-            '.$who_is_editing.' is editing this '.$ReportType.'report.</p>';
+            '.$who_is_editing.' is editing this report.</p>';
         if (!$EditAuth)
             $Message .= '<br />
-            You don\'t have editing privileges on this '.$ReportType.'report. Contact an app admin to increases your privileges.';
+            You don\'t have editing privileges on this report. Contact an app admin to increases your privileges.';
         if ($_SESSION['Selected']['k0user_of_certifier'])
             $Message .= '<br />
-            This '.$ReportType.'report has been issued.';
+            This report has been issued.';
         if ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes')
             $Message .= '
-            <br />This is a template '.$ReportType.'report, which only app admins can edit. You are not an app admin.';
+            <br />This is a template report, which only app admins can edit. You are not an app admin.';
         $Message .= '</p>';
     }
     $Message .= '<p>
@@ -161,8 +164,11 @@ if (isset($_GET['choose_fragment_1'])) {
     $Zfpf->clear_edit_lock_1c(); // Set in choose_fragment_2
     if (isset($_SESSION['SR']))
         unset($_SESSION['SR']);
-    $Message = '<h2>
-    Change <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the '.$ReportType.'scope for<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    Change <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the scope for<br />
     '.$Process['AEFullDescription'].'</h2><p>
     <b>First, select a rule division</b></p>
     <form action="audit_fragment_io03.php" method="post">';
@@ -205,11 +211,14 @@ if (isset($_POST['choose_fragment_2'])) {
     $CheckedPost = $Zfpf->post_length_blank_1c('selected');
     if (!is_numeric($CheckedPost) or !isset($_SESSION['SR']['t0division'][$CheckedPost]))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
-    $Message = '<h2>
-    Change <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the '.$ReportType.'scope for<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    Change <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the scope for<br />
     '.$Process['AEFullDescription'].'</h2>
     <form action="audit_fragment_io03.php" method="post"><p>
-    Uncheck <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> to remove them from the '.$ReportType.'scope. Check to add them.</p><p>
+    Uncheck <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> to remove them from the scope. Check to add them.</p><p>
     <b>'.$Zfpf->decrypt_1c($_SESSION['SR']['t0division'][$CheckedPost]['c5name']).'</b><br />';
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     $Conditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit']);
@@ -292,18 +301,21 @@ if (isset($_POST['choose_fragment_3'])) {
         }
     }
     $Zfpf->close_connection_1s($DBMSresource);
-    $Message = '<h2>
-    Changes to <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the '.$ReportType.'scope for<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    Changes to <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the scope for<br />
     '.$Process['AEFullDescription'].'</h2>';
     if ($Inserted)
         $Message .= '<p>
-        <b>'.$Inserted.' added</b> Next step, associate <a class="toc" href="glossary.php#obstopic" target="_blank">sample observation methods</a> with the rule fragment(s) you added to the '.$ReportType.'scope.</p>';
+        <b>'.$Inserted.' added</b> Next step, associate <a class="toc" href="glossary.php#obstopic" target="_blank">sample observation methods</a> with the rule fragment(s) you added to the scope.</p>';
     if ($Deleted)
         $Message .= '<p>
         <b>'.$Deleted.' removed.</b></p>';
     elseif (!$Inserted)
         $Message .= '<p>
-        <b>No changes made.</b> Rule fragments were neither added nor removed from the '.$ReportType.'scope.</p>';
+        <b>No changes made.</b> Rule fragments were neither added nor removed from the scope.</p>';
     $Message .= '<p>
     <a class="toc" href="audit_fragment_io03.php?choose_fragment_1">Back to select division.</a></p><p>
     <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
@@ -345,8 +357,11 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
     if (isset($_SESSION['Scratch']['t0obsresult'])) // Set in obsresult_io03.php:obsresult_o1
         unset($_SESSION['Scratch']['t0obsresult']);
     $Zfpf->clear_edit_lock_1c(); // Clears t0audit edit lock -- defaults to $_SESSION['Selected']; set in code below.
-    $Message = '<h2>
-    <a class="toc" href="glossary.php#fragment" target="_blank">Rule-fragment</a> '.$ReportType.'compliance verification of<br />
+    $Message = '<h2>';
+    if ($ReportType)
+        $Message .= $ReportType.'<br />';
+    $Message .= '
+    <a class="toc" href="glossary.php#fragment" target="_blank">Rule-fragment</a> compliance verifications for<br />
     '.$Process['AEFullDescription'].'</h2><p>
     <a class="toc" href="glossary.php#fragment" target="_blank"><b>Rule fragment:</b></a><br />
     '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5name']).' -- '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5citation']).'<br />'.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c6quote']).'</p>';
@@ -439,7 +454,7 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
     $Zfpf->close_connection_1s($DBMSresource);
     $TopBorder = ' class="topborder"';
     if ($EditLocked) {
-        $Message .= '<p'.$TopBorder.'><b>'.$who_is_editing.' is editing this '.$ReportType.'report.</b><br />
+        $Message .= '<p'.$TopBorder.'><b>'.$who_is_editing.' is editing this report.</b><br />
         If needed, contact them to coordinate editing this record. You will not be able to edit it until they are done.</p>';
         $TopBorder = '';
     }
@@ -447,7 +462,7 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
         if ($EditAuth and ($_SESSION['Selected']['k0audit'] >= 100000 or $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')) { // Only app admins can edit templates.
             $Message .= '<p'.$TopBorder.'>
             <a class="toc" href="audit_fragment_io03.php?choose_obsmethod_1">Choose sample observation methods for this rule-fragment compliance verification.</a></p><p>
-            <a class="toc" href="audit_fragment_io03.php?audit_fragment_remove_1">Remove this rule fragment from the '.$ReportType.'scope.</a></p>';
+            <a class="toc" href="audit_fragment_io03.php?audit_fragment_remove_1">Remove this rule fragment from the scope.</a></p>';
             $TopBorder = '';
         }
         else {
@@ -489,15 +504,18 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         if (isset($_SESSION['SR']))
             unset($_SESSION['SR']);
         $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records');
-        $Message = '<h2>
-        Choose '.$ReportType.'sample observation methods for<br />
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Choose sample observation methods for<br />
         '.$Process['AEFullDescription'].'</h2><p>
         <b>Choose <a class="toc" href="glossary.php#obstopic" target="_blank">sample observation methods</a> for compliance verification of <a class="toc" href="glossary.php#fragment" target="_blank">rule fragment</a></b>:<br />
         '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5name']).' -- '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5citation']).'<br />'.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c6quote']).'</p><p>
         Sample observation methods are sorted by <a class="toc" href="glossary.php#obstopic" target="_blank">observation topic</a>. Some are associated with more than one topic.<br />
         <b>If a sample observation method is selected for any topic, it will be and remain associated with the above rule fragment.</b></p><p>
-        Only observation topics in the '.$ReportType.'scope are listed below.<br />
-        <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Choose observation topics to include in the '.$ReportType.'scope.</a></p>';
+        Only observation topics in the scope are listed below.<br />
+        <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Choose observation topics to include in the scope.</a></p>';
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
         // Make one-level numeric array of sample observation methods associated with the selected fragment, for this report.
         $Conditions[0] = array('k0audit_fragment', '=', $_SESSION['Scratch']['t0audit_fragment']['k0audit_fragment']);
@@ -511,8 +529,8 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         if (!$RRAuOt) {
             $Zfpf->close_connection_1s($DBMSresource);
             $Message .= '<p>
-            No observation topics have been included in the '.$ReportType.'scope.<br />
-            <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Choose observation topics to include in the '.$ReportType.'scope.</a></p><p>
+            No observation topics have been included in the scope.<br />
+            <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Choose observation topics to include in the scope.</a></p><p>
             <a class="toc" href="audit_fragment_io03.php?audit_fragment_o1">Back to compliance verification</a></p>';
             echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();  
             $Zfpf->save_and_exit_1c();
@@ -604,9 +622,12 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         }
         $Zfpf->close_connection_1s($DBMSresource);
         unset($_SESSION['SR']);
-        $Zfpf->clear_edit_lock_1c(); // TO DO include below added and remove message, like choose fragments above.
-        $Message = '<h2>
-        Choose '.$ReportType.'sample observation methods for<br />
+        $Zfpf->clear_edit_lock_1c();
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Choose sample observation methods for<br />
         '.$Process['AEFullDescription'].'</h2><p>
         <b>Changes to <a class="toc" href="glossary.php#obstopic" target="_blank">sample observation methods</a> for compliance verification of <a class="toc" href="glossary.php#fragment" target="_blank">rule fragment</a></b>:<br />
         '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5name']).' -- '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5citation']).'<br />'.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c6quote']).'</p>';
@@ -633,8 +654,11 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
     // audit_fragment_remove code
     if (isset($_GET['audit_fragment_remove_1'])) {
         $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records');
-        $Message = '<h2>
-        Remove <a class="toc" href="glossary.php#fragment" target="_blank">rule-fragment</a> compliance verification from '.$ReportType.'scope for<br />
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Remove <a class="toc" href="glossary.php#fragment" target="_blank">rule-fragment</a> compliance verification from the scope for<br />
         '.$Process['AEFullDescription'].'</h2><p>
         <b>Confirm that you want to remove the compliance verification for:</b><br />
         '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5name']).' -- '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5citation']).'<br />'.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c6quote']).'</p>
@@ -664,8 +688,11 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
                 $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
         }
         $Zfpf->close_connection_1s($DBMSresource);
-        $Message = '<h2>
-        Removed rule-fragment compliance verification from '.$ReportType.'scope for<br />
+        $Message = '<h2>';
+        if ($ReportType)
+            $Message .= $ReportType.'<br />';
+        $Message .= '
+        Removed rule-fragment compliance verification from the scope for<br />
         '.$Process['AEFullDescription'].'</h2><p>
         The app removed the compliance verification for:</p><p>
         '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5name']).' -- '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5citation']).'<br />'.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c6quote']).'</p><p>
