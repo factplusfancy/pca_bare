@@ -9,10 +9,10 @@
 
 $NH3ROm = array( // Indent as done below for better display in HTML text areas and easier cut and paste to other documents. New lines help with tracking changes via git.
     1 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Management-system quality -- discussed with the people identified in the Owner/Operator\'s management-system description whether it accurately described their PSM duties and if they had the ability (training, experience...), time, and resources to complete these duties.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Management-system quality -- discussed with the people identified in the Owner/Operator\'s management-system description whether it accurately described their '.HAZSUB_NAME_ADJECTIVE_ZFPF.' duties and if they had the ability (training, experience...), time, and resources to complete these duties.')
     ),
     2 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Management-system content -- verified the management-system description designates a position with overall PSM-CAP responsibility and lines of authority to positions for any delegated responsibilities and that names and titles were current.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Management-system content -- verified the management-system description designates a position with overall responsibility and lines of authority to positions for any delegated responsibilities and that names and titles were current.')
     ),
     3 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Employee-participation plan content -- checked if a written plan covered employee information access and consultation.')
@@ -31,7 +31,7 @@ $NH3ROm = array( // Indent as done below for better display in HTML text areas a
         'c6obsmethod' => $Zfpf->encrypt_1c('PHA information sources -- assessed if adequate information was available to complete the most recent process-hazard analysis (PHA), original or update, based on document-revision dates, possibly augmented by the PHA team\'s documented observations of the '.HAZSUB_PROCESS_NAME_ZFPF.', if built at the time.')
     ),
     7 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Facility\'s Safety Data Sheet (SDS) for anhydrous ammonia -- checked if the SDS was accessible to employees and contained the PSM required information, namely: 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Facility\'s Safety Data Sheet (SDS) for anhydrous ammonia -- checked if the SDS was accessible to employees and contained the required information, namely: 
 (1) toxicity, 
 (2) permissible exposure limits, 
 (3) physical properties, 
@@ -54,7 +54,7 @@ $NH3ROm = array( // Indent as done below for better display in HTML text areas a
     11 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Inventory -- recorded the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' amounts: 
 (1) posted near refrigerating-machinery room(s) and 
-(2) written in PSM documents as the maximum-intended inventory, based on 
+(2) written in the process safety information as the maximum-intended inventory, based on 
 (2.1) ammonia-charging records and maximum-fill levels, temperatures, and pressures after charging, 
 (2.2) the sum of significant amounts in the '.HAZSUB_PROCESS_NAME_ZFPF.' components at maximum-intended-inventory levels, temperatures, and pressures, or 
 (2.3) another method that produces results of similar quality. Checked a sample of the maximum-intended-inventory determination records and/or calculations for obvious errors. Checked if any component-based inventory included all equipment packages on the flow diagram.')
@@ -270,7 +270,7 @@ Asked about this during tours and discussions.')
 (5.15) whether any level sensors or float switches had shutoff '.HAZSUB_PROCESS_NAME_ZFPF.' compressors in the prior three years and, if so, how the restart from this was done.')
     ),
     30 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Procedure current and accurate certification -- checked if Owner/Operator had certified each year, for the prior three years, that the hazardous-substance procedures and safe-work practices (or other administrative controls for meeting the PSM "operating procedures" requirements) were current and accurate.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Procedure current and accurate certification -- checked if Owner/Operator had certified each year, for the prior three years, that the hazardous-substance procedures and safe-work practices (or equivilent administrative controls) were current and accurate.')
     ),
     31 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Access controls -- assessed and discussed these, such as: 
@@ -292,7 +292,7 @@ Asked about this during tours and discussions.')
 (6) the means used to verify that the employee understood the training.')
     ),
     33 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Contractor PSM applicability and qualifications -- 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Contractor applicability and qualifications -- 
 (1) reviewed the contractor-qualification documents with the responsible individual(s), per the Owner/Operator management system, to determine if they showed that the Owner/Operator evaluated the qualifications of contractors who, in the prior three years: 
 (1.1) worked on the '.HAZSUB_PROCESS_NAME_ZFPF.', including its piping, equipment, supports, building structural systems, other support structures, or foundations, 
 (1.2) worked on ventilation, pressure-relief, suppression, secondary containment, or similar safety systems of/for the '.HAZSUB_PROCESS_NAME_ZFPF.', 
@@ -308,10 +308,10 @@ Asked about this during tours and discussions.')
         'c6obsmethod' => $Zfpf->encrypt_1c('Owner-to-contractor notices -- with the responsible individual(s), per the Owner/Operator management system, checked a sample of any documents from the prior three years showing that, for contractors\' work on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.' (their work), the Owner/Operator notified the contractor organizations about: 
 (1) known fire, explosion, or toxic release hazards related to their work and the '.HAZSUB_PROCESS_NAME_ZFPF.', 
 (2) applicable portions of the facility Emergency Action Plan, and 
-(3) the contractor organizations\' PSM responsibilities related to their work.')
+(3) the contractor organizations\' PSM and/or general duty responsibilities related to their work.')
     ),
     35 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Contractor performance in fulfilling their PSM obligations and injury or illness log -- with the responsible individual(s), per the Owner/Operator management system, discussed overall approach and checked a sample of any documents from the prior three years showing that, for contractors\' work on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.' (their work), the Owner/Operator evaluated if the contractor organizations: 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Contractor performance in fulfilling their PSM and/or general duty obligations and injury or illness log -- with the responsible individual(s), per the Owner/Operator management system, discussed overall approach and checked a sample of any documents from the prior three years showing that, for contractors\' work on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.' (their work), the Owner/Operator evaluated if the contractor organizations: 
 (1) assured that each contractor individual was trained 
 (1.1) to safely do their work, 
 (1.2) on known fire, explosion, or toxic-release hazards related to their work and the '.HAZSUB_PROCESS_NAME_ZFPF.', 
@@ -455,7 +455,7 @@ Asked about this during tours and discussions.')
 (3.2.3) ITM procedures and program, and 
 (3.2.4) emergency plans, 
 (3.3) training records showed the means used to verify that employees understood the training needed as a result of the change, and 
-(3.4) owner-to-contractor notices or equivalent showed that contractor organizations had been informed of the change if additional training of contractor individuals was needed as a result of the change. Owner/Operator evaluation of contractor performance in fulling their training, and other PSM, requirements is covered by the separate "contractor performance..." sample observation method.')
+(3.4) owner-to-contractor notices or equivalent showed that contractor organizations had been informed of the change if additional training of contractor individuals was needed as a result of the change. Owner/Operator evaluation of contractor performance in fulling their training, and other PSM and/or general duty, requirements is covered by the separate "contractor performance..." sample observation method.')
     ),
     45 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Incident discussions -- asked almost everyone audit-discussions were held with (so a sample of employees and possibly contractors) if they recalled, in the prior three years: 
@@ -471,7 +471,7 @@ Asked about this during tours and discussions.')
     ),
     46 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Incident-investigation documents -- 
-(1) reviewed forms and instructions to assess if properly completing them would meet the PSM incident-investigation requirements by calling for: 
+(1) reviewed forms and instructions to assess if properly completing them would meet the PSM and general duty incident-investigation requirements by calling for: 
 (1.1) a system to initiate an investigation within 48 hours after any 
 (1.1.1) "catastrophic release" or 
 (1.1.2) near miss to a "catastrophic release" (see glossary for definition), for example, by calling for voluntary logging and assessment of '.HAZSUB_NAME_ADJECTIVE_ZFPF.' small leaks and near misses to less-than-catastrophic releases, or similar, 

@@ -210,7 +210,7 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
     $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['oacv_buttons'] = 'Observations, actions, and compliance verifications';
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     Report for<br />
     '.$Process['AEFullDescription'].'</h2>
@@ -336,7 +336,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         // Additional security check -- none possible: privileges to view audit also allow viewing list of its actions.
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Report for<br />
         '.$Process['AEFullDescription'].'</h2><p>
@@ -376,7 +376,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             $Zfpf->send_to_contents_1c(); // Don't eject
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Discard the draft report you were just viewing?</h2><p>
         The information in the draft report will remain in this app\'s history tables, until they are purged per the Owner/Operator\'s policies.</p><p>
@@ -676,7 +676,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         $EmailSent = $Zfpf->send_email_1c($Chain['EmailAddresses'], $Subject, $Body);
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Report '.$IssuedRetracted.' for<br />
         '.$Process['AEFullDescription'].'</h2>
@@ -947,7 +947,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         // Create HTML form
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Report for<br />
         '.$Process['AEFullDescription'].'</h2>

@@ -70,7 +70,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
         $Zfpf->send_to_contents_1c('<p>No rules found. Contact app admin. Typically setup on installation.</p>');
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     <a class="toc" href="glossary.php#fragment" target="_blank">Rule-fragment</a> compliance verifications for<br />
     '.$Process['AEFullDescription'].'</h2><p>
@@ -166,7 +166,7 @@ if (isset($_GET['choose_fragment_1'])) {
         unset($_SESSION['SR']);
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     Change <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the scope for<br />
     '.$Process['AEFullDescription'].'</h2><p>
@@ -213,7 +213,7 @@ if (isset($_POST['choose_fragment_2'])) {
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     Change <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the scope for<br />
     '.$Process['AEFullDescription'].'</h2>
@@ -303,7 +303,7 @@ if (isset($_POST['choose_fragment_3'])) {
     $Zfpf->close_connection_1s($DBMSresource);
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     Changes to <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments</a> in the scope for<br />
     '.$Process['AEFullDescription'].'</h2>';
@@ -359,7 +359,7 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
     $Zfpf->clear_edit_lock_1c(); // Clears t0audit edit lock -- defaults to $_SESSION['Selected']; set in code below.
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     <a class="toc" href="glossary.php#fragment" target="_blank">Rule-fragment</a> compliance verifications for<br />
     '.$Process['AEFullDescription'].'</h2><p>
@@ -506,7 +506,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records');
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Choose sample observation methods for<br />
         '.$Process['AEFullDescription'].'</h2><p>
@@ -625,7 +625,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         $Zfpf->clear_edit_lock_1c();
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Choose sample observation methods for<br />
         '.$Process['AEFullDescription'].'</h2><p>
@@ -656,7 +656,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records');
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Remove <a class="toc" href="glossary.php#fragment" target="_blank">rule-fragment</a> compliance verification from the scope for<br />
         '.$Process['AEFullDescription'].'</h2><p>
@@ -690,7 +690,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         $Zfpf->close_connection_1s($DBMSresource);
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Removed rule-fragment compliance verification from the scope for<br />
         '.$Process['AEFullDescription'].'</h2><p>

@@ -81,7 +81,7 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
     $LimitsMessage = lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType, $UserPracticePrivileges, $User);
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     Observations of<br />
     '.$Process['AEFullDescription'].'</h2><p>
@@ -236,7 +236,7 @@ if (isset($_POST['choose_obstopic_2'])) {
     $Zfpf->close_connection_1s($DBMSresource);
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     Changes to<a class="toc" href="glossary.php#obstopic" target="_blank">observation topics</a> in the scope.</h2>';
     if ($Inserted)
@@ -275,7 +275,7 @@ if (isset($_GET['Ot_all_Om_i0']) or isset($_POST['Ot_all_Om_i0'])) {
     $OtName = $Zfpf->decrypt_1c($_SESSION['Scratch']['t0obstopic']['c5name']);
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     Sample Observation Methods<br />
     '.$Process['AEFullDescription'].'</h2><p>
@@ -434,7 +434,7 @@ if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_
     $LimitsMessage = lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType, $UserPracticePrivileges, $User);
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     One observation of<br />
     '.$Process['AEFullDescription'].'</h2><p>
@@ -534,7 +534,7 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
     $LimitsMessage = lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType, $UserPracticePrivileges, $User);
     $Message = '<h2>';
     if ($ReportType)
-        $Message .= $ReportType.'<br />';
+        $Message .= $ReportType.'</h2><h2>';
     $Message .= '
     Observations of<br />
     '.$Process['AEFullDescription'].'</h2><p>
@@ -670,7 +670,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records');
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Remove observation from the report for<br />
         '.$Process['AEFullDescription'].'</h2><p>
@@ -698,7 +698,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Removed observation from the report for<br />
         '.$Process['AEFullDescription'].'</h2><p>
@@ -758,7 +758,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         // Create HTML form
         $Message = '<h2>';
         if ($ReportType)
-            $Message .= $ReportType.'<br />';
+            $Message .= $ReportType.'</h2><h2>';
         $Message .= '
         Edit this observation of<br />
         '.$Process['AEFullDescription'].'</h2><p>
