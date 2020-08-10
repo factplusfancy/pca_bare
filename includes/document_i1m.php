@@ -10,7 +10,7 @@ if (!isset($_SESSION['Scratch']['PlainText']['SecurityToken']) or $_SESSION['Scr
 
 if (!isset($_SESSION['t0user_process'])) {
     echo $Zfpf->xhtml_contents_header_1c().'<h1>
-    Practice Documents</h1>
+    Compliance-Practice Documents</h1>
     <p>You currently have not selected a process, and practice documents must be associated with a process.</p>
     <p>Contact your supervisor or an app admin for assistance.</p>
     <form action="contents0_s_practice.php" method="post"><p>
