@@ -33,20 +33,21 @@ else {
     <b>'.HAZSUB_LEAK_FIRST_STEPS_ZFPF.'</b></p><p>
     
     The following requirements apply to the '.HAZSUB_PROCESS_NAME_ZFPF.' at this facility:<br />
-        1. Chemical Accident Prevention/Risk Management Plan. Administered by the U.S. Environmental Protection Agency (EPA) and designed to reduce risks to the community near this facility.<br />
-        2. Process Safety Management (PSM). Administered by the Occupational Safety and Health Administration (OSHA) and designed to reduce risks to employees at this facility.</p><p>
+        1. General duty reqiurements under the U.S. Clean Air Act, Occupational Safety and Health Act, and, typically, state law.<br />
+        2. Chemical Accident Prevention/Risk Management Plan. Administered by the U.S. Environmental Protection Agency (EPA) and designed to reduce risks to the community near this facility.<br />
+        3. Process Safety Management (PSM). Administered by the Occupational Safety and Health Administration (OSHA) and designed to reduce risks to employees at this facility.</p><p>
 
-    We implement PSM to comply with both of these rules. You are entitled to review most PSM information where you work. Contact your supervisor, or your organization\'s safety personnel, for more information or to provide feedback. The '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety data sheet (SDS) and this facility\'s emergency plans also have more information.</p><p>
+    We implement a process safety program to comply with the above rules. You are entitled to review most information about process safety where you work. Contact your supervisor, or your organization\'s safety personnel, for more information or to provide feedback. The '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety data sheet (SDS) and this facility\'s emergency plans also have more information.</p><p>
 
-    Our process-safety management (PSM) program includes the following elements:</p><ul class="indent"><li>
+    Our process safety program includes the following elements:</p><ul class="indent"><li>
 
-    <b>Management system</b> -- assigning overall responsibility for PSM and lines of authority to others with specific responsibilities.</li><li>
+    <b>Management system</b> -- assigning overall responsibility and lines of authority to others with specific responsibilities.</li><li>
 
     <b>Employee participation</b> -- consulting with employees on '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety.</li><li>
 
     <b>Process-safety information</b> -- drawings, manuals, and other documents covering design, materials, fabrication, construction, and installation of the '.HAZSUB_PROCESS_NAME_ZFPF.'.</li><li>
 
-    <b>Process-hazard analysis</b> -- a detailed review of potential failures, existing safeguards, and recommendations.</li><li>
+    <b>Process-hazard analysis or Hazard Review</b> -- a detailed review of potential failures, existing safeguards, and recommendations.</li><li>
 
     <b>Hazardous-substance procedures and safe-work practices</b> -- these cover '.HAZSUB_NAME_ADJECTIVE_ZFPF.' tasks where a mistake could promptly cause harm or unacceptable risks, such as monitoring, corrective actions, adding/removing materials to/from the '.HAZSUB_PROCESS_NAME_ZFPF.', and also removing hazardous energy from some or all of it, piping opening, and returning piping to service. As a rule of thumb, these more-hazardous tasks include operating a valve in '.HAZSUB_NAME_ADJECTIVE_ZFPF.' service, by any method.</li><li>
 
@@ -62,11 +63,11 @@ else {
 
     <b>Incident investigation</b> -- procedures for investigating both near misses and incidents (leaks and so forth.)</li><li>
 
-    <b>PSM audits</b> -- audits of our PSM program every three years.</li><li>
+    <b>Audits</b> -- audits of our process-safety program every three years (five years for general-duty only facilities).</li><li>
 
     <b>Emergency planning</b> -- procedures and training on '.HAZSUB_NAME_ADJECTIVE_ZFPF.' recognition, notification, move-to-safety, and evacuation or shelter-in-place and also coordination with outside responders, leak mitigation and emergency shutdown, and other actions by qualified personnel.</li><li>
 
-    <b>Offsite hazard assessment and reporting</b> -- assessing risks to the community and environment around this facility and coordinating with offsite responders and governmental authorities.</li></ul><p>
+    <b>Offsite hazard assessment</b> -- assessing risks to the community and environment around this facility and coordinating with offsite responders and governmental authorities.</li></ul><p>
 
     Please let us know if you have any questions or comments on '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety.</p>';
 }
