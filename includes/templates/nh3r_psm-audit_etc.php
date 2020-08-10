@@ -19,15 +19,6 @@ $AmmoniaRefrigerationAudit = array(
         'c6nymd_certifier' => $EncryptedNothing,
         'c6howtoinstructions' => $Zfpf->encrypt_1c('
 
-NOTE. This 2020-08-07 template,
-if properly interpreted and applied, using the terminology of this PSM-CAP App,
-provides sample-observation methods that may be used to check an '.HAZSUB_PROCESS_NAME_ZFPF.' for compliance with: 
-(1) typical tort law "duty of care" needed to avoid negligence, 
-(2) the U.S. federal "general duty" laws for hazardous substances, namely Clean Air Act paragraph 112(r)(1) and Occupational Safety and Health Act of 1970, Section 5, Duties, 
-(3) the "minimum system safety requirements" described in International Institute of Ammonia Refrigeration (IIAR) standard IIAR 9-2020, which references IIAR 6-2019 and IIAR 7-2019, 
-(4) the applicable editions of IIAR 2 and building codes, and 
-(5) the U.S. federal PSM compliance audit regulations at 40 CFR 68.79 and 29 CFR 1910.119(o), administered by the EPA and OSHA, respectively. 
-
 RESOLUTION OF FINDINGS. Respond to any imminently dangerous situations immediately upon discovery. Otherwise, resolve findings as promptly as practical. The PSM-CAP app records findings in its Action Register, so initiate resolution planning by assigning a responsible individual and target-resolution date for each finding, via the Action Register. The PSM final rule preamble indicates, "It is OSHA\'s intention that the actions to be taken as a result of the process hazard analysis recommendations be completed as soon as possible. In most cases, OSHA believes that employers will be able to complete these actions within a one to two year time frame, but notes that in unusual circumstances longer completion periods may be necessary." (57 Federal Register 6379, February 24, 1991) This guidance provides a reasonable time frame for resolving compliance audit and hazard review findings as well.
 
 REPORT RETENTION. Retain at least the two most recent reports documenting PSM compliance audits and general duty hazard reviews, like this report. In addition, retain this report for at least five years.
@@ -117,18 +108,33 @@ IIAR Bulletin 114 (1991, revised in 2014, 2017, and 2019), "Guidelines for: Iden
 IIAR Bulletin 116 (1992, superseded by IIAR 6-2019), "Guidelines for: Avoiding Component Failure in Industrial Refrigeration Systems Caused by Abnormal Pressure or Shock."
 
 IIAR updates and interpretations are available at the IIAR website http://iiar.org, under the "Technology and Standards" menu select "Standards Review" and then select "ANSI/IIAR Standards Interpretations". For the latest editions, under the "Store" menu select "Bulletins" or "Standards".'),
-        'c6audit_scope' => $Zfpf->encrypt_1c('To get background for making the audit and hazard review more effective and to attempt to ensure that they covered everything that may later be viewed as needing to be audited and reviewed, the scope of the services described by this report included: 
-(1) a hazard review to check if the Owner/Operator was fulling their general duty under 
-(1.1) tort law "duty of care" needed to avoid negligence -- for hazardous substances where the facility is located, and, in the USA, 
+        'c6audit_scope' => $Zfpf->encrypt_1c('The scope of the services communicated by this report was, to the extent that the following directly related to the '.HAZSUB_PROCESS_NAME_ZFPF.' described in this report: 
+(1) a hazard review to check if the Owner/Operator was fulling their general duty per 
+(1.1) the duty of care that comes with owning or operating the '.HAZSUB_PROCESS_NAME_ZFPF.', to avoid negligence under tort law, 
 (1.2) Occupational Safety and Health Act of 1970 Section 5, 29 U.S. Code 654, and 
-(1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), and 
-(2) an audit of the Owner/Operator\'s compliance with
-(2.1) 29 CFR 1910.119 (the OSHA PSM standard), 
-(2.2) following portions of the EPA\'s Chemical Accident Prevention rule 
-(2.2.1) 40 CFR 68.15 Management System, 
-(2.2.2) 40 CFR 68.200 Recordkeeping, 
-(2.2.3) 40 CFR 68, Subpart D (the Program 3 Prevention Program -- by auditing compliance with the nearly identical OSHA PSM requirements), and 
-(2.2.4) 40 CFR 68.90 to 68.96 (emergency preparedness), as applicable to the facility.
+(1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), 
+(2) an audit of the Owner/Operator\'s compliance with 
+(2.1) the following portions of the EPA\'s Chemical Accident Prevention rule 
+(2.1.1) 40 CFR 68.15 Management System, 
+(2.1.2) 40 CFR 68.200 Recordkeeping, 
+(2.1.3) 40 CFR 68, Subpart D (the Program 3 Prevention Program -- by auditing compliance with the nearly identical OSHA PSM requirements), and 
+(2.1.4) 40 CFR 68.90 to 68.96 (emergency preparedness), as applicable to the facility, and 
+(2.2) the OSHA PSM standard at 29 CFR 1910.119, 
+both completed by comparing observations with 
+(A) the above laws and regulations, 
+(B) the "minimum system safety requirements" described in International Institute of Ammonia Refrigeration (IIAR) standards 
+(B.1) IIAR 9-2020, which references standards 
+(B.2) IIAR 6-2019 and 
+(B.3) IIAR 7-2019, and 
+(C) the applicable editions of 
+(C.1) the design code for the '.HAZSUB_PROCESS_NAME_ZFPF.', such as standard IIAR 2, and 
+(C.2) other building, environmental, and safety codes directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.'. 
+See the background section of this report for details on regulations, codes, and standards. 
+
+For design and building codes, the editions in effect when the permits were approved (or plans were finalized if no permits were required) for the '.HAZSUB_PROCESS_NAME_ZFPF.', or a portion of it, to be installed or changed, were the editions applicable to: 
+(1) the piping and equipment of the '.HAZSUB_PROCESS_NAME_ZFPF.' installed or modified at that time, which may be only a portion of the '.HAZSUB_PROCESS_NAME_ZFPF.', 
+(2) the room where piping and equipment of the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, if a change significantly increased the refrigeration capacity, motor power, or '.HAZSUB_NAME_ADJECTIVE_ZFPF.' inventory in that room, and 
+(3) the supports for piping and equipment of the '.HAZSUB_PROCESS_NAME_ZFPF.', if a change significantly increased their loads. 
 
 The compliance verifications included with this report cite only the OSHA PSM standard. The EPA Program 3 Prevention Program requirements are nearly identical; the Program 3 Prevention Program substitutes:
 - "owners and operators" for "employers",
@@ -139,24 +145,24 @@ Also, compared to the OSHA PSM standard, the Program 3 Prevention Program doesn\
 - the phrase "in the workplace" or "on employees in the workplace" in the PHA content and incident investigation applicability requirements and
 - any injury and illness log requirement for contractors resembling 29 CFR 1910.119(h)(2)(vi).
 
+The scope did not include a mechanical-integrity inspection. The audit and hazard review focused instead on whether an adequate mechanical-integrity program was in place and followed for the '.HAZSUB_PROCESS_NAME_ZFPF.'. However, any mechanical-integrity shortcomings discovered during the audit and hazard review are included in the findings. 
+
+The audit and hazard review focused on whether the Owner/Operator had identified and documented compliance with rules directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.'. Except where directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.', the scope did not include evaluating compliance with safety, environmental, building, mechanical, and other standards, codes, regulations, or rules, such as related to: 
+(1) earthquake, wind, flood, or fire hazards, 
+(2) structures, 
+(3) building envelopes, 
+(4) means of egress.
+However, the scope did include observations of a sample of 
+(1) the '.HAZSUB_PROCESS_NAME_ZFPF.' supports to assess the Owner/Operator\'s design, construction, inspection, testing, and maintenance for these supports and 
+(2) access to and egress from rooms or areas where the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, to assess the Owner/Operator\'s systems for ensuring safe access and egress. 
+Findings about out-of-scope topics may be included in this report if discovered during the audit and hazard review. 
+
+The scope did not include evaluating health, safety, environmental, engineering, construction, financial, security or other considerations required for implementing any resolution options or other suggestions made in this report. Safe and effective resolution of audit and hazard review findings -- including careful evaluation of resolution options or other suggestions made in this report and also including means, methods, and sequences -- is the responsibility of the Owner/Operator.
+
 The EPA\'s Hazard Assessment requirements at 40 CFR 68, Subpart B -- including the release scenarios, offsite consequences, and five-year accident history -- as well as its Risk Management Plan (RMP) reporting requirements at 40 CFR 68, Subpart G, do not need to be included in the scope because they are aspects of 40 CFR 68 applicable to neither the Program 3 Prevention Program at 40 CFR 68, Subpart D, nor the OSHA PSM standard at 29 CFR 1910.119. The Owner/Operator is required to: 
 (1) review, update, and resubmit the Hazard Assessment and the RMP every five years under 40 CFR 68.36 and 68.190 and also 
 (2) update and revalidate the process hazard analysis every five years under 29 CFR 1910.119(e)(6) and 40 CFR 68.67(f). 
 The scope did not include these five-year update tasks. 
-
-The scope did not include a mechanical-integrity inspection. The audit and hazard review focused instead on whether an adequate mechanical-integrity program was in place and followed for the '.HAZSUB_PROCESS_NAME_ZFPF.'. However, any mechanical-integrity shortcomings discovered during the audit and hazard review are included in the findings.
-
-Except where directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.', the scope did not include evaluating compliance with safety, environmental, building, mechanical, and related standards, codes, and regulations (rules). The audit and hazard review focused on whether the Owner/Operator had identified and documented compliance with rules directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.'. For example the scope did not including inspecting or evaluating: 
-(1) earthquake, wind, flood, or fire hazards, 
-(2) building structures or building envelopes, 
-(3) means of egress, or 
-(4) the '.HAZSUB_PROCESS_NAME_ZFPF.' supports. 
-However, the scope did include observations of a sample of 
-(1) the '.HAZSUB_PROCESS_NAME_ZFPF.' supports to assess the Owner/Operator\'s inspection, testing, and maintenance for these supports and 
-(2) access to and egress from rooms or areas where the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, to assess the Owner/Operator\'s systems ensuring safe access and egress. 
-Findings about out-of-scope topics may be included in this report if discovered during the audit and hazard review. 
-
-The scope did not include evaluating health, safety, environmental, engineering, construction, financial, security or other considerations required for implementing any resolution options or other suggestions made in this report. Safe and effective resolution of audit and hazard review findings -- including careful evaluation of resolution options or other suggestions made in this report and also including means, methods, and sequences -- is the responsibility of the Owner/Operator.
 
 If you have any questions or concerns about the scope of this audit and hazard review, please contact its author(s).'),
         'c6audit_method' => $Zfpf->encrypt_1c('On [DATES ON-SITE SERVICES DONE] the report leader(s) listed above completed the on-site services for the audit and hazard review described in this report. Additional document review was done off-site. [List managers who participated in the entrance and exit meetings. Briefly summarize people talked with, equipment viewed, and documents reviewed  -- details on these go in the as-done observation methods, in each observation record.]'),
@@ -177,27 +183,21 @@ If you have any questions or concerns about the scope of this audit and hazard r
         'c6nymd_certifier' => $EncryptedNothing,
         'c6howtoinstructions' => $Zfpf->encrypt_1c('
 
-NOTE. This 2020-08-07 template,
-if properly interpreted and applied, using the terminology of this PSM-CAP App,
-provides sample-observation methods that may be used to check an '.HAZSUB_PROCESS_NAME_ZFPF.' for compliance with: 
-(1) typical tort law "duty of care", 
-(2) the U.S. federal "general duty" laws for hazardous substances, namely Clean Air Act paragraph 112(r)(1) and Occupational Safety and Health Act of 1970, Section 5, Duties, 
-(3) the "minimum system safety requirements" described in International Institute of Ammonia Refrigeration (IIAR) standard IIAR 9-2020, which references IIAR 6-2019 and IIAR 7-2019, 
-(4) the applicable editions of IIAR 2 and building codes, and 
-(5) if completed at least every three years (instead of at least every five years for general duty only), the EPA\'s Program 2 Prevention Program requirements for compliance audits at 40 CFR 68.58.
-
 RESOLUTION OF FINDINGS. Respond to any imminently dangerous situations immediately upon discovery. Otherwise, resolve findings as promptly as practical. The PSM-CAP app records findings in its Action Register, so initiate resolution planning by assigning a responsible individual and target-resolution date for each finding, via the Action Register. The PSM final rule preamble indicates, "It is OSHA\'s intention that the actions to be taken as a result of the process hazard analysis recommendations be completed as soon as possible. In most cases, OSHA believes that employers will be able to complete these actions within a one to two year time frame, but notes that in unusual circumstances longer completion periods may be necessary." (57 Federal Register 6379, February 24, 1991) This guidance provides a reasonable time frame for resolving compliance audit and hazard review findings as well.
 
 REPORT RETENTION. Retain at least the two most recent reports documenting hazard reviews and compliance audits, like this report. In addition, retain this report for at least five years.
 
 CERTIFICATION FOR PROGRAM 2 PREVENTION PROGRAMS ONLY. A common interpretation of the compliance-audit requirements at 40 CFR 68.58 is that the Owner/Operator is required to certify that the Owner/Operator has evaluated compliance with 40 CFR 68, Subpart C (the EPA\'s Program 2 Prevention Program) at least every three years. If the Owner/Operator does this "as of" a date approximately marking the compliance-evaluation period -- such as when the lead auditor (the "report leader" for this report) delivered a preliminary spoken or written report to the responsible individual(s), per the Owner/Operator management system, at the exit meeting, after the onsite audit services -- then complete the next audit onsite services in time to mark a similar compliance-evaluation period within three years. In addition, within a reasonable time, such as 60 days, the lead auditor needs to deliver a written PSM-audit report to the Owner/Operator, but the written report issue date does not typically determine the setting or meeting of compliance-evaluation due dates.
 
-NEXT AUDIT and HAZARD REVIEW. Unless requirements or interpretations change, complete an audit and hazard review, equivalent to or better than the one documented by this report, on or before the following due dates, for compliance with:
-(1) general duty only -- within five years and
-(2) the EPA\'s Program 2 Prevention Program -- within three years. 
+NEXT AUDIT AND HAZARD REVIEW. Unless requirements or interpretations change, complete the next audit and hazard review on or before the following due dates, for compliance with:
+(1) the EPA\'s Program 2 Prevention Program -- within three years, per 40 CFR 68.58 or 
+(2) general duty only -- within five years because 
+(2.1) IIAR 9-2020 calls for a "minimum system safety evaluation" every five years and
+(2.2) IIAR Bulletin 110, since 2002, recommended "full inspections" every five years.
+
 The observations needed for the next audit and hazard review may be completed in installments, some each month or year, as long as they are all completed by the next due date and each type of observation is typically repeated at least approximately every three to five years.'),
         'c6background' => $Zfpf->encrypt_1c('This section provides background on the '.HAZSUB_PROCESS_NAME_ZFPF.' at the facility and the regulations, codes, and standards (rules) applicable to the audit and hazard review described by this report. 
-        
+
 General-duty law for hazardous substances, such as anhydrous ammonia, seeks to protect employees, contractors, and the community at or near a facility with a process that contains hazardous substances, such as the '.HAZSUB_PROCESS_NAME_ZFPF.'. Refrigeration systems that contain any amount of anhydrous ammonia are subject to general-duty law. Refrigeration systems that contain 10,000 pounds or more of anhydrous ammonia are subject to the Program 2 Prevention Program requirements of the EPA\'s Chemical Accident Prevention rule by default, if they are subject to neither the Program 1 Prevention Program nor the Program 3 Prevention Program.
 
 Facility records indicated that its closed-loop mechanical-refrigeration system contained approximately [INSERT AMMONIA CHARGE] pounds of anhydrous ammonia, when the audit and hazard review described by this report was completed.
@@ -278,32 +278,47 @@ IIAR Bulletin 114 (1991, revised in 2014, 2017, and 2019), "Guidelines for: Iden
 IIAR Bulletin 116 (1992, superseded by IIAR 6-2019), "Guidelines for: Avoiding Component Failure in Industrial Refrigeration Systems Caused by Abnormal Pressure or Shock."
 
 IIAR updates and interpretations are available at the IIAR website http://iiar.org, under the "Technology and Standards" menu select "Standards Review" and then select "ANSI/IIAR Standards Interpretations". For the latest editions, under the "Store" menu select "Bulletins" or "Standards".'),
-        'c6audit_scope' => $Zfpf->encrypt_1c('To get background for making the audit and hazard review more effective and to attempt to ensure that they covered everything that may later be viewed as needing to be audited and reviewed, the scope of the services described by this report included: 
-(1) a hazard review to check if the Owner/Operator was fulling their general duty under 
-(1.1) tort law "duty of care" needed to avoid negligence -- for hazardous substances where the facility is located, and, in the USA, 
+        'c6audit_scope' => $Zfpf->encrypt_1c('The scope of the services communicated by this report was, to the extent that the following directly related to the '.HAZSUB_PROCESS_NAME_ZFPF.' described in this report: 
+(1) a hazard review to check if the Owner/Operator was fulling their general duty per 
+(1.1) the duty of care that comes with owning or operating the '.HAZSUB_PROCESS_NAME_ZFPF.', to avoid negligence under tort law, 
 (1.2) Occupational Safety and Health Act of 1970 Section 5, 29 U.S. Code 654, and 
 (1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), and 
-(2) an audit of the Owner/Operator\'s compliance with following portions of the EPA\'s Chemical Accident Prevention rule 
+(2) an audit of the Owner/Operator\'s compliance with the following portions of the EPA\'s Chemical Accident Prevention rule 
 (2.1) 40 CFR 68.15 Management System, 
 (2.2) 40 CFR 68.200 Recordkeeping, 
 (2.3) 40 CFR 68, Subpart C (the Program 2 Prevention Program), if applicable to the facility, and 
-(2.4) 40 CFR 68.90 to 68.96 (emergency preparedness), if applicable to the facility. 
+(2.4) 40 CFR 68.90 to 68.96 (emergency preparedness), if applicable to the facility, 
+both completed by comparing observations with 
+(A) the above laws and regulations, 
+(B) the "minimum system safety requirements" described in International Institute of Ammonia Refrigeration (IIAR) standards 
+(B.1) IIAR 9-2020, which references standards 
+(B.2) IIAR 6-2019 and 
+(B.3) IIAR 7-2019, and 
+(C) the applicable editions of 
+(C.1) the design code for the '.HAZSUB_PROCESS_NAME_ZFPF.', such as standard IIAR 2, and 
+(C.2) other building, environmental, and safety codes directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.'. 
+See the background section of this report for details on regulations, codes, and standards. 
 
-The EPA\'s Hazard Assessment requirements at 40 CFR 68, Subpart B -- including the release scenarios, offsite consequences, and five-year accident history -- as well as its Risk Management Plan (RMP) reporting requirements at 40 CFR 68, Subpart G, do not need to be included in the scope because they are not aspects of 40 CFR 68 applicable to the Program 2 Prevention Program at 40 CFR 68, Subpart C. If the facility is subject to the Program 2 Prevention Program (10,000 pounds or more of anhydrous ammonia in the '.HAZSUB_PROCESS_NAME_ZFPF.' or co-located with it but subject to neither the Program 1 Prevention Program nor the Program 3 Prevention Program), the Owner/Operator is required to review, update, and resubmit the Hazard Assessment and the RMP every five years under 40 CFR 68.36 and 68.190. The scope did not include these five-year update tasks. 
+For design and building codes, the editions in effect when the permits were approved (or plans were finalized if no permits were required) for the '.HAZSUB_PROCESS_NAME_ZFPF.', or a portion of it, to be installed or changed, were the editions applicable to: 
+(1) the piping and equipment of the '.HAZSUB_PROCESS_NAME_ZFPF.' installed or modified at that time, which may be only a portion of the '.HAZSUB_PROCESS_NAME_ZFPF.', 
+(2) the room where piping and equipment of the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, if a change significantly increased the refrigeration capacity, motor power, or '.HAZSUB_NAME_ADJECTIVE_ZFPF.' inventory in that room, and 
+(3) the supports for piping and equipment of the '.HAZSUB_PROCESS_NAME_ZFPF.', if a change significantly increased their loads. 
 
-The scope did not include a mechanical-integrity inspection. The audit and hazard review focused instead on whether an adequate mechanical-integrity program was in place and followed for the process. However, any mechanical-integrity shortcomings discovered during the audit and hazard review are included in the findings.
+The scope did not include a mechanical-integrity inspection. The audit and hazard review focused instead on whether an adequate mechanical-integrity program was in place and followed for the '.HAZSUB_PROCESS_NAME_ZFPF.'. However, any mechanical-integrity shortcomings discovered during the audit and hazard review are included in the findings. 
 
-Except where directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.', the scope did not include evaluating compliance with safety, environmental, building, mechanical, and related standards, codes, and regulations (rules). The audit and hazard review focused on whether the Owner/Operator had identified and documented compliance with rules directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.'. For example the scope did not including inspecting or evaluating: 
+The audit and hazard review focused on whether the Owner/Operator had identified and documented compliance with rules directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.'. Except where directly applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.', the scope did not include evaluating compliance with safety, environmental, building, mechanical, and other standards, codes, regulations, or rules, such as related to: 
 (1) earthquake, wind, flood, or fire hazards, 
-(2) building structures or building envelopes, 
-(3) means of egress, or 
-(4) the '.HAZSUB_PROCESS_NAME_ZFPF.' supports. 
+(2) structures, 
+(3) building envelopes, 
+(4) means of egress.
 However, the scope did include observations of a sample of 
-(1) the '.HAZSUB_PROCESS_NAME_ZFPF.' supports to assess the Owner/Operator\'s inspection, testing, and maintenance for these supports and 
-(2) access to and egress from rooms or areas where the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, to assess the Owner/Operator\'s systems ensuring safe access and egress. 
+(1) the '.HAZSUB_PROCESS_NAME_ZFPF.' supports to assess the Owner/Operator\'s design, construction, inspection, testing, and maintenance for these supports and 
+(2) access to and egress from rooms or areas where the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, to assess the Owner/Operator\'s systems for ensuring safe access and egress. 
 Findings about out-of-scope topics may be included in this report if discovered during the audit and hazard review. 
 
 The scope did not include evaluating health, safety, environmental, engineering, construction, financial, security or other considerations required for implementing any resolution options or other suggestions made in this report. Safe and effective resolution of audit and hazard review findings -- including careful evaluation of resolution options or other suggestions made in this report and also including means, methods, and sequences -- is the responsibility of the Owner/Operator.
+
+The EPA\'s Hazard Assessment requirements at 40 CFR 68, Subpart B -- including the release scenarios, offsite consequences, and five-year accident history -- as well as its Risk Management Plan (RMP) reporting requirements at 40 CFR 68, Subpart G, do not need to be included in the scope because they are not aspects of 40 CFR 68 applicable to the Program 2 Prevention Program at 40 CFR 68, Subpart C. If the facility is subject to the Program 2 Prevention Program (10,000 pounds or more of anhydrous ammonia in the '.HAZSUB_PROCESS_NAME_ZFPF.' or co-located with it but subject to neither the Program 1 Prevention Program nor the Program 3 Prevention Program), the Owner/Operator is required to review, update, and resubmit the Hazard Assessment and the RMP every five years under 40 CFR 68.36 and 68.190. The scope did not include these five-year update tasks. 
 
 If you have any questions or concerns about the scope of this audit and hazard review, please contact its author(s).'),
         'c6audit_method' => $Zfpf->encrypt_1c('On [DATES ON-SITE SERVICES DONE] the report leader(s) listed above completed the on-site services for the audit and hazard review described in this report. Additional document review was done off-site. [List managers who participated in the entrance and exit meetings. Briefly summarize people talked with, equipment viewed, and documents reviewed  -- details on these go in the as-done observation methods, in each observation record.]'),

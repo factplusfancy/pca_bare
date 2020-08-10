@@ -46,13 +46,13 @@ if (isset($_SESSION['StatePicked']['t0process']['k0process'])) { // This app req
 
 // $htmlFormArray is specified in the PSM-CAP App Standards, in file 0read_me_psm_cap_app_standards.txt.
 $htmlFormArray = array(
-    'c5name' => array('<a id="c5name"></a>Type of report. Used in report headings', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF),
-    'c5ts_as_of' => array('<a id="c5ts_as_of"></a>"As of" date and time, approximately marking the time when observations were made, such as, for PSM compliance audits, when the lead auditor finished delivering a preliminary spoken or written report to the process PSM leader at the exit meeting, after the onsite audit services', ''), // This field isn\'t required because the "as of" date may not be known initially; for example, a user may start a report before the exit meeting.
+    'c5name' => array('<a id="c5name"></a>Report type. Used in report headings', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF),
+    'c5ts_as_of' => array('<a id="c5ts_as_of"></a>"As of" date and time, approximately marking when observations were made, such as when the report leader, below, fisnished giving a preliminary spoken or written report to the reponsible Owner/Operator represenative', ''), // This field isn\'t required because the "as of" date may not be known initially; for example, a user may start a report before the exit meeting.
     'k0user_of_leader' => array('<a id="k0user_of_leader"></a>Leader for this report and the observations and conclusions it describes (the report leader)', ''),
+    'c6audit_scope' => array('<a id="c6audit_scope"></a>Scope', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
     'c6bfn_act_notice' => array('<a id="c6bfn_act_notice"></a>Activity notice(s) posted', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
     'c6howtoinstructions' => array('<a id="c6howtoinstructions"></a>Instructions on resolution, retention, any certification, and next deadline', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
     'c6background' => array('<a id="c6background"></a>Background', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
-    'c6audit_scope' => array('<a id="c6audit_scope"></a>Scope', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
     'c6audit_method' => array('<a id="c6audit_method"></a>Method', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
     'c6auditor_qualifications' => array('<a id="c6auditor_qualifications"></a>Qualifications of the report leader and any others on team', REQUIRED_FIELD_ZFPF, C6SHORT_MAX_BYTES_ZFPF),
     'c6bfn_auditor_notes' => array('<a id="c6bfn_auditor_notes"></a>Supporting documents (such as any entrance and exit meeting attendance; see also documents for each observation result)', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
