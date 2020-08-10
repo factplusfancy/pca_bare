@@ -8,7 +8,7 @@
 $AmmoniaRefrigerationAudit = array(
     1 => array(
         'k0audit' => 1, // For processes subject to OSHA PSM, the EPA's Program 3 Prevention Program, or equivalent.
-        'c5name' => $Zfpf->encrypt_1c('PSM audit and hazard review for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2020-08-07 template.'), // k0process is handled before SQL insert below.
+        'c5name' => $Zfpf->encrypt_1c('PSM audit and hazard review for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2020-08-10 template.'), // k0process is handled before SQL insert below.
         'c5ts_as_of' => $EncryptedNothing,
         'k0user_of_leader' => 0,
         'c6bfn_act_notice' => $EncryptedNothing,
@@ -152,7 +152,7 @@ The audit and hazard review focused on whether the Owner/Operator had identified
 (2) structures, 
 (3) building envelopes, 
 (4) means of egress.
-However, the scope did include observations of a sample of 
+However, the scope did include observations of a sample of: 
 (1) the '.HAZSUB_PROCESS_NAME_ZFPF.' supports to assess the Owner/Operator\'s design, construction, inspection, testing, and maintenance for these supports and 
 (2) access to and egress from rooms or areas where the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, to assess the Owner/Operator\'s systems for ensuring safe access and egress. 
 Findings about out-of-scope topics may be included in this report if discovered during the audit and hazard review. 
@@ -172,7 +172,7 @@ If you have any questions or concerns about the scope of this audit and hazard r
     ),
     2 => array(
         'k0audit' => 2,  // For processes subject to general duty only or the EPA's Program 2 Prevention Program.
-        'c5name' => $Zfpf->encrypt_1c('Hazard review and compliance audit for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2020-08-07 template.'), // k0process is handled before SQL insert below.
+        'c5name' => $Zfpf->encrypt_1c('Hazard review and compliance audit for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2020-08-10 template.'), // k0process is handled before SQL insert below.
         'c5ts_as_of' => $EncryptedNothing,
         'k0user_of_leader' => 0,
         'c6bfn_act_notice' => $EncryptedNothing,
@@ -311,7 +311,7 @@ The audit and hazard review focused on whether the Owner/Operator had identified
 (2) structures, 
 (3) building envelopes, 
 (4) means of egress.
-However, the scope did include observations of a sample of 
+However, the scope did include observations of a sample of: 
 (1) the '.HAZSUB_PROCESS_NAME_ZFPF.' supports to assess the Owner/Operator\'s design, construction, inspection, testing, and maintenance for these supports and 
 (2) access to and egress from rooms or areas where the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, to assess the Owner/Operator\'s systems for ensuring safe access and egress. 
 Findings about out-of-scope topics may be included in this report if discovered during the audit and hazard review. 
