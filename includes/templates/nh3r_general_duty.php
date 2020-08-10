@@ -220,6 +220,8 @@ foreach ($divisions as $VD) {
         // TO DO FOR PRODUCTION VERSION  In setup context, there will only be standard practices.
         // TO DO FOR PRODUCTION VERSION  If run after users have customized practices, need to filter for only standard practices.
         // TO DO FOR PRODUCTION VERSION  See includes/templates/schema.php t0practice:c2standardized
+        // TO DO exclude Employee Participation > Consulting on PHA
+        // TO DO exclude HSPSWP > Current and Accurate Certification from general duty
     if ($RRPD) foreach ($SRPD as $VPD) {
         $DivPractices[]['k0practice'] = $VPD['k0practice'];
         $RRPD = FALSE;

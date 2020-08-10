@@ -429,7 +429,7 @@ $Schema = array(
         'c6nymd_cont_qual',
         'c6notes_cont_qual',
         'c6bfn_cont_qual',
-        'k0user_of_act_notice', // 0 or k0user of person responsible for posting and filing PSM Activity Notice.
+        'k0user_of_act_notice', // 0 or k0user of person responsible for posting and filing Activity Notice.
         'c5ts_act_notice_requested',
         'c5ts_act_notice',
         'c6nymd_act_notice',

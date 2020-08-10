@@ -20,8 +20,8 @@ class ActNoticeZfpf {
             $AEInfo = $Zfpf->affected_entity_info_1c(); // Default parameters should work, from $_SESSION['Selected']
         else
             $AEInfo = $Zfpf->affected_entity_info_1c('Process-wide', $_SESSION['Selected']['k0process']);
-        $HTML = $Zfpf->xhtml_contents_header_1c('PSM Activity Notice', FALSE, FALSE).'<h1>
-        Process Safety Management Activity Notice</h1><p><i>
+        $HTML = $Zfpf->xhtml_contents_header_1c('Activity Notice', FALSE, FALSE).'<h1>
+        Process Safety Activity Notice</h1><p><i>
         Affected-Entity Full Description:</i><br /><b>
         '.$AEInfo['AEFullDescription'].'</b></p>';
         if (($AEInfo['AEscope'] == 'Facility-wide' or $AEInfo['AEscope'] == 'Process-wide') and isset($_SESSION['StatePicked']['t0facility'])) {
@@ -44,11 +44,11 @@ class ActNoticeZfpf {
         }
         if ($FileRoot == 'audit') {
             $HTML .= '<p><b>
-            An audit of the above process\'s compliance with the process-safety management requirements is planned soon or ongoing.</b></p>';
+            A compliance audit or hazard review of the above process\'s is planned soon or ongoing.</b></p>';
             $AsOfTimestamp = $Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_as_of']);
             if ($AsOfTimestamp != '[Nothing has been recorded in this field.]')
                 $HTML .= '<p><i>
-                Audit "as of" date and time (planned or actual), approximately marking the compliance-evaluation period, such as when the lead auditor delivers a preliminary spoken or written report to the process PSM leader at the exit meeting, after the onsite audit services:</i><br />
+                Date planned or completed:</i><br />
                 '.$Zfpf->timestamp_to_display_1c($AsOfTimestamp).'</p>';
         }
         elseif ($FileRoot == 'cms') {
@@ -72,7 +72,7 @@ class ActNoticeZfpf {
             A process-hazard analysis (PHA) or hazard identification and risk analysis (HIRA) on the above process is planned soon or ongoing.</b></p>';
         }
         $HTML .= '<p>
-        * All employees are entitled to review information developed to comply with the Process Safety Management (PSM) and Chemical Accident Prevention (CAP) regulations.</p><p>
+        * All employees are welcome to review information developed to improve process safety and, if applicable, to comply with the Process Safety Management (PSM) and Chemical Accident Prevention (CAP) regulations.</p><p>
         * Your input is welcome. Contact your supervisor, or your organization\'s safety personnel, for more information or to provide feedback.</p><p><i>
         Date this notice was intended to be posted, on or about:</i><br />
         '.$Zfpf->timestamp_to_display_1c(time()).'</p><p>

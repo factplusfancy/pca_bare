@@ -76,10 +76,10 @@ $practices = array(
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
     9 => array(
-        'c5name' => $Zfpf->encrypt_1c('Consulting on PSM Development'),
+        'c5name' => $Zfpf->encrypt_1c('Consulting on Process Safety'),
         'c2standardized' => 'Facility Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('BBBEEE'),
-        'c6description' => $Zfpf->encrypt_1c('A PSM Activity Notice is posted for at least 30 days whenever one of the following compliance practices gets underway: (1) process-hazard analysis (initial, updates, or amendments), (2) change management, (3) incident investigation, or (4) audit of PSM compliance. For these practices, the app can generate a standard PSM Activity Notice, with instructions on posting and recording. These PSM Activity Notices provide employees a comprehensive opportunity to participate because future PSM development at the facility almost always occurs via one of the above four practices.'),
+        'c6description' => $Zfpf->encrypt_1c('An Activity Notice is posted for at least 30 days whenever one of the following compliance practices gets underway: (1) process-hazard analysis (initial, updates, or amendments), if applicable, (2) change management, (3) incident investigation, or (4) compliance audit or hazard review. For these practices, the app can generate a standard Activity Notice, with instructions on posting and recording. These Activity Notices provide employees a comprehensive opportunity to participate because future process-safety development at the facility almost always occurs via one of the above compliance practices.'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ),

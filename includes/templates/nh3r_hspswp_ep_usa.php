@@ -52,7 +52,8 @@ Option: provide more details in a practice document here.'),
         'c5name' => $Zfpf->encrypt_1c('Security and Access Control'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEECCC'),
-        'c6description' => $Zfpf->encrypt_1c('These may range from "authorized personnel only" signs and locked doors to surveillance, fences, and so forth, as the Owner/Operator deems prudent for the circumstances or as required by other authorities or rules. See also the emergency planning sections of this app.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('These may range from "authorized personnel only" signs and locked doors to surveillance, fences, and so forth, as the Owner/Operator deems prudent for the circumstances or as required by other authorities or rules. See also the emergency planning sections of this app. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -139,7 +140,8 @@ for, if applicable --
 (5.1) call in assistance, such as a supervisor or a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor, and 
 (5.2) if safe, shut off equipment, for example by pressing the correct "off" button (but without having to hand-turn valve stems). 
 * The above tasks may be automated or done less often based on operating experience and judgment, but document the justification for any frequency reductions. 
-Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -147,7 +149,8 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c5name' => $Zfpf->encrypt_1c('Weekly Inspection'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEFFF'),
-        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions for inspecting all '.HAZSUB_PROCESS_NAME_ZFPF.' piping and equipment not covered by the Daily Inspection, for similar things and with similar short-term corrective actions -- call in assistance and simple shutoff, if needed. Of course, use judgment and operating experience to select inspection frequency, such as each shift, daily, weekly, or monthly, but document the basis for reductions -- such as better sensors, controls, and automation -- from the somewhat old-school suggested frequencies here. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions for inspecting all '.HAZSUB_PROCESS_NAME_ZFPF.' piping and equipment not covered by the Daily Inspection, for similar things and with similar short-term corrective actions -- call in assistance and simple shutoff, if needed. Of course, use judgment and operating experience to select inspection frequency, such as each shift, daily, weekly, or monthly, but document the basis for reductions -- such as better sensors, controls, and automation -- from the somewhat old-school suggested frequencies here. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -155,7 +158,8 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c5name' => $Zfpf->encrypt_1c('Low Load Begin and End'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEGGG'),
-        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering any actions that employees or contractors routinely need to complete when the '.HAZSUB_PROCESS_NAME_ZFPF.' needs to run at reduced capacity, such as during weekends or off seasons. This may be fully automated. Or, it may include things like turning on/off/auto switches for compressors or pumps, including pumps for secondary coolants. It may include idling the entire '.HAZSUB_PROCESS_NAME_ZFPF.' or parts of it. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering any actions that employees or contractors routinely need to complete when the '.HAZSUB_PROCESS_NAME_ZFPF.' needs to run at reduced capacity, such as during weekends or off seasons. This may be fully automated. Or, it may include things like turning on/off/auto switches for compressors or pumps, including pumps for secondary coolants. It may include idling the entire '.HAZSUB_PROCESS_NAME_ZFPF.' or parts of it. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -163,7 +167,8 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c5name' => $Zfpf->encrypt_1c('Leak Mitigation and Emergency Shutdown'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEHHH'),
-        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions for assessing small to catastrophic incidents -- including leaks, fires, and explosions -- involving the '.HAZSUB_PROCESS_NAME_ZFPF.'. Has options for what, if anything, can be done to mitigate leaks in several broad types of situations. Distinguishes between leaks when some or all '.HAZSUB_NAME_ADJECTIVE_ZFPF.' compressors should be shut off (high-side leaks) and leaks when compressors should often be left running, while '.HAZSUB_NAME_ADJECTIVE_ZFPF.' flow to the leak is stopped, if safely possible (low-side leaks). Includes guidance on when to press the emergency-stop button for the entire '.HAZSUB_PROCESS_NAME_ZFPF.'. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions for assessing small to catastrophic incidents -- including leaks, fires, and explosions -- involving the '.HAZSUB_PROCESS_NAME_ZFPF.'. Has options for what, if anything, can be done to mitigate leaks in several broad types of situations. Distinguishes between leaks when some or all '.HAZSUB_NAME_ADJECTIVE_ZFPF.' compressors should be shut off (high-side leaks) and leaks when compressors should often be left running, while '.HAZSUB_NAME_ADJECTIVE_ZFPF.' flow to the leak is stopped, if safely possible (low-side leaks). Includes guidance on when to press the emergency-stop button for the entire '.HAZSUB_PROCESS_NAME_ZFPF.'. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -178,7 +183,8 @@ In addition to guidance on resolving typical small leaks, procedure descriptions
 (3) pre-action inspection for damaged equipment that may cause the procedure to fail, 
 (4) identifying and troubleshooting (or calling in help for) reasonably-foreseeable failure possibilities, such as leak-by a valve seat, threaded bonnet loosens, seal cap or stem stuck, and so forth. 
 * Option: refer to sub-procedures for specific tasks, such as the Operating Refrigeration Valve Stems sub-procedure. 
-Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -191,7 +197,8 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
 (2) any needed human actions during or after power failures, 
 (3) handling shutdowns due to a high level in a vessel that feeds compressors (the first step may be to call in a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor); and 
 (4) re-start after leaks and emergency shutdowns (okay to say that a unique re-start plan will be developed in consultation with a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor, after investigating conditions). 
-Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -199,7 +206,8 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c5name' => $Zfpf->encrypt_1c('Ammonia Charging'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEKKK'),
-        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering '.HAZSUB_NAME_ADJECTIVE_ZFPF.' quality and inventory control, charging from cylinders, charging from tanker trucks, and so forth, as applicable. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering '.HAZSUB_NAME_ADJECTIVE_ZFPF.' quality and inventory control, charging from cylinders, charging from tanker trucks, and so forth, as applicable. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -207,7 +215,8 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c5name' => $Zfpf->encrypt_1c('Oil Charging and Draining'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEELLL'),
-        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering lubricating oil quality and inventory control, draining oil, and charging oil into '.HAZSUB_NAME_ADJECTIVE_ZFPF.' compressors and any '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pumps with seals that use oil. All '.HAZSUB_PROCESS_NAME_ZFPF.' openings from which oil is drained are equipped with a spring-closing valve and, optionally, an oil pot (useful where oil is routinely drained), except for draining oil from equipment that has been isolated, pumped out, and vented to atmospheric pressure. If these procedures will be used without a piping-opening permit, the procedure descriptions shall include valve tag numbers and details needed to safely complete their tasks. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering lubricating oil quality and inventory control, draining oil, and charging oil into '.HAZSUB_NAME_ADJECTIVE_ZFPF.' compressors and any '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pumps with seals that use oil. All '.HAZSUB_PROCESS_NAME_ZFPF.' openings from which oil is drained are equipped with a spring-closing valve and, optionally, an oil pot (useful where oil is routinely drained), except for draining oil from equipment that has been isolated, pumped out, and vented to atmospheric pressure. If these procedures will be used without a piping-opening permit, the procedure descriptions shall include valve tag numbers and details needed to safely complete their tasks. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -218,7 +227,8 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c6description' => $Zfpf->encrypt_1c('These include: 
 (1) the hot-work permit policy and form applicable to the process and 
 (2) the Evacuating Ammonia for Hot Work sub-procedure description, which applies to hot-work on the '.HAZSUB_PROCESS_NAME_ZFPF.'. 
-Sub-procedure description also includes: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+Sub-procedure description also includes: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -237,7 +247,8 @@ Sub-procedure description also includes: (A) applicability, (B) roles, responsib
 (3.5) Ammonia Flange Opening. 
 * Other procedure descriptions may reference these sub-procedures, for example, an oil-draining procedure description may reference and require training on the Operating Refrigeration Valve Stems sub-procedure. 
 * Once a piping-opening permit has been completed for a routine task, it may be converted into a template, to more easily generate the permit next time. 
-The permit form and sub-procedure descriptions also include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+The permit form and sub-procedure descriptions also include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -245,7 +256,8 @@ The permit form and sub-procedure descriptions also include: (A) applicability, 
         'c5name' => $Zfpf->encrypt_1c('Equipment-Package Procedures'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEOOO'),
-        'c6description' => $Zfpf->encrypt_1c('These may be developed to simplify the system-wide procedure descriptions and documents, such as the Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions document(s). They may be worthwhile for equipment that routinely needs to be isolated, pumped out, and vented for service, such as compressors; however, this may also be handled by template piping-opening permits. Equipment-packages also provide an option for grouping procedures, such as for adding oil, draining oil, or temporary operation. If written, each procedure description also includes (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. Optional.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('These may be developed to simplify the system-wide procedure descriptions and documents, such as the Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions document(s). They may be worthwhile for equipment that routinely needs to be isolated, pumped out, and vented for service, such as compressors; however, this may also be handled by template piping-opening permits. Equipment-packages also provide an option for grouping procedures, such as for adding oil, draining oil, or temporary operation. If written, each procedure description also includes (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. Optional. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -257,7 +269,8 @@ The permit form and sub-procedure descriptions also include: (A) applicability, 
 (1) swing compressors, 
 (2) switching a motorized valve to hand operation, 
 (3) disabling a motorized valve and controlling liquid flow with an existing hand-expansion valve instead, and so forth. 
-If written, each temporary-operation procedure description also includes (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. Optional.'.DOC_WHERE_KEPT_ZFPF),
+If written, each temporary-operation procedure description also includes (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. Optional. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -295,7 +308,8 @@ If written, each temporary-operation procedure description also includes (A) app
 (2.2) too low -- pumps shut down. 
 * The frequencies for these tests is covered under inspection, testing, and maintenance (ITM) for safe operation and mechanical integrity, but hazardous-substance procedure descriptions are needed for them due to their hazards. 
 * See IIAR 6, latest edition, for requirements and guidance on test methods.
-Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to.'.DOC_WHERE_KEPT_ZFPF),
+Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -314,7 +328,8 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
 (3.5) if testing fans, ensuring that there are no loose, lightweight, things that could be sucked into the fans, 
 (4) minimizing the simultaneous disabling of safety-system functions to the extent practical, and 
 (5) notifications to managers and supervisors once the safety systems are fully operational again. 
-Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to'.DOC_WHERE_KEPT_ZFPF),
+Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     )
@@ -383,7 +398,13 @@ for anhydrous ammonia:
 (7.1) local (typically 911), 
 (7.2) state, and 
 (7.3) federal (the National Response Center) emergency-response authorities, 
-(8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs), 
+(8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs),  
+(8.1) keeping in a prearranged location or giving emergency responders the information they need, such as 
+(8.1.1) the Emergency Action Plan,
+(8.1.2) piping and instrumentation diagrams,
+(8.1.3) floor plans and site maps, 
+(8.1.4) the Leak Mitigation and Emergency Shutdown procedure, and
+(8.1.5) the Small-Leak Notifications, Investigation, and Actions procedure,
 (9) advanced coordination with local emergency responders, including 
 (9.1) at least yearly checking, and attempting to ensure, that the emergency plan of the community where the facility is located has up-to-date information on 
 (9.1.1) facility contacts, 
@@ -408,7 +429,9 @@ for anhydrous ammonia:
 (10.2) when an employee\'s responsibilities under the Emergency Action Plan change, 
 (10.3) when the Emergency Action Plan changes, and typically 
 (10.4) yearly drills or refreshers, and 
-(11) all other applicable requirements in 29 CFR 1910.38 and other relevant rules, depending on any other hazardous substances and circumstances at the facility, covering, for example, medical emergencies, earthquakes, hurricanes, tornadoes, bomb threats, and so forth.'.DOC_WHERE_KEPT_ZFPF),
+(11) all other applicable requirements in 29 CFR 1910.38 and other relevant rules, depending on any other hazardous substances and circumstances at the facility, covering, for example, medical emergencies, earthquakes, hurricanes, tornadoes, bomb threats, and so forth, including 
+(11.1) any required reporting to building, boiler, refrigeration, pressure vessel, or hazardous-substance inspectors with state or local government. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     )
