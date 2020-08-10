@@ -74,11 +74,11 @@ elseif (isset($_GET['contractor']) or (isset($_SESSION['Scratch']['PlainText']['
     $TableRoot = 'contractor';
 }
 elseif (isset($_GET['practice_templates_i1m']) or isset($_POST['practice_templates_i1m']) or isset($_POST['practice_templates_i1']) or isset($_POST['practice_templates_modify_confirm_post_1e']) or isset($_POST['practice_templates_undo_confirm_post_1e']) or isset($_POST['practice_templates_i2']) or isset($_POST['practice_templates_yes_confirm_post_1e'])) {
-    if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes' or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)// Only app admins with full privieges can edit template practices.
+    if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes' or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF) // Only app admins with full privieges can edit template practices.
         $Zfpf->send_to_contents_1c(); // Don't eject
     // SPECIAL CASE: modify $htmlFormArray to allow updating scope of template practice. Do here so available to all practice_templates code.
     $htmlFormArray['c2standardized'] = array('Scope of app-standard practice.', '', C5_MAX_BYTES_ZFPF, 'radio', array('Owner Standard Practice', 'Contractor Standard Practice', 'Facility Standard Practice', 'Process Standard Practice')); // Templates must have a scope.
-    $_SESSION['Scratch']['PlainText']['FragPracPrivileges'] = 'StandardPractices'; // Needed below and in includes/fragment_practice_i1.php
+    $_SESSION['Scratch']['PlainText']['FragPracPrivileges'] = 'StandardPractices'; // Needed below
 }
 else
     $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);

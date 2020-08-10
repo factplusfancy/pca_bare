@@ -8,7 +8,7 @@
 // Divisions are included here because they are groups of rule fragments. This app divides: a rule into divisions and divisions into fragments.
 
 // General security check.
-if (!isset($_SESSION['Scratch']['PlainText']['SecurityToken']) or $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'fragment_practice_i1.php') {    
+if (!isset($_SESSION['Scratch']['PlainText']['SecurityToken']) or $_SESSION['Scratch']['PlainText']['SecurityToken'] != 'fragment_practice_i1.php') {
     // $_SESSION['Scratch']['PlainText']['FragPracPrivileges'] is set in practice_io03.php
     if (!isset($_SESSION['Scratch']['PlainText']['FragPracPrivileges']) or 
         ($_SESSION['Scratch']['PlainText']['FragPracPrivileges'] != 'StandardPractices' and $_SESSION['Scratch']['PlainText']['FragPracPrivileges'] != 'CustomPractices') or 
@@ -22,6 +22,10 @@ $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'] = array(
     'practice_fragment' => 'Fragments',
     'practice_division' => 'Divisions'
 );
+
+// Needs to be reset here
+if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes' and $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) == MAX_PRIVILEGES_ZFPF) // Only app admins with full privieges can edit template practices.
+    $_SESSION['Scratch']['PlainText']['FragPracPrivileges'] = 'StandardPractices'; // Needed in includes/fragment_practice_i1.php
 
 if (!isset($_SESSION['Selected']['k0practice'])) { // Get selected practice. practice_io03.php created $_SESSION['SelectResults']['t0practice']
     $CheckedPost = $Zfpf->post_length_blank_1c('selected');
