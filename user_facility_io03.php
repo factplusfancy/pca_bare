@@ -50,7 +50,7 @@ function display_privileges_p($Zfpf, $DBMSresource, $SelectedUser, $CascadeUp = 
             $NameDescription = $Zfpf->entity_name_description_1c($SRP[0], 100, FALSE);
             $PrivilegesText .= '<p>
             '.$NameDescription.':<br />
-            - PSM Leader: '.$IsLeader.'<br />
+            - The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$IsLeader.'<br />
             - Process: '.$Zfpf->decrypt_1c($SRUP[0]['c5p_process']).'<br />
             - User-process (and applicable facility and owner <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>): '.$Zfpf->decrypt_1c($SRUP[0]['c5p_user']).'</p>';
         }
@@ -433,7 +433,7 @@ if (isset($_SESSION['Selected']['k0user_facility'])) {
             $IsLeader = 'No';
         $PrivilegesText = '<p>
         At selected facility:<br />
-        - PSM Leader: '.$IsLeader.'<br />
+        - The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$IsLeader.'<br />
         - Facility: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c5p_facility']).'<br />
         - Union: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c5p_union']).'<br />
         - User-facility (and subordinate <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>): '.$Zfpf->decrypt_1c($_SESSION['Selected']['c5p_user']).'<br />
@@ -445,7 +445,7 @@ if (isset($_SESSION['Selected']['k0user_facility'])) {
         End selected user\'s access to facility information via this app.</h2><p>
         <b>Selected <a class="toc" href="glossary.php#facility" target="_blank">facility</a>:</b> '.$Zfpf->decrypt_1c($_SESSION['StatePicked']['t0facility']['c5name']).', '.$Zfpf->decrypt_1c($_SESSION['StatePicked']['t0facility']['c5city']).', '.$Zfpf->decrypt_1c($_SESSION['StatePicked']['t0facility']['c5state_province']).', '.$Zfpf->decrypt_1c($_SESSION['StatePicked']['t0facility']['c5country']).'</p><p>
         End access for <b>'.$SelectedUser['NameTitleEmployerWorkEmail'].'</b>, via this app, to the information of the selected facility, its processes, and their <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>.</p><p>
-        The app cannot assign a new PSM leader. You need to do this, if you plan to end the access of a PSM leader for a facility, a process, or any ongoing PHA or HIRA, incident investigation, or PSM audit.</p><p>
+        The app cannot assign a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader. You need to do this, if you plan to end the access of a '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for a facility, a process, or any ongoing PHA or HIRA, incident investigation, or PSM audit.</p><p>
         The above user has the following privileges (which they will lose) and leadership roles (which will need to be filled).</p>
         '.$PrivilegesText.'
         <form action="user_facility_io03.php" method="post"><p>
@@ -468,7 +468,7 @@ if (isset($_SESSION['Selected']['k0user_facility'])) {
         if ($LeadersNeeded)
             echo '<p>
             '.$LeadersNeeded.'</p><p>
-            '.$SelectedUser['Name'].' remains the recorded PSM leader for these.</p>';
+            '.$SelectedUser['Name'].' remains the recorded '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for these.</p>';
         echo '<p>
         You can confirm this via the user history records.</p>
         <form action="user_h_o1.php?facility" method="post"><p>

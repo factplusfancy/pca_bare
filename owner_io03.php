@@ -2,7 +2,7 @@
 // *** LEGAL NOTICES *** 
 // Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-// This file handles all the owner summary input and output HTML forms, except the:
+// This file handles all the owner-summary input and output HTML forms, except the:
 //  - i0m & i1m files for listing existing records
 
 require 'directory_path_settings.php';
@@ -36,7 +36,7 @@ $htmlFormArray = array(
     'c5name' => array('<a id="c5name"></a>Owner/Operator (aka owner) name, the exact legal name often works best', REQUIRED_FIELD_ZFPF),
     'c6description' => array('Description', '', C6SHORT_MAX_BYTES_ZFPF),
     'c5chief_officer_name' => array('<a id="c5chief_officer_name"></a>Chief officer or others holding overall responsibility for this entity. If more than one person jointly (and perhaps severally) hold overall responsibility, list all of their names, or reference a document where this information is kept up to date', REQUIRED_FIELD_ZFPF),
-    'k0user_of_leader' => array('PSM Leader', ''),
+    'k0user_of_leader' => array('The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader', ''),
     'c5phone' => array('<a id="c5phone"></a>Main Telephone Number', REQUIRED_FIELD_ZFPF),
     'c5street1' => array('<a id="c5street1"></a>Address', REQUIRED_FIELD_ZFPF),
     'c5street2' => array('Address (extra line)', ''),
@@ -68,7 +68,7 @@ if (isset($_POST['owner_i0n'])) {
     $EncryptedNewDatabaseRow = $Zfpf->encrypt_1c('[A new database row is being created.]');
     $_SESSION['Selected'] = array(
         'k0owner' => time().mt_rand(1000000, 9999999),
-        'k0user_of_leader' => time().mt_rand(1000000, 9999999), // Make this initial admin the owner PSM leader with full global and user_owner c5p_ privileges.
+        'k0user_of_leader' => time().mt_rand(1000000, 9999999), // Make this initial admin the owner leader with full global and user_owner c5p_ privileges.
         'c5name' => $EncryptedNothing,
         'c6description' => $EncryptedNothing,
         'c5chief_officer_name' => $EncryptedNothing,
@@ -173,9 +173,9 @@ if (isset($_POST['owner_o1']) or isset($FromLinkWithoutPost)) {
     $Display = $Zfpf->select_to_display_1e($htmlFormArray, FALSE, TRUE);
 	// Handle k0 field(s)
     $Display['k0user_of_leader'] = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_leader'])['NameTitleEmployerWorkEmail'];
-    if (($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'] or $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes') and $UserGlobalDBMSPrivileges == MAX_PRIVILEGES_ZFPF) // Current user is owner PSM leader or app admin.
+    if (($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'] or $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes') and $UserGlobalDBMSPrivileges == MAX_PRIVILEGES_ZFPF) // Current user is owner leader or app admin.
         $Display['k0user_of_leader'] .= '<br />
-        <input type="submit" name="change_psm_leader_1" value="Change PSM leader" />';
+        <input type="submit" name="change_psm_leader_1" value="Change '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader" />';
     echo $Zfpf->xhtml_contents_header_1c().'
     <h2>
     Owner Summary</h2>
@@ -229,7 +229,7 @@ if (isset($_SESSION['Selected']['k0owner'])) {
         $_SESSION['Selected'] = $SR[0];
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
 
-    // No edit lock because only PSM leader or an app admin can change the PSM leader.
+    // No edit lock because only leader or an app admin can change the leader.
     if (isset($_POST['change_psm_leader_1'])) {
         if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes') or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
             $Zfpf->send_to_contents_1c(); // Don't eject
@@ -244,8 +244,8 @@ if (isset($_SESSION['Selected']['k0owner'])) {
         $TableNameUserEntity = 't0user_owner';
         $Conditions1[0] = array('k0owner', '=', $_SESSION['Selected']['k0owner']);
         $SpecialText = '<p><b>
-        Pick PSM Leader</b></p><p>
-        The current PSM leader will be replaced by the user you pick above.</p>';
+        Pick '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader</b></p><p>
+        The current '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader will be replaced by the user you pick above.</p>';
         $Zfpf->lookup_user_wrap_2c(
             $TableNameUserEntity,
             $Conditions1,
@@ -254,7 +254,7 @@ if (isset($_SESSION['Selected']['k0owner'])) {
             array('k0user'), // $Columns1
             'owner_io03.php', // $CancelFile
             $SpecialText,
-            'Assign PSM Leader', // $SpecialSubmitButton
+            'Assign '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader', // $SpecialSubmitButton
             'change_psm_leader_3', // $SubmitButtonName
             'change_psm_leader_1', // $TryAgainButtonName
             'owner_o1', // $CancelButtonName
@@ -290,32 +290,32 @@ if (isset($_SESSION['Selected']['k0owner'])) {
         $Affected = $Zfpf->one_shot_update_1s('t0owner', $Changes, $Conditions, TRUE, $ShtmlFormArray);
         if ($Affected != 1)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
-        // Email the current and former PSM leaders and, if applicable, current user, who must be an app admin.
+        // Email the current and former leaders and, if applicable, current user, who must be an app admin.
         $AEFullDescription = 'owner '.$Zfpf->decrypt_1c($_SESSION['Selected']['c5name']);
         $FormerLeader = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_leader']);
         $NewLeader = $Zfpf->user_job_info_1c($Changes['k0user_of_leader']);
         $EmailAddresses = array($FormerLeader['WorkEmail'], $NewLeader['WorkEmail']);
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found):</b><br />
-        Former PSM Leader: '.$FormerLeader['NameTitleEmployerWorkEmail'].'<br />
-        New PSM Leader: '.$NewLeader['NameTitleEmployerWorkEmail'];
+        Former '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$FormerLeader['NameTitleEmployerWorkEmail'].'<br />
+        New '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$NewLeader['NameTitleEmployerWorkEmail'];
     	$Message = '<p>';
         if ($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader']) {
             $CurrentUserAppAdmin = $Zfpf->current_user_info_1c();
             $EmailAddresses[] = $CurrentUserAppAdmin['WorkEmail'];
             $DistributionList .= '<br />
-            App admin who changed the PSM leader: '.$CurrentUserAppAdmin['NameTitleEmployerWorkEmail'];
+            App admin who changed the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$CurrentUserAppAdmin['NameTitleEmployerWorkEmail'];
             $Message .= $CurrentUserAppAdmin['NameTitleEmployerWorkEmail'];
         }
         else
             $Message .= $FormerLeader['NameTitleEmployerWorkEmail'];
         $DistributionList .= '</p>';
-        $Message .= ' changed the PSM leader for '.$AEFullDescription.'<br/><br/>
+        $Message .= ' changed the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$AEFullDescription.'<br/><br/>
         to: '.$NewLeader['NameTitleEmployerWorkEmail'].'</p>';
         $_SESSION['Selected']['k0user_of_leader'] = $Changes['k0user_of_leader'];
         if (isset($_SESSION['StatePicked']['t0owner']))
             $_SESSION['StatePicked']['t0owner']['k0user_of_leader'] = $Changes['k0user_of_leader'];
-    	$Subject = 'PSM-CAP: Changed PSM leader for '.$AEFullDescription;
+    	$Subject = 'PSM-CAP: Changed '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$AEFullDescription;
         $Body = $Zfpf->email_body_append_1c($Message, $AEFullDescription, '', $DistributionList);
         $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
         echo $Zfpf->xhtml_contents_header_1c().'<h2>

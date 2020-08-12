@@ -150,9 +150,9 @@ $htmlFormArray = array(
     ),
     'c6root_cause' => array(
         '<a id="c6root_cause"></a><b>Root cause and additional contributing causes of the incident, its likelihood, or its severity.</b><br /> Describe any particular problem or contributing shortcomings that led to the incident. Consider the following rough types of causes.<br />
-        (A) People: administrative controls, unauthorized changes, contractor qualifications, human factors, procedures, training.<br />
-        (B) Things in/of/for the '.HAZSUB_PROCESS_NAME_ZFPF.': design, fabrication, construction, maintenance, aging, corrosion, expansion or contraction (of materials in process or containment envelope), shocks, vibrations... of equipment, piping, vessels, supporting structures and buildings, controls, safety systems, labeling, lighting, and so forth.<br />
-        (C) External events: earthquake, lightning strike, electrical power surge or outage, external explosion or fire, flooding, high winds (tornado, hurricane), train derailment, airplane crash, failure of cooling, compressed air, or other utilities, and so forth.',
+        (A) People: administrative controls, unauthorized changes, contractor qualifications, human factors, procedures, training, and so forth.<br />
+        (B) Things in/of/for the '.HAZSUB_PROCESS_NAME_ZFPF.': design, fabrication, construction, maintenance, aging, corrosion, expansion or contraction (of materials in the '.HAZSUB_PROCESS_NAME_ZFPF.' or its containment envelope), shocks, vibrations, and so forth of equipment, piping, vessels, supports (including structures and buildings), controls, safety systems, labeling, lighting, and so forth.<br />
+        (C) External events: earthquake, lightning strike, electrical power surge or outage, external explosion or fire, flooding, high winds (hurricane, sand storm, tornado), train derailment, airplane crash, failure of cooling, compressed air, or other utilities, and so forth.',
         REQUIRED_FIELD_ZFPF,
         C6SHORT_MAX_BYTES_ZFPF
     ),
@@ -174,7 +174,7 @@ $htmlFormArray = array(
         'upload_files'
     )
 );
-$Types = array('action' => '<b>Actions, proposed or referenced</b>, including any recommendations to prevent future incidents. If a recommendation can be resolved by completing an open action, already in this app\'s action register, this open action should be referenced. Otherwise, a proposed action should be drafted, which this app logs in its action register once the report is approved by the PSM leader for the process where the incident occurred'); // See ccsaZfpf::scenario_CCSA_Zfpf
+$Types = array('action' => '<b>Actions, proposed or referenced</b>, including any recommendations to prevent future incidents. If a recommendation can be resolved by completing an open action, already in this app\'s action register, this open action should be referenced. Otherwise, a proposed action should be drafted, which this app logs in its action register once the report is approved by the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for the '.HAZSUB_PROCESS_NAME_ZFPF.' where the incident occurred'); // See ccsaZfpf::scenario_CCSA_Zfpf
 
 //Left hand Table of contents
 if (!isset($_POST['incident_i2']) and !isset($_POST['incident_history_o1']))
@@ -338,7 +338,7 @@ if (isset($_POST['incident_o1'])) {
         <p>You don\'t have editing privileges on this incident-investigation record. Only draft incident-investigation records can be edited, and only the investigation-team leader can edit these.</p>';
         if ($Status != 'draft')
             echo '<p>
-            This is not a draft investigation record. The process PSM leader may cancel owner approval of an investigation and, optionally, change the investigation-team leader. The team leader may cancel the team-leader approval, making the investigation record a draft that the team leader may edit.</p>';
+            This is not a draft investigation record. The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader may cancel owner approval of an investigation and, optionally, change the investigation-team leader. The team leader may cancel the team-leader approval, making the investigation record a draft that the team leader may edit.</p>';
         if ($UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
             echo '<p><b>
             Practice Privileges Notice</b>: You don\'t have update privileges for this practice, if you need to edit any records for this practice, please contact your supervisor or a PSM-CAP App administrator.</p>';
@@ -355,7 +355,7 @@ if (isset($_POST['incident_o1'])) {
             </form>';
         if ($Status == 'owner approved' and $UserIsProcessPSMLeader)
             echo '<p>
-            To change the investigation-team leader, you (the process PSM leader) need to first cancel owner approval of this incident-investigation record.</p>';
+            To change the investigation-team leader, you (the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader) need to first cancel owner approval of this incident-investigation record.</p>';
         // Team-leader approve button
         if ($Status == 'draft' and $_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'])
             echo '
@@ -368,17 +368,17 @@ if (isset($_POST['incident_o1'])) {
             <form action="incident_io03.php" method="post"><p>
                 <input type="submit" name="team_leader_approval_c" value="Cancel team-leader approval" /></p>
             </form>';
-        // Process PSM leader cannot approve yet notice.
+        // Process leader cannot approve yet notice.
         if ($Status == 'draft' and $UserIsProcessPSMLeader)
             echo '<p>
-            The incident-investigation team leader must approve this record before you (the process PSM leader) can approve it.</p>';
-        // Process PSM leader approve button (on behalf of owner)
+            The incident-investigation team leader must approve this record before you (the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader) can approve it.</p>';
+        // Process leader approve button (on behalf of owner)
         if ($Status == 'team-leader approved' and $UserIsProcessPSMLeader)
             echo '
             <form action="incident_io03.php" method="post"><p>
                 <input type="submit" name="psm_leader_approval" value="Approve final report" /></p>
             </form>';
-        // Process PSM leader cancel-approval button (on behalf of owner)
+        // Process leader cancel-approval button (on behalf of owner)
         if ($Status == 'owner approved' and $UserIsProcessPSMLeader)
             echo '
             <form action="incident_io03.php" method="post"><p>
@@ -494,14 +494,14 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $EmailAddresses[] = $OldTeamLeader['WorkEmail'];
 	    $Subject = 'PSM-CAP: New Incident-Investigation Team Leader Assigned: '.$NewTeamLeader['NameTitle'];
 	    $Body = '<p>
-	    The process PSM leader changed the incident-investigation team leader, as described on the distribution list below, for:<br />
+	    The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader changed the incident-investigation team leader, as described on the distribution list below, for:<br />
         * Incident Name: '.$IncidentName.'<br />
         * '.$Process['AEFullDescription'].'</p>';
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found): </b><br />
-        Process PSM Leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'<br />
-        New Team Leader: '.$NewTeamLeader['NameTitle'].', '.$NewTeamLeader['Employer'].' '.$NewTeamLeader['WorkEmail'].'<br />
-        Former Team Leader: '.$OldTeamLeader['NameTitle'].', '.$OldTeamLeader['Employer'].' '.$OldTeamLeader['WorkEmail'].'</p>';
+        The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'<br />
+        New team leader: '.$NewTeamLeader['NameTitle'].', '.$NewTeamLeader['Employer'].' '.$NewTeamLeader['WorkEmail'].'<br />
+        Former team leader: '.$OldTeamLeader['NameTitle'].', '.$OldTeamLeader['Employer'].' '.$OldTeamLeader['WorkEmail'].'</p>';
 	    $Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], '', $DistributionList);
 	    $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
         echo $Zfpf->xhtml_contents_header_1c('Done').'<h2>
@@ -577,7 +577,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $_SESSION['Selected']['k0user_of_ae_leader'] = $Changes['k0user_of_ae_leader'];
         $_SESSION['Selected']['c5who_is_editing'] = $EncryptedNobody; // Same effect as clear_edit_lock_1c().
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the incident-investigation team leader and the process, facility, and owner PSM leaders.
+        // Email the incident-investigation team leader and the process, facility, and owner leaders.
         $Chain = $Zfpf->up_the_chain_1c();
         $Chain['EmailAddresses'][] = $TeamLeader['WorkEmail']; // Duplicate email addresses removed by CoreZfpf::send_email_1c
         $Chain['DistributionList'] .= '<br />
@@ -590,7 +590,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $Chain['DistributionList']);
         $EmailSent = $Zfpf->send_email_1c($Chain['EmailAddresses'], $Subject, $Body);
         echo $Zfpf->xhtml_contents_header_1c('Investigation').'<h2>
-        You just approved the incident-investigation report. The Process PSM Leader should have been emailed, so they may review and approve it.</h2>';
+        You just approved the incident-investigation report. The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader should have been emailed, so they may review and approve it.</h2>';
         if ($EmailSent)
             echo '<p>You and others involved should soon receive an email confirming this.</p>';
         else
@@ -659,7 +659,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $_SESSION['Selected']['k0user_of_ae_leader'] = $Changes['k0user_of_ae_leader'];
         $_SESSION['Selected']['c5who_is_editing'] = $EncryptedNobody;
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the incident-investigation team leader and the process, facility, and owner PSM leaders.
+        // Email the incident-investigation team leader and the process, facility, and owner leaders.
         $Chain = $Zfpf->up_the_chain_1c();
         $Chain['EmailAddresses'][] = $TeamLeader['WorkEmail'];
         $Chain['DistributionList'] .= 'Incident-Investigation Team Leader: '.$TeamLeader['NameTitle'].', '.$TeamLeader['Employer'].' '.$TeamLeader['WorkEmail'].'</p>';
@@ -686,7 +686,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $Zfpf->save_and_exit_1c();
     }
 
-    // Process PSM leader approving report 1
+    // Process leader approving report 1
     if (isset($_POST['psm_leader_approval'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'team-leader approved' or !$UserIsProcessPSMLeader)
@@ -699,11 +699,11 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         if (!$_SESSION['Selected']['k0user_of_ae_leader'] and $_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'])
             $NoAddButton = FALSE;
         $ApprovalText = '<h1>
-        Incident Investigation: PSM Leader Approval of Report</h1>
+        Incident investigation: '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approval of report</h1>
         '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'
         <a id="actions"></a>'.$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
         <b>BE CAREFUL:</b> Approving this report permanently logs its proposed actions in this app\'s action register, allowing other reports to reference them. You may cancel your approval of this report later, but doing this will <b>not</b> remove its proposed actions from the action register. The action register allows resolving actions without completing them, via its "resolution method" field, if a proposed action turns out to be unneeded or counterproductive.</p><p>
-        <b>By clicking "Approve report" below, as the process PSM leader for '.$Process['AEFullDescription'].', I am confirming that:<br />
+        <b>By clicking "Approve report" below, as the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$Process['AEFullDescription'].', I am confirming that:<br />
          - I carefully reviewed this incident-investigation report,<br />
          - I agree with its conclusions and recommendations, including its actions, proposed or referenced, and<br />
          - I approve this incident-investigation report.</b></p><p>
@@ -724,7 +724,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $Zfpf->save_and_exit_1c();
     }
     
-    // Process PSM leader approving report 2
+    // Process leader approving report 2
     if (isset($_POST['psm_leader_approval_2'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'team-leader approved' or !$UserIsProcessPSMLeader)
@@ -762,13 +762,13 @@ if (isset($_SESSION['Selected']['k0incident'])) {
                 }
             }
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the incident-investigation team leader and the process, facility, and owner PSM leaders.
+        // Email the incident-investigation team leader and the process, facility, and owner leaders.
         $Chain = $Zfpf->up_the_chain_1c();
         $Chain['EmailAddresses'][] = $TeamLeader['WorkEmail'];
         $Chain['DistributionList'] .= 'Incident-Investigation Team Leader: '.$TeamLeader['NameTitle'].', '.$TeamLeader['Employer'].' '.$TeamLeader['WorkEmail'].'</p>';
-        $Subject = 'PSM-CAP: Report Approved by Process PSM Leader. Investigation of Incident: '.$IncidentName;
+        $Subject = 'PSM-CAP: Report Approved by the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader. Investigation of Incident: '.$IncidentName;
         $Body = '<p>
-        The Process PSM Leader approved the investigation report for:<br />
+        The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approved the investigation report for:<br />
         * Incident Name: '.$IncidentName.'<br />
         * '.$Process['AEFullDescription'].'</p>';
         $Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $Chain['DistributionList']);
@@ -787,7 +787,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $Zfpf->save_and_exit_1c();
     }
 
-    // Process PSM Leader canceling approval 1
+    // Process Leader canceling approval 1
     if (isset($_POST['psm_leader_approval_c'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'owner approved' or !$UserIsProcessPSMLeader)
@@ -800,10 +800,10 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         if (!$_SESSION['Selected']['k0user_of_ae_leader'] and $_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'])
             $NoAddButton = FALSE;
         $ApprovalText = '<h1>
-        Incident Investigation: Canceling PSM Leader Approval of Report</h1>
+        Incident investigation: canceling '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approval of report</h1>
         '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'
         <a id="actions"></a>'.$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
-        <b>By clicking "Cancel owner-approval" below, as the process PSM leader for '.$Process['AEFullDescription'].', I cancel the owner approval of the above incident-investigation report.</b></p><p>
+        <b>By clicking "Cancel owner-approval" below, as the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$Process['AEFullDescription'].', I cancel the owner approval of the above incident-investigation report.</b></p><p>
         Canceling owner approval will <b>not</b> remove the previously-approved report\'s proposed actions from the action register. The action register allows resolving actions without completing them, via its "resolution method" field, if a proposed action turns out to be unneeded or counterproductive.</p><p>
         This report had been approved by: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_ae_leader']).'<br />
         with approval Timestamp: '.date('\Y\e\a\r Y, \M\o\n\t\h n, \D\a\y j, \T\i\m\e H:i:s', $Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_ae_leader'])).'</p>';
@@ -817,7 +817,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $Zfpf->save_and_exit_1c();
     }
     
-    // Process PSM Leader canceling approval 2
+    // Process Leader canceling approval 2
     if (isset($_POST['psm_leader_approval_c2'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'owner approved' or !$UserIsProcessPSMLeader)
@@ -838,13 +838,13 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $_SESSION['Selected']['c6nymd_ae_leader'] = $Changes['c6nymd_ae_leader'];
         $_SESSION['Selected']['c5who_is_editing'] = $EncryptedNobody;
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the incident-investigation team leader and the process, facility, and owner PSM leaders.
+        // Email the incident-investigation team leader and the process, facility, and owner leaders.
         $Chain = $Zfpf->up_the_chain_1c();
         $Chain['EmailAddresses'][] = $TeamLeader['WorkEmail'];
         $Chain['DistributionList'] .= 'Incident-Investigation Team Leader: '.$TeamLeader['NameTitle'].', '.$TeamLeader['Employer'].' '.$TeamLeader['WorkEmail'].'</p>';
-        $Subject = 'PSM-CAP: Report Approval Canceled by Process PSM Leader. Investigation of Incident: '.$IncidentName;
+        $Subject = 'PSM-CAP: incident-investigation report approval canceled';
         $Body = '<p>
-        The Process PSM Leader canceled approval the investigation report for:<br />
+        The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader canceled approval the investigation report for:<br />
         * Incident Name: '.$IncidentName.'<br />
         * '.$Process['AEFullDescription'].'</p>';
         $Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], '', $Chain['DistributionList']);
@@ -981,7 +981,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         $Zfpf->close_connection_1s($DBMSresource);
         unset($_SESSION['Post']);
         echo $Zfpf->xhtml_contents_header_1c('Incident Investigation').'<p>
-        The incident-investigation information you input and reviewed has been recorded as a draft. It will remain a draft until both the incident-investigation team leader and an appropriate PSM leader approve the investigation.</p>
+        The incident-investigation information you input and reviewed has been recorded as a draft. It will remain a draft until both the incident-investigation team leader and the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approve the investigation.</p>
         <form action="incident_io03.php" method="post"><p>
             <input type="submit" name="incident_o1" value="Back to record" /></p>
         </form>

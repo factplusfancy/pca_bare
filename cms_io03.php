@@ -260,7 +260,7 @@ if (isset($_POST['cms_o1']) or isset($_POST['cm_applies_o1'])) {
             $HeaderAndIntro = '<h1>Change-Management Applicability Determination</h1>';
         else
             $HeaderAndIntro = '<h1>Change-Management System</h1><p>
-            Before authorizing startup, '.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].' (the affected-entity PSM leader) may assign the tasks below to qualified individuals and, in any case, shall verify and document completion of any needed tasks under Startup Authorization, the final task below. Many tasks below may not be needed for a particular change.</p>';
+            Before authorizing startup, '.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].' (the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader) may assign the tasks below to qualified individuals and, in any case, shall verify and document completion of any needed tasks under Startup Authorization, the final task below. Many tasks below may not be needed for a particular change.</p>';
     }
     // Cannot add "Generate an activity notice" option, in o1 display, because these go back to i1, ejecting user if not draft...
     $Display = $Zfpf->select_to_display_1e($htmlFormArray, $_SESSION['Selected'], TRUE);
@@ -404,7 +404,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
     else
         $htmlFormArray = $cmsZfpf->htmlFormArray(TRUE); // $CMRequired must be TRUE here.
 
-    // Affected-Entity Leader canceling approval of change-management applicability determination.
+    // Affected-entity leader canceling approval of change-management applicability determination.
     if (isset($_POST['cm_applies_approval_c1'])) {
         if (!$EditAuth or $_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'])
             $Zfpf->send_to_contents_1c(); // Don't eject
@@ -416,7 +416,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
         $Display['k0user_of_applic_approver'] = $AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'];
         list($htmlFormArray, $Display) = $cmsZfpf->html_form_modify($htmlFormArray, $Display, $CMRequired);
         $ApprovalText .= $Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'<p>
-        <b>By clicking "Cancel applicability approval" below, as the current PSM leader for '.$AE['AEFullDescription'].', I cancel approval of this record.</b></p><p>
+        <b>By clicking "Cancel applicability approval" below, as the current '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$AE['AEFullDescription'].', I cancel approval of this record.</b></p><p>
         <b>Approval Canceled By:</b><br />
         Name: <b>'.$User['Name'].'</b><br />
         Job Title: <b>'.$User['Title'].'</b><br />
@@ -449,19 +449,19 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
         $_SESSION['Selected']['c6nymd_applic_approver'] = $Changes['c6nymd_applic_approver'];
         $_SESSION['Selected']['c5who_is_editing'] = $Changes['c5who_is_editing'];
         $Zfpf->close_connection_1s($DBMSresource);
-        // Try to email the Change Initiator, the Affected-Entity Leader (here same as the current user), and (if assigned) the Change Project Manager.
+        // Try to email the change initiator, the affected-entity leader (here same as the current user), and (if assigned) the change project manager.
         $EmailAddresses = array($CI['WorkEmail'], $AE['AELeaderWorkEmail']);
         $Subject = 'PSM-CAP: Change-Management Applicability Determination Canceled by '.$AE['AELeaderNameTitle'];
-        $Body = '<p>'.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].' (the affected-entity PSM leader) canceled approval of the following change-management applicability-determination record.</p>';
+        $Body = '<p>'.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].' (the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader) canceled approval of the following change-management applicability-determination record.</p>';
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found): </b><br />
-        Change Initiator: '.$CI['NameTitleEmployerWorkEmail'].'<br />
-        Affected-Entity PSM Leader: '.$AE['AELeaderNameTitleEmployerWorkEmail'];
+        Change initiator: '.$CI['NameTitleEmployerWorkEmail'].'<br />
+        Affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$AE['AELeaderNameTitleEmployerWorkEmail'];
         if ($_SESSION['Selected']['k0user_of_project_manager']) {
             $ChangePMInfo = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_project_manager']);
             $EmailAddresses[] = $ChangePMInfo['WorkEmail'];
             $DistributionList .= '<br />
-            Change Project Manager: '.$ChangePMInfo['NameTitleEmployerWorkEmail'];
+            Change project manager: '.$ChangePMInfo['NameTitleEmployerWorkEmail'];
         }
         $DistributionList .= '</p>';
         $Body = $Zfpf->email_body_append_1c($Body, $AE['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $DistributionList);
@@ -632,11 +632,11 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
                 if ($_SESSION['Selected']['k0user_of_project_manager']) {
                     $ChangePM = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_project_manager']);
                     $EmailAddresses[] = $ChangePM['WorkEmail'];
-                    $DistributionList .= 'Change Project Manager: '.$ChangePM['NameTitleEmployerWorkEmail'].'<br />';
+                    $DistributionList .= 'Change project manager: '.$ChangePM['NameTitleEmployerWorkEmail'].'<br />';
                 }
                 $DistributionList .= '
-                Change Initiator: '.$CI['NameTitleEmployerWorkEmail'].'<br />
-                Affected-Entity PSM Leader: '.$AE['AELeaderNameTitleEmployerWorkEmail'].'</p>';
+                Change initiator: '.$CI['NameTitleEmployerWorkEmail'].'<br />
+                Affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$AE['AELeaderNameTitleEmployerWorkEmail'].'</p>';
                 $Body = $Zfpf->email_body_append_1c($Body, $AE['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $DistributionList);
                 $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
                 echo $Zfpf->xhtml_contents_header_1c('Approved').'<h2>
@@ -754,7 +754,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
                     $Changes[$KA] = $k0user;
                     $_SESSION['Selected'][$KA] = $Changes[$KA];
                     $Body .= '<p>'.$VA[3][1].' assigned to '.$Leader['NameTitle'].', '.$Leader['Employer'].'<br />
-                    by '.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].' (the affected-entity PSM leader).</p>';
+                    by '.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].' (the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader).</p>';
                     $EchoText .= '<p>
                     The app attempted to assign '.$VA[3][1].', a change-management task.</p>';
                 }
@@ -780,7 +780,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
                 if ($Affected != 1)
                     $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
                 $Zfpf->close_connection_1s($DBMSresource);
-                // Email the any former task leader, the newly-assigned task leader, the Affected-Entity Leader (who should be the current user), and any Change Project Manager.
+                // Email the any former task leader, the newly-assigned task leader, the affected-entity leader (who should be the current user), and any change project manager.
                 $EmailAddresses = array($AE['AELeaderWorkEmail'], $Leader['WorkEmail']);
             	$Subject = 'PSM-CAP: Change Management for '.$ChangeName;
                 $DistributionList = '<p>
@@ -789,7 +789,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
                     $ChangePM = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_project_manager']);
                     $EmailAddresses[] = $ChangePM['WorkEmail'];
                     $DistributionList .= '<br />
-                    Change Project Manager: '.$ChangePM['NameTitleEmployerWorkEmail'];
+                    Change project manager: '.$ChangePM['NameTitleEmployerWorkEmail'];
                 }
                 if ($KA != 'k0user_of_project_manager')
                     $DistributionList .= '<br />
@@ -802,7 +802,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
                     $DistributionList .= $VA[3][1].': '.$FormerLeader['NameTitleEmployerWorkEmail'];
                 }
                 $DistributionList .= '<br />
-                Affected-Entity PSM Leader: '.$AE['AELeaderNameTitleEmployerWorkEmail'];
+                Affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$AE['AELeaderNameTitleEmployerWorkEmail'];
                 $DistributionList .= '</p>';
                 $Body = $Zfpf->email_body_append_1c($Body, $AE['AEFullDescription'], '', $DistributionList);
                 $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
@@ -879,7 +879,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
             }
             elseif ($KA == 'c6cm_applies_checks')
                 // Don't allow editing of c5name, c6description, c5affected_entity, or cm_applies_checks if applicability determination is approved
-                // And, if  not approved, only by the AE Leader, Change Project Manager, or Change Initiator.
+                // And, if  not approved, only by the affected-entity leader, change project manager, or change initiator.
                 if ($_SESSION['Selected']['k0user_of_applic_approver'] or ($_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_project_manager'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_initiator'])) {
                     $htmlFormArray['c5name'][1] = '';
                     $htmlFormArray['c6description'][1] = '';
@@ -1082,7 +1082,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
         }
         $Zfpf->close_connection_1s($DBMSresource);
         unset($_SESSION['Post']);
-        // Try to email the current user, the Change Initiator, the Affected-Entity Leader, and (if assigned) the Change Project Manager.
+        // Try to email the current user, the change initiator, the affected-entity leader, and (if assigned) the change project manager.
         // CoreZfpf::send_email_1c removes duplicate email address
         $EmailAddresses = array($User['WorkEmail'], $CI['WorkEmail'], $AE['AELeaderWorkEmail']);
         $Body .= '<p>
@@ -1093,27 +1093,27 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
         if (in_array('Yes', $Zfpf->decrypt_decode_1c($_SESSION['Selected']['c6cm_applies_checks']))) // CM is required.
             $Body .= '<p>Change management is required. Unless you are acting under the authority of an emergency plan, <b>do not make this change before startup is authorized by the affected-entity leader</b>. Some preparations for the change may be authorized by the affected-entity leader before startup authorization.</p>';
         else // Approval that CM isn't required has NOT yet occurred. (If CM not required has been approved, should be here.)
-            $Body .= '<p>Awaiting approval that change management is not required. Unless you are acting under the authority of an emergency plan, <b>do not make this change until the PSM-CAP App shows that the affected-entity PSM leader has approved this determination that change-management does not apply</b>.</p><p>
-        '.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].', the affected-entity PSM leader, would need to log onto the PSM-CAP app to approve this applicability determination.</p>';
+            $Body .= '<p>Awaiting approval that change management is not required. Unless you are acting under the authority of an emergency plan, <b>do not make this change until the PSM-CAP App shows that the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader has approved this determination that change-management does not apply</b>.</p><p>
+        '.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].', the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, would need to log onto the PSM-CAP app to approve this applicability determination.</p>';
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found): </b><br />
         User who did this: '.$User['NameTitle'].', '.$User['Employer'].' '.$User['WorkEmail'].'<br />
-        Change Initiator: '.$CI['NameTitle'].', '.$CI['Employer'].' '.$CI['WorkEmail'].'<br />
-        Affected-Entity PSM Leader: '.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].' '.$AE['AELeaderWorkEmail'];
+        Change initiator: '.$CI['NameTitle'].', '.$CI['Employer'].' '.$CI['WorkEmail'].'<br />
+        Affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'].' '.$AE['AELeaderWorkEmail'];
         if ($_SESSION['Selected']['k0user_of_project_manager']) {
             $ChangePMInfo = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_project_manager']);
             $EmailAddresses[] = $ChangePMInfo['WorkEmail'];
             $DistributionList .= '<br />
-            Change Project Manager: '.$ChangePMInfo['NameTitle'].', '.$ChangePMInfo['Employer'].' '.$ChangePMInfo['WorkEmail'];
+            Change project manager: '.$ChangePMInfo['NameTitle'].', '.$ChangePMInfo['Employer'].' '.$ChangePMInfo['WorkEmail'];
         }
         $DistributionList .= '</p>';
         $Body = $Zfpf->email_body_append_1c($Body, $AE['AEFullDescription'], FALSE, $DistributionList);
         $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
         echo $Zfpf->xhtml_contents_header_1c('Change').'<h1>
         Change-Management System</h1><p>
-        The updates you just reviewed have been recorded. Do not "startup" the change until the affected-entity PSM leader has authorized startup.</p>';
+        The updates you just reviewed have been recorded. Do not "startup" the change until the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader has authorized startup.</p>';
         if ($EmailSent)
-            echo '<p>The PSM-CAP App just tried to email you and the affected-entity PSM leader, check with them to expedite.</p>';
+            echo '<p>The PSM-CAP App just tried to email you and the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, check with them to expedite.</p>';
         else
             echo '<p>Nobody was notified of this by email perhaps because no relevant email addresses were found. Check that your work email address is recorded in this app.</p>';
         echo '

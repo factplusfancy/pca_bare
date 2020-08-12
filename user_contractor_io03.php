@@ -92,8 +92,8 @@ $htmlFormArray = array(
     'c5work_phone_desk' => array('Work Desk Phone', ''),
     'c5work_phone_pager' => array('Work Pager', ''),
     'c6bfn_general_training' => array('<a id="c6bfn_general_training"></a>General Training Records (Note, for facility-specific training, see the user-facility records)', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-    'c5p_contractor' => array('<a id="c5p_contractor"></a><b>Privileges with this Contractor Organization</b>. These cannot be higher than the user\'s global database management system (DBMS) privileges.<br /><br />Contractor-wide <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a> and updating contractor summary. (Only owner PSM leaders can terminate access for an entire contractor organization.)', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MAX_PRIVILEGE_OPTIONS_ZFPF']),
-    'c5p_user' => array('User, user-contractor, and contractor-wide user-practice records. Minimum "'.MID_PRIVILEGES_ZFPF.'" to insert new users, associate them with contractor-wide <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>, and unlock logon credentials of a contractor individual (for example, after they mistyped a password three times). Full privileges to also update user-practice and user-contractor records. (Only users can update their own user record. Only the contractor PSM leader can terminate access for a typical user with this contractor.)', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MID_PRIVILEGE_OPTIONS_ZFPF'])
+    'c5p_contractor' => array('<a id="c5p_contractor"></a><b>Privileges with this Contractor Organization</b>. These cannot be higher than the user\'s global database management system (DBMS) privileges.<br /><br />Contractor-wide <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a> and updating contractor summary. (Only owner '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leaders can terminate access for an entire contractor organization.)', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MAX_PRIVILEGE_OPTIONS_ZFPF']),
+    'c5p_user' => array('User, user-contractor, and contractor-wide user-practice records. Minimum "'.MID_PRIVILEGES_ZFPF.'" to insert new users, associate them with contractor-wide <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>, and unlock logon credentials of a contractor individual (for example, after they mistyped a password three times). Full privileges to also update user-practice and user-contractor records. (Only users can update their own user record. Only the contractor '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader can terminate access for a typical user with this contractor.)', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MID_PRIVILEGE_OPTIONS_ZFPF'])
 );
 
 // history_o1 code
@@ -289,7 +289,7 @@ if (isset($_SESSION['Selected']['k0user_contractor'])) {
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
         End selected user\'s access to '.$SelectedUser['Employer'].' information via this app.</h2><p>
         End access for <b>'.$SelectedUser['NameTitleEmployerWorkEmail'].'</b>, via this app, to the information of '.$SelectedUser['Employer'].' and its clients\' facilities, processes, and <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>.</p><p>
-        The app cannot assign a new PSM leader. You need to do this, if you plan to end the access of a PSM leader for a contractor, facility, process, or any ongoing PHA or HIRA, incident investigation, or PSM audit.</p><p>
+        The app cannot assign a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader. You need to do this, if you plan to end the access of a '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for a contractor, facility, process, or any ongoing PHA or HIRA, incident investigation, or PSM audit.</p><p>
         The above user has the following privileges (which they will lose) and leadership roles (which will need to be filled).</p>
         '.$UserZfpf->display_privileges($Zfpf, $SelectedUser).'
         <form action="user_contractor_io03.php" method="post"><p>
@@ -312,7 +312,7 @@ if (isset($_SESSION['Selected']['k0user_contractor'])) {
         if ($LeadersNeeded)
             echo '<p>
             '.$LeadersNeeded.'</p><p>
-            '.$SelectedUser['Name'].' remains the recorded PSM leader for these.</p>';
+            '.$SelectedUser['Name'].' remains the recorded '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for these.</p>';
         echo '<p>
         You can confirm this via the user-history records.</p>
         <form action="user_h_o1.php" method="post"><p>

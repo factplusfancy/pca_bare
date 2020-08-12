@@ -1074,7 +1074,7 @@ class CoreZfpf {
             $EmailAddresses[] = $AffectedEntityInfo['AELeaderWorkEmail'];
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found): </b><br />
-        Owner PSM Leader: '.$AffectedEntityInfo['AELeaderNameTitle'].', '.$AffectedEntityInfo['AELeaderEmployer'].' '.$AffectedEntityInfo['AELeaderWorkEmail'];
+        Owner '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$AffectedEntityInfo['AELeaderNameTitle'].', '.$AffectedEntityInfo['AELeaderEmployer'].' '.$AffectedEntityInfo['AELeaderWorkEmail'];
         $AEFullDescription = $AffectedEntityInfo['AEFullDescription'];
         if ($AEscope == 'Process-wide' or $AEscope == 'Facility-wide') {
             if (!isset($_SESSION['StatePicked']['t0facility']['k0facility']))
@@ -1083,7 +1083,7 @@ class CoreZfpf {
             if ($AffectedEntityInfo['AELeaderWorkEmail'])
                 $EmailAddresses[] = $AffectedEntityInfo['AELeaderWorkEmail'];
             $DistributionList .= '<br />
-            Facility PSM Leader: '.$AffectedEntityInfo['AELeaderNameTitle'].', '.$AffectedEntityInfo['AELeaderEmployer'].' '.$AffectedEntityInfo['AELeaderWorkEmail'];
+            Facility '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$AffectedEntityInfo['AELeaderNameTitle'].', '.$AffectedEntityInfo['AELeaderEmployer'].' '.$AffectedEntityInfo['AELeaderWorkEmail'];
             $AEFullDescription = $AffectedEntityInfo['AEFullDescription'];
         }
         if ($AEscope == 'Process-wide') {
@@ -1093,7 +1093,7 @@ class CoreZfpf {
             if ($AffectedEntityInfo['AELeaderWorkEmail'])
                 $EmailAddresses[] = $AffectedEntityInfo['AELeaderWorkEmail'];
             $DistributionList .= '<br />
-            Process PSM Leader: '.$AffectedEntityInfo['AELeaderNameTitle'].', '.$AffectedEntityInfo['AELeaderEmployer'].' '.$AffectedEntityInfo['AELeaderWorkEmail'];
+            Process '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$AffectedEntityInfo['AELeaderNameTitle'].', '.$AffectedEntityInfo['AELeaderEmployer'].' '.$AffectedEntityInfo['AELeaderWorkEmail'];
             $AEFullDescription = $AffectedEntityInfo['AEFullDescription'];
         }
         // DistributionList doesn't include the final HTML </p> to facilitate adding additional recipients.

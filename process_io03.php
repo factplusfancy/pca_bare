@@ -2,7 +2,7 @@
 // *** LEGAL NOTICES *** 
 // Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-// This file handles all the process summary input and output HTML forms, except the:
+// This file handles all the process-summary input and output HTML forms, except the:
 //  - i0m & i1m files for listing existing records
 
 require 'directory_path_settings.php';
@@ -33,9 +33,9 @@ $UserGlobalDBMSPrivileges = $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_db
 
 // $htmlFormArray is specified in the PSM-CAP App Standards, in file 0read_me_psm_cap_app_standards.txt.
 $htmlFormArray = array(
-    'c5name' => array('<a id="c5name"></a>Process Name (what most people call it often works well)', REQUIRED_FIELD_ZFPF),
+    'c5name' => array('<a id="c5name"></a>Process name (what most people call it often works well)', REQUIRED_FIELD_ZFPF),
     'c6description' => array('Description', '', C6SHORT_MAX_BYTES_ZFPF),
-    'k0user_of_leader' => array('PSM Leader', ''),
+    'k0user_of_leader' => array('The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader', ''),
     'c5industry_code' => array('Industry type, such as latest North American Industrial Classification (NAICS) code', REQUIRED_FIELD_ZFPF)
 );
 
@@ -98,9 +98,9 @@ if (isset($_POST['process_o1']) or isset($FromLinkWithoutPost)) {
     $Display = $Zfpf->select_to_display_1e($htmlFormArray, FALSE, TRUE);
 	// Handle k0 field(s)
     $Display['k0user_of_leader'] = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_leader'])['NameTitleEmployerWorkEmail'];
-    if (($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'] or $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes') and $UserGlobalDBMSPrivileges == MAX_PRIVILEGES_ZFPF) // Current user is process PSM leader or app admin.
+    if (($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'] or $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes') and $UserGlobalDBMSPrivileges == MAX_PRIVILEGES_ZFPF) // Current user is process leader or app admin.
         $Display['k0user_of_leader'] .= '<br />
-        <input type="submit" name="change_psm_leader_1" value="Change PSM leader" />';
+        <input type="submit" name="change_psm_leader_1" value="Change '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader" />';
     echo $Zfpf->xhtml_contents_header_1c().'
     <h2>
     Process Summary</h2>
@@ -143,7 +143,7 @@ if (isset($_SESSION['Selected']['k0process'])) {
         $_SESSION['Selected'] = $SR[0];
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
 
-    // No edit lock because only PSM leader on an app admin can change the PSM leader.
+    // No edit lock because only the leader or an app admin can change the leader.
     if (isset($_POST['change_psm_leader_1'])) {
         if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes') or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
             $Zfpf->send_to_contents_1c(); // Don't eject
@@ -158,8 +158,8 @@ if (isset($_SESSION['Selected']['k0process'])) {
         $TableNameUserEntity = 't0user_process';
         $Conditions1[0] = array('k0process', '=', $_SESSION['Selected']['k0process']);
         $SpecialText = '<p><b>
-        Pick PSM Leader</b></p><p>
-        The current PSM leader will be replaced by the user you pick above.</p>';
+        Pick '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader</b></p><p>
+        The current '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader will be replaced by the user you pick above.</p>';
         $Zfpf->lookup_user_wrap_2c(
             $TableNameUserEntity,
             $Conditions1,
@@ -168,7 +168,7 @@ if (isset($_SESSION['Selected']['k0process'])) {
             array('k0user'), // $Columns1
             'process_io03.php', // $CancelFile
             $SpecialText,
-            'Assign PSM Leader', // $SpecialSubmitButton
+            'Assign '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader', // $SpecialSubmitButton
             'change_psm_leader_3', // $SubmitButtonName
             'change_psm_leader_1', // $TryAgainButtonName
             'process_o1', // $CancelButtonName
@@ -204,32 +204,32 @@ if (isset($_SESSION['Selected']['k0process'])) {
         $Affected = $Zfpf->one_shot_update_1s('t0process', $Changes, $Conditions, TRUE, $ShtmlFormArray);
         if ($Affected != 1)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
-        // Email the current and former PSM leaders and, if applicable, current user, who must be an app admin.
+        // Email the current and former leaders and, if applicable, current user, who must be an app admin.
         $AEFullDescription = 'process '.$Zfpf->decrypt_1c($_SESSION['Selected']['c5name']);
         $FormerLeader = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_leader']);
         $NewLeader = $Zfpf->user_job_info_1c($Changes['k0user_of_leader']);
         $EmailAddresses = array($FormerLeader['WorkEmail'], $NewLeader['WorkEmail']);
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found):</b><br />
-        Former PSM Leader: '.$FormerLeader['NameTitleEmployerWorkEmail'].'<br />
-        New PSM Leader: '.$NewLeader['NameTitleEmployerWorkEmail'];
+        Former '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$FormerLeader['NameTitleEmployerWorkEmail'].'<br />
+        New '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$NewLeader['NameTitleEmployerWorkEmail'];
     	$Message = '<p>';
         if ($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader']) {
             $CurrentUserAppAdmin = $Zfpf->current_user_info_1c();
             $EmailAddresses[] = $CurrentUserAppAdmin['WorkEmail'];
             $DistributionList .= '<br />
-            App admin who changed the PSM leader: '.$CurrentUserAppAdmin['NameTitleEmployerWorkEmail'];
+            App admin who changed the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$CurrentUserAppAdmin['NameTitleEmployerWorkEmail'];
             $Message .= $CurrentUserAppAdmin['NameTitleEmployerWorkEmail'];
         }
         else
             $Message .= $FormerLeader['NameTitleEmployerWorkEmail'];
         $DistributionList .= '</p>';
-        $Message .= ' changed the PSM leader for '.$AEFullDescription.'<br/><br/>
+        $Message .= ' changed the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$AEFullDescription.'<br/><br/>
         to: '.$NewLeader['NameTitleEmployerWorkEmail'].'</p>';
         $_SESSION['Selected']['k0user_of_leader'] = $Changes['k0user_of_leader'];
         if (isset($_SESSION['StatePicked']['t0process']))
             $_SESSION['StatePicked']['t0process']['k0user_of_leader'] = $Changes['k0user_of_leader'];
-    	$Subject = 'PSM-CAP: Changed PSM leader for '.$AEFullDescription;
+    	$Subject = 'PSM-CAP: Changed '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$AEFullDescription;
         $Body = $Zfpf->email_body_append_1c($Message, $AEFullDescription, '', $DistributionList);
         $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
@@ -381,7 +381,7 @@ if (isset($_SESSION['Selected']['k0process'])) {
         unset($_SESSION['Post']);
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
         Record(s) Updated</h2><p>
-        The process information you input and reviewed has been recorded.</p>
+        The information about the '.HAZSUB_PROCESS_NAME_ZFPF.' that you input and reviewed has been recorded.</p>
         <form action="process_io03.php" method="post"><p>
             <input type="submit" name="process_o1" value="Back to record" /></p>
         </form>

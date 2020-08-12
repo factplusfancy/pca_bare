@@ -9,7 +9,7 @@
 /* BACKGROUD
 Scheduled tasks: For checking deadlines and sending reminders, this gives background on the cron utility and it's equivalent in Windows
 https://www.drupal.org/docs/7/setting-up-cron/overview
-  - script to send reminder email to Process PSM Leader if an employee’s refresher training is due within 6 months.  Remind monthly starting 6 months before until completed (so for any row in t0training_form where training completed more than 2.5 years ago.).
+  - script to send reminder email to the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader if an employee’s refresher training is due within 6 months.  Remind monthly starting 6 months before until completed (so for any row in t0training_form where training completed more than 2.5 years ago.).
          Can use c5ts_employee in t0training_form to trigger reminder emails.
 */
 

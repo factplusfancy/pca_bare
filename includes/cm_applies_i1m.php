@@ -61,7 +61,7 @@ else
     Global Privileges Notice</b>: You have privileges to neither create nor edit PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.</p>';
 echo $Zfpf->xhtml_contents_header_1c('Select Change').'<h1>
 Change-Management Applicability Determination</h1><p>
-With proper privileges, you may start a new applicability determination or edit one. Only unapproved determinations may be edited. To edit an approved applicability determination, first ask the appropriate PSM leader -- of a process, facility, owner, or contractor -- to cancel their approval using this app\'s Change Management System practice.</p>
+With proper privileges, you may start a new applicability determination or edit one. Only unapproved determinations may be edited. To edit an approved applicability determination, first ask the appropriate '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader -- of a process, facility, owner, or contractor -- to cancel their approval using this app\'s Change Management System practice.</p>
 '.$Message.'<p>
 Approved applicability determinations may be viewed using this app\'s Change Management System practice.</p>
 <form action="contents0_s_practice.php" method="post"><p>

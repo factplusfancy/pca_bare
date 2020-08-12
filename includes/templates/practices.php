@@ -23,7 +23,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Overall Responsibility and Assigning Responsibilities'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('AAAAAA'),
-        'c6description' => $Zfpf->encrypt_1c('The Owner/Operator (aka owner) PSM leader has overall responsibility for PSM and CAP compliance at all of the owner\'s facilities. The owner PSM leader may assign responsibilities to others, for example via the contractor, facility, or process PSM leader roles of this PSM-CAP App. Of course, the owner PSM leader shall ensure that each subordinate leader has the competence to take on their assigned responsibilities. Before an admin ends a leader\'s access via this app to information about an entity they lead, the app provides a reminder to assign a new leader. Options: describe minimum competencies for PSM leaders or document their current competencies (experience, training, and so forth) in a practice document here.'),
+        'c6description' => $Zfpf->encrypt_1c('The Owner/Operator (aka owner) '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader has overall responsibility for process safety and chemical-accident prevention at all of the owner\'s facilities. The owner '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader may assign responsibilities to others, for example via the contractor, facility, or '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader roles of this PSM-CAP App. Of course, the owner '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader shall ensure that each subordinate leader has the competence to take on their assigned responsibilities. Before an admin ends a leader\'s access via this app to information about an entity they lead, the app provides a reminder to assign a new leader. Options: describe minimum competencies for '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leaders or document their current competencies (experience, training, and so forth) in a practice document here.'),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -39,7 +39,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Job-Title Alterations'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('AAACCC'),
-        'c6description' => $Zfpf->encrypt_1c('If a job title is altered, the PSM leader responsible for changing the title searches through all PSM and CAP compliance-practice and procedure descriptions, forms, and so forth and then completes change management if these need revision to match the new job title.'),
+        'c6description' => $Zfpf->encrypt_1c('If a job title is altered, the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader responsible for changing the title searches through all compliance-practice and procedure descriptions, forms, and so forth and then completes change management if these need revision to match the new job title.'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ),
@@ -47,7 +47,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Plan of Action'),
         'c2standardized' => 'Facility Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('BBBAAA'),
-        'c6description' => $Zfpf->encrypt_1c('The compliance practices described under employee participation, in this PSM-CAP app, are the facility\'s written employee-participation plan. The facility PSM leader is responsible for employee participation.'),
+        'c6description' => $Zfpf->encrypt_1c('The compliance practices described under employee participation, in this PSM-CAP app, are the facility\'s written employee-participation plan. The facility '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader is responsible for employee participation.'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ),
@@ -63,7 +63,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Information Access'),
         'c2standardized' => 'Facility Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('BBBCCC'),
-        'c6description' => $Zfpf->encrypt_1c('The facility leader continuously keeps posted the '.HAZSUB_SAFETY_NOTICE_NAME_ZFPF.', where all employees at the facility have the opportunity see it. View this practice for a sample notice. This notice informs employees about accessing information on process safety, and it provides background on some hazards at the facility and their management. The privileges system in the PSM-CAP App allows owner, facility, process, and contractor leaders to control access to and editing of information within their responsibility. Computer logs and the app\'s history database table(s) provide records on how each app user may have used these privileges. Employees, neighbors, and others may request information that they don\'t have privileges to view or copy for many good, bad, or misguided reasons. An Owner/Operator representative, responsible for the requested information, handles each such request on a case by case basis, seeking human resources, legal, and security advice as needed, and documents all this via emails or other written records.'),
+        'c6description' => $Zfpf->encrypt_1c('The facility '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader continuously keeps posted the '.HAZSUB_SAFETY_NOTICE_NAME_ZFPF.', where all employees at the facility have the opportunity see it. View this practice for a sample notice. This notice informs employees about accessing information on process safety, and it provides background on some hazards at the facility and their management. The privileges system in the PSM-CAP App allows owner, contractor, facility, and '.HAZSUB_PROCESS_NAME_ZFPF.' 'PROGRAM_LEADER_ADJECTIVE_ZFPF' leaders to control access to and editing of information within their responsibility. Computer logs and the app\'s history database table(s) provide records on how each app user may have used these privileges. Employees, neighbors, and others may request information that they don\'t have privileges to view or copy for many good, bad, or misguided reasons. An Owner/Operator representative, responsible for the requested information, handles each such request on a case by case basis, seeking human resources, legal, and security advice as needed, and documents all this via emails or other written records.'),
         'c5require_file' => $Zfpf->encrypt_1c('hs_safety_notice_o1.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -71,7 +71,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Consulting on PHA'),
         'c2standardized' => 'Facility Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('BBBDDD'),
-        'c6description' => $Zfpf->encrypt_1c('For employee participation, all process-hazard analysis (PHA) teams (initial, updates, amendments, and so forth) include at least one employee (or contractor) who does hands-on operations or maintenance on the '.HAZSUB_PROCESS_NAME_ZFPF.' being evaluated. Or, other steps are/have been taken to consult with employees on "the conduct and development of process hazards analyses".'),
+        'c6description' => $Zfpf->encrypt_1c('If a process-hazard analysis (PHA) is required, all PHA teams (initial, update, revalidation, amendment, and so forth) include at least one employee (or contractor) who does hands-on operations or maintenance on the '.HAZSUB_PROCESS_NAME_ZFPF.' being evaluated. Or, other steps are/have been taken to consult with employees on "the conduct and development of process hazards analyses". This would not be relevant at facilities where only a checklist hazard review is needed to meet general-duty obligations.'),
         'c5require_file' => $Zfpf->encrypt_1c('pha_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -103,7 +103,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('New Applicability Determination'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('IIIAAA'),
-        'c6description' => $Zfpf->encrypt_1c('Assess if changes to process chemicals, technology, equipment, procedures, or facilities require change management.'),
+        'c6description' => $Zfpf->encrypt_1c('Assess if...'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ), */
@@ -111,7 +111,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Applicability Determination: Start, View, or Edit'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('IIIBBB'),
-        'c6description' => $Zfpf->encrypt_1c('Assess if changes to process chemicals, technology, equipment, procedures, or facilities require change management. Start a new determination or view and edit an unapproved one.'),
+        'c6description' => $Zfpf->encrypt_1c('Assess if a change requires change management. Start a new determination or view and edit an unapproved one.'),
         'c5require_file' => $Zfpf->encrypt_1c('cm_applies_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -119,7 +119,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Change Management System'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('IIICCC'),
-        'c6description' => $Zfpf->encrypt_1c('When required, use this to meet all the PSM and CAP Management of Change and Pre-startup Safety Review requirements. This Change Management System covers, as needed, describing the change (markup of process-safety information, procedure descriptions, and so forth); design review; environmental, health, and safety review; human resources review; employee participation; PHA amendment; contractor qualification; updating process-safety information; updating hazardous-substance procedures and safe-work practices; updating the maintenance program; updating emergency plans; training on these updates; examination, inspection, and testing of new or altered fabrications (piping, structures, and so forth); special isolation, pump-down, venting, cleaning, tie-in, startup, and so forth procedures; and pre-startup review and approval. Change-management records need to be kept for the life of the '.HAZSUB_PROCESS_NAME_ZFPF.' if they contain documents needed as process-safety information, for example, detailing materials of construction. This app retains them indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
+        'c6description' => $Zfpf->encrypt_1c('When required, use this to meet all management of change and pre-startup safety review requirements. This Change Management System covers, as needed, describing the change (markup of process-safety information, procedure descriptions, and so forth); design review; environmental, health, and safety review; human resources review; employee participation; PHA amendment; contractor qualification; updating process-safety information; updating hazardous-substance procedures and safe-work practices; updating the maintenance program; updating emergency plans; training on these updates; examination, inspection, and testing of new or altered fabrications (piping, structures, and so forth); special isolation, pump-down, venting, cleaning, tie-in, startup, and so forth procedures; and pre-startup review and approval. Change-management records need to be kept for the life of the '.HAZSUB_PROCESS_NAME_ZFPF.' if they contain documents needed as process-safety information, for example, detailing materials of construction. This app retains them indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
         'c5require_file' => $Zfpf->encrypt_1c('cms_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ), /*  2018-04-13 JDH combined with practice below.
@@ -127,7 +127,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('New PHA or other HIRA'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('DDDAAA'),
-        'c6description' => $Zfpf->encrypt_1c('Create the first process-hazard analysis (PHA) aka hazard identification and risk analysis (HIRA) for the selected process. You will be designated the PHA or HIRA leader; this may be changed later.'),
+        'c6description' => $Zfpf->encrypt_1c('Create the first...'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ), */
@@ -135,7 +135,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('PHA or other HIRA -- View or Create First, Update, and Issue'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('DDDBBB'),
-        'c6description' => $Zfpf->encrypt_1c('For the process-hazard analysis (PHA), or other hazard identification and risk analysis (HIRA), on your currently selected process: create the initial one; view, edit, and issue the current working-draft; view the latest issued; or view any prior (archived) issued versions. Use to update and revalidate, at least every five years. A PHA or HIRA, initial or amended, shall not be conducted until the design-review documents provide adequate information for the PHA or HIRA, at least for the subsystem being evaluated. See this app\'s Change Management System practice, which covers both initial installation and subsequent changes. Assemble a qualified team and use an allowed method for PHA or HIRA preparation or updates; describe both the team qualifications and methods in the PHA or HIRA report; see the rules associated with this practice.'),
+        'c6description' => $Zfpf->encrypt_1c('Process-hazard analysis (PHA) or other hazard identification and risk analysis (HIRA): create the initial one; view, edit, and issue the current working-draft; view the latest issued; or view any previously issued versions. Use to update and revalidate, at least every five years. A PHA or HIRA, initial or amended, shall not be conducted until the design-review documents provide adequate information for the PHA or HIRA, at least for the subsystem being evaluated. See this app\'s Change Management System practice, which covers both initial installation and subsequent changes. Assemble a qualified team and use an allowed method for PHA or HIRA preparation or updates; describe both the team qualifications and methods in the PHA or HIRA report; see the rules associated with this practice.'),
         'c5require_file' => $Zfpf->encrypt_1c('pha_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ), /*  2018-04-13 JDH combined with practice above.
@@ -167,7 +167,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('First PSM Compliance Audit'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('KKKAAA'),
-        'c6description' => $Zfpf->encrypt_1c('Create the first PSM compliance audit for the '.HAZSUB_PROCESS_NAME_ZFPF.'. You will be designated the audit leader; this may be changed later.'),
+        'c6description' => $Zfpf->encrypt_1c('Create the first...'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ), */
@@ -175,7 +175,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('PSM-Audit Reports -- View, Create, Edit, Issue, and Certify'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('KKKBBB'),
-        'c6description' => $Zfpf->encrypt_1c('View draft or issued reports. Create, edit, or issue a report. To meet PSM requirements and good practices, the audit shall be conducted by at least one person knowledgeable in the '.HAZSUB_PROCESS_NAME_ZFPF.'. Describe auditor qualifications and methods in the report. Certify that the Owner/Operator has "evaluated compliance ... to verify that the [PSM] procedures and practices are adequate and are being followed". Once the report has been issued by the report leader, this certification is typically made by the process PSM leader, which is how the PSM-CAP App designates the responsible Owner/Operator representative, per the management system. Interpretations vary what needs to be certified; the certification language in the PSM-CAP App follows the wording in the PSM and CAP rules. The PSM-CAP App retains PSM-audit reports indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
+        'c6description' => $Zfpf->encrypt_1c('View draft or issued reports. Create, edit, or issue a report. To meet PSM requirements and good practices, the audit shall be conducted by at least one person knowledgeable in the '.HAZSUB_PROCESS_NAME_ZFPF.'. Describe auditor qualifications and methods in the report. Certify that the Owner/Operator has "evaluated compliance ... to verify that the [PSM] procedures and practices are adequate and are being followed". Once the report has been issued by the report leader, this certification is typically made by the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, which is how the PSM-CAP App designates the responsible Owner/Operator representative, per the management system. Interpretations vary what needs to be certified; the certification language in the PSM-CAP App follows the wording in the PSM and CAP rules. The PSM-CAP App retains PSM-audit reports indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
         'c5require_file' => $Zfpf->encrypt_1c('audit_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ), /*  2018-10-03 JDH combined with practice above.
@@ -207,7 +207,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Certification of "have evaluated... to verify"'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('KKKFFF'),
-        'c6description' => $Zfpf->encrypt_1c('This certification is typically made by an Owner/Operator representative designated by their management system, such as the plant manager or the process PSM leader of the '.HAZSUB_PROCESS_NAME_ZFPF.' being audited, once the final PSM-audit report has been issued by the lead auditor. Interpretations vary on the extent of what needs to be certified; the template certification language in this app copies the somewhat ambiguous language in the OSHA and EPA rules.'),
+        'c6description' => $Zfpf->encrypt_1c('This certification...'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ), */
@@ -215,7 +215,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('48-Hours To Start Investigation and Applicability'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('JJJAAA'),
-        'c6description' => $Zfpf->encrypt_1c('The facility Emergency Action Plan describes how to communicate the discovery of a '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leak or an incident (fires, forklift collisions, and so forth) potentially involving the '.HAZSUB_PROCESS_NAME_ZFPF.' -- such as employees notifying their supervisor or others as needed for the managers of the facility and any emergency teams to take needed actions. Once aware of the incident, the process PSM leader, or their backup, shall evaluate whether it resulted in, or could reasonably have resulted in, a catastrophic release, which is defined in the glossary. If so, as promptly as possible, but not later than 48 hours following the incident, assign an incident-investigation team leader, assemble a team, and start investigating the incident. The incident-investigation form may also be used to document less-than catastrophic incidents. Option: provide tools for evaluating the size and severity of an incident -- such as quantity-released calculation spreadsheets or simple dispersion modeling. This is optional because it is often hard or impossible to get good input information for these.'),
+        'c6description' => $Zfpf->encrypt_1c('The facility Emergency Action Plan describes how to communicate the discovery of a '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leak or an incident (fires, forklift collisions, and so forth) potentially involving the '.HAZSUB_PROCESS_NAME_ZFPF.' -- such as employees notifying their supervisor or others as needed for the managers of the facility and any emergency teams to take needed actions. Once aware of the incident, the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, or their backup, shall evaluate whether it resulted in, or could reasonably have resulted in, a catastrophic release, which is defined in the glossary. If so, as promptly as possible, but not later than 48 hours following the incident, assign an incident-investigation team leader, assemble a team, and start investigating the incident. The incident-investigation form may also be used to document less-than catastrophic incidents. Option: provide tools for evaluating the size and severity of an incident -- such as quantity-released calculation spreadsheets or simple dispersion modeling. This is optional because it is often hard or impossible to get good input information for these.'),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -231,7 +231,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Approval'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('JJJCCC'),
-        'c6description' => $Zfpf->encrypt_1c('Once the incident-investigation team leader approves the investigation, the process PSM leader reviews the completed incident-investigation form and any documents referenced in it, which together make-up the incident-investigation report. Once any questions and comments are resolved, the process PSM leader approves the incident-investigation report.'),
+        'c6description' => $Zfpf->encrypt_1c('Once the incident-investigation team leader approves the investigation, the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader reviews the completed incident-investigation form and any documents referenced in it, which together make-up the incident-investigation report. Once any questions and comments are resolved, the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approves the incident-investigation report.'),
         'c5require_file' => $Zfpf->encrypt_1c('incident_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -247,7 +247,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Employee and Contractor Briefing'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('JJJEEE'),
-        'c6description' => $Zfpf->encrypt_1c('The process PSM leader ensures that each incident-investigation report is reviewed with current employees or contractors whose job tasks are relevant to its conclusions and recommendations. The incident-investigation report form includes fields for describing these employees or contractors and also for uploading the agendas, attendance sheets, or other documentation of these reviews. On integrating recommendations into procedures and training, as needed, so they benefit future employees or contractors, see any Actions included in incident-investigation reports.'),
+        'c6description' => $Zfpf->encrypt_1c('The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader ensures that each incident-investigation report is reviewed with current employees or contractors whose job tasks are relevant to its conclusions and recommendations. The incident-investigation report form includes fields for describing these employees or contractors and also for uploading the agendas, attendance sheets, or other documentation of these reviews. On integrating recommendations into procedures and training, as needed, so they benefit future employees or contractors, see any Actions included in incident-investigation reports.'),
         'c5require_file' => $Zfpf->encrypt_1c('incident_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -279,7 +279,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Training Documentation'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('FFFCCC'),
-        'c6description' => $Zfpf->encrypt_1c('Complete training-documentation forms to document each employee\'s initial and refresher training on the hazardous-substance procedures and safe-work practices that they need to understand to do their job . The training-documentation form asks the employee how often they want refresher training.'),
+        'c6description' => $Zfpf->encrypt_1c('Complete training...'),
         'c5require_file' => $Zfpf->encrypt_1c('training_form_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ), */
@@ -319,7 +319,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Entrance Privileges and Records of each Contractor Individual'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('GGGEEE'),
-        'c6description' => $Zfpf->encrypt_1c('Check if an individual human working as a contractor (a "contractor individual") has privileges to enter a facility, a process area, or a job site. View the training or other records that may justify these entrance privileges. Upload training or other records and grant or revoke entrance privileges.'),
+        'c6description' => $Zfpf->encrypt_1c('Check if an individual human working as a contractor (a "contractor individual") has privileges to enter a facility, a particular area or room, or a job site. View the training or other records that may justify these entrance privileges. Upload training or other records and grant or revoke entrance privileges.'),
         'c5require_file' => $Zfpf->encrypt_1c('contractor_priv_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -343,7 +343,8 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Safety Data Sheets'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCAAA'),
-        'c6description' => $Zfpf->encrypt_1c('Safety Data Sheets (SDS) for hazardous substances and other process substances are kept with the other SDS at the facility.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('Safety Data Sheets (SDS) applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.' are kept with the other SDS at the facility. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -351,7 +352,8 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Flow Diagram'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCBBB'),
-        'c6description' => $Zfpf->encrypt_1c('This "block flow" or "simplified process flow" diagram summarizes the '.HAZSUB_PROCESS_NAME_ZFPF.'\'s equipment packages and the flows between them.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('This "block flow" or "simplified process flow" diagram summarizes the '.HAZSUB_PROCESS_NAME_ZFPF.'\'s equipment packages and the flows between them. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -359,7 +361,8 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Process Chemistry'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCCCC'),
-        'c6description' => $Zfpf->encrypt_1c('A written summary, the flow diagram, or other documents available to facility employees, taken together, describe: (1) all major substances stored or flowing within the '.HAZSUB_PROCESS_NAME_ZFPF.' and (2) their significant chemical changes, including phase changes (gas condensing to liquid...) and so provide a summary "how it works" or "theory of operation".'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('A written summary, the flow diagram, or other documents available to facility employees, taken together, describe: (1) all major substances stored or flowing within the '.HAZSUB_PROCESS_NAME_ZFPF.' and (2) their significant chemical changes, including phase changes (gas condensing to liquid...) and so provide a summary "how it works" or "theory of operation". 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -367,7 +370,8 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Contained-Substances Inventory'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCDDD'),
-        'c6description' => $Zfpf->encrypt_1c('This describes the maximum-intended '.HAZSUB_NAME_ADJECTIVE_ZFPF.' quantity inside the '.HAZSUB_PROCESS_NAME_ZFPF.' and the method used to determine this. These "maximum intended" inventories are typically less than the maximum amount that could fit in the '.HAZSUB_PROCESS_NAME_ZFPF.'\'s primary containment. Instead, they are based on the intended operation of the '.HAZSUB_PROCESS_NAME_ZFPF.' and any co-located '.HAZSUB_NAME_ADJECTIVE_ZFPF.' storage. They may be based on: (2.1) charging records and maximum-fill levels, temperatures, and pressures after charging (not applicable if the process makes hazardous substances), (2.2) the sum of significant amounts in the '.HAZSUB_PROCESS_NAME_ZFPF.' components at maximum-intended-inventory compositions, levels, temperatures, and pressures, or (2.3) another method that produces results of similar quality. Options: (A) provide inventory calculations showing the range of normal inventories and also the maximum intended and (B) inventory other, non-hazardous, substances in the '.HAZSUB_PROCESS_NAME_ZFPF.'.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('This describes the maximum-intended '.HAZSUB_NAME_ADJECTIVE_ZFPF.' quantity inside the '.HAZSUB_PROCESS_NAME_ZFPF.' and the method used to determine this. These "maximum intended" inventories are typically less than the maximum amount that could fit in the '.HAZSUB_PROCESS_NAME_ZFPF.'\'s primary containment. Instead, they are based on the intended operation of the '.HAZSUB_PROCESS_NAME_ZFPF.' and any co-located '.HAZSUB_NAME_ADJECTIVE_ZFPF.' storage. They may be based on: (2.1) charging records and maximum-fill levels, temperatures, and pressures after charging (not applicable if the process makes hazardous substances), (2.2) the sum of significant amounts in the '.HAZSUB_PROCESS_NAME_ZFPF.' components at maximum-intended-inventory compositions, levels, temperatures, and pressures, or (2.3) another method that produces results of similar quality. Options: (A) provide inventory calculations showing the range of normal inventories and also the maximum intended and (B) inventory other, non-hazardous, substances in the '.HAZSUB_PROCESS_NAME_ZFPF.'. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -375,7 +379,8 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCEEE'),
-        'c6description' => $Zfpf->encrypt_1c('The written descriptions of these cover acceptable ranges for applicable parameters, such as temperatures, pressures, levels, flows, or compositions. They also describe consequences of deviations outside acceptable ranges, in the context of the '.HAZSUB_PROCESS_NAME_ZFPF.' controls, safety systems, and the corrective actions that employees or contractors should take, if trained on procedures covering this. They can serve as a troubleshooting guide, and they may be called "technical operating specifications". They may be referenced by hazardous-substance procedures and safe-work practices or by maintenance procedures, which -- along with controls user-interfaces, manufacturers\' manuals, and similar documents -- may contain more details. For additional deviation consequences, see offsite-hazard assessments, process-hazard analyses (PHA), or other hazard identification and risk analyses (HIRA). Options: explain the choice of operating limits with references to additional information and describe typical values for operating parameters.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('The written descriptions of these cover acceptable ranges for applicable parameters, such as temperatures, pressures, levels, flows, or compositions. They also describe consequences of deviations outside acceptable ranges, in the context of the '.HAZSUB_PROCESS_NAME_ZFPF.' controls, safety systems, and the corrective actions that employees or contractors should take, if trained on procedures covering this. They can serve as a troubleshooting guide, and they may be called "technical operating specifications". They may be referenced by hazardous-substance procedures and safe-work practices or by maintenance procedures, which -- along with controls user-interfaces, manufacturers\' manuals, and similar documents -- may contain more details. For additional deviation consequences, see offsite-hazard assessments, process-hazard analyses (PHA), or other hazard identification and risk analyses (HIRA). Options: explain the choice of operating limits with references to additional information and describe typical values for operating parameters. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -391,7 +396,8 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Piping and Instrument Diagram (P&amp;ID)'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCGGG'),
-        'c6description' => $Zfpf->encrypt_1c('In addition to diagrams of piping systems and instrumentation, P&amp;ID often include component tables, with information on vessels, valves, and other equipment packages, such as the P&amp;ID tag, make, model, size, year built, and year installed.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('In addition to diagrams of piping systems and instrumentation, P&amp;ID often include component tables, with information on vessels, valves, and other equipment packages, such as the P&amp;ID tag, make, model, size, year built, and year installed. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -399,7 +405,8 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Electrical Classification'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCHHH'),
-        'c6description' => $Zfpf->encrypt_1c('Either (1) a practice document here summarizes why the '.HAZSUB_PROCESS_NAME_ZFPF.' causes no rooms or other areas to be classified as hazardous locations under the applicable electrical code or (2) the change-management documents, for the initial installation or subsequent changes, describe any needed hazardous-location electrical classifications, for example, under design review. For background, see the classes, divisions, and groups of NFPA 70, National Electrical Code, a National Fire Protection Association (NFPA) standard, as well as the applicable building and mechanical codes that may reference NFPA 70.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('Either (1) a practice document here summarizes why the '.HAZSUB_PROCESS_NAME_ZFPF.' causes no rooms or other areas to be classified as hazardous locations under the applicable electrical code or (2) the change-management documents, for the initial installation or subsequent changes, describe any needed hazardous-location electrical classifications, for example, under design review. For background, see the classes, divisions, and groups of NFPA 70, National Electrical Code, a National Fire Protection Association (NFPA) standard, as well as the applicable building and mechanical codes that may reference NFPA 70. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -423,7 +430,8 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Material and Energy Balances'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCKKK'),
-        'c6description' => $Zfpf->encrypt_1c('These may not be applicable to storage-only systems. Material balances may not be applicable to closed-loop systems, such as some refrigeration systems.'.DOC_WHERE_KEPT_ZFPF),
+        'c6description' => $Zfpf->encrypt_1c('These may not be applicable to storage-only systems. Material balances may not be applicable to closed-loop systems, such as some refrigeration systems. 
+'.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),

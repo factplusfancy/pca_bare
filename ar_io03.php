@@ -69,7 +69,7 @@ if (isset($_POST['ar_o1']) or isset($_POST['ar_o1_from']) or isset($_POST['undo_
 if (isset($_GET['ar_download_csv'])) {
     // Generate the CSV string in $FileAsString
     $Fields = array('c5name', 'c5status', 'c5priority', 'c5affected_entity', 'c6deficiency', 'c6details', 'c6notes', 'c6bfn_supporting', 'c6nymd_leader', 'c6nymd_ae_leader');
-    $FileAsString = '"Name"|"Status"|"Priority"|"Affected Entity"|"Deficiencies"|"Details or Resolution Options"|"Resolution Methods and Any Deficiency Modifications"|"Supporting Documents Uploaded"|"Assigned-To Leader Approval"|"Affected-Entity PSM Leader Approval"
+    $FileAsString = '"Name"|"Status"|"Priority"|"Affected Entity"|"Deficiencies"|"Details or Resolution Options"|"Resolution Methods and Any Deficiency Modifications"|"Supporting Documents Uploaded"|"Assigned-To Leader Approval"|"Affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approval"
 '; // First line of CSV file, holding column headings of future spreadsheet. Enclose everything but delimiter in quotes so delimiter can be in text.
     if (isset($_SESSION['Scratch']['ActionRows'])) foreach ($_SESSION['Scratch']['ActionRows'] as $VA) {
         foreach ($Fields as $VB) {
@@ -373,7 +373,7 @@ if (isset($_POST['ar_o1']) or isset($_GET['ar_o1'])) {
         $Display['k0user_of_ae_leader'] = $Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']); // Bootstrap this text here.
     elseif ($_SESSION['Selected']['k0user_of_ae_leader'] > 1) {
         $Display['k0user_of_ae_leader'] = $Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']).' (who recommended resolution approval) and<br />
-        '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_ae_leader']).' (the Affected-Entity PSM Leader, who approved resolution on behalf of the owner)';
+        '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_ae_leader']).' (the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, who approved resolution on behalf of the owner)';
     }
     $Message = '<h1>
     Action Register</h1>
@@ -416,7 +416,7 @@ if (isset($_POST['ar_o1']) or isset($_GET['ar_o1'])) {
                 else {
                     $AssignOrChange = 'Assign responsibility and timing';
                     $Message .= '<p>
-                    Before resolution fields can be edited, responsibility for resolution must be assigned by the affected-entity PSM leader for this "'.$MaxScope.'" action.</p>';
+                    Before resolution fields can be edited, responsibility for resolution must be assigned by the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for this "'.$MaxScope.'" action.</p>';
                 }
                 // Resolution Responsibility and Timing button
                 if ($UserIsAELeader) {
@@ -555,7 +555,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
                     $Display['k0user_of_ae_leader'] = $Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']); // Bootstrap this text here.
                 elseif ($_SESSION['Selected']['k0user_of_ae_leader'] > 1)
                     $Display['k0user_of_ae_leader'] = $Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']).' (who recommended resolution approval) and<br />
-                    '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_ae_leader']).' (the Affected-Entity PSM Leader, who approved resolution on behalf of the owner)';
+                    '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_ae_leader']).' (the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, who approved resolution on behalf of the owner)';
                 if (isset($_POST['approve_1_leader']))
                     $NVT = array(
                         0 => 'approve_2'.$TaskSubKeyA,
@@ -792,7 +792,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
                     }
                     $Body .= '<p>
                     Resolution assigned to: '.$Leader['NameTitleEmployerWorkEmail'].'<br />
-                    By: '.$User['NameTitleEmployerWorkEmail'].' (the Affected-Entity PSM Leader)</p>';
+                    By: '.$User['NameTitleEmployerWorkEmail'].' (the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader)</p>';
                     $EchoText .= '<p>
                     The app attempted to assign resolution responsibility to: '.$Leader['NameTitleEmployerWorkEmail'].'</p>';
                 }
@@ -819,8 +819,8 @@ if (isset($_SESSION['Selected']['k0action'])) {
                 if ($Affected != 1)
                     $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
                 $Zfpf->close_connection_1s($DBMSresource);
-                // Try to email any former leader, the newly-assigned leader, and the Affected-Entity Leader (who must be the current user).
-                // Don't email higher ranking PSM leaders via up_the_chain_1c() for these assignments; less important than approvals.
+                // Try to email any former leader, the newly-assigned leader, and the affected-entity leader (who must be the current user).
+                // Don't email higher ranking leaders via up_the_chain_1c() for these assignments; less important than approvals.
                 $EmailAddresses = array($User['WorkEmail'], $Leader['WorkEmail']);
                 $Subject = 'PSM-CAP: Action Register for '.$ActionName;
                 $DistributionList = '<p>
@@ -832,7 +832,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
                     Former "resolution assigned to" person: '.$FormerLeader['NameTitleEmployerWorkEmail'];
                 }
                 $DistributionList .= '<br />
-                Affected-Entity PSM Leader: '.$User['NameTitleEmployerWorkEmail'];
+                Affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$User['NameTitleEmployerWorkEmail'];
                 $UpTheChain = $Zfpf->up_the_chain_1c($MaxScope);
                 $Body = $Zfpf->email_body_append_1c($Body, $UpTheChain['AEFullDescription'], '', $DistributionList);
                 $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);

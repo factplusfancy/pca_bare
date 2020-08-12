@@ -37,9 +37,9 @@ else {
         2. Chemical Accident Prevention/Risk Management Plan. Administered by the U.S. Environmental Protection Agency (EPA) and designed to reduce risks to the community near this facility.<br />
         3. Process Safety Management (PSM). Administered by the Occupational Safety and Health Administration (OSHA) and designed to reduce risks to employees at this facility.</p><p>
 
-    We implement a process safety program to comply with the above rules. You are entitled to review most information about process safety where you work. Contact your supervisor, or your organization\'s safety personnel, for more information or to provide feedback. The '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety data sheet (SDS) and this facility\'s emergency plans also have more information.</p><p>
+    We implement a process-safety program to comply with the above rules. You are entitled to review most information about process safety where you work. Contact your supervisor, or your organization\'s safety personnel, for more information or to provide feedback. The '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety data sheet (SDS) and this facility\'s emergency plans also have more information.</p><p>
 
-    Our process safety program includes the following elements:</p><ul class="indent"><li>
+    Our process-safety program includes the following elements:</p><ul class="indent"><li>
 
     <b>Management system</b> -- assigning overall responsibility and lines of authority to others with specific responsibilities.</li><li>
 

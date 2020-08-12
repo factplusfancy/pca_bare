@@ -356,9 +356,9 @@ if (isset($_SESSION['Selected']['k0user_process'])) {
             $IsLeader = 'No';
         $PrivilegesText = '<p>
         At selected process:<br />
-        - PSM Leader: '.$IsLeader.'<br />
+        - The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$IsLeader.'<br />
         - Process: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c5p_process']).'<br />
-        - User-Process (and subordinate <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>): '.$Zfpf->decrypt_1c($_SESSION['Selected']['c5p_user']).'</p>';
+        - User-process (and subordinate <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>): '.$Zfpf->decrypt_1c($_SESSION['Selected']['c5p_user']).'</p>';
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
         $ConditionsUP[] = array('k0user', '=', $_SESSION['Selected']['k0user'], 'AND'); 
         $ConditionsUP[] = array('k0process', '=', $_SESSION['t0user_process']['k0process']);
@@ -368,7 +368,7 @@ if (isset($_SESSION['Selected']['k0user_process'])) {
         End selected user\'s access to process information via this app.</h2><p>
         <b>Selected <a class="toc" href="glossary.php#process" target="_blank">process</a>:</b> '.$ProcessNameDescription.'</p><p>
         End access for <b>'.$SelectedUser['NameTitleEmployerWorkEmail'].'</b>, via this app, to the information of the selected process and its <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>.</p><p>
-        The app cannot assign a new PSM leader. You need to do this, if you plan to end the access of a PSM leader for a process or any ongoing PHA or HIRA, incident investigation, or PSM audit.</p><p>
+        The app cannot assign a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader. You need to do this, if you plan to end the access of a '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for a process or any ongoing PHA or HIRA, incident investigation, or PSM audit.</p><p>
         The above user has the following privileges (which they will lose) and leadership roles (which will need to be filled).</p>
         '.$PrivilegesText.'
         <form action="user_process_io03.php" method="post"><p>
@@ -391,7 +391,7 @@ if (isset($_SESSION['Selected']['k0user_process'])) {
         if ($LeadersNeeded)
             echo '<p>
             '.$LeadersNeeded.'</p><p>
-            '.$SelectedUser['Name'].' remains the recorded PSM leader for these.</p>';
+            '.$SelectedUser['Name'].' remains the recorded '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for these.</p>';
         echo '<p>
         You can confirm this via the user history records.</p>
         <form action="user_h_o1.php?process" method="post"><p>

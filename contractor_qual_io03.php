@@ -248,7 +248,7 @@ if (isset($_SESSION['Selected']['k0contractor_qual'])) {
         $Affected = $Zfpf->update_sql_1s($DBMSresource, 't0owner_contractor', $Changes, $Conditions, TRUE, $ShtmlFormArray);
         if ($Affected != 1)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
-        // Email the contractor PSM leader, the owner PSM leader, and, if different, the current user.
+        // Email the contractor leader, the owner leader, and, if different, the current user.
         $Zfpf->close_connection_1s($DBMSresource);
         $ContractorLeader = $Zfpf->user_job_info_1c($SRC[0]['k0user_of_leader']);
         $ContractorName = $Zfpf->decrypt_1c($SRC[0]['c5name']);
@@ -257,8 +257,8 @@ if (isset($_SESSION['Selected']['k0contractor_qual'])) {
         $EmailAddresses = array($ContractorLeader['WorkEmail'], $OwnerLeader['WorkEmail']);
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found):</b><br />
-        Contractor PSM Leader: '.$ContractorLeader['NameTitleEmployerWorkEmail'].'<br />
-        Owner PSM Leader: '.$OwnerLeader['NameTitleEmployerWorkEmail'];
+        Contractor '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$ContractorLeader['NameTitleEmployerWorkEmail'].'<br />
+        Owner '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$OwnerLeader['NameTitleEmployerWorkEmail'];
     	$Message = '<p>';
         if ($_SESSION['t0user']['k0user'] != $_SESSION['StatePicked']['t0owner']['k0user_of_leader']) {
             $CurrentUser = $Zfpf->current_user_info_1c();

@@ -44,7 +44,7 @@ if (isset($_SESSION['StatePicked']['t0process']['k0process'])) { // This app req
 
 // $htmlFormArray is specified in the PSM-CAP App Standards, in file 0read_me_psm_cap_app_standards.txt.
 $htmlFormArray = array(
-    'k0user_of_leader' => array('<a id="k0user_of_leader"></a>Team Leader', ''), // Intentionally out of order in schema.
+    'k0user_of_leader' => array('<a id="k0user_of_leader"></a>Team leader', ''), // Intentionally out of order in schema.
     'c6bfn_act_notice' => array('<a id="c6bfn_act_notice"></a>Activity notice(s) posted', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
     'c6team_qualifications' => array('<a id="c6team_qualifications"></a>Team Qualifications', REQUIRED_FIELD_ZFPF, C6SHORT_MAX_BYTES_ZFPF),
     'c6bfn_attendance' => array('<a id="c6bfn_attendance"></a>Team attendance records (required) and any other supporting materials', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
@@ -505,12 +505,12 @@ if (isset($_SESSION['Selected']['k0pha'])) {
                 $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
         }
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the team leader and the process, facility, and owner PSM leaders.
+        // Email the team leader and the process, facility, and owner leaders.
         $Chain = $Zfpf->up_the_chain_1c();
         $Chain['EmailAddresses'][] = $TeamLeader['WorkEmail'];
         $Chain['DistributionList'] .= '<br />
-        PHA Team Leader: '.$TeamLeader['NameTitleEmployerWorkEmail'].'</p>';
-        $Subject = 'PSM-CAP: PHA Issued by Team Leader';
+        PHA team leader: '.$TeamLeader['NameTitleEmployerWorkEmail'].'</p>';
+        $Subject = 'PSM-CAP: PHA issued by team leader';
         $Body = '<p>
         The team leader -- '.$TeamLeader['NameTitle'].', '.$TeamLeader['Employer'].' -- issued the PHA report for:<br />
         * '.$Process['AEFullDescription'].'<br />
@@ -550,7 +550,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
         $Zfpf->edit_lock_1c('pha');
         $Conditions1[0] = array('k0process', '=', $_SESSION['Selected']['k0process']);
         $SpecialText = '<p><b>
-        Pick Team Leader</b></p><p>
+        Pick team leader</b></p><p>
         The current leader, if any, will be replaced by the user you pick above.</p>';
         $Zfpf->lookup_user_wrap_2c(
             't0user_process', // $TableNameUserEntity
@@ -560,7 +560,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
             array('k0user'), // $Columns1
             'pha_io03.php', // $CancelFile
             $SpecialText,
-            'Assign Team Leader', // $SpecialSubmitButton
+            'Assign team leader', // $SpecialSubmitButton
             'change_team_leader_3', // $SubmitButtonName
             'change_team_leader_1', // $TryAgainButtonName
             'pha_o1', // $CancelButtonName
@@ -605,25 +605,25 @@ if (isset($_SESSION['Selected']['k0pha'])) {
         if ($Affected != 1)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the any former leader, the newly-assigned leader, the Process Leader (who should be the current user).
+        // Email the any former leader, the newly-assigned leader, the process leader (who should be the current user).
         $NewLeader = $Zfpf->user_job_info_1c($k0user);
         $EmailAddresses = array($Process['AELeaderWorkEmail'], $NewLeader['WorkEmail']);
-    	$Subject = 'PSM-CAP: PHA Team Leader assigned to '.$NewLeader['NameTitle'];
-        $Body = '<p>'.$NewLeader['NameTitle'].', '.$NewLeader['Employer'].' was assigned the PHA Team Leader by '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' (the process leader for PSM).</p>';
+    	$Subject = 'PSM-CAP: PHA team leader assigned to '.$NewLeader['NameTitle'];
+        $Body = '<p>'.$NewLeader['NameTitle'].', '.$NewLeader['Employer'].' was assigned the PHA team leader by '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' (the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader).</p>';
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found): </b><br />
-        New PHA Team Leader : '.$NewLeader['NameTitleEmployerWorkEmail'].'<br />
-        Process PSM Leader: '.$Process['AELeaderNameTitleEmployerWorkEmail'];
+        New PHA team leader : '.$NewLeader['NameTitleEmployerWorkEmail'].'<br />
+        Process '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitleEmployerWorkEmail'];
         if ($TeamLeader) { // This is set above, and hold the former team leader info.
             $EmailAddresses[] = $TeamLeader['WorkEmail'];
             $DistributionList .= '<br />
-            Former PHA Team Leader: '.$TeamLeader['NameTitleEmployerWorkEmail'];
+            Former PHA team leader: '.$TeamLeader['NameTitleEmployerWorkEmail'];
         }
         $DistributionList .= '</p>';
         $Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], '', $DistributionList);
         $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
         echo $Zfpf->xhtml_contents_header_1c('Done').'<h2>
-        You just assigned a new PHA Team Leader.</h2>';
+        You just assigned a new PHA team leader.</h2>';
         if ($EmailSent)
             echo '<p>You and others involved should soon receive an email confirming this.</p>';
         else

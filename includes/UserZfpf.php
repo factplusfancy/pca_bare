@@ -198,7 +198,7 @@ class UserZfpf {
         else {
             if (!$IsLeader)
                 echo '<p><b>
-                Modify Global User Privileges Notice</b>: Only the PSM leader of the owner (or contractor) that employs the selected user may change their PSM-CAP app global privileges, remove access to information, or revoke their logon credentials to this app. The app could not verify that you meet these criteria.'.$ExtraNotice.'</p>';
+                Modify Global User Privileges Notice</b>: Only the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader of the owner (or contractor) that employs the selected user may change their PSM-CAP app global privileges, remove access to information, or revoke their logon credentials to this app. The app could not verify that you meet these criteria.'.$ExtraNotice.'</p>';
             if (!$AppAdmin and $SelectedUserIsAppAdmin)
                 echo '<p><b>
                 App Admin Notice</b>: The selected user is a PSM-CAP app administrator (app admin) so only another app admin can change their PSM-CAP app global privileges or revoke their logon credentials to this app. You are not an app admin.</p>';
@@ -262,7 +262,7 @@ class UserZfpf {
                     $IsLeader = 'No';
                 $PrivilegesText .= '<p>
                 '.$Zfpf->decrypt_1c($SRF[0]['c5name']).', '.$Zfpf->decrypt_1c($SRF[0]['c5city']).', '.$Zfpf->decrypt_1c($SRF[0]['c5state_province']).', '.$Zfpf->decrypt_1c($SRF[0]['c5country']).':<br />
-                - PSM Leader: '.$IsLeader.'<br />
+                - The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$IsLeader.'<br />
                 - Facility: '.$Zfpf->decrypt_1c($SRUF[0]['c5p_facility']).'<br />
                 - Union: '.$Zfpf->decrypt_1c($SRUF[0]['c5p_union']).'<br />
                 - User-facility (and subordinate practices): '.$Zfpf->decrypt_1c($SRUF[0]['c5p_user']).'<br />
@@ -287,7 +287,7 @@ class UserZfpf {
                         $IsLeader = 'No';
                     $PrivilegesText .= '<p>
                     '.$Zfpf->entity_name_description_1c($SRP[0], 100, FALSE).':<br />
-                    - PSM Leader: '.$IsLeader.'<br />
+                    - The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$IsLeader.'<br />
                     - Process: '.$Zfpf->decrypt_1c($SRUP[0]['c5p_process']).'<br />
                     - User-process (and applicable facility and owner practices): '.$Zfpf->decrypt_1c($SRUP[0]['c5p_user']).'</p>';
                 }
@@ -321,7 +321,7 @@ class UserZfpf {
         '.$SelectedUser['Employer'].':<br />';
         if (isset($SelectedUser['t0user_employer']['k0user_owner'])) {
             $PrivilegesText .= '
-            - PSM Leader: '.$IsLeader.'<br />
+            - The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$IsLeader.'<br />
             - Owner: '.$Zfpf->decrypt_1c($SelectedUser['t0user_employer']['c5p_owner']).'<br />
             - User: '.$Zfpf->decrypt_1c($SelectedUser['t0user_employer']['c5p_user']).'<br />
             - Contractor: '.$Zfpf->decrypt_1c($SelectedUser['t0user_employer']['c5p_contractor']).'<br />
@@ -334,7 +334,7 @@ class UserZfpf {
         }
         elseif (isset($SelectedUser['t0user_employer']['k0user_contractor'])) {
             $PrivilegesText .= '
-            - PSM Leader: '.$IsLeader.'<br />
+            - The '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$IsLeader.'<br />
             - Contractor organization: '.$Zfpf->decrypt_1c($SelectedUser['t0user_employer']['c5p_contractor']).'<br />
             - Contractor individual (user): '.$Zfpf->decrypt_1c($SelectedUser['t0user_employer']['c5p_user']).'</p>';
             if (!$AllUserPractices)
@@ -403,7 +403,7 @@ class UserZfpf {
         echo '</select></p>
         <p>If downgraded, the app will also try to downgrade, to the maximum allowed with the new global DBMS privileges, the user\'s privileges listed below.</p>
         <p>The user may have privileges with owners or contractors other than the currently selected one and with their facilities, processes, or practices, which the app will <b>not</b> automatically downgrade.</p>
-        <p>The app cannot assign a new PSM leader. You need to do this, if you plan to downgrade a PSM leader\'s privileges. PSM leaders need full global DBMS privileges, including the PSM leaders for owners, contractors, facilities, and processes and the leaders for any ongoing PHA or HIRA, incident investigation, or PSM audit.</p>
+        <p>The app cannot assign a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader. You need to do this, if you plan to downgrade a '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader\'s privileges. All '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leaders need full global DBMS privileges, including the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leaders for owners, contractors, facilities, and processes and the leaders for any ongoing PHA or HIRA, incident investigation, or PSM audit.</p>
         '.$this->display_privileges($Zfpf, $SelectedUser, TRUE).'<p>
             Change user\'s PSM-CAP app global privileges.<br />
             <input type="submit" name="change_global_dbms_priv_2" value="Change global privileges" /></p><p>
@@ -563,7 +563,7 @@ class UserZfpf {
         Revoke Logon Credentials</h2><p>
         Revoke the logon credentials to the PSM-CAP app for:<br />
         <b>'.$SelectedUser['NameTitleEmployerWorkEmail'].'</b></p>
-        <p>This only prevents them from logging on and gives a notice of this wherever the app displays this user\'s name. You will need to assign a new leader if the above user is a PSM leader for an owner, contractor, facility, or process, or for an ongoing PHA or HIRA, PSM audit, or incident investigation.</p>
+        <p>This only prevents them from logging on and gives a notice of this wherever the app displays this user\'s name. You will need to assign a new leader if the above user is a '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for an owner, contractor, facility, or process, or for an ongoing PHA or HIRA, PSM audit, or incident investigation.</p>
         <form action="user_io03.php" method="post"><p>
             <input type="submit" name="revoke_logon_2" value="Revoke logon credentials" /></p><p>
             <input type="submit" name="user_o1" value="Take no action -- go back" /></p>
@@ -683,7 +683,7 @@ class UserZfpf {
                 if ($Affected > 1)
                     $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected Rows: '.@$Affected);
                 if ($_SESSION['Selected']['k0user'] == $SRP[0]['k0user_of_leader']) {
-                    $LeadersNeeded .= '- Need a new PSM leader for process: '.$Zfpf->entity_name_description_1c($SRP[0], 100, FALSE).'<br />';
+                    $LeadersNeeded .= '- Need a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for process: '.$Zfpf->entity_name_description_1c($SRP[0], 100, FALSE).'<br />';
                 }
             }
         }
@@ -711,7 +711,7 @@ class UserZfpf {
                 if ($Affected > 1)
                     $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected Rows: '.@$Affected);
                 if ($_SESSION['Selected']['k0user'] == $SRF[0]['k0user_of_leader'])
-                    $LeadersNeeded .= '- Need a new PSM leader for facility: '.$Zfpf->decrypt_1c($SRF[0]['c5name']).', '.$Zfpf->decrypt_1c($SRF[0]['c5city']).', '.$Zfpf->decrypt_1c($SRF[0]['c5state_province']).', '.$Zfpf->decrypt_1c($SRF[0]['c5country']).'<br />';
+                    $LeadersNeeded .= '- Need a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for facility: '.$Zfpf->decrypt_1c($SRF[0]['c5name']).', '.$Zfpf->decrypt_1c($SRF[0]['c5city']).', '.$Zfpf->decrypt_1c($SRF[0]['c5state_province']).', '.$Zfpf->decrypt_1c($SRF[0]['c5country']).'<br />';
             }
             list($LeadersNeededP, $ConditionsUPFromP) = $this->separate_user_p($Zfpf, $DBMSresource, $VOF['k0facility']);
             $LeadersNeeded .= $LeadersNeededP;
@@ -740,7 +740,7 @@ class UserZfpf {
             if ($RRO != 1)
                 $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Rows Returned: '.@$RRF);
             if ($_SESSION['Selected']['k0user'] == $SRO[0]['k0user_of_leader'])
-                $LeadersNeeded .= '- Need a new PSM leader for owner: '.$Zfpf->decrypt_1c($SRO[0]['c5name']).', '.$Zfpf->decrypt_1c($SRO[0]['c5city']).', '.$Zfpf->decrypt_1c($SRO[0]['c5state_province']).', '.$Zfpf->decrypt_1c($SRO[0]['c5country']).'<br />';
+                $LeadersNeeded .= '- Need a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for owner: '.$Zfpf->decrypt_1c($SRO[0]['c5name']).', '.$Zfpf->decrypt_1c($SRO[0]['c5city']).', '.$Zfpf->decrypt_1c($SRO[0]['c5state_province']).', '.$Zfpf->decrypt_1c($SRO[0]['c5country']).'<br />';
         }
         elseif ($From == 'contractor') {
             if (!isset($_SESSION['Selected']['k0user_contractor']) or !isset($_SESSION['t0user_contractor']) or $_SESSION['t0user_contractor']['k0contractor'] != $_SESSION['Selected']['k0contractor'] or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
@@ -763,7 +763,7 @@ class UserZfpf {
             if ($RRC != 1)
                 $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Rows Returned: '.@$RRF);
             if ($_SESSION['Selected']['k0user'] == $SRC[0]['k0user_of_leader'])
-                $LeadersNeeded .= '- Need a new PSM leader for contractor: '.$Zfpf->decrypt_1c($SRC[0]['c5name']).', '.$Zfpf->decrypt_1c($SRC[0]['c5city']).', '.$Zfpf->decrypt_1c($SRC[0]['c5state_province']).', '.$Zfpf->decrypt_1c($SRC[0]['c5country']).'<br />';
+                $LeadersNeeded .= '- Need a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for contractor: '.$Zfpf->decrypt_1c($SRC[0]['c5name']).', '.$Zfpf->decrypt_1c($SRC[0]['c5city']).', '.$Zfpf->decrypt_1c($SRC[0]['c5state_province']).', '.$Zfpf->decrypt_1c($SRC[0]['c5country']).'<br />';
         }
         elseif ($From == 'facility') {
             if (!isset($_SESSION['Selected']['k0user_facility']) or !isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)

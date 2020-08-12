@@ -225,7 +225,7 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEMMM'),
         'c6description' => $Zfpf->encrypt_1c('These include: 
-(1) the hot-work permit policy and form applicable to the process and 
+(1) the hot-work permit policy and form applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.' and 
 (2) the Evacuating Ammonia for Hot Work sub-procedure description, which applies to hot-work on the '.HAZSUB_PROCESS_NAME_ZFPF.'. 
 Sub-procedure description also includes: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
 '.DOC_WHERE_KEPT_ZFPF),

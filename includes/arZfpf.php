@@ -314,9 +314,9 @@ class arZfpf {
             <b>Global Privileges Notice</b>: You have privileges to neither create nor edit PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.';
         $Message .= '</p><p>
         An action is:<br />
-        - opened, and unresolved, once the report recommending it (for audits, incident investigations, PHA or HIRA, etc.) is issued, per the approval process for the type of report (or once a proposed "unassociated action" is accepted by the PSM leader),<br />
+        - opened, and unresolved, once the report recommending it (for audits, incident investigations, PHA or HIRA, etc.) is issued, per the approval process for the type of report (or once a proposed "unassociated action" is accepted by the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader),<br />
         - marked resolved once the person assigned responsibility documents its resolution, and<br />
-        - closed once its resolution is approved by the affected-entity\'s PSM leader, representing the <a class="toc" href="glossary.php#owner_operator" target="_blank">Owner/Operator</a>.</p>
+        - closed once its resolution is approved by the affected-entity\'s '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, representing the <a class="toc" href="glossary.php#owner_operator" target="_blank">Owner/Operator</a>.</p>
         </form>';
         if (isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar']))
             $Message .= '

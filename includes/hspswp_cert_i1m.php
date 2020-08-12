@@ -57,7 +57,7 @@ if ($_SESSION['t0user']['k0user'] == $_SESSION['StatePicked']['t0process']['k0us
 else {
     if ($_SESSION['t0user']['k0user'] != $_SESSION['StatePicked']['t0process']['k0user_of_leader'])
         $Message .= '<p><b>
-        Certify Privileges Notice</b>: Only the process PSM leader may certify that the hazardous-substance procedures and safe-work practices applicable to the process are current and accurate.</p>';
+        Certify Privileges Notice</b>: Only the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader may certify that the hazardous-substance procedures and safe-work practices applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.' are current and accurate.</p>';
     if ($UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)
         $Message .= '<p><b>
         Global Privileges Notice</b>: You don\'t have privileges to edit PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.</p>';

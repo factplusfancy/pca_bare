@@ -29,8 +29,8 @@
 // t0rule insert
 $rules = array(
     4 => array( // As a convention, this is the 4th rule in PSM-CAP App. See /includes/templates/rules.php
-        'c5name' => $Zfpf->encrypt_1c('General Duty for anhydrous-ammonia mechanical refrigeration'),
-        'c5citation' => $Zfpf->encrypt_1c('Tort law, negligence, and duty of care. In the USA, the Occupational Safety and Health Act of 1970, Section 5, 29 U.S. Code 654, and Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1)')
+        'c5name' => $Zfpf->encrypt_1c('General duty for anhydrous-ammonia mechanical refrigeration'),
+        'c5citation' => $Zfpf->encrypt_1c('Tort law, negligence, and duty of care. In the USA, Occupational Safety and Health Act of 1970 Section 5, 29 U.S. Code 654, and Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1)')
     ) // The Clean Air Act Amendments of 1990 promulgated paragraph 112(r)(1) of the Clean Air Act.
 );
 foreach ($rules as $K => $V) {
@@ -41,10 +41,10 @@ foreach ($rules as $K => $V) {
 }
 
 // t0division inserts
-// As a convention, the General Duty division method starts with the 51st division in the PSM-CAP App, see /includes/templates/divisions.php 
+// As a convention, the General duty division method starts with the 51st division in the PSM-CAP App, see /includes/templates/divisions.php 
 $divisions = array(
     51 => array(
-        'k0rule' => $rules[4]['k0rule'], // $rules[4] is the General Duty division method.
+        'k0rule' => $rules[4]['k0rule'], // $rules[4] is the General duty division method.
         'c5name' => $Zfpf->encrypt_1c('Management system'),
         'c5citation' => $EncryptedNothing
     ),
@@ -134,7 +134,7 @@ $general_duty_fragments = array(
         'c5name' => $Zfpf->encrypt_1c('Building codes and industry standards'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('State and local laws and regulations in the applicable jurisdiction.'),
-        'c6quote' => $Zfpf->encrypt_1c('See the lists of codes and standards in the template hazard review(s) that may be provided with this PSM-CAP App. Select "General Duty..." then "Hazard review"'),
+        'c6quote' => $Zfpf->encrypt_1c('See the lists of codes and standards in the template hazard review(s) that may be provided with this PSM-CAP App. Select "General duty..." then "Hazard review"'),
         'c5source' => $EncryptedNothing
     )
 );
@@ -220,10 +220,9 @@ foreach ($divisions as $VD) {
         // TO DO FOR PRODUCTION VERSION  In setup context, there will only be standard practices.
         // TO DO FOR PRODUCTION VERSION  If run after users have customized practices, need to filter for only standard practices.
         // TO DO FOR PRODUCTION VERSION  See includes/templates/schema.php t0practice:c2standardized
-        // TO DO exclude Employee Participation > Consulting on PHA
-        // TO DO exclude HSPSWP > Current and Accurate Certification from general duty
     if ($RRPD) foreach ($SRPD as $VPD) {
-        $DivPractices[]['k0practice'] = $VPD['k0practice'];
+        if ($VPD['k0practice'] != 58) // This excludes HSPSWP > Current and Accurate Certification from general duty ONLY if includes/templates/practices.php stops at k0practice 54 and current and Current and Accurate Certification is the 4th practices in includes/templates/nh3r_hspswp_ep_usa.php
+            $DivPractices[]['k0practice'] = $VPD['k0practice'];
         $RRPD = FALSE;
     }
     if ($DivPractices) foreach ($DivPractices as $VPD) {

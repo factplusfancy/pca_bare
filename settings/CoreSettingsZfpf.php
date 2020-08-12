@@ -23,18 +23,24 @@
 //    INCLUDES_DIRECTORY_PATH_ZFPF
 
 
-// TO DO FOR PRODUCTION VERSION -- options variables: uncomment one per variable -- START
-
-$OptionFiles = 'local';
+// TO DO FOR PRODUCTION VERSION -- OPTIONS -- START
+// Uncomment one per variable or constant below
+// *** (1) Where will user files be saved? ***
+$OptionFiles = 'local'; // for a local deployment, with user files saved at /var/www/html/user_files
 // $OptionFiles = 'GAE_PHP5';
-
+// *** (2) Can multiple files be zipped and downloaded at once? ***
 $OptionZipDownloadsWorks = FALSE;
 // $OptionZipDownloadsWorks = TRUE;
-
+// *** (3) Type of hazardous substance and process, see use of $OptionHazSub below. ***
 // $OptionHazSub = 'generic';
 $OptionHazSub = 'anhydrous_ammonia_refrigeration';
-
-// TO DO FOR PRODUCTION VERSION -- options variables -- END 
+// *** (4) Adjective describing the responsible leaders for the owner, contractor, facility, and process ***
+// 'safety' handles both PSM and general-duty only; 
+// 'process-safety' cumbersome sometimes, like: 'hazardous-substance process process-safety leader'
+define('PROGRAM_LEADER_ADJECTIVE_ZFPF', 'safety');
+// define('PROGRAM_LEADER_ADJECTIVE_ZFPF', 'process-safety');
+// define('PROGRAM_LEADER_ADJECTIVE_ZFPF', 'PSM');
+// TO DO FOR PRODUCTION VERSION -- OPTIONS -- END 
 
 // Time zone options are listed at https://www.php.net/manual/en/timezones.php
 define('DEFAULT_TIME_ZONE_ZFPF', 'America/Chicago');

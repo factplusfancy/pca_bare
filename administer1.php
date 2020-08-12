@@ -17,7 +17,7 @@ if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) == MAX_PRIVILEGES_
 
 $Message = $Zfpf->xhtml_contents_header_1c('Admin').'<h1>
 Administration</h1><p>
-<b>Only options your privileges allow are listed below.</b> Contact a PSM leader, an app admin, or your supervisor if you don\'t see what you need.</p>';
+<b>Only options your privileges allow are listed below.</b> Contact a '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, an app admin, or your supervisor if you don\'t see what you need.</p>';
 
 /////////////////////////////////// User self-administration (admin) options ///////////////////////////////////
 // All users can change their password, username, as well as personal information, emergency contacts, and challenge questions.
@@ -55,9 +55,9 @@ if (isset($_SESSION['StatePicked']['t0owner']) and isset($_SESSION['t0user_owner
         <a class="toc" href="username_password_i03.php">- Change password or username (lock or unlock user account).</a><br />
         <a class="toc" href="user_owner_i0m.php">- User, user-owner, and user-practice records -- insert new, update, or view current and history.</a> These provide an employee with PSM-CAP App access, set privileges, and record some personal and employment information. <b>From a user-owner record</b> you may:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;* revoke a user\'s access to information of the owner and its facilities, processes, and <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>.<br />';
-        if ($_SESSION['t0user']['k0user'] == $_SESSION['StatePicked']['t0owner']['k0user_of_leader']) // Current user is owner PSM leader
+        if ($_SESSION['t0user']['k0user'] == $_SESSION['StatePicked']['t0owner']['k0user_of_leader']) // Current user is owner leader
             $Message .= '
-            Because you are the owner PSM leader, <b>from a user record</b> you may:<br />
+            Because you are the owner '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, <b>from a user record</b> you may:<br />
             &nbsp;&nbsp;&nbsp;&nbsp;* change a user\'s PSM-CAP app global privileges and<br />
             &nbsp;&nbsp;&nbsp;&nbsp;* revoke a user\'s logon credentials to this PSM-CAP app.<br />';
         $Message .= '
@@ -111,9 +111,9 @@ if (isset($_SESSION['StatePicked']['t0contractor']) and isset($_SESSION['t0user_
         <a class="toc" href="user_contractor_i0m.php">- User, user-contractor, and user-practice records -- insert new, update, or view current and history.</a> These provide an employee with PSM-CAP App access, set privileges, and record some personal and employment information.<br />
         From a user-contractor record you may:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;* revoke a user\'s access to information of the contractor and its client owners, facilities, processes, and <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>.<br />';
-        if ($_SESSION['t0user']['k0user'] == $_SESSION['StatePicked']['t0contractor']['k0user_of_leader']) // Current user is contractor PSM leader
+        if ($_SESSION['t0user']['k0user'] == $_SESSION['StatePicked']['t0contractor']['k0user_of_leader']) // Current user is contractor leader
             $Message .= '
-            From a user record, because you are the contractor PSM leader, you may:<br />
+            From a user record, because you are the contractor '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, you may:<br />
             &nbsp;&nbsp;&nbsp;&nbsp;* change a user\'s PSM-CAP app global privileges and<br />
             &nbsp;&nbsp;&nbsp;&nbsp;* revoke a user\'s logon credentials to this PSM-CAP app.<br />';
         $Message .= '

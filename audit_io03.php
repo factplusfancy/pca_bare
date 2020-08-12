@@ -380,7 +380,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         $Message .= '
         Discard the draft report you were just viewing?</h2><p>
         The information in the draft report will remain in this app\'s history tables, until they are purged per the Owner/Operator\'s policies.</p><p>
-        A draft report may only be discarded by its report leader or the process PSM leader.</p>
+        A draft report may only be discarded by its report leader or the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader.</p>
         <form action="audit_io03.php" method="post"><p>
             <input type="submit" name="discard_draft_audit_2" value="Discard draft report" /></p><p>
             <input type="submit" name="audit_o1" value="Go back" /></p>
@@ -662,11 +662,11 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             }
         }
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the report leader and the process, facility, and owner PSM leaders.
+        // Email the report leader and the process, facility, and owner leaders.
         $Chain = $Zfpf->up_the_chain_1c();
         $Chain['EmailAddresses'][] = $ReportLeader['WorkEmail'];
         $Chain['DistributionList'] .= '<br />
-        Report Leader: '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' '.$ReportLeader['WorkEmail'].'</p>';
+        Report leader: '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' '.$ReportLeader['WorkEmail'].'</p>';
         $Subject = 'PSM-CAP: '.$ReportType.'report '.$IssuedRetracted;
         $Body = '<p>
         The report leader -- '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' -- '.$IssuedRetracted.' the '.$ReportType.'report for:<br />
@@ -766,14 +766,14 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         $_SESSION['Selected']['c6nymd_certifier'] = $Changes['c6nymd_certifier'];
         $_SESSION['Selected']['k0user_of_certifier'] = $Changes['k0user_of_certifier'];
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the report leader and the process, facility, and owner PSM leaders.
+        // Email the report leader and the process, facility, and owner leaders.
         $Chain = $Zfpf->up_the_chain_1c();
         $Chain['EmailAddresses'][] = $ReportLeader['WorkEmail'];
         $Chain['DistributionList'] .= '<br />
-        Report Leader: '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' '.$ReportLeader['WorkEmail'].'</p>';
+        Report leader: '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' '.$ReportLeader['WorkEmail'].'</p>';
         $Subject = 'PSM-CAP: '.$ReportType.'certification '.$ApprovedCanceled;
         $Body = '<p>
-        The process PSM leader -- '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' -- '.$ApprovedCanceled.' a '.$ReportType.'certification for:<br />
+        The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader -- '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' -- '.$ApprovedCanceled.' a '.$ReportType.'certification for:<br />
         * '.$Process['AEFullDescription'].'</p>';
         $Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $Chain['DistributionList']);
         $EmailSent = $Zfpf->send_email_1c($Chain['EmailAddresses'], $Subject, $Body);
@@ -862,19 +862,19 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         if ($Affected != 1)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
         $Zfpf->close_connection_1s($DBMSresource);
-        // Email the any former report leader, the newly-assigned report leader, the process PSM leader (who should be the current user).
+        // Email the any former report leader, the newly-assigned report leader, the process leader (who should be the current user).
         $NewLeader = $Zfpf->user_job_info_1c($k0user);
         $EmailAddresses = array($Process['AELeaderWorkEmail'], $NewLeader['WorkEmail']);
     	$Subject = 'PSM-CAP: report leader assigned to '.$NewLeader['NameTitle'];
-        $Body = '<p> For '.$Process['AEFullDescription'].', '.$NewLeader['NameTitle'].', '.$NewLeader['Employer'].' was designated as the report leader by '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' (the process leader for PSM).</p>';
+        $Body = '<p> For '.$Process['AEFullDescription'].', '.$NewLeader['NameTitle'].', '.$NewLeader['Employer'].' was designated as the report leader by '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' (the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader).</p>';
         $DistributionList = '<p>
         <b>Distributed To (if an email address was found): </b><br />
-        New Report Leader: '.$NewLeader['NameTitle'].', '.$NewLeader['Employer'].' '.$NewLeader['WorkEmail'].'<br />
-        Process PSM Leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'];
+        New report leader: '.$NewLeader['NameTitle'].', '.$NewLeader['Employer'].' '.$NewLeader['WorkEmail'].'<br />
+        Process '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'];
         if ($ReportLeader) { // This is set above, and holds the former report leader info.
             $EmailAddresses[] = $ReportLeader['WorkEmail'];
             $DistributionList .= '<br />
-            Former Report Leader: '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' '.$ReportLeader['WorkEmail'];
+            Former report leader: '.$ReportLeader['NameTitle'].', '.$ReportLeader['Employer'].' '.$ReportLeader['WorkEmail'];
         }
         $DistributionList .= '</p>';
         $Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], '', $DistributionList);

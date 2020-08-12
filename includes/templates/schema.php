@@ -77,9 +77,9 @@ $Schema = array(
         'c5work_email',
         'c5work_phone_mobile',
         'c5work_phone_desk',
-        'c5work_phone_pager', // TO DO Owner PSM leaders (see t0contractor:k0user_of_leader) should get SIUD on all c5p fields in this table.
+        'c5work_phone_pager', // TO DO Owner leaders (see t0contractor:k0user_of_leader) should get SIUD on all c5p fields in this table.
         'c5p_owner', // Minimum SIUD. U t0owner and IUD t0practice (owner-wide only, see t0user_practice.) Only app admins can ID t0owner.
-        'c5p_user', // Minimum SI. Unlock an owner-associated user, I t0user, IUD t0user_owner, and IUD t0user_practice. This privilege cascades down to t0facility:c5p_user and t0process:c5p_user, via the user_owner, user_facility, and user_process code, so this admin can take owner-wide actions on users. Only users can modify their own t0user personal information, see UserZfpf:user_o1. Only the owner PSM leader can D t0user, with exceptions, see t0owner:k0user_of_leader.
+        'c5p_user', // Minimum SI. Unlock an owner-associated user, I t0user, IUD t0user_owner, and IUD t0user_practice. This privilege cascades down to t0facility:c5p_user and t0process:c5p_user, via the user_owner, user_facility, and user_process code, so this admin can take owner-wide actions on users. Only users can modify their own t0user personal information, see UserZfpf:user_o1. Only the owner leader can D t0user, with exceptions, see t0owner:k0user_of_leader.
         'c5p_contractor', // Minimum SI. I t0contractor and IUD t0owner_contractor (including approving contractor_qual with practice-SIUD privileges). Only a contractor can UD its t0contractor row.
         'c5p_facility', // Minimum SIUD. IUD t0facility and IUD t0owner_facility.
         'c5who_is_editing'
@@ -128,7 +128,7 @@ $Schema = array(
         'c5work_phone_desk',
         'c5work_phone_pager',
         'c5p_contractor', // Minimum SIUD. U t0contractor, U t0owner_contractor:c6bfn_contractor_notices, and IUD t0practice (contractor-wide only, see t0user_practice.) Only owners can ID t0contractor.
-        'c5p_user', // Minimum SI. Unlock a contractor-associated user (contractor individual), I t0user, IUD t0user_contractor (if D a user losses access to app, unless user has a different user_contractor or user_owner privilege), and IUD t0user_practice (contractor-wide only). Only users can modify their own t0user personal information, see UserZfpf:user_o1. Only the contractor PSM leader can D t0user, with exceptions, see t0contractor:k0user_of_leader.
+        'c5p_user', // Minimum SI. Unlock a contractor-associated user (contractor individual), I t0user, IUD t0user_contractor (if D a user losses access to app, unless user has a different user_contractor or user_owner privilege), and IUD t0user_practice (contractor-wide only). Only users can modify their own t0user personal information, see UserZfpf:user_o1. Only the contractor leader can D t0user, with exceptions, see t0contractor:k0user_of_leader.
         'c6bfn_general_training',
         'c5who_is_editing'
     ),
@@ -705,7 +705,7 @@ $Schema = array(
 	    'c6bfn_review_attendance', // This is for documenting the review with affected personnel, which is a separate practice.
         'c5ts_leader',
         'c6nymd_leader',
-        'k0user_of_ae_leader', // 0 while draft, 1 when approved by team leader, and k0user of process PSM leader, the affected-entity (AE) leader, once approved.
+        'k0user_of_ae_leader', // 0 while draft, 1 when approved by team leader, and k0user of process leader, the affected-entity (AE) leader, once approved.
         'c5ts_ae_leader',
         'c6nymd_ae_leader',
         'c5who_is_editing'
@@ -719,7 +719,7 @@ $Schema = array(
     't0certify' => array( // General table for certifications liked to a process. Use for hazardous-substance procedures and safe-work practices "current and accurate" certification.
         'k0certify',
         'k0process',
-        'k0user_of_ae_leader', // 0 while draft and k0user of process PSM leader, the affected-entity (AE) leader, once approved.
+        'k0user_of_ae_leader', // 0 while draft and k0user of process leader, the affected-entity (AE) leader, once approved.
         'c5ts_ae_leader', // TO DO Use to trigger the reminder emails
         'c6nymd_ae_leader',
         'c6bfn_as_certified',

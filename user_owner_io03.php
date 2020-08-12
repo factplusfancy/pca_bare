@@ -84,7 +84,7 @@ $htmlFormArray = array(
     'c5work_phone_desk' => array('Work desk phone', ''),
     'c5work_phone_pager' => array('Work pager', ''),
     'c5p_owner' => array('<a id="c5p_owner"></a><b>Privileges with this Owner/Operator (aka owner)</b>. These cannot be higher than the user\'s global database management system (DBMS) privileges.<br /><br /> Full privileges to insert new and update owner-wide compliance-practice records and to update the owner summary. (Only app admins can insert and delete owners)', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MAX_PRIVILEGE_OPTIONS_ZFPF']),
-    'c5p_user' => array('User, user-owner, and user-practice records. "'.MID_PRIVILEGES_ZFPF.'" to insert new users, associate them with PSM <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>, and unlock logon credentials of a user (for example, after they mistyped a password multiple times). Full privileges to also update user-practice and user-owner records. (Only users can update their own user record. Only the owner PSM leader can terminate access for a typical user with this owner.)', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MID_PRIVILEGE_OPTIONS_ZFPF']),
+    'c5p_user' => array('User, user-owner, and user-practice records. "'.MID_PRIVILEGES_ZFPF.'" to insert new users, associate them with PSM <a class="toc" href="glossary.php#practices" target="_blank">compliance practices</a>, and unlock logon credentials of a user (for example, after they mistyped a password multiple times). Full privileges to also update user-practice and user-owner records. (Only users can update their own user record. Only the owner '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader can terminate access for a typical user with this owner.)', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MID_PRIVILEGE_OPTIONS_ZFPF']),
     'c5p_contractor' => array('Contractor and owner-contractor records. "'.MID_PRIVILEGES_ZFPF.'" to insert new contractor-organization records and associate them the owner. Full privileges to also update or delete contractor records', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MID_PRIVILEGE_OPTIONS_ZFPF']),
     'c5p_facility' => array('Facility and owner-facility records. Full privileges to insert new, update, and delete facility and owner-facility records', '', C5_MAX_BYTES_ZFPF, 'dropdown', $_SESSION['PlainText']['MIN_MAX_PRIVILEGE_OPTIONS_ZFPF'])
 );
@@ -279,7 +279,7 @@ if (isset($_SESSION['Selected']['k0user_owner'])) {
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
         End selected user\'s access to '.$SelectedUser['Employer'].' information via this app.</h2><p>
         End access for <b>'.$SelectedUser['NameTitleEmployerWorkEmail'].'</b>, via this app, to the information of '.$SelectedUser['Employer'].', its facilities, its processes, and its practices.</p><p>
-        The app cannot assign a new PSM leader. You need to do this, if you plan to end the access of a PSM leader for an owner, facility, process, or any ongoing PHA or HIRA, incident investigation, or PSM audit.</p><p>
+        The app cannot assign a new '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader. You need to do this, if you plan to end the access of a '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for an owner, facility, process, or any ongoing PHA or HIRA, incident investigation, or PSM audit.</p><p>
         The above user has the following privileges (which they will lose) and leadership roles (which will need to be filled).</p>
         '.$UserZfpf->display_privileges($Zfpf, $SelectedUser).'
         <form action="user_owner_io03.php" method="post"><p>
@@ -302,7 +302,7 @@ if (isset($_SESSION['Selected']['k0user_owner'])) {
         if ($LeadersNeeded)
             echo '<p>
             '.$LeadersNeeded.'</p><p>
-            '.$SelectedUser['Name'].' remains the recorded PSM leader for these.</p>';
+            '.$SelectedUser['Name'].' remains the recorded '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for these.</p>';
         echo '<p>
         You can confirm this via the user-history records.</p>
         <form action="user_h_o1.php" method="post"><p>

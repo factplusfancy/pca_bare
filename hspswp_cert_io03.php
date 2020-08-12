@@ -98,7 +98,7 @@ if (isset($_POST['hspswp_cert_o1'])) {
     $Zfpf->save_and_exit_1c();
 }
 
-// Process PSM leader certifying 1
+// Process leader certifying 1
 // SPECIAL CASE: all i0n code here with certification confirmation page.
 if (isset($_POST['hspswp_cert_i0n'])) {
     // Additional security check.
@@ -121,7 +121,7 @@ if (isset($_POST['hspswp_cert_i0n'])) {
     Current and accurate certification for hazardous-substance procedures and safe-work practices</h2>
     '.$Scope.$Instructions.'<p>
     <b>This certification cannot be canceled.</b> You may correct errors in hazardous-substance procedures and safe-work practices later and re-certify. Complete change management for corrections that alter tasks people do. For minor corrections or clarifications, you may skip the change-management documentation and instead only document training of affected employees or contractors on the latest, corrected, hazardous-substance procedures and safe-work practices.</p><p>
-    <b>By clicking "certify" below, as the process PSM leader for '.$Process['AEFullDescription'].', I am confirming that:<br />
+    <b>By clicking "certify" below, as the '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$Process['AEFullDescription'].', I am confirming that:<br />
      - the hazardous-substance procedures and safe-work practices, for the the above process, are current and accurate,<br />
      - I verified, myself or through others whose qualifications I determined are adequate, that everything needed to safely make this certification has been completed, and<br />
      - I am qualified to do this.</b></p><p>
@@ -144,7 +144,7 @@ if (isset($_POST['hspswp_cert_i0n'])) {
     $Zfpf->save_and_exit_1c();
 }
 
-// Process PSM leader certifying 2
+// Process leader certifying 2
 if (isset($_POST['psm_leader_approval_2'])) {
     // Additional security check.
     if (!isset($_SESSION['Selected']['k0certify']) or $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']) != '[A new database row is being created.]' or $_SESSION['t0user']['k0user'] != $Process['AELeader_k0user'] or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
@@ -173,11 +173,11 @@ if (isset($_POST['psm_leader_approval_2'])) {
     $_SESSION['Selected']['c6bfn_as_certified'] = $Zfpf->encode_encrypt_1c($c6bfn_array);
     $_SESSION['Selected']['c5who_is_editing'] = $Zfpf->encrypt_1c('PERMANENTLY LOCKED: This is an approved certification, so it cannot be edited.');
     $Zfpf->one_shot_insert_1s('t0certify', $_SESSION['Selected']);
-    // Email the the process, facility, and owner PSM leaders.
+    // Email the the process, facility, and owner leaders.
     $Chain = $Zfpf->up_the_chain_1c();
     $Subject = 'PSM-CAP: Current and accurate certification for hazardous-substance procedures and safe-work practices';
     $Body = '<p>
-    The Process PSM Leader made the:<br />
+    The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader made the:<br />
     * current and accurate certification for hazardous-substance procedures and safe-work practices<br />
     * for '.$Process['AEFullDescription'].'<br />
     The app attempted to save copy of the approved certification document.

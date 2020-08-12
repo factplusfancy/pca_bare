@@ -95,7 +95,7 @@ else {
         $Message .= $CurrentUserInfo['Employer'];
     else
         $Message .= 'a contractor approved by '.$CurrentUserInfo['Employer'].', the Owner/Operator';
-    $Message .= '. For assistance contact the facility PSM leader or the Owner/Operator\'s contractor contact.</p>';
+    $Message .= '. For assistance contact the facility '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader or the Owner/Operator\'s contractor contact.</p>';
 }
 echo $Zfpf->xhtml_contents_header_1c('PSM CAP').'<h2>
 Entrance Privileges and Records of each Contractor Individual</h2>

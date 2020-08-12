@@ -100,13 +100,7 @@ in PSM-CAP App file includes/CoreZfpf.php -- namely functions:
 || IN SAFE AND SECURE PLACES.
 || YOUR DATA WILL BE LOST FOREVER IF YOU LOSE THIS PASSWORD.
 
-(3.3.2) review from
-"options variables: uncomment one per variable -- START" to
-"options variables -- END".
-Defaults are:
-$OptionFiles = 'local'; // for a local deployment, with user files saved at /var/www/html/user_files
-$OptionZipDownloadsWorks = FALSE; // cannot download multiple, zipped, files at once
-$OptionHazSub = 'anhydrous_ammonia_refrigeration'; // tailors the app's wording for ammonia-refrigeration systems
+(3.3.2) review from "TO DO FOR PRODUCTION VERSION -- OPTIONS -- START" to "...OPTIONS -- END".
 
 (3.3.3) Also, VERY IMPORTANT, ensure PSM-CAP App file settings/CoreSettingsZfpf.php
 or the entire /settings/ directory is safe and secure,
