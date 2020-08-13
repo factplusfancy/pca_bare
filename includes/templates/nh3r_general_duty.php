@@ -221,10 +221,10 @@ foreach ($divisions as $VD) {
         // TO DO FOR PRODUCTION VERSION  If run after users have customized practices, need to filter for only standard practices.
         // TO DO FOR PRODUCTION VERSION  See includes/templates/schema.php t0practice:c2standardized
     if ($RRPD) foreach ($SRPD as $VPD) {
-        if ($VPD['k0practice'] != 58) // This excludes HSPSWP > Current and Accurate Certification from general duty ONLY if includes/templates/practices.php stops at k0practice 54 and current and Current and Accurate Certification is the 4th practices in includes/templates/nh3r_hspswp_ep_usa.php
-            $DivPractices[]['k0practice'] = $VPD['k0practice'];
-        $RRPD = FALSE;
+        if ($VPD['k0practice'] != 58)
+            $DivPractices[]['k0practice'] = $VPD['k0practice']; // TO DO FOR PRODUCTION VERSION verify this excludes: General duty > HSPSWP > Current and Accurate Certification
     }
+    $RRPD = FALSE;
     if ($DivPractices) foreach ($DivPractices as $VPD) {
         $AllPractices[$i++] = $VPD;
         $VPD['k0practice_division'] = ++$PrimaryKey;
