@@ -580,7 +580,7 @@ for anhydrous ammonia:
 (3) checked, for quality and completeness, a sample of 
 (3.1) emergency-response equipment inspection, testing, and maintenance records, 
 (3.2) emergency-response training and medical evaluation records, and 
-(3.3) community-responder coordination and exercise records required by 40 CFR 68 Subpart E, 
+(3.3) community-responder coordination and exercise records required by 40 CFR 68, Subpart E, 
 (4) checked if the facility\'s emergency-response plan included the "elements" required by 29 CFR 1910.120(q)(2), namely, 
 (4.1) pre-emergency planning and coordination with outside parties, 
 (4.2) personnel roles, lines of authority, training, and communication, 
@@ -593,16 +593,15 @@ for anhydrous ammonia:
 (4.9) emergency alerting and response procedures, 
 (4.10) critique of response and follow-up, and 
 (4.11) personal-protective equipment (PPE) and other emergency equipment, and 
-(5) checked if the facility\'s emergency-response plan (or Emergency Action Plan) covered the requirements in 40 CFR 68 Subpart E.')
+(5) checked if the facility\'s emergency-response plan (or Emergency Action Plan) covered the requirements in 40 CFR 68, Subpart E.')
     ),
     52 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Audit and hazard review documents for the facility\'s '.HAZSUB_PROCESS_NAME_ZFPF.' -- checked if the prior two audit and hazard review reports (the reports), their resolution records, and any required Owner/Operator certifications that relied on them: 
 (1) had been retained, 
 (2) included in their reported scopes an audit and hazard review of compliance with at least 
 (2.1) general-duty law, and, if applicable, 
-(2.2) 40 CFR 68, Subpart C (EPA\'s Program 2 Prevention Program) or 
-(2.3) 40 CFR 68, Subpart D (EPA\'s Program 3 Prevention Program) and 
-(2.4) 29 CFR 1910.119 (OSHA\'s PSM), 
+(2.2) 40 CFR 68, Subpart D (EPA\'s Program 3 Prevention Program) and 
+(2.3) 29 CFR 1910.119 (OSHA\'s PSM), 
 (3) documented completion of these scopes following good practices, such as including a tour, discussions or interviews, and document reviews, 
 (4) described the qualifications of the individual(s) who completed each audit and hazard review and these qualifications included knowledge of the '.HAZSUB_PROCESS_NAME_ZFPF.', possibly gained while at the facility for the audit and hazard review if the individual(s) had experience with similar '.HAZSUB_PROCESS_NAME_ZFPF.'s elsewhere, and 
 (5) showed that the Owner/Operator had 

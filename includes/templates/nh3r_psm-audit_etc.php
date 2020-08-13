@@ -68,6 +68,7 @@ in the USA, the following general-duty laws
 State, provincial, and local codes
 
 Check for building, mechanical, hazardous substance, and other applicable codes in the jurisdiction where the ammonia-refrigeration system is located.
+
 Examples for Wisconsin are below.
 
 Wisconsin Commercial Building Code -- Chapter SPS 361 to 365, Wisconsin Administrative Code. This adopts the International Mechanical Code and other International Code Council codes, with some exceptions for ammonia refrigeration in industrial occupancies. Available from the Legislative Reference Bureau https://legis.wisconsin.gov/lrb/
@@ -80,7 +81,7 @@ IMC -- International Mechanical Code (IMC). The IMC has been published every thr
 
 IFC -- International Fire Code (IFC). IFC references IIAR standards and includes additional requirements that may apply to ammonia-refrigeration systems. The IFC may be purchased from the International Code Council at https://www.iccsafe.org
 
-NFPA 1 -- National Fire Protection Agency (NFPA) 1. NFPA 1 references IIAR standards and includes additional requirements that may apply to ammonia-refrigeration systems. NFPA 1 may be purchased from the at https://nfpa.org
+NFPA 1 -- National Fire Protection Association (NFPA) 1. NFPA 1 references IIAR standards and includes additional requirements that may apply to ammonia-refrigeration systems. NFPA 1 may be purchased from the at https://nfpa.org
 
 ASHRAE 15 -- American National Standards Institute (ANSI)/American Society of Heating, Refrigeration, and Air Conditioning Engineers (ASHRAE), Standard 15, "Safety Standard for Mechanical Refrigeration." Since publication of the 2019 Addendum A to IIAR 2, building codes have started allowing ammonia-refrigeration systems to only follow IIAR 2, for design, without needing to also follow ASHRAE 15. ASHRAE 15 has been published every 3 years since 2001, with more frequent addenda (https://ashrae.org/standards-research--technology/standards-addenda) and interpretations (https://ashrae.org/standards-research--technology/standards-interpretations). The forward of the 2013 edition indicates, "The first Safety Code for Mechanical Refrigeration, recognized as American Standard B9 in October 1930, appeared in the first edition, 1932-1933, of the ASRE Refrigerating Handbook and Catalog. ASRE revisions designated ASA B9 appeared in 1933 and 1939. ASRE revisions designated ASA B9.1 appeared in 1950, 1953, and 1958. After the formation of ASHRAE, editions appeared as ASA B9.1-1964, ANSI B9.1-1971, ANSI/ASHRAE 15-1978, ANSI/ASHRAE 15-1989, ANSI/ASHRAE 15-1992, ANSI/ASHRAE 15-1994, ANSI/ASHRAE 15-2001, ANSI/ASHRAE 15-2004, ANSI/ASHRAE 15-2007, and ANSI/ASHRAE 15-2010." ASHRAE publications may be purchased from https://ashrae.org
 
@@ -124,7 +125,7 @@ IIAR updates and interpretations are available at the IIAR website https://iiar.
 (1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), 
 (2) an audit of the Owner/Operator\'s compliance with 
 (2.1) the following portions of the EPA\'s Chemical Accident Prevention rule 
-(2.1.1) 40 CFR 68.15 Management System, 
+(2.1.1) 40 CFR 68.15 Management system, 
 (2.1.2) 40 CFR 68.200 Recordkeeping, 
 (2.1.3) 40 CFR 68, Subpart D (the Program 3 Prevention Program -- by auditing compliance with the nearly identical OSHA PSM requirements), and 
 (2.1.4) 40 CFR 68.90 to 68.96 (emergency preparedness), as applicable to the facility, and 
@@ -242,6 +243,7 @@ in the USA, the following general-duty laws
 State, provincial, and local codes
 
 Check for building, mechanical, hazardous substance, and other applicable codes in the jurisdiction where the ammonia-refrigeration system is located.
+
 Examples for Wisconsin are below.
 
 Wisconsin Commercial Building Code -- Chapter SPS 361 to 365, Wisconsin Administrative Code. This adopts the International Mechanical Code and other International Code Council codes, with some exceptions for ammonia refrigeration in industrial occupancies. Available from the Legislative Reference Bureau https://legis.wisconsin.gov/lrb/
@@ -254,7 +256,7 @@ IMC -- International Mechanical Code (IMC). The IMC has been published every thr
 
 IFC -- International Fire Code (IFC). IFC references IIAR standards and includes additional requirements that may apply to ammonia-refrigeration systems. The IFC may be purchased from the International Code Council at https://www.iccsafe.org
 
-NFPA 1 -- National Fire Protection Agency (NFPA) 1. NFPA 1 references IIAR standards and includes additional requirements that may apply to ammonia-refrigeration systems. NFPA 1 may be purchased from the at https://nfpa.org
+NFPA 1 -- National Fire Protection Association (NFPA) 1. NFPA 1 references IIAR standards and includes additional requirements that may apply to ammonia-refrigeration systems. NFPA 1 may be purchased from the at https://nfpa.org
 
 ASHRAE 15 -- American National Standards Institute (ANSI)/American Society of Heating, Refrigeration, and Air Conditioning Engineers (ASHRAE), Standard 15, "Safety Standard for Mechanical Refrigeration." Since publication of the 2019 Addendum A to IIAR 2, building codes have started allowing ammonia-refrigeration systems to only follow IIAR 2, for design, without needing to also follow ASHRAE 15. ASHRAE 15 has been published every 3 years since 2001, with more frequent addenda (https://ashrae.org/standards-research--technology/standards-addenda) and interpretations (https://ashrae.org/standards-research--technology/standards-interpretations). The forward of the 2013 edition indicates, "The first Safety Code for Mechanical Refrigeration, recognized as American Standard B9 in October 1930, appeared in the first edition, 1932-1933, of the ASRE Refrigerating Handbook and Catalog. ASRE revisions designated ASA B9 appeared in 1933 and 1939. ASRE revisions designated ASA B9.1 appeared in 1950, 1953, and 1958. After the formation of ASHRAE, editions appeared as ASA B9.1-1964, ANSI B9.1-1971, ANSI/ASHRAE 15-1978, ANSI/ASHRAE 15-1989, ANSI/ASHRAE 15-1992, ANSI/ASHRAE 15-1994, ANSI/ASHRAE 15-2001, ANSI/ASHRAE 15-2004, ANSI/ASHRAE 15-2007, and ANSI/ASHRAE 15-2010." ASHRAE publications may be purchased from https://ashrae.org
 
@@ -297,7 +299,7 @@ IIAR updates and interpretations are available at the IIAR website https://iiar.
 (1.2) Occupational Safety and Health Act of 1970 Section 5, 29 U.S. Code 654, and 
 (1.3) Clean Air Act paragraph 112(r)(1), 42 U.S. Code 7412(r)(1), and 
 (2) an audit of the Owner/Operator\'s compliance with the following portions of the EPA\'s Chemical Accident Prevention rule, as applicable to the facility or as a model for general duty, 
-(2.1) 40 CFR 68.15 Management System, 
+(2.1) 40 CFR 68.15 Management system, 
 (2.2) 40 CFR 68.200 Recordkeeping, and 
 (2.3) 40 CFR 68.90 to 68.96 (emergency preparedness), 
 both completed by comparing observations with 

@@ -104,7 +104,7 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
             $Message .= '<p><a id="'.$KOt.'"></a>';
             $Conditions[0] = array('k0obstopic', '=', $VOt['k0obstopic']);
             list($SROtOm, $RROtOm) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic_obsmethod', $Conditions);
-            if ($RROtOm) {       
+            if ($RROtOm) {
                 $Message .= '
                 <b>'.$OtName.'</b>';
                 if ($_SESSION['Selected']['k0audit'] >= 100000) { // Templates cannot have observation results.
@@ -424,6 +424,12 @@ if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_
         $_SESSION['Scratch']['t0obsresult'] = $_SESSION['SR']['t0obsresult'][$i];
         unset($_SESSION['SR']);
     }
+    if (isset($_SESSION['Scratch']['t0action'])) // May be set by ccsaZfpf::scenario_CCSA_Zfpf or downstream ("go back" from viewing an open action)
+        unset($_SESSION['Scratch']['t0action']);
+    if (isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar'])) // May be set by ccsaZfpf::scenario_CCSA_Zfpf or downstream
+        unset($_SESSION['Scratch']['PlainText']['action_ifrom_ar']);
+    if (isset($_SESSION['Scratch']['PlainText']['action_ifrom_ar_k0action'])) // May be set by ccsaZfpf::scenario_CCSA_Zfpf or downstream
+        unset($_SESSION['Scratch']['PlainText']['action_ifrom_ar_k0action']);
     $Zfpf->clear_edit_lock_1c(); // Handles go back...
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     $Conditions[0] = array('k0obsmethod', '=', $_SESSION['Scratch']['t0obsresult']['k0obsmethod']);
