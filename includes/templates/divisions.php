@@ -66,7 +66,7 @@ $divisions = array(
     ),
     13 => array( // MMM
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Offsite hazard assessment and reporting'),
+        'c5name' => $Zfpf->encrypt_1c('Offsite-hazard assessment and reporting'),
         'c5citation' => $EncryptedNothing
     ),
     14 => array( // AAA

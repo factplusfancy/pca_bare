@@ -653,7 +653,7 @@ $practice_division = array(
     ),
     162 => array(
         'k0practice' => $practices[27]['k0practice'], // Incident Investigation Form and Records (covers Five-year accident history)
-        'k0division' => $divisions[13]['k0division'] // Cheesehead division method - Offsite Hazard Assessment and Reporting
+        'k0division' => $divisions[13]['k0division'] // Cheesehead division method - Offsite-hazard assessment and reporting
     ),
     163 => array(
         'k0practice' => $practices[27]['k0practice'], // Incident Investigation Form and Records (covers Five-year accident history)

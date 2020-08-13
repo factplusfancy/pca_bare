@@ -492,7 +492,7 @@ $fragment_division = array(
     ),
     98 => array(
         'k0fragment' => $cap_fragments[54]['k0fragment'],
-        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Off-site Hazard Assessment and Reporting for the Cheesehead division method.
+        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Offsite-hazard assessment and reporting for the Cheesehead division method.
         'c5number' => $Zfpf->encrypt_1c('MMM111')
     ),
     99 => array(
@@ -532,7 +532,7 @@ $fragment_division = array(
     ),
     106 => array(
         'k0fragment' => $cap_fragments[62]['k0fragment'],
-        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Off-site Hazard Assessment and Reporting for the Cheesehead division method.
+        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Offsite-hazard assessment and reporting for the Cheesehead division method.
         'c5number' => $Zfpf->encrypt_1c('MMM199')
     ),
     107 => array(
@@ -547,7 +547,7 @@ $fragment_division = array(
     ),
     109 => array(
         'k0fragment' => $cap_fragments[178]['k0fragment'],
-        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Off-site Hazard Assessment and Reporting for the Cheesehead division method.
+        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Offsite-hazard assessment and reporting for the Cheesehead division method.
         'c5number' => $Zfpf->encrypt_1c('MMM211')
     ),
     110 => array(
@@ -607,7 +607,7 @@ $fragment_division = array(
     ),
     121 => array(
         'k0fragment' => $cap_fragments[192]['k0fragment'], // Affect on Air Operating Permits
-        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Off-site Hazard Assessment and Reporting for the Cheesehead division method.
+        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Offsite-hazard assessment and reporting for the Cheesehead division method.
         'c5number' => $Zfpf->encrypt_1c('MMM344') // MMM333 is used for $cap_fragments[191], far below.
     ),
     122 => array(
@@ -2197,7 +2197,7 @@ $fragment_division = array(
     ),
     439 => array(
         'k0fragment' => $cap_fragments[191]['k0fragment'], // Public Access to RMP Information (This was skipped in early draft.)
-        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Off-site Hazard Assessment and Reporting for the Cheesehead division method.
+        'k0division' => $divisions[13]['k0division'], // $divisions[13] is Offsite-hazard assessment and reporting for the Cheesehead division method.
         'c5number' => $Zfpf->encrypt_1c('MMM333')
     )
 );

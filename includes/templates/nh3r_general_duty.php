@@ -10,11 +10,11 @@
 // intended to cover IIAR 9 and much more, provide a checklist for a general-duty hazard review.
 // (2) It doesn't include the following Cheesehead divisions: 
 // (2.1) PSM audit (required every 3-years by the PSM rules) and 
-// (2.2) offsite hazard assessment and reporting. 
-// Offsite hazard assessment, in other words "identify hazards which may result from [accidental] releases 
+// (2.2) offsite-hazard assessment and reporting. 
+// Offsite-hazard assessment, in other words "identify hazards which may result from [accidental] releases 
 // using appropriate hazard assessment techniques" (Clean Air Act 112(r)(1)),
 // is covered by checking, and attempting to ensure, that the emergency plan of the community
-// where the facility is located has an adequate offsite hazard assessment.
+// where the facility is located has an adequate offsite-hazard assessment.
 // For example, see includes/templates/nh3r_hspswp_ep_usa.php > Emergency Action Plan > item 9.1.
 //
 // This file inserts a division method (into t0rule), divisions, rule fragments, and needed additional practices,

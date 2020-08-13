@@ -59,15 +59,15 @@ else {
 
     <b>Inspection, testing, and maintenance (ITM) for safe operation and mechanical integrity</b>.</li><li>
 
-    <b>Change management</b> -- careful planning, review, and approval of '.HAZSUB_PROCESS_NAME_ZFPF.' changes by management.</li><li>
+    <b>Change management</b> -- careful planning, review, and approval of '.HAZSUB_PROCESS_NAME_ZFPF.' changes.</li><li>
 
     <b>Incident investigation</b> -- procedures for investigating both near misses and incidents (leaks and so forth.)</li><li>
 
     <b>Audits</b> -- audits of our process-safety program every three years (five years for general-duty only facilities).</li><li>
 
-    <b>Emergency planning</b> -- procedures and training on '.HAZSUB_NAME_ADJECTIVE_ZFPF.' recognition, notification, move-to-safety, and evacuation or shelter-in-place and also coordination with outside responders, leak mitigation and emergency shutdown, and other actions by qualified personnel.</li><li>
+    <b>Emergency planning</b> -- procedures and training on '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leak recognition, notification, move-to-safety, and evacuation or shelter-in-place and also coordination with outside responders, leak mitigation and emergency shutdown, and other actions by qualified personnel.</li><li>
 
-    <b>Offsite hazard assessment</b> -- assessing risks to the community and environment around this facility and coordinating with offsite responders and governmental authorities.</li></ul><p>
+    <b>Offsite-hazard assessment</b> -- assessing risks to the community and environment around this facility and coordinating with offsite responders and governmental authorities.</li></ul><p>
 
     Please let us know if you have any questions or comments on '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety.</p>';
 }
