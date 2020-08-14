@@ -413,7 +413,7 @@ for anhydrous ammonia:
 (9.1.4) any facility resources helpful during incidents, and
 (9.1.5) a reasonably accurate worst-case release scenario and offsite-consequences evaluation for the facility, such as 
 (9.1.5.1) a distance-to-endpoint output by the U.S. EPA\'s RMP*Comp program based on either the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' maximum-intended inventory or the volume of the largest pressure vessel in the '.HAZSUB_PROCESS_NAME_ZFPF.', 
-(9.1.5.2) a circle on a map, centered at a potential release point at the facility, such as the refrigerating-machinery room, showing with reasonable detail the area within the distance-to-endpoint, 
+(9.1.5.2) a circle on a map, centered at a likely release point at the facility, such as the refrigerating-machinery room, showing with reasonable detail the area within the distance-to-endpoint, 
 (9.1.5.3) a residential human population estimate within the distance-to-endpoint, and 
 (9.1.5.4) a list of schools, hospitals, prisons, major commercial, office, or industrial areas, parks, wildlife preserves, wilderness areas, and similar within the distance-to-endpoint, 
 (9.2) promptly notifying the local emergency responders when a change occurs at the facility that may affect offsite-response plans, such as 

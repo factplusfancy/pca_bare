@@ -658,6 +658,30 @@ $practice_division = array(
     163 => array(
         'k0practice' => $practices[27]['k0practice'], // Incident Investigation Form and Records (covers Five-year accident history)
         'k0division' => $divisions[31]['k0division'] // EPA CAP division method - Hazard Assessment
+    ),
+    164 => array(
+        'k0practice' => $practices[55]['k0practice'], // Release Scenarios
+        'k0division' => $divisions[13]['k0division'] // Cheesehead division method - Offsite-hazard assessment and reporting
+    ),
+    165 => array(
+        'k0practice' => $practices[55]['k0practice'], // Release Scenarios
+        'k0division' => $divisions[31]['k0division'] // EPA CAP division method - Hazard Assessment
+    ),
+    166 => array(
+        'k0practice' => $practices[56]['k0practice'], // Offsite-Consequences Evaluation
+        'k0division' => $divisions[13]['k0division'] // Cheesehead division method - Offsite-hazard assessment and reporting
+    ),
+    167 => array(
+        'k0practice' => $practices[56]['k0practice'], // Offsite-Consequences Evaluation
+        'k0division' => $divisions[31]['k0division'] // EPA CAP division method - Hazard Assessment
+    ),
+    168 => array(
+        'k0practice' => $practices[57]['k0practice'], // Planning and Reporting
+        'k0division' => $divisions[13]['k0division'] // Cheesehead division method - Offsite-hazard assessment and reporting
+    ),
+    169 => array(
+        'k0practice' => $practices[57]['k0practice'], // Planning and Reporting
+        'k0division' => $divisions[31]['k0division'] // EPA CAP division method - Hazard Assessment
     )
 );
 foreach ($practice_division as $K => $V) {
