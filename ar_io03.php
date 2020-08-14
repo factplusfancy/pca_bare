@@ -182,7 +182,7 @@ elseif (isset($_GET['ar_i1m_audit']) or isset($_GET['ar_i1m_incident']) or isset
                 if ($RowsReturned > 0)
                     list($NumberFound, $KeysArray) = get_actions_ar_io03Zfpf($Zfpf, $DBMSresource, $NumberFound, $KeysArray, $SelectResults['t0incident_action']);
             }
-        $Description = 'Incident Investigation';
+        $Description = 'Incident investigation';
     }
     elseif (isset($_GET['ar_i1m_pha'])) {
         list($SelectResults['t0pha'], $RowsReturned) = $Zfpf->select_sql_1s($DBMSresource, 't0pha', $Conditions);

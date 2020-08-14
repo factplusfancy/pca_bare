@@ -55,7 +55,7 @@ $NH3ROm = array( // Indent as done below for better display in HTML text areas a
         'c6obsmethod' => $Zfpf->encrypt_1c('Inventory -- recorded the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' amounts: 
 (1) posted near refrigerating-machinery room(s) and 
 (2) written in the process safety information as the maximum-intended inventory, based on 
-(2.1) ammonia-charging records and maximum-fill levels, temperatures, and pressures after charging, 
+(2.1) ammonia-charging records, including the levels, temperatures, and pressures after charging, 
 (2.2) the sum of significant amounts in the '.HAZSUB_PROCESS_NAME_ZFPF.' components at maximum-intended-inventory levels, temperatures, and pressures, or 
 (2.3) another method that produces results of similar quality. Checked a sample of the maximum-intended-inventory determination records and/or calculations for obvious errors. Checked if any component-based inventory included all equipment packages on the flow diagram.')
     ),
