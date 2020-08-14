@@ -532,7 +532,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
 		    $Subject .= ' on '.$TraineeInfo['NameTitle'];
             $DistributionList .= '
             Trainee: '.$TraineeInfo['NameTitle'].', '.$TraineeInfo['Employer'].' '.$TraineeInfo['WorkEmail'].'<br />
-            Process '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
+            The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
 	    }
 		$Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $DistributionList);
 		$EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
@@ -609,7 +609,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
         <b>Distributed To (if an email address was found): </b><br />
         Trainee: '.$TraineeInfo['NameTitle'].', '.$TraineeInfo['Employer'].' '.$TraineeInfo['WorkEmail'].'<br />
         Instructor: '.$InstructorInfo['NameTitle'].', '.$InstructorInfo['Employer'].' '.$InstructorInfo['WorkEmail'].'<br />
-        Process '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
+        The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
 		$Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $DistributionList);
 		$EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
 		echo $Zfpf->xhtml_contents_header_1c('Approved').'<h2>
@@ -680,7 +680,7 @@ Training Record: Canceling Trainee Approval</h1>';
         <b>Distributed To (if an email address was found): </b><br />
         Trainee: '.$TraineeInfo['NameTitle'].', '.$TraineeInfo['Employer'].' '.$TraineeInfo['WorkEmail'].'<br />
         Instructor: '.$InstructorInfo['NameTitle'].', '.$InstructorInfo['Employer'].' '.$InstructorInfo['WorkEmail'].'<br />
-        Process '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
+        The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
 		$Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $DistributionList);
 		$EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
 		echo $Zfpf->xhtml_contents_header_1c('Canceled').'<h2>
@@ -756,7 +756,7 @@ Training Record: Canceling Trainee Approval</h1>';
         <b>Distributed To (if an email address was found): </b><br />
         Trainee: '.$TraineeInfo['NameTitle'].', '.$TraineeInfo['Employer'].' '.$TraineeInfo['WorkEmail'].'<br />
         Instructor: '.$InstructorInfo['NameTitle'].', '.$InstructorInfo['Employer'].' '.$InstructorInfo['WorkEmail'].'<br />
-        Process '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
+        The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
 		$Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $DistributionList);
 		$EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
 		echo $Zfpf->xhtml_contents_header_1c('Approved').'<h2>
@@ -827,7 +827,7 @@ Training Record: Canceling Instructor Approval</h1>';
         <b>Distributed To (if an email address was found): </b><br />
         Trainee: '.$TraineeInfo['NameTitle'].', '.$TraineeInfo['Employer'].' '.$TraineeInfo['WorkEmail'].'<br />
         Instructor: '.$InstructorInfo['NameTitle'].', '.$InstructorInfo['Employer'].' '.$InstructorInfo['WorkEmail'].'<br />
-        Process '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
+        The '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader: '.$Process['AELeaderNameTitle'].', '.$Process['AELeaderEmployer'].' '.$Process['AELeaderWorkEmail'].'</p>';
 		$Body = $Zfpf->email_body_append_1c($Body, $Process['AEFullDescription'], $Zfpf->decrypt_1c($_SESSION['Scratch']['ApprovalText']), $DistributionList);
 		$EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
 		echo $Zfpf->xhtml_contents_header_1c('Canceled').'<h2>

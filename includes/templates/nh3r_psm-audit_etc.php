@@ -55,7 +55,7 @@ Rules and guidance that may be cited in this report are listed below.
 
 Laws and U.S. federal regulations
 
-General Duty -- This may include:
+General duty -- This may include:
 (1) the duty of care that comes with owning or operating an ammonia-refrigeration system, to avoid negligence under tort law in the jurisdiction where the ammonia-refrigeration system is located and
 in the USA, the following general-duty laws
 (2) Occupational Safety and Health Act of 1970 Section 5, 29 U.S. Code 654, and
@@ -67,9 +67,9 @@ in the USA, the following general-duty laws
 
 State, provincial, and local codes
 
-Check for building, mechanical, hazardous substance, and other applicable codes in the jurisdiction where the ammonia-refrigeration system is located.
+Check for building (new and existing), electrical, energy, fire, fuel gas, hazardous substance, mechanical, plumbing, and zoning codes and other applicable rules in the jurisdiction where the facility is located. A few examples are listed below.
 
-Examples for Wisconsin are below.
+527 CMR 1.00:60.8 -- Massachusetts Comprehensive Fire Safety Code, Title 527, Code of Massachusetts Regulations (CMR), Part 1.00, Chapter 60 Hazardous Materials, section 60.8 Hazardous Material Process or Processing. Formerly numbered 527 CMR 33. Has five [5] categories of process based on volume or weight: up to and including [1] 2.5, [2] 60, or [3] 300 gallons of hazardous substance, such as anhydrous ammonia, [4] over 300 gallons but not category [5], and [5] holds at least the threshold quantities at 29 CFR 1910.119 or 40 CFR 68; see above. Applies to refrigeration systems that use ammonia, propane, or other liquefied petroleum gases (LPG). Adopts, with modifications, NFPA 1-2015 as of January 1, 2018. For the latest version and a revision history, see https://www.mass.gov/service-details/massachusetts-fire-code
 
 Wisconsin Commercial Building Code -- Chapter SPS 361 to 365, Wisconsin Administrative Code. This adopts the International Mechanical Code and other International Code Council codes, with some exceptions for ammonia refrigeration in industrial occupancies. Available from the Legislative Reference Bureau https://legis.wisconsin.gov/lrb/
 
@@ -230,7 +230,7 @@ Rules and guidance that may be cited in this report are listed below.
 
 Laws and U.S. federal regulations
 
-General Duty -- This may include:
+General duty -- This may include:
 (1) the duty of care that comes with owning or operating an ammonia-refrigeration system, to avoid negligence under tort law in the jurisdiction where the ammonia-refrigeration system is located and
 in the USA, the following general-duty laws
 (2) Occupational Safety and Health Act of 1970 Section 5, 29 U.S. Code 654, and
@@ -242,9 +242,9 @@ in the USA, the following general-duty laws
 
 State, provincial, and local codes
 
-Check for building, mechanical, hazardous substance, and other applicable codes in the jurisdiction where the ammonia-refrigeration system is located.
+Check for building (new and existing), electrical, energy, fire, fuel gas, hazardous substance, mechanical, plumbing, and zoning codes and other applicable rules in the jurisdiction where the facility is located. A few examples are listed below.
 
-Examples for Wisconsin are below.
+527 CMR 1.00:60.8 -- Massachusetts Comprehensive Fire Safety Code, Title 527, Code of Massachusetts Regulations (CMR), Part 1.00, Chapter 60 Hazardous Materials, section 60.8 Hazardous Material Process or Processing. Formerly numbered 527 CMR 33. Has five [5] categories of process based on volume or weight: up to and including [1] 2.5, [2] 60, or [3] 300 gallons of hazardous substance, such as anhydrous ammonia, [4] over 300 gallons but not category [5], and [5] holds at least the threshold quantities at 29 CFR 1910.119 or 40 CFR 68; see above. Applies to refrigeration systems that use ammonia, propane, or other liquefied petroleum gases (LPG). Adopts, with modifications, NFPA 1-2015 as of January 1, 2018. For the latest version and a revision history, see https://www.mass.gov/service-details/massachusetts-fire-code
 
 Wisconsin Commercial Building Code -- Chapter SPS 361 to 365, Wisconsin Administrative Code. This adopts the International Mechanical Code and other International Code Council codes, with some exceptions for ammonia refrigeration in industrial occupancies. Available from the Legislative Reference Bureau https://legis.wisconsin.gov/lrb/
 

@@ -158,6 +158,17 @@ to set up owners, facilities, and processes.
 Using the example in Step 4.1, above, point your browser at:
     http://localhost/pca/logon.php
 
+(5.0) Customize the PSM-CAP App compliance practices for your: 
+* location, including national, state, provincial, and locals rules and customs, 
+* organization, see the Owner/Operator definition at https://factplusfancy.com/pcademo/glossary.php#owner_operator 
+* facility, and 
+* process, such as flammable or toxic materials storage tanks, ammonia-refrigeration systems, and so forth. 
+(5.1) Check for building (new and existing), electrical, energy, fire, fuel gas, hazardous substance, mechanical, plumbing, and zoning codes and other applicable rules in the jurisdiction where the facility is located. 
+(5.1.1) For ammonia refrigeration, see examples at https://factplusfancy.com/arr 
+(5.2.2) Look out for details, such as, Wisconsin Administrative Code, SPS 345.33 Reporting of accidents. Whenever mechanical refrigeration equipment or system components fail and cause injury to any person, the owner or user shall report in writing the facts involved to the department within the following 24 hours. The owner or user may not remove or disturb mechanical refrigeration equipment or any of its parts nor permit any such removal or disturbance prior to receiving authorization from the department, except for the purpose of saving human life or preventing further property damage. 
+Note: The address for reporting accidents to the Department is the Division of Industry Services, Mechanical Refrigeration Program, P.O. Box 7302, Madison, WI 53707−7302; and the fax number is 608−283−7420. 
+Note: The Department can be contacted at 608−266−7548 during normal business hours. The State Division of Emergency Management can be contacted at 800−943−0003 during non−business hours.
+
 You may contact
 james.hadley@factplusfancy.com
 for free template files to automate set up of

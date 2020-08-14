@@ -16,14 +16,14 @@ class arZfpf {
     //   'Approved by resolution assigned to person'   1                          'Needs resolution' (Avoids confusion; owner approval needed.)
     //   'Resolution approved by owner'               >1 (ae_leader's k0user)     'Resolution approved by owner'
     public function ar_html_form_array($Context = FALSE) {
-        // $htmlFormArray is specified in the PSM-CAP App Standards, in file 0read_me_psm_cap_app_standards.txt.
+        // $htmlFormArray is specified in the PSM-CAP App standards, in file 0read_me_psm_cap_app_standards.txt.
         // Defaults below are used for displaying output (o1 code)
         $Legend = array (
             'c5name' => '<a id="c5name"></a>Action name',
             'c5status' => '<a id="c5status"></a>Status',
             'c5priority' => '<a id="c5priority"></a>Priority (aka risk rank or relative risk from PHA or HIRA)',
             'c5affected_entity' => '<a id="c5affected_entity"></a>Maximum scope of the action (the affected entity)',
-            'c6deficiency' => '<a id="c6deficiency"></a>Deficiency summary. Required for audit findings, otherwise optional but recommended -- if it\'s not broke, don\'t fix it. See also details in any recommending report.',
+            'c6deficiency' => '<a id="c6deficiency"></a>Deficiency summary. Required for audit and hazard-review findings, otherwise optional but recommended -- if it\'s not broke, don\'t fix it. See also details in any recommending report.',
             'c6details' => '<a id="c6details"></a>Additional information, including any resolution options',
             'c5ts_target' => '<a id="c5ts_target"></a>Target resolution date and time',
             'k0user_of_leader' => '<a id="k0user_of_leader"></a>Resolution assigned to',
@@ -288,7 +288,7 @@ class arZfpf {
         <a class="toc" href="ar_io03.php?ar_i1m_priority">By priority</a><br />';
         if (isset($_SESSION['StatePicked']['t0process']['k0process'])) {
             $Message .= '
-            <a class="toc" href="ar_io03.php?ar_i1m_audit">Findings (from audits, hazard reviews...)</a><br />
+            <a class="toc" href="ar_io03.php?ar_i1m_audit">Findings from audits, hazard reviews...</a><br />
             <a class="toc" href="ar_io03.php?ar_i1m_incident">Incident investigation</a><br />
             <a class="toc" href="ar_io03.php?ar_i1m_pha">PHA or HIRA</a><br />
             <a class="toc" href="ar_io03.php?ar_i1m_process">Process</a><br />';
