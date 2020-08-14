@@ -478,7 +478,7 @@ $practices = array(
 An offsite-consequences evaluation that the EPA may deem reasonable is: 
 (1) distance-to-endpoint(s) output by the EPA\'s RMP*Comp program, for the worst-case, and, if applicable, alternative release scenario(s), 
 (2) circle(s) on a map, centered at a likely release point at the facility, showing with reasonable detail the area within the distance-to-endpoint(s), 
-(3) residential human population estimates within the distance-to-endpoint(s), 
+(3) residential human population estimate(s) within the distance-to-endpoint(s), 
 (3.1) for anywhere in the USA, see the Circular Area Profiles app, posted by the University of Missouri, Missouri Census Data Center, at http://mcdc.missouri.edu/applications/caps.html and 
 (4) lists of schools, hospitals, prisons, major commercial, office, or industrial areas, parks, wildlife preserves, wilderness areas, and similar within the distance-to-endpoint(s).
 '.DOC_WHERE_KEPT_ZFPF),
