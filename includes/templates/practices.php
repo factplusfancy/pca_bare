@@ -460,12 +460,12 @@ $practices = array(
 (1.1) maximum-intended '.HAZSUB_NAME_ADJECTIVE_ZFPF.' inventory at the facility or 
 (1.2) the capacity of the largest vessel in the '.HAZSUB_PROCESS_NAME_ZFPF.', 
 (1.3) whichever is smaller, and, optionally, adjusted for administrative controls, if 40 CFR 68, Subpart B, applies or otherwise 
-(1.4) any quantity between (1.1) and (1.2) above, for general-duty only facilities. 
+(1.4) any quantity between (1.1) and, if smaller, (1.2) above, for general-duty only facilities. 
 (2) To calculate the capacity of a cylindrical pressure vessel with elliptical heads: 
 (2.1) determine its shell plus head-skirt length (L), diameter (D), and head elliptical ratio (E) from its shop drawing, 
 (2.1.1) the head skirt is the cylindrical portion of a vessel\'s head, between the shell-to-head weld and where the elliptical potion of the head starts, 
 (2.2) sum the cylinder (shell plus head skirt) and oblate spheroid (both heads) volumes, for example pi*((D/2)^2)*L + (4/3)*pi*((D/2)^2)*(D/(E*2)), and 
-(2.4) multiply this volume by the density, at reasonable worst-case temperature and pressure, and then by, if applicable, the composition as a mass fraction. 
+(2.3) multiply this volume by the density, at reasonable worst-case temperature and pressure, and then by, if applicable, the composition as a mass fraction. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -476,11 +476,11 @@ $practices = array(
         'c5number' => $Zfpf->encrypt_1c('MMMBBB'),
         'c6description' => $Zfpf->encrypt_1c('See, as applicable, 40 CFR 68, Subpart B, and EPA guidance for the detailed requirements. 
 An offsite-consequences evaluation that the EPA may deem reasonable is: 
-(1) a distance-to-endpoint output by the EPA\'s RMP*Comp program, for the worst-case release scenario, 
-(2) a circle on a map, centered at a likely release point at the facility, showing with reasonable detail the area within the distance-to-endpoint, 
-(3) a residential human population estimate within the distance-to-endpoint, 
+(1) distance-to-endpoint(s) output by the EPA\'s RMP*Comp program, for the worst-case, and, if applicable, alternative release scenario(s), 
+(2) circle(s) on a map, centered at a likely release point at the facility, showing with reasonable detail the area within the distance-to-endpoint(s), 
+(3) residential human population estimates within the distance-to-endpoint(s), 
 (3.1) for anywhere in the USA, see the Circular Area Profiles app, posted by the University of Missouri, Missouri Census Data Center, at http://mcdc.missouri.edu/applications/caps.html and 
-(4) a list of schools, hospitals, prisons, major commercial, office, or industrial areas, parks, wildlife preserves, wilderness areas, and similar within the distance-to-endpoint.
+(4) lists of schools, hospitals, prisons, major commercial, office, or industrial areas, parks, wildlife preserves, wilderness areas, and similar within the distance-to-endpoint(s).
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
