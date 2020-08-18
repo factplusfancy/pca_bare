@@ -462,7 +462,7 @@ $practices = array(
 (1.3) whichever is smaller, and, optionally, adjusted for administrative controls, if 40 CFR 68, Subpart B, applies or otherwise 
 (1.4) any quantity between (1.1) and, if smaller, (1.2) above, for general-duty only facilities. 
 (2) To calculate the capacity of a cylindrical pressure vessel with elliptical heads: 
-(2.1) determine its shell plus head-skirt length (L), diameter (D), and head elliptical ratio (E) from its shop drawing, 
+(2.1) determine its shell plus head-skirt length (L), diameter (D), and head elliptical ratio (E) by measuring it or from its shop drawing, 
 (2.1.1) the head skirt is the cylindrical portion of a vessel\'s head, between the shell-to-head weld and where the elliptical potion of the head starts, 
 (2.2) sum the cylinder (shell plus head skirt) and oblate spheroid (both heads) volumes, for example pi*((D/2)^2)*L + (4/3)*pi*((D/2)^2)*(D/(E*2)), and 
 (2.3) multiply this volume by the density, at reasonable worst-case temperature and pressure, and then by, if applicable, the composition as a mass fraction. 

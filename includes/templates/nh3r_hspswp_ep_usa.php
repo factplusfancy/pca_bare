@@ -442,7 +442,7 @@ $k0practice = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice
 foreach ($EAPpractice as $K => $V) {
     $V['k0practice'] = ++$k0practice;
     $EAPpractice[$K]['k0practice'] = $k0practice; // needed later for practice_division and fragment_practice
-    $V['c2standardized'] = 'Process Standard Practice'; // Not encrypted, c2 field.
+    $V['c2standardized'] = 'Facility Standard Practice'; // Not encrypted, c2 field.
     $V['c5who_is_editing'] = $EncryptedNobody;
     $Zfpf->insert_sql_1s($DBMSresource, 't0practice', $V);
     $practice_division[] = array('k0practice' => $k0practice);
