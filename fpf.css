@@ -30,8 +30,11 @@ margin: 0;
 p.hidden {
 margin: 0;
 }
+.extratop {
+margin-top: 0.5em;
+}
 .indent {
-margin-left: 2em;
+margin: -0.6em 0 1em 2em;
 list-style-position: outside;
 }
 .nest1 {
