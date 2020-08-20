@@ -195,7 +195,7 @@ foreach ($divisions as $VD) {
         $Conditions[0] = array('k0division', '=', 1);
     if ($VD['k0division'] == 52) // Employee participation
         $Conditions[0] = array('k0division', '=', 2);
-    if ($VD['k0division'] == 53) // Process safety information
+    if ($VD['k0division'] == 53) // Process-safety information
         $Conditions[0] = array('k0division', '=', 3);
     if ($VD['k0division'] == 54) { // Hazard review -- see items 1 and 2 in the comment at top of this file.
         $DivPractices[]['k0practice'] = $NewPractices[0]['k0practice']; // above defined: Hazard-Review and Compliance-Audit Reports -- View, Create, Edit, Issue, and Certify

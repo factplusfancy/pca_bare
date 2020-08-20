@@ -44,7 +44,7 @@ MOC - Management of Change
 OSHA - U.S. Department of Labor, Occupational Safety and Health Administration
 P&amp;ID - Piping and Instrumentation Diagram and Associated Component Lists
 PHA - Process Hazard Analysis
-PSI - Process Safety Information
+PSI - Process-safety information
 PSIG - Pounds Per Square Inch Gauge -- the amount the measured pressure exceeds the atmospheric pressure.
 PSM - Process Safety Management
 PSR - Pre-startup Safety Review
@@ -219,7 +219,7 @@ MOC - Management of Change
 OSHA - U.S. Department of Labor, Occupational Safety and Health Administration
 P&amp;ID - Piping and Instrumentation Diagram and Associated Component Lists
 PHA - Process Hazard Analysis
-PSI - Process Safety Information
+PSI - Process-safety information
 PSIG - Pounds Per Square Inch Gauge -- the amount the measured pressure exceeds the atmospheric pressure.
 PSM - Process Safety Management
 PSR - Pre-startup Safety Review

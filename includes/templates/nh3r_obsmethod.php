@@ -54,7 +54,7 @@ $NH3ROm = array( // Indent as done below for better display in HTML text areas a
     11 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Inventory -- recorded the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' amounts: 
 (1) posted near refrigerating-machinery room(s) and 
-(2) written in the process safety information as the maximum-intended inventory, based on 
+(2) written in the process-safety information as the maximum-intended inventory, based on 
 (2.1) ammonia-charging records, including the levels, temperatures, and pressures after charging, 
 (2.2) the sum of significant amounts in the '.HAZSUB_PROCESS_NAME_ZFPF.' components at maximum-intended-inventory levels, temperatures, and pressures, or 
 (2.3) another method that produces results of similar quality. Checked a sample of the maximum-intended-inventory determination records and/or calculations for obvious errors. Checked if any component-based inventory included all equipment packages on the flow diagram.')
@@ -192,7 +192,7 @@ Quality depends on detailed measurements and calculations beyond the scope, so n
 (2.4) controls-failure consequences, 
 (2.5) facility siting, 
 (2.6) human factors, and 
-(2.7) qualitative evaluations of possible safety and health effects of failures, 
+(2.7) qualitative evaluations of possible safety and health effects of failures (preferably semi-quantitative for ammonia-refrigeration systems with 10,000 pounds or more of anhydrous ammonia and optionally quantitative), 
 (3) description of team members and their qualifications (and preferably attendance logs), to assess if these qualifications included, 
 (3.1) expertise in '.HAZSUB_PROCESS_NAME_ZFPF.' engineering and operations, 
 (3.2) at least one employee who had experience and knowledge specific to the '.HAZSUB_PROCESS_NAME_ZFPF.' being evaluated, and 

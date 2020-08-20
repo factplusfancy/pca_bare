@@ -29,7 +29,7 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[6]['k0obsmethod'], // Linked to PHA because better to wait until after reviewing the PSI to decide if adequate information was available for latest PHA.
     ),
     7 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[7]['k0obsmethod'],
     ),
     8 => array(
@@ -41,7 +41,7 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[8]['k0obsmethod'],
     ),
     10 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[8]['k0obsmethod'],
     ),
     11 => array(
@@ -57,11 +57,11 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[9]['k0obsmethod'],
     ),
     14 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[10]['k0obsmethod'],
     ),
     15 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[11]['k0obsmethod'],
     ),
     16 => array(
@@ -77,11 +77,11 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[12]['k0obsmethod'],
     ),
     19 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[12]['k0obsmethod'],
     ),
     20 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[13]['k0obsmethod'],
     ),
     21 => array(
@@ -89,7 +89,7 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[13]['k0obsmethod'],
     ),
     22 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[14]['k0obsmethod'],
     ),
     23 => array(
@@ -109,7 +109,7 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[14]['k0obsmethod'],
     ),
     27 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[15]['k0obsmethod'],
     ),
     28 => array(
@@ -117,7 +117,7 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[15]['k0obsmethod'],
     ),
     29 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[16]['k0obsmethod'],
     ),
     30 => array(
@@ -133,7 +133,7 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[17]['k0obsmethod'],
     ),
     33 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[18]['k0obsmethod'],
     ),
     34 => array(
@@ -145,7 +145,7 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[19]['k0obsmethod'], // (check safety of ventilation discharge)
     ),
     36 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[20]['k0obsmethod'],
     ),
     37 => array(
@@ -161,7 +161,7 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[21]['k0obsmethod'],
     ),
     40 => array(
-        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process Safety Information
+        'k0obstopic' => $NH3ROt[9]['k0obstopic'], // Process-safety information
         'k0obsmethod' => $NH3ROm[22]['k0obsmethod'],
     ),
     41 => array(
