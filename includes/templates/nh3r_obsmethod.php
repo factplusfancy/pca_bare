@@ -439,7 +439,12 @@ Asked about this during tours and discussions.')
 (1.1.4) timing and duration, 
 (1.2) change authorization by the responsible individual(s), per the Owner/Operator management system, and 
 (1.3) a pre-startup safety review -- done before putting any hazardous substance into new or altered piping or equipment and before implementing a change to the stage when training is needed on new or altered procedures, practices, or controls -- verifying that 
-(1.3.1) the '.HAZSUB_PROCESS_NAME_ZFPF.' and everything it depends on or affects (including buildings, structures, supports, piping, pressure vessels, and equipment), as built, are suitable for their service and are in accordance with their design specifications, all instructions from manufacturers of their component parts, and applicable legal requirements, 
+(1.3.1) the '.HAZSUB_PROCESS_NAME_ZFPF.' and everything it depends on or affects, including buildings, structures, supports, piping, vessels, and equipment, as built, 
+(1.3.1.1) are suitable for their service and 
+(1.3.1.2) are in accordance with their 
+(1.3.1.2.1) design specifications, 
+(1.3.1.2.2) all instructions from manufacturers of their component parts, and 
+(1.3.1.2.3) applicable legal requirements, 
 (1.3.2) procedures and practices are in place and are adequate, including 
 (1.3.2.1) hazardous-substance procedures and safe-work practices, 
 (1.3.2.2) inspection, testing, and maintenance (ITM) procedures, and 
