@@ -228,7 +228,7 @@ Asked about this during tours and discussions.')
 (1.3) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leak mitigation and emergency shutdown, 
 (1.4) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' small leaks, 
 (1.5) start-up after power failures or emergency shutdowns, 
-(1.6) oil charging, draining, and sampling, including, if not permanently installed, installing a temporary spring-closing valve before draining or sampling, unless the procedure called for pump-down and isolation before oil draining or sampling, 
+(1.6) oil charging, draining, and sampling, including, if not permanently installed, installing a temporary self-closing valve before draining or sampling, unless the procedure called for pump-down and isolation before oil draining or sampling, 
 (1.7) ammonia charging, 
 (1.8) removal and return to service for ITM, including shutoff-valve closing/re-opening and any control-valve manual opening/closing sequences for pump-down, isolation, leak-by checks, any venting to water, and return-to-service low-pressure then operating pressure and temperature leak checks, or equivalent, and 
 (1.9) tie-in of additions, commissioning, and decommissioning, 
@@ -261,7 +261,7 @@ Asked about this during tours and discussions.')
 (5.6) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' first aid, 
 (5.7) the nearest safety shower and eye/face wash, 
 (5.8) quality and inventory control for charging ammonia and oil, 
-(5.9) when they last drained oil from an opening in the '.HAZSUB_PROCESS_NAME_ZFPF.'  without both a stop valve and a spring-closing valve installed, in series, 
+(5.9) when they last drained oil from an opening in the '.HAZSUB_PROCESS_NAME_ZFPF.'  without both a stop valve and a self-closing valve installed, in series, 
 (5.10) any equipment that accumulated oil without a safe and reasonably easy way to drain it, 
 (5.11) any hand-operated stop valves they needed to operate for maintenance or emergencies that were difficult to access -- even, if only for maintenance, from a ladder or lift (IIAR 9-2020 7.3.3.3), 
 (5.12) how they were trained before first doing a task, 
@@ -646,7 +646,7 @@ for anhydrous ammonia:
 (13) missing, illegible, or inadequate labels on 
 (13.1) pipes, 
 (13.2) equipment (including pressure vessels), or 
-(13.3) valves (unless, for valves, pre-work valve tagging was done for each piping-opening permit and per the facility\'s lockout-tagout policy), 
+(13.3) valves (unless, for valves, pre-work valve tagging was done for each '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit and per the facility\'s lockout-tagout policy), 
 (14) inadequate guarding or barricades for '.HAZSUB_NAME_ADJECTIVE_ZFPF.'
 (14.1) piping, 
 (14.2) hanging forced-air evaporators, 

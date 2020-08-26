@@ -66,9 +66,9 @@ $safeguard = array(
         'c6description' => $EncryptedNothing
     ),
     12 => array(
-        'c5name' => $Zfpf->encrypt_1c('Procedures call for monitoring pressure before opening piping.'),
+        'c5name' => $Zfpf->encrypt_1c('Procedures call for monitoring pressure before opening the '.HAZSUB_PROCESS_NAME_ZFPF.'.'),
         'c5hierarchy' => $Zfpf->encrypt_1c('Administrative'),
-        'c6description' => $Zfpf->encrypt_1c('Address via a piping-opening permit or in lockout-tagout policy. Typically: 
+        'c6description' => $Zfpf->encrypt_1c('Address via '.HAZSUB_PROCESS_NAME_ZFPF.' opening permits or in lockout-tagout policy. Typically: 
 (1) any '.HAZSUB_NAME_ADJECTIVE_ZFPF.' liquid solenoid valve immediately downstream of a stop valve that needs to be shut is manually very-slightly opened, 
 (2) all liquid, hot gas, and any other '.HAZSUB_NAME_ADJECTIVE_ZFPF.' supply stop valves are promptly closed, 
 (3) without delay all liquid, hot gas, and any other '.HAZSUB_NAME_ADJECTIVE_ZFPF.' supply solenoid valves are manually fully opened, 
@@ -80,12 +80,12 @@ $safeguard = array(
 (8.1) if available, the isolated piping is pumped down to a vacuum via an appropriate hose or pump-down system or 
 (8.2) the isolated piping is vented to water, and 
 (9) AGAIN, before opening the isolated piping to atmosphere, its pressure is monitored for fifteen minutes (or alternate time period depending on the volume isolated) to confirm that there is no leak-by any closed stop valves providing the isolation (these are valves that are also locked out.) 
-* All venting-to-water procedures also need to address the possibility of isolation valve leak-by.')
+* Venting-to-water procedures also need to address the possibility of isolation valve leak-by.')
     ),
     13 => array(
         'c5name' => $Zfpf->encrypt_1c('Pre-work notifications.'),
         'c5hierarchy' => $Zfpf->encrypt_1c('Administrative'),
-        'c6description' => $Zfpf->encrypt_1c('Procedures (or piping-opening permit) call for notifying supervisors or leads before opening piping near where their employees are working.')
+        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions or '.HAZSUB_PROCESS_NAME_ZFPF.' opening permits call for notifying supervisors or leads before opening the '.HAZSUB_PROCESS_NAME_ZFPF.' near where their employees are working.')
     ),
     14 => array(
         'c5name' => $Zfpf->encrypt_1c('Procedures call for wearing appropriate personal-protective equipment (PPE).'),

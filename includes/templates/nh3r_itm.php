@@ -26,7 +26,7 @@ $practices = array( // Indent as done below for better display in HTML text area
 (2.2) monitoring (typically including inspections done weekly or more often), 
 (2.3) corrective actions (fixes) or other goal-driven adjustments (optimizing), 
 (2.4) adding/removing materials to/from the '.HAZSUB_PROCESS_NAME_ZFPF.', 
-(2.5) removing hazardous energy from some or all of it, piping opening, and returning piping to service, and 
+(2.5) '.HAZSUB_PROCESS_NAME_ZFPF.' opening and return-to-service, and 
 (2.6) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety-system testing or disabling for maintenance.
 (3) Outside the above group are a broad range of less-hazardous ITM tasks where mistakes can and should be caught before they cause harm. For these ITM tasks, a different approach to procedures and training is acceptable and also needed because they are often more complex and situation specific. So, these less-hazardous ITM tasks are described by a pyramid of documents, starting, at the pyramid\'s tip, with: 
 (3.1) the "ITM for safe operation and mechanical integrity" PSM-CAP compliance practices below, which provide task schedules and summary descriptions, and then broadening out to documents that help implement or are referenced by these PSM-CAP compliance practices, such as 
@@ -35,7 +35,7 @@ $practices = array( // Indent as done below for better display in HTML text area
 (3.4) manufacturer recommendations (in manufacturer\'s manuals, bulletins, and so forth, which may give details on things like replacing a seal or operating testing equipment), and 
 (3.5) industry standards (for non-destructive testing, fitness-for-service, and so forth). 
 (4) Redundant ITM, automated controls, and the hazardous-substance procedures and safe-work practices should catch mistakes in these less-hazardous ITM tasks. 
-(4.1) For example, piping-opening permits should include leak checks before returning piping to service. 
+(4.1) For example, '.HAZSUB_PROCESS_NAME_ZFPF.' opening permits should include leak checks before return-to-service. 
 (4.2) Another example, automated or human checks of oil or crankcase temperature before re-starting a compressor after maintenance should catch a failure to reconnect an oil heater. 
 (4.3) To meet good practices, inspection and testing must be done often enough, or with enough quality control, to assure that the likelihood and severity of one incorrect result does not create unacceptable risks. 
 (5) The PSM-CAP compliance practices for ITM, like all PSM-CAP compliance practices, may be modified based on documented operating experience or manufacturer recommendations. 
@@ -575,7 +575,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (8) piping openings to the atmosphere, for '.HAZSUB_NAME_ADJECTIVE_ZFPF.' charging, oil draining, purging, sampling, and so forth -- inspect/note/fix that accidental or malicious '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases are not too easy, such as a piping opening 
 (8.1) sealed only with a valve and not also with a threaded cap or plug or 
 (8.2) unlocked and in an place that thieves or vandals could access without more trouble than cutting a lock, 
-(9) oil-draining locations -- inspect/note/fix that each one has a spring-closing valve installed or otherwise that procedures are in place to properly install a temporary spring-closing valve when oil is drained, 
+(9) oil-draining locations -- inspect/note/fix that each one has a self-closing valve installed or otherwise that procedures are in place to properly install a temporary self-closing valve when oil is drained, 
 (10) labeling of (10A) pipes, (10B) equipment, including pressure vessels, and (10C) valves (unless, for valves, the facility\'s lockout-tagout policy calls for pre-work valve tagging) -- inspect/note/fix for 
 (10.1) labels, markings, or tags that are 
 (10.1.1) missing (not present where they should be), 

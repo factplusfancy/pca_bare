@@ -26,7 +26,7 @@ $practices = array( // Indent as done below for better display in HTML text area
 (1.2) monitoring (typically including inspections done weekly or more often), 
 (1.3) corrective actions (fixes) or other goal-driven adjustments (optimizing), 
 (1.4) adding/removing materials to/from the '.HAZSUB_PROCESS_NAME_ZFPF.', 
-(1.5) removing hazardous energy from some or all of it, piping opening, and returning piping to service, and 
+(1.5) '.HAZSUB_PROCESS_NAME_ZFPF.' opening and return-to-service, and 
 (1.6) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety-system testing or disabling for maintenance. 
 (2) The hazardous-substance procedures and safe-work practices called for by the PSM-CAP compliance practices below (in this PSM-CAP App division) are intended to meet the "operating" procedure requirements of the PSM and CAP rules, though most automated processes no longer require the minute-by-minute human operations that this term invokes and, in special cases when the intrinsic or automated operation of processes makes operating procedures unnecessary, neither rule requires them, such as at OSHA\'s normally unoccupied remote facilities or under EPA\'s Program 1 Prevention Program. 
 (3) The hazardous-substance procedures and safe-work practices don\'t need to and may not cover: 
@@ -215,7 +215,7 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c5name' => $Zfpf->encrypt_1c('Oil Charging and Draining'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEELLL'),
-        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering lubricating oil quality and inventory control, draining oil, and charging oil into '.HAZSUB_NAME_ADJECTIVE_ZFPF.' compressors and any '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pumps with seals that use oil. All '.HAZSUB_PROCESS_NAME_ZFPF.' openings from which oil is drained are equipped with a spring-closing valve and, optionally, an oil pot (useful where oil is routinely drained), except for draining oil from equipment that has been isolated, pumped out, and vented to atmospheric pressure. If these procedures will be used without a piping-opening permit, the procedure descriptions shall include valve tag numbers and details needed to safely complete their tasks. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
+        'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering lubricating oil quality and inventory control, draining oil, and charging oil into '.HAZSUB_NAME_ADJECTIVE_ZFPF.' compressors and any '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pumps with seals that use oil. All '.HAZSUB_PROCESS_NAME_ZFPF.' openings from which oil is drained are equipped with a self-closing valve and, optionally, an oil pot (useful where oil is routinely drained), except for draining oil from equipment that has been isolated, pumped out, and vented to atmospheric pressure. Procedure descriptions describe the specific valves -- by their function, type and tag, for example, "oil-drain stop valve LR1-15" -- and the steps needed to safely complete the procedure, except generic-procedure descriptions may be used if they require '.HAZSUB_PROCESS_NAME_ZFPF.' opening permits, which have the needed detail. Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -233,20 +233,20 @@ Sub-procedure description also includes: (A) applicability, (B) roles, responsib
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
     13 => array(
-        'c5name' => $Zfpf->encrypt_1c('Lockout-Tagout, Piping-Opening Permit, and Sub-Procedures'),
+        'c5name' => $Zfpf->encrypt_1c('Lockout-Tagout, System-Opening Permit, and Sub-Procedures'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEENNN'),
-        'c6description' => $Zfpf->encrypt_1c('Valve stems on the '.HAZSUB_PROCESS_NAME_ZFPF.' shall not be turned by hand, unless following a written hazardous-substance procedure description or a piping-opening permit. See: 
-(1) Lockout-Tagout (LOTO) policy or similar, 
-(2) Piping-Opening Permit form (and any templates for routine activities, see below) designed to cover LOTO of all hazardous-energy sources affecting the piping being opened, and 
+        'c6description' => $Zfpf->encrypt_1c('Valve stems on the '.HAZSUB_PROCESS_NAME_ZFPF.' shall not be turned by hand, unless following a written hazardous-substance procedure description or '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit. See: 
+(1) Lockout-tagout policy or similar, 
+(2) the '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit form (and any templates for routine activities, see below) designed to cover lockout-tagout of all hazardous-energy sources affecting the piping being opened, and 
 (3) the following sub-procedure descriptions: 
 (3.1) Operating Refrigeration Valve Stems, 
 (3.2) Closing Liquid-Ammonia Stop Valves Upstream of Solenoid and Motorized Valves, 
 (3.3) Pump-down with Hose, 
 (3.4) Venting Ammonia to Water, and 
-(3.5) Ammonia Flange Opening. 
+(3.5) Ammonia Joint Opening. 
 * Other procedure descriptions may reference these sub-procedures, for example, an oil-draining procedure description may reference and require training on the Operating Refrigeration Valve Stems sub-procedure. 
-* Once a piping-opening permit has been completed for a routine task, it may be converted into a template, to more easily generate the permit next time. 
+* After one '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit has been completed for a routine task, it may be converted into a template, to more easily generate the permit the next time. 
 The permit form and sub-procedure descriptions also include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
@@ -256,7 +256,7 @@ The permit form and sub-procedure descriptions also include: (A) applicability, 
         'c5name' => $Zfpf->encrypt_1c('Equipment-Package Procedures'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEOOO'),
-        'c6description' => $Zfpf->encrypt_1c('These may be developed to simplify the system-wide procedure descriptions and documents, such as the Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions document(s). They may be worthwhile for equipment that routinely needs to be isolated, pumped out, and vented for service, such as compressors; however, this may also be handled by template piping-opening permits. Equipment-packages also provide an option for grouping procedures, such as for adding oil, draining oil, or temporary operation. If written, each procedure description also includes (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. Optional. 
+        'c6description' => $Zfpf->encrypt_1c('These may be developed to simplify the system-wide procedure descriptions and documents, such as the Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions document(s). They may be worthwhile for equipment that routinely needs to be isolated, pumped out, and vented for service, such as compressors; however, this may also be handled by template '.HAZSUB_PROCESS_NAME_ZFPF.' opening permits. Equipment-packages also provide an option for grouping procedures, such as for adding oil, draining oil, or temporary operation. If written, each procedure description also includes (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. Optional. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -288,7 +288,7 @@ If written, each temporary-operation procedure description also includes (A) app
         'c5name' => $Zfpf->encrypt_1c('Initial Startup and Normal Shutdown'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEERRR'),
-        'c6description' => $Zfpf->encrypt_1c('See this app\'s Change Management System, which includes tasks like special isolation, pump-down, venting, cleaning, tie-in, and startup procedures, and which covers initial system commissioning and startup, additions, and partial or complete shutdown and decommissioning. Idling all or part of the '.HAZSUB_PROCESS_NAME_ZFPF.' is covered by the Low Load Begin and End procedure, the Piping-Opening Permit safe-work practice, or any (optional) equipment-package procedures.'),
+        'c6description' => $Zfpf->encrypt_1c('See this app\'s Change Management System, which includes tasks like special isolation, pump-down, venting, cleaning, tie-in, and startup procedures, and which covers initial system commissioning and startup, additions, and partial or complete shutdown and decommissioning. Idling all or part of the '.HAZSUB_PROCESS_NAME_ZFPF.' is covered by the Low Load Begin and End procedure, the '.HAZSUB_PROCESS_NAME_ZFPF.' opening safe-work practice, or any (optional) equipment-package procedures.'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ),
@@ -649,11 +649,11 @@ $fragment_practice = array(  // PSM fragments k0 start at 1, CAP fragments k0 st
     ),
     45 => array(
         'k0fragment' => 65, // Safe-work practices PSM fragment
-        'k0practice' => $practices[13]['k0practice'] // Lockout-Tagout, Piping-Opening Permit, and Sub-Procedures
+        'k0practice' => $practices[13]['k0practice'] // Lockout-Tagout, System-Opening Permit, and Sub-Procedures
     ),
     46 => array(
         'k0fragment' => 1120, // Safe-work practices CAP fragment
-        'k0practice' => $practices[13]['k0practice'] // Lockout-Tagout, Piping-Opening Permit, and Sub-Procedures
+        'k0practice' => $practices[13]['k0practice'] // Lockout-Tagout, System-Opening Permit, and Sub-Procedures
     ),
                      // $practices[14] skipped, optional, equipment-package procedures.
     47 => array(
@@ -697,7 +697,7 @@ $fragment_practice = array(  // PSM fragments k0 start at 1, CAP fragments k0 st
         'k0practice' => $EAPpractice[0]['k0practice']
     )
 );
-// Handle the safety and health information included in all hazardous-substance procedures and in the piping-opening permit form.
+// Handle the safety and health information included in all hazardous-substance procedures and in the system-opening permit form.
 $SHfragments = array(54, 55, 56, 57, 60, 1109, 1110, 1111, 1112, 1115); // database primary keys, see templates/psm_fragments.php and templates/cap_fragments.php. PSM fragments k0 start at 1, CAP fragments k0 start at 1000.
 $ApplicablePractices = array(4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15); // $practices array keys above
 foreach ($SHfragments as $VA) {

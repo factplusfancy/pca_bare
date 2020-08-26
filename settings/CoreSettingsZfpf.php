@@ -172,14 +172,14 @@ if ($OptionHazSub == 'generic') {
     define('HAZSUB_PROCESS_NAME_ZFPF', 'hazardous-substance process');
     define('HAZSUB_SAFETY_NOTICE_NAME_ZFPF', 'Hazardous-Substance Safety Notice');
     define('HAZSUB_DESCRIPTION_ZFPF', ''); // Needs leading space, unless blank.
-    define('HAZSUB_LEAK_FIRST_STEPS_ZFPF', 'Alert your supervisor and move to safety if you notice a hazardous-substance leak.');
+    define('HAZSUB_LEAK_FIRST_STEPS_ZFPF', 'If you notice a hazardous-substance leak, alert your supervisor and move to safety.');
 }
 elseif ($OptionHazSub == 'anhydrous_ammonia_refrigeration') {
     define('HAZSUB_NAME_ADJECTIVE_ZFPF', 'anhydrous-ammonia');
     define('HAZSUB_PROCESS_NAME_ZFPF', 'ammonia-refrigeration system');
     define('HAZSUB_SAFETY_NOTICE_NAME_ZFPF', 'Ammonia-Refrigeration Safety Notice');
     define('HAZSUB_DESCRIPTION_ZFPF', ' Anhydrous ammonia is a colorless liquid or gas with a strong pungent odor. Most people can smell ammonia at concentrations lower than the harmful concentrations. If someone doesn\'t know what ammonia smells like, or thinks they cannot smell it, ask a qualified safety professional to find a household window cleaner or similar that contains ammonia, to see if they can smell it at safely low concentrations. Ammonia is dangerous to life and health at high concentrations. So is hot lubricating oil and anything at high pressures and temperatures. Liquid ammonia expands when it warms and can rupture piping and equipment if trapped.'); // Needs leading space.
-    define('HAZSUB_LEAK_FIRST_STEPS_ZFPF', 'Alert your supervisor if you smell ammonia and move to safety if the odor becomes strong or irritating.');
+    define('HAZSUB_LEAK_FIRST_STEPS_ZFPF', 'If you smell ammonia, alert your supervisor and move to safety if the odor becomes strong or irritating.');
 }
 
 // 2.0 TYPICALLY UN-CHANGED CONSTANTS

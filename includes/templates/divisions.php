@@ -16,7 +16,7 @@ $divisions = array(
     ),
     3 => array( // CCC
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Process-safety information (PSI) covering design, materials, fabrication, construction, and installation'),
+        'c5name' => $Zfpf->encrypt_1c('Process-safety information (PSI) covering design, materials, fabrication, construction, installation, and commissioning'),
         'c5citation' => $EncryptedNothing
     ),
     4 => array( // DDD

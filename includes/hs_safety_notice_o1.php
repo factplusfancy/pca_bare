@@ -33,37 +33,50 @@ else {
     <b>'.HAZSUB_LEAK_FIRST_STEPS_ZFPF.'</b></p><p>
     
     The following requirements apply to the '.HAZSUB_PROCESS_NAME_ZFPF.' at this facility:<br />
-        1. General duty reqiurements under the U.S. Clean Air Act, Occupational Safety and Health Act, and, typically, state law.<br />
-        2. Chemical Accident Prevention/Risk Management Plan. Administered by the U.S. Environmental Protection Agency (EPA) and designed to reduce risks to the community near this facility.<br />
-        3. Process Safety Management (PSM). Administered by the Occupational Safety and Health Administration (OSHA) and designed to reduce risks to employees at this facility.</p><p>
+        (1) General duty under the U.S. Clean Air Act, the U.S. Occupational Safety and Health Act, and often state law.';
+    if ($_SESSION['StatePicked']['t0rule']['k0rule'] != 4)
+        $HTML .= '<br />
+        (2) Chemical Accident Prevention/Risk Management Plan. Administered by the U.S. Environmental Protection Agency (EPA) and designed to reduce risks to the community near this facility.<br />
+        (3) Process Safety Management. Administered by the U.S. Department of Labor, Occupational Safety and Health Administration (OSHA), and designed to reduce risks to employees at this facility.';
+    $HTML .= '</p><p>
 
     We implement a process-safety program to comply with the above rules. You are entitled to review most information about process safety where you work. Contact your supervisor, or your organization\'s safety personnel, for more information or to provide feedback. The '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety data sheet (SDS) and this facility\'s emergency plans also have more information.</p><p>
 
-    Our process-safety program includes the following elements:</p><ul class="indent"><li>
+    Our process-safety program includes the following:</p><ul class="indent"><li>
 
     <b>Management system</b> -- assigning overall responsibility and lines of authority to others with specific responsibilities.</li><li>
 
     <b>Employee participation</b> -- consulting with employees on '.HAZSUB_NAME_ADJECTIVE_ZFPF.' safety.</li><li>
 
-    <b>Process-safety information</b> -- drawings, manuals, and other documents covering design, materials, fabrication, construction, and installation of the '.HAZSUB_PROCESS_NAME_ZFPF.'.</li><li>
+    <b>Process-safety information</b> -- drawings, manuals, and other documents covering design, materials, fabrication, construction, installation, and commissioning of the '.HAZSUB_PROCESS_NAME_ZFPF.'.</li><li>
+    
+    <b>';
+    if ($_SESSION['StatePicked']['t0rule']['k0rule'] == 4)
+        $HTML .= 'Hazard review';
+    else
+        $HTML .= 'Process-hazard analysis';
+    $HTML .= '</b> -- a detailed review of potential failures, existing safeguards, and recommendations, updated every five years.</li><li>
 
-    <b>Process-hazard analysis or Hazard Review</b> -- a detailed review of potential failures, existing safeguards, and recommendations.</li><li>
+    <b>Hazardous-substance procedures and safe-work practices</b> -- these cover '.HAZSUB_NAME_ADJECTIVE_ZFPF.' tasks where a mistake could promptly cause harm or unacceptable risks, such as monitoring, corrective actions, adding/removing materials to/from the '.HAZSUB_PROCESS_NAME_ZFPF.', and also '.HAZSUB_PROCESS_NAME_ZFPF.' opening, after removing hazardous energy, and return-to-service. As a rule of thumb, these more-hazardous tasks include operating a valve in '.HAZSUB_NAME_ADJECTIVE_ZFPF.' service by any method, such as turning a stem, pushing a button, or flipping a switch.</li><li>
 
-    <b>Hazardous-substance procedures and safe-work practices</b> -- these cover '.HAZSUB_NAME_ADJECTIVE_ZFPF.' tasks where a mistake could promptly cause harm or unacceptable risks, such as monitoring, corrective actions, adding/removing materials to/from the '.HAZSUB_PROCESS_NAME_ZFPF.', and also removing hazardous energy from some or all of it, piping opening, and returning piping to service. As a rule of thumb, these more-hazardous tasks include operating a valve in '.HAZSUB_NAME_ADJECTIVE_ZFPF.' service, by any method.</li><li>
+    <b>Hot-work permit</b> -- required before doing any brazing, burning, cutting, drilling, grinding, soldering, welding, or other activities that produces sparks or ignition sources.</li><li>
 
-    <b>Hot-work permit</b> -- a permit required prior to any welding, cutting, drilling, grinding, and so forth.</li><li>
+    <b>Training</b> for employees who operate or maintain the '.HAZSUB_PROCESS_NAME_ZFPF.'.</li><li>
 
-    <b>Training</b> -- training for employees who operate and maintain the '.HAZSUB_PROCESS_NAME_ZFPF.'.</li><li>
+    <b>Contractors</b> -- qualifying and monitoring of contractors who work on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.'.</li><li>
 
-    <b>Contractors</b> -- pre-screening and monitoring of contractors who work on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.'.</li><li>
-
-    <b>Inspection, testing, and maintenance (ITM) for safe operation and mechanical integrity</b>.</li><li>
+    <b>Inspection, testing, and maintenance (ITM)</b> for safe operation and mechanical integrity.</li><li>
 
     <b>Change management</b> -- careful planning, review, and approval of '.HAZSUB_PROCESS_NAME_ZFPF.' changes.</li><li>
 
-    <b>Incident investigation</b> -- procedures for investigating both near misses and incidents (leaks and so forth.)</li><li>
+    <b>Incident investigation</b> of near misses and incidents, such as leaks, fires, or explosions.</li><li>
 
-    <b>Audits</b> -- audits of our process-safety program every three years (five years for general-duty only facilities).</li><li>
+    <b>Audits</b> of our process-safety program every ';
+    if ($_SESSION['StatePicked']['t0rule']['k0rule'] == 4)
+        $HTML .= 'five years, combined with an update of the hazard review';
+    else
+        $HTML .= 'three years';
+    $HTML .= '.</li><li>
 
     <b>Emergency planning</b> -- procedures and training on '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leak recognition, notification, move-to-safety, and evacuation or shelter-in-place and also coordination with outside responders, leak mitigation and emergency shutdown, and other actions by qualified personnel.</li><li>
 
