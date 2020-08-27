@@ -238,7 +238,7 @@ Sub-procedure description also includes: (A) applicability, (B) roles, responsib
         'c5number' => $Zfpf->encrypt_1c('EEENNN'),
         'c6description' => $Zfpf->encrypt_1c('Valve stems on the '.HAZSUB_PROCESS_NAME_ZFPF.' shall not be turned by hand, unless following a written hazardous-substance procedure description or '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit. See: 
 (1) Lockout-tagout policy or similar, 
-(2) the '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit form (and any templates for routine activities, see below) designed to cover lockout-tagout of all hazardous-energy sources affecting the piping being opened, and 
+(2) the '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit form (and any templates for routine activities, see below), and 
 (3) the following sub-procedure descriptions: 
 (3.1) Operating Refrigeration Valve Stems, 
 (3.2) Closing Liquid-Ammonia Stop Valves Upstream of Solenoid and Motorized Valves, 
@@ -256,7 +256,7 @@ The permit form and sub-procedure descriptions also include: (A) applicability, 
         'c5name' => $Zfpf->encrypt_1c('Equipment-Package Procedures'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEOOO'),
-        'c6description' => $Zfpf->encrypt_1c('These may be developed to simplify the system-wide procedure descriptions and documents, such as the Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions document(s). They may be worthwhile for equipment that routinely needs to be isolated, pumped out, and vented for service, such as compressors; however, this may also be handled by template '.HAZSUB_PROCESS_NAME_ZFPF.' opening permits. Equipment-packages also provide an option for grouping procedures, such as for adding oil, draining oil, or temporary operation. If written, each procedure description also includes (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. Optional. 
+        'c6description' => $Zfpf->encrypt_1c('These may be developed to simplify the system-wide procedure descriptions and documents, such as the Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions document(s). They may be worthwhile for equipment that routinely needs to be isolated, pumped out, and vented for service, such as compressors; however, this may also be handled by template '.HAZSUB_PROCESS_NAME_ZFPF.' opening permits. If written, each procedure description also includes (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. Optional. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
