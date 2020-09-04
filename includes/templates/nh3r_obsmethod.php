@@ -119,7 +119,7 @@ Quality depends on detailed measurements and calculations beyond the scope, so n
 (1.2) if the pressure-vessel nameplate maximum allowable working pressure (MAWP) was equal to or greater than the opening setpoint of the pressure-relief device that protected the vessel, 
 (2) needed overpressure protection missing, such as for 
 (2.1) pressure vessels or 
-(2.2) piping or equipment that could trap '.HAZSUB_NAME_ADJECTIVE_ZFPF.'liquid due to 
+(2.2) piping or equipment that could trap '.HAZSUB_NAME_ADJECTIVE_ZFPF.' liquid due to 
 (2.2.1) normal or emergency automatic valves, such as some King solenoid valves, 
 (2.2.2) leaks into periodically isolated equipment that isn\'t continuously monitored, vented, or pumped out, such as some condensers in winter if not continuously pumped out to an automatic purger, and 
 (2.2.3) a reasonably likely failure or human error, such as, perhaps, closing a stop valve downstream of a check valve on a pump discharge, 
