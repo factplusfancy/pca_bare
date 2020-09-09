@@ -32,11 +32,12 @@ if (!$_POST) { // Echo form for entering credentials
     |Log On</p>'; // Don't give any option here that might indicate a user is already logged on
     echo $Zfpf->xhtml_contents_header_1c('PSM-CAP Log On', FALSE, $FixedLeftContents).'<h1>
     Log On</h1><p>
-    <b>You may only logon with '.MAX_SESSIONS_ZFPF.' device(s) at a time.</b></p>
+    <b>You may only log on with '.MAX_SESSIONS_ZFPF.' device(s) at a time.</b></p>
         <form action="logon.php" method="post"><p>
         Username (no trailing spaces, unless part of the username): <input type="text" name="username" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
         Password (no trailing spaces, unless part of the password): <input type="password" name="password" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
-        <input type="submit" name="logon" value="Log on -- authorized-users only" /></p><p>
+        By clicking "Agree and log on" below: I agree, as applicable, that I am solely responsible for determining the appropriateness of using or redistributing the PSM-CAP App and assume any risks associated with my exercise of permissions granted under the Apache License, Version 2.0, I agree that the PSM-CAP App is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE, and I agree to the Apache License, Version 2.0, posted here <a href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a>.</p><p>
+        <input type="submit" name="logon" value="Agree and log on" /></p><p>
         The PSM-CAP App causes a cookie to be downloaded to your browser, mainly to verify that you have logged in.
         </p>
     </form>
@@ -151,7 +152,7 @@ if (isset($_POST['logon'])) { // Do logon checks
         }
         echo $Message.'<p>
         Background:<br />
-        You may only logon with '.MAX_SESSIONS_ZFPF.' device(s) at a time. If you didn\'t try to logon with more than '.MAX_SESSIONS_ZFPF.' devices (like both a smartphone and a laptop or two browsers on one laptop), then either:<br />
+        You may only log on with '.MAX_SESSIONS_ZFPF.' device(s) at a time. If you didn\'t try to logon with more than '.MAX_SESSIONS_ZFPF.' devices (like both a smartphone and a laptop or two browsers on one laptop), then either:<br />
         - hacking -- someone else used your username and password to logon or<br />
         - cookie lost -- the session cookie was deleted from the device you are trying to logon on with, without your having logged off properly.</p>'.$Zfpf->xhtml_footer_1c();
         exit; // Don't save and exit.
