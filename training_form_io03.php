@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the training_form input and output HTML forms, except the:
 //  - i1m file for listing existing records (and giving the option to start a new record) and
@@ -134,7 +134,7 @@ $htmlFormArray = array(
 if (isset($_POST['training_form_i0n'])) {
 	// Additional security check. Handle inadequate global privileges. Otherwise, any user associated with this practice can start a new record.
     if ($User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Initialize $_SESSION['Selected']
     $_SESSION['Selected'] = array(
         'k0training_form' => time().mt_rand(1000000, 9999999),
@@ -353,7 +353,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     // Additional security check.
     if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_trainee']) or ($who_is_editing != '[A new database row is being created.]' and !$EditAuth) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     if (isset($_POST['training_form_o1_from']) or isset($_POST['delete_record']) or isset($_POST['trainee_approval']) or isset($_POST['trainee_approval_c']) or isset($_POST['instructor_approval']) or isset($_POST['instructor_approval_c']))
         $Zfpf->edit_lock_1c('training_form'); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error. SPECIAL CASE: add_trainee edit_lock_1c below.
     $Status = $Zfpf->decrypt_1c($_SESSION['Selected']['c5status']);
@@ -367,7 +367,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
     // Add trainee code
     if (isset($_POST['add_trainee_1']) or isset($_GET['add_trainee_1'])) {
         if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'] or $_SESSION['Selected']['k0user_of_trainee'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->clear_edit_lock_1c(); // In case arrived here by canceling from add_trainee_2
         echo $Zfpf->xhtml_contents_header_1c('Lookup User');
         $Zfpf->lookup_user_1c('training_form_io03.php', 'training_form_io03.php', 'add_trainee_2', 'training_form_o1');
@@ -376,7 +376,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
     }
     if (isset($_POST['add_trainee_2'])) {
         if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'] or $_SESSION['Selected']['k0user_of_trainee'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->edit_lock_1c('training_form');
         $Conditions1[0] = array('k0process', '=', $_SESSION['Selected']['k0process']);
         $SpecialText = '<h2>
@@ -400,7 +400,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
     }
     if (isset($_POST['add_trainee_3'])) {
         if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'] or $_SESSION['Selected']['k0user_of_trainee'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         // Check user-input radio-button selection.
         // The user not selecting a radio button is OK in this case.
         if (isset($_POST['Selected'])) {
@@ -477,7 +477,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
 	if (isset($_POST['delete_record'])) {
         // Additional security check.
 	    if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$ApprovalText = '<h1>
         Delete Training Record</h1>';
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
@@ -511,7 +511,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
 	if (isset($_POST['delete_record_2'])) {
         // Additional security check.
 	    if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$Conditions[0] = array('k0training_form', '=', $_SESSION['Selected']['k0training_form']);
 		$DBMSresource = $Zfpf->credentials_connect_instance_1s();
 		$Affected = $Zfpf->delete_sql_1s($DBMSresource, 't0training_form', $Conditions, TRUE, $htmlFormArray); // Same effect as clear_edit_lock_1c()
@@ -555,7 +555,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
 	if (isset($_POST['trainee_approval'])) {
         // Additional security check.
 	    if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_trainee'] or !isset($_SESSION['Scratch']['ReadyForTraineeApproval']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$ApprovalText = '<h1>
         Training Record: Trainee Approval</h1>';
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
@@ -585,7 +585,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
 	if (isset($_POST['trainee_approval_2'])) {
         // Additional security check.
 	    if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_trainee'] or !isset($_SESSION['Scratch']['ReadyForTraineeApproval']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$Conditions[0] = array('k0training_form', '=', $_SESSION['Selected']['k0training_form']);
 		$Changes['c5status'] = $Zfpf->encrypt_1c('trainee approved');
 		$Changes['c5ts_trainee'] = $Zfpf->encrypt_1c(time());
@@ -629,7 +629,7 @@ if (isset($_SESSION['Selected']['k0training_form'])) {
 	// Trainee canceling approval 1
 	if (isset($_POST['trainee_approval_c'])) {
 	    if (!$EditAuth or $Status != 'trainee approved' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_trainee'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$ApprovalText = '<h1>
 Training Record: Canceling Trainee Approval</h1>';
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
@@ -657,7 +657,7 @@ Training Record: Canceling Trainee Approval</h1>';
 	// Trainee canceling approval 2
 	if (isset($_POST['trainee_approval_c2'])) {
 	    if (!$EditAuth or $Status != 'trainee approved' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_trainee'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$Conditions[0] = array('k0training_form', '=', $_SESSION['Selected']['k0training_form']);
 		$Changes['c5status'] = $Zfpf->encrypt_1c('draft');
 		$Changes['c5ts_trainee'] = $EncryptedNothing;
@@ -701,7 +701,7 @@ Training Record: Canceling Trainee Approval</h1>';
 	if (isset($_POST['instructor_approval'])) {
         // Additional security check.
 	    if (!$EditAuth or $Status != 'trainee approved' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$ApprovalText = '<h1>
         Training Record: Instructor Approval</h1>';
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
@@ -732,7 +732,7 @@ Training Record: Canceling Trainee Approval</h1>';
 	if (isset($_POST['instructor_approval_2'])) {
         // Additional security check.
 	    if (!$EditAuth or $Status != 'trainee approved' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$Conditions[0] = array('k0training_form', '=', $_SESSION['Selected']['k0training_form']);
 		$Changes['c5status'] = $Zfpf->encrypt_1c('instructor approved');
 		$Changes['c5ts_instructor'] = $Zfpf->encrypt_1c(time());
@@ -776,7 +776,7 @@ Training Record: Canceling Trainee Approval</h1>';
 	// Instructor canceling approval 1
 	if (isset($_POST['instructor_approval_c'])) {
 	    if (!$EditAuth or $Status != 'instructor approved' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$ApprovalText = '<h1>
 Training Record: Canceling Instructor Approval</h1>';
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
@@ -804,7 +804,7 @@ Training Record: Canceling Instructor Approval</h1>';
 	// Instructor canceling approval 2
 	if (isset($_POST['instructor_approval_c2'])) {
 	    if (!$EditAuth or $Status != 'instructor approved' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_instructor'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 		$Conditions[0] = array('k0training_form', '=', $_SESSION['Selected']['k0training_form']);
 		$Changes['c5status'] = $Zfpf->encrypt_1c('trainee approved');
 		$Changes['c5ts_instructor'] = $EncryptedNothing;
@@ -846,7 +846,7 @@ Training Record: Canceling Instructor Approval</h1>';
 
     // Additional security check for i1 and i2 code
     if ($Status != 'draft')
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // i1 code
     // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
     // 1.1 $_SESSION['Selected'] is only source of $Display.

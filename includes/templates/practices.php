@@ -1,7 +1,7 @@
 <?php
 
 // *** LEGAL NOTICES ***  
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // TO DO finish populating practices array. 
 // DO NOT CHANGE array keys in or k0practice keys created by this file -- without updating the many references to them.
@@ -79,7 +79,12 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Consulting on Process Safety'),
         'c2standardized' => 'Facility Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('BBBEEE'),
-        'c6description' => $Zfpf->encrypt_1c('An Activity Notice is posted for at least 30 days whenever one of the following compliance practices gets underway: (1) process-hazard analysis (initial, updates, or amendments), if applicable, (2) change management, (3) incident investigation, or (4) compliance audit or hazard review. For these practices, the app can generate a standard Activity Notice, with instructions on posting and recording. These Activity Notices provide employees a comprehensive opportunity to participate because future process-safety development at the facility almost always occurs via one of the above compliance practices.'),
+        'c6description' => $Zfpf->encrypt_1c('An activity notice is posted for at least 30 days whenever one of the following gets underway: 
+(1) process-hazard analyses (for PSM) or hazard reviews (for general-duty only or Program 2 Prevention Programs), including updates or amendments, 
+(2) change management, 
+(3) incident investigations, or 
+(4) compliance audits (for PSM or Program 2 Prevention Programs). 
+For these practices, the app can generate an activity notice, with instructions on posting and recording. These activity notices provide employees an opportunity to participate because future process-safety development at the facility almost always occurs via one of the above compliance practices.'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ),
@@ -119,7 +124,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Change Management System'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('IIICCC'),
-        'c6description' => $Zfpf->encrypt_1c('When required, use this to meet all management of change and pre-startup safety review requirements. This Change Management System covers, as needed, describing the change (markup of process-safety information, procedure descriptions, and so forth); design review; environmental, health, and safety review; human resources review; employee participation; PHA amendment; contractor qualification; updating process-safety information; updating hazardous-substance procedures and safe-work practices; updating the maintenance program; updating emergency plans; training on these updates; examination, inspection, and testing of new or altered fabrications (piping, structures, and so forth); special isolation, pump-down, venting, cleaning, tie-in, startup, and so forth procedures; and pre-startup review and approval. Change-management records need to be kept for the life of the '.HAZSUB_PROCESS_NAME_ZFPF.' if they contain documents needed as process-safety information, for example, detailing materials of construction. This app retains them indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
+        'c6description' => $Zfpf->encrypt_1c('When required, use this to meet all management of change and pre-startup safety review (MOC-PSR) requirements. This Change Management System covers, as needed, describing the change (markup of process-safety information, procedure descriptions, and so forth); design review; environmental, health, and safety review; human resources review; employee participation; PHA amendment; contractor qualification; updating process-safety information; updating hazardous-substance procedures and safe-work practices; updating the maintenance program; updating emergency plans; training on these updates; examination, inspection, and testing of new or altered fabrications (piping, structures, and so forth); special isolation, pump-down, venting, cleaning, tie-in, startup, and so forth procedures; and pre-startup review and approval. Change-management records need to be kept for the life of the '.HAZSUB_PROCESS_NAME_ZFPF.' if they contain documents needed as process-safety information, for example, detailing materials of construction. This app retains them indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
         'c5require_file' => $Zfpf->encrypt_1c('cms_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ), /*  2018-04-13 JDH combined with practice below.
@@ -287,7 +292,7 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Identify Affected Contractors'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('GGGAAA'),
-        'c6description' => $Zfpf->encrypt_1c('For work on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.', prior to awarding work to a contractor for the first time, ensure the contractor completes a qualification record. This typically applies to contractors who: (1) work on the '.HAZSUB_PROCESS_NAME_ZFPF.', including its piping, equipment, supports, supporting structures (such as building structural systems), or foundations, (2) work on ventilation, pressure-relief, suppression, secondary containment, or similar safety systems of/for the '.HAZSUB_PROCESS_NAME_ZFPF.', (3) work on alarms, controls, instrumentation, motors, or other electrical components of/for the '.HAZSUB_PROCESS_NAME_ZFPF.', (4) paint, insulate, clean, or sanitize any of the above, (5) work adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.', particularly if they will be opening flanges, performing hot work, moving heavy objects, or doing electrical or controls work, and (6) transfer substances into/from the '.HAZSUB_PROCESS_NAME_ZFPF.'. If their work isn\'t adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.', this typically doesn\'t apply to contractors working on or transferring substances into/from piping systems separated from the '.HAZSUB_PROCESS_NAME_ZFPF.' by a heat exchanger, such as most cooling-water systems (and their water-treatment chemical suppliers) and also secondary heat-transfer systems (glycol, water...)'),
+        'c6description' => $Zfpf->encrypt_1c('For work on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.', prior to awarding work to a contractor for the first time, ensure the contractor completes a qualification record. This typically applies to contractors who: (1) work on the '.HAZSUB_PROCESS_NAME_ZFPF.', including its piping, equipment, supports, supporting structures (such as building structural systems), or foundations, (2) work on ventilation, pressure-relief, suppression, secondary containment, or similar safety systems of/for the '.HAZSUB_PROCESS_NAME_ZFPF.', (3) work on alarms, controls, instrumentation, motors, or other electrical components of/for the '.HAZSUB_PROCESS_NAME_ZFPF.', (4) paint, insulate, clean, or sanitize any of the above, (5) work adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.', particularly if they will be opening bolted or threaded piping joints, performing hot work, moving heavy objects, or doing electrical or controls work, and (6) transfer substances into/from the '.HAZSUB_PROCESS_NAME_ZFPF.'. If their work isn\'t adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.', this typically doesn\'t apply to contractors working on or transferring substances into/from piping systems separated from the '.HAZSUB_PROCESS_NAME_ZFPF.' by a heat exchanger, such as most cooling-water systems (and their water-treatment chemical suppliers) and also secondary heat-transfer systems (glycol, water...)'),
         'c5require_file' => $Zfpf->encrypt_1c('contractor_qual_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -439,7 +444,12 @@ $practices = array(
         'c5name' => $Zfpf->encrypt_1c('Good Practices'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('CCCLLL'),
-        'c6description' => $Zfpf->encrypt_1c('The change-management documents, for the initial installation or subsequent changes -- and also the process-safety information, process-hazard analysis, and inspection, testing, and maintenance practices -- document that equipment complies with "recognized and generally accepted good engineering practices". Option: summarize in a practice document here.'),
+        'c6description' => $Zfpf->encrypt_1c('The following document that equipment in the '.HAZSUB_PROCESS_NAME_ZFPF.' complies with reasonable and prudent good practices, including recognized and generally accepted good engineering practices: 
+(1) change-management documents, for the initial installation or subsequent changes, 
+(2) process-safety information, 
+(3) process-hazard analyses (for PSM) or hazard reviews (for general-duty only or Program 2 Prevention Programs), and 
+(4) inspection, testing, and maintenance practices. 
+Option: provide additional summaries in a practice document here.'),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
@@ -462,9 +472,9 @@ $practices = array(
 (1.3) whichever is smaller, and, optionally, adjusted for administrative controls, if 40 CFR 68, Subpart B, applies or otherwise 
 (1.4) any quantity between (1.1) and, if smaller, (1.2) above, for general-duty only facilities. 
 (2) To calculate the capacity of a cylindrical pressure vessel with elliptical heads: 
-(2.1) determine its shell plus head-skirt length (L), diameter (D), and head elliptical ratio (E) by measuring it or from its shop drawing, 
-(2.1.1) the head skirt is the cylindrical portion of a vessel\'s head, between the shell-to-head weld and where the elliptical potion of the head starts, 
-(2.2) sum the cylinder (shell plus head skirt) and oblate spheroid (both heads) volumes, for example pi*((D/2)^2)*L + (4/3)*pi*((D/2)^2)*(D/(E*2)), and 
+(2.1) determine its shell plus head-straight-flange length (L), diameter (D), and head elliptical ratio (E) by measuring it or from its shop drawing, 
+(2.1.1) the head straight flange is the cylindrical portion of a vessel\'s head, between the shell-to-head weld and where the elliptical potion of the head starts (the head straight flange is also called a head skirt, but avoid confusing it with a support skirt), 
+(2.2) sum the cylinder (shell plus head straight flange) and oblate spheroid (the elliptical portion of both heads) volumes, for example pi*((D/2)^2)*L + (4/3)*pi*((D/2)^2)*(D/(E*2)), and 
 (2.3) multiply this volume by the density, at reasonable worst-case temperature and pressure, and then by, if applicable, the composition as a mass fraction. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,

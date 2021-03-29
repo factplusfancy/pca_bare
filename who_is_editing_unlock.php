@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES ***  
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 require 'directory_path_settings.php';
 require INCLUDES_DIRECTORY_PATH_ZFPF.'/CoreZfpf.php';
@@ -42,9 +42,9 @@ $RN = "'No name field'"; // Must be double quoted. Serves as the default record 
 // SQL command which returns array with keys TN, PK, c5name, and c5who_is_editing
 $SQL = "SELECT 't0action' 		    as TN, k0action as PK, c5name, c5who_is_editing FROM t0action UNION
 SELECT 't0audit' 			        as TN, k0audit as PK, c5name, c5who_is_editing FROM t0audit UNION
-SELECT 't0audit_fragment'           as TN, k0audit_fragment as PK, $RN as c5name, c5who_is_editing FROM t0audit UNION
-SELECT 't0audit_fragment_obsmethod' as TN, k0audit_fragment_obsmethod as PK, $RN as c5name, c5who_is_editing FROM t0audit UNION
-SELECT 't0audit_obstopic'           as TN, k0audit_obstopic as PK, $RN as c5name, c5who_is_editing FROM t0audit UNION
+SELECT 't0audit_fragment'           as TN, k0audit_fragment as PK, $RN as c5name, c5who_is_editing FROM t0audit_fragment UNION
+SELECT 't0audit_fragment_obsmethod' as TN, k0audit_fragment_obsmethod as PK, $RN as c5name, c5who_is_editing FROM t0audit_fragment_obsmethod UNION
+SELECT 't0audit_obstopic'           as TN, k0audit_obstopic as PK, $RN as c5name, c5who_is_editing FROM t0audit_obstopic UNION
 SELECT 't0cause' 				    as TN, k0cause as PK, c5name, c5who_is_editing FROM t0cause UNION
 SELECT 't0certify' 				    as TN, k0certify as PK, $RN as c5name, c5who_is_editing FROM t0certify UNION
 SELECT 't0change_management' 	    as TN, k0change_management as PK, c5name, c5who_is_editing FROM t0change_management UNION
@@ -67,11 +67,11 @@ SELECT 't0guidance' 				as TN, k0guidance as PK, c5name, c5who_is_editing FROM t
 SELECT 't0incident' 				as TN, k0incident as PK, c5name, c5who_is_editing FROM t0incident UNION
 SELECT 't0incident_action' 			as TN, k0incident_action as PK, $RN as c5name, c5who_is_editing FROM t0incident_action UNION
 SELECT 't0lepc' 					as TN, k0lepc as PK, c5name, c5who_is_editing FROM t0lepc UNION
-SELECT 't0obsmethod'                as TN, k0obsmethod as PK, $RN as c5name, c5who_is_editing FROM t0owner_contractor UNION
-SELECT 't0obsresult'                as TN, k0obsresult as PK, $RN as c5name, c5who_is_editing FROM t0owner_contractor UNION
-SELECT 't0obsresult_action' 		as TN, k0obsresult_action as PK, $RN as c5name, c5who_is_editing FROM t0owner_contractor UNION
-SELECT 't0obstopic' 				as TN, k0obstopic as PK, c5name, c5who_is_editing FROM t0owner UNION
-SELECT 't0obstopic_obsmethod' 		as TN, k0obstopic_obsmethod as PK, $RN as c5name, c5who_is_editing FROM t0owner_contractor UNION
+SELECT 't0obsmethod'                as TN, k0obsmethod as PK, $RN as c5name, c5who_is_editing FROM t0obsmethod UNION
+SELECT 't0obsresult'                as TN, k0obsresult as PK, $RN as c5name, c5who_is_editing FROM t0obsresult UNION
+SELECT 't0obsresult_action' 		as TN, k0obsresult_action as PK, $RN as c5name, c5who_is_editing FROM t0obsresult_action UNION
+SELECT 't0obstopic' 				as TN, k0obstopic as PK, c5name, c5who_is_editing FROM t0obstopic UNION
+SELECT 't0obstopic_obsmethod' 		as TN, k0obstopic_obsmethod as PK, $RN as c5name, c5who_is_editing FROM t0obstopic_obsmethod UNION
 SELECT 't0owner' 					as TN, k0owner as PK, c5name, c5who_is_editing FROM t0owner UNION
 SELECT 't0owner_contractor' 		as TN, k0owner_contractor as PK, $RN as c5name, c5who_is_editing FROM t0owner_contractor UNION
 SELECT 't0owner_facility' 			as TN, k0owner_facility as PK, $RN as c5name, c5who_is_editing FROM t0owner_facility UNION

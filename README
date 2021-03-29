@@ -134,21 +134,19 @@ point your browser at:
 If you are serving over the Internet, use SSL (https), of course.
 
 (4.2) To install compliance practices tailored for anhydrous-ammonia mechanical-refrigeration systems (ammonia refrigeration),
-point your browser at PSM-CAP App files setup_nh3r_1a.php, setup_nh3r_1b.php, and setup_nh3r_2.php, in that order.
+point your browser at PSM-CAP App files setup_nh3r_1.php and setup_nh3r_2.php, in that order.
 in the same directory as step 4.1 above, and
 follow the instructions there, for example:
-    http://localhost/pca/setup_nh3r_1a.php
-    http://localhost/pca/setup_nh3r_1b.php
+    http://localhost/pca/setup_nh3r_1.php
     http://localhost/pca/setup_nh3r_2.php
 
-(4.3) Use Git to remove setup.php, setup_nh3r_1a.php, setup_nh3r_1b.php, setup_nh3r_2.php, and any other setup files
+(4.3) Use Git to remove setup.php, setup_nh3r_1.php, setup_nh3r_2.php, and any other setup files
 from the document root, if needed for security, such as if the document root is
 accessible to the public for a production deployment.
 For example, with a Unix-like operating system:
     $ cd /var/www/html/pca
     $ git rm setup.php
-    $ git rm setup_nh3r_1a.php
-    $ git rm setup_nh3r_1b.php
+    $ git rm setup_nh3r_1.php
     $ git rm setup_nh3r_2.php
     $ git commit -m 'removed setup files for security'
 
@@ -177,5 +175,5 @@ owners, facilities, processes, and some admin users.
 
 *** LEGAL NOTICES ***
 
-Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the  Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the  Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 

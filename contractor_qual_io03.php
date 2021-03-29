@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the contractor-qualification input and output HTML forms, except the:
 //  - i1m file for listing existing records (and giving the option to start a new record) 
@@ -120,7 +120,7 @@ if (!isset($_POST['contractor_qual_i2']))
 if (isset($_POST['contractor_qual_i0n'])) {
 	// Additional security check. Only the contractor can create a qualification record about themselves.
 	if (!isset($_SESSION['t0user_contractor']) or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 	// Initialize $_SESSION['Selected']
 	$_SESSION['Selected'] = array(
         'k0contractor_qual' => time().mt_rand(1000000, 9999999),
@@ -233,7 +233,7 @@ if (isset($_SESSION['Selected']['k0contractor_qual'])) {
 
     if (isset($_POST['qual_evaluate_1'])) {
         if (!isset($_SESSION['t0user_owner']) or !isset($_SESSION['StatePicked']['t0owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
         $Conditions[0] = array('k0contractor', '=', $_SESSION['Selected']['k0contractor']);
         list($SRC, $RRC) = $Zfpf->select_sql_1s($DBMSresource, 't0contractor', $Conditions);
@@ -298,7 +298,7 @@ if (isset($_SESSION['Selected']['k0contractor_qual'])) {
 
     // Additional security check for i1, i2, i3 code
     if (!isset($_SESSION['t0user_contractor']) or $UserGlobalDBMSPrivileges == LOW_PRIVILEGES_ZFPF or ($who_is_editing != '[A new database row is being created.]' and ($_SESSION['t0user_contractor']['k0contractor'] != $_SESSION['Selected']['k0contractor'] or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     
     // funciton for: Modify $Display for app_assigned fields.
     function modify_display_contractor_qual($htmlFormArray, $Display, $Nothing) {

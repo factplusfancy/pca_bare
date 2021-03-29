@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // Class ConfirmZfpf contains function(s) for confirming input data
 
@@ -308,7 +308,7 @@ class ConfirmZfpf extends UserFindZfpf {
                 <input type="file" name="file_1_'.$Name.'" /><br />
                 <input type="file" name="file_2_'.$Name.'" /><br />
                 <input type="file" name="file_3_'.$Name.'" /><br />
-                The maximum file size allowed is '.$MaxLength/1000000 .' MB (megabytes).<br />
+                Maximum file size '.$MaxLength/1000000 .' MB (megabytes).<br />
                 Clicking "Upload Now" attempts to upload <b>only the files in this field</b> and, if successful, returns you to this form, where you may upload more files.<br />
                 <input type="submit" name="upload_'.$Name.'" value="Upload now" />';
             return $Label.$Required.':<br />'.$Value.'<br />';

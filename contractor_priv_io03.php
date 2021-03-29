@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the contractor_priv input and output HTML forms, except the:
 //  - i1m file for listing existing records (and giving the option to start a new record) 
@@ -86,7 +86,7 @@ if (!isset($_POST['contractor_priv_i2']))
 if (isset($_POST['contractor_priv_i0n'])) {
 	// Additional security check.
     if (!isset($_SESSION['Scratch']['t0user_facility']) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 	// Initialize $_SESSION['Selected']
     $EncryptedNothing = $Zfpf->encrypt_1c('[Nothing has been recorded in this field.]');
     $_SESSION['Selected'] = array(
@@ -221,7 +221,7 @@ if (isset($_SESSION['Selected']['k0contractor_priv'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     // Additional security check
     if (!isset($_SESSION['Scratch']['t0user_facility']) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or ($who_is_editing != '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF or $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     if (isset($_POST['contractor_priv_o1_from']))
         $Zfpf->edit_lock_1c('contractor_priv'); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error.
     // i1 code

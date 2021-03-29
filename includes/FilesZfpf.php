@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // Class FilesZfpf contains function(s) for:
 //  - uploading and downloading files to the server's file system, including echoing HTML for this.
@@ -10,22 +10,41 @@ require INCLUDES_DIRECTORY_PATH_ZFPF.'/ConfirmZfpf.php';
 class FilesZfpf extends ConfirmZfpf {
 
     ////////////////////////////////////////////////////////////////////////////
-    // This function is a wrapper.
-    public function write_file_1e($DataToWrite, $BaseFileName, $Directory = FALSE, $SelectedRow = FALSE) {
-        if (!$Directory)
-            $Directory = $this->user_files_directory_1e($SelectedRow);
-        $FileFullPath = $Directory.$BaseFileName;
-        $BytesWritten = file_put_contents($FileFullPath, $DataToWrite); // TO DO FOR PRODUCTION VERSION -- review this line for security and speed. file_put_contents may be used elsewhere in app files.
+    // This function is a wrapper for writing files to storage.
+    // Returns the bytes written on success and 0 on failure.
+    public function write_file_1e($DataToWrite, $BaseFileName = FALSE, $Directory = FALSE, $SelectedRow = FALSE, $FileFullPath = FALSE) {
+        if (!$FileFullPath) {
+            if ($BaseFileName) {
+                if (!$Directory)
+                    $Directory = $this->user_files_directory_1e($SelectedRow);
+                $FileFullPath = $Directory.$BaseFileName;
+            }
+        }
+        $BytesWritten = 0;
+        if ($FileFullPath)
+            $BytesWritten = file_put_contents($FileFullPath, $DataToWrite); // TO DO FOR PRODUCTION VERSION -- review this line for security and speed. file_put_contents is used elsewhere in this class FilesZfpf.
         return $BytesWritten;
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // This function is a wrapper.
-    public function read_file_1e($BaseFileName, $Directory = FALSE, $SelectedRow = FALSE) {
-        if (!$Directory)
-            $Directory = $this->user_files_directory_1e($SelectedRow);
-        $FileFullPath = $Directory.$BaseFileName;
-        $String = file_get_contents($FileFullPath); // TO DO FOR PRODUCTION VERSION -- review this line for security and speed.
+    // This function is a wrapper for reading files from storage.
+    // Returns the file, as a string, on success and an empty string on failure.
+    public function read_file_1e($FileFullPath = FALSE, $BaseFileName = FALSE, $Directory = FALSE, $SelectedRow = FALSE) {
+        if (!$FileFullPath) {
+            if ($BaseFileName) {
+                if (!$Directory)
+                    $Directory = $this->user_files_directory_1e($SelectedRow);
+                $FileFullPath = $Directory.$BaseFileName;
+            }
+        }
+        $String = '';
+        if ($FileFullPath) {
+            $MalwareCheck = $this->malware_control_1e($FileFullPath);
+            if ($MalwareCheck == 'Safe')
+                $String = file_get_contents($FileFullPath); // TO DO FOR PRODUCTION VERSION -- review this line for security and speed.
+            else
+                error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' read_file_1e() Error Log Case 1. FilesZfpf::malware_control_1e on an uploaded file returned: '.@$MalwareCheck);
+        }
         return $String;
     }
     
@@ -137,6 +156,7 @@ class FilesZfpf extends ConfirmZfpf {
     */
     public function malware_control_1e($FileFullPath) {
         // TO DO FOR PRODUCTION VERSION call whatever malware software an particular implementation is using. 
+        // TO DO FOR PRODUCTION VERSION and return different messages based on the result. 
         return 'Safe';
     }
 
@@ -373,12 +393,94 @@ class FilesZfpf extends ConfirmZfpf {
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // $SelectedRow must be passed in or $_SESSION['Selected'] must be set for this function to work.
-    // This function checks the $_FILES array for
+    // This function checks the $_FILES array (a PHP superglobal variable) for
     //   - files exceeding the max size
     //   - malware
-    //   - base filename conflicts.
-    // It checks if $Directory exists and if not creates it.
+    //   - base filename conflicts
+    //   - and so forth.
+    // $c6bfn_column_name -- if the files won't be stored in the database, can be whatever follows file_1_
+    //      in the HTML field that created a $_FILES array key, like: <input type="file" name="file_1_'.$c6bfn_column_name.'" />
+    //      See ConfirmZfpf::html_form_field_1e -- in file includes/ConfirmZfpf.php
+    public function files_array_check_1e($c6bfn_column_name, $GoBackFilename) {
+        if (!isset($_FILES) or !is_array($_FILES)) {
+            $ProblemMessage = '<p>
+            <b>No files or other problem</b>. Ensure you attempted to upload a file. If you did, ask an app admin to check the error log.</p>';
+            error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' files_array_check_1e() Error Log Case 1. $_FILES superglobal not set or not an array.');
+        }
+        else {
+            foreach ($_FILES as $K => $V) 
+                if (substr($K, 7) != $c6bfn_column_name)
+                    unset ($_FILES[$K]); // Remove from $_FILES array any files not selected in the same HTML field as the "upload now" button that the user clicked.
+            $ProblemMessage = ''; // PHP evaluates the empty string as false.
+            $NoFileSelected = 0;
+            foreach ($_FILES as $V) {
+                $GoodForUpload = 1;
+                if ($V['error'] == 1) {
+                     // The uploaded file exceeds the upload_max_filesize directive in php.ini.
+                    $this->eject_1c(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' files_array_check_1e() Eject Case 1');
+                }
+                elseif ($V['error'] == 2) {
+                    // The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.
+                    $GoodForUpload = 0;
+                    $ProblemMessage .= '<p>
+                    <b>Too large</b>.'.$this->xss_prevent_1c($V['name']).' is larger than the maximum file size allowed. You may divide it as needed to stay below the maximum file size, which is shown on the form you used to upload the file.</p>';
+                }
+                elseif ($V['error'] == 3)  {
+                    // The uploaded file was only partially uploaded.
+                    $GoodForUpload = 0;
+                    $ProblemMessage .= '<p>
+                    <b>Incomplete Upload</b>.'.$this->xss_prevent_1c($V['name']).' was only partially uploaded. Please try again. Or, contact your supervisor or a PSM-CAP App administrator for assistance.</p>';
+                }
+                elseif ($V['error'] == 4) {
+                    // User did not select a file. Or "no file was uploaded" for some other reason.
+                    $GoodForUpload = 0;
+                    $NoFileSelected++;
+                }
+                elseif ($V['error'] == 5 or $V['error'] == 6) {
+                    // Missing a temporary folder. Introduced in PHP 5.0.3. Or, Failed to write file to disk. Introduced in PHP 5.1.0.
+                    $GoodForUpload = 0;
+                    $ProblemMessage .= '<p>
+                    <b>Miscellaneous Problem</b>. A problem occurred. Please contact your supervisor or a PSM-CAP App administrator for assistance. Ask them to check the error log.</p>';
+                    error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' files_array_check_1e() Error Log Case 2. $_FILES error '.$V['error'].'. 5 means missing a temporary folder. 6 means failed to write file to disk');
+                }
+                $MalwareCheck = $this->malware_control_1e($V['tmp_name']);
+                if ($MalwareCheck != 'Safe') {
+                    $GoodForUpload = 0;
+                    $ProblemMessage .= '<p>
+                    <b>Malware</b>. Malware-control software detected a problem with '.$this->xss_prevent_1c($V['name']).' Please scan this file for malware before tying to upload again. You may contact your supervisor or a PSM-CAP App administrator for assistance.</p>';
+                    error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' files_array_check_1e() Error Log Case 3. FilesZfpf::malware_control_1e on an uploaded file returned: '.@$MalwareCheck);
+                }
+                if ($GoodForUpload)
+                    $UserFilenames[] = $V['name']; // No need for FilesZfpf::xss_prevent_1c() because never displayed to browser.
+            }
+            if (isset($UserFilenames))
+                $UniqueUserFilenames = array_unique($UserFilenames);
+            if (count($_FILES) == $NoFileSelected)
+                $ProblemMessage .= '<p>
+                <b>No Files</b>. The app did not detect that you selected any files for uploading. If you did, please contact your supervisor or a PSM-CAP App administrator for assistance.</p>';
+            elseif (isset($UserFilenames) and $UniqueUserFilenames != $UserFilenames)
+                $ProblemMessage .= '<p>
+                <b>Same Name</b>. The PSM-CAP App detected that you selected two or more files with the same name. Files must have different names to be uploaded at the same time because files for each implementation of a practice, such as an incident investigation, are stored in one directory (aka folder). If you upload a file with the same name later, the App will append _overwrite_scheduled_[timestamp] to the name of the first file you uploaded. Months may pass before the actual overwriting; this timing depends on choices by the App administrators.</p>';
+        }
+        if ($ProblemMessage) {
+            echo $this->xhtml_contents_header_1c().'<h2>
+            File upload problem</h2><p>
+            No files were uploaded because...</p>
+            '.$ProblemMessage.'
+            <p>
+            Contact your supervisor or an app admin for assistance.</p>
+            <form action="'.$GoBackFilename.'" method="post"><p>
+                <input type="submit" name="problem_c6bfn_files_upload_1e" value="Go back" /></p>
+            </form>
+            '.$this->xhtml_footer_1c();
+            $this->save_and_exit_1c();
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // $SelectedRow must be passed in or $_SESSION['Selected'] must be set for this function to work.
+    // This function...
+    // Checks if $Directory exists and if not creates it.
     // If OK, it encrypts and moves files from the $_FILES temporary directory, defined in php.ini, to $Directory with an app-assigned base filename.
     // Lastly it updates the base filename array, $c6bfn_array (or creates it if $c6bfn_array == FALSE), encodes it, encrypts it, 
     // and UPDATES the appropriate database field, determined by $c6bfn_column_name and $SelectedRow.
@@ -391,76 +493,11 @@ class FilesZfpf extends ConfirmZfpf {
             $SelectedRow = $_SESSION['Selected'];
             $UpdateSessionSelected = TRUE;
         }
-        foreach ($_FILES as $K => $V) 
-            if (substr($K, 7) != $c6bfn_column_name)
-                unset ($_FILES[$K]); // Remove from $_FILES array any files not selected in the same HTML field as the "upload now" button that the user clicked.
-        $ProblemMessage = ''; // PHP evaluates the empty string as false.
-        $NoFileSelected = 0;
-        foreach ($_FILES as $V) {
-            $GoodForUpload = 1;
-            if ($V['error'] == 1) {
-                 // The uploaded file exceeds the upload_max_filesize directive in php.ini.
-                $this->eject_1c(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' c6bfn_files_upload_1e() Eject Case 2');
-            }
-            elseif ($V['error'] == 2) {
-                // The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.
-                $GoodForUpload = 0;
-                $ProblemMessage .= '<p>
-                <b>Too large</b>.'.$this->xss_prevent_1c($V['name']).' is larger than the maximum file size allowed. You may divide it as needed to stay below the maximum file size, which is shown on the form you used to upload the file.</p>';
-            }
-            elseif ($V['error'] == 3)  {
-                // The uploaded file was only partially uploaded.
-                $GoodForUpload = 0;
-                $ProblemMessage .= '<p>
-                <b>Incomplete Upload</b>.'.$this->xss_prevent_1c($V['name']).' was only partially uploaded. Please try again. Or, contact your supervisor or a PSM-CAP App administrator for assistance.</p>';
-            }
-            elseif ($V['error'] == 4) {
-                // User did not select a file. Or "no file was uploaded" for some other reason.
-                $GoodForUpload = 0;
-                $NoFileSelected++;
-            }
-            elseif ($V['error'] == 5 or $V['error'] == 6) {
-                // Missing a temporary folder. Introduced in PHP 5.0.3. Or, Failed to write file to disk. Introduced in PHP 5.1.0.
-                $GoodForUpload = 0;
-                $ProblemMessage .= '<p>
-                <b>Miscellaneous Problem</b>. A problem occurred. Please contact your supervisor or a PSM-CAP App administrator for assistance. Ask them to check the error log.</p>';
-                error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' c6bfn_files_upload_1e() Error Log Case 1. $_FILES error '.$V['error'].'. 5 means missing a temporary folder. 6 means failed to write file to disk');
-            }
-            $MalwareCheck = $this->malware_control_1e($V['tmp_name']);
-            if ($MalwareCheck != 'Safe') {
-                $GoodForUpload = 0;
-                $ProblemMessage .= '<p>
-                <b>Malware</b>. Malware-control software detected a problem with '.$this->xss_prevent_1c($V['name']).' Please scan this file for malware before tying to upload again. You may contact your supervisor or a PSM-CAP App administrator for assistance.</p>';
-                error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' c6bfn_files_upload_1e() Error Log Case 2. Files::malware_control_1e on an uploaded file returned: '.@$MalwareCheck);
-            }
-            if ($GoodForUpload)
-                $UserFilenames[] = $V['name']; // No need for FilesZfpf::xss_prevent_1c() because never displayed to browser.
-        }
-        if (isset($UserFilenames))
-            $UniqueUserFilenames = array_unique($UserFilenames);
-        if (count($_FILES) == $NoFileSelected)
-            $ProblemMessage .= '<p>
-            <b>No Files</b>. The app did not detect that you selected any files for uploading. If you did, please contact your supervisor or a PSM-CAP App administrator for assistance.</p>';
-        elseif (isset($UserFilenames) and $UniqueUserFilenames != $UserFilenames)
-            $ProblemMessage .= '<p>
-            <b>Same Name</b>. The PSM-CAP App detected that you selected two or more files with the same name. Files must have different names to be uploaded at the same time because files for each implementation of a practice, such as an incident investigation, are stored in one directory (aka folder). If you upload a file with the same name later, the App will append _overwrite_scheduled_[timestamp] to the name of the first file you uploaded. Months may pass before the actual overwriting; this timing depends on choices by the App administrators.</p>';
-        if ($ProblemMessage) {
-            echo $this->xhtml_contents_header_1c().'<h2>
-            File upload problem</h2><p>
-            No files were uploaded because...</p>
-            '.$ProblemMessage.'
-            <p>
-            Contact your supervisor or a PSM-CAP app admin for assistance.</p>
-            <form action="'.$GoBackFilename.'" method="post"><p>
-                <input type="submit" name="problem_c6bfn_files_upload_1e" value="Go back" /></p>
-            </form>
-            '.$this->xhtml_footer_1c();
-            $this->save_and_exit_1c();
-        }
+        $this->files_array_check_1e($c6bfn_column_name, $GoBackFilename); // This function echos and exits if there is a problem.
         // Check is the target directory exists and if not create it.
         if (!file_exists($Directory))
             if (!mkdir($Directory, CHMOD_DIRECTORY_PERMISSIONS_ZFPF, TRUE)) {
-                error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' c6bfn_files_upload_1e() Error Log Case 3');
+                error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' c6bfn_files_upload_1e() Error Log Case 1');
                 $this->normal_log_off_1c($SuccessMessage = 'You were logged off because of a problem with uploading files. Please contact your supervisor or a PSM-CAP App administrator for assistance before doing this again. Ask them to check the error log. You may log on again and use other aspects of the PSM-CAP App.');
             }
         $Count = 0;
@@ -472,7 +509,7 @@ class FilesZfpf extends ConfirmZfpf {
                 $ServerBFN = time().$Alpa++.mt_rand(100000, 999999);
                 $FileFullPath = $Directory.$ServerBFN;
                 if (file_put_contents($FileFullPath, $this->encrypt_file_1e($VA["tmp_name"]))) {
-                    // If this is the first file uploaded, calling script should pass in FALSE for $c6bfn_array
+                    // If this is the first file uploaded, ever -- for this database field, calling script should pass in FALSE for $c6bfn_array
                     if ($c6bfn_array)
                         foreach ($c6bfn_array as $KB => $VB) {
                             // $VA['name'] is the current-upload user-provided filename. $VB[0] is a recorded user-provided filename.
@@ -497,7 +534,7 @@ class FilesZfpf extends ConfirmZfpf {
             $Conditions[0] = array($PrimaryKeyName, '=', $SelectedRow[$PrimaryKeyName]);
             $Affected = $this->one_shot_update_1s($TableName, $Changes, $Conditions);
             if ($Affected != 1)
-                $this->eject_1c(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' c6bfn_files_upload_1e() Eject Case 3. Affected: '.@$Affected);
+                $this->eject_1c(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' c6bfn_files_upload_1e() Eject Case 2. Affected: '.@$Affected);
             if(isset($UpdateSessionSelected))
                 $_SESSION['Selected'][$c6bfn_column_name] = $Changes[$c6bfn_column_name]; // update $_SESSION['Selected'] to match the database.
         }

@@ -1,7 +1,7 @@
 <?php
 
 // *** LEGAL NOTICES ***  
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // General duty for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration).
 // This division method matches the Cheesehead division method, except the following.
@@ -55,7 +55,7 @@ $divisions = array(
     ),
     53 => array(
         'k0rule' => $rules[4]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Process-safety information covering design, materials, fabrication, construction, and installation'),
+        'c5name' => $Zfpf->encrypt_1c('Process-safety information covering design, materials, fabrication, construction, installation, and commissioning'),
         'c5citation' => $EncryptedNothing
     ),
     54 => array(
@@ -158,7 +158,7 @@ foreach ($divisions as $VD)
         $Number = $Number + 100; // Leave room for inserting new entries between existing ones.
     }
 // Keys less than 100000 are reserved for templates.
-$PrimaryKey = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_division', 't0fragment_division');
+$PrimaryKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0fragment_division', 't0fragment_division');
 foreach ($fragment_division as $V) {
     $V['k0fragment_division'] = ++$PrimaryKey;
     $V['c5who_is_editing'] = $EncryptedNobody;
@@ -176,7 +176,7 @@ $NewPractices = array(
         'c5require_file_privileges' => $EncryptedLowPrivileges
     )
 );
-$PrimaryKey = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice');
+$PrimaryKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice', 't0practice');
 foreach ($NewPractices as $K => $V) {
     $V['k0practice'] = ++$PrimaryKey;
     $NewPractices[$K]['k0practice'] = $V['k0practice'];
@@ -185,7 +185,7 @@ foreach ($NewPractices as $K => $V) {
 }
 
 // t0practice_division inserts
-$PrimaryKey = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division');
+$PrimaryKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice_division', 't0practice_division');
 $i = 0;
 foreach ($divisions as $VD) {
     $Conditions = array();
@@ -243,7 +243,7 @@ foreach ($general_duty_fragments as $VF)
             'k0practice' => $VP['k0practice']
         );
 // Keys less than 100000 are reserved for templates.
-$PrimaryKey = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_practice', 't0fragment_practice');
+$PrimaryKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0fragment_practice', 't0fragment_practice');
 foreach ($fragment_practice as $V) {
     $V['k0fragment_practice'] = ++$PrimaryKey;
     $V['c5who_is_editing'] = $EncryptedNobody;

@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the PHA input and output HTML forms, except the:
 //  - i1m file for listing existing records (and giving the option to start a new record) and
@@ -32,7 +32,13 @@ if (isset($_SESSION['Scratch']['t0action']))
 $User = $Zfpf->current_user_info_1c();
 $UserPracticePrivileges = $Zfpf->decrypt_1c($_SESSION['t0user_practice']['c5p_practice']);
 $EditAuth = FALSE;
-if ($User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF)
+if (isset($_SESSION['Selected']['k0pha']) and
+    $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and 
+        (
+            ($_SESSION['Selected']['k0pha'] >= 100000 and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF) or 
+            ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')
+        )
+   )
     $EditAuth = TRUE;
 $EncryptedNothing = $Zfpf->encrypt_1c('[Nothing has been recorded in this field.]');
 $UserIsProcessPSMLeader = FALSE; // Caution, record not yet selected, need to reset to FALSE for templates.
@@ -46,23 +52,23 @@ if (isset($_SESSION['StatePicked']['t0process']['k0process'])) { // This app req
 $htmlFormArray = array(
     'k0user_of_leader' => array('<a id="k0user_of_leader"></a>Team leader', ''), // Intentionally out of order in schema.
     'c6bfn_act_notice' => array('<a id="c6bfn_act_notice"></a>Activity notice(s) posted', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-    'c6team_qualifications' => array('<a id="c6team_qualifications"></a>Team Qualifications', REQUIRED_FIELD_ZFPF, C6SHORT_MAX_BYTES_ZFPF),
     'c6bfn_attendance' => array('<a id="c6bfn_attendance"></a>Team attendance records (required) and any other supporting materials', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-    'c6background' => array('<a id="c6background"></a>Background on the process, applicable PHA rules, and past PHA or revisions history', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
+    'c6background' => array('<a id="c6background"></a>Background on the process, applicable PHA rules, and any prior PHA or revisions history', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
+    'c6team_qualifications' => array('<a id="c6team_qualifications"></a>Team qualifications', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
     'c6method' => array('<a id="c6method"></a>Method', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
-    'c6prior_incident_id' => array('<a id="c6prior_incident_id"></a>Identification of applicable prior incidents', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF)
+    'c6prior_incident_id' => array('<a id="c6prior_incident_id"></a>Identification of applicable previous incidents', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF)
 );
 
 //Left hand Table of contents
-if (!isset($_POST['pha_i2']) and !isset($_POST['team_leader_approval_2']) and !isset($_POST['change_team_leader_1']) and !isset($_POST['change_team_leader_2']) and !isset($_POST['change_team_leader_3']))
+if (!isset($_POST['pha_i2']) and !isset($_POST['team_leader_approval_2']) and !isset($_POST['change_team_leader_1']) and !isset($_GET['change_team_leader_1']) and !isset($_POST['change_team_leader_2']) and !isset($_POST['change_team_leader_3']))
     $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'] = array(
-        'k0user_of_leader' => 'Team leader', 
-        'c6bfn_act_notice' => 'Activity notice', 
-        'c6team_qualifications' => 'Qualifications', 
-        'c6bfn_attendance' => 'Attendance', 
+        'k0user_of_leader' => 'Team leader',
+        'c6bfn_act_notice' => 'Activity notice',
+        'c6bfn_attendance' => 'Attendance',
         'c6background' => 'Background', 
-        'c6method' => 'Method', 
-        'c6prior_incident_id' => 'Prior incidents'
+        'c6team_qualifications' => 'Qualifications',
+        'c6method' => 'Method',
+        'c6prior_incident_id' => 'Previous incidents'
     );
 
 // The if clauses below determine which HTML button the user pressed.
@@ -74,6 +80,191 @@ if (isset($_GET['act_notice_1'])) {
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/ActNoticeZfpf.php';
     $ActNoticeZfpf = new ActNoticeZfpf;
     echo $ActNoticeZfpf->act_notice_generate($Zfpf, 'pha');
+    $Zfpf->save_and_exit_1c();
+}
+
+// Import a template PHA from a JSON file.
+if (isset($_POST['template_pha_import'])) {
+    $Zfpf->files_array_check_1e('pha_json_file', 'practice_o1.php'); // This function echos and exits if there is a problem.
+    if (!isset($_FILES['file_1_pha_json_file']['tmp_name']))
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
+    $ArrayPHA = $Zfpf->read_file_1e($_FILES['file_1_pha_json_file']['tmp_name']); // Returns empty string (false) on failure.
+    if ($ArrayPHA) {
+        $ArrayPHA = json_decode($ArrayPHA, TRUE); // The second parameter must be TRUE to return an array.
+        $ProblemMessage = '';
+        if (!isset($ArrayPHA['t0pha']))
+            $ProblemMessage .= '<p>A t0pha field was not found in the JSON file you selected.</p>';
+        elseif (count($ArrayPHA['t0pha']) != 1)
+            $ProblemMessage .= '<p>More than one t0pha fields were found in the JSON file you selected. Currently, only one PHA can be imported per JSON file.</p>';
+        if ($ProblemMessage) {
+            echo $Zfpf->xhtml_contents_header_1c().'<h2>
+            Problem importing a template PHA from a JSON file</h2>
+            '.$ProblemMessage.'
+            <p>
+            Contact your supervisor or an app admin for assistance.</p>
+            <form action="practice_o1.php" method="post"><p>
+                <input type="submit" value="Go back" /></p>
+            </form>
+            '.$Zfpf->xhtml_footer_1c();
+            $Zfpf->save_and_exit_1c();
+        }
+        $EncryptedNobody = $Zfpf->encrypt_1c('[Nobody is editing.]');
+        // t0pha
+        $ImportFields = array('c6team_qualifications', 'c6background', 'c6method', 'c6prior_incident_id');
+        $Uploader = $Zfpf->current_user_info_1c();
+        $DBMSresource = $Zfpf->credentials_connect_instance_1s();
+        $HighestTemplatePHAKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0pha', 't0pha', 99999);
+        foreach ($ArrayPHA['t0pha'] as $Vr) { // r stands for row, of a database table. Only one value in this t0pha array, with key the imported k0pha, but we don't know this k0pha.
+            $PHARow['k0pha'] = ++$HighestTemplatePHAKey; // Assign a new k0pha that is less than 10,000 but otherwise the highest k0pha.
+            $PHARow['k0process'] = 0; // See schema -- 0 for template PHAs.
+            $PHARow['c6bfn_act_notice'] = $EncryptedNothing;
+            $PHARow['c6bfn_attendance'] = $EncryptedNothing;
+            $PHARow['c6bfn_pha_as_issued'] = $EncryptedNothing;
+            $PHARow['k0user_of_leader'] = 0; // See schema.
+            $PHARow['c5ts_leader'] = $EncryptedNothing;
+            $PHARow['c6nymd_leader'] = $Zfpf->encrypt_1c('Template PHA imported '.$Zfpf->timestamp_to_display_1c(time()).' by '.$Uploader['NameTitle'].', '.$Uploader['Employer'].' '.$Uploader['WorkEmail']); // See schema.
+            $PHARow['c5who_is_editing'] = $EncryptedNobody;
+            foreach ($ImportFields as $Vfn) { // fn stands for field name -- aka database table column name.
+                if (isset($Vr[$Vfn]))
+                    $PHARow[$Vfn] = $Zfpf->encrypt_1c($Vr[$Vfn]);
+                else
+                    $PHARow[$Vfn] = $EncryptedNothing;
+            }
+            $Zfpf->insert_sql_1s($DBMSresource, 't0pha', $PHARow, FALSE); // No history insert for templates.
+        }
+        $SpCount = 0;
+        $ScCount = 0;
+        $ImportFields = array('c5name', 'c5type', 'c5severity', 'c5likelihood'); // for t0scenario, nested in t0subprocess
+        // t0subprocess
+        if (isset($ArrayPHA['t0subprocess'])) foreach ($ArrayPHA['t0subprocess'] as $Ksp => $Vsp) { // $Ksp has the key from the JSON source file, same as $Vsp['k0subprocess'].
+            $SpRow['k0subprocess'] = time().mt_rand(100, 999).$SpCount++; // Allows up to 10,000 subprocesses (aka subsystems) while avoiding conflicts for these inserts.
+            $SpRow['k0pha'] = $PHARow['k0pha']; // Only one PHA row allowed for imports.
+            if (isset($Vsp['c5name']))
+                $SpRow['c5name'] = $Zfpf->encrypt_1c($Vsp['c5name']);
+            else // Required if input via app, but don't fail if not in JSON file.
+                $SpRow['c5name'] = $EncryptedNothing;
+            $SpRow['c5who_is_editing'] = $EncryptedNobody;
+            $Zfpf->insert_sql_1s($DBMSresource, 't0subprocess', $SpRow, FALSE);
+            // t0scenario
+            if (isset($ArrayPHA['t0scenario'])) foreach ($ArrayPHA['t0scenario'] as $Ksc => $Vsc) {
+                if (isset($Vsc['k0subprocess']) and $Vsc['k0subprocess'] == $Ksp) { // The scenario is in this subprocess.
+                    $NewRow['k0scenario'] = time().mt_rand(100, 999).$ScCount++;
+                    $ScMap[$Ksc] = $NewRow['k0scenario']; // $Ksc is the old k0scenario, $NewRow['k0scenario'] is the new k0scenario.
+                    $NewRow['k0subprocess'] = $SpRow['k0subprocess']; // The new k0subprocess.
+                    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+                    foreach ($ImportFields as $Vfn) {
+                        if (isset($Vsc[$Vfn]))
+                            $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vsc[$Vfn]);
+                        else
+                            $NewRow[$Vfn] = $EncryptedNothing;
+                    }
+                    $Zfpf->insert_sql_1s($DBMSresource, 't0scenario', $NewRow, FALSE);
+                }
+            }
+        }
+        // t0cause
+        unset($NewRow);
+        $NewRow['c5who_is_editing'] = $EncryptedNobody;
+        $Count = 0;
+        $ImportFields = array('c5name', 'c6description');
+        if (isset($ArrayPHA['t0cause'])) foreach ($ArrayPHA['t0cause'] as $Kx => $Vx) {
+            $NewRow['k0cause'] = time().mt_rand(100, 999).$Count++;
+            $ccsaMap['cause'][$Kx] = $NewRow['k0cause'];
+            foreach ($ImportFields as $Vfn) {
+                if (isset($Vx[$Vfn]))
+                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
+                else
+                    $NewRow[$Vfn] = $EncryptedNothing;
+            }
+            $Zfpf->insert_sql_1s($DBMSresource, 't0cause', $NewRow, FALSE);
+        }
+        // t0consequence
+        unset($NewRow);
+        $NewRow['c5who_is_editing'] = $EncryptedNobody;
+        $Count = 0;
+        $ImportFields = array('c5name', 'c6description');
+        if (isset($ArrayPHA['t0consequence'])) foreach ($ArrayPHA['t0consequence'] as $Kx => $Vx) {
+            $NewRow['k0consequence'] = time().mt_rand(100, 999).$Count++;
+            $ccsaMap['consequence'][$Kx] = $NewRow['k0consequence'];
+            foreach ($ImportFields as $Vfn) {
+                if (isset($Vx[$Vfn]))
+                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
+                else
+                    $NewRow[$Vfn] = $EncryptedNothing;
+            }
+            $Zfpf->insert_sql_1s($DBMSresource, 't0consequence', $NewRow, FALSE);
+        }
+        // t0safeguard
+        unset($NewRow);
+        $NewRow['c5who_is_editing'] = $EncryptedNobody;
+        $Count = 0;
+        $ImportFields = array('c5name', 'c5hierarchy', 'c6description');
+        if (isset($ArrayPHA['t0safeguard'])) foreach ($ArrayPHA['t0safeguard'] as $Kx => $Vx) {
+            $NewRow['k0safeguard'] = time().mt_rand(100, 999).$Count++;
+            $ccsaMap['safeguard'][$Kx] = $NewRow['k0safeguard'];
+            foreach ($ImportFields as $Vfn) {
+                if (isset($Vx[$Vfn]))
+                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
+                else
+                    $NewRow[$Vfn] = $EncryptedNothing;
+            }
+            $Zfpf->insert_sql_1s($DBMSresource, 't0safeguard', $NewRow, FALSE);
+        }
+        // t0action -- typically not in templates, but need to import a customized PHA that someone wants to use as a template.
+        unset($NewRow);
+        $NewRow['c5who_is_editing'] = $EncryptedNobody;
+        $Count = 0;
+        $ImportFields = array('c5name', 'c5priority', 'c6deficiency', 'c6details');
+        if (isset($ArrayPHA['t0action'])) foreach ($ArrayPHA['t0action'] as $Kx => $Vx) {
+            $NewRow['k0action'] = time().mt_rand(100, 999).$Count++;
+            $ccsaMap['action'][$Kx] = $NewRow['k0action'];
+            $NewRow['c5status'] = $Zfpf->encrypt_1c('Draft proposed action');
+            $NewRow['c5affected_entity'] = $EncryptedNothing; // Would have to be input later, if/when the action is first edited.
+            $NewRow['k0affected_entity'] = 0;
+            $NewRow['c5ts_target'] = $EncryptedNothing;
+            $NewRow['k0user_of_leader'] = 0;
+            $NewRow['c5ts_leader'] = $EncryptedNothing;
+            $NewRow['c6nymd_leader'] = $EncryptedNothing;
+            $NewRow['c6notes'] = $EncryptedNothing;
+            $NewRow['c6bfn_supporting'] = $EncryptedNothing;
+            $NewRow['k0user_of_ae_leader'] = -2;
+            $NewRow['c5ts_ae_leader'] = $EncryptedNothing;
+            $NewRow['c6nymd_ae_leader'] = $EncryptedNothing;
+            foreach ($ImportFields as $Vfn) {
+                if (isset($Vx[$Vfn]))
+                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
+                else
+                    $NewRow[$Vfn] = $EncryptedNothing;
+            }
+            $Zfpf->insert_sql_1s($DBMSresource, 't0action', $NewRow, FALSE);
+        }
+        // Juntion tables: t0scenario_cause, t0scenario_consequence, t0scenario_safeguard, and t0scenario_action
+        $Types = array('cause', 'consequence', 'safeguard', 'action');
+        foreach ($Types as $ccsa) {
+            unset($NewRow);
+            $NewRow['c5who_is_editing'] = $EncryptedNobody;
+            $Count = 0;
+            if (isset($ArrayPHA['t0scenario_'.$ccsa])) foreach ($ArrayPHA['t0scenario_'.$ccsa] as $Vx) {
+                $ScKeyOld = $Vx['k0scenario'];
+                $ccsaKeyOld = $Vx['k0'.$ccsa];
+                if (isset($ScMap[$ScKeyOld]) and isset($ccsaMap[$ccsa][$ccsaKeyOld])) {
+                    $NewRow['k0scenario_'.$ccsa] = time().mt_rand(100, 999).$Count++;
+                    $NewRow['k0scenario'] = $ScMap[$ScKeyOld];
+                    $NewRow['k0'.$ccsa] = $ccsaMap[$ccsa][$ccsaKeyOld];
+                    $Zfpf->insert_sql_1s($DBMSresource, 't0scenario_'.$ccsa, $NewRow, FALSE);
+                }
+            }
+        }
+        $Zfpf->close_connection_1s($DBMSresource);
+    }
+    echo $Zfpf->xhtml_contents_header_1c().'<h2>
+    Importing template PHA from a JSON file complete.</h2>
+    <p>
+    Review the PHA to verify this import was complete and correct.</p>
+    <form action="practice_o1.php" method="post"><p>
+        <input type="submit" value="Go back" /></p>
+    </form>
+    '.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
 
@@ -116,7 +307,7 @@ if (isset($_POST['pha_i0n']) or isset($_POST['pha_template'])) {
 }
 
 // history_o1 code
-if (isset($_POST['pha_history_o1'])) {
+if (isset($_GET['pha_history_o1'])) {
     if (!isset($_SESSION['Selected']['k0pha']))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/HistoryGetZfpf.php';
@@ -144,11 +335,9 @@ if (isset($_POST['from_team_leader_approval_1'])) {
     if (!isset($_SESSION['Selected']['k0pha']))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
     $Conditions[0] = array('k0pha', '=', $_SESSION['Selected']['k0pha']);
-    list($SelectResults['t0subprocess'], $RowsReturned['t0subprocess']) = $Zfpf->one_shot_select_1s('t0subprocess', $Conditions);
-    if ($RowsReturned['t0subprocess'] > 0)
-        foreach ($SelectResults['t0subprocess'] as $V)
-            $Zfpf->clear_edit_lock_1c($V);
-    unset($SelectResults['t0subprocess']);  // In case used later.
+    list($SRSp, $RRSp) = $Zfpf->one_shot_select_1s('t0subprocess', $Conditions);
+    if ($RRSp) foreach ($SRSp as $V)
+        $Zfpf->clear_edit_lock_1c($V);
     $_POST['pha_o1'] = 1;
 }
 
@@ -172,6 +361,14 @@ if (isset($_POST['pha_o1'])) {
     $Zfpf->clear_edit_lock_1c();
     if (isset($_SESSION['SelectResults']))
         unset($_SESSION['SelectResults']);
+    // Check if $EditAuth now that $_SESSION['Selected'] is set.
+    if ($User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and 
+            (
+                ($_SESSION['Selected']['k0pha'] >= 100000 and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF) or 
+                ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')
+            )
+       )
+        $EditAuth = TRUE;
     // Display as-issued PHA, if applicable. 
     // c6bfn_pha_as_issued holds encrypted and encoded array or '[Nothing has been recorded in this field.]'
     if ($Zfpf->decrypt_1c($_SESSION['Selected']['c6bfn_pha_as_issued']) != '[Nothing has been recorded in this field.]') {
@@ -182,8 +379,6 @@ if (isset($_POST['pha_o1'])) {
     $Display = $Zfpf->select_to_display_1e($htmlFormArray, $_SESSION['Selected'], TRUE);
     // Handle k0 field(s)
     if ($_SESSION['Selected']['k0pha'] < 100000) { // Template PHAs don't have a team leader and are not associated with a process.
-        if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes' or $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF) // Only Web App Admins got the option to edit template PHAs in pha_i1m.php
-            $Zfpf->send_to_contents_1c(); // Don't eject
         $Display['k0user_of_leader'] = 'None, because this is a template.';
         $Process['AEFullDescription'] = 'Not associated with a process because this is a template.';
         $UserIsProcessPSMLeader = FALSE;
@@ -200,10 +395,8 @@ if (isset($_POST['pha_o1'])) {
     <a class="toc" href="glossary.php#pha" target="_blank">Process-hazard analysis (PHA)</a> introductory text for<br />
     '.$Process['AEFullDescription'].'</h2>
     '.$Zfpf->select_to_o1_html_1e($htmlFormArray, 'pha_io03.php', $_SESSION['Selected'], $Display).'<p>
-    <a href="risk_rank_matrix.php" target="_blank">Risk-Ranking Matrix</a></p>
-    <form action="subprocess_io03.php" method="post"><p>
-        <input type="submit" name="subprocess_i1m" value="View subsystems and scenarios" /></p>
-    </form>';
+    <a class="toc" href="risk_rank_matrix.php" target="_blank">Risk-ranking matrix</a></p><p>
+    <a class="toc" href="subprocess_io03.php?subprocess_i1m">View subsystems and scenarios</a></p>';
     // Check if anyone else is editing the selected row and check user privileges. See messages to the user below regarding privileges.
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     if ($who_is_editing != '[Nobody is editing.]') {
@@ -218,13 +411,15 @@ if (isset($_POST['pha_o1'])) {
     }
     elseif ($EditAuth) {
         // Edit button for anyone meeting above criteria plus issue button for team leader and change team leader button for AE-Leader.
-        echo '
-        <form action="pha_io03.php" method="post"><p>
-            <input type="submit" name="pha_o1_from" value="Update introductory text" />';
+        echo '<p>
+            <a class="toc" href="pha_io03.php?pha_o1_from">Update introductory text</a><br /><br />
+            <a class="toc" href="pha_io03.php?export_sc_csv_1">Export scenarios to CSV file</a><br /><br />
+            <a class="toc" href="pha_io03.php?export_ccsa_csv_1">Export causes, consequences, safeguards, and recommended actions to CSV file</a><br /><br />
+            <a class="toc" href="pha_io03.php?export_pha_json_1">Export PHA to JSON file</a>';
         if ($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'] and $_SESSION['Selected']['k0pha'] >= 100000) {
             if ($Zfpf->decrypt_1c($_SESSION['Selected']['c6bfn_attendance']) != '[Nothing has been recorded in this field.]')
                 echo '<br /><br />
-                <input type="submit" name="team_leader_approval_1" value="Issue this PHA"/>';
+                <a class="toc" href="pha_io03.php?team_leader_approval_1">Issue this PHA</a>';
             else
                 echo '<br /><br />
                 To issue this PHA, first upload its team-attendance records';
@@ -237,9 +432,8 @@ if (isset($_POST['pha_o1'])) {
             A PHA can only be issued by its team leader. You are not the recorded team leader.';
         if ($UserIsProcessPSMLeader)
             echo '<br /><br />
-            <input type="submit" name="change_team_leader_1" value="Change team leader"/>';
-        echo '</p>
-        </form>';
+            <a class="toc" href="pha_io03.php?change_team_leader_1">Change team leader</a>';
+        echo '</p>';
     }
     else {
         if ($UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
@@ -249,13 +443,9 @@ if (isset($_POST['pha_o1'])) {
             echo '<p><b>
             Global Privileges Notice</b>: You don\'t have privileges to edit PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.</p>';
     }
-    echo '
-    <form action="pha_io03.php" method="post"><p>
-        <input type="submit" name="pha_history_o1" value="History of this record" /></p>
-    </form>
-    <form action="practice_o1.php" method="post"><p>
-        <input type="submit" value="Go back" /></p>
-    </form>
+    echo '<p>
+    <a class="toc" href="pha_io03.php?pha_history_o1">History of this record</a></p><p>
+    <a class="toc" href="practice_o1.php?">Go back</a></p>
     '.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
@@ -270,9 +460,9 @@ if (isset($_SESSION['Selected']['k0pha'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     // Additional security check.
     if (($who_is_editing != '[A new database row is being created.]' and (!$EditAuth or ($_SESSION['Selected']['k0pha'] >= 100000 and (!isset($_SESSION['StatePicked']['t0process']['k0process']) or $_SESSION['Selected']['k0process'] != $_SESSION['StatePicked']['t0process']['k0process'])) or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
-    if (isset($_POST['pha_o1_from']) or isset($_POST['team_leader_approval_1']))
-        $Zfpf->edit_lock_1c('pha', 'PHA introductory text'); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error. Edit lock for isset($_POST['change_team_leader_1']) is done in change_team_leader_2, so it can be cleared in change_team_leader_1.
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
+    if (isset($_GET['pha_o1_from']) or isset($_GET['team_leader_approval_1']))
+        $Zfpf->edit_lock_1c('pha', 'PHA introductory text'); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error. Edit lock for change_team_leader_1 is done in change_team_leader_2, so it can be cleared in change_team_leader_1.
     // Get useful information
     if ($_SESSION['Selected']['k0pha'] < 100000)
         $Process['AEFullDescription'] = 'Not associated with a process because this is a template.';
@@ -282,28 +472,196 @@ if (isset($_SESSION['Selected']['k0pha'])) {
     if ($Issued == '[Nothing has been recorded in this field.]')
         $Issued = FALSE;
     
+    // Export to CSV or JSON
+    if (isset($_GET['export_sc_csv_1']) or isset($_GET['export_ccsa_csv_1']) or isset($_GET['export_pha_json_1'])) {
+        // t0pha can be viewed by issuing draft report. A CSV action list can be downloaded from the action register. 
+        // So only included the scenarios in the CSV file.
+        $Types = array('cause', 'consequence', 'safeguard', 'action'); // A definition of "ccsa"
+        $DisplayType = array('cause' => 'Possible Cause', 'consequence' => 'Possible Consequence', 'safeguard' => 'Existing Safeguard', 'action' => 'Recommended Actions');
+        $FileAsString = '';
+        $PHAKey = $_SESSION['Selected']['k0pha'];  // Use database-table keys as array keys to avoid conflicts, especially with ccsa and their juntion tables (jt).
+        $ArrayPHA['t0pha'][$PHAKey] = $_SESSION['Selected'];
+        // Select all subprocesses, all scenarios within each, and their ccsa. Build arrays for CSV and JSON encoding.
+        $DBMSresource = $Zfpf->credentials_connect_instance_1s();
+        $Conditions[0] = array('k0pha', '=', $_SESSION['Selected']['k0pha']);
+        list($SRSp, $RRSp) = $Zfpf->select_sql_1s($DBMSresource, 't0subprocess', $Conditions);
+        if ($RRSp) {
+            foreach ($SRSp as $Vsp)
+                $ArrayofSpNames[] = $Zfpf->decrypt_1c($Vsp['c5name']);
+            array_multisort($ArrayofSpNames, $SRSp); // Sort alphabetically by name.
+        }
+        if ($RRSp) foreach ($SRSp as $Vsp) {
+            $SubprocessName = $Zfpf->decrypt_1c($Vsp['c5name']);
+            $SpKey = $Vsp['k0subprocess'];
+            $ArrayPHA['t0subprocess'][$SpKey] = $Vsp;
+            $Conditions[0] = array('k0subprocess', '=', $Vsp['k0subprocess']);
+            list($SRSc, $RRSc) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario', $Conditions);
+            if ($RRSc) { 
+                if (isset($ScenarioName))
+                    unset($ScenarioName);
+                foreach ($SRSc as $Vsc)
+                    $ScenarioName[] = $Zfpf->decrypt_1c($Vsc['c5name']);
+                array_multisort($ScenarioName, $SRSc); // Sort alphabetically by name.
+            }
+            if ($RRSc) foreach ($SRSc as $Ksc => $Vsc) {
+                if (!$FileAsString and isset($_GET['export_sc_csv_1'])) // Only create CSV file if there is at least one scenario in the PHA.
+                    $FileAsString = '"Subsystem"|"Scenario"|"Name (what-if...)"|"Type"|"Severity with existing safeguards in place"|"Likelihood of this severity with existing safeguards in place"|"Risk Ranking"|"Possible Causes"|"Possible Consequences"|"Existing Safeguards"|"Recommended Actions"
+'; // First row/line for scenario CSV file. Call "actions ", the "a" in ccsa, "Recommended Actions" for the CSV file, following PHA conventions.
+                $Severity = $Zfpf->decrypt_1c($Vsc['c5severity']);
+                $Likelihood = $Zfpf->decrypt_1c($Vsc['c5likelihood']);
+                $RiskRank = $Zfpf->risk_rank_1c($Severity, $Likelihood);
+                if (isset($_GET['export_sc_csv_1']))
+                    $FileAsString .= '"'.$SubprocessName.'"|"'.++$Ksc.'"|"'.$Zfpf->decrypt_1c($Vsc['c5name']).'"|"'.$Zfpf->decrypt_1c($Vsc['c5type']).'"|"'.$Severity.'"|"'.$Likelihood.'"|"'.$RiskRank.'"'; // Start scenario CSV row, ccsa names added below.
+                $ScKey = $Vsc['k0scenario'];
+                $ArrayPHA['t0scenario'][$ScKey] = $Vsc;
+                foreach ($Types as $ccsa) {
+                    if (isset($ccsaArray)) {
+                        unset($ccsaName);
+                        unset($ccsaArray);
+                    }
+                    if (isset($_GET['export_sc_csv_1']))
+                        $FileAsString .= '|"'; // Start ccsa CSV field.
+                    $Conditions[0] = array('k0scenario', '=', $Vsc['k0scenario']);
+                    list($SRjt, $RRjt) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario_'.$ccsa, $Conditions);
+                    if ($RRjt) foreach ($SRjt as $Vjt) {
+                        $jtKey = $Vjt['k0scenario_'.$ccsa];
+                        $ArrayPHA['t0scenario_'.$ccsa][$jtKey] = $Vjt;
+                        $ccsaKey = $Vjt['k0'.$ccsa];
+                        if (!isset($ArrayPHA['t0'.$ccsa][$ccsaKey])) { // Otherwise the ccsa is already in $ArrayPHA.
+                            $Conditions[0] = array('k0'.$ccsa, '=', $ccsaKey);
+                            list($SRccsa, $RRccsa) = $Zfpf->select_sql_1s($DBMSresource, 't0'.$ccsa, $Conditions);
+                            if ($RRccsa != 1)
+                                error_log(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.'. '.@$RRccsa.' t0'.@$ccsa.' rows returned for k0'.@$ccsa.' = '.@$ccsaKey);
+                            elseif ($RRccsa)
+                                $ArrayPHA['t0'.$ccsa][$ccsaKey] = $SRccsa[0];
+                        }
+                        if (isset($_GET['export_sc_csv_1'])) {
+                            $ccsaName[$ccsaKey] = $Zfpf->decrypt_1c($ArrayPHA['t0'.$ccsa][$ccsaKey]['c5name']); // Need to sort by name, alphabetically.
+                            $ccsaArray[$ccsaKey] = $ArrayPHA['t0'.$ccsa][$ccsaKey]; // Limit to ccsa in $SRjt
+                        }
+                        elseif (isset($_GET['export_ccsa_csv_1']) and !isset($AllccsaArray[$ccsa][$ccsaKey])) {  // Otherwise the ccsa is already in $AllccsaArray.)
+                            $AllccsaName[$ccsa][$ccsaKey] = $Zfpf->decrypt_1c($ArrayPHA['t0'.$ccsa][$ccsaKey]['c5name']); // Need to sort by name, alphabetically.
+                            $AllccsaArray[$ccsa][$ccsaKey] = $ArrayPHA['t0'.$ccsa][$ccsaKey];
+                        }
+                    }
+                    if (isset($ccsaArray)) { // export_sc_csv_1 case
+                        array_multisort($ccsaName, $ccsaArray); // ccsa: sort alphabetically by name.
+                        foreach ($ccsaArray as $Kccsa => $Vccsa) { // $ccsaArray is the ccsa in the juntion table, after sorting alphabetically.
+                            if ($Kccsa)
+                                $FileAsString .= '
+'; // Start each numbered ccsa within a field on a new line, except the first one.
+                            $FileAsString .= '('.++$Kccsa.') '.$Zfpf->decrypt_1c($Vccsa['c5name']); // All four ccsa types have a c5name field.
+                        }
+                    }
+                    if (isset($_GET['export_sc_csv_1']))
+                        $FileAsString .= '"'; // End ccsa CSV field. If no ccsa recorded for a ccsa field, leave an empty string in that field.
+                }
+                if (isset($_GET['export_sc_csv_1']))
+                    $FileAsString .= '
+'; // End scenario CSV row.  New line, outside double quotes, marks end of a CSV row.
+            }
+        }
+        $Zfpf->close_connection_1s($DBMSresource);
+        // Generate ccsa table CSV file
+        if (isset($_GET['export_ccsa_csv_1'])) {
+            $FileAsString = '"Type"|"Name"|"Status"|"Risk Ranking"|"Affected Entity"|"Deficiency"|"Details or Resolution Options"
+'; // First row/line for ccsa CSV file.
+            foreach ($Types as $ccsa) {
+                if (isset($AllccsaArray[$ccsa])) { // Templates have no actions.
+                    array_multisort($AllccsaName[$ccsa], $AllccsaArray[$ccsa]); // ccsa: sort alphabetically by name.
+                    foreach ($AllccsaArray[$ccsa] as $Vccsa) {
+                        $FileAsString .= '"'.$DisplayType[$ccsa].'"|"'.$Zfpf->decrypt_1c($Vccsa['c5name']).'"|"';
+                        if ($ccsa == 'action')
+                            $FileAsString .= $Zfpf->decrypt_1c($Vccsa['c5status']).'"|"'.$Zfpf->decrypt_1c($Vccsa['c5priority']).'"|"'.$Zfpf->decrypt_1c($Vccsa['c5affected_entity']).'"|"'.$Zfpf->decrypt_1c($Vccsa['c6deficiency']).'"|"'.$Zfpf->decrypt_1c($Vccsa['c6details']).'"
+'; // End scenario CSV row. New line, outside double quotes, marks end of a CSV row.
+                        else {
+                            $FileAsString .= '[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"';
+                            if ($ccsa == 'safeguard')
+                                $FileAsString .= 'Safeguard Type: '.$Zfpf->decrypt_1c($Vccsa['c5hierarchy']).'
+'; // First line of description cell is the safeguard hierarchy-of-controls type
+                            $FileAsString .= $Zfpf->decrypt_1c($Vccsa['c6description']).'"
+'; // End scenario CSV row. New line, outside double quotes, marks end of a CSV row.
+                        }
+                    }
+                }
+            }
+        }
+        if (isset($_GET['export_sc_csv_1']) or isset($_GET['export_ccsa_csv_1'])) {
+            if (!$FileAsString) {
+                $FileAsString = 'No scenarios were found in the PHA, so a CSV file was not created.';
+                $LocalName = 'pha_had_no_scenarios_at_'.time().'.txt';
+            }
+            else {
+                $FileAsString = $Zfpf->csv_safe_xss_prevent_decode_1c($FileAsString); // See CoreZfpf.php
+                if (isset($_GET['export_sc_csv_1']))
+                    $LocalName = 'pha_'.$_SESSION['Selected']['k0pha'].'_scenarios_downloaded_at_'.time().'.csv';
+                if (isset($_GET['export_ccsa_csv_1']))
+                    $LocalName = 'pha_'.$_SESSION['Selected']['k0pha'].'_ccsa_downloaded_at_'.time().'.csv';
+            }
+            $Zfpf->download_one_file($FileAsString, $LocalName); // FilesZfpf::download_one_file echos and exits.
+        }
+        else { // export_pha_json_1 case
+            $ArrayPHA = json_encode($Zfpf->decrypt_array_1c($ArrayPHA)); // Must decrypt before JSON encoding. json_encode returns false on failure.
+            if (!$ArrayPHA) {
+                $ArrayPHA = 'JSON encoding the PHA failed.';
+                $LocalName = 'pha_json_encoding_failed_at_'.time().'.txt';
+            }
+            else
+                $LocalName = 'pha_'.$_SESSION['Selected']['k0pha'].'_downloaded_at_'.time().'.json';
+            $Zfpf->download_one_file($ArrayPHA, $LocalName); // FilesZfpf::download_one_file echos and exits.
+        }
+    }
+        
     // Team leader issuing PHA 1
-    if (isset($_POST['team_leader_approval_1'])) {
+    if (isset($_GET['team_leader_approval_1'])) {
         // Additional security check.
         if (!$EditAuth or $Issued or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $Zfpf->decrypt_1c($_SESSION['Selected']['c6bfn_attendance']) == '[Nothing has been recorded in this field.]' or $_SESSION['Selected']['k0pha'] < 100000)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
         $ccsaZfpf = new ccsaZfpf;
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/arZfpf.php';
         $arZfpf = new arZfpf;
-        // Typical o1 code for PHA introductory text fields, defined by $htmlFormArray here.
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
         $Display['k0user_of_leader'] = $TeamLeader['NameTitleEmployerWorkEmail'];
+        unset($htmlFormArray['c6background']); // Unset the customized fields below
+        unset($htmlFormArray['c6team_qualifications']);
+        unset($htmlFormArray['c6method']);
+        unset($htmlFormArray['c6prior_incident_id']);
+        $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'] = array(
+            'c6background' => 'Background', 
+            'c6team_qualifications' => 'Qualifications and information reviewed',
+            'c6method' => 'Method',
+            'c6prior_incident_id' => 'Previous incidents',
+            'risk_ranking_matrix' => 'Risk-ranking matrix'
+        );
         $ApprovalText = '<h1>
         Full Report</h1><h2>
         Process-hazard analysis (PHA) for<br/>
         '.$Process['AEFullDescription'].'</h2>
-        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).$ccsaZfpf->risk_rank_matrix($Zfpf);
+        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'
+        <a id="c6background"></a>
+        <h2>
+        Background on the process, applicable PHA rules, and past PHA or revisions history</h2>
+        <p>'.$Display['c6background'].'</p>
+        <a id="c6team_qualifications"></a>
+        <h2>
+        Team qualifications and information reviewed</h2>
+        <p>'.$Display['c6team_qualifications'].'</p>
+        <a id="c6method"></a>
+        <h2>
+        Method</h2>
+        <p>'.$Display['c6method'].'</p>
+        <a id="c6prior_incident_id"></a>
+        <h2>
+        Identification of applicable previous incidents</h2>
+        <p>'.$Display['c6prior_incident_id'].'</p>
+        '.'<p style="page-break-before: always"></p>
+        <a id="risk_ranking_matrix"></a>'.$ccsaZfpf->risk_rank_matrix($Zfpf);
         // Select all subprocesses and echo with links
         $Conditions[0] = array('k0pha', '=', $_SESSION['Selected']['k0pha']);
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
-        list($SelectResults['t0subprocess'], $RowsReturned['t0subprocess']) = $Zfpf->select_sql_1s($DBMSresource, 't0subprocess', $Conditions);
-        if ($RowsReturned['t0subprocess'] == 0) {
+        list($SRSp, $RRSp) = $Zfpf->select_sql_1s($DBMSresource, 't0subprocess', $Conditions);
+        if (!$RRSp) {
             echo $Zfpf->xhtml_contents_header_1c('Not complete').'<h1>
             No subsystems were found for this PHA</h1><p>
             It cannot be issued without any subsystems. Go back to add new subsystems or create a PHA from a template.
@@ -313,57 +671,60 @@ if (isset($_SESSION['Selected']['k0pha'])) {
             '.$Zfpf->xhtml_footer_1c();
             $Zfpf->save_and_exit_1c();
         }
-        foreach ($SelectResults['t0subprocess'] as $K => $V) {
+        foreach ($SRSp as $K => $V) {
             $SubprocessName[$K] = $Zfpf->decrypt_1c($V['c5name']);
             $Zfpf->edit_lock_1c('subprocess', 'PHA subsystem '.$SubprocessName[$K], $V); // Check and edit_lock nested subprocesses.
         }
-        array_multisort($SubprocessName, SORT_ASC, $SelectResults['t0subprocess']); // Sort alphabetically by name.
-        $ApprovalText .= '<p><b>
+        array_multisort($SubprocessName, $SRSp); // Sort alphabetically by name.
+        $ApprovalText .= '<p><b><a id="subsystems_list"></a>
         Subsystems List</b><br />';
-        foreach ($SubprocessName as $K => $V) {
+        foreach ($SubprocessName as $K => $V)
             $ApprovalText .= '<a class="toc" href="#subprocess_'.$K.'">'.$V.'</a><br />';
-            $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['subprocess_'.$K] = $V;
-        }
+        $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['subsystems_list'] = 'Subsystems List';
         $ApprovalText .= '</p>';
         // Select all scenarios and echo with links, grouped by subprocess
-        foreach ($SelectResults['t0subprocess'] as $KA => $VA) {
+        $Types = array('cause' => 'Possible Causes', 'consequence' => 'Possible Consequences', 'safeguard' => 'Existing Safeguards', 'action' => 'Recommended Actions');
+        foreach ($SRSp as $KA => $VA) {
             $ApprovalText .= '<p><a id="subprocess_'.$KA.'"></a><b>Scenario list for subsystem '.$SubprocessName[$KA].'</b><br />';
             $Conditions[0] = array('k0subprocess', '=', $VA['k0subprocess']);
-            list($SelectResults['t0scenario'], $RowsReturned['t0scenario']) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario', $Conditions);
-            if ($RowsReturned['t0scenario'] == 0)
+            list($SRSc, $RRSc) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario', $Conditions);
+            if (!$RRSc)
                 $ApprovalText .= 'No scenarios found </p>';
             else {
                 if (isset($ScenarioName))
                     unset($ScenarioName);
-                foreach ($SelectResults['t0scenario'] as $VB)
+                foreach ($SRSc as $VB)
                     $ScenarioName[] = $Zfpf->decrypt_1c($VB['c5name']);
-                array_multisort($ScenarioName, SORT_ASC, $SelectResults['t0scenario']); // Sort alphabetically by name.
+                array_multisort($ScenarioName, $SRSc); // Sort alphabetically by name.
                 foreach ($ScenarioName as $KB => $VB)
-                    $ApprovalText .= '<a class="toc" href="#scenario_'.$KA.$KB.'">'.$VB.'</a><br />';
+                    $ApprovalText .= '<a class="toc" href="#scenario_'.$KA.'_'.$KB.'">'.$VB.'</a><br />';
                 $ApprovalText .= '</p>';
-                foreach ($SelectResults['t0scenario'] as $KB => $VB) {
-                    $htmlFormArray = $ccsaZfpf->html_form_array('scenario_'.$KA.$KB, $Zfpf, 'scenario', $arZfpf);
+                foreach ($SRSc as $KB => $VB) {
+                    $htmlFormArray = $ccsaZfpf->html_form_array('scenario_'.$KA.'_'.$KB, $Zfpf, 'scenario', $arZfpf);
                     $Display = $Zfpf->select_to_display_1e($htmlFormArray, $VB);
                     $ApprovalText .= $Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $VB, $Display).'<p>
                     <i>Risk Ranking:</i><br />
                     '.$Zfpf->risk_rank_1c($Zfpf->decrypt_1c($VB['c5severity']), $Zfpf->decrypt_1c($VB['c5likelihood'])).'</p>
-                    '.$ccsaZfpf->scenario_CCSA_Zfpf($VB, $Issued, $User, $UserPracticePrivileges, $Zfpf, FALSE).'<p class="bottomborder"> </p>';
+                    '.$ccsaZfpf->scenario_CCSA_Zfpf($VB, $Issued, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'scenario', $Types).'<p class="bottomborder"> </p>';
                 }
             }
         }
         $Zfpf->close_connection_1s($DBMSresource);
-        $Types = array('cause' => 'Causes', 'consequence' => 'Consequences', 'safeguard' => 'Safeguards', 'action' => 'Actions, proposed or referenced');
         foreach ($Types as $KA => $VA) {
             $htmlFormArray = $ccsaZfpf->html_form_array($KA, $Zfpf, 'scenario', $arZfpf);
-            list($SelectResults, $Message) = $ccsaZfpf->other_ccsa_in_pha($KA, $Zfpf, $_SESSION['Selected']['k0pha']);
-            if ($SelectResults) {
-                $ApprovalText .= '<h2 class="topborder"><a id="CCSA_'.$KA.'"></a>'.$VA.'</h2>';
+            list($SRccsa, $Message) = $ccsaZfpf->other_ccsa_in_pha($KA, $Zfpf, $_SESSION['Selected']['k0pha']);
+            if ($SRccsa) {
+                $ApprovalText .= '<h2 class="topborder" style="page-break-before: always><a id="CCSA_'.$KA.'"></a>'.$VA.'</h2>';
+                $ApprovalText .= '<p>';
+                foreach ($SRccsa as $KB => $VB)
+                    $ApprovalText .= '<a class="toc" href="#ccsa_'.$KA.'_'.$KB.'">'.$Zfpf->decrypt_1c($VB['c5name']).'</a><br />';
+                $ApprovalText .= '</p>';
                 $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['CCSA_'.$KA] = $VA;
-                foreach ($SelectResults as $KB => $VB) {
+                foreach ($SRccsa as $KB => $VB) {
                     $Display = $Zfpf->select_to_display_1e($htmlFormArray, $VB);
                     if (isset($Display['c5status'])) // Recorded $ApprovalText needs to show all t0action:c5status as below, but only update if issued, via team_leader_approval_2.
                         $Display['c5status'] = 'Needs resolution';
-                    $ApprovalText .= $Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $VB, $Display, ' class="topborder"');
+                    $ApprovalText .= '<a id="ccsa_'.$KA.'_'.$KB.'"></a>'.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $VB, $Display, ' class="topborder"');
                 }
             }
         }
@@ -407,12 +768,12 @@ if (isset($_SESSION['Selected']['k0pha'])) {
     if (isset($_POST['team_leader_approval_2'])) {
         // Additional security check.
         if (!$EditAuth or $Issued or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $Zfpf->decrypt_1c($_SESSION['Selected']['c6bfn_attendance']) == '[Nothing has been recorded in this field.]' or $_SESSION['Selected']['k0pha'] < 100000)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0pha', '=', $_SESSION['Selected']['k0pha']);
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
-        list($SelectResults['t0subprocess'], $RowsReturned['t0subprocess']) = $Zfpf->select_sql_1s($DBMSresource, 't0subprocess', $Conditions);
-        if ($RowsReturned['t0subprocess'] < 1) // Verified at least one subprocess then edit locked in team_leader_approval_1 code above.
-            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Rows Returned: '.@$RowsReturned);
+        list($SRSp, $RRSp) = $Zfpf->select_sql_1s($DBMSresource, 't0subprocess', $Conditions);
+        if (!$RRSp) // Verified at least one subprocess then edit locked in team_leader_approval_1 code above.
+            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Rows Returned: '.@$RRSp);
         $BaseFileName = 'pha_issued_'.time().'.htm'; // No need for FilesZfpf::xss_prevent_1c() because this name doesn't have < > or &.
         $BytesWritten = $Zfpf->write_file_1e($_SESSION['Scratch']['AsIssued'], $BaseFileName);
         $BytesAttempted = strlen($_SESSION['Scratch']['AsIssued']);
@@ -460,44 +821,42 @@ if (isset($_SESSION['Selected']['k0pha'])) {
         $Ah = 0;
         $Bi = 0;
         $Bh = 0;
-        foreach ($SelectResults['t0subprocess'] as $KA => $VA) {
+        foreach ($SRSp as $KA => $VA) {
             $NewSubproces = $VA;
             $NewSubproces['k0subprocess'] = time().$KA.mt_rand(1000, 9999);
             $NewSubproces['k0pha'] = $NewPHA['k0pha'];
             $NewSubproces['c5who_is_editing'] = $EncryptedNobody;
             $Zfpf->insert_sql_1s($DBMSresource, 't0subprocess', $NewSubproces);
             $Conditions[0] = array('k0subprocess', '=', $VA['k0subprocess']);
-            list($SelectResults['t0scenario'], $RowsReturned['t0scenario']) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario', $Conditions);
-            if ($RowsReturned['t0scenario'] > 0)
-                foreach ($SelectResults['t0scenario'] as $KB => $VB) {
-                    $ConditionsScenario[0] = array('k0scenario', '=', $VB['k0scenario']); // Define before $VB is redefined below. 
-                    $VB['k0scenario'] = time().$Ai++.mt_rand(100, 999);
-                    $VB['k0subprocess'] = $NewSubproces['k0subprocess'];
-                    $Zfpf->insert_sql_1s($DBMSresource, 't0scenario', $VB);
-                    $Types = array('cause', 'consequence', 'safeguard', 'action');
-                    foreach ($Types as $ccsa) {
-                        list($SelectResults['t0scenario_'.$ccsa], $RowsReturned['t0scenario_'.$ccsa]) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario_'.$ccsa, $ConditionsScenario);
-                        if ($RowsReturned['t0scenario_'.$ccsa] > 0)
-                            foreach ($SelectResults['t0scenario_'.$ccsa] as $KC => $VC) {
-                                if ($ccsa == 'action') {
-                                    $ConditionsAction[0] = array('k0action', '=', $VC['k0action']);
-                                    list($SelectResults['t0action'], $RowsReturned['t0action']) = $Zfpf->select_sql_1s($DBMSresource, 't0action', $ConditionsAction);
-                                    if ($RowsReturned['t0action'] != 1)
-                                        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Rows Returned: '.@$RowsReturned['t0action']);
-                                    if ($SelectResults['t0action'][0]['k0user_of_ae_leader'] == -2) { // See the app schema. Only update proposed actions created by this report, not already opened actions (in ar) that it references.
-                                        $NewStatus['c5status'] = $Zfpf->encrypt_1c('Needs resolution');
-                                        $NewStatus['k0user_of_ae_leader'] = 0; // See the app schema.
-                                        $Affected = $Zfpf->update_sql_1s($DBMSresource, 't0action', $NewStatus, $ConditionsAction, FALSE); // SPECIAL CASE: Don't record this UPDATE in the history table because it is well known that all actions updated as above when PHA is issued.
-                                        if ($Affected != 1)
-                                            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
-                                    }
-                                }
-                                $VC['k0scenario_'.$ccsa] = time().$Bi++.mt_rand(100, 999);
-                                $VC['k0scenario'] = $VB['k0scenario'];
-                                $Zfpf->insert_sql_1s($DBMSresource, 't0scenario_'.$ccsa, $VC);
+            list($SRSc, $RRSc) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario', $Conditions);
+            if ($RRSc) foreach ($SRSc as $KB => $VB) {
+                $ConditionsScenario[0] = array('k0scenario', '=', $VB['k0scenario']); // Define before $VB is redefined below. 
+                $VB['k0scenario'] = time().$Ai++.mt_rand(100, 999);
+                $VB['k0subprocess'] = $NewSubproces['k0subprocess'];
+                $Zfpf->insert_sql_1s($DBMSresource, 't0scenario', $VB);
+                $Types = array('cause', 'consequence', 'safeguard', 'action');
+                foreach ($Types as $ccsa) {
+                    list($SRSc_ccsa, $RRSc_ccsa) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario_'.$ccsa, $ConditionsScenario);
+                    if ($RRSc_ccsa) foreach ($SRSc_ccsa as $KC => $VC) {
+                        if ($ccsa == 'action') {
+                            $ConditionsAction[0] = array('k0action', '=', $VC['k0action']);
+                            list($SRAct, $RRAct) = $Zfpf->select_sql_1s($DBMSresource, 't0action', $ConditionsAction);
+                            if ($RRAct != 1)
+                                $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Rows Returned: '.@$RRAct);
+                            if ($SRAct[0]['k0user_of_ae_leader'] == -2) { // See the app schema. Only update proposed actions created by this report, not already opened actions (in ar) that it references.
+                                $NewStatus['c5status'] = $Zfpf->encrypt_1c('Needs resolution');
+                                $NewStatus['k0user_of_ae_leader'] = 0; // See the app schema.
+                                $Affected = $Zfpf->update_sql_1s($DBMSresource, 't0action', $NewStatus, $ConditionsAction, FALSE); // SPECIAL CASE: Don't record this UPDATE in the history table because it is well known that all actions updated as above when PHA is issued.
+                                if ($Affected != 1)
+                                    $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
                             }
+                        }
+                        $VC['k0scenario_'.$ccsa] = time().$Bi++.mt_rand(100, 999);
+                        $VC['k0scenario'] = $VB['k0scenario'];
+                        $Zfpf->insert_sql_1s($DBMSresource, 't0scenario_'.$ccsa, $VC);
                     }
                 }
+            }
             // Now, permanently edit lock issued-PHA subprocesses.
             $VA['c5who_is_editing'] = $Zfpf->encrypt_1c('PERMANENTLY LOCKED: This is an approved PHA, so its subsystems cannot be edited.');
             $Affected = $Zfpf->update_sql_1s($DBMSresource, 't0subprocess', $VA, $Conditions);
@@ -535,9 +894,9 @@ if (isset($_SESSION['Selected']['k0pha'])) {
     }
 
     // Change team leader code
-    if (isset($_POST['change_team_leader_1'])) {
+    if (isset($_POST['change_team_leader_1']) or isset($_GET['change_team_leader_1'])) {
         if (!$EditAuth or $Issued or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->clear_edit_lock_1c(); // In case arrived here by canceling from change_team_leader_2
         echo $Zfpf->xhtml_contents_header_1c('Lookup User');
         $Zfpf->lookup_user_1c('pha_io03.php', 'pha_io03.php', 'change_team_leader_2', 'pha_o1');
@@ -546,7 +905,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
     }
     if (isset($_POST['change_team_leader_2'])) {
         if (!$EditAuth or $Issued or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->edit_lock_1c('pha');
         $Conditions1[0] = array('k0process', '=', $_SESSION['Selected']['k0process']);
         $SpecialText = '<p><b>
@@ -570,7 +929,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
     }
     if (isset($_POST['change_team_leader_3'])) {
         if (!$EditAuth or $Issued or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         // Check user-input radio-button selection.
         // The user not selecting a radio button is OK in this case.
         if (isset($_POST['Selected'])) {
@@ -638,11 +997,11 @@ if (isset($_SESSION['Selected']['k0pha'])) {
 
     // Additional security check for i1, i2, and i3 code
     if ($Issued)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // i1 code
     // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
     // 1.1 $_SESSION['Selected'] is only source of $Display.
-    if (isset($_POST['pha_i0n']) or isset($_POST['pha_o1_from'])) {
+    if (isset($_POST['pha_i0n']) or isset($_GET['pha_o1_from'])) {
         $Display = $Zfpf->select_to_display_1e($htmlFormArray, FALSE, FALSE, TRUE);
         // Modify $Display for k0 or app_assigned fields or modify $htmlFormArray to express user roles & privileges.
         if ($_SESSION['Selected']['k0pha'] < 100000) // Template PHAs don't have a team leader.
@@ -691,7 +1050,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
         echo $Zfpf->xhtml_contents_header_1c('PHA').'<h2>
         <a class="toc" href="glossary.php#pha" target="_blank">PHA</a> Introductory Text for<br />
         '.$Process['AEFullDescription'].'</h2>
-        <form action="pha_io03.php" method="post" enctype="multipart/form-data" >'; // upload_files special case 2 of 3. To upload files via PHP, the following form attributes are required: method="post" enctype="multipart/form-data"
+        <form action="pha_io03.php" method="post" enctype="multipart/form-data">'; // upload_files special case 2 of 3. To upload files via PHP, the following form attributes are required: method="post" enctype="multipart/form-data"
         // Add "Generate an activity notice" option, for i1 display, if not a new record. Do here to keep out of history table.
         $htmlFormArray = $Zfpf->decrypt_decode_1c($_SESSION['Scratch']['htmlFormArray']);
         if ($who_is_editing != '[A new database row is being created.]')

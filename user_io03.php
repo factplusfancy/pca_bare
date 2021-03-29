@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the user input and output HTML forms, except the:
 //  - i0m and i1m files for listing existing records (and giving the option to start a new record)
@@ -61,7 +61,7 @@ if (isset($_POST['user_history_o1'])) {
     elseif ($Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')
         $HistoryCredentials = TRUE;
     if (!isset($_SESSION['Selected']['k0user']) or (!$HistoryCredentials and $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user']))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/HistoryGetZfpf.php';
     $HistoryGetZfpf = new HistoryGetZfpf;
     list($SR, $RR) = $HistoryGetZfpf->one_row_h($Zfpf, 't0user', $_SESSION['Selected']['k0user']);

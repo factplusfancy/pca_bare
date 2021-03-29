@@ -1,7 +1,7 @@
 <?php
 
 // *** LEGAL NOTICES ***  
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 $divisions = array(
     1 => array( // AAA -- For the Cheesehead division method only, these letters are the prefixes used for numbering practices, see templates/practices.php and schema t0practice:c5number. For the OSHA PSM and EPA CAP rules, they are the prefixes for numbering fragments within divisions, see templates/fragment_division.php and schema t0fragment_division:c5number.
@@ -16,12 +16,12 @@ $divisions = array(
     ),
     3 => array( // CCC
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Process-safety information (PSI) covering design, materials, fabrication, construction, installation, and commissioning'),
+        'c5name' => $Zfpf->encrypt_1c('Process-safety information covering design, materials, fabrication, construction, installation, and commissioning'),
         'c5citation' => $EncryptedNothing
     ),
     4 => array( // DDD
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Process-hazard analysis (PHA) and any other hazard identification and risk analyses (HIRA)'),
+        'c5name' => $Zfpf->encrypt_1c('PHA or HIRA -- process-hazard analyses and any other hazard identification and risk analyses'),
         'c5citation' => $EncryptedNothing
     ),
     5 => array( // EEE
@@ -36,7 +36,7 @@ $divisions = array(
     ),
     7 => array( // GGG
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('Contractors (on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.')'),
+        'c5name' => $Zfpf->encrypt_1c('Contractors working on or adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF),
         'c5citation' => $EncryptedNothing
     ),
     8 => array( // HHH
@@ -56,7 +56,7 @@ $divisions = array(
     ),
     11 => array( // KKK
         'k0rule' => $rules[1]['k0rule'],
-        'c5name' => $Zfpf->encrypt_1c('PSM audits'),
+        'c5name' => $Zfpf->encrypt_1c('Audits of compliance with process-safety rules'),
         'c5citation' => $EncryptedNothing
     ),
     12 => array( // LLL

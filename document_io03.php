@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the t0document and t0practice-document input and output HTML forms, except the:
 //  - i1m file for listing existing records (and giving the option to start a new record).
@@ -31,7 +31,7 @@ $htmlFormArray = array(
 if (isset($_POST['document_i0n'])) {
     // Additional security check.
     if (!$EditAuth)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Initialize $_SESSION['Selected']
     $_SESSION['Selected'] = array(
         'k0document' => time().mt_rand(1000000, 9999999),
@@ -120,7 +120,7 @@ if (isset($_SESSION['Selected']['k0document'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     // Additional security check.
     if (!$EditAuth)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     if (isset($_POST['document_o1_from']))
         $Zfpf->edit_lock_1c('document'); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error.
 

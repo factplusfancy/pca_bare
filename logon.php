@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This PHP file checks: for proper logon (credentials...), if minimum user information is missing, or if the password has expired.
 // Otherwise, it includes contents1.php
@@ -36,10 +36,8 @@ if (!$_POST) { // Echo form for entering credentials
         <form action="logon.php" method="post"><p>
         Username (no trailing spaces, unless part of the username): <input type="text" name="username" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
         Password (no trailing spaces, unless part of the password): <input type="password" name="password" class="screenwidth" maxlength="'.round(C5_MAX_BYTES_ZFPF/HTML_MAX_CHAR_DIVISOR_ZFPF).'" /></p><p>
-        By clicking "Agree and log on" below: I agree, as applicable, that I am solely responsible for determining the appropriateness of using or redistributing the PSM-CAP App and assume any risks associated with my exercise of permissions granted under the Apache License, Version 2.0, I agree that the PSM-CAP App is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE, and I agree to the Apache License, Version 2.0, posted here <a href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a>.</p><p>
-        <input type="submit" name="logon" value="Agree and log on" /></p><p>
-        The PSM-CAP App causes a cookie to be downloaded to your browser, mainly to verify that you have logged in.
-        </p>
+        By clicking "Agree and log on" below: I agree that my use, reproduction, or distribution -- of the PSM-CAP App, its source code, or its content -- shall be governed by the Apache License, Version 2.0, posted at <a class="toc" href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a>, which includes warranty disclaimers and waiving my rights to recover damages. I also agree to download a cookie for verifying my login.</p><p>
+        <input type="submit" name="logon" value="Agree and log on" /></p>
     </form>
     '.$Zfpf->xhtml_footer_1c();
     exit; // Don't save and exit.

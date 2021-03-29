@@ -1,0 +1,372 @@
+// *** LEGAL NOTICES ***  
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+// TO DO - START
+
+DRAFT 2021-03-19
+
+verify need warnings here or in sub-procedures -- so no need for equipment specific SOP)
+
+After one '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit has been completed for a routine task, it may be converted into a template, to more easily generate the permit the next time. 
+
+The permit form and sub-procedure descriptions also include: 
+(A) applicability, 
+(B) roles, responsibilities, and required training,
+(C) special equipment required, including personal-protective equipment (PPE),
+(D) first aid and safety data sheet reference; and
+(E) safety warnings before the first step they apply to.
+
+// TO DO - END
+
+PURPOSE
+
+(1) Before opening part of the ammonia-refrigeration system:
+(1.1) ensure people nearby are notified and prepared, 
+(1.2) isolate it from the rest of the system, and
+(1.3) remove hazardous energy, including pressurized ammonia and electricity.
+(2) Return-to-service, including: air evacuation, leak checks, restarting, and full operating range inspection.
+
+SCOPE
+
+Use this permit if doing the following to the steel of 
+(A) the ammonia-refrigeration system, including its 
+(A.1) equipment, 
+(A.2) pressure-envelope piping, and 
+(A.3) relief-vent (RV) piping: 
+(1) cutting, drilling, grinding, welding or other work that could partly or full penetrate the steel, 
+(2) loosening bolted or threaded joints, such as at flanges, caps, or plugs
+(2.1) except opening threaded joints, following a written hazardous-substance procedure, for tasks like 
+(2.2.1) adding or draining oil, 
+(2.1.2) adding anhydrous-ammonia refrigerant, also called charging, and 
+(2.1.3) draining water from RV piping.
+
+DEFINITIONS
+
+Equipment means everything -- except piping -- that contains hazardous energy, including possibly: compressors, condensers, electrical components, electrical wiring, evaporators, instrumentation, machines, pumps, and pressure vessels.
+
+Piping means everything -- except pressure vessels, compressors, and pumps -- that forms the pressure-containing envelope, including: bolts, gaskets, joints, strainers, valves, and all other components within the scope of ASME B31.5-2019, "Refrigeration Piping and Heat Transfer Components", an American Society of Mechanical Engineers (ASME) standard.
+
+Piping and equipment, together, include the entire anhydrous-ammonia pressure-containing envelope.
+
+Relief-vent (RV) piping means piping that is not part of the pressure-containing envelope, intended to convey any discharges from overpressure-protection devices to a safe location.
+
+The above usage is intended to be consistent with IIAR 1-2017, "Definitions and Terminology Used in IIAR Standards."
+
+PROCEDURE AND PERMIT
+
+(1) Roles and Training.
+
+(1.1) Permit Issuer -- trained on this Piping-Opening Permit and qualified by experience or training to determine the steps needed to isolate a portion of the ammonia refrigeration system.  If the Permit Issuer has any doubts about his/her qualifications, he/she shall retain a qualified supervisor or engineer with the facility's ammonia-refrigeration mechanical contractor to assist.
+
+(1.2) Piping Opener – either an employee of:
+  - the Owner/Operator of the facility or
+ -  a contractor qualified per the Owner/Operator's contractor program, or
+In either case, the Piping Opener shall be trained on:
+(1.2.1) OSHA Hazard Communication (including ammonia awareness training)
+(1.2.2) this Piping-Opening Permit,
+(1.2.3) Operation of valves and power-supply shutoffs needed for isolation.  For solenoid valves and pressure-regulators whose manual-opening stems need to be operated, this shall include a review of their manufacturers' manual, showing the operation of these stems.
+(1.2.4) Lockout-tagout policy and any applicable lockout-tagout procedures
+(1.2.5) the facility Emergency Action Plan
+(1.2.6) Operating Refrigeration Valve Stems
+(1.2.7) Closing Liquid-Ammonia Stop Valves Upstream of Solenoid and Motorized Valves, if applicable
+(1.2.8) Pump-out with Hose, if applicable
+(1.2.9) Venting Ammonia to Water, if applicable
+(1.2.10) Ammonia Bolted-Joint Opening, if applicable
+(1.2.11) Evacuating Ammonia for Hot Work, if applicable
+(1.2.12) Hot Work Permit, if applicable
+(1.2.13) Confined Space Entry, if applicable
+
+(1.3) Buddy
+(1.3.1) OSHA Hazard Communication (including ammonia awareness training)
+(1.3.2) the  Emergency Action Plan
+(2) Isolation and Piping-Opening Method.  Permit Issuer and Piping Opener review procedures and safe-work practices applicable to the planned work and then complete the information below.
+
+(2.1) Piping or equipment to be shutoff. 
+(2.1.1) Describe normal setting of controls and steps to shutoff equipment:
+
+
+
+
+
+
+
+
+(2.1.2) Describe locations affected (building, floor, department, etc.):
+
+
+
+
+
+(2.2) Electrical or other (steam, air, etc.) supplies that need to be isolated, list below. 
+Label *
+Description
+Stored Energy Removal Method (if any) and Verification of Isolation Method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* If not labeled, install either a permanent label or a temporary label for this piping opening.
+
+(2.3) Ammonia valves that needed to be operated.  List in the order they should be operated. If applicable, see the unique ammonia-pump procedures.  Any liquid-ammonia stop valves listed below shall be monitored for liquid leak-by (cooling due to poor seat seal) during pump-down to suction pressure.
+SAFETY REMINDER: Threaded Bonnets. Some valves have threaded bonnets, including both stop valves and control valves with manual-opening stems.  Removing the seal cap or turning the stem on these valves can loosen the threaded bonnet, which can cause a sudden and rapid ammonia leak from the valve.  The Permit Issuer shall ensure that the valve description below indicates any valve with a threaded bonnet and that, as needed, the Piping Opener is trained on identifying and operating valves with threaded bonnets.
+SAFETY REMINDER: Check valves. Do NOT close a shutoff valve downstream of a check valve. Instead, close the shutoff valve upstream of the check valve and pump out the pipe containing the check valve before closing a shutoff valve downstream of the check valve.  For stop-check valves, refer to manufacturer's manual to confirm they can be closed without trapping liquid ammonia.
+
+Label *1
+Description.  Also note if valve is not currently (before isolating) in its normal position.
+Normal position
+Position when piping open
+Lockout-tagout the valve, yes or no. *2
+List liquid and/or compressor discharge, and any hot-gas or defrost-return valve(s), etc.:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+List pressure gauges to be monitored, duration of monitoring, and any heat loads that need to be left on to ensure ammonia evaporates (and does not condense in cold weather) during pump-down to suction pressure:  
+
+
+Suction valve(s):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*1. If not labeled, install either a permanent label or a temporary label before issuing this permit.
+*2. Lockout-tagout is typically needed for neither manual-opening stems on control valves nor nipples on isolated piping.
+
+(2.4) Area preparation before venting-to-water or opening piping.
+(2.4.1) Signs, barriers, or caution tape shall be put up around the area where piping will be opened, as needed to warn other employees or contractors.
+(2.4.2) Ventilation shall be temporarily installed if planned work may cause strong ammonia odors inside.
+(2.4.3) Air intakes near the piping opening shall be temporarily shutoff, or other arrangements made, if the piping opening may cause strong ammonia odors by an air intake.
+(2.4.4) Drains near the piping opening shall be plugged if oil or a hazardous substance may enter them.
+Describe all needed area preparation (2.4.1 to 2.4.4):
+
+
+
+
+
+
+
+
+
+(2.5) Nipple (or other location) to be used for venting or pump-out.  See Venting Ammonia to Water and/or Pump-out With Hose procedures.
+
+
+
+
+(2.6) Identify all procedures and safe-work practices that apply to the work planned after isolation and venting (or pump-out) is complete.  Strike or delete if not applicable:
+	Lockout-tagout policy and any applicable lockout-tagout procedures
+	the facility Emergency Action Plan
+	Operating Refrigeration Valve Stems
+	Closing Liquid-Ammonia Stop Valves Upstream of Solenoid and Motorized Valves, if applicable
+	Pump-out with Hose, if applicable
+	Venting Ammonia to Water, if applicable
+	Ammonia Bolted-Joint Opening, if applicable
+	Evacuating Ammonia for Hot Work, if applicable
+	Hot Work Permit, if applicable
+	Confined Space Entry, if applicable
+	Other: 
+
+
+
+
+(2.7) Leak-by Check. Once the piping to be opened is completely isolated and vented to atmospheric pressure (or pumped out to a vacuum), the pressure shall be monitored for at least 15 minutes to demonstrate that it is remaining constant (no leak-by isolation valves).  Described any additional monitoring that shall be done immediately prior to opening piping:
+
+
+
+
+
+(2.8) Inspection (if required).  Piping Opener shall contact the Permit Issuer.  Permit Issuer shall inspect the isolated, vented, and de-energized piping, vessels, or equipment prior to opening piping.  Permit Issuer shall strike out and initial this paragraph if this is not required because of Piping Opener experience.
+
+(2.9) Before piping is opened (opening bolted or threaded joints, cutting, etc.):
+(2.9.1) Personal Protective Equipment (PPE). The Piping Opener shall wear the PPE described in the applicable procedure above. At a minimum this shall include the chemical-splash-proof eye protection and gloves described in Operating Refrigeration Valve Stems -- Routine.
+(2.9.2) A portable ammonia detector shall be monitoring ammonia concentrations nearby that alarms if concentrations exceed 25 ppm.  If there are strong ammonia odors or if the measured ammonia concentration exceeds 25 ppm, the Piping Opener shall move to safety and ask the Buddy to initiate the facility Emergency Action Plan.
+(2.9.3) The Buddy shall watch the Piping Opener from a safe distance (typically 30 feet away.)  The Buddy shall call for help as requested or if the Piping Opener becomes incapacitated.
+
+(2.10) Blank Flanges shall be installed on any piping that remains open more than one shift or prior to confined-space entry.  Described any needed blank flanges:
+
+
+
+(2.11) Planned Work. Describe the planned work once piping opening is safely completed.
+
+
+
+(3) Return to Service Method.  
+
+(3.1) Closing system.  The Piping Opener, assisted by an electrician as needed, shall:
+(3.1.1) Close all piping, vessels, and equipment. Use only Owner/Operator-approved joint compound on threads and gaskets on flanges. Properly align and tighten bolted and threaded joints.
+(3.1.2) Install any guards that were removed.
+(3.1.3) Ensure wiring is ready for energizing, and close open electrical panels and junction boxes.
+
+(3.2) Air Evacuation.  Except for small system openings -- such as strainer cleaning or solenoid-valve replacement -- the Piping Opener shall evacuate air from the opened part of the refrigeration system.  
+(3.2.1) Nipple to be used for evacuating air, describe: 
+
+
+(3.2.2)  Pressure gauges and other components that shall be isolated prior to evacuation to avoid damage from the vacuum, list:
+
+
+
+(3.2.3) Piping Opener shall verify that vacuum is holding, using a vacuum gauge, for at least 10 minutes.
+(3.3) Lower-Pressure Leak Check.  Piping Opener shall check for leaks with approximately 20 to 40 PSIG of ammonia gas in the isolated piping prior to fully opening the isolation stop valves.
+(3.3.1) Valve that Piping Opener shall slightly open and then shut to check for ammonia leaks at lower pressure.  Preferably this is an above-atmospheric-pressure suction, suction-check-valve bypass, or defrost-return stop valve, describe:
+
+
+
+(3.3.2) Except for small system openings -- such as strainer cleaning or solenoid valve replacement – describe the pressure-gauge that the Piping Opener shall use to verify that opened piping has been pressurized to approximately 20 to 40 PSIG with ammonia gas during this lower pressure leak check.
+
+
+
+(3.4) Ammonia Valves to Normal Position.  Piping Opener shall return valves to their normal position listed under Step (2.3) Ammonia valves that needed to be operated, in the following order, as applicable:
+(3.4.1) any suction (and defrost-return) stop valves.
+(3.4.2) any control valves (regulators, solenoid valves, hand or thermostatic expansion valves etc.) 
+(3.4.3) any downstream liquid and hot-gas stop valves.
+(3.4.4) any upstream liquid and hot-gas stop valves, which will allow liquid or hot-gas to flow to a de-energized solenoid downstream of this valve.
+(3.5.5) any pump or compressor discharge valves.
+The Permit Issuer shall strike the above and list the correct valve-opening order below, if needed, for example, for ammonia pumps:
+
+
+
+
+
+
+
+(3.5) Power supplies to normal operation.  Following lockout-tagout requirements, the Piping Opener shall return all power supplies listed under Step (2.2) to the normal position, and then shall return all controls to their normal operation, as described under Step (2.1.1).
+The Permit Issuer shall strike the above and list the correct re-start procedure, if needed:
+
+
+
+
+(3.6) Full operating range inspection.  Piping Opener shall inspect all piping and equipment (including vessels) that were isolated for ammonia leaks or other problems over their normal operating range of temperature, pressure, and any other applicable parameters; for example, in both cooling and defrost mode.
+(4) Approvals and Notifications.  
+
+(4.1) Job Titles Authorized to be Permit Issuers: Maintenance Manager, Refrigeration Supervisor
+
+
+(4.2) Piping Opener Name, Title, and Company:
+
+
+
+
+(4.3) Permit Expiration Date: _________________________
+
+
+(4.4) Permit Issuer Approval of Piping-Opening Permit:
+
+
+
+______________________	______________________	______________________	_____
+Print Name			Print Title			Sign				Date
+ 
+
+
+(4.5) Notifications.  Permit Issuers shall add any additional needed notifications.
+
+Piping Opener shall talk with the Permit Issuer, in person or over the phone: 
+Piping Opener Completed:
+
+Date and Time
+Initial
+Before shutdown -- not more than 24 hours before starting shutdown and isolation.
+
+
+
+Before opening piping -- if required by the Step 2.8 Inspection: immediately before piping opening (after isolation is complete.)
+
+
+After restart -- once step 3.6, full operating range inspection, is complete.
+
+
+
+(4.6) Record keeping.  Once the After Re-Start Notification is complete, the Piping Opener shall return the “closed” permit to the Permit Issuer, who shall file it at least until the next PSM compliance audit.
+
+BACKGROUND & REQUIREMENTS (federal OSHA):
+
+29 CFR 1910.147(c)(4) Energy control procedure.
+(i) Procedures shall be developed, documented and utilized for the control of potentially hazardous energy when employees are engaged in the activities covered by this section.  Note: Exception: [… if no potential for stored energy after shut down which could endanger employees.]
+ (ii) The procedures shall clearly and specifically outline the scope, purpose, authorization, rules, and techniques to be utilized for the control of hazardous energy, and the means to enforce compliance including, but not limited to, the following:
+(A) A specific statement of the intended use of the procedure;
+(B) Specific procedural steps for shutting down, isolating, blocking and securing machines or equipment to control hazardous energy;
+(C) Specific procedural steps for the placement, removal and transfer of lockout devices or tagout devices and the responsibility for them; and
+(D) Specific requirements for testing a machine or equipment to determine and verify the effectiveness of lockout devices, tagout devices, and other energy control measures.
+
+OSHA Standard Interpretation 25576, “PSM compliance for ammonia refrigeration systems,” by Edwin G. Foulke, Jr., July 12, 2006, corrected October 17, 2007, https://www.osha.gov/pls/oshaweb/owadisp.show_document?p_id=25576&p_table=INTERPRETATIONS
+accessed July 9, 2015.
+
+Question 6: […] does the facility also have to use the valve numbers in its lockout/tagout procedures, or may it use generic procedures, which merely state for example -- close the suction valve and the discharge valve, i.e., generic procedures?
+
+Response 6: […]  the procedures must be documented in sufficient detail and provide enough direction so that employees can effectively follow the procedure and determine how to safely perform the servicing and maintenance activities.  […]  Simply listing valves by their functionality (such as suction valve, discharge valve, etc.) may lead to confusion and error with respect to those valves that must be closed to effectively isolate hazardous energy, due to inadequate employee direction. Therefore, one way to meet this performance requirement, for the scenario above, would be to use the valve numbers in their lockout/tagout procedures to identify the particular valve(s) that must be closed […]  Alternatively, if an employer develops a generic procedure for the machines/equipment in its establishment and incorporates supplemental means to address the specific elements contained in paragraph 1910.147(c)(4)(ii) for individual (or groups of similar) machines/equipment, the use of a generic procedure is acceptable. Some employers use checklists, placards, a work order system, or work authorization permit system to comply with the specificity provisions of the standard. […]

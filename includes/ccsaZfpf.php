@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This class serves the PHA code.
 
@@ -81,27 +81,27 @@ class ccsaZfpf {
             // See file 0read_me_psm_cap_app_standards.txt for $htmlFormArray specs.
             $htmlFormArray = array(
                 // k0subprocess omitted
-                'c5name' => array($NameAnchor.'Scenario Name', REQUIRED_FIELD_ZFPF),
-                'c5type' => array('Scenario Type', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF, 'dropdown', array('Prior Incident', 'Human Factors', 'Facility Siting', 'Human Factors and Prior Incident', 'Facility Siting and Prior Incident', 'Human Factors and Facility Siting', 'All of Above', 'None')),
-                'c5severity' => array($SeverityAnchor.'Severity with safeguards in place', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF, 'radio', array(_1_SEVERITY_ZFPF, _2_SEVERITY_ZFPF, _3_SEVERITY_ZFPF, _4_SEVERITY_ZFPF, _5_SEVERITY_ZFPF)),
-                'c5likelihood' => array('Likelihood with safeguards in place', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF, 'radio', array(_1_LIKELIHOOD_ZFPF, _2_LIKELIHOOD_ZFPF, _3_LIKELIHOOD_ZFPF, _4_LIKELIHOOD_ZFPF, _5_LIKELIHOOD_ZFPF))
+                'c5name' => array($NameAnchor.'Scenario name', REQUIRED_FIELD_ZFPF),
+                'c5type' => array('Scenario type', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF, 'dropdown', array('Prior incident anywhere', 'Human factors', 'Facility siting', 'Prior incident anywhere and human factors', 'Prior incident anywhere and facility siting', 'Human factors and facility siting', 'All of above', 'None')),
+                'c5severity' => array($SeverityAnchor.'Severity with existing safeguards in place', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF, 'radio', array(_1_SEVERITY_ZFPF, _2_SEVERITY_ZFPF, _3_SEVERITY_ZFPF, _4_SEVERITY_ZFPF, _5_SEVERITY_ZFPF)),
+                'c5likelihood' => array('Likelihood of above severity with existing safeguards in place', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF, 'radio', array(_1_LIKELIHOOD_ZFPF, _2_LIKELIHOOD_ZFPF, _3_LIKELIHOOD_ZFPF, _4_LIKELIHOOD_ZFPF, _5_LIKELIHOOD_ZFPF))
             );
         }
         elseif ($Context == 'cause')
             $htmlFormArray = array(
-                'c5name' => array('Cause Name', REQUIRED_FIELD_ZFPF),
-                'c6description' => array('Cause Description', '', C6SHORT_MAX_BYTES_ZFPF)
+                'c5name' => array('Cause name', REQUIRED_FIELD_ZFPF),
+                'c6description' => array('Cause description', '', C6LONG_MAX_BYTES_ZFPF)
             );
         elseif ($Context == 'consequence')
             $htmlFormArray = array(
-                'c5name' => array('Consequence Name', REQUIRED_FIELD_ZFPF),
-                'c6description' => array('Consequence Description', '', C6SHORT_MAX_BYTES_ZFPF)
+                'c5name' => array('Consequence name', REQUIRED_FIELD_ZFPF),
+                'c6description' => array('Consequence description', '', C6LONG_MAX_BYTES_ZFPF)
             );
         elseif ($Context == 'safeguard')
             $htmlFormArray = array(
-                'c5name' => array('Safeguard Name', REQUIRED_FIELD_ZFPF),
-                'c5hierarchy' => array('Hierarchy of Controls/Safeguards Type', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF, 'radio', array('Not Applicable or Multiple', 'Elimination', 'Substitution', 'Inventory Reduction', 'Engineering: Improves Primary-Containment Envelope', 'Engineering: Improves Instrumentation, Controls, or Machinery Reliability', 'Engineering: Greater Separation', 'Engineering: Secondary Containment or Release Treatment', 'Administrative', 'Personal-Protective Equipment (PPE)')),
-                'c6description' => array('Safeguard Description', '', C6SHORT_MAX_BYTES_ZFPF)
+                'c5name' => array('Safeguard name', REQUIRED_FIELD_ZFPF),
+                'c5hierarchy' => array('Hierarchy of controls/safeguard type', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF, 'radio', array('Not Applicable or Multiple', 'Elimination', 'Substitution', 'Inventory Reduction', 'Engineering: Improves Primary-Containment Envelope', 'Engineering: Improves Instrumentation, Controls, or Machinery Reliability', 'Engineering: Greater Separation', 'Engineering: Secondary Containment or Release Treatment', 'Engineering and Administrative Combined', 'Administrative', 'Personal-Protective Equipment (PPE)')),
+                'c6description' => array('Safeguard description', '', C6LONG_MAX_BYTES_ZFPF)
             );
         elseif ($Context == 'action' and $arZfpf)
             $htmlFormArray = $arZfpf->ar_html_form_array($TableRoot);
@@ -135,7 +135,7 @@ class ccsaZfpf {
         $Message = '';
         $Name = FALSE;
         if (!$Types)
-            $Types = array('cause' => 'Causes', 'consequence' => 'Consequences', 'safeguard' => 'Safeguards', 'action' => '<b>Actions, proposed or referenced.</b> If a recommendation can be resolved by completing an open action, already in this app\'s action register, this open action should be referenced. Otherwise, a proposed action should be drafted, which this app logs in its action register once the report is issued by the PHA or HIRA leader');
+            $Types = array('cause' => 'Possible causes', 'consequence' => 'Possible consequences', 'safeguard' => 'Existing safeguards that prevent causes or mitigate consequences', 'action' => '<b>Actions, proposed or referenced.</b> If a recommendation can be resolved by completing an open action, already in this app\'s action register, this open action should be referenced. Otherwise, a proposed action should be drafted, which this app logs in its action register once the report is issued by the PHA or HIRA leader');
         foreach ($Types as $KA => $VA) {
         if (isset($_SESSION['Scratch']['t0'.$KA]))
             unset($_SESSION['Scratch']['t0'.$KA]);
@@ -172,7 +172,7 @@ class ccsaZfpf {
                 if ($Form) {
                     $Message .= '
                         <input type="submit" name="'.$KA.'_o1" value="View details';
-                    if (!$EditLocked and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF)
+                    if (!$EditLocked and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and ($_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')))
                         $Message .= ', edit, or remove" />';
                     else
                         $Message .= '" />';
@@ -180,7 +180,7 @@ class ccsaZfpf {
             }
             else
                 $Message .= 'None found.';
-            if (!$EditLocked and $Form and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF) {
+            if (!$EditLocked and $Form and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and ($_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes' and $KA != 'action'))) { // Templates never have actions.
                 $Nothing = '[Nothing has been recorded in this field.]';
                 if ($TableRoot == 'scenario' and $KA == 'action' and $Zfpf->decrypt_1c($SelectedRow['c5severity']) == $Nothing and $Zfpf->decrypt_1c($SelectedRow['c5likelihood']) == $Nothing)
                     $Message .= '<br />To add an '.$KA.', first assign severity and likelihood.';
@@ -542,11 +542,8 @@ class ccsaZfpf {
     public function ccsa_io0_2($ccsa, $Zfpf, $htmlFormArray, $TableRoot = 'scenario', $arZfpf = FALSE) {
         // Additional security check
         $User = $Zfpf->current_user_info_1c();
-        if ($TableRoot == 'scenario' and $_SESSION['Selected']['k0pha'] < 100000) { // Template PHA case
-            if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes' or $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF) // Only Web App Admins got the option to edit template PHAs in pha_i1m.php
-                $Zfpf->send_to_contents_1c(); // Don't eject
+        if ($TableRoot == 'scenario' and $_SESSION['Selected']['k0pha'] < 100000) // Template PHA case
             $Process['AEFullDescription'] = 'Not associated with a process because this is a template.';
-        }
         else { 
             // Except templates, this app requires PHAs, incident investigations, and reports with obsresults, like PSM audits, to be associated with a process.
             // The template PHA case is handled in if clause above. Other templates (in t0audit) are not allowed to have actions, 
@@ -609,7 +606,7 @@ class ccsaZfpf {
         // plus buttons for selecting a CCSA from templates (i1t) or creating a new CCSA (i0n).
         if (isset($_POST[$ccsa.'_i1aic'])) {
             if ($EditLocked or $Issued or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or ($TableRoot != 'scenario' and $TableRoot != 'obsresult'))
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             if (isset($_SESSION['SelectResults']['t0'.$ccsa]))
                 unset($_SESSION['SelectResults']['t0'.$ccsa]);
             if ($TableRoot == 'scenario') { // edit_lock subprocess since a scenario in it is changing.
@@ -648,7 +645,7 @@ class ccsaZfpf {
         // i1t code -- modified i1m code for selecting a CCSA from template (i1t) PHA or creating a new CCSA (i0n).
         if (isset($_POST[$ccsa.'_i1t'])) {
             if ($EditLocked or $Issued or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or $TableRoot != 'scenario')
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             if ($_SESSION['Selected']['k0pha'] < 100000)  // Editing template case.
                 $TemplateSourceKey = $_SESSION['Selected']['k0pha'];
             else {
@@ -657,7 +654,7 @@ class ccsaZfpf {
                     $TemplateSourceKey = FALSE;
             }
             if (!$TemplateSourceKey)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             if (isset($_SESSION['SelectResults']['t0'.$ccsa]))
                 unset($_SESSION['SelectResults']['t0'.$ccsa]);
             list($_SESSION['SelectResults']['t0'.$ccsa], $Message) = $this->other_ccsa_in_pha($ccsa, $Zfpf, $TemplateSourceKey);
@@ -673,7 +670,7 @@ class ccsaZfpf {
         }
         if (isset($_POST['action_ifrom_ar'])) {
             if ($EditLocked or $Issued or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or !$arZfpf)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             if (isset($_SESSION['SelectResults']['t0action']))
                 unset($_SESSION['SelectResults']['t0action']);
             $SpecialConditions = array('k0user_of_ae_leader', '=', 0); // Means c5status holds, encrypted, 'Needs resolution...' See app schema. Same as .../includes/ar_i1m.php
@@ -686,7 +683,7 @@ class ccsaZfpf {
         // checkbox_wrangler code -- inserts junction-table row(s) for selected CCSA
         if (isset($_POST['checkbox_wrangler'])) {
             if ($EditLocked or $Issued or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             echo $this->checkbox_wrangler($ccsa, $Zfpf, $TableRoot);
             $Zfpf->save_and_exit_1c();
         }
@@ -694,7 +691,7 @@ class ccsaZfpf {
         if (isset($_POST[$ccsa.'_i0n'])) {
             // Additional security check.
             if ($EditLocked or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             // SPECIAL CASE: $_SESSION['Scratch']['t0'.$ccsa], this serves like $_SESSION['Selected']. $_SESSION['Selected'] keeps holding a t0pha, t0incident, or t0audit row.
             if ($ccsa == 'cause' or $ccsa == 'consequence')
                 $_SESSION['Scratch']['t0'.$ccsa] = array(
@@ -775,7 +772,7 @@ class ccsaZfpf {
                 else
                     echo '<p>'.$who_is_editing.'</p>'; // This should echo the permanent-lock message.
             }
-            elseif (!$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF) {
+            elseif (!$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and ($_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes'))) {
                 echo '
                 <form action="'.$ccsa.'_io03.php" method="post"><p>';
                 if ($ccsa != 'action' or $Zfpf->decrypt_1c($_SESSION['Scratch']['t0action']['c5status']) == 'Draft proposed action')
@@ -790,7 +787,7 @@ class ccsaZfpf {
             }
             else {
                 echo '
-                <p>You don\'t have editing privileges on this record.</p>';
+                <p>You don\'t have updating privileges on this record.</p>';
                 if ($Issued)
                     echo '<p>
                     Once a document has been issued, like this one, it cannot be edited.</p>';
@@ -815,18 +812,18 @@ class ccsaZfpf {
         if (isset($_SESSION['Scratch']['t0'.$ccsa]['k0'.$ccsa])) {
             // Additional security check.
             if ($EditLocked or $Issued or (!isset($_POST[$ccsa.'_i0n']) and ($User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF or $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)))
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             // SPECIAL CASE -- edit_lock_1c under i1 code, below, because not needed for one step ccsa_remove()
             // '.$ccsa.'_remove code.
             if (isset($_POST[$ccsa.'_remove'])) {
                 if ($User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF or $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 echo $this->ccsa_remove($ccsa, $Zfpf, $TableRoot);
                 $Zfpf->save_and_exit_1c();
             }
             // Additional security check for i1 and i2 code (editing)
             if ($ccsa == 'action' and $Zfpf->decrypt_1c($_SESSION['Scratch']['t0action']['c5status']) != 'Draft proposed action')
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             // i1 code
             // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
             // 1.1 $_SESSION['Scratch']['t0'.$ccsa] is only source of $Display.
@@ -906,12 +903,12 @@ class ccsaZfpf {
     public function ccsa_edit($ccsa, $Zfpf, $TableRoot = 'scenario') {
         // Additional security check.
         if (isset($_SESSION['Selected']['c5ts_leader']) and $Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_leader']) != '[Nothing has been recorded in this field.]')
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $User = $Zfpf->current_user_info_1c();
         if ($User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         if ($Zfpf->decrypt_1c($_SESSION['t0user_practice']['c5p_practice']) != MAX_PRIVILEGES_ZFPF)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         if (!isset($_SESSION['Scratch']['t0'.$ccsa]) or !isset($_SESSION['Post']))
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' ccsa_edit() Eject Case 1.');
         if ($TableRoot == 'obsresult') {
@@ -1018,7 +1015,7 @@ class ccsaZfpf {
                 if ($RR_JT_CCSA == 1 and $SR_JT_CCSA[0]['k0'.$ccsa] != $_SESSION['Scratch']['t0'.$ccsa]['k0'.$ccsa])
                     $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' ccsa_edit() Eject Case 9.');
                 if ($User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 $Affected = $Zfpf->update_sql_1s($DBMSresource, 't0'.$ccsa, $ChangedRow, $Conditions);
                 if ($Affected != 1)
                     $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' ccsa_edit() Eject Case 10. Affected Rows: '.@$Affected);
@@ -1046,7 +1043,7 @@ class ccsaZfpf {
                     if ($RR_JT_S_CCSA == 1) { // CCSA is in S.
                         $UpdateOnlyKey['k0'.$ccsa] = $ChangedRow['k0'.$ccsa];
                         if ($User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-                            $Zfpf->send_to_contents_1c(); // Don't eject
+                            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                         $Zfpf->update_sql_1s($DBMSresource, 't0'.$TableRoot.'_'.$ccsa, $UpdateOnlyKey, $Conditions);
                     }
                 }

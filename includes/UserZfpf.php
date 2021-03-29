@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This class allows creating new users, etc.
 
@@ -386,7 +386,7 @@ class UserZfpf {
     public function change_global_dbms_priv_1($Zfpf) {
 	    // Additional security check.
         if (!isset($_SESSION['Selected']['k0user']) or !isset($_SESSION['Scratch']['GlobalAndLogonPrivAuth']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $SelectedUser = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user']);
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
         Change Global DBMS Privileges</h2>
@@ -462,7 +462,7 @@ class UserZfpf {
      public function change_global_dbms_priv_2($Zfpf) {
 	    // Additional security check.
         if (!isset($_SESSION['Selected']['k0user']) or !isset($_SESSION['Scratch']['GlobalAndLogonPrivAuth']) or !isset($_POST['new_global_dbms_priv']) or !in_array($_POST['new_global_dbms_priv'], $_SESSION['PlainText']['GLOBAL_DBMS_OPTIONS_ZFPF'])) // !in_array here handles tasks of CoreZfpf:xss_prevent_1c and CoreZfpf:max_length_1c
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $OldPriv = $Zfpf->decrypt_1c($_SESSION['Selected']['c5p_global_dbms']);
         if ($_POST['new_global_dbms_priv'] == $OldPriv) {
             echo $Zfpf->xhtml_contents_header_1c().'<h2>
@@ -557,7 +557,7 @@ class UserZfpf {
     public function revoke_logon_1($Zfpf) {
 	    // Additional security check.
         if (!isset($_SESSION['Selected']['k0user']) or !isset($_SESSION['Scratch']['GlobalAndLogonPrivAuth']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $SelectedUser = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user']);
         echo $Zfpf->xhtml_contents_header_1c('Revoke Logon').'<h2>
         Revoke Logon Credentials</h2><p>
@@ -574,7 +574,7 @@ class UserZfpf {
     public function revoke_logon_2($Zfpf) {
 	    // Additional security check.
         if (!isset($_SESSION['Selected']['k0user']) or !isset($_SESSION['Scratch']['GlobalAndLogonPrivAuth']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0user', '=', $_SESSION['Selected']['k0user']);
         $htmlFormArrayShort = array(
             'c5ts_logon_revoked' => array('Logon Credentials Revoked', ''),
@@ -618,7 +618,7 @@ class UserZfpf {
     public function restore_logon_1($Zfpf) {
 	    // Additional security check.
         if (!isset($_SESSION['Selected']['k0user']) or !isset($_SESSION['Scratch']['GlobalAndLogonPrivAuth']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $SelectedUser = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user']);
         echo $Zfpf->xhtml_contents_header_1c('Restore Logon').'<h2>
         Restore Logon Credentials</h2><p>
@@ -636,7 +636,7 @@ class UserZfpf {
     public function restore_logon_2($Zfpf) {
 	    // Additional security check.
         if (!isset($_SESSION['Selected']['k0user']) or !isset($_SESSION['Scratch']['GlobalAndLogonPrivAuth']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Changes['c5ts_logon_revoked'] = $Zfpf->encrypt_1c('[Nothing has been recorded in this field.]');
         $Conditions[0] = array('k0user', '=', $_SESSION['Selected']['k0user']);
         $htmlFormArrayShort = array(
@@ -725,7 +725,7 @@ class UserZfpf {
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
         if ($From == 'owner') {
             if (!isset($_SESSION['Selected']['k0user_owner']) or !isset($_SESSION['t0user_owner']) or $_SESSION['t0user_owner']['k0owner'] != $_SESSION['Selected']['k0owner'] or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             $Conditions[0] = array('k0user_owner', '=', $_SESSION['Selected']['k0user_owner']);
             $Affected = $Zfpf->delete_sql_1s($DBMSresource, 't0user_owner', $Conditions);
             if ($Affected > 1) // Allow separation process to continue if for some reason no rows affected.
@@ -744,7 +744,7 @@ class UserZfpf {
         }
         elseif ($From == 'contractor') {
             if (!isset($_SESSION['Selected']['k0user_contractor']) or !isset($_SESSION['t0user_contractor']) or $_SESSION['t0user_contractor']['k0contractor'] != $_SESSION['Selected']['k0contractor'] or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             $Conditions[0] = array('k0user_contractor', '=', $_SESSION['Selected']['k0user_contractor']);
             $Affected = $Zfpf->delete_sql_1s($DBMSresource, 't0user_contractor', $Conditions);
             if ($Affected > 1)
@@ -767,7 +767,7 @@ class UserZfpf {
         }
         elseif ($From == 'facility') {
             if (!isset($_SESSION['Selected']['k0user_facility']) or !isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             $Conditions[0] = array('k0user_facility', '=', $_SESSION['Selected']['k0user_facility']);
             $Affected = $Zfpf->delete_sql_1s($DBMSresource, 't0user_facility', $Conditions);
             if ($Affected > 1)
@@ -780,7 +780,7 @@ class UserZfpf {
         }
         elseif ($From == 'process') {
             if (!isset($_SESSION['Selected']['k0user_process']) or !isset($_SESSION['t0user_process']) or $_SESSION['t0user_process']['k0process'] != $_SESSION['Selected']['k0process'] or $Zfpf->decrypt_1c($_SESSION['t0user_process']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             $Conditions[0] = array('k0user_process', '=', $_SESSION['Selected']['k0user_process']);
             $Affected = $Zfpf->delete_sql_1s($DBMSresource, 't0user_process', $Conditions);
             if ($Affected > 1)
@@ -869,7 +869,7 @@ class UserZfpf {
                 $PostDisplay[$K] = $LastDisplay[$K];
         if (isset($htmlFormArray['k2username_hash'])) { // This is only set for new users, see above. Means s5password_hash also needed.
             $NewCredentials = $this->username_password_check($Zfpf, 'FALSE', 'k2username_hash', 's5password_hash', FALSE);
-            // Not using ConfirmZfpf::post_to_display_1e output because it sent user posts through CoreZfpf::xss_prevent_1c
+            // Not using ConfirmZfpf::post_to_display_1e output because it sends user posts through CoreZfpf::xss_prevent_1c
             $PostDisplay['k2username_hash'] = $NewCredentials['Username'];
             $PostDisplay['s5password_hash'] = $NewCredentials['Password']; // Display the new temporary password to the admin creating it.
         }

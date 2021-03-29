@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // TO DO FOR PRODUCTION VERSION -- PRE-SETUP INSTRUCTIONS:
 // ** VERY IMPORTANT FOR SECURITY **
@@ -137,18 +137,18 @@ define('USERNAME4_ZFPF', 'ChangeThisDefaultUsername4');
 define('PASSWORD4_ZFPF', 'ChangeThisDefaultPassword%+#4');
 
 // These define the time, in seconds, for each session timeout.  You may change the default values to fit your security policies.
-// Session Timeout 1 of 3 - normal log off of user if inactive for a long period of time. Default seconds: 1200
-define('TIMEOUT_INACTIVE_LOG_OFF_ZFPF', 1200);
-// Session Timeout 2 of 3 - checks user password if inactive for a shorter period of time. Default seconds: 240
-define('TIMEOUT_INACTIVE_PASSWORD_CHECK_ZFPF', 240);
-// Session Timeout 3 of 3 - checks user password if this has not been done for a period of time.  Default seconds: 1200
-define('TIMEOUT_ACTIVE_PASSWORD_CHECK_ZFPF', 1800);
+// Session Timeout 1 of 3 - normal log off of user if inactive for a long period of time. Default seconds: 1800 is 30 minutes.
+define('TIMEOUT_INACTIVE_LOG_OFF_ZFPF', 1800);
+// Session Timeout 2 of 3 - checks user password if inactive for a shorter period of time. Default seconds: 600 is 10 minutes
+define('TIMEOUT_INACTIVE_PASSWORD_CHECK_ZFPF', 600);
+// Session Timeout 3 of 3 - checks user password if this has not been done for a period of time.  Default seconds: 14400 is 4 hours
+define('TIMEOUT_ACTIVE_PASSWORD_CHECK_ZFPF', 14400);
 
 // Time that two-step authentication security code will work, in seconds
-define('ALLOWED_TWO_STEP_SECONDS', 420); // Default 420 seconds is 7 minutes.
+define('ALLOWED_TWO_STEP_SECONDS', 600); // Default 600 seconds is 10 minutes.
 
-// Password expiration time. 15552000 seconds is 180 days
-define('PASSWORD_EXPIRATION_ZFPF', 15552000);
+// Password expiration time. 63072000 seconds is about 2 years.
+define('PASSWORD_EXPIRATION_ZFPF', 63072000);
 // Username and password minimum length. Used in class UzerZfpf.
 define('USERNAME_MIN_BYTES_ZFPF', 10);
 define('PASSWORD_MIN_BYTES_ZFPF', 12);
@@ -247,15 +247,15 @@ define('_5_LIKELIHOOD_ZFPF', 'Greater than 90% per year (almost every year or mo
 // For audits, incident investigations, etc., a user should assign one of the priorities below to a finding.
 // The priorities (risk ranks) below MUST start with ## -- a two-digit number -- so that the PHP less-than comparison operator  <
 // will work in ccsaZfpf::risk_rank_priority_update ... $AffectedActions[$k0action] < $QSPriority
-define('_00_PRIORITY_ZFPF', '00. No action needed');
-define('_01_PRIORITY_ZFPF', '01. Lower priority (track any recommendations on action register, and resolve if convenient)');
-define('_02_PRIORITY_ZFPF', '02. Lower priority (track any recommendations on action register, and resolve if convenient)');
-define('_03_PRIORITY_ZFPF', '03. Lower priority (track any recommendations on action register, and resolve if convenient)');
-define('_04_PRIORITY_ZFPF', '04. Attention needed (review status at least twice per year)');
-define('_05_PRIORITY_ZFPF', '05. Attention needed (review status at least quarterly)');
-define('_06_PRIORITY_ZFPF', '06. Attention needed (review status at least monthly)');
-define('_07_PRIORITY_ZFPF', '07. Prompt attention needed (gather assessment team within 3 days)');
-define('_08_PRIORITY_ZFPF', '08. Prompt attention needed (gather assessment team within 24 hours)');
-define('_09_PRIORITY_ZFPF', '09. Prompt attention needed (gather assessment team within 4 hours)');
-define('_10_PRIORITY_ZFPF', '10. Immediate action needed (gather assessment team within 15 minutes)');
+define('_00_PRIORITY_ZFPF', '00. No action needed.');
+define('_01_PRIORITY_ZFPF', '01. Lower priority -- track any recommendations on action register and resolve if convenient.');
+define('_02_PRIORITY_ZFPF', '02. Lower priority -- track any recommendations on action register and resolve if convenient.');
+define('_03_PRIORITY_ZFPF', '03. Lower priority -- track any recommendations on action register and resolve if convenient.');
+define('_04_PRIORITY_ZFPF', '04. Attention needed -- if any recommendations, review status at least twice per year.');
+define('_05_PRIORITY_ZFPF', '05. Attention needed -- if any recommendations, review status at least quarterly.');
+define('_06_PRIORITY_ZFPF', '06. Attention needed -- if any recommendations, review status at least monthly.');
+define('_07_PRIORITY_ZFPF', '07. Attention needed -- if any recommendations, review status at least monthly.');
+define('_08_PRIORITY_ZFPF', '08. Prompt attention needed -- gather assessment team within 24 hours.');
+define('_09_PRIORITY_ZFPF', '09. Prompt attention needed -- gather assessment team within 4 hours.');
+define('_10_PRIORITY_ZFPF', '10. Immediate action needed -- gather assessment team within 30 minutes.');
 

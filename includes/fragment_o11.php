@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This PHP file to allows viewing the practices associated with a rule fragment. IMPORTANT...
 // REGARDLESS OF WHETHER THE USER IS ASSOCIATED WITH THE PRACTICE
@@ -8,7 +8,7 @@
 
 // $DBMSresource has been created by all files requiring this PHP file.
 if (!isset($_SESSION['StatePicked']['t0division']) or !isset($DBMSresource) or (!isset($_POST['selected_fragment']) and !isset($_SESSION['StatePicked']['t0fragment'])))
-    $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+    $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
 
 // redundant security
 if (isset($_SESSION['Scratch']))
@@ -19,6 +19,8 @@ if (isset($_SESSION['t0user_practice']))
 // Get practices associated with this fragment.
 if (isset($_POST['selected_fragment'])) {
     $CheckedPostFragment = $Zfpf->post_length_blank_1c('selected_fragment');
+    if (!isset($_SESSION['SelectResults']['t0fragment'][$CheckedPostFragment]))
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
     $_SESSION['StatePicked']['t0fragment'] = $_SESSION['SelectResults']['t0fragment'][$CheckedPostFragment];
     unset($_SESSION['SelectResults']);
 }
@@ -96,7 +98,7 @@ else { // Whether there is one or many practices associated with a fragment, wha
     unset($Conditions_k0practice[$LastArrayKey][3]);
     list($SR['t0practice'], $RR['t0practice']) = $Zfpf->select_sql_1s($DBMSresource, 't0practice', $Conditions_k0practice);
     if ($RR['t0practice'] != count($k0practice_array)) // There should have been no duplicate k0practice.
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again or contact an app admin.</p>');
     // Sort $SR['t0practice'] by c5number.
     foreach ($SR['t0practice'] as $V)
         $c5number[] = $Zfpf->decrypt_1c($V['c5number']);

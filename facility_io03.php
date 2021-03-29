@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the facility-summary input and output HTML forms, except the:
 //  - i0m & i1m files for listing existing records 
@@ -130,8 +130,8 @@ $htmlFormArray = array(
         '',
         array(
             array('Tort laws, under statutes or common law', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
-            array('General duty clause in Occupational Safety and Health Act of 1970, subparagraph 5(a)(1)', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
-            array('General duty clause in Clear Air Act Clean Amendments of 1990, subparagraph 112(r)(1)', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
+            array('General duty clause in the Occupational Safety and Health Act of 1970, Section 5', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
+            array('General duty clause in Clean Air Act paragraph 112(r)(1), from the Clean Air Act Clean Amendments of 1990', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
             array('Reportable-quantity release, immediate notifications to federal, state, and local authorities upon discovery, per 40 CFR 302 and Emergency Planning and Community Right-to-Know Act (EPCRA) Section 304', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
             array('Onsite presence of Extremely Hazardous Substances notifications per EPCRA section 302', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
             array('Safety Data Sheet and inventories yearly reporting per EPCRA sections 311 and 312', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
@@ -140,7 +140,7 @@ $htmlFormArray = array(
             array('Chemical Accident Prevention, Program 2 (for non-PSM... facilities)', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
             array('Chemical Accident Prevention, Program 3 (for PSM... facilities)', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
             array('Process Safety Management (PSM)', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
-            array('Clear Air Act, Title V, Air Operating Permit Program', '', C5_MAX_BYTES_ZFPF, 'checkbox')
+            array('Clean Air Act, Title V, Air Operating Permit Program', '', C5_MAX_BYTES_ZFPF, 'checkbox')
         )
     ),
     'c6id_numbers' => array(
@@ -177,7 +177,7 @@ if (!$_POST or isset($_POST['facility_o1']) or isset($_POST['facility_i0n']) or 
 if (isset($_POST['facility_i0n'])) {
     // Additional security check.
     if (!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_facility']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $Nothing = '[Nothing has been recorded in this field.]';
     $EncryptedNothing = $Zfpf->encrypt_1c($Nothing);
     $_SESSION['Selected'] = array (
@@ -329,7 +329,7 @@ if (isset($_SESSION['Selected']['k0facility'])) {
     // No edit lock because only leader on an app admin can change the leader.
     if (isset($_POST['change_psm_leader_1']) or isset($_GET['change_psm_leader_1'])) {
         if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes') or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         echo $Zfpf->xhtml_contents_header_1c('Lookup User');
         $Zfpf->lookup_user_1c('facility_io03.php', 'facility_io03.php', 'change_psm_leader_2', 'facility_o1');
         echo $Zfpf->xhtml_footer_1c();
@@ -337,7 +337,7 @@ if (isset($_SESSION['Selected']['k0facility'])) {
     }
     if (isset($_POST['change_psm_leader_2'])) {
         if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes') or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $TableNameUserEntity = 't0user_facility';
         $Conditions1[0] = array('k0facility', '=', $_SESSION['Selected']['k0facility']);
         $SpecialText = '<p><b>
@@ -361,7 +361,7 @@ if (isset($_SESSION['Selected']['k0facility'])) {
     }
     if (isset($_POST['change_psm_leader_3'])) {
         if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes') or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         // Check user-input radio-button selection.
         // The user not selecting a radio button is OK in this case.
         if (isset($_POST['Selected'])) {
@@ -432,7 +432,7 @@ if (isset($_SESSION['Selected']['k0facility'])) {
 
     // i1, i2, i3 code
     if ($UserGlobalDBMSPrivileges == LOW_PRIVILEGES_ZFPF or ($who_is_editing != '[A new database row is being created.]' and (!isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_facility']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // i1 code
     // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
     // 1.1 $_SESSION['Selected'] is only source of $Display.
@@ -532,7 +532,7 @@ if (isset($_SESSION['Selected']['k0facility'])) {
         if ($Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']) == '[A new database row is being created.]') {
             // Additional security check
             if (!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_facility']) != MAX_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             $Zfpf->insert_sql_1s($DBMSresource, 't0facility', $ChangedRow);
             // Insert first facility admin
             $EncryptedMaxPriv = $Zfpf->encrypt_1c(MAX_PRIVILEGES_ZFPF);
@@ -588,7 +588,7 @@ if (isset($_SESSION['Selected']['k0facility'])) {
         else {
             // Additional security check
             if (!isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_facility']) != MAX_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             $Conditions[0] = array('k0facility', '=', $_SESSION['Selected']['k0facility']);
             $Affected = $Zfpf->update_sql_1s($DBMSresource, 't0facility', $ChangedRow, $Conditions);
             if ($Affected != 1)

@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the change-management system (cm_applies and cms) input and output HTML forms, except:
 //  - some i1m files for listing existing records (and giving the option to start a new record)
@@ -102,7 +102,7 @@ if (isset($_GET['act_notice_1'])) {
 if (isset($_POST['cms_i0n'])) {
     // Additional security check. Handle inadequate global privileges. Otherwise, any user associated with this practice can start a new record.
     if ($User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Initialize $_SESSION['Selected']
     $_SESSION['Selected'] = array(
         'k0change_management' => time().mt_rand(1000000, 9999999),
@@ -378,7 +378,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     // Additional security check
     if ((isset($_POST['cms_i0n']) and $who_is_editing != '[A new database row is being created.]') or ($who_is_editing != '[A new database row is being created.]' and !$EditAuth) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     if ($Zfpf->decrypt_1c($_SESSION['Selected']['c5affected_entity']) != $Nothing) // Only true for i0n case.
         $AE = $Zfpf->affected_entity_info_1c(); // Ensures $_SESSION['Selected']['c5affected_entity'] and $_SESSION['Selected']['k0affected_entity'] are defined.
     if (isset($_POST['cm_applies_o1_from']) or (isset($_POST['cms_o1_from']) and $_SESSION['t0user']['k0user'] == $AE['AELeader_k0user']) or isset($_POST['cm_applies_approval_c1'])) // SPECIAL CASES, edit lock approvals and task assignments, below.
@@ -407,7 +407,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
     // Affected-entity leader canceling approval of change-management applicability determination.
     if (isset($_POST['cm_applies_approval_c1'])) {
         if (!$EditAuth or $_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $htmlFormArray = $cmsZfpf->htmlFormArray(FALSE); // Even in full CMS, only needed the CMApplies htmlFormArray for cancelling CM applies determination.
         $ApprovalText = '<h1>
         Canceling Approval of Change-Management Applicability Determination</h1>';
@@ -434,7 +434,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
     }
     if (isset($_POST['cm_applies_approval_c2'])) {
         if (!$EditAuth or $_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0change_management', '=', $_SESSION['Selected']['k0change_management']);
         $Changes['k0user_of_applic_approver'] = 0;
         $Changes['c5ts_applic_approver'] = $EncryptedNothing;
@@ -486,7 +486,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
             $TaskSubKeyA = substr($KA, 9);
             if (isset($_POST['approve_1'.$TaskSubKeyA]) or isset($_POST['approve_c1'.$TaskSubKeyA])) { // Excludes k0user_of_initiator and k0user_of_project_manager cases.
                 if (!$EditAuth or ($_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected'][$KA]))
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 if ($KA == 'k0user_of_applic_approver' or $KA == 'k0user_of_psr')
                     $Zfpf->edit_lock_1c('change_management');
                 $Display = $Zfpf->select_to_display_1e($htmlFormArray);
@@ -499,7 +499,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
                 }
                 else {
                     if ($_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'])
-                        $Zfpf->send_to_contents_1c(); // Don't eject
+                        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                     if ($KA == 'k0user_of_applic_approver' and !$_SESSION['Selected']['k0user_of_applic_approver'])
                         unset($htmlFormArray['k0user_of_applic_approver']); // don't show "Not yet approved." on approval form.
                 }
@@ -582,7 +582,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
             }
             if (isset($_POST['approve_2'.$TaskSubKeyA]) or isset($_POST['approve_c2'.$TaskSubKeyA])) {
                 if (!$EditAuth or ($_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected'][$KA]))
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 $Conditions[0] = array('k0change_management', '=', $_SESSION['Selected']['k0change_management']);
                 if (isset($_POST['approve_2'.$TaskSubKeyA])) {
                     $Changes['c5ts'.$TaskSubKeyA] = $Zfpf->encrypt_1c(time());
@@ -656,7 +656,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
             // No edit_lock_1c() because only the AELeader can assign tasks.
             if (isset($_POST['assign_1'.$TaskSubKeyA])) {
                 if ($_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'])
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 echo $Zfpf->xhtml_contents_header_1c('Lookup User');
                 $Zfpf->lookup_user_1c('cms_io03.php', 'cms_io03.php', 'assign_2'.$TaskSubKeyA, 'cms_o1');
                 echo $Zfpf->xhtml_footer_1c();
@@ -664,7 +664,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
             }
             if (isset($_POST['assign_2'.$TaskSubKeyA])) {
                 if ($_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'])
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 // Create array $Conditions1[] and $TableNameUserEntity for selecting all users from the affected-entity/user junction table.
                 $AffectedEntity = $Zfpf->decrypt_1c($_SESSION['Selected']['c5affected_entity']);
                 if ($AffectedEntity == 'Contractor-wide') {
@@ -709,7 +709,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
             }
             if (isset($_POST['assign_3'.$TaskSubKeyA])) {
                 if ($_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'])
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 // Check user-input radio-button selection.
                 // The user not selecting a radio button is OK in this case.
                 if (isset($_POST['Selected'])) {
@@ -822,7 +822,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
 
     // Additional security check for i1 and i2 code
     if ($_SESSION['Selected']['k0user_of_psr'])
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // i1 code
     // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
     // 1.1 $_SESSION['Selected'] is only source of $Display.
@@ -1053,7 +1053,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
             isset($ChangedRow['c6cm_applies_checks'])
             )) {
             $Zfpf->close_connection_1s($DBMSresource);
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         }
         // SPECIAL CASE: who_is_editing check
         if ($OldWhoIsEditing != '[Nobody is editing.]' and $OldWhoIsEditing != '[A new database row is being created.]' and $OldWhoIsEditing != substr($Zfpf->user_identification_1c(), 0, C5_MAX_BYTES_ZFPF)) {

@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the user_facility input and output HTML forms, except the:
 //  - i0m file for listing existing records (and giving the option to start a new record)
@@ -117,7 +117,7 @@ if (isset($_POST['user_facility_o1']) or isset($_POST['user_facility_o1_from']) 
 if (isset($_POST['user_facility_i0n0'])) {
 	// Additional security check.
     if (!isset($_SESSION['StatePicked']['t0facility']) or !isset($_SESSION['t0user_facility']) or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $CurrentUser['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF) // Same criteria as for displaying i0n button in user_facility_i0m.php
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $RadioButtons = '';
     $PotentialUsersArray = array();
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
@@ -183,7 +183,7 @@ if (isset($_POST['user_facility_i0n0'])) {
         }
     }
     else // Cannot be app admin looking for all users here.
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $Zfpf->close_connection_1s($DBMSresource);
     echo $Zfpf->xhtml_contents_header_1c().'<h2>
     Users not associated with the facility, who are employees of the facility\'s owner or one of its contractors</h2><p>
@@ -207,7 +207,7 @@ if (isset($_POST['user_facility_i0n0'])) {
 if (isset($_POST['user_facility_i0n'])) {
 	// Additional security check.
     if (!isset($_SESSION['StatePicked']['t0facility']) or !isset($_SESSION['t0user_facility']) or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $CurrentUser['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF) // Same criteria as for displaying i0n button in user_facility_i0m.php
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $CheckedPost = $Zfpf->post_length_blank_1c('potential_user');
     if (!is_numeric($CheckedPost) or !isset($_SESSION['Scratch']['PlainText']['PotentialUser'][$CheckedPost]))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
@@ -360,7 +360,7 @@ if (isset($_SESSION['Selected']['k0user_facility'])) {
     // Additional security check
     // Check if current user is with the same facility as the selected employee and if so check current user's privileges.
     if (!isset($_SESSION['StatePicked']['t0facility']) or !isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or ((!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF) and $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF) or $CurrentUser['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 
     // Get useful variables.
     $SelectedUser = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user']);

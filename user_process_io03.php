@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the user_process input and output HTML forms, except the:
 //  - i0m file for listing existing records (and giving the option to start a new record)
@@ -83,7 +83,7 @@ if (isset($_POST['user_process_o1']) or isset($_POST['user_process_o1_from']) or
 if (isset($_POST['user_process_i0n0'])) {
 	// Additional security check.
 	if (!isset($_SESSION['StatePicked']['t0process']) or !isset($_SESSION['t0user_process']) or ((!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF) and $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF and $Zfpf->decrypt_1c($_SESSION['t0user_process']['c5p_user']) != MAX_PRIVILEGES_ZFPF) or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF) // Minimum criteria for displaying i0n0 button in user_process_i0m.php
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $RadioButtons = '';
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     // Get users, associated with the facility, but not yet associated with the process.
@@ -127,7 +127,7 @@ if (isset($_POST['user_process_i0n0'])) {
 if (isset($_POST['user_process_i0n'])) {
 	// Additional security check.
     if (!isset($_SESSION['StatePicked']['t0process']) or !isset($_SESSION['t0user_process']) or ((!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF) and $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF and $Zfpf->decrypt_1c($_SESSION['t0user_process']['c5p_user']) != MAX_PRIVILEGES_ZFPF) or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF) // Same criteria as user_process_i0n0
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $CheckedPost = $Zfpf->post_length_blank_1c('potential_user');
     if (!is_numeric($CheckedPost) or !isset($_SESSION['Scratch']['PlainText']['PotentialUser'][$CheckedPost]))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
@@ -263,7 +263,7 @@ if (isset($_SESSION['Selected']['k0user_process'])) {
     // Additional security check
     // Check if current user is with the same process as the selected employee and if so check current user's privileges.
     if (!isset($_SESSION['StatePicked']['t0process']) or !isset($_SESSION['t0user_process']) or $_SESSION['t0user_process']['k0process'] != $_SESSION['Selected']['k0process'] or ((!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF) and $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF and $Zfpf->decrypt_1c($_SESSION['t0user_process']['c5p_user']) != MAX_PRIVILEGES_ZFPF) or $CurrentUser['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Get useful variables.
     $SelectedUser = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user']);
     $SelectedUserGlobalDBMSPriv = $Zfpf->decrypt_1c($SelectedUser['t0user']['c5p_global_dbms']);

@@ -1,7 +1,7 @@
 <?php
 
 // *** LEGAL NOTICES ***  
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file populates t0practices with the ammonia-refrigeration templates below for 
 // hazardous-substance procedures and safe-work practices (nh3hspswp) and emergency planning (ep), tailored for rules in the USA.
@@ -130,7 +130,7 @@ for, if applicable --
 (4.3) automatic purger counts, 
 (4.4) transfer-system counts, 
 (4.5) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pump discharge pressure(s), 
-(4.6) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' levels in major vessels, 
+(4.6) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' levels in major vessels (option: calculate total inventory routinely to help discover small leaks), 
 (4.7) temperatures of things that need to be cooled (or heated), as needed for production quality, such as 
 (4.7.1) room air, 
 (4.7.2) secondary heat-transfer liquids, 
@@ -193,10 +193,10 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEJJJ'),
         'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering: 
-(1) how the '.HAZSUB_PROCESS_NAME_ZFPF.', including its controls, responds to power blips, outages, and power restoration (including interrupted defrosting, if applicable), 
-(2) any needed human actions during or after power failures, 
-(3) handling shutdowns due to a high level in a vessel that feeds compressors (the first step may be to call in a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor); and 
-(4) re-start after leaks and emergency shutdowns (okay to say that a unique re-start plan will be developed in consultation with a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor, after investigating conditions). 
+(1) how the '.HAZSUB_PROCESS_NAME_ZFPF.', including its controls and safety systems, responds to electrical-power blips, outages, and power restoration, including interrupted defrosting, if applicable, and the possibility that a leak occurred during the outage, 
+(2) any needed human actions during outages or upon power restoration, 
+(3) restart after shutdowns due to a high level in a vessel that feeds compressors (the first step may be to call in a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor), and 
+(4) restart after '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leaks or emergency shutdowns (okay to say that a unique restart plan will be developed in consultation with a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor, after investigating conditions). 
 Procedure descriptions include: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
@@ -336,7 +336,7 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
 );
 // Populate t0practice and t0practice_division for HSPSWP division
 $practice_division = array(); // In case used by previously required file.
-$k0practice = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice');
+$k0practice = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice', 't0practice');
 foreach ($practices as $K => $V) {
     $V['k0practice'] = ++$k0practice;
     $practices[$K]['k0practice'] = $k0practice; // needed later for practice_division and fragment_practice
@@ -352,7 +352,7 @@ $Divisions = array(
     19, // Operating Procedures in OSHA PSM
     34  // Operating Procedures in EPA CAP
 );
-$k0practice_division = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division');
+$k0practice_division = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice_division', 't0practice_division');
 foreach ($Divisions as $VA) {
     foreach ($practice_division as $VB) {
         $VB['k0practice_division'] = ++$k0practice_division;
@@ -369,7 +369,7 @@ $Divisions = array( // none in Cheesehead
     24, // hot work in OSHA PSM
     42  // hot work in EPA CAP
 );
-$k0practice_division = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division');
+$k0practice_division = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice_division', 't0practice_division');
 foreach ($Divisions as $VA) {
     foreach ($practice_division as $VB) {
         $VB['k0practice_division'] = ++$k0practice_division;
@@ -385,9 +385,12 @@ $EAPpractice = array(
         'c5name' => $Zfpf->encrypt_1c('Emergency Action Plan'),
         'c5number' => $Zfpf->encrypt_1c('LLLAAA'),
         'c6description' => $Zfpf->encrypt_1c('Plan that addresses 
-(A) the full range of potential incidents and 
-(B) in the USA, employee safety per 29 CFR 1910.38 (Items 1 to 6 and 10), release reporting per CERCLA and EPCRA (Item 7), good practices (Item 8), community-responder coordination per 40 CFR 68.90, 68.93, and 68.96(a) (Item 9), and identifying offsite "hazards which may result from ... releases" per the Clean Air Act 112(r)(1) General Duty Clause (Item 9.1.5), including, 
-for anhydrous ammonia: 
+(A) employee safety (Items 1 to 6 and 10 -- in USA to meet 29 CFR 1910.38), 
+(B) release reporting (Item 7 -- in USA to meet CERCLA and EPCRA), 
+(C) good practices (Item 8), 
+(D) community-responder coordination (Item 9 -- in USA to meet 40 CFR 68.90, 68.93, and 68.96(a)), and 
+(E) identifying offsite "hazards which may result from ... releases" (Item 9.1.5 -- in USA to meet Clean Air Act 112(r)(1) General Duty Clause), 
+including, for anhydrous ammonia: 
 (1) "what to do if I smell ammonia or notice other hazards" -- such as how to notify facility management and individual move-to-safety, 
 (2) determining and communicating routes to safe locations inside (shelter-in-place) or outside (evacuation), 
 (3) sweeps, if safe, while leaving and headcount, 
@@ -429,7 +432,7 @@ for anhydrous ammonia:
 (10.2) when an employee\'s responsibilities under the Emergency Action Plan change, 
 (10.3) when the Emergency Action Plan changes, and typically 
 (10.4) yearly drills or refreshers, and 
-(11) all other applicable requirements in 29 CFR 1910.38 and other relevant rules, depending on any other hazardous substances and circumstances at the facility, covering, for example, medical emergencies, earthquakes, hurricanes, tornadoes, bomb threats, and so forth, including 
+(11) all other applicable requirements, depending on any other hazardous substances and circumstances at the facility, covering, for example, medical emergencies, earthquakes, hurricanes, tornadoes, bomb threats, and so forth, including 
 (11.1) any required reporting to building, boiler, refrigeration, pressure vessel, or hazardous-substance inspectors with state or local government. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
@@ -438,7 +441,7 @@ for anhydrous ammonia:
 );
 // Populate t0practice and t0practice_division for EAP practice(s)
 $practice_division = array(); // In case used by previously required file.
-$k0practice = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice');
+$k0practice = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice', 't0practice');
 foreach ($EAPpractice as $K => $V) {
     $V['k0practice'] = ++$k0practice;
     $EAPpractice[$K]['k0practice'] = $k0practice; // needed later for practice_division and fragment_practice
@@ -455,7 +458,7 @@ $Divisions = array(
     27, // EP in OSHA PSM
     44  // EP in EPA CAP
 );
-$k0practice_division = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division');
+$k0practice_division = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice_division', 't0practice_division');
 foreach ($Divisions as $VA) {
     foreach ($practice_division as $VB) {
         $VB['k0practice_division'] = ++$k0practice_division;
@@ -707,7 +710,7 @@ foreach ($SHfragments as $VA) {
             'k0practice' => $practices[$VB]['k0practice']
         );
 }
-$k0fragment_practice = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_practice', 't0fragment_practice');
+$k0fragment_practice = $Zfpf->get_highest_in_table($DBMSresource, 'k0fragment_practice', 't0fragment_practice');
 foreach ($fragment_practice as $V) {
     $V['k0fragment_practice'] = ++$k0fragment_practice;
     $V['c5who_is_editing'] = $EncryptedNobody;

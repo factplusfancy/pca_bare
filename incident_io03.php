@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the incident input and output HTML forms, except the:
 //  - i1m file for listing existing records (and giving the option to start a new record)
@@ -104,11 +104,11 @@ $htmlFormArray = array(
         array('Gas', 'Liquid', 'Liquid and gas', 'Other (powders, slurries...)')
     ),
     'c6mechanism_leaked' => array(
-        '<a id="c6mechanism_leaked"></a><b>Mechanism that leaked</b> (or almost leaked for near misses.) Describe:<br />
-        (A) the equipment package this mechanism was part of (compressor, pump, vessel, valve, piping...),<br />
-        (B) the mechanism itself (valve discharging to atmosphere, weld, threads, flange, mechanical shaft seal, wall of pipe, vessel, valve body, hose...),<br />
-        (C) relevant materials and methods of the mechanism (including any gaskets, springs, fabrication methods...),<br />
-        (D) other significant details (was leak from a connection for adding or removing material, draining oil, pressure relief...)',
+        '<a id="c6mechanism_leaked"></a><b>Mechanism that leaked</b> or almost leaked for near misses. Describe:<br />
+        (A) the equipment package this mechanism was part of, such as compressor, pump, vessel, valve, piping...,<br />
+        (B) the mechanism itself, such as valve discharging to the atmosphere, joint (bolted, brazed, threaded, welded...), shaft seal, wall of pipe, vessel, valve body, hose...),<br />
+        (C) relevant materials and methods of the mechanism, including any gaskets, springs, fabrication methods...,<br />
+        (D) other significant details, such as was the leak from a connection for adding or removing material, draining oil, pressure relief...',
         REQUIRED_FIELD_ZFPF,
         C6SHORT_MAX_BYTES_ZFPF
     ),
@@ -215,7 +215,7 @@ if (isset($_GET['act_notice_1'])) {
 if (isset($_POST['incident_i0n'])) {
     // Additional security check.
     if ($User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Initial draft of investigation name.
     $DraftName = '[Incident-start time will be added by app.] '.$Zfpf->decrypt_1c($_SESSION['StatePicked']['t0owner']['c5name']).', '.$Zfpf->decrypt_1c($_SESSION['StatePicked']['t0facility']['c5city']).', '.$Zfpf->decrypt_1c($_SESSION['StatePicked']['t0facility']['c5state_province']); // These must be set to start an investigation, see security check.
     // Initialize $_SESSION['Selected']
@@ -407,7 +407,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     // Additional security check.
     if (($who_is_editing != '[A new database row is being created.]' and !$EditAuth) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Get useful information
     $IncidentName = $Zfpf->decrypt_1c($_SESSION['Selected']['c5name']);
     $TeamLeader = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_leader']);
@@ -418,7 +418,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     // Change team leader code
     if (isset($_POST['change_leader_1'])) {
         if (!$EditAuth or $Status == 'owner approved' or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->clear_edit_lock_1c(); // In case arrived here by canceling from change_leader_2
         echo $Zfpf->xhtml_contents_header_1c('Lookup User');
         $Zfpf->lookup_user_1c('incident_io03.php', 'incident_io03.php', 'change_leader_2', 'incident_o1');
@@ -427,7 +427,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     }
     if (isset($_POST['change_leader_2'])) {
         if (!$EditAuth or $Status == 'owner approved' or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->edit_lock_1c('incident');
         $Conditions1[0] = array('k0process', '=', $_SESSION['Selected']['k0process']);
         $SpecialText = '<h2>
@@ -450,7 +450,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     }
     if (isset($_POST['change_leader_3'])) {
         if (!$EditAuth or $Status == 'owner approved' or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         // Check user-input radio-button selection.
         // The user not selecting a radio button is OK in this case.
         if (isset($_POST['Selected'])) {
@@ -522,7 +522,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     if (isset($_POST['team_leader_approval'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
         $Display['k0user_of_leader'] = $TeamLeader['NameTitle'].', '.$TeamLeader['Employer'];
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
@@ -559,7 +559,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     if (isset($_POST['team_leader_approval_2'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'draft' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0incident', '=', $_SESSION['Selected']['k0incident']);
         $Changes['c5status'] = $Zfpf->encrypt_1c('team-leader approved');
         $Changes['c5ts_leader'] = $Zfpf->encrypt_1c(time());
@@ -607,7 +607,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     if (isset($_POST['team_leader_approval_c'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'team-leader approved' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
         $Display['k0user_of_leader'] = $TeamLeader['NameTitle'].', '.$TeamLeader['Employer'];
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
@@ -642,7 +642,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     if (isset($_POST['team_leader_approval_c2'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'team-leader approved' or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'])
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0incident', '=', $_SESSION['Selected']['k0incident']);
         $Changes['c5status'] = $Zfpf->encrypt_1c('draft');
         $Changes['c5ts_leader'] = $EncryptedNothing;    
@@ -690,7 +690,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     if (isset($_POST['psm_leader_approval'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'team-leader approved' or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
         $Display['k0user_of_leader'] = $TeamLeader['NameTitle'].', '.$TeamLeader['Employer'];
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
@@ -728,7 +728,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     if (isset($_POST['psm_leader_approval_2'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'team-leader approved' or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0incident', '=', $_SESSION['Selected']['k0incident']);
         $Changes['c5status'] = $Zfpf->encrypt_1c('owner approved');
         $Changes['k0user_of_ae_leader'] = $_SESSION['t0user']['k0user'];
@@ -791,7 +791,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     if (isset($_POST['psm_leader_approval_c'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'owner approved' or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
         $Display['k0user_of_leader'] = $TeamLeader['NameTitle'].', '.$TeamLeader['Employer'];
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
@@ -821,7 +821,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
     if (isset($_POST['psm_leader_approval_c2'])) {
         // Additional security check.
         if (!$EditAuth or $Status != 'owner approved' or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0incident', '=', $_SESSION['Selected']['k0incident']);
         $Changes['c5status'] = $Zfpf->encrypt_1c('team-leader approved');
         $Changes['k0user_of_ae_leader'] = 1;

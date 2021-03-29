@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This PHP file creates a database instance, grants privileges to the credentials used by the PSM-CAP App, 
 // creates the database tables, and adds the first user (and any template information) to the database.
@@ -117,7 +117,7 @@ if (isset($_POST['setup'])) {
     // auto-incremented integer is not used.
     echo 'Inserting new First PSM-CAP App Administrator into the new database instance...';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/SetupZfpf.php';
-    $SetupZfpf = new SetupZfpf;
+    // $SetupZfpf = new SetupZfpf; // Placeholder, see incudes/SetupZfpf.php
     // Overwrite $_SESSION['t0user'] defined in includes/SetupZfpf.php with credentials for first app adin.
     // Need $_SESSION['t0user'] defined here because templates call CoreZfpf::insert_sql_1s, which calls CoreZfpf::record_in_history_1c.
     $_SESSION['t0user']['k2username_hash'] = $AppAdminCredentials['UsernameHash'];

@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This o1 file outputs an HTML form to select a practice associated with an entity and then display it and, if applicable, to:
 // - display the practice history,
@@ -75,7 +75,7 @@ elseif (isset($_GET['contractor']) or (isset($_SESSION['Scratch']['PlainText']['
 }
 elseif (isset($_GET['practice_templates_i1m']) or isset($_POST['practice_templates_i1m']) or isset($_POST['practice_templates_i1']) or isset($_POST['practice_templates_modify_confirm_post_1e']) or isset($_POST['practice_templates_undo_confirm_post_1e']) or isset($_POST['practice_templates_i2']) or isset($_POST['practice_templates_yes_confirm_post_1e'])) {
     if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes' or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF) // Only app admins with full privieges can edit template practices.
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // SPECIAL CASE: modify $htmlFormArray to allow updating scope of template practice. Do here so available to all practice_templates code.
     $htmlFormArray['c2standardized'] = array('Scope of app-standard practice.', '', C5_MAX_BYTES_ZFPF, 'radio', array('Owner Standard Practice', 'Contractor Standard Practice', 'Facility Standard Practice', 'Process Standard Practice')); // Templates must have a scope.
     $_SESSION['Scratch']['PlainText']['FragPracPrivileges'] = 'StandardPractices'; // Needed below
@@ -392,7 +392,7 @@ if (isset($_SESSION['Selected']['k0practice'])) {
         $_SESSION['Selected'] = $SR[0];
     // Additional security check
     if (!$IUPrivileges)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 
     // Get useful variables
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);

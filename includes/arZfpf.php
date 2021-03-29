@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This class provides the Action Register (ar) code 
 
@@ -37,7 +37,7 @@ class arZfpf {
             $Required['c5name'] = REQUIRED_FIELD_ZFPF;
             $Required['c5affected_entity'] = REQUIRED_FIELD_ZFPF;
             $Legend['c6deficiency'] = '<a id="c6deficiency"></a>Deficiency summary. Optional but recommended -- if it\'s not broke, don\'t fix it';
-            $Legend['c6details'] = '<a id="c6details"></a>Additional information, including any resolution options (for fixing what is wrong)';
+            $Legend['c6details'] = '<a id="c6details"></a>Additional information, including any resolution options';
             if ($Context == 'Draft proposed action unassociated' or $Context == 'obsresult' or $Context == 'incident') {
                 $Legend['c5priority'] = '<a id="c5priority"></a>Priority';
                 $Required['c5priority'] = REQUIRED_FIELD_ZFPF;
@@ -97,12 +97,12 @@ class arZfpf {
             'c6deficiency' => array(
                 $Legend['c6deficiency'],
                 $Required['c6deficiency'],
-                C6SHORT_MAX_BYTES_ZFPF
+                C6LONG_MAX_BYTES_ZFPF
             ),
             'c6details' => array(
                 $Legend['c6details'],
                 $Required['c6details'],
-                C6SHORT_MAX_BYTES_ZFPF
+                C6LONG_MAX_BYTES_ZFPF
             )
         );
         // Handle special cases.
@@ -148,7 +148,7 @@ class arZfpf {
                 'c6notes' => array(
                     $Legend['c6notes'],
                     $Required['c6notes'],
-                    C6SHORT_MAX_BYTES_ZFPF
+                    C6LONG_MAX_BYTES_ZFPF
                 ),
                 'c6bfn_supporting' => array(
                     $Legend['c6bfn_supporting'],

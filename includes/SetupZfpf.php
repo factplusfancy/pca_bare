@@ -1,25 +1,13 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This PHP file may be called by setup files that require templates.
 
-class SetupZfpf {
-    // This function returns the highest value in column $ColumnName of table $TableName
-    // For what is meant by "highest", see https://www.php.net/manual/en/function.max.php 
-    // It may be used to get the highest primary key in a database table.
-    function get_highest_in_table($Zfpf, $DBMSresource, $ColumnName, $TableName) {
-        list($SR, $RR) = $Zfpf->select_sql_1s($DBMSresource, $TableName, 'No Condition -- All Rows Included', array($ColumnName));
-        if ($RR) {
-             foreach ($SR as $V)
-                $ColumnValues[] = $V[$ColumnName];
-            return max($ColumnValues);
-        }
-        else
-            return 0; // Case when table has no rows.
-    }
-}
-// TO DO -- lower priority  Make variable below constants, in the SetupZfpf class above, and update template files.
+// class SetupZfpf {
+//    // TO DO -- lower priority  Make variable below constants, in this SetupZfpf class, and update template files.
+// }
+
 $Nothing = '[Nothing has been recorded in this field.]'; // Do NOT change variables here without changing in required files
 $EncryptedNothing = $Zfpf->encrypt_1c($Nothing); // Do NOT change variables here without changing in required files
 $EncryptedNobody = $Zfpf->encrypt_1c('[Nobody is editing.]');

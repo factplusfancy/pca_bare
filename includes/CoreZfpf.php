@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 /*
  * The following are provided by the functions within the "Core" class (CoreZfpf) defined in this file:
@@ -429,8 +429,11 @@ class CoreZfpf {
 
     ////////////////////////////////////////////////////////////////////////////
     // This function sends user to contents, instead of ejecting, for reason in $SpecialMessage
-    public function send_to_contents_1c($SpecialMessage = '<p>Cannot complete due to a document status change, such as no longer a draft document. Navigate back to the document to check its status. Coordinate with whoever changed its status.</p>') {
+    public function send_to_contents_1c($File = __FILE__, $Line = __LINE__, $SpecialMessage = '') {
         $this->clear_edit_lock_1c();
+        error_log(@$this->error_prefix_1c().$File.':'.$Line.' CoreZfpf::send_to_contents_1c '.$SpecialMessage);
+        if (!$SpecialMessage)
+            $SpecialMessage = '<p>Cannot complete, probably due to a user-privilege change or a document-status change, such as no longer a draft document. Navigate back to the document to check its status. Coordinate with whoever changed its status.</p>';
         echo $this->xhtml_contents_header_1c().'<h2>
         Special Message</h2>
         '.$SpecialMessage.'
@@ -438,7 +441,6 @@ class CoreZfpf {
             <input type="submit" value="Go to Contents" /></p>
         </form>
         '.$this->xhtml_footer_1c();
-        error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' CoreZfpf::send_to_contents_1c Special message: '.$SpecialMessage);
         $this->save_and_exit_1c();
     }
 
@@ -528,7 +530,7 @@ class CoreZfpf {
             // Check if string ends in null characters -- which would prevent proper decryption.
             $rtrim_text = rtrim($text, "\0");
             if ($rtrim_text != $text)
-                $this->send_to_contents_1c('You attempted to input a string that ended with a null character, which is not allowed.'); // This would mess up decryption, but might occur by mistake when uploading files.
+                $this->send_to_contents_1c(__FILE__, __LINE__, 'You attempted to input a string that ended with a null character, which is not allowed.'); // This would mess up decryption, but might occur by mistake when uploading files.
             // Encrypt text and concatenate with IV
             // openssl_encrypt uses 16-byte blocks in CBC the last block is padded with null characters, to make it 16 bytes.
             $crypttext = openssl_encrypt($text, 'aes-256-cbc', BINARY_KEY_ZFPF, OPENSSL_RAW_DATA, $iv);
@@ -558,8 +560,18 @@ class CoreZfpf {
     }
 
     ////////////////////////////////////////////////////////////////////////////
+    // This wrapper function may be modified as needed to prevent cross-site scripting.
+    // All user-input text is run through this function.
+    // If changed, check csv_safe_xss_prevent_decode_1c()
     public function xss_prevent_1c($text) {
-        return htmlspecialchars($text, ENT_NOQUOTES | ENT_HTML5, 'UTF-8');
+        return htmlspecialchars($text, ENT_COMPAT | ENT_HTML5, 'UTF-8'); //  &   <   >  "    are coded to   &amp;   &lt;   &gt;  &quot;
+    }
+    ////////////////////////////////////////////////////////////////////////////
+    // This function decodes xss_prevent_1c, except per comments below.
+    public function csv_safe_xss_prevent_decode_1c($text) {
+        $text = htmlspecialchars_decode($text, ENT_NOQUOTES | ENT_HTML5); // &amp;   &lt;   &gt;   are decoded to   &   <   >
+        $text = str_replace('&quot;', "'",  $text); // &quot; converted to ' to avoid interfering with CSV double quotes (allows new lines in CSV fields).
+        return $text; 
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -575,8 +587,8 @@ class CoreZfpf {
 
     ////////////////////////////////////////////////////////////////////////////
     // This function first decrypts a string, then decodes it to an array.
-    // In some cases PHP function unserialize may be exploitable via PHP object injection.
-    // So use json_decode() and json_encode() instead of serialize() unserialize
+    // In some cases the PHP function unserialize may be exploitable via PHP object injection.
+    // So use json_encode() and json_decode() instead of serialize() and unserialize().
     // See http://php.net/manual/en/function.unserialize.php
     // See https://security.stackexchange.com/questions/63179/php-object-injection-prevention-owasp
     public function decrypt_decode_1c($ArrayStringEtc) {
@@ -781,7 +793,7 @@ class CoreZfpf {
                 list($SR, $RR) = $this->select_sql_1s($DBMSresource, 't0user_practice', $Conditions);
                 if ($RR != 1) {
                     unset($_SESSION['t0user_practice']);
-                    $this->send_to_contents_1c(); // !$RR means user lost all privileges to this practice; $RR > 1 some other error.
+                    $this->send_to_contents_1c(__FILE__, __LINE__); // !$RR means user lost all privileges to this practice; $RR > 1 some other error.
                 }
                 $_SESSION['t0user_practice'] = $SR[0];
             }
@@ -897,7 +909,7 @@ class CoreZfpf {
                 $Return .= '
                 |<a class="toc" href="ar_i0m.php">Action Register</a><br />';
             $Return .= '
-            |<a class="toc" href="administer1.php">Administration</a><br />
+            |<a class="toc" href="administer1.php">Admin.</a><br />
             |<a class="toc" href="contents0.php">Contents</a><br />
             |<a class="toc" href="glossary.php" target="_blank">Glossary</a><br />'; // Two line breaks after this.
             // List current contractor (if applicable), owner, facility, and process in left-hand contents.
@@ -1018,7 +1030,7 @@ class CoreZfpf {
         <div class="footer">
         process safety management | chemical accident prevention</div>
         <p class="alignright"><a id="bottom"></a>
-        Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0.<br />
+        Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0.<br />
         <b>Provided for free, as is. Use at your own risk. Absolutely no warranty.</b></p>';
         // TO DO FOR PRODUCTION VERSION -- comment out - START.
         /*// For troubleshooting test emails
@@ -1472,7 +1484,7 @@ class CoreZfpf {
             $this->eject_1c(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' affected_entity_info_1c() Eject Case 6');
         if (!isset($AELeader_k0user)) {
             error_log(@$this->error_prefix_1c().__FILE__.':'.__LINE__.' CoreZfpf::affected_entity_info_1c() Error Log Case 1 (no AE leader)');
-            $this->send_to_contents_1c('<p>The PSM-CAP App <b>could not find a leader</b> associated with the affected entity that you selected, so the task that you had started was canceled. Each entity (owner, contractor, facility, or process) should have exactly one PSM-CAP leader. Please contact your supervisor or a PSM-CAP App administrator for assistance.</p>');
+            $this->send_to_contents_1c(__FILE__, __LINE__, '<p>The PSM-CAP App <b>could not find a leader</b> associated with the affected entity that you selected, so the task that you had started was canceled. Each entity (owner, contractor, facility, or process) should have exactly one PSM-CAP leader. Please contact your supervisor or a PSM-CAP App administrator for assistance.</p>');
         }
         $AELeaderInfo = $this->user_job_info_1c($AELeader_k0user);
         return array(
@@ -1697,6 +1709,7 @@ class CoreZfpf {
         return array($SourceDocDraftActions, $AssociatedActions);
     }
 
+    ////////////////////////////////////////////////////////////////////////////
     // Use this function at the end of io03 files, 
     // where a user may arrive here by pressing the back or forward button on their browser.
     public function catch_all_1c($Action) {
@@ -1715,6 +1728,7 @@ class CoreZfpf {
         '.$this->xhtml_footer_1c();
     }
 
+    ////////////////////////////////////////////////////////////////////////////
     // This function checks a couple errors with the c6active_sessions array, after decrypting and decoding, and returns empty array if found.
     public function check_array_1c($ActiveSessions) {
         if (is_null($ActiveSessions)) {
@@ -1730,6 +1744,7 @@ class CoreZfpf {
         return $ActiveSessions;
     }
 
+    ////////////////////////////////////////////////////////////////////////////
     // Use this function saves $_SESSION in the database
     // and serves as wrapper for exit, so anything else needed before exiting can be done here.
     // Called at the bottom of every .php file in /pcm/ except
@@ -1771,6 +1786,23 @@ class CoreZfpf {
         if (isset($DBMSresource) and $DBMSresource)
             $this->close_connection_1s($DBMSresource); // Always try to close connection here, in case calling script didn't.
         exit; // Don't save and exit.
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // This function returns the highest value in column $ColumnName of table $TableName, less than $MaxValue
+    // For what is meant by "highest", see https://www.php.net/manual/en/function.max.php 
+    // It may be used to get the highest primary key in a database table, including the keys below a $MaxValue indicating a template or sample entry.
+    function get_highest_in_table($DBMSresource, $ColumnName, $TableName, $MaxValue = FALSE) {
+        list($SR, $RR) = $this->select_sql_1s($DBMSresource, $TableName, 'No Condition -- All Rows Included', array($ColumnName));
+        if ($RR) {
+            foreach ($SR as $V) {
+                if (!$MaxValue or $V[$ColumnName] <= $MaxValue)
+                    $ColumnValues[] = $V[$ColumnName];
+            }
+            return max($ColumnValues);
+        }
+        else
+            return 0; // Case when table has no rows.
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

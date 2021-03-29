@@ -1,11 +1,11 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 //
 // This PHP file to allows viewing the practices and rule fragments associated with a rule division.
 
 if (!isset($_SESSION['StatePicked']['t0rule']) or (!isset($_POST['selected_division']) and !isset($_SESSION['StatePicked']['t0division'])))
-    $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+    $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again.  Using the browser back button is currently not supported. Or contact an app admin. (division_o11.php:8)</p>');
 
 // For redundant security
 if (isset($_SESSION['Scratch']))
@@ -18,7 +18,7 @@ $DBMSresource = $Zfpf->credentials_connect_instance_1s(LOW_PRIVILEGES_ZFPF);
 if (isset($_POST['selected_division'])) {
     $CheckedPost = $Zfpf->post_length_blank_1c('selected_division');
     if (!is_numeric($CheckedPost) or !isset($_SESSION['SelectResults']['t0division'][$CheckedPost]))
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
     $_SESSION['StatePicked']['t0division'] = $_SESSION['SelectResults']['t0division'][$CheckedPost];
     unset($_SESSION['SelectResults']);
 }
@@ -49,7 +49,7 @@ if (isset($FragmentView)) { // So, if !isset($_SESSION['StatePicked']['t0fragmen
         $Conditions_k0fragment[0] = array('k0fragment', '=', $SR['t0fragment_division'][0]['k0fragment']);
         list($SR['t0fragment'], $RR['t0fragment']) = $Zfpf->select_sql_1s($DBMSresource, 't0fragment', $Conditions_k0fragment);
         if ($RR['t0fragment'] != 1)
-            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Rows Returned: '.@$RR);
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again or contact an app admin. (division_o11.php:52)</p>');
         $_SESSION['StatePicked']['t0fragment'] = $SR['t0fragment'][0];
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/fragment_o11.php'; // Don't $Zfpf->close_connection_1s($DBMSresource); Need for required file.
         $Zfpf->save_and_exit_1c();
@@ -59,7 +59,7 @@ if (isset($FragmentView)) { // So, if !isset($_SESSION['StatePicked']['t0fragmen
             $Conditions_k0fragment[0] = array('k0fragment', '=', $V['k0fragment']);
             list($SR['t0fragment'], $RR['t0fragment']) = $Zfpf->select_sql_1s($DBMSresource, 't0fragment', $Conditions_k0fragment);
             if ($RR['t0fragment'] != 1)
-                $Zfpf->send_to_contents_1c('<p>An error occurred matching fragments to divisions. Contact app admin.</p>');
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again or contact an app admin. (division_o11.php:62)</p>');
             $Number[] = $Zfpf->decrypt_1c($V['c5number']); // See schema t0fragment_division:c5number
             $Citation[] = $Zfpf->decrypt_1c($SR['t0fragment'][0]['c5citation']);
             $_SESSION['SelectResults']['t0fragment'][] = $SR['t0fragment'][0];
@@ -166,7 +166,7 @@ else {
         unset($Conditions_k0practice[$LastArrayKey][3]);
         list($SR['t0practice'], $RR['t0practice']) = $Zfpf->select_sql_1s($DBMSresource, 't0practice', $Conditions_k0practice);
         if ($RR['t0practice'] != count($k0practice_array)) // There should have been no duplicate k0practice.
-            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again or contact an app admin. (division_o11.php:169)</p>');
         // Sort $SR['t0practice'] by c5number.
         foreach ($SR['t0practice'] as $V)
             $c5number[] = $Zfpf->decrypt_1c($V['c5number']);

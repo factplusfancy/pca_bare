@@ -1,7 +1,7 @@
 <?php
 
 // *** LEGAL NOTICES ***  
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This array contains the database schema for the PSM-CAP App
 $Schema = array(
@@ -501,7 +501,7 @@ $Schema = array(
         'c6method',
         'c6prior_incident_id',
         'c6bfn_pha_as_issued', // PHAs need to be kept for life of the process, so save an extra "as issued" copy here. In addition to copies email and in database.
-        'k0user_of_leader', // The PHA or HIRA team leader, which is initially set to the user who created the PHA or HIRA via pha_i1n.php. See CoreZfpf::record_in_history_1c
+        'k0user_of_leader', // 0 for templates. The PHA or HIRA team leader, which is initially set to the user who created the PHA or HIRA via pha_i1n.php. See CoreZfpf::record_in_history_1c
         'c5ts_leader', // '[Nothing has been recorded in this field.]' or the time stamp when issued by team leader.
         'c6nymd_leader', // Allowed values: 
                          // - the name of a template PHA (templates are never issued),

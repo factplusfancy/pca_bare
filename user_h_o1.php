@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This o1 file outputs an HTML form to select an user associated with an entity and then display, if applicable:
 // what the user has done to the entity's records in the app or 
@@ -15,10 +15,10 @@ $Zfpf->session_check_1c();
 // Same privileges needed to get link from administer1.php, user_owner_io03.php, user_contractor..., user_facility..., or user_process...
 // Also, discern between an privileges of current user and give them the choice with the maximum information.
 if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
-    $Zfpf->send_to_contents_1c(); // Don't eject
+    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 if (isset($_GET['process']) or (isset($_SESSION['Scratch']['PlainText']['SecurityToken']) and $_SESSION['Scratch']['PlainText']['SecurityToken'] == 'user_h_o1.php?process')) {
     if (!isset($_SESSION['t0user_facility']) or !isset($_SESSION['t0user_process']) or ((!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF) and $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF and $Zfpf->decrypt_1c($_SESSION['t0user_process']['c5p_user']) != MAX_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $_SESSION['Scratch']['PlainText']['SecurityToken'] = 'user_h_o1.php?process';
     $EntityName = $Zfpf->affected_entity_info_1c('Process-wide', $_SESSION['t0user_process']['k0process'])['AEFullDescription'];
     if (!$_POST)
@@ -29,7 +29,7 @@ if (isset($_GET['process']) or (isset($_SESSION['Scratch']['PlainText']['Securit
 }
 elseif (isset($_GET['facility']) or (isset($_SESSION['Scratch']['PlainText']['SecurityToken']) and $_SESSION['Scratch']['PlainText']['SecurityToken'] == 'user_h_o1.php?facility')) {
     if (!isset($_SESSION['t0user_facility']) or ((!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF) and $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_user']) != MAX_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $_SESSION['Scratch']['PlainText']['SecurityToken'] = 'user_h_o1.php?facility';
     $EntityName = $Zfpf->affected_entity_info_1c('Facility-wide', $_SESSION['t0user_facility']['k0facility'])['AEFullDescription'];
     if (!$_POST)
@@ -40,7 +40,7 @@ elseif (isset($_GET['facility']) or (isset($_SESSION['Scratch']['PlainText']['Se
 }
 elseif (isset($_SESSION['t0user_owner'])) {
     if ($Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $EntityName = $Zfpf->decrypt_1c($_SESSION['StatePicked']['t0owner']['c5name']);
     if (!$_POST)
         $Conditions = array(
@@ -50,7 +50,7 @@ elseif (isset($_SESSION['t0user_owner'])) {
 }
 elseif (isset($_SESSION['t0user_contractor'])) { 
     if ($Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user']) != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $EntityName = $Zfpf->decrypt_1c($_SESSION['StatePicked']['t0contractor']['c5name']);
     if (!$_POST)
         $Conditions = array(
@@ -131,14 +131,14 @@ if (isset($_SESSION['SelectResults']['PlainText'])) {
     if (isset($_POST['by_user_h_o1'])) {
         if ((!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF) and 
             (!isset($_SESSION['t0user_contractor']) or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user']) != MAX_PRIVILEGES_ZFPF))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         list($SR, $RR) = $HistoryGetZfpf->by_user_h($Zfpf, $k0user);
         $HistoryGetZfpf->selected_changes_html_h($Zfpf, $SR, $RR, 'By user -- history of one user\'s actions in app', 'user_h_o1.php'); // This echos and exits.
     }
     elseif (isset($_POST['to_user_h_o1'])) {
         if ((!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF) and 
             (!isset($_SESSION['t0user_contractor']) or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user']) != MAX_PRIVILEGES_ZFPF))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         list($SR, $RR) = $HistoryGetZfpf->to_user_h($Zfpf, $k0user);
         $HistoryGetZfpf->selected_changes_html_h($Zfpf, $SR, $RR, 'To user -- history of changes to one user\'s records and privileges in app', 'user_h_o1.php'); // This echos and exits.
     }

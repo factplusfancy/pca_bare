@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all input and output HTML forms, except the:
 //  - i1m file for listing existing records (and giving the option to start a new record) and
@@ -91,7 +91,7 @@ if (isset($_GET['act_notice_1'])) {
 if (isset($_POST['audit_i0n']) or isset($_POST['audit_template'])) {
     // Additional security check.
     if (!isset($_SESSION['StatePicked']['t0process']) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Initialize $_SESSION['Selected']
     $_SESSION['Selected'] = array(
         'k0audit' => time().mt_rand(1000000, 9999999),
@@ -367,13 +367,13 @@ if (isset($_SESSION['Selected']['k0audit'])) {
 
     // Additional security check 2. Must be after the above view_audit_actions, so users without $EditAuth can view audit actions.
     if (($who_is_editing != '[A new database row is being created.]' and (!$EditAuth or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 
     // discard_draft_audit code
     if (isset($_POST['discard_draft_audit_1'])) {
         // Additional security check.
         if (!$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Message = '<h2>';
         if ($ReportType)
             $Message .= $ReportType.'</h2><h2>';
@@ -392,7 +392,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     if (isset($_POST['discard_draft_audit_2'])) {
         // Additional security check.
         if (!$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit']);
         $ErrorLog = '';
         $Count = 0;
@@ -462,7 +462,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     if (isset($_POST['leader_approval_1']) or isset($_POST['leader_approval_c1'])) {
         // Additional security check.
         if (!$EditAuth or (isset($_POST['leader_approval_1']) and $_SESSION['Selected']['k0user_of_certifier']) or (isset($_POST['leader_approval_c1']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         // Set variables with applicable text.
         if (isset($_POST['leader_approval_1'])) {
             $AsOf = $Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_as_of']);
@@ -523,7 +523,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             unset($OtConditions[--$RRAuOt][3]); // remove the final, hanging, 'OR'.
             list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', $OtConditions);
             if ($RROt != ++$RRAuOt) // Pre-increment because decremented above.
-                $Zfpf->send_to_contents_1c('<p>An error occurred matching the report to observation topics. Contact app admin.</p>');
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching the report to observation topics. Contact app admin.</p>');
             foreach ($SROt as $KOt => $VOt) {
                 $OtName = $Zfpf->decrypt_1c($VOt['c5name']);
                 $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['Ot'.$KOt] = substr($OtName, 0, 20).'...'; // Truncate for left-hand contents.
@@ -614,7 +614,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     if (isset($_POST['leader_approval_2']) or isset($_POST['leader_approval_c2'])) {
         // Additional security check.
         if (!$EditAuth or (isset($_POST['leader_approval_1']) and $_SESSION['Selected']['k0user_of_certifier']) or (isset($_POST['leader_approval_c1']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit']);
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
         list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
@@ -697,7 +697,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     if (isset($_POST['certifier_approval_1']) or isset($_POST['certifier_approval_c1'])) {
         // Additional security check.
         if (!$EditAuth or (isset($_POST['certifier_approval_1']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or (isset($_POST['certifier_approval_c1']) and $_SESSION['Selected']['k0user_of_certifier'] <= 1) or !$UserIsProcessPSMLeader or $_SESSION['Selected']['k0audit'] < 100000)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         if (isset($_POST['certifier_approval_1'])) {
             $ConfirmationButtonName = 'certifier_approval_2';
             $ConfirmationButtonValue = 'Approve certification statement';
@@ -742,7 +742,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     if (isset($_POST['certifier_approval_2']) or isset($_POST['certifier_approval_c2'])) {
         // Additional security check.
         if (!$EditAuth or (isset($_POST['certifier_approval_2']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or (isset($_POST['certifier_approval_c2']) and $_SESSION['Selected']['k0user_of_certifier'] <= 1) or !$UserIsProcessPSMLeader or $_SESSION['Selected']['k0audit'] < 100000)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $EncryptedTime = $Zfpf->encrypt_1c(time());
         if (isset($_POST['certifier_approval_2'])) {
             $Changes['k0user_of_certifier'] = $_SESSION['t0user']['k0user'];
@@ -794,7 +794,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     // Change the report leader code
     if (isset($_POST['change_leader_1'])) {
         if (!$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->clear_edit_lock_1c(); // In case arrived here by canceling from change_leader_2
         echo $Zfpf->xhtml_contents_header_1c('Lookup User');
         $Zfpf->lookup_user_1c('audit_io03.php', 'audit_io03.php', 'change_leader_2', 'audit_o1');
@@ -803,7 +803,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     }
     if (isset($_POST['change_leader_2'])) {
         if (!$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or !$UserIsProcessPSMLeader)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->edit_lock_1c();
         $Conditions1[0] = array('k0process', '=', $_SESSION['Selected']['k0process']);
         $SpecialText = '<p><b>
@@ -895,7 +895,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
 
     // Additional security check for i1, i2, and i3 code
     if ($_SESSION['Selected']['k0user_of_certifier'])
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // i1 code
     // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
     // 1.1 $_SESSION['Selected'] is only source of $Display.

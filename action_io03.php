@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
 
 // This file handles all the input and output HTML forms, except the:
 //  - SPECIAL CASE: no i1m file.
@@ -38,7 +38,7 @@ if (isset($_POST['yes_confirm_post_1e'])) {
     $Zfpf->save_and_exit_1c();
 }
 
-// i1, i2 code, and action register i1m code, all via ccsaZfpf::ccsa_io0_2
+// o1, history_o1, _i1aic, i1, i2 code, and action register i1m code, all via ccsaZfpf::ccsa_io0_2
 require INCLUDES_DIRECTORY_PATH_ZFPF.'/arZfpf.php';
 $arZfpf = new arZfpf;
 // SPECIAL CASE security check.
@@ -59,8 +59,10 @@ elseif ($_SESSION['Scratch']['PlainText']['SecurityToken'] == 'incident_i1m.php'
     $htmlFormArray = $ccsaZfpf->html_form_array('action', $Zfpf, $TableRoot, $arZfpf);
 }
 elseif ($_SESSION['Scratch']['PlainText']['SecurityToken'] == 'pha_i1m.php') {
-    if (!isset($_SESSION['Selected']['k0pha']) or !isset($_SESSION['Scratch']['t0subprocess']) or !isset($_SESSION['Scratch']['t0scenario']) or $_SESSION['Selected']['k0pha'] < 100000) // Template PHAs cannot have actions
+    if (!isset($_SESSION['Selected']['k0pha']) or !isset($_SESSION['Scratch']['t0subprocess']) or !isset($_SESSION['Scratch']['t0scenario']))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+    if ($_SESSION['Selected']['k0pha'] < 100000) // Templates don't have actions.
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $TableRoot = 'scenario';
     $k0TableRoot = $_SESSION['Scratch']['t0scenario']['k0scenario'];
     $htmlFormArray = $ccsaZfpf->html_form_array('action', $Zfpf, $TableRoot, $arZfpf); // Default $TableRoot is 'scenario'.
