@@ -172,7 +172,7 @@ class ccsaZfpf {
                 if ($Form) {
                     $Message .= '
                         <input type="submit" name="'.$KA.'_o1" value="View details';
-                    if (!$EditLocked and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and ($_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')))
+                    if (!$EditLocked and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and (!isset($_SESSION['Selected']['k0pha']) or $_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')))
                         $Message .= ', edit, or remove" />';
                     else
                         $Message .= '" />';
@@ -180,7 +180,7 @@ class ccsaZfpf {
             }
             else
                 $Message .= 'None found.';
-            if (!$EditLocked and $Form and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and ($_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes' and $KA != 'action'))) { // Templates never have actions.
+            if (!$EditLocked and $Form and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and (!isset($_SESSION['Selected']['k0pha']) or $_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes' and $KA != 'action'))) { // Templates never have actions.
                 $Nothing = '[Nothing has been recorded in this field.]';
                 if ($TableRoot == 'scenario' and $KA == 'action' and $Zfpf->decrypt_1c($SelectedRow['c5severity']) == $Nothing and $Zfpf->decrypt_1c($SelectedRow['c5likelihood']) == $Nothing)
                     $Message .= '<br />To add an '.$KA.', first assign severity and likelihood.';
@@ -772,7 +772,7 @@ class ccsaZfpf {
                 else
                     echo '<p>'.$who_is_editing.'</p>'; // This should echo the permanent-lock message.
             }
-            elseif (!$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and ($_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes'))) {
+            elseif (!$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and (!isset($_SESSION['Selected']['k0pha']) or $_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes'))) {
                 echo '
                 <form action="'.$ccsa.'_io03.php" method="post"><p>';
                 if ($ccsa != 'action' or $Zfpf->decrypt_1c($_SESSION['Scratch']['t0action']['c5status']) == 'Draft proposed action')
