@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the hspswp_cert input and output HTML forms, except the:
 //  - i1m file for listing existing records (and giving the option to start a new record) and
@@ -79,7 +79,7 @@ if (isset($_POST['hspswp_cert_o1'])) {
         unset($_SESSION['SelectResults']);
     }
     if ($_SESSION['Selected']['k0user_of_ae_leader'] == 0 or $Zfpf->decrypt_1c($_SESSION['Selected']['c6bfn_as_certified']) == '[Nothing has been recorded in this field.]') // SPECIAL CASE: see comments above, under Download files.
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $htmlFormArray['c6bfn_as_certified'] = array('As-certified copy', '', MAX_FILE_SIZE_ZFPF, 'upload_files');
     $Display = $Zfpf->select_to_display_1e($htmlFormArray, $_SESSION['Selected'], TRUE);
     // Handle k0 field(s)
@@ -103,7 +103,7 @@ if (isset($_POST['hspswp_cert_o1'])) {
 if (isset($_POST['hspswp_cert_i0n'])) {
     // Additional security check.
     if ($_SESSION['t0user']['k0user'] != $Process['AELeader_k0user'] or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Get useful information.
     $CurrentDate = date('\Y\e\a\r Y, \M\o\n\t\h n, \D\a\y j', time());    
     $EncryptedNothing = $Zfpf->encrypt_1c('[Nothing has been recorded in this field.]');
@@ -148,7 +148,7 @@ if (isset($_POST['hspswp_cert_i0n'])) {
 if (isset($_POST['psm_leader_approval_2'])) {
     // Additional security check.
     if (!isset($_SESSION['Selected']['k0certify']) or $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']) != '[A new database row is being created.]' or $_SESSION['t0user']['k0user'] != $Process['AELeader_k0user'] or $Zfpf->decrypt_1c($_SESSION['t0user']['c5p_global_dbms']) != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $BaseFileName = 'psm_hspswp_certification'.time().'.htm'; // No need for FilesZfpf::xss_prevent_1c() because this name doesn't have < > or &.
     $BytesWritten = $Zfpf->write_file_1e($_SESSION['Scratch']['ApprovalText'], $BaseFileName);
     $BytesAttempted = strlen($_SESSION['Scratch']['ApprovalText']);

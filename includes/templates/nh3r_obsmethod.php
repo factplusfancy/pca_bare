@@ -1,7 +1,7 @@
 <?php
 
 // *** LEGAL NOTICES ***  
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // TO DO FOR PRODUCTION VERSION  When updating the sample-observation methods below for new editions of IIAR 2, IIAR 6, IIAR 7, or IIAR 9 
 // TO DO FOR PRODUCTION VERSION  also update the edition years in .../includes/templates/nh3r_psm-audit_etc.php including in the
@@ -129,39 +129,49 @@ Quality depends on detailed measurements and calculations beyond the scope, so n
 (3.3) installed too long ago (over 5-years unless a facility-specific testing program was in place or discharge is back into the '.HAZSUB_PROCESS_NAME_ZFPF.'), or 
 (3.4) visibly tampered with, broken ASME seal, or damaged, and 
 (4) device outlet or relief-vent (RV) piping problems, including 
-(4.1) located where water may condense in it, such as in cooled rooms, 
+(4.1) located where water may condense in it, such as in rooms cooled below typical dew points in outside air near the RV piping outlet, 
 (4.2) had low spots likely to gather water or anything that may hinder relief flow or cause shocks, 
 (4.3) had no provisions for safely draining water where it might accumulate, such as from a trap below each discharge-to-atmosphere outlet, 
-(4.4) had been visibly blocked or tampered with,
-(4.5) discharge-to-atmosphere outlet was unsafe, including
-(4.5.1) less than 20 feet (6.1 m) in any direction from air intakes or building openings, such as windows or doors,
-(4.5.2) both less than 20 feet (6.1 m) horizontally from and also less than 7.25 feet (2.2 m) above walking-working surfaces, such as catwalks and most roofs, 
+(4.4) had been visibly blocked or tampered with, 
+(4.5) discharge-to-atmosphere outlet wasn\'t reasonably safe, such as 
+(4.5.1) less than 20 feet (6.1 m) in any direction from air intakes or building openings, such as doors or sometimes-open windows, 
+(4.5.2) both less than 20 feet (6.1 m) horizontally from and also less than 7.25 feet (2.2 m) above walking-working surfaces, such as catwalks, ladders, most roofs, and the tops of condensers, 
 (4.5.3) less than 15 feet (4.6 m) above "grade", such as surfaces where vehicles may drive, 
 (4.5.4) directed towards where people may be walking or working (best if vertically upward, such as with a tractor cap), or 
 (4.5.5) outlet was likely to allow water entry. (IIAR 9-2020 7.2.2.1, 7.4.1, 7.4.2, and 7.4.3)')
     ),
     18 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Ventilation for refrigerating-machinery room(s) documents -- checked that as-built design documents showed: 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Ventilation for refrigerating-machinery room (the room) documents -- taking into account that some ammonia leaks, either inside or outside the room, cannot practically be controlled by the room\'s safety systems and so would require incident-specific evacuation or shelter-in-place --  checked that as-built design documents showed: 
 (1) the design standard and edition, 
-(2) all required normal, temperature control, and emergency exhaust and makeup air-flow calculations, 
+(2) all required emergency, occupant/normal, and temperature-control exhaust and makeup air-flow calculations, 
 (3) exhaust-fan(s) specifications, including 
-(3.1) capacity, 
-(3.2) non-sparking blades, and 
-(3.3) totally-enclosed motor, unless the motor was very unlikely to get exposed to a flammable atmosphere, for example outdoors and not in the exhaust-air stream, 
+(3.1) capacity,
+(3.2) non-sparking blades, preferably Air Movement and Control Association (ACMA) Standard 99, type A or B (Spark A or B) spark-resistant construction, and 
+(3.3) totally-enclosed motor, unless the motor was very unlikely to get exposed to a flammable atmosphere, for example outdoors and not in the exhaust-air stream or shuts/stays off when the emergency-ventilation starts, 
 (4) intakes(s) specifications, including 
 (4.1) location likely to supply clean outdoor air, 
 (4.2) inlet area, 
 (4.3) inlet screen mesh size and materials, 
-(4.4) any louvers, dampers, or similar fail open, 
+(4.4) built to avoid failing shut, such as louvers or dampers that open or unlatch on power loss, 
 (4.5) any fans, 
 (4.6) any ducting, 
 (4.7) any negative-pressure calculations, and 
-(4.8) intake(s) only serve the refrigerating-machinery room (the room), 
-(5) ventilation flow patterns, including sweeps the room with no excessive short-circuiting, 
-(6) a safe discharge location(s), direction, method, and velocity, 
-(7) ventilation control via manual on/auto switch, ammonia sensors, and possibly temperature sensors, 
-(8) electrical-power supply for ventilation not shutoff by '.HAZSUB_PROCESS_NAME_ZFPF.' any emergency-stop switch/button, ammonia sensors, and similar, and 
-(9) alarms on loss of power or known failure of ventilation systems, that notify Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list). (IIAR 9-2020 7.3.13)
+(4.8) intake(s) only serve the room, 
+(5) ventilation flow patterns, including sweeps the room without excessive short-circuiting, 
+(6) a reasonably safe discharge location(s), direction, method, and speed, such as
+(6.1) upward at 2,500 feet per minute or faster (per IIAR 2 from the 2010 to at least the 2019 editions) above the roof of the room,
+(6.2) adequately far from air intakes, doors, ladders, property boundaries, walkways, windows that are sometimes open, and work areas,
+(6.3) where it is reasonably unlikely to contaminate breathing air, in excess of 150 ppm, 220 ppm, or another reasonable target -- considering any nearby higher roofs and air recirculation (swirling and eddies) on the downwind side of the building with the ventilation outlet -- in
+(6.3.1) areas where people are routinely present or
+(6.3.2) exit routes from normally occupied spaces,
+150 ppm is the 1-hour exposure 2016 ERPG-2 (American Industrial Hygiene Association, Emergency Response Planning Guideline 2) -- the maximum airborne concentration below which nearly all people could be exposed for up to 1 hour without experiencing or developing irreversible or other serious health effects or symptoms which could impair a persons ability to take protective action.
+220 ppm is both the 10 and 30-minute exposure 2017 AEGL-2 (Acute Exposure Guideline Levels, published by the U.S. EPA) -- the concentration above which it is predicted that the general population, including susceptible individuals, could experience irreversible or other serious, long-lasting adverse health effects or an impaired ability to escape.
+(7) ventilation controls (unless always on with alarm on failure), including
+(7.1) emergency-ventilation control via manual on/auto switch and ammonia sensors and
+(7.2) temperature control via thermostat or, if the room is normally attended, by a manual switch or equivalent,
+(7.3) any backup power and also restart after power outages built to avoid creating ignition sources in flammable atmospheres, such as ammonia sensors that turn on emergency ventilation if needed before any equipment that could create a ignition source receives backup or restored electrical power,
+(8) electrical-power supply for emergency ventilation not shutoff by any emergency-stop switch/button, ammonia sensors, and similar, and 
+(9) alarms on loss of power or known failure of ventilation systems that notify Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list). (IIAR 9-2020 7.3.13.2)
 Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used. Checked a sample of as-built design documents for obvious errors.')
     ),
     19 => array(
@@ -298,7 +308,7 @@ Asked about this during tours and discussions.')
 (1.2) worked on ventilation, pressure-relief, suppression, secondary containment, or similar safety systems of/for the '.HAZSUB_PROCESS_NAME_ZFPF.', 
 (1.3) worked on alarms, controls, instrumentation, motors, or other electrical components of/for the '.HAZSUB_PROCESS_NAME_ZFPF.', 
 (1.4) painted, insulated, cleaned, or sanitized any of the above, 
-(1.5) worked adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.', particularly if they opened flanges, performed hot work, moved heavy objects, or did electrical or controls work, and 
+(1.5) worked adjacent to the '.HAZSUB_PROCESS_NAME_ZFPF.', particularly if they opened bolted or threaded piping joints, performed hot work, moved heavy objects, or did electrical or controls work, and 
 (1.6) transferred substances into/from the '.HAZSUB_PROCESS_NAME_ZFPF.'. 
 (2) Checked a sample of the contractor-qualification documents to assess if requested information was: 
 (2.1) reasonably complete and 
@@ -622,7 +632,7 @@ for anhydrous ammonia:
     ),
     54 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Piping, equipment, and supports tours -- checked a sample of these, in or for the '.HAZSUB_PROCESS_NAME_ZFPF.', and the areas around them for: 
-(1) access to them difficult or unsafe, 
+(1) access to them difficult or not reasonably safe, 
 (2) lighting or visibility of them inadequate, including
 (2.1) in refrigerating-machinery rooms, less than 30 foot-candles (320 lumens per square meter) at 3 feet (0.9 meters) above working surfaces,
 (3) insulation problems, such as 
@@ -640,7 +650,7 @@ for anhydrous ammonia:
 (7) loose or missing pipe hangers or their saddles, 
 (8) piping rests directly on fixed supports so that paint is rubbing off, 
 (9) pipe supports too far apart, 
-(10) stairs, ladders, catwalks, or their supports corroding or unsafe, especially near evaporative condensers, 
+(10) stairs, ladders, catwalks, or their supports corroding or not reasonably safe, especially near evaporative condensers, 
 (11) roof sagging under supports, 
 (12) foundations for supports cracking or shifting, 
 (13) missing, illegible, or inadequate labels on 
@@ -699,11 +709,10 @@ for anhydrous ammonia:
 (4.1.3) "CAUTION EYE AND EAR PROTECTION REQUIRED IN THIS AREA" [yellow], and 
 (4.1.4) the NFPA diamond, showing Health (blue) = 3, Fire (red) = 3, Reactivity (yellow) = 0, and Special (white) = [leave blank], except, for outdoor equipment, Fire (red) = 1, see National Fire Protection Association (NFPA) Standard 704, 
 (4.2) "!WARNING, WHEN ALARMS ARE ACTIVATED, AMMONIA HAS BEEN DETECTED, 1. LEAVE ROOM IMMEDIATELY, 2. DO NOT ENTER EXCEPT BY TRAINED AND AUTHORIZED PERSONNEL, 3. DO NOT ENTER WITHOUT PERSONAL PROTECTIVE EQUIPMENT" [orange] next to all "ammonia concentration in air is unsafe" audible and visible alarms, which are required outside every door into the room and at least one inside the room, 
-(4.3) "REFRIGERATION MACHINERY SHUTDOWN, EMERGENCY USE ONLY, BREAK GLASS TO ACTIVATE" [orange; substitute actual activation method for "break glass"], next to each tamper-resistant, off-only, '.HAZSUB_PROCESS_NAME_ZFPF.' emergency-stop switch/button (E-stop) -- at least one E-stop is required, located near the room and where reasonably likely to remain safe and accessible during '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases, and which shuts off all '.HAZSUB_NAME_ADJECTIVE_ZFPF.' 
-(4.3.1) compressors, 
-(4.3.2) pumps, and 
-(4.3.3) normally-closed control valves that are not part of an emergency-control system, such as solenoid valves for liquid and hot-gas supply, but 
-(4.3.4) doesn\'t shut off safety systems, such as alarms and ventilation, 
+(4.3) "REFRIGERATION MACHINERY SHUTDOWN, EMERGENCY USE ONLY, BREAK GLASS TO ACTIVATE" [orange; substitute actual activation method for "break glass"], next to each tamper-resistant, off-only, '.HAZSUB_PROCESS_NAME_ZFPF.' emergency-stop switch/button (E-stop) -- at least one E-stop is required, located near the room and where reasonably likely to remain safe and accessible during '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases, and which shuts off all  
+(4.3.1) '.HAZSUB_PROCESS_NAME_ZFPF.' compressors, pumps, and normally-closed control valves that are not part of an emergency-control system, such as solenoid valves for liquid and hot-gas supply, and
+(4.3.2) all other electrically powered equipment in the refrigerating-machinery room that could serve as an ignition source, such as water and chemical feed pumps, but 
+(4.3.3) it doesn\'t shut off safety systems, such as ammonia-in-air sensors and alarms, emergency lighting, and emergency ventilation, which were built to have a low likelihood of creating an ignition source, 
 (4.4) "REFRIGERATING-MACHINERY ROOM VENTILATION, EMERGENCY USE ONLY" [orange], next to all the tamper resistant, on/auto switches for the room\'s emergency ventilation -- at least one is required, located near the room and where reasonably likely to remain safe and accessible during '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases, and 
 (4.5) near the room and where reasonably likely to remain safe and accessible during '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases 
 (4.5.1) a "who to call" sign with instructions for reaching 
@@ -716,20 +725,21 @@ for anhydrous ammonia:
 (4.5.6) any required permits to operate or similar (IIAR 2-2019 5.14, 5.15, 6.15, and Appendix J; IIAR 9-2020 7.2.9.1, 7.2.10, 7.3.11, and 7.3.12), 
 (5) safe '.HAZSUB_NAME_ADJECTIVE_ZFPF.' storage, including 
 (5.1) only stored in cylinders or pressure vessels designed and labeled by their manufacturer for this service and 
-(5.2) no transportation cylinders, vessels, or similar routinely connected to the '.HAZSUB_PROCESS_NAME_ZFPF.', 
+(5.2) no transportation cylinders, vessels, or similar were left connected to the '.HAZSUB_PROCESS_NAME_ZFPF.', except during monitored charging, 
 (6) safe flammable and combustible materials storage, including 
-(6.1) all of these stored in approved fire-rated storage containers, 
+(6.1) all of these were stored in approved fire-rated storage containers (IIAR 9-2020 7.3.4), 
 (6.2) their quantities kept to the minimum needed for operations and maintenance, and 
-(6.3) their quantities and proximity equal to or less that what was assumed in design scenarios for all pressure-relief systems in the room or nearby, 
+(6.3) their quantities and proximity are equal to or less that what was assumed in design scenarios for all pressure-relief systems in the room or nearby, 
 (7) access and egress was adequate, including 
-(7.1) complied with any applicable building code (checked if this was documented or otherwise, in unsprinklered machinery rooms in the USA, this is often a maximum 75-foot "common path of egress travel", which is the portion of the exit access that the occupants are required to traverse before two separate and distinct paths of egress travel to two exits are available, so for example, if an an unsprinklered machinery room had only one exit, no part of the room should be further than 75-feet from that exit, and if such a room had two or more exits, there should be neither blind aisle-ways nor alcoves without exits greater than 75 feet deep), 
-(7.2) no part of the room was further than 150-feet from an exit door or exit-access door, 
-(7.3) if the room\'s floor area is greater than 1,000 square feet, had two exits separated by more than half of the room\'s maximum horizontal dimension, 
-(7.4) exit doors had panic hardware and swung open in the direction or egress, 
-(7.5) fire rating of doors was 
-(7.5.1) same as exterior wall, if to outside, or 
-(7.5.2) 1-hour, if to inside and the room was unsprinklered (IIAR 2-2019, 5.17.8 and 6.10; IIAR 9-2020 7.3.3 and 7.3.9), and 
-(7.6) the room was tidy and its floors were not slippery, such as due to oil spills or similar, 
+(7.1) clear heights and aisles between equipment and piping,  
+(7.2) complied with the applicable building code, if any (checked if documented, otherwise, in refrigerating-machinery rooms, without automatic sprinkler systems [unsprinklered], building-code requirements often include a maximum 75-foot "common path of egress travel", which is "that portion of exit access travel distance measured from the most remote point of each room, area or space to that point where the occupants have separate and distinct access to two exits or exit access doorways", so if a unsprinklered refrigerating-machinery room had only one exit or exit access doorway, no part of that room should be further than 75-feet from that doorway, and if such a room had more than one exit or exit access doorway, there should be neither blind aisles nor alcoves more than 75 feet deep without an exit or exit access doorway, see for example International Building Code 2018, Chapter 10, specifically Section 1006), 
+(7.3) no part of the room was further than 150-feet from an exit or exit access doorway, unless permitted by the building code, 
+(7.4) if the room\'s floor area is greater than 1,000 square feet, it had more than one exit or exit access doorway horizontally separated by more than half of the room\'s maximum horizontal dimension (one may be accessed by a fixed ladder or alternating-tread device), 
+(7.5) each exit or exit access doorway was equipped with panic hardware and swung open in the direction of egress travel, 
+(7.6) fire rating of doors was 
+(7.6.1) same as exterior wall, if to outside, or 
+(7.6.2) 1-hour, if to inside and the room was unsprinklered (IIAR 2-2019, 5.17.8 and 6.10; IIAR 9-2020 7.3.3 and 7.3.9), and 
+(7.7) the room was tidy and its floors were not slippery, such as due to oil spills or similar, 
 (8) neither open flames nor surfaces greater than 800 F (427 C) were in the room, except: 
 (8.1) fuel-burning appliances that 
 (8.1.1) were shutoff by a sensor upon detection of ammonia at the concentration that starts the emergency ventilation or 
@@ -741,21 +751,21 @@ for anhydrous ammonia:
 (9.1.2) one outside the room and a maximum 10-second travel time (typically 55 feet) from its door, and 
 (9.1.3) additional as needed for a maximum 10-second travel time (typically 55 feet), without doors or other obstructions in the travel path, from all walking-working surfaces in the room to the safety shower and eye/face wash (IIAR 9-2020 7.3.7), 
 (9.2) compliance with ANSI/ISEA Z358.1, see the Safety Showers and Eye/Face Washes, Yearly, PSM-CAP compliance practice for ITM, 
-(10) floor drains or equivalent as needed to keep floor reasonably free of water, with engineered or administrative means for handling oil or other liquid spills (IIAR 9-2020 7.3.8), 
+(10) floor drains or equivalent as needed to keep the floor reasonably free of water, with engineered or administrative means for handling oil or other liquid spills (IIAR 9-2020 7.3.8), 
 (11) ammonia sensor(s) in the room, 
 (11.1) sampling where ammonia concentrations could likely be highest (so not near fresh-air inlets), 
 (11.2) in enough locations, considering the size of the room, 
-(11.3) accessible for testing and maintenance, 
+(11.3) accessible for inspection, testing, and maintenance, 
 (11.4) connected to detectors and alarm systems adequate to, at or below the following parts per million by volume, ammonia concentrations in air (ppm) 
 (11.4.1) no ppm signal, such as due to a malfunction or a power loss on the dedicated-branch electrical circuit for these systems -- notify Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list), 
 (11.4.2) 25 ppm -- activate audible (15 decibels above average-ambient and 5 decibels above expected maximum-ambient sound pressure) and visible alarms in the room and outside its doors (automatic reset allowed once concentration falls below 25 ppm), 
 (11.4.3) 50 ppm (preferably 25 ppm) -- notify Owner/Operator representatives, similarly to "no ppm signal" above, 
-(11.4.4) 1000 ppm (preferably 150 ppm, which is half the immediately dangerous to life or health, IDLH, concentration) -- activate the room\'s emergency ventilation (manual reset required), and 
-(11.4.5) 40,000 ppm (preferably 16,000 ppm, which is approximately one tenth, 10%, of the lower flammability limit, LFL, of ammonia in air, but mixtures of ammonia gas and lubricating-oil mists are more flammable than ammonia alone) -- trigger the same response as the above-described E-stop (manual reset required) (IIAR 2-2019 6.13 and IIAR 9-2020 7.3.12), and 
-(12) covers installed on a sample of electrical panels or junction boxes.')
+(11.4.4) 1000 ppm (preferably no higher than 150 ppm, which is half the immediately dangerous to life or health, IDLH, concentration) -- activate the room\'s emergency ventilation (manual reset required), and 
+(11.4.5) 40,000 ppm (preferably no higher than 15,000 ppm, which is approximately one tenth, 10%, of the lower flammability limit, LFL, of ammonia in dry air, but mixtures of ammonia gas and lubricating-oil mists are more flammable than ammonia alone) -- trigger the same response as the above-described E-stop (manual reset required) (IIAR 2-2019 6.13 and IIAR 9-2020 7.3.12), and 
+(12) no exposed wiring and covers installed on a sample of electrical panels or junction boxes.')
     ),
     56 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Compressors, pumps, and pressure vessels located in miscellaneous indoor areas, such as pits, tunnels, attics, on top of freezer tunnels, between false ceilings the the floor or roof above, or located in outside areas, tours -- checked any of these, in the '.HAZSUB_PROCESS_NAME_ZFPF.', and the areas around them against applicable refrigerating-machinery room requirements, except:
+        'c6obsmethod' => $Zfpf->encrypt_1c('Compressors, pumps, and pressure vessels located in miscellaneous indoor areas, such as pits, tunnels, attics, on top of freezer tunnels, between false ceilings the floor or roof above, or located in outside areas, tours -- checked any of these, in the '.HAZSUB_PROCESS_NAME_ZFPF.', and the areas around them against applicable refrigerating-machinery room requirements, except:
 (1) outdoor areas may have had suitable "natural" ventilation from their free opening areas, did\'t need to be well sealed, and so forth,
 (2) fresh intake air for pits and tunnels should have been supplied near their lowest areas, such as their floors, and
 (3) ventilation flow for pits and tunnels should have accounted for the volume of any rooms they exhaust through (IIAR 2-2019 7.3).')

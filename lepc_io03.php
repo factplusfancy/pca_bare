@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the facility summary input and output HTML forms, except the:
 //  - i0m & i1m files for listing existing records.
@@ -31,7 +31,7 @@ if (!$_POST or isset($_POST['lepc_i1m'])) {
     }
     else {
         if (!isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_facility']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         if (isset($_SESSION['Scratch']['t0lepc'])) {
             if ($Zfpf->decrypt_1c($_SESSION['Scratch']['t0lepc']['c5who_is_editing']) != '[A new database row is being created.]')
                 $Zfpf->clear_edit_lock_1c($_SESSION['Scratch']['t0lepc']);
@@ -82,7 +82,7 @@ if (!$_POST or isset($_POST['lepc_i1m'])) {
 
 if (isset($_POST['lepc_change_1'])) {    
     if (!isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_facility']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or !isset($_POST['selected']) or !isset($_SESSION['SelectResults']['t0lepc']))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $CheckedPost = $Zfpf->post_length_blank_1c('selected'); // Get user selection.
     if (!is_numeric($CheckedPost) or !isset($_SESSION['SelectResults']['t0lepc'][$CheckedPost]))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
@@ -130,7 +130,7 @@ if (isset($_POST['lepc_o1']) or isset($_POST['lepc_i0n']) or isset($_POST['lepc_
 if (isset($_POST['lepc_i0n'])) {
     // Additional security check.
     if (!isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_facility']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $EncryptedNothing = $Zfpf->encrypt_1c('[Nothing has been recorded in this field.]');
     $_SESSION['Scratch']['t0lepc'] = array (
         'k0lepc' => time().mt_rand(1000000, 9999999),
@@ -223,7 +223,7 @@ if (isset($_POST['lepc_o1']) or isset($FromLinkWithoutPost)) {
 if (isset($_POST['yes_confirm_post_1e'])) {
     // Additional security check
     if (!isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_facility']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or !isset($_SESSION['Post']))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $Changes = $Zfpf->changes_from_post_1c($_SESSION['Scratch']['t0lepc']);
     if ($Zfpf->decrypt_1c($_SESSION['Scratch']['t0lepc']['c5who_is_editing']) == '[A new database row is being created.]')
         $Zfpf->one_shot_insert_1s('t0lepc', $Changes);
@@ -250,7 +250,7 @@ if (isset($_POST['yes_confirm_post_1e'])) {
 if (isset($_SESSION['Scratch']['t0lepc']['k0lepc'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Scratch']['t0lepc']['c5who_is_editing']);
     if (!isset($_SESSION['t0user_facility']) or $_SESSION['t0user_facility']['k0facility'] != $_SESSION['Selected']['k0facility'] or $Zfpf->decrypt_1c($_SESSION['t0user_facility']['c5p_facility']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // i1 code
     // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
     // 1.1 $_SESSION['Scratch']['t0lepc'] is only source of $Display.

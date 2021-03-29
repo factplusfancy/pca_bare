@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
 
 // This file handles all the input and output HTML forms, SPECIAL CASE: including audit_fragment_i1m
 
@@ -54,7 +54,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     list($SRR, $RRR) = $Zfpf->select_sql_1s($DBMSresource, 't0rule', 'No Condition -- All Rows Included');
     if (!$RRR)
-        $Zfpf->send_to_contents_1c('<p>No rules found. Contact app admin. Typically setup on installation.</p>');
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>No rules found. Contact app admin. Typically setup on installation.</p>');
     $OtherRules = '';
     if (!isset($_GET['audit_fragment_i1m']))
         $_GET['audit_fragment_i1m'] = 1; // Assume the first row in t0rule has k0rule == 1. Default to that.
@@ -67,7 +67,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
             $OtherRules .= '<br /><a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m='.$VR['k0rule'].'">'.$Zfpf->decrypt_1c($VR['c5name']).'</a>';
     }
     if (!isset($Conditions))
-        $Zfpf->send_to_contents_1c('<p>No rules found. Contact app admin. Typically setup on installation.</p>');
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>No rules found. Contact app admin. Typically setup on installation.</p>');
     $Message = '<h2>';
     if ($ReportType)
         $Message .= $ReportType.'</h2><h2>';
@@ -83,7 +83,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
     Rule fragments in <a class="toc" href="audit_io03.php?audit_o1#c6audit_scope">the scope</a> are shown below. Also, compliance verification never applies to some parts of rules, like definitions.</a></p>';
     list($SRD, $RRD) = $Zfpf->select_sql_1s($DBMSresource, 't0division', $Conditions);
     if (!$RRD)
-        $Zfpf->send_to_contents_1c('<p>No rule divisions found. Contact app admin. Typically setup on installation.</p>');
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>No rule divisions found. Contact app admin. Typically setup on installation.</p>');
     $i = 0;
     foreach ($SRD as $KD => $VD) {
         $Conditions = array();
@@ -103,7 +103,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
                     $FConditions[0] = array('k0fragment', '=', $VFD['k0fragment']);
                     list($SRF, $RRF) = $Zfpf->select_sql_1s($DBMSresource, 't0fragment', $FConditions);
                     if ($RRF != 1)
-                        $Zfpf->send_to_contents_1c('<p>An error occurred matching fragments to divisions. Contact app admin.</p>');
+                        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching fragments to divisions. Contact app admin.</p>');
                     $Number[] = $Zfpf->decrypt_1c($VFD['c5number']); // See schema t0fragment_division:c5number
                     $Citation[] = $Zfpf->decrypt_1c($SRF[0]['c5citation']);
                     $FragmentsArray[] = $SRF[0];
@@ -160,7 +160,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
 if (isset($_GET['choose_fragment_1'])) {
     // Additional security check.
     if ($EditLocked or !$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))
-        $Zfpf->send_to_contents_1c();
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     $Zfpf->clear_edit_lock_1c(); // Set in choose_fragment_2
     if (isset($_SESSION['SR']))
         unset($_SESSION['SR']);
@@ -175,14 +175,14 @@ if (isset($_GET['choose_fragment_1'])) {
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     list($SRR, $RRR) = $Zfpf->select_sql_1s($DBMSresource, 't0rule', 'No Condition -- All Rows Included');
     if (!$RRR)
-        $Zfpf->send_to_contents_1c('<p>No rules found. Contact app admin. Typically setup on installation.</p>');
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>No rules found. Contact app admin. Typically setup on installation.</p>');
     $DivCount = 0;
     foreach ($SRR as $VR) {
         $Message .= '<p><b>'.$Zfpf->decrypt_1c($VR['c5name']).'</b></p><p>';
         $Conditions[0] = array('k0rule', '=', $VR['k0rule']);
         list($SRD, $RRD) = $Zfpf->select_sql_1s($DBMSresource, 't0division', $Conditions);
         if (!$RRD)
-            $Zfpf->send_to_contents_1c('<p>No rule divisions found. Contact app admin. Typically setup on installation.</p>');
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>No rule divisions found. Contact app admin. Typically setup on installation.</p>');
         foreach ($SRD as $VD) {
             $_SESSION['SR']['t0division'][$DivCount] = $VD;
             $Message .= '
@@ -206,7 +206,7 @@ if (isset($_GET['choose_fragment_1'])) {
 if (isset($_POST['choose_fragment_2'])) {
     // Additional security check.
     if (!isset($_SESSION['SR']['t0division']) or $EditLocked or !$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))
-        $Zfpf->send_to_contents_1c();
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records'); // Edit lock now, step 1 above not effected by other editors.
     $CheckedPost = $Zfpf->post_length_blank_1c('selected');
     if (!is_numeric($CheckedPost) or !isset($_SESSION['SR']['t0division'][$CheckedPost]))
@@ -240,7 +240,7 @@ if (isset($_POST['choose_fragment_2'])) {
             $Conditions[0] = array('k0fragment', '=', $VFD['k0fragment']);
             list($SRF, $RRF) = $Zfpf->select_sql_1s($DBMSresource, 't0fragment', $Conditions);
             if ($RRF != 1)
-                $Zfpf->send_to_contents_1c('<p>An error occurred matching fragments to divisions. Contact app admin.</p>');
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching fragments to divisions. Contact app admin.</p>');
             $Message .= '/>'.$Zfpf->decrypt_1c($SRF[0]['c5name']).' -- '.$Zfpf->decrypt_1c($SRF[0]['c5citation']);
         }
         $Message .= '<br />
@@ -262,7 +262,7 @@ if (isset($_POST['choose_fragment_2'])) {
 if (isset($_POST['choose_fragment_3'])) {
     // Additional security check.
     if (!isset($_SESSION['SR']['PlainText']['k0fragment']) or !isset($_SESSION['SR']['PlainText']['FragmentsInReportKeys']) or $EditLocked or !$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))
-        $Zfpf->send_to_contents_1c();
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     $Inserted = 0;
     $Deleted = 0;
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
@@ -284,7 +284,7 @@ if (isset($_POST['choose_fragment_3'])) {
             $Conditions[1] = array('k0fragment', '=', $VF);
             list($SRAuF, $RRAuF) = $Zfpf->select_sql_1s($DBMSresource, 't0audit_fragment', $Conditions, array('k0audit_fragment')); // Needed to delete t0audit_fragment_obsmethod rows.
             if ($RRAuF != 1)
-                $Zfpf->send_to_contents_1c('<p>An error occurred matching this audit to fragments. Contact app admin.</p>');
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching this audit to fragments. Contact app admin.</p>');
             $Affected = $Zfpf->delete_sql_1s($DBMSresource, 't0audit_fragment', $Conditions, TRUE); // If 4th parameter true, delete_sql_1s will only delete one row.
             if ($Affected != 1)
                 $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
@@ -497,7 +497,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
 
     // Additional security check
     if ($EditLocked or $_SESSION['Selected']['k0user_of_certifier'] or !$EditAuth or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))
-        $Zfpf->send_to_contents_1c();
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
 
     // choose_obsmethod code
     if (isset($_GET['choose_obsmethod_1'])) {
@@ -540,7 +540,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         unset($OtConditions[--$RRAuOt][3]); // remove the final, hanging, 'OR'.
         list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', $OtConditions);
         if ($RROt != ++$RRAuOt) // Pre-increment because decremented above.
-            $Zfpf->send_to_contents_1c('<p>An error occurred matching the report to observation topics. Contact app admin.</p>');
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching the report to observation topics. Contact app admin.</p>');
         $Message .= '
         <form action="audit_fragment_io03.php" method="post">';
         $_SESSION['SR']['PlainText']['k0obsmethod'] = array();
@@ -558,7 +558,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
                         $Conditions[0] = array('k0obsmethod', '=', $k0obsmethod);
                         list($SROm, $RROm) = $Zfpf->select_sql_1s($DBMSresource, 't0obsmethod', $Conditions);
                         if ($RROm != 1)
-                            $Zfpf->send_to_contents_1c('<p>An error occurred matching observation topics to sample observation methods. Contact app admin.</p>');
+                            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching observation topics to sample observation methods. Contact app admin.</p>');
                         $AllOmNames[$k0obsmethod] = nl2br($Zfpf->decrypt_1c($SROm[0]['c6obsmethod']));
                         $AllOmKeys[$k0obsmethod] = $SROm[0]['k0obsmethod'];
                         $_SESSION['SR']['PlainText']['k0obsmethod'][$i] = $SROm[0]['k0obsmethod'];

@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file has a case for each PHP file in app directory, where front_controller.php is located, retrieved by __DIR__ below
 // but not its sub-directories and also not:
@@ -114,10 +114,8 @@ switch (@parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) {
         include 'setup_demos_7-9.php';
     case '__DIR__/setup_demos_10-12.php':
         include 'setup_demos_10-12.php';
-    case '__DIR__/setup_nh3r_1a.php':
-        include 'setup_nh3r_1a.php';
-    case '__DIR__/setup_nh3r_1b.php':
-        include 'setup_nh3r_1b.php';
+    case '__DIR__/setup_nh3r_1.php':
+        include 'setup_nh3r_1.php';
     case '__DIR__/setup_nh3r_2.php':
         include 'setup_nh3r_2.php';
     case '__DIR__/training_form_io03.php':

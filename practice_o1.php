@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 //
 // This PHP file to allows viewing the practice details associated with a practice.
 
@@ -11,7 +11,7 @@ $Zfpf->session_check_1c();
 
 // Security check.
 if (!isset($_POST['selected_practice']) and !isset($_SESSION['StatePicked']['t0practice']))
-    $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+    $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
 
 // Cannot call CoreZfpf::session_cleanup_1c here, need $_SESSION['SelectResults']
 // START modified session cleanup.
@@ -28,7 +28,7 @@ if (isset($_SESSION['Post']))
 if (isset($_POST['selected_practice'])) {
     $CheckedPost = $Zfpf->post_length_blank_1c('selected_practice');
     if (!is_numeric($CheckedPost) or !isset($_SESSION['SelectResults']['t0practice'][$CheckedPost]))
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
     $_SESSION['StatePicked']['t0practice'] = $_SESSION['SelectResults']['t0practice'][$CheckedPost];
 }
 if (isset($_SESSION['SelectResults']))

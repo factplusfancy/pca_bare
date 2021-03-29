@@ -1,7 +1,7 @@
 <?php
 
 // *** LEGAL NOTICES ***  
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file populates t0practices with the ammonia-refrigeration templates below for 
 // inspection, testing, and maintenance (ITM) for safe operation and mechanical integrity.
@@ -45,6 +45,7 @@ $practices = array( // Indent as done below for better display in HTML text area
 (6.3) inspect using sight, hearing, touch, or smell and, if needed, common tools, such as belt-tension gauges, flashlights, magnifying glasses, or mirrors, 
 (6.4) record the status, especially any problems and at least "Ok" if no problems found, but 
 (6.5) only proceed with a fix if qualified and authorized by the responsible individual(s), per the Owner/Operator management system. 
+(7) ITM frequencies may typically be modified within at least plus or minus one fourth (25%), but typically not more than six months, of the recommended frequencies, unless rules (laws, codes...), manufacturer recommendations, or operating experience indicate otherwise. See IIAR 6-2019, Table 5.2, for additional detail. 
 Option: provide more details on the above topics in a practice document here.'),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -59,7 +60,7 @@ Option: provide more details on the above topics in a practice document here.'),
 2 => array(
     'c5name' => $Zfpf->encrypt_1c('Overview of the '.HAZSUB_PROCESS_NAME_ZFPF.' and its hazards'),
     'c5number' => $Zfpf->encrypt_1c('HHHACC'),
-    'c6description' => $Zfpf->encrypt_1c('Awareness level training, often included in emergency-action plan training, is provided to all employees and contractors who complete inspection, testing, or maintenance on the '.HAZSUB_PROCESS_NAME_ZFPF.'. For contractors, this is documented in the Entrance Privileges and Records of a Contractor Individual PSM-CAP compliance practice. For employees who receive training beyond awareness level, this may be documented with a record of training on hazardous-substance procedures and safe-work practices.'),
+    'c6description' => $Zfpf->encrypt_1c('Awareness training, often included in emergency-action plan training, is provided to all employees and contractors who complete inspection, testing, or maintenance on the '.HAZSUB_PROCESS_NAME_ZFPF.'. For contractors, this is documented in the Entrance Privileges and Records of a Contractor Individual PSM-CAP compliance practice. For employees who receive training beyond the awareness level, this may be documented with a record of training on hazardous-substance procedures and safe-work practices.'),
     'c5require_file' => $EncryptedNothing,
     'c5require_file_privileges' => $EncryptedNothing
 ),
@@ -86,7 +87,7 @@ Option: provide more details on the above topics in a practice document here.'),
     'c5name' => $Zfpf->encrypt_1c('Replacement-in-kind Quality Assurance'),
     'c5number' => $Zfpf->encrypt_1c('HHHAEE'),
     'c6description' => $Zfpf->encrypt_1c('For replacement parts, use: 
-(1) parts that the original equipment manufacturer (OEM) recommends as the same as the old part,
+(1) parts that the original equipment manufacturer (OEM) recommends as a replacement-in-kind for the old part,
 (2) parts recommended by the OEM or another reputable manufacturer as a substitute that meets 
 (2.1) the design specification of the old part and 
 (2.2) the service requirements for this part, but
@@ -106,10 +107,11 @@ Option: provide more details on the above topics in a practice document here.'),
 (5) If and when the damaged insulation or paint can be removed, safely and without the steel immediately frosting up, complete the following. 
 (5.1) If the underlying steel has moderately or severely corroded, test to measure the remaining steel thickness, for example, by ultrasonic testing. Replace or repair the steel as needed. 
 (5.2) If only slight corrosion is visible on the steel\'s exterior surface, with no significant pitting, or otherwise if testing indicates adequate steel thickness remains, properly clean and prepare the steel surface, photograph it, and then apply a corrosion-inhibiting coating before re-painting or re-insulating any steel that has corroded. 
-(5.3) When installing or replacing insulation, seal the vapor retarder to the steel periodically to create barriers to water migration away from a vapor-retarder breach. In other words, create vapor-retarder cells around vessels and within piping runs. 
+(5.3) When installing or replacing insulation, seal the vapor retarder to the steel periodically, such as near every piping weld, to create barriers to water migration away from a vapor-retarder breach. In other words, create vapor-retarder cells around vessels and within piping runs. This is better than a brushed-on vapor dam. 
 (6) If removing damaged insulation is not feasible for a year or more, radiographic or pulsed eddy current non-destructive testing may be able to provide adequately-accurate measurement of remaining steel thickness under insulation, which may be wet or have ice-buildups in it. 
-(7) See IIAR 6, latest edition (Chapters 10 and 11 and Appendices A.10 and A.11, in the 2019 edition) for assessing if adequate steel thickness remains. See also API 579-1/ASME FFS-1, Fitness-For-Service. 
-(8) Keep steel-surface photographs and records of any steel-thickness measurements for as long as that steel remains in service.'),
+(7) See API 579-1/ASME FFS-1 Fitness-For-Service, latest edition, for assessing if adequate steel thickness remains. Do not use the simplified fitness-for-service information in IIAR 6-2019, Chapters 10 and 11 and Appendices A.10 and A.11, for example, when assessing corroded or damaged vessels or piping, without also consulting the latest edition of API 579-1/ASME FFS-1, Fitness-For-Service, because the simplified methods in IIAR 6-2019 do not reproduce the limitations of the API 579-1/ASME FFS-1 methods, for example, corrosion or damage near nozzles, supports, cracks, grooves, gouges, or other areas that may experience additional stress. 
+(8) See ASME PCC-2, Repair of Pressure Equipment and Piping, latest edition, for temporary repair options, such as Article 3.6, Mechanical Clamp Repair, as well as long-term repair options, whose costs may be compared to replacement. 
+(9) Keep steel-surface photographs and records of any steel-thickness measurements for as long as that steel remains in service.'),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
 ),
@@ -185,10 +187,10 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (1) compressor-safety shutoffs -- test following the Safety-Shutoffs Testing hazardous-substance procedure and calibrate, fix, or replace if needed, as applicable, the safety shutoffs for 
 (1.1) high-discharge pressure, 
 (1.2) high-discharge temperature (if any), 
-(1.3) low-oil pressure, 
-(1.4) low-suction pressure, 
-(1.5) any other safety shutoffs the manufacturer recommendations call for testing, and 
-(1.6) high level in vessel(s) that feed compressors, 
+(1.3) high level in vessel(s) that feed compressors, 
+(1.4) low-oil pressure, 
+(1.5) low-suction pressure, and 
+(1.6) any other safety shutoffs or sensors that the manufacturer recommends testing or calibrating, 
 (2) electrical for/between motor controller, motor, oil heater, controls, and any local control panel -- 
 (2.1) thermal scan, 
 (2.2) calibrate motor-current sensor, 
@@ -204,7 +206,8 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (8) cylinder-head cooling system -- clean strainer and also clean internal scale and inspect/note/fix corrosion if/when removing cylinder heads, 
 (9) exterior surface -- complete ITM per the Insulation, Paint, and Underlying Steel Sub-practice, 
 (10) sight glasses -- complete ITM per the Sight Glass Sub-practice, 
-(11) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice. 
+(11) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice,
+(12) any other tasks that the manufacturer recommends. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -226,10 +229,11 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (1) compressor-safety shutoffs -- test following the Safety-Shutoffs Testing hazardous-substance procedure and calibrate, fix, or replace if needed, as applicable, the safety shutoffs for 
 (1.1) high-discharge pressure, 
 (1.2) high-discharge temperature, 
-(1.3) low-oil pressure, 
-(1.4) low-suction pressure, 
-(1.5) any other safety shutoffs the manufacturer recommendations call for testing, and 
-(1.6) high level in vessel(s) that feed compressors, 
+(1.3) high level in vessel(s) that feed compressors, 
+(1.4) high-oil temperature, 
+(1.5) low-oil pressure, 
+(1.6) low-suction pressure, and 
+(1.7) any other safety shutoffs or sensors that the manufacturer recommends testing or calibrating, 
 (2) electrical for/between motor controller(s), motor(s), oil heater, controls, and local control panel -- 
 (2.1) thermal scan, 
 (2.2) calibrate motor-current sensor, 
@@ -241,7 +245,10 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (6) oil heaters -- verify operation, 
 (7) exterior surface -- complete ITM per the Insulation, Paint, and Underlying Steel Sub-practice, 
 (8) sight glasses -- complete ITM per the Sight Glass Sub-practice, 
-(9) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice. 
+(9) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice,
+(10) any other tasks that the manufacturer recommends, such as inspect/note/fix for
+(10.1) proper oil flow in any oil return line from the coalescing side of oil separators,
+(10.2) proper equalize-to-suction time after compressor shutoff, via a suction check-valve bypass or similar. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -335,7 +342,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 18 => array(
     'c5name' => $Zfpf->encrypt_1c('Vibration Analysis'),
     'c5number' => $Zfpf->encrypt_1c('HHHARR'),
-    'c6description' => $Zfpf->encrypt_1c('Complete if needed per manufacturer recommendations or documented operating experience. Fairly common for twin-screw compressors. Very rare for single-screw and reciprocating compressors. Follow facility hazardous-substance procedures and safe-work practices. See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
+    'c6description' => $Zfpf->encrypt_1c('Complete if needed per manufacturer recommendations or documented operating experience. Common for twin-screw compressors. Rare for single-screw and reciprocating compressors; however, vibration analysis is often helpful for their motors, and so it is sometimes also done on single-screw compressors. Follow facility hazardous-substance procedures and safe-work practices. See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
 ),
@@ -466,18 +473,18 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file_privileges' => $EncryptedLowPrivileges
 ),
 25 => array(
-    'c5name' => $Zfpf->encrypt_1c('Liquid-Cooling Evaporators, Every 6 Months'),
+    'c5name' => $Zfpf->encrypt_1c('Liquid Cooling or Heating Equipment, Every 6 Months'),
     'c5number' => $Zfpf->encrypt_1c('HHHAYY'),
-    'c6description' => $Zfpf->encrypt_1c('These '.HAZSUB_NAME_ADJECTIVE_ZFPF.' evaporators included chillers, ice builders, and also tanks, silos, or other vessels cooled by jackets or internal plates or coils. Their heat exchangers include coils, plates, tubes, or pressure vessels, such as shell-and-tube, plate-and-frame, and also plates or tubes, in various shapes, either inside or wrapped around tanks, silos, or other liquid containers, some of which may have scraped or swept surfaces, build layers of ice, or have liquid films flowing over them (falling film). 
+    'c6description' => $Zfpf->encrypt_1c('These '.HAZSUB_NAME_ADJECTIVE_ZFPF.' evaporators, for cooling, or condensers, for heating, include chillers, ice builders, heaters for underfloor heat systems, and also tanks, silos, or other vessels cooled by jackets or internal plates or coils. Their heat exchangers include coils, plates, tubes, or pressure vessels, such as shell-and-tube, plate-and-frame, and also plates or tubes, in various shapes, either inside or wrapped around tanks, silos, or other liquid containers, some of which may have scraped or swept surfaces, build layers of ice, or have liquid films flowing over them (falling film). 
 Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
 (1) exterior of the manufacturer-supplied package or similar, such as the enclosure or tank exterior, and nearby piping -- inspect/note/fix if loose, unclean, worn, cracks, dents, scratches, impact marks, or other damage, 
-(2) cooling effectiveness -- drain oil, as needed (for example before the bottom of the heat-exchanger has no frost because it accumulated oil), following the oil-draining hazardous-substance procedure, and inspect/note/fix any other source of reduced cooling, 
-(3) the liquid being cooled -- 
-(3.1) complete any needed testing and chemical additions based on operating experience, quality standards, chemical-supplier recommendations, or equipment-manufacturer recommendations (for example, for glycol, the freeze-point, via refractive index or specific gravity, pH, any corrosion inhibitors, and any biocides), 
+(2) cooling or heating effectiveness -- verify and drain oil, as needed (for example before the bottom of the heat-exchanger has no frost because it accumulated oil), following the oil-draining hazardous-substance procedure, and inspect/note/fix any other source of reduced cooling, 
+(3) the liquid being cooled or heated -- 
+(3.1) complete any needed testing and treatment based on operating experience, quality standards, chemical-supplier recommendations, or equipment-manufacturer recommendations (for example, for glycol, the freeze-point, via refractive index or specific gravity, pH, any corrosion inhibitors, and any biocides), 
 (3.2) review results of any needed more-frequent testing from the prior six months, and 
 (3.3) inspect/note/fix any problems, 
 (4) any drip pan -- inspect/note/fix if obstructed, such as water or ice accumulating in the pan, 
-(5) any ammonia-in-air safety systems that sample or test the room where the liquid-cooling evaporator is located -- 
+(5) any ammonia-in-air safety systems that sample or test the room where the liquid cooling or heating equipment is located -- 
 (5.1) calibrate detectors, as needed, per manufacturer instructions, and 
 (5.2) functionally test sensors, detectors, connected alarm systems, and their responses (shutoffs, audio/visual alarms, phone calls or electronic notifications...), 
 (6) complete any other needed ITM, based on operating experience or manufacturer recommendations. 
@@ -486,20 +493,20 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file_privileges' => $EncryptedLowPrivileges
 ),
 26 => array(
-    'c5name' => $Zfpf->encrypt_1c('Liquid-Cooling Evaporators, Yearly'),
+    'c5name' => $Zfpf->encrypt_1c('Liquid Cooling or Heating Equipment, Yearly'),
     'c5number' => $Zfpf->encrypt_1c('HHHAZZ'),
-    'c6description' => $Zfpf->encrypt_1c('For a description these evaporators, see the Liquid-Cooling Evaporators, Every 6 Months, PSM-CAP compliance practice. Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
+    'c6description' => $Zfpf->encrypt_1c('For a description these evaporators, see the Liquid Cooling or Heating Equipment, Every 6 Months, PSM-CAP compliance practice. Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
 (1) supports, from the manufacturer-supplied package or similar, such as the enclosure or tank, to the foundation (if independently supported), roof, floor, or building-structural supports that carry its load -- inspect/note/fix any 
 (1.1) corrosion, wear, cracking, warping, stretching, bending, sagging, or deteriorating, 
 (1.2) loose or missing fasteners, 
 (1.3) loose or missing rods, hangers, or other support components, 
 (1.4) roof or floor damage, 
-(1.5) damage to or problems with load-carrying building-structural supports near where any of the liquid-cooling evaporator supports are attached, 
+(1.5) damage to or problems with load-carrying building-structural supports near where any of the liquid cooling or heating equipment supports are attached, 
 (1.6) cracking, creep, efflorescence, sagging, or spalling of structural concrete, 
 (1.7) shifting foundations, or 
 (1.8) other indications of excessive loads, damage, or problems, 
 (2) any guarding or barricades for protection from impacts and traffic -- inspect/note/fix if missing, damaged, or inadequate, 
-(3) any defrosting or clean-in-place systems, by observing one complete defrost and/or cleaning from before the liquid-supply solenoid valve closes until after it reopens and the liquid-cooling evaporator fully re-starts -- inspect/note/fix 
+(3) any defrosting or clean-in-place systems, by observing one complete defrost and/or cleaning from before the liquid-supply solenoid valve closes until after it reopens and the liquid-cooling equipment fully re-starts -- inspect/note/fix 
 (3.1) odd sounds, 
 (3.2) excessive vibrations, 
 (3.3) "not working right", 
@@ -578,7 +585,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (9) oil-draining locations -- inspect/note/fix that each one has a self-closing valve installed or otherwise that procedures are in place to properly install a temporary self-closing valve when oil is drained, 
 (10) labeling of (10A) pipes, (10B) equipment, including pressure vessels, and (10C) valves (unless, for valves, the facility\'s lockout-tagout policy calls for pre-work valve tagging) -- inspect/note/fix for 
 (10.1) labels, markings, or tags that are 
-(10.1.1) missing (not present where they should be), 
+(10.1.1) missing (not present where they should be, including marking any check valves under insulation), 
 (10.1.2) illegible (because faded, worn, unclean, and so forth), or 
 (10.1.3) inconsistent with the '.HAZSUB_PROCESS_NAME_ZFPF.' piping and instrumentation diagram (P&amp;ID), and 
 (10.2) compliance with either 
@@ -825,7 +832,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 );
 // Populate t0practice and t0practice_division
 $practice_division = array(); // In case used by previously required file.
-$k0practice = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice', 't0practice');
+$k0practice = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice', 't0practice');
 foreach ($practices as $K => $V) {
     $V['k0practice'] = ++$k0practice;
     $practices[$K]['k0practice'] = $k0practice; // needed later for practice_division and fragment_practice
@@ -840,7 +847,7 @@ $Divisions = array(
     23, // Mechanical Integrity in OSHA PSM
     36  // Mechanical Integrity in EPA CAP
 );
-$k0practice_division = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0practice_division', 't0practice_division');
+$k0practice_division = $Zfpf->get_highest_in_table($DBMSresource, 'k0practice_division', 't0practice_division');
 foreach ($Divisions as $VA) {
     foreach ($practice_division as $VB) {
         $VB['k0practice_division'] = ++$k0practice_division;
@@ -911,7 +918,7 @@ foreach ($GeneralFragments as $VA) {
             'k0practice' => $practices[$VB]['k0practice']
         );
 }
-$k0fragment_practice = $SetupZfpf->get_highest_in_table($Zfpf, $DBMSresource, 'k0fragment_practice', 't0fragment_practice');
+$k0fragment_practice = $Zfpf->get_highest_in_table($DBMSresource, 'k0fragment_practice', 't0fragment_practice');
 foreach ($fragment_practice as $V) {
     $V['k0fragment_practice'] = ++$k0fragment_practice;
     $V['c5who_is_editing'] = $EncryptedNobody;

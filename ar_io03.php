@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the action register (ar) input and output HTML forms, except:
 //  - SPECIAL CASE: i0m file that just requires the i1m file, to allow calling directly from left-hand contents.
@@ -69,7 +69,7 @@ if (isset($_POST['ar_o1']) or isset($_POST['ar_o1_from']) or isset($_POST['undo_
 if (isset($_GET['ar_download_csv'])) {
     // Generate the CSV string in $FileAsString
     $Fields = array('c5name', 'c5status', 'c5priority', 'c5affected_entity', 'c6deficiency', 'c6details', 'c6notes', 'c6bfn_supporting', 'c6nymd_leader', 'c6nymd_ae_leader');
-    $FileAsString = '"Name"|"Status"|"Priority"|"Affected Entity"|"Deficiencies"|"Details or Resolution Options"|"Resolution Methods and Any Deficiency Modifications"|"Supporting Documents Uploaded"|"Assigned-To Leader Approval"|"Affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approval"
+    $FileAsString = '"Name"|"Status"|"Priority"|"Affected Entity"|"Deficiency"|"Details or Resolution Options"|"Resolution Methods and Any Deficiency Modifications"|"Supporting Documents Uploaded"|"Assigned-To Leader Approval"|"Affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approval"
 '; // First line of CSV file, holding column headings of future spreadsheet. Enclose everything but delimiter in quotes so delimiter can be in text.
     if (isset($_SESSION['Scratch']['ActionRows'])) foreach ($_SESSION['Scratch']['ActionRows'] as $VA) {
         foreach ($Fields as $VB) {
@@ -85,7 +85,8 @@ if (isset($_GET['ar_download_csv'])) {
         $FileAsString = substr($FileAsString, 0, -1).'
 '; // replace final delineator, like |, with newline
     }
-    $LocalName = 'psm_cap_actions_downloaded_'.time().'.csv';
+    $FileAsString = $Zfpf->csv_safe_xss_prevent_decode_1c($FileAsString); // See CoreZfpf.php
+    $LocalName = 'psm_cap_actions_downloaded_at_'.time().'.csv';
     $Zfpf->download_one_file($FileAsString, $LocalName); // FilesZfpf::download_one_file echos and exits.
 }
 
@@ -105,7 +106,7 @@ if (isset($_GET['ar_i1m_draft_unassociated'])) {
 }
 elseif (isset($_GET['ar_i1m_all'])) {
     if ($_SESSION['Scratch']['PlainText']['SecurityToken'] != 'ar_i1m.php') // Others cases (audit, incident, PHA) cannot view closed actions.
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $SpecialConditions = array('k0user_of_ae_leader', '>=', 0); // See app schema.
     $Conditions = $arZfpf->conditions_state_picked($SpecialConditions);
     list($_SESSION['SelectResults']['t0action'], $RowsReturned) = $Zfpf->one_shot_select_1s('t0action', $Conditions);
@@ -247,7 +248,7 @@ elseif (isset($_GET['ar_i1m_contractor'])) {
 if (isset($_POST['ar_i0n'])) {
     // Additional security check. Handle inadequate global privileges. Otherwise, any user associated with this practice can start a new record.
     if ($User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Initialize $_SESSION['Selected']
     $_SESSION['Selected'] = array(
         'k0action' => time().mt_rand(1000000, 9999999),
@@ -501,7 +502,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     // Additional security check.
     if ($_SESSION['Scratch']['PlainText']['SecurityToken'] != 'ar_i1m.php' or $_SESSION['Selected']['k0user_of_ae_leader'] < -1 or ($who_is_editing != '[A new database row is being created.]' and !$EditAuth) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Get useful information
     if ($_SESSION['Selected']['k0user_of_ae_leader'] == -1) // See app schema. Cannot be -2 in this context because that's handled by the recommending report (PHA, audit...)
         $htmlFormArray = $arZfpf->ar_html_form_array('Draft proposed action unassociated');
@@ -545,7 +546,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
             $TaskSubKeyA = substr($KA, 9);
             if (isset($_POST['approve_1'.$TaskSubKeyA]) or isset($_POST['approve_c1'.$TaskSubKeyA])) {
                 if (!$_SESSION['Selected']['k0user_of_leader'] or ($TaskSubKeyA == '_leader' and ($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or (isset($_POST['approve_1_leader']) and $_SESSION['Selected']['k0user_of_ae_leader'] != 0) or (isset($_POST['approve_c1_leader']) and $_SESSION['Selected']['k0user_of_ae_leader'] != 1))) or ($TaskSubKeyA == '_ae_leader' and (!$UserIsAELeader or (isset($_POST['approve_1_ae_leader']) and $_SESSION['Selected']['k0user_of_ae_leader'] != 1) or (isset($_POST['approve_c1_ae_leader']) and $_SESSION['Selected']['k0user_of_ae_leader'] <= 1))) or $Zfpf->decrypt_1c($_SESSION['Selected']['c6notes']) == $Nothing)
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 $Zfpf->edit_lock_1c('action');
                 $Display = $Zfpf->select_to_display_1e($htmlFormArray);
                 // Handle k0user field(s)
@@ -612,7 +613,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
             }
             if (isset($_POST['approve_2'.$TaskSubKeyA]) or isset($_POST['approve_c2'.$TaskSubKeyA])) {
                 if (!$_SESSION['Selected']['k0user_of_leader'] or ($TaskSubKeyA == '_leader' and ($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or (isset($_POST['approve_1_leader']) and $_SESSION['Selected']['k0user_of_ae_leader'] != 0) or (isset($_POST['approve_c1_leader']) and $_SESSION['Selected']['k0user_of_ae_leader'] != 1))) or ($TaskSubKeyA == '_ae_leader' and (!$UserIsAELeader or (isset($_POST['approve_1_ae_leader']) and $_SESSION['Selected']['k0user_of_ae_leader'] != 1) or (isset($_POST['approve_c1_ae_leader']) and $_SESSION['Selected']['k0user_of_ae_leader'] <= 1))) or $Zfpf->decrypt_1c($_SESSION['Selected']['c6notes']) == $Nothing)
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 $Conditions[0] = array('k0action', '=', $_SESSION['Selected']['k0action']);
                 if (isset($_POST['approve_2'.$TaskSubKeyA])) {
                     $Changes['c5ts'.$TaskSubKeyA] = $Zfpf->encrypt_1c(time());
@@ -689,7 +690,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
             // No edit_lock_1c() because only the AELeader can assign tasks.
             if (isset($_POST['assign_1'.$TaskSubKeyA])) {
                 if (!$UserIsAELeader or $KA != 'k0user_of_leader')
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 echo $Zfpf->xhtml_contents_header_1c('Lookup User');
                 $Zfpf->lookup_user_1c('ar_io03.php', 'ar_io03.php', 'assign_2'.$TaskSubKeyA, 'ar_o1');
                 echo $Zfpf->xhtml_footer_1c();
@@ -697,7 +698,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
             }
             if (isset($_POST['assign_2'.$TaskSubKeyA])) {
                 if (!$UserIsAELeader or $KA != 'k0user_of_leader')
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                 // Create array $Conditions1[] and $TableNameUserEntity for selecting all users from the affected-entity/user junction table.
                 if ($MaxScope == 'Contractor-wide') {
                     $TableNameUserEntity = 't0user_contractor';
@@ -852,7 +853,7 @@ if (isset($_SESSION['Selected']['k0action'])) {
 
     // Additional security check for i1, i2, i3 code
     if ($_SESSION['Selected']['k0user_of_ae_leader'] != -1 and ($_SESSION['Selected']['k0user_of_ae_leader'] != 0 or $_SESSION['Selected']['k0user_of_leader'] != $_SESSION['t0user']['k0user'])) // See app schema; only allow editing here in these cases.
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // i1 code
     if (isset($_POST['ar_o1_from']))
         $Zfpf->edit_lock_1c('action', $ActionName); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error.

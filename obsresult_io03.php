@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
 
 // This file handles all the input and output HTML forms
 // SPECIAL CASE: including selecting observation topics (obstopic) and sample methods (obsmethod)
@@ -96,7 +96,7 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
         unset($OtConditions[--$RRAuOt][3]); // remove the final, hanging, 'OR'.
         list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', $OtConditions);
         if ($RROt != ++$RRAuOt) // Pre-increment because decremented above.
-            $Zfpf->send_to_contents_1c('<p>An error occurred matching the report to observation topics. Contact app admin.</p>');
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching the report to observation topics. Contact app admin.</p>');
         $i = 0;
         foreach ($SROt as $KOt => $VOt) {
             $OtName = $Zfpf->decrypt_1c($VOt['c5name']);
@@ -117,7 +117,7 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
                     $Conditions[0] = array('k0obsmethod', '=', $VOtOm['k0obsmethod']);
                     list($SROm, $RROm) = $Zfpf->select_sql_1s($DBMSresource, 't0obsmethod', $Conditions);
                     if ($RROm != 1)
-                        $Zfpf->send_to_contents_1c('<p>An error occurred matching observation topics to sample observation methods. Contact app admin.</p>');
+                        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching observation topics to sample observation methods. Contact app admin.</p>');
                     // Need pairs of $_SESSION['SR']['t0obstopic'] and $_SESSION['SR']['t0obsmethod'] with matching numeric keys, for viewing and populating t0obsresult rows.
                     $_SESSION['SR']['t0obstopic'][$i] = $VOt; // Same stuff stored in session more than once, but not much data overall. Not too big.
                     $_SESSION['SR']['t0obsmethod'][$i] = $SROm[0];
@@ -149,7 +149,7 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
 if (isset($_GET['choose_obstopic_1'])) {
     // Additional security check.
     if ($EditLocked or !$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))
-        $Zfpf->send_to_contents_1c();
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records'); // Edit lock so someone else does try to add the same observation topic...
     $Message = '<h2>
     <a class="toc" href="glossary.php#obstopic" target="_blank">Observation topics</a> in the scope<br />
@@ -207,7 +207,7 @@ if (isset($_GET['choose_obstopic_1'])) {
 if (isset($_POST['choose_obstopic_2'])) {
     // Additional security check.
     if (!isset($_SESSION['SR']['PlainText']['k0obstopic']) or !isset($_SESSION['SR']['PlainText']['OtInReportKeys']) or $EditLocked or !$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))
-        $Zfpf->send_to_contents_1c();
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     $Conditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit'], 'AND'); // Used for delete case below.
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     $Inserted = 0;
@@ -292,7 +292,7 @@ if (isset($_GET['Ot_all_Om_i0']) or isset($_POST['Ot_all_Om_i0'])) {
         unset($OmConditions[--$RROtOm][3]); // remove the final, hanging, 'OR'.
         list($SROm, $RROm) = $Zfpf->select_sql_1s($DBMSresource, 't0obsmethod', $OmConditions);
         if ($RROm != ++$RROtOm) // Pre-increment because decremented above.
-            $Zfpf->send_to_contents_1c('<p>An error occurred matching observation topics to sample observation methods. Contact app admin.</p>');
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching observation topics to sample observation methods. Contact app admin.</p>');
         foreach ($SROm as $KOm => $VOm) {
             $_SESSION['SR']['t0obsmethod'][$KOm] = $VOm;
             $Message .= '<br />
@@ -435,7 +435,7 @@ if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_
     $Conditions[0] = array('k0obsmethod', '=', $_SESSION['Scratch']['t0obsresult']['k0obsmethod']);
     list($SROm, $RROm) = $Zfpf->select_sql_1s($DBMSresource, 't0obsmethod', $Conditions);
     if ($RROm != 1)
-        $Zfpf->send_to_contents_1c('<p>An error occurred matching an observation result to a sample observation method. Contact app admin.</p>');
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching an observation result to a sample observation method. Contact app admin.</p>');
     $_SESSION['Scratch']['t0obsmethod'] = $SROm[0]; // Potentially used by PHP files the user may call later.
     $LimitsMessage = lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType, $UserPracticePrivileges, $User);
     $Message = '<h2>';
@@ -460,7 +460,7 @@ if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_
             $Conditions[0] = array('k0obstopic', '=', $VOtOm['k0obstopic']);
             list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', $Conditions);
             if ($RROt != 1)
-                $Zfpf->send_to_contents_1c('<p>An error occurred matching a sample observation method to observation topics. Contact app admin.</p>');
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching a sample observation method to observation topics. Contact app admin.</p>');
             $Message .= '<br />
             '.$Zfpf->decrypt_1c($SROt[0]['c5name']);
         }
@@ -555,7 +555,7 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
             $Conditions[0] = array('k0obstopic', '=', $VOtOm['k0obstopic']);
             list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', $Conditions);
             if ($RROt != 1)
-                $Zfpf->send_to_contents_1c('<p>An error occurred matching a sample observation method to observation topics. Contact app admin.</p>');
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching a sample observation method to observation topics. Contact app admin.</p>');
             $Message .= '<br />
             '.$Zfpf->decrypt_1c($SROt[0]['c5name']);
         }
@@ -657,7 +657,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
     if ($_SESSION['Selected']['k0audit'] < 100000) // Templates cannot have observation results.
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
     if ($EditLocked or $_SESSION['Selected']['k0user_of_certifier'] or !$EditAuth)
-        $Zfpf->send_to_contents_1c();
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     if ($who_is_editing == '[Nobody is editing.]')
         $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records');
         // Edit lock report if user may change anything in it. 

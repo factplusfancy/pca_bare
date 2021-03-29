@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This class serves the change-management system (cms) code. 
 
@@ -37,17 +37,17 @@ class cmsZfpf {
                     array('(Test 2) any procedure for the '.HAZSUB_PROCESS_NAME_ZFPF.', including hazardous-substance procedures and safe-work practices or inspection, testing, and maintenance (ITM) procedures', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 3) any component of the '.HAZSUB_PROCESS_NAME_ZFPF.' or its safety systems  -- including pressure-relief, emergency ventilation, instrumentation, and controls -- such that it no longer "satisfies the design specification"', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 4) the loads on buildings or structures that support the '.HAZSUB_PROCESS_NAME_ZFPF.', such as the addition of significant new loads to roofs carrying its piping or equipment', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
-                    array('(Test 5) the potential for anything to fall on, catch fire or explode near, or somehow damage the '.HAZSUB_PROCESS_NAME_ZFPF.'', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
-                    array('(Test 6) vehicle traffic patterns near the '.HAZSUB_PROCESS_NAME_ZFPF.', such as rearranging storage racks', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
+                    array('(Test 5) the potential for anything to fall on, catch fire or explode near, corrode, or damage the '.HAZSUB_PROCESS_NAME_ZFPF.', including materials storage or use and cleaning or sanitation', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
+                    array('(Test 6) traffic patterns near the '.HAZSUB_PROCESS_NAME_ZFPF.', such as rearranging storage racks', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 7) the distance or protective structures between the '.HAZSUB_PROCESS_NAME_ZFPF.' and commonly occupied areas, such as temporary construction offices, break rooms, loading docks, some production areas, and so forth', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 8) the distance between '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pressure-relief or ventilation discharge zones (considering fluid and air flows after discharge) and doors, windows, air intakes, ladders, or walking-working surfaces (including catwalks)', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 9) ITM or emergency-response access to the '.HAZSUB_PROCESS_NAME_ZFPF.'', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
-                    array('(Test 10) the electrical classification of areas around the '.HAZSUB_PROCESS_NAME_ZFPF.'', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
+                    array('(Test 10) ignition sources, especially open flames or over 750 F (400 C) surfaces, or electrical classifications near the '.HAZSUB_PROCESS_NAME_ZFPF.'', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 11) the controls for the '.HAZSUB_PROCESS_NAME_ZFPF.' or its safety systems, including ventilation, sensors and detectors, alarms, automatic shutoffs for compressors, pumps, and fans, interlocks, suppression systems, and so forth', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 12) the set-points or actions triggered by sensors, pressure-relief valves, or shutoffs devices for the '.HAZSUB_PROCESS_NAME_ZFPF.'', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 13) the safe-operating ranges for temperatures, pressures, flows, compositions, and so forth in the '.HAZSUB_PROCESS_NAME_ZFPF.'', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 14) the specifications of materials put into the '.HAZSUB_PROCESS_NAME_ZFPF.' (including any lubricating oil)', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
-                    array('(Test 15) the specifications of liquids (including cooling water, glycol, brine, and so forth) that contact heat-exchanger components (including plates and tubes), which are part of the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' containment envelope', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
+                    array('(Test 15) the safe-operating ranges and specifications of liquids (including the composition, pressure, and temperature of cooling water, glycol, brine, and including during sanitation, startup, shutdown, and so forth) that contact heat-exchanger components (including jackets, plates, and tubes), which are part of the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' containment envelope', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 16) those portions of utilities, such as electrical supply, that support or interface with the '.HAZSUB_PROCESS_NAME_ZFPF.' such that their failure might cause '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases, explosions, emergency ventilation failure, or impede emergency response', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 17) the number, qualifications, or authority of personnel with process safety, operations, or ITM responsibilities for the '.HAZSUB_PROCESS_NAME_ZFPF.' -- such that changes to process chemicals, technology, equipment, procedures, or facilities are needed to accommodate these organizational changes (March 31, 2009, OSHA interpretation, memo to Regional Administrators)', '', C5_MAX_BYTES_ZFPF, 'checkbox'),
                     array('(Test 18) anything else that might increase the likelihood of '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases, impede mitigation of '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases, or hinder emergency response to '.HAZSUB_NAME_ADJECTIVE_ZFPF.' releases', '', C5_MAX_BYTES_ZFPF, 'checkbox')
@@ -85,9 +85,10 @@ class cmsZfpf {
 (2.1.4) composition, 
 (2.1.5) any other relevant process parameters, and
 (2.1.6) relevant external conditions, including earthquakes/seismic, humidity, rain, salinity (sea spray, deicing...), sand or dust storms, snow, wind, and so forth, 
-(3) welding-procedure specifications and qualification records, 
-(4) paint and insulation specifications, 
-(5) documentation of post-design changes (change orders), and so forth, 
+(3) documentation that '.HAZSUB_NAME_ADJECTIVE_ZFPF.' equipment and piping, installed as part of the change, were separated from people to the extent practical, such as by locating them in machinery rooms or penthouses, above roofs, or outdoors, 
+(4) welding-procedure specifications and qualification records, 
+(5) paint and insulation specifications, including corrosion-under-insulation prevention as needed,
+(6) documentation of post-design changes (change orders), and so forth, 
 <b> after reviewing them as needed to verify that they describe how to safely and legally complete changes to, as applicable: </b>
 (A) the '.HAZSUB_PROCESS_NAME_ZFPF.', including 
 (A.1) its instrumentation and controls and 
@@ -201,12 +202,13 @@ as needed for the safe operation and mechanical integrity of the '.HAZSUB_PROCES
                 'k0user_of_psr' => array('<a id="c6bfn_psr"></a><b>Startup Authorization</b>. This task includes: 
 (1) overall responsibility for, and resolving recommendations from, all change-management tasks, including any that were not assigned above, and 
 (2) any other pre-startup safety review (PSR) tasks needed to verify that 
-(2.1) the '.HAZSUB_PROCESS_NAME_ZFPF.' and everything it depends on or affects, including buildings, structures, supports, piping, vessels, and equipment, as built, 
-(2.1.1) are suitable for their service and 
-(2.1.2) are in accordance with their 
-(2.1.2.1) design specifications, 
-(2.1.2.2) all instructions from manufacturers of their component parts, and 
-(2.1.2.3) applicable legal requirements. 
+(2.1) the entire '.HAZSUB_PROCESS_NAME_ZFPF.' and everything it depends on or affects, including buildings, structures, supports, piping, vessels, and equipment, as built, are 
+(2.1.1) fit for service (in other words, suitable for the process application for which they will be used) and 
+(2.1.2) reasonably and prudently safe, and 
+(2.2) all things changed, for the current project, are in accordance with their 
+(2.2.1) design specifications, 
+(2.2.2) instructions from manufacturers of their component parts, if any, and 
+(2.2.3) applicable legal requirements. 
 <b>Before startup authorization, neither </b>
 (A) put any hazardous substance into new or altered piping or equipment <b>nor </b>
 (B) implement a change to the stage when training is needed on new or altered procedures, practices, or controls. 

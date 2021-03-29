@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // The PHP file inserts anhydrous-ammonia refrigeration (nh3r) template practices into database.
 // pcm/setup.php must be run before it.
@@ -34,7 +34,7 @@ if (isset($_POST['setup_more'])) {
     Setup anhydrous-ammonia refrigeration standard practices</h2><p>
     Inserting into the database instance...<br />';
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/SetupZfpf.php';
-    $SetupZfpf = new SetupZfpf;
+    // $SetupZfpf = new SetupZfpf; // Placeholder, see incudes/SetupZfpf.php
     // TO DO FOR PRODUCTION VERSION  Comment out any already-installed templates before running this file or uncomment all if re-installing after dropping database. 
     // TO DO FOR PRODUCTION VERSION  Run in batches if server times out.
     echo 'anhydrous-ammonia mechanical-refrigeration audit and hazard review templates<br />';

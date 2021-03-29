@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the user_owner input and output HTML forms, except the:
 //  - i0m and i1m file for listing existing records (and giving the option to start a new record)
@@ -29,7 +29,7 @@ if (isset($_POST['user_i0n']) or isset($_POST['user_i2']) or isset($_POST['user_
 // Add a user code
 if ($RunUserCode or isset($_POST['user_yes_confirm_post_1e'])) {
     if (!isset($_SESSION['StatePicked']['t0owner']) or !isset($_SESSION['t0user_owner']) or strlen($Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user'])) < strlen(MID_PRIVILEGES_ZFPF) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/UserZfpf.php';
     $UserZfpf = new UserZfpf;
     if (isset($_POST['user_i0n']) or isset($_POST['user_undo_confirm_post_1e']))
@@ -92,7 +92,7 @@ $htmlFormArray = array(
 // history_o1 code
 if (isset($_POST['user_owner_history_o1'])) {
     if (!isset($_SESSION['Selected']['k0user_owner']) or !isset($_SESSION['t0user_owner']) or $_SESSION['t0user_owner']['k0owner'] != $_SESSION['Selected']['k0owner'] or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/HistoryGetZfpf.php';
     $HistoryGetZfpf = new HistoryGetZfpf;
     list($SR, $RR) = $HistoryGetZfpf->one_row_h($Zfpf, 't0user_owner', $_SESSION['Selected']['k0user_owner']);
@@ -102,7 +102,7 @@ if (isset($_POST['user_owner_history_o1'])) {
 // History of what a user has done. Accessible here if a current owner employee. For separated users, see user_h_o1.php
 if (isset($_POST['by_user_h_o1'])) {
     if (!isset($_SESSION['Selected']['k0user_owner']) or !isset($_SESSION['t0user_owner']) or $_SESSION['t0user_owner']['k0owner'] != $_SESSION['Selected']['k0owner'] or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/HistoryGetZfpf.php';
     $HistoryGetZfpf = new HistoryGetZfpf;
     list($SR, $RR) = $HistoryGetZfpf->by_user_h($Zfpf, $_SESSION['Selected']['k0user']); // No owner, facility, or process conditions needed because the user is an employee of the owner, so all of the user's acts must relate to the owner's facilities and processes.
@@ -198,7 +198,7 @@ if (isset($_SESSION['Selected']['k0user_owner'])) {
     if ($who_is_editing == '[A new database row is being created.]') {
         // Additional security check
         if (!isset($_SESSION['StatePicked']['t0owner']) or !isset($_SESSION['t0user_owner']) or strlen($Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user'])) < strlen(MID_PRIVILEGES_ZFPF) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-            $Zfpf->send_to_contents_1c(); // Don't eject -- repeat of security check under if ($RunUserCode...
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject -- repeat of security check under if ($RunUserCode...
         $ModifiedValues = $Zfpf->decrypt_decode_1c($_SESSION['Scratch']['t0user']['ModifiedValues']);
         if (isset($ModifiedValues['c5p_global_dbms']))
             $SelectedUserGlobalDBMSPriv = $ModifiedValues['c5p_global_dbms'];
@@ -209,7 +209,7 @@ if (isset($_SESSION['Selected']['k0user_owner'])) {
         // Additional security check
         // Check if current user is with the same owner as the selected employee and if so check current user's privileges.
         if (!isset($_SESSION['StatePicked']['t0owner']) or !isset($_SESSION['t0user_owner']) or $_SESSION['t0user_owner']['k0owner'] != $_SESSION['Selected']['k0owner'] or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $SelectedUser = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user']); // Won't work in i0n context because no t0user_owner record.
         $SelectedUserGlobalDBMSPriv = $Zfpf->decrypt_1c($SelectedUser['t0user']['c5p_global_dbms']);
     }

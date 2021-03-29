@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the user_contractor input and output HTML forms, except the:
 //  - i0m and i1m file for listing existing records (and giving the option to start a new record)
@@ -38,7 +38,7 @@ if (!isset($_POST['user_contractor_i2']) and !$RunUserCode and !isset($_POST['us
 // Add a user code
 if ($RunUserCode or isset($_POST['user_yes_confirm_post_1e'])) {
     if (!isset($_SESSION['StatePicked']['t0contractor']) or !isset($_SESSION['t0user_contractor']) or strlen($Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user'])) < strlen(MID_PRIVILEGES_ZFPF) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/UserZfpf.php';
     $UserZfpf = new UserZfpf;
     if (isset($_POST['user_i0n']) or isset($_POST['user_undo_confirm_post_1e']))
@@ -99,7 +99,7 @@ $htmlFormArray = array(
 // history_o1 code
 if (isset($_POST['user_contractor_history_o1'])) {
     if (!isset($_SESSION['Selected']['k0user_contractor']) or !isset($_SESSION['t0user_contractor']) or $_SESSION['t0user_contractor']['k0contractor'] != $_SESSION['Selected']['k0contractor'] or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/HistoryGetZfpf.php';
     $HistoryGetZfpf = new HistoryGetZfpf;
     list($SR, $RR) = $HistoryGetZfpf->one_row_h($Zfpf, 't0user_contractor', $_SESSION['Selected']['k0user_contractor']);
@@ -209,7 +209,7 @@ if (isset($_SESSION['Selected']['k0user_contractor'])) {
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     if ($who_is_editing == '[A new database row is being created.]')  {
         if (!isset($_SESSION['StatePicked']['t0contractor']) or !isset($_SESSION['t0user_contractor']) or strlen($Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user'])) < strlen(MID_PRIVILEGES_ZFPF) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-            $Zfpf->send_to_contents_1c(); // Don't eject -- repeat of security check under if ($RunUserCode...
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject -- repeat of security check under if ($RunUserCode...
         $ModifiedValues = $Zfpf->decrypt_decode_1c($_SESSION['Scratch']['t0user']['ModifiedValues']);
         if (isset($ModifiedValues['c5p_global_dbms']))
             $CIGlobalDBMSPriv = $ModifiedValues['c5p_global_dbms'];
@@ -219,7 +219,7 @@ if (isset($_SESSION['Selected']['k0user_contractor'])) {
     else {
         // Check if current user is with the same contractor organization as the selected user and if so check current user's privileges.
         if (!isset($_SESSION['StatePicked']['t0contractor']) or !isset($_SESSION['t0user_contractor']) or $_SESSION['t0user_contractor']['k0contractor'] != $_SESSION['Selected']['k0contractor'] or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_user']) != MAX_PRIVILEGES_ZFPF or $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $SelectedUser = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user']); // Won't work in i0n context because no t0user_contractor record.
         $CIGlobalDBMSPriv = $Zfpf->decrypt_1c($SelectedUser['t0user']['c5p_global_dbms']);
     }

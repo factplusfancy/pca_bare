@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
 
 // This file handles all the input and output HTML forms, except the:
 //  - SPECIAL CASE: no i1m files  for subprocess and scenario PHP files. This file includes subprocess_i1m and io03 code
@@ -36,11 +36,8 @@ if (isset($_SESSION['Scratch']['t0action']))
 
 // Additional security check
 $User = $Zfpf->current_user_info_1c();
-if ($_SESSION['Selected']['k0pha'] < 100000) { // Template PHA case
-    if ($Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes' or $User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF) // Only Web App Admins got the option to edit template PHAs in pha_i1m.php
-        $Zfpf->eject_1c();
+if ($_SESSION['Selected']['k0pha'] < 100000) // Template PHA case
     $Process['AEFullDescription'] = 'Not associated with a process because this is a template.';
-}
 else { // This app requires PHAs, except templates, to be associated with a process.
     if (!isset($_SESSION['StatePicked']['t0process']['k0process']) or $_SESSION['Selected']['k0process'] != $_SESSION['StatePicked']['t0process']['k0process'])
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
@@ -50,7 +47,12 @@ else { // This app requires PHAs, except templates, to be associated with a proc
 // Get useful information...
 $UserPracticePrivileges = $Zfpf->decrypt_1c($_SESSION['t0user_practice']['c5p_practice']);
 $EditAuth = FALSE;
-if ($User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF)
+if ($User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and 
+        (
+            ($_SESSION['Selected']['k0pha'] >= 100000 and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF) or 
+            ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes')
+        )
+   )
     $EditAuth = TRUE;
 $Nothing = '[Nothing has been recorded in this field.]';
 $EncryptedNothing = $Zfpf->encrypt_1c('[Nothing has been recorded in this field.]');
@@ -71,7 +73,7 @@ $htmlFormArray = array(
 );
 
 // i1m code
-if (isset($_POST['subprocess_i1m'])) {
+if (isset($_POST['subprocess_i1m']) or isset($_GET['subprocess_i1m'])) {
     if (isset($_SESSION['Scratch']['t0subprocess']))
         unset($_SESSION['Scratch']['t0subprocess']);
     if (isset($_SESSION['Scratch']['PlainText']['SubprocessName']))
@@ -100,7 +102,7 @@ if (isset($_POST['subprocess_i1m'])) {
     else
         $Message = '<p>
         No subsystems found for the current PHA.</p>';
-    if (!$Issued and $User['GlobalDBMSPrivileges'] != LOW_PRIVILEGES_ZFPF) {
+    if (!$Issued and $EditAuth) {
         $Message .= '
         <form action="subprocess_io03.php" method="post">';
         // Check if t0pha has edit lock. $_SESSION['Selected'] holds t0pha row, see first security check above.
@@ -118,9 +120,9 @@ if (isset($_POST['subprocess_i1m'])) {
         $Message .= '
         </form>';
     }
-    elseif ($User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF)
-        $Message .= '<p><b>
-        Global Privileges Notice</b>: You have privileges to neither insert new nor update PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.</p>';
+    elseif (!$EditAuth)
+        $Message .= '<p>
+        You don\'t have updating privileges on this record.</p>';
     elseif ($Issued)
         $Message .= '<p>This PHA has been issued, so no updating is allowed.</p>';
     echo $Zfpf->xhtml_contents_header_1c().'<h1>
@@ -140,7 +142,7 @@ if (isset($_POST['subprocess_i0n'])) {
     // Check if t0pha has edit lock. $_SESSION['Selected'] holds t0pha row, see first security check above.
     $t0pha_who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     if ($User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or $t0pha_who_is_editing != '[Nobody is editing.]')
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // Initialize $_SESSION['Scratch']['t0subprocess'] SPECIAL CASE, this serves like $_SESSION['Selected']. $_SESSION['Selected'] keeps holding a t0pha row.
     $_SESSION['Scratch']['t0subprocess'] = array(
         'k0subprocess' => time().mt_rand(1000000, 9999999),
@@ -248,7 +250,7 @@ if (isset($_POST['subprocess_o1'])) {
     echo '
     <form action="subprocess_io03.php" method="post"><p>
         <input type="submit" name="subprocess_history_o1" value="History of this record" /></p><p>
-        <input type="submit" name="subprocess_i1m" value="Go back" /></p>
+        <input type="submit" name="subprocess_i1m" value="Back to subsystem list" /></p>
     </form>
     '.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
@@ -259,7 +261,7 @@ if (isset($_POST['template_1'])) {
     // Additional security check.
     $t0pha_who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     if ($Issued or $t0pha_who_is_editing != '[Nobody is editing.]' or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or !$TemplateSourceKey)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $Conditions[0] = array('k0pha', '=', $TemplateSourceKey);
     list($_SESSION['SelectResults']['TemplateSubs'], $RowsReturned['t0subprocess']) = $Zfpf->one_shot_select_1s('t0subprocess', $Conditions);
     if ($RowsReturned['t0subprocess']) {
@@ -275,6 +277,8 @@ if (isset($_POST['template_1'])) {
             else
                 $SubprocessName[] = $TemplateName;
         }
+    }
+    if(isset($SubprocessName)) {
         array_multisort($SubprocessName, SORT_ASC, $_SESSION['SelectResults']['TemplateSubs']);
         foreach ($_SESSION['SelectResults']['TemplateSubs'] as $K => $V) {
             $Message .= '
@@ -286,7 +290,7 @@ if (isset($_POST['template_1'])) {
     }
     else
         $Message = '<p>
-        No template subsystems were found. You may insert new ones. This is unusual; considering contacting an app administrator for assistance.</p>';
+        No template subsystems were found, perhaps because you inserted all template subsystems in this template PHA. You may insert a new subsystem. Or, look for another template PHA with the subsystems you need to analyze.</p>';
     echo $Zfpf->xhtml_contents_header_1c().'<h1>
     Template subsystems</h1><h2>
     Process-hazard analysis (PHA) for<br />
@@ -304,7 +308,7 @@ if (isset($_POST['template_2'])) {
     // Additional security check.
         $t0pha_who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     if ($Issued or $t0pha_who_is_editing != '[Nobody is editing.]' or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or !$TemplateSourceKey)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     $Ai = 0;
     $Bi = 0;
@@ -364,7 +368,7 @@ if (isset($_SESSION['Scratch']['t0subprocess']['k0subprocess'])) {
     if (isset($_POST['subprocess_remove_1'])) {
         // Additional security check.
         if ($who_is_editing != '[Nobody is editing.]' or $Issued or !$EditAuth)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $_SESSION['Scratch']['t0subprocess'] = $Zfpf->edit_lock_1c('subprocess', 'subsystem', $_SESSION['Scratch']['t0subprocess']); // This re-does SELECT query, checks edit lock, and if none, starts edit lock, which will be cleared by deleting the record or returning to the o1 code.
         $SubprocessName = $Zfpf->decrypt_1c($_SESSION['Scratch']['t0subprocess']['c5name']);
         echo $Zfpf->xhtml_contents_header_1c().'<h1>
@@ -384,7 +388,7 @@ if (isset($_SESSION['Scratch']['t0subprocess']['k0subprocess'])) {
     if (isset($_POST['subprocess_remove_2'])) {
         // Additional security check.
         if ($who_is_editing != substr($Zfpf->user_identification_1c(), 0, C5_MAX_BYTES_ZFPF) or $Issued or !$EditAuth)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $SubprocessName = $Zfpf->decrypt_1c($_SESSION['Scratch']['t0subprocess']['c5name']);
         $Conditions[0] = array('k0subprocess', '=', $_SESSION['Scratch']['t0subprocess']['k0subprocess']);
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
@@ -433,7 +437,7 @@ if (isset($_SESSION['Scratch']['t0subprocess']['k0subprocess'])) {
     // Additional security check for i1 and i2 code
     $t0pha_who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     if ($Issued or ($who_is_editing != '[A new database row is being created.]' and !$EditAuth) or ($who_is_editing == '[A new database row is being created.]' and ($User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or $t0pha_who_is_editing != '[Nobody is editing.]')))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     if (isset($_POST['subprocess_o1_from']))
         $_SESSION['Scratch']['t0subprocess'] = $Zfpf->edit_lock_1c('subprocess', 'subsystem', $_SESSION['Scratch']['t0subprocess']); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error.
     // i1 code

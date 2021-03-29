@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This class allows populating groups of t0user_practice rows
 
@@ -184,7 +184,7 @@ class UserPracticeZfpf {
                 }
                 elseif (substr($_POST['u_p_r_'.$Key], 0, 5) == 'edit') {
                     if ($SelectedUserGlobalDBMSPriv != MAX_PRIVILEGES_ZFPF)
-                        $Zfpf->send_to_contents_1c(); // Don't eject
+                        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
                     if ($CreatingUPRow) {
                         $Task[$Key] = 'NoneToEdit';
                         $_SESSION['Scratch']['NewUPRow'][$Key] = $EUP['UP'][$K];
@@ -193,7 +193,7 @@ class UserPracticeZfpf {
                         $Task[$Key] = 'ViewToEdit';
                 }
                 else
-                    $Zfpf->send_to_contents_1c(); // Don't eject
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             }
         }
         if (isset($Task)) {

@@ -1,6 +1,6 @@
 <?php
 // *** LEGAL NOTICES *** 
-// Copyright 2019-2020 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+// Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 // This file handles all the contractor-summary input and output HTML forms, except the:
 //  - i0m & i1m files for listing existing records (and giving the option to start a new record) 
@@ -70,7 +70,7 @@ if (isset($_POST['contractor_o1']) or isset($_POST['contractor_i0n']) or isset($
 // No edit lock because associating records even if they are being edited.
 if (isset($_POST['contractor_associate_1'])) {
     if (!isset($_SESSION['t0user_owner']) or !isset($_SESSION['StatePicked']['t0owner']) or strlen($Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_contractor'])) < strlen(MID_PRIVILEGES_ZFPF) or $UserGlobalDBMSPrivileges == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     if (isset($_SESSION['SelectResults']))
         unset($_SESSION['SelectResults']);
     list($SRC, $RRC) = $Zfpf->one_shot_select_1s('t0contractor', 'No Condition -- All Rows Included', array('k0contractor', 'k0user_of_leader', 'c5name', 'c6description'));
@@ -117,7 +117,7 @@ if (isset($_POST['contractor_associate_1'])) {
 }
 if (isset($_POST['contractor_associate_2'])) {
     if (!isset($_SESSION['t0user_owner']) or !isset($_SESSION['StatePicked']['t0owner']) or strlen($Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_contractor'])) < strlen(MID_PRIVILEGES_ZFPF) or $UserGlobalDBMSPrivileges == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $CheckedPost = $Zfpf->post_length_blank_1c('selected'); // Get user selection.
     if (!is_numeric($CheckedPost) or !isset($_SESSION['SelectResults']['t0contractor'][$CheckedPost]))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
@@ -176,7 +176,7 @@ if (isset($_POST['contractor_associate_2'])) {
 if (isset($_POST['contractor_i0n'])) {
     // Additional security check.
     if (!isset($_SESSION['t0user_owner']) or strlen($Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_contractor'])) < strlen(MID_PRIVILEGES_ZFPF) or $UserGlobalDBMSPrivileges == LOW_PRIVILEGES_ZFPF)
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     $EncryptedNothing = $Zfpf->encrypt_1c('[Nothing has been recorded in this field.]');
     $EncryptedMaxPriv = $Zfpf->encrypt_1c(MAX_PRIVILEGES_ZFPF);
     $EncryptedZero = $Zfpf->encrypt_1c(0);
@@ -457,7 +457,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
     // contractor-to-owner notice uploading
     if (isset($_POST['contractor_to_owner_notices_1'])) {
         if (!isset($_SESSION['t0user_contractor']) or !isset($_SESSION['StatePicked']['t0owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]' or !isset($_SESSION['Scratch']['OC']['Selected']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $ShtmlFormArray = array('c6bfn_contractor_notices' => array('Contractor-to-owner notices', '', MAX_FILE_SIZE_ZFPF, 'upload_files'));
         $Display['c6bfn_contractor_notices'] = $Zfpf->html_uploaded_files_1e('c6bfn_contractor_notices', 0, $_SESSION['Scratch']['OC']['Selected']);
         // Create HTML form
@@ -473,7 +473,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
     }
     if (isset($_POST['upload_c6bfn_contractor_notices'])) {
         if (!isset($_SESSION['t0user_contractor']) or !isset($_SESSION['StatePicked']['t0owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]' or !isset($_SESSION['Scratch']['OC']['Selected']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Directory = $Zfpf->user_files_directory_1e($_SESSION['Scratch']['OC']['Selected']); // $SelectedRow passed in
         $c6bfn_array = $Zfpf->c6bfn_decrypt_decode_1e($_SESSION['Scratch']['OC']['Selected']['c6bfn_contractor_notices']);
         $UploadResults = $Zfpf->c6bfn_files_upload_1e($Directory, $c6bfn_array, 'c6bfn_contractor_notices', 'contractor_io03.php', $_SESSION['Scratch']['OC']['Selected']);
@@ -519,7 +519,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
     // t0owner_contractor i1, i2, i3 code
     if (isset($_POST['owner_contractor_o1_from']) or isset($_POST['oc_undo_confirm_post_1e']) or isset($_POST['oc_modify_confirm_post_1e']) or isset($_POST['problem_c6bfn_files_upload_1e']) or isset($_POST['upload_c6bfn_owner_notices']) or isset($_POST['upload_c6bfn_job_site_audits']) or (!$_POST and isset($_SESSION['Scratch']['OC']['Post'])) or isset($_POST['owner_contractor_i2']) or isset($_POST['oc_yes_confirm_post_1e'])) {
         if (!isset($_SESSION['t0user_owner']) or !isset($_SESSION['StatePicked']['t0owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]' or !isset($_SESSION['Scratch']['OC']['Selected']))
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $OChtmlFormArray['c6bfn_contractor_notices'] = array('Contractor-to-owner notices', '', C5_MAX_BYTES_ZFPF, 'app_assigned');
         // i1 code -- SPECIAL CASES THROUGH i2 code
         // 1.1 $_SESSION['Scratch']['OC']['Selected'] is only source of $Display.
@@ -642,7 +642,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
     // No edit lock because deleting records even if they are being edited. May eject an editing user, but more important no to delay separation.
     if (isset($_POST['contractor_separate_1'])) {
         if (!isset($_SESSION['t0user_owner']) or !isset($_SESSION['StatePicked']['t0owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
         Separate contractor and end access for all the contractor\'s users to the owner\'s information on this app</h2><p>
         Confirm separation: <br />
@@ -659,7 +659,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
     }
     if (isset($_POST['contractor_separate_2'])) {
         if (!isset($_SESSION['t0user_owner']) or !isset($_SESSION['StatePicked']['t0owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
         $Conditions[0] = array('k0contractor', '=', $_SESSION['Selected']['k0contractor']);
         list($SRUC, $RRUC) = $Zfpf->select_sql_1s($DBMSresource, 't0user_contractor', $Conditions);
@@ -755,7 +755,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
     // No edit lock because only PSMeader on an app admin can change the leader.
     if (isset($_POST['change_psm_leader_1'])) {
         if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes') or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         echo $Zfpf->xhtml_contents_header_1c('Lookup User');
         $Zfpf->lookup_user_1c('contractor_io03.php', 'contractor_io03.php', 'change_psm_leader_2', 'contractor_o1');
         echo $Zfpf->xhtml_footer_1c();
@@ -763,7 +763,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
     }
     if (isset($_POST['change_psm_leader_2'])) {
         if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes') or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $TableNameUserEntity = 't0user_contractor';
         $Conditions1[0] = array('k0contractor', '=', $_SESSION['Selected']['k0contractor']);
         $SpecialText = '<p><b>
@@ -787,7 +787,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
     }
     if (isset($_POST['change_psm_leader_3'])) {
         if (($_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes') or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF or $who_is_editing == '[A new database row is being created.]')
-            $Zfpf->send_to_contents_1c(); // Don't eject
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         // Check user-input radio-button selection.
         // The user not selecting a radio button is OK in this case.
         if (isset($_POST['Selected'])) {
@@ -858,7 +858,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
 
     // t0contractor i1, i2, i3 code
     if ($UserGlobalDBMSPrivileges == LOW_PRIVILEGES_ZFPF or ($who_is_editing != '[A new database row is being created.]' and (!isset($_SESSION['t0user_contractor']) or $_SESSION['t0user_contractor']['k0contractor'] != $_SESSION['Selected']['k0contractor'] or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF or $UserGlobalDBMSPrivileges != MAX_PRIVILEGES_ZFPF)))
-        $Zfpf->send_to_contents_1c(); // Don't eject
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
     // i1 code
     // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
     // 1.1 $_SESSION['Selected'] is only source of $Display.
@@ -954,7 +954,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
         if ($Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']) == '[A new database row is being created.]') {
             // Additional security check
             if (!isset($_SESSION['t0user_owner']) or $Zfpf->decrypt_1c($_SESSION['t0user_owner']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF or !isset($_SESSION['Scratch']['S_t0owner_contractor']))
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             $Zfpf->insert_sql_1s($DBMSresource, 't0contractor', $ChangedRow);
             $Zfpf->insert_sql_1s($DBMSresource, 't0owner_contractor', $Zfpf->changes_from_post_1c($_SESSION['Scratch']['S_t0owner_contractor']));
             $Zfpf->insert_sql_1s($DBMSresource, 't0user_contractor', $Zfpf->changes_from_post_1c($_SESSION['Scratch']['S_t0user_contractor']));
@@ -997,7 +997,7 @@ if (isset($_SESSION['Selected']['k0contractor'])) {
         else {
             // Additional security check
             if (!isset($_SESSION['t0user_contractor']) or $_SESSION['t0user_contractor']['k0contractor'] != $_SESSION['Selected']['k0contractor'] or $Zfpf->decrypt_1c($_SESSION['t0user_contractor']['c5p_contractor']) != MAX_PRIVILEGES_ZFPF)
-                $Zfpf->send_to_contents_1c(); // Don't eject
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
             $Conditions[0] = array('k0contractor', '=', $_SESSION['Selected']['k0contractor']);
             $Affected = $Zfpf->update_sql_1s($DBMSresource, 't0contractor', $ChangedRow, $Conditions);
             if ($Affected != 1)
