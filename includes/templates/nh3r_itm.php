@@ -207,7 +207,8 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (9) exterior surface -- complete ITM per the Insulation, Paint, and Underlying Steel Sub-practice, 
 (10) sight glasses -- complete ITM per the Sight Glass Sub-practice, 
 (11) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice,
-(12) any other tasks that the manufacturer recommends. 
+(12) discharge check valve (or stop/check valve) -- verify holding when the compressor is off,
+(13) any other tasks that the manufacturer recommends. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -248,7 +249,8 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (9) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice,
 (10) any other tasks that the manufacturer recommends, such as inspect/note/fix for
 (10.1) proper oil flow in any oil return line from the coalescing side of oil separators,
-(10.2) proper equalize-to-suction time after compressor shutoff, via a suction check-valve bypass or similar. 
+(10.2) proper equalize-to-suction time after compressor shutoff, via a suction check-valve bypass or similar, so confirming the suction check valve is holding,
+(10.3) discharge check valve (or stop/check valve) -- verify holding when the compressor is off. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
