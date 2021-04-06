@@ -11,7 +11,8 @@ class ccsaZfpf {
     public function risk_rank_matrix($Zfpf) {
         return '
         <table border="1" cellspacing="" cellpadding="3">
-            <caption><b>Risk-Ranking (and Priority) Matrix -- With Safeguards In Place</b></caption>
+            <caption><b>Risk-ranking (and priority) matrix, with safeguards in place.</b><br />
+            Goal is 5 or lower. 6 and 7 are borderline; best to evaluate further but may be reasonable if no practical safeguards are found.</caption>
             <tr>
                 <th>Severity =><br /><br />Likelihood</th>
                 <th>'._1_SEVERITY_ZFPF.'</th>

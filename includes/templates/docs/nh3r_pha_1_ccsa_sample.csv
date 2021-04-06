@@ -72,20 +72,22 @@
 * corrosive materials are mixed, stored, transferred, or used nearby or
 * cleaning or sanitizing with corrosive materials.
 "
-"Possible Cause"|"Defrost, hot gas, pump-down or equalization timing unsafely reduced"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, for faster production or to keep temperatures adequately low in product or room air."
-"Possible Cause"|"Defrost, hot gas, timing is unsafe normally, when power is restored after an outage or blip, when loads are low, etc."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* For example an ammonia-refrigerant liquid or hot-gas solenoid valve opens before adequate pump down, either  normally, when power is restored after an outage or blip, or when loads are low. In these cases,
-- if liquid enters a coil that is mostly filled with hot gas, because it was defrosting before a power outage or blip and the controls immediately call for cooling when a power outage or blip ends,
-> condensation-induced shock can occur,
-- if hot gas enters a coil that is partly filled with liquid, because of inadequate pump-down before defrost (caused by low loads, controls shortcoming, or human error),
-> vapor-propelled liquid slugs could cause shocks.
-* See the U.S. Chemical Safety and Hazard Investigation Board (CSB) report and safety bulletin on the 
-- 2010 ammonia leak, at the Millard Refrigerated Services, Theodore, Alabama, for example 
+"Possible Cause"|"Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, for faster production or to keep temperatures adequately low in product or room air."
+"Possible Cause"|"Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Some examples are below.
+* An ammonia-refrigerant suction control valve rapidly opens (or regulates at a lower pressure) at the start of a power outage,
+- if the evaporator was defrosting and filled with hot gas and some liquid (that condensed during defrosting) when the power fails,
+> the hot gas, possibly mixed with liquid, may cause shocks in the downstream suction piping, including from vapor-propelled liquid slugs.
+* An ammonia-refrigerant hot-gas or liquid solenoid valve opens before adequate pump down, either normally, when power is restored after an outage or blip, or when loads are low. In these cases, vapor-propelled liquid slugs or condensation-induced shocks may occur if:
+- liquid enters a coil or piping that is mostly filled with hot gas, due to controls shortcoming or human error, such as defrosting before a power outage or blip and the controls immediately start cooling when the power outage or blip ends,
+- hot gas enters a coil or piping that is partly filled with liquid, due to controls shortcoming, human error, or low loads.
+* See the U.S. Chemical Safety and Hazard Investigation Board (CSB) report and safety bulletin on the
+- 2010 ammonia leak, at the Millard Refrigerated Services, Theodore, Alabama, for example
 - CSB, January 2015, Hydraulic Shock Safety Bulletin, Key Lessons for Preventing Hydraulic Shock in Industrial Refrigeration Systems.
-* Low loads can cause liquid in a coil to evaporate slower than expected, so that 
+* Low loads may cause liquid in a coil and piping to evaporate slower than expected, so that
 - a pre-set pump-down time is not long enough, leading to
-> hot gas entering a coil that is partly filled with liquid.
+> hot gas entering a coil and piping that are partly filled with liquid.
 * Low loads may be caused by:
-- higher humidity in the cooled room, thicker frost layers on the coil, and so less heat transfer, 
+- higher humidity in the cooled room, thicker frost layers on the coil, and so less heat transfer,
 - cold air entering the cooled room,
 - less heat generated in or entering the cooled room,
 - and so forth."
@@ -599,30 +601,32 @@ The facility's ammonia-refrigeration system is:
 * not located with a floodplain, 0.2% or higher annual risk [__OR COMPARE TO 0.2% OR 1% ANNUAL-RISK FLOOD ELEVATION__]."
 "Existing Safeguard"|"Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 The facility's ammonia-refrigeration system has the following in place.
-* Hot-gas defrost (HGD) piping pitches to 
-- a liquid drainer, 
+* Hot-gas defrost (HGD) piping pitches to
+- a liquid drainer,
 - high-stage discharge (HSD) piping that evaporates any condensed liquid or carries it to condensers without causing vapor propelled liquid slugs, such as because the continuous gas flow in the HSD piping is much greater than any condensed-liquid flow entering from HGD piping,
 - or another safe location.
 * Rules of thumb that are followed:
-- soft start of hot-gas defrost is used if the hot-gas solenoid valve is 1.5-inch (nominal size) or larger or if the evaporating temperature is below zero Fahrenheit (0 F),
-- suction control valve slow-opening or bleed by is used if suction control valves are 2.5-inch (nominal size) or larger or if the evaporator coil is 15 tons refrigeration (TR) or larger, and
+- soft start of hot-gas defrost (soft gas) is used if the hot-gas solenoid valve is 1.5-inch (nominal size) or larger or if the evaporating temperature is below zero Fahrenheit (0 F),
+- suction control valve slow-opening or bleed-by is used if suction control valves are 2.5-inch (nominal size) or larger or if the evaporator coil is 15 tons refrigeration (TR) or larger, and
 - each forced-air evaporator above 1 TR is served by a separate valve group, which includes the liquid, suction, and hot-gas control valves.
-* Defrost, hot gas, includes adequate pump-down time before defrost and after defrost:
-- the before-defrost pump-down time is adequate to remove liquid ammonia from the evaporator coil and piping that hot gas will enter, avoiding:
-> vapor-propelled liquid slugs,
-- the after-defrost pump-down time (also called equalize time) is adequate for the evaporator coil and nearby piping, that hot gas entered, to be pumped down to suction pressure to avoid:
-> condensation-induced shocks.
+* Defrost, hot gas, includes adequately gradual and long delay and/or pump-down times (optionally lengthened by interlocked pressure transducers), both before and after defrost:
+- the before-defrost pump-down time is adequate to remove liquid ammonia from the evaporator coil and piping that hot gas will enter, avoiding shocks, such as from:
+> vapor-propelled liquid slugs and condensation-induced shock,
+- the after-defrost delay and/or pump-down time (also called equalize or bleed time) is adequately gradual and long to avoid excessive shocks in both:
+> the suction piping downstream of the suction control valve, when it opens or regulates at a lower pressure, and
+> the evaporator coil and piping, when liquid ammonia-refrigerant enters them to restart cooling.
 * Metal fatigue due to rapid temperature changes is also reduced by both of the above pump-down times.
-* The before-defrost pump-down time is long enough to remove all liquid ammonia under reasonable worst-case scenarios, such as the evaporator coil is mostly full of liquid due to low load, maybe because the coil was heavily frosted up before defrost due to higher than usual humidity in the cooled air.
+* The before-defrost pump-down time is also long enough to remove all liquid ammonia under reasonable worst-case scenarios, based on operating experience or by assuming the evaporator coil may be mostly full of liquid due to a low load, maybe because the coil was heavily frosted up before defrost due to higher than usual humidity in the cooled air.
 * There is no incentive to unsafely reduce pump-down times because doing so would not increase production [OR DESCRIBE PASSWORDS OR OTHER CONTROLS THAT PREVENT REDUCING PUMP-DOWN TIMES] and the current timing has worked well since at least [__YEAR__] [OR DESCRIBE TESTING THAT WAS DONE TO VERIFY THE PUMP-DOWN TIMES].
-* After a power failure or blip, restart occurs safely regardless of the state the evaporator was in when the power failed, such as:
-- fans remain off and all control valves (hot-gas, liquid, and suction) remain closed for at least one minute when power is first restored, then
-- suction control valves for each evaporator on common suction piping are opened in staggered times, such as: 1 minute between opening each,
-> goal: drain any liquid from suction piping downstream of the suction control valve, staggered so that all suction control valves do not open to the piping header at same time,
-- pump-down -- only the suction control valve is open, for at least the after-defrost pump-down time,
-- freeze-on -- liquid and suction control valves are open but fans are off (typically for about five minutes), and finally
-- fans turn on to start the cooling mode.
-* If run-time clocks are reset due to power failures or blips, they are staggered so that needed defrosting happens soon but all evaporators do not defrost at once."
+* At the start and end of a power outage or blip, shutoff and restart occur safely regardless of the state an evaporator was in when the power failed, for example:
+- if a suction control valve automatically opens (or regulates at a lower pressure) when power fails during defrost,
+> excessive shocks won't occur,
+> any needed slow-opening or bleed-by function adequately when the power fails,
+- for all types of suction control valves, there is adequate
+> pump-down to suction pressure after power is restored, before control valves allow either liquid or hot gas into evaporators [NEEDS DEPEND ON IF CONTROLS RETAIN MEMORY OF EVAPORATOR STATE BEFORE POWER OUTAGE],
+> freeze on (also called rechill) before fans start, as needed to prevent water droplets from blowing onto people, product, etc.,
+> staggering of valve openings, to avoid excessive flows in piping headers or to vessels,
+* If run-time clocks are reset by a power outage or blip, controls stagger them on restart so that needed defrosting happens soon but all evaporators do not defrost at once."
 "Existing Safeguard"|"Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 The written emergency-action plan, or documents it references, describe:
 * training that includes
@@ -667,8 +671,9 @@ The written emergency-action plan, or documents it references, describe:
 * Since [YEAR] the facility's PSM program, management of change, has included a design review, also called engineering review.
 * All equipment in the ammonia-refrigeration system was supplied by reputable manufacturers, including
 - [REFERENCE A COMPONENT LIST, CHANGE-MANAGEMENT DOCUMENTATION, OR LIST FOR AT LEAST MAJOR PACKAGES: COMPRESSORS, PUMPS, VESSELS...]
-In the facility's ammonia-refrigeration system:
-* Control valves do not trap liquid ammonia if controls fail or there is a power outage because its solenoid valves and regulators allow flow in the reverse direction and it has no motorized valves upstream of solenoid valves,
+* In the facility's ammonia-refrigeration system:
+- Control valves do not trap liquid ammonia if controls fail or there is a power outage because its solenoid valves and regulators allow flow in the reverse direction and it has no motorized valves upstream of solenoid valves,
+- the automatic King valve has adequate safeguards to avoid shocks when it re-opens (pressure equalization) [PROVIDE DETAILS ON HOW, IF ONE IS INSTALLED],
 - all valves have stainless-steel stems, including control-valve manual-opening stems,
 - interior erosion of the steel primary-containment envelope is negligible because 
 > flow speeds in ammonia-refrigerant piping are below erosional speeds and
@@ -692,6 +697,7 @@ FATIGUE AND BRITTLE FRACTURE, ESPECIALLY WITH TUBE-IN-SHELL CHILLERS
 - and so forth.
 * Fire inspectors, with local authorities, routinely inspect the facility."
 "Existing Safeguard"|"Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
+[COMPARE ITM SCHEDULES AND PROCEDURES TO sample_ammonia-refrigeration_ITM... FILE POSTED AT https://factplusfancy.com/armp OR TO IIAR 6.]
 This ITM includes, at least the following.
 * Daily inspection of
 - refrigerating-machinery room(s),
@@ -720,8 +726,7 @@ This ITM includes, at least the following.
 - safety systems ITM, such as for ammonia-in-air sensors, ventilation, and safety showers,
 - supports visual inspections, covering from the equipment enclosure or pipe to the foundation, if independently supported, or to the building-structural supports, floor, or roof that carry the loads, and if building structures, floors, or roofs are damaged, additional inspections are called for.
 * Valve stems, including for control-valve manual opening, are lubricated and exercised per manufacturers recommendations or industry practice. [PROVIDE DETAILS ON WHAT THE FACILITY DOES.]
-* See also the facility's maintenance-management system. 
-[COMPARE INSPECTION PROCEDURES TO sample_ammonia-refrigeration_ITM... FILE POSTED AT https://factplusfancy.com/armp OR TO IIAR 6 AND 9.]"
+* See also the facility's maintenance-management system."
 "Existing Safeguard"|"Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 * See the facility's maintenance-management system.
 * [PROVIDE DETAILS, SUCH AS THE EDITION OF IIAR BULLETIN 114 OR OTHER LABELING SYSTEM FOLLOWED FOR THE FACILITY'S AMMONIA-REFRIGERATION SYSTEM.]
@@ -748,7 +753,7 @@ The PHA team only did a limited check for failures that could affect the ammonia
 > other locations with ammonia-refrigeration pressure vessels.
 * Stacks, such a for boilers and or relief vents, falling on ammonia-refrigeration equipment or piping.
 [END EXAMPLES]
-[DETAIL ANY APPLICABLE EXISTING SAFEGUARDS OR ADD RECOMMENDATIONS.]
+[DETAIL ANY APPLICABLE EXISTING SAFEGUARDS OR ADD RECOMMENDED ACTIONS.]
 [START EXAMPLES]
 The safety of other mechanical systems at the facility, including controls, ducts, equipment, piping, or power supplies for boilers, compressed air, heating, combustible or flammable gases or liquids (oil, natural gas...), non-ammonia refrigeration and air conditioning, steam, ventilation, or water,
 - is reasonably demonstrated by their as-built documentation and inspection, testing, and maintenance records.
@@ -1036,6 +1041,10 @@ See the facility's plans, programs, and records for
 - through both training and informal methods,
 - including on-the-job training combined with observation by and demonstration to supervisors or more experienced employees or contractors."
 "Existing Safeguard"|"Security, of the facility, no shortcomings discovered by the PHA team."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
+* See recommended actions in the PHA report on:
+[VERIFY BELOW AND LIST ANYTHING THAT NEEDS REVIEW OR ATTENTION SUCH AS:
+- CONTROLS REMOTE ACCESS AND CYBER SECURITY,
+- ANY OUTDOOR OIL DRAINS THAT ARE NOT SECURED BY LOCKS OR FENCES WITH LOCKED GATES...]
 * Security of the facility,
 - was reviewed in overview by the PHA team but was not rigorously evaluated,
 - is also driven by food-security requirements.
@@ -1047,11 +1056,7 @@ See the facility's plans, programs, and records for
 - all doors or gates that provide access to the buildings or roofs that contain the ammonia-refrigeration system are locked or attended, 
 - attended at all times (24/7),
 - exterior lighting,
-- security cameras that monitor and record in some locations.
-* See PHA recommendations about:
-[VERIFY ABOVE AND LIST ANYTHING THAT NEEDS REVIEW OR ATTENTION SUCH AS:
-- CONTROLS REMOTE ACCESS AND CYBER SECURITY,
-- ANY OUTDOOR OIL DRAINS THAT ARE NOT SECURED BY LOCKS OR FENCES WITH LOCKED GATES...]"
+- security cameras that monitor and record in some locations."
 "Existing Safeguard"|"Separation of ammonia refrigeration from people is adequate and considered in change management."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
 For/at the facility, the ammonia-refrigeration system:
 * valves, control and stop, [ALL, MOST, OR DESCRIBE] are located in the refrigerating-machinery room, in mechanical penthouses, above roofs, or outdoors;

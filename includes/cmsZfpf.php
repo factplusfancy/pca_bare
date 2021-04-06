@@ -83,8 +83,9 @@ class cmsZfpf {
 (2.1.2) pressure, 
 (2.1.3) flow, 
 (2.1.4) composition, 
-(2.1.5) any other relevant process parameters, and
-(2.1.6) relevant external conditions, including earthquakes/seismic, humidity, rain, salinity (sea spray, deicing...), sand or dust storms, snow, wind, and so forth, 
+(2.1.5) any other relevant process parameters, 
+(2.1.6) any needed utilities, such as compressed air, electrical (outages, blips, restoration), or water, and
+(2.1.7) relevant external conditions, including earthquakes/seismic, humidity, rain, salinity (sea spray, deicing...), sand or dust storms, snow, wind, and so forth, 
 (3) documentation that '.HAZSUB_NAME_ADJECTIVE_ZFPF.' equipment and piping, installed as part of the change, were separated from people to the extent practical, such as by locating them in machinery rooms or penthouses, above roofs, or outdoors, 
 (4) welding-procedure specifications and qualification records, 
 (5) paint and insulation specifications, including corrosion-under-insulation prevention as needed,

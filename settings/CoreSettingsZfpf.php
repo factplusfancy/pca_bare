@@ -137,10 +137,10 @@ define('USERNAME4_ZFPF', 'ChangeThisDefaultUsername4');
 define('PASSWORD4_ZFPF', 'ChangeThisDefaultPassword%+#4');
 
 // These define the time, in seconds, for each session timeout.  You may change the default values to fit your security policies.
-// Session Timeout 1 of 3 - normal log off of user if inactive for a long period of time. Default seconds: 1800 is 30 minutes.
-define('TIMEOUT_INACTIVE_LOG_OFF_ZFPF', 1800);
-// Session Timeout 2 of 3 - checks user password if inactive for a shorter period of time. Default seconds: 600 is 10 minutes
-define('TIMEOUT_INACTIVE_PASSWORD_CHECK_ZFPF', 600);
+// Session Timeout 1 of 3 - normal log off of user if inactive for a long period of time. Default seconds: 2400 is 40 minutes.
+define('TIMEOUT_INACTIVE_LOG_OFF_ZFPF', 2400);
+// Session Timeout 2 of 3 - checks user password if inactive for a shorter period of time. Default seconds: 1200 is 20 minutes.
+define('TIMEOUT_INACTIVE_PASSWORD_CHECK_ZFPF', 1200);
 // Session Timeout 3 of 3 - checks user password if this has not been done for a period of time.  Default seconds: 14400 is 4 hours
 define('TIMEOUT_ACTIVE_PASSWORD_CHECK_ZFPF', 14400);
 
@@ -248,13 +248,13 @@ define('_5_LIKELIHOOD_ZFPF', 'Greater than 90% per year (almost every year or mo
 // The priorities (risk ranks) below MUST start with ## -- a two-digit number -- so that the PHP less-than comparison operator  <
 // will work in ccsaZfpf::risk_rank_priority_update ... $AffectedActions[$k0action] < $QSPriority
 define('_00_PRIORITY_ZFPF', '00. No action needed.');
-define('_01_PRIORITY_ZFPF', '01. Lower priority -- track any recommendations on action register and resolve if convenient.');
-define('_02_PRIORITY_ZFPF', '02. Lower priority -- track any recommendations on action register and resolve if convenient.');
-define('_03_PRIORITY_ZFPF', '03. Lower priority -- track any recommendations on action register and resolve if convenient.');
-define('_04_PRIORITY_ZFPF', '04. Attention needed -- if any recommendations, review status at least twice per year.');
-define('_05_PRIORITY_ZFPF', '05. Attention needed -- if any recommendations, review status at least quarterly.');
-define('_06_PRIORITY_ZFPF', '06. Attention needed -- if any recommendations, review status at least monthly.');
-define('_07_PRIORITY_ZFPF', '07. Attention needed -- if any recommendations, review status at least monthly.');
+define('_01_PRIORITY_ZFPF', '01. Lower priority -- track any recommended actions on action register and resolve if convenient.');
+define('_02_PRIORITY_ZFPF', '02. Lower priority -- track any recommended actions on action register and resolve if convenient.');
+define('_03_PRIORITY_ZFPF', '03. Lower priority -- track any recommended actions on action register and resolve if convenient.');
+define('_04_PRIORITY_ZFPF', '04. Attention needed -- if any recommended actions, review status at least twice per year.');
+define('_05_PRIORITY_ZFPF', '05. Attention needed -- if any recommended actions, review status at least quarterly.');
+define('_06_PRIORITY_ZFPF', '06. Attention needed -- if any recommended actions, review status at least monthly.');
+define('_07_PRIORITY_ZFPF', '07. Attention needed -- if any recommended actions, review status at least monthly.');
 define('_08_PRIORITY_ZFPF', '08. Prompt attention needed -- gather assessment team within 24 hours.');
 define('_09_PRIORITY_ZFPF', '09. Prompt attention needed -- gather assessment team within 4 hours.');
 define('_10_PRIORITY_ZFPF', '10. Immediate action needed -- gather assessment team within 30 minutes.');

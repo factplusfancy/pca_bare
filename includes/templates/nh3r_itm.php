@@ -656,6 +656,9 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c6description' => $Zfpf->encrypt_1c('Complete the following per facility hazardous-substance procedures and safe-work practices, including the Operating Refrigeration Valve Stems sub-procedure. 
 (1) All hand-operated stop valves -- lubricate stems and exercise (close and re-open). 
 (2) The King valve and other hand-operated stop valves uniquely described in the facility\'s leak mitigation and emergency shutdown procedures -- verify no leak-by (valve holding while closed) (IIAR 6-2019 11.1.6). 
+(3) Any automatic King valve -- 
+(3.1) verify no leak-by (valve holding while closed) (IIAR 6-2019 11.1.6) and 
+(3.2) test its safeguards for avoiding shocks when re-opening (pressure equalization); a safe test method depends on the type of valve and safeguards. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -735,7 +738,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (5.3) proper function by activating each E-stop, such as by unscrewing the holder for its breakable glass, and verifying that it shuts off all '.HAZSUB_NAME_ADJECTIVE_ZFPF.' 
 (5.3.1) compressors, 
 (5.3.2) pumps, and 
-(5.3.3) normally-closed control valves that are not part of an emergency-control system, such as solenoid valves for liquid and hot-gas supply, but 
+(5.3.3) normally-closed control valves that are not part of an emergency-control system (at least those located in or near the refrigerating-machinery room), such as solenoid valves for liquid and hot-gas supply and any automatic King valve, but 
 (5.3.4) doesn\'t shut off safety systems, such as alarms and ventilation, 
 (5.3.5) note, for compressors, E-stop function may be verified at their motor-control centers, instead of by suddenly stopping all compressors, 
 (6) all ammonia sensor(s) in the room -- expose to a test gas to verify function and also inspect/note/fix for 

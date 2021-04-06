@@ -408,6 +408,12 @@ if (isset($_POST['pha_o1'])) {
             <b>Issued by: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']).'</b><br />
             This is not a draft PHA record. Once a PHA has been issued by its team leader, the issued version cannot be changed. You may revise the working draft, and, when ready, issue that as the latest PHA.</p><p>
             '.$who_is_editing.'</p>'; // This should echo the permanent-lock message. This also prevents an issued PHA from getting to next elseif clause.
+        if ($EditAuth) // Allow exporting an edit-locked or issued PHA.
+            echo '<p>
+            <a class="toc" href="pha_io03.php?export_sc_csv_1">Export scenarios to CSV file</a><br /><br />
+            <a class="toc" href="pha_io03.php?export_ccsa_csv_1">Export causes, consequences, safeguards, and recommended actions to CSV file</a><br /><br />
+            <a class="toc" href="pha_io03.php?export_pha_json_1">Export PHA to JSON file</a>
+            </p>';
     }
     elseif ($EditAuth) {
         // Edit button for anyone meeting above criteria plus issue button for team leader and change team leader button for AE-Leader.
@@ -438,7 +444,7 @@ if (isset($_POST['pha_o1'])) {
     else {
         if ($UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
             echo '<p><b>
-            Practice Privileges Notice</b>: You don\'t have update privileges for this practice, if you need to edit any records for this practice, please contact your supervisor or a PSM-CAP App administrator.</p>';
+            Practice Privileges Notice</b>: You have neither update nor export privileges for this practice. To change this, contact your supervisor or an app admin.</p>';
         if ($User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
             echo '<p><b>
             Global Privileges Notice</b>: You don\'t have privileges to edit PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.</p>';
@@ -714,7 +720,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
             $htmlFormArray = $ccsaZfpf->html_form_array($KA, $Zfpf, 'scenario', $arZfpf);
             list($SRccsa, $Message) = $ccsaZfpf->other_ccsa_in_pha($KA, $Zfpf, $_SESSION['Selected']['k0pha']);
             if ($SRccsa) {
-                $ApprovalText .= '<h2 class="topborder" style="page-break-before: always><a id="CCSA_'.$KA.'"></a>'.$VA.'</h2>';
+                $ApprovalText .= '<a id="CCSA_'.$KA.'"></a><h2 class="topborder" style="page-break-before: always">'.$VA.'</h2>';
                 $ApprovalText .= '<p>';
                 foreach ($SRccsa as $KB => $VB)
                     $ApprovalText .= '<a class="toc" href="#ccsa_'.$KA.'_'.$KB.'">'.$Zfpf->decrypt_1c($VB['c5name']).'</a><br />';
