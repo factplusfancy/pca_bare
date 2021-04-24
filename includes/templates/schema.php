@@ -581,8 +581,8 @@ $Schema = array(
         'c5priority', // required -- allowed values: the ...PRIORITY_ZFPF constants in .../settings/CoreSettingsZfpf.php.
                     // See also CoreZfpf::risk_rank_1c in .../includes/CoreZfpf.php. 
                     // For PSM compliance audits, incident investigations, and unassociated actions, see $PriorityRadioButtons in arZfpf.php
-        'c5affected_entity', // required -- allowed values: '[Nothing has been recorded in this field.]', 'Contractor-wide', 'Owner-wide', 'Facility-wide', 'Process-wide'
-        'k0affected_entity', // 0 or k0 of the affected entity (k0contractor, k0owner, k0facility, k0process)
+        'c5affected_entity', // required -- allowed values: '[Nothing has been recorded in this field.]', 'Owner-wide', 'Facility-wide', 'Process-wide'
+        'k0affected_entity', // 0 or k0 of the affected entity (k0owner, k0facility, k0process)
         'c6deficiency', // required only for compliance audits, optional for others.
         'c6details', // optional. May include resolution options.
         // Only allow editing above fields before action is opened, to preserve integrity of recommending report.

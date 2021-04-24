@@ -24,7 +24,7 @@ if (
     ) or
     !isset($_SESSION['t0user_practice'])
 )
-    $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+    $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>'); // Don't eject, to handle back button.
 
 // Get useful information.
 $User = $Zfpf->current_user_info_1c();

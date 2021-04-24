@@ -6,7 +6,13 @@
 - water supply inadequate,
 - water temperature too high,
 * for the ammonia-refrigerant cooled reciprocating compressors
-- [IF ANY, ADD DETAILS]
+- ammonia supply inadequate,
+- stop valve closed,
+- strainer clogged,
+- liquid-supply solenoid valve problem causing inadequate flow,
+- thermostatic expansion valve problem causing inadequate flow,
+- clogging or oil-buildup in the cooling heads or their tubing, or
+- suction regulator problem causing inadequate flow or too much back pressure,
 * for the liquid-injection cooled screw compressors, on the ammonia-refrigerant piping for oil cooling
 - ammonia supply inadequate,
 - liquid-supply solenoid fails shut,
@@ -488,51 +494,51 @@ At the facility, these controls and safety shutoffs include the following.
 - a level probe, which outputs to controls that [OFTEN OPTIONAL]
 > signal alarms at an alarm level and then, [OFTEN OPTIONAL]
 > on high-level, send shutoff signals to compressor local controls, [OFTEN OPTIONAL]
-- a high-high-level float switch that shuts off compressor motors, wired fail-safe (no signal or open circuit causes shutoff) and independently from the central ammonia-refrigeration controls.
+- a high-high-level float switch that shuts off compressor motors, wired fail safe (no signal or open circuit causes shutoff) and independently from the central ammonia-refrigeration controls.
 * In all the ammonia-refrigerant compressor packages, these shutoffs include, at least:
-- high-discharge pressure,
-- high-motor amps (electrical current),
-- high-motor temperature (thermal protection),
-- low-suction pressure, and
-- low-oil pressure (the differential pressure that drives lubricating-oil flow, such as shaft-seal-chamber pressure minus suction pressure in Vilter reciprocating compressors).
+- compressor motor high current (amps) -- also called overload or overcurrent protection,
+- compressor motor high temperature (thermal protection),
+- high discharge pressure,
+- low suction pressure, and
+- low oil pressure (the differential pressure that drives lubricating-oil flow, such as shaft-seal-chamber pressure minus suction pressure in Vilter reciprocating compressors).
 * In the ammonia-refrigerant screw-compressor packages, these shutoffs also include, at least:
 - high discharge temperature, of the ammonia-refrigerant gas,
 - high oil-filter differential pressure, 
 - high oil temperature (after cooling and typically before injection into the screw lubrication system), 
-- high oil-pump-motor amps (electrical current),
-- high oil-pump-motor temperature (thermal protection), 
-- low oil temperature (also prevents the screw compressor from starting until the oil heater has adequately warmed the oil).
-* All of the above compressor-safety shutoffs are wired fail-safe (no signal or open circuit causes shutoff).
-* The screw-compressor slide valves (capacity control and volume ratio) automatically unload at shut down or when power returns after a power failure. The screw-compressor local-controllers prevent restart until slide valves are unloaded to below 10% of their limits.
+- low oil temperature (also prevents the screw compressor from starting until the oil heater has adequately warmed the oil), 
+- oil-pump motor high current (amps), and
+- oil-pump motor high temperature (thermal protection).
+* All of the above compressor-safety shutoffs fail safe (no signal or open circuit causes shutoff).
+* The screw-compressor slide valves (capacity control and volume ratio) automatically unload when the compressor shuts off or when power is restored after a power outage. The screw compressor local controllers prevent restart until slide valves are unloaded to below 10% of their limits.
 * The central ammonia-refrigeration controls automate the loading and unloading of both its reciprocating and screw compressors.
 * Inspection, testing, and maintenance (ITM) of the above controls and safeguards are scheduled, described, and documented in
 - the facility's maintenance-management system.
-*** The following applies to the ammonia-refrigeration system at the facility. ***
+*** The following apply to the ammonia-refrigeration system at the facility. ***
 * Overheating lowers the viscosity of lubricating oil, which at high enough temperatures causes 
 - inadequate lubrication. This leads to 
 - increased wear-and-tear on internal parts, 
 - often, increased oil leakage from the shaft seal, and
 - possibly, ammonia leakage from the shaft seal.
-* Extreme overheating typically causes compressors to seize up -- decreased lubrication leads to so much friction that the electric motor cannot turn the shaft.
-* In the reciprocating compressors, the crank shaft drives the oil pump, so the low-oil pressure switch should shutoff the compressor motor. If not, locked rotor should trip the motor controller/starter on high electrical current (amps),
+* Additional overheating causes friction that makes the drive shaft harder to turn, increasing the load on the compressor motor, and eventually causing the compressor to seize up (the electric motor cannot turn the shaft).
+* In the reciprocating compressors, the crank shaft drives the oil pump, so the low-oil pressure switch should shutoff the compressor motor. If not, high current (amps) protection should shut off the compressor motor,
 - except with a belt drive, if a problem (belt breaks, slipping , etc.) causes the motor to run faster than the compressor, the low-oil pressure switch should shutoff the compressor motor. If not, the motor many overheat and, if also not thermally protected, damage insulation, rarely but possibly leading to a small fire that might be the source of a larger fire.
 * Overheating, described above, and possibly small ammonia leaks, would be the typical result of gas recirculating from the discharge to suction sides of a reciprocating-compressor crank case because:
 - it is running with the discharge valve shut between the compressor and the oil separator (deadheading) and its high discharge-pressure shutoff fails when needed
 > causing its internal pressure-relief valve to open, or
 - rapid leak by this internal pressure-relief valve.
 * The screw compressors are protected from high-oil temperatures by
-- high-oil-temperature shutoffs,
-- high-discharge temperature shutoffs, 
-- low-oil pressure shutoffs, triggered by the low-oil pressure if the screws seize up because the above shutoffs both failed, and
-- motor controller/starter on high electrical current (amps), if all of the above fail.
+- high oil temperature shutoffs,
+- high discharge temperature shutoffs, 
+- compressor motor high current (amps) shutoffs (if friction increases due to inadequate lubrication), and 
+- low oil pressure shutoffs, triggered by the low-oil pressure if the screws seize up because the above shutoffs failed.
 * If the following shutoffs are not installed or fail when needed, overheating, described above, and possibly small ammonia leaks, would be the typical result:
-- low-suction pressure (compressor starved),
-- low-oil pressure (inadequate oil flow for cooling, lubricating, and seals),
+- low suction pressure (compressor starved),
+- low oil pressure (inadequate oil flow for cooling, lubricating, and seals),
 - high oil-filter differential pressure (inadequate oil flow for cooling, lubricating, and seals),
 - high oil temperature (or cooling-water low-flow switch, if applicable),
 - high discharge temperature,
-- high motor current (amps) -- as backup to the above.
-*  If the following shutoff is not installed or fails when needed, increased wear and tear would result, if not shutoff on low-oil pressure,
+- compressor motor high current (amps) -- as backup to the above.
+*  If the following shutoff is not installed or fails when needed, increased wear and tear would result, if not shut off on low oil pressure,
 - low oil temperature.
 * Compressor equalizing to suction too quickly, due to 
 - leak by screw-compressor suction check valve or
@@ -544,10 +550,10 @@ At the facility, these controls and safety shutoffs include the following.
 - may lead to wear or internal damage to screw-compressor packages, including their motors,
 - if this results in a rapid suction pressure drop, excessive refrigerant boiling in vessels that feed compressors may cause liquid droplets to reach compressors, see the scenario on liquid ammonia sucked into compressors, lots of large droplets or more (slugging).
 * Oil pump (for screw compressor) inlet or outlet valve closed when starting or running
-- may causes a leak, mostly oil, at the motor-shaft seal, valve-stem seal, or piping joints,
+- may cause a leak, mostly oil, at the motor-shaft seal, valve-stem seal, or piping joints,
 - if an outlet valve, typically the oil-cooler, oil-side, pressure-relief valve would open and relieve the pressure to the compressor oil separator,
 - the screw compressor would not start, or would shutoff, on low-oil pressure,
-- the oil-pump motor may shutoff on high amps (electrical current overload protection)."
+- the oil-pump motor may be shut off by high current (amps) protection."
 "Existing Safeguard"|"Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 For the all the condensers in the facility's ammonia-refrigeration system, which are all evaporative condensers,
 * access for maintenance is adequate, including to the fans and the inside and top of the condenser housing, as needed,
@@ -567,7 +573,7 @@ For the all the condensers in the facility's ammonia-refrigeration system, which
 [VERIFY ALL OF ABOVE.]"
 "Existing Safeguard"|"Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 * Alarm notifications are given to employees or contractors, by automated controls, via [LOUDSPEAKER ANNOUNCEMENTS, CALLS OR MESSAGES TO THEIR MOBILE PHONES...]
-* Ammonia-refrigeration controls fail safe themselves or due to redundant controls that fail safe.
+* Ammonia-refrigeration controls fail safe themselves or due to redundant controls that fail safe (no signal or open circuit causes shutoff).
 * Ammonia-refrigeration controls hardware is enclosed or located so that it is unlikely to be damaged by a heat, steam, water, or other leaks or environmental conditions.
 * Electrical-surge protection for ammonia-refrigeration controls is adequate.
 * Thermal scans of electrical systems are completed as recommended by the facility's qualified electrical contractor.
@@ -606,8 +612,8 @@ The facility's ammonia-refrigeration system has the following in place.
 - high-stage discharge (HSD) piping that evaporates any condensed liquid or carries it to condensers without causing vapor propelled liquid slugs, such as because the continuous gas flow in the HSD piping is much greater than any condensed-liquid flow entering from HGD piping,
 - or another safe location.
 * Rules of thumb that are followed:
-- soft start of hot-gas defrost (soft gas) is used if the hot-gas solenoid valve is 1.5-inch (nominal size) or larger or if the evaporating temperature is below zero Fahrenheit (0 F),
-- suction control valve slow-opening or bleed-by is used if suction control valves are 2.5-inch (nominal size) or larger or if the evaporator coil is 15 tons refrigeration (TR) or larger, and
+- soft start of hot-gas defrost (soft gas) is needed if the hot-gas solenoid valve is 1.5-inch (nominal size) or larger or if the evaporating temperature is below zero Fahrenheit (0 F),
+- suction control valve slow-opening or bleed-by is needed if suction control valves are 2.5-inch (nominal size) or larger or if the evaporator coil is 15 tons refrigeration (TR) or larger, and
 - each forced-air evaporator above 1 TR is served by a separate valve group, which includes the liquid, suction, and hot-gas control valves.
 * Defrost, hot gas, includes adequately gradual and long delay and/or pump-down times (optionally lengthened by interlocked pressure transducers), both before and after defrost:
 - the before-defrost pump-down time is adequate to remove liquid ammonia from the evaporator coil and piping that hot gas will enter, avoiding shocks, such as from:
@@ -644,16 +650,15 @@ The written emergency-action plan, or documents it references, describe:
 > assessing and communicating routes to safe gathering places, either outside or inside (shelter-in-place),
 > calling in needed resources, and
 > head count,
-* inspection, testing, and maintenance of equipment that facilitates or provides
-- emergency communications, such a loud-speaker system or radios with adequate coverage, 
-- wind indicators,
 * leak mitigation and emergency shutdown, [SEE SAMPLE COMPLIANCE PRACTICE AND HAZARDOUS-SUBSTANCE PROCEDURE]
 * small-leak notifications, investigation, and actions, [SEE SAMPLE COMPLIANCE PRACTICE AND HAZARDOUS-SUBSTANCE PROCEDURE, AND 
 - IF LIQUIDS ARE COOLED BY THE AMMONIA-REFRIGERATION SYSTEM, ENSURE THE SMALL-LEAK PROCEDURE (OR SIMILAR) WARNS AGAINST AND DESCRIBES HOW TO AVOID TRAPPING AMMONIA IN LOWER-PRESSURE LIQUID PIPING INTO WHICH AMMONIA LEAKED] (to avoid incidents like described in the 2018 Technical Safety BC report about the 2017 Fernie, British Columbia, incident),
 * visitor and contractor access control, including 
 - sign-in/sign-out log(s),
 - a facility employee attends visitors and contractors who have not been adequately trained on the facility's emergency-action plan.
-[VERIFY ABOVE, SEE THE 'Emergency Action Plan' COMPLIANCE PRACTICE IN THE PSM-CAP APP FOR A MORE COMPREHENSIVE LIST.]"
+[VERIFY ABOVE, SEE THE 'Emergency Action Plan' COMPLIANCE PRACTICE IN THE PSM-CAP APP FOR A MORE COMPREHENSIVE LIST.]
+* See also the safeguard on:
+- fire-safety systems and means of egress."
 "Existing Safeguard"|"Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 * For the facility:
 [SUMMARIZE, IF ANY, EMERGENCY-RESPONSE CAPABILITIES OF:
@@ -702,7 +707,7 @@ This ITM includes, at least the following.
 * Daily inspection of
 - refrigerating-machinery room(s),
 - condensers, at least viewed from within 100-feet,
-- evaporative-condenser water treatment, unless its automation allows a reduced frequency,
+- condenser water treatment, unless its automation allows a reduced frequency,
 - any ammonia-refrigerant pumps outside the refrigerating-machinery room, 
 - [DESCRIBE ANYTHING REQUIRING DAILY INSPECTION THAT'S NOT IN A REFRIGERATING-MACHINERY ROOM], and
 * weekly inspection of
@@ -718,13 +723,13 @@ This ITM includes, at least the following.
 - anything else unusual the inspector notices.
 * Automatic-purger and transfer-system counts [ARE LOGGED DAILY UNLESS LOGGED BY CONTROLS.]
 * Liquids that are cooled or heated are tested and treated as needed based on operating experience, quality standards, chemical-supplier recommendations, or equipment-manufacturer recommendations (for example, for glycol, the freeze-point, via refractive index or specific gravity, pH, any corrosion inhibitors, and any biocides.)
-* Yearly ITM includes at least:
-- evaporative condenser maintenance, per its manufacturer recommendations,
+* Yearly ITM on:
+- condenser(s), per manufacturer recommendations,
 - clean-in-place and hot-gas defrost -- inspecting equipment and piping while they go through one complete cleaning or defrost cycle, from closing to re-opening the liquid-solenoid valve,
 - insulation and paint on ammonia-refrigeration equipment, piping, and supports -- visual inspection and properly repairing as needed,
-- safety shutoffs ITM for rotating-electrical equipment, such as compressors, fans (if applicable), and pumps,
-- safety systems ITM, such as for ammonia-in-air sensors, ventilation, and safety showers,
-- supports visual inspections, covering from the equipment enclosure or pipe to the foundation, if independently supported, or to the building-structural supports, floor, or roof that carry the loads, and if building structures, floors, or roofs are damaged, additional inspections are called for.
+- safety shutoffs for rotating-electrical equipment, such as compressors, fans (if applicable), and pumps,
+- safety systems, such as alarms, ammonia-in-air sensors, ventilation, and safety showers,
+- supports, covering from the equipment enclosure or pipe to the foundation, if independently supported, or to the building-structural supports, floor, or roof that carry the loads, and if building structures, floors, or roofs are damaged, additional inspections are called for.
 * Valve stems, including for control-valve manual opening, are lubricated and exercised per manufacturers recommendations or industry practice. [PROVIDE DETAILS ON WHAT THE FACILITY DOES.]
 * See also the facility's maintenance-management system."
 "Existing Safeguard"|"Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
@@ -737,8 +742,8 @@ This ITM includes, at least the following.
 START EXAMPLES WHICH MAY BE OPTIONAL:
 * In addition, ammonia-in-air sensors in:
 - the outlet air of all air-handling units (AHU) with ammonia refrigeration (LIST)
-> trigger alarms [DESCRIBE] an shutoff the AHU when ammonia is detected.
-- in coolers
+> trigger alarms [DESCRIBE] and shutoff the AHU when ammonia is detected.
+- in coolers and freezers [LIST]
 > trigger alarms [DESCRIBE] and [DESCRIBE ANY SHUTOFFS OF LIQUID OR HOT-GAS SOLENOID VALVES]
 * PROVIDE DETAILS, SUCH AS HOW SENSORS ARE LOCATED TO BE LIKELY TO DETECT LEAKS.]
 END EXAMPLES]
@@ -1077,13 +1082,14 @@ The facility's ammonia-refrigeration system:
 - pump down isolated equipment and piping to a suction pressure above their MDMT for long enough to remove liquid ammonia, 
 - before, if needed, venting them to atmospheric pressure or pumping them down to lower pressures, and so 
 - avoid cooling equipment and piping below their MDMT.
-* Outdoor temperatures are rarely below -20 F, the record low was [INSERT RECORD LOW] F in [MONTH, YEAR], in [NEAREST LOCATION WITH SIMILAR WEATHER], but
+* Outdoor temperatures at the facility are rarely below -20 F; the record low was [INSERT RECORD LOW] F on [MONTH DAY, YEAR], in [NEAREST LOCATION WITH SIMILAR WEATHER], but
 - insulation and refrigerant circulating in piping would keep most, not all, piping above extremely low outdoor temperatures,
 - at low outdoor temperatures, internal pressures would typically be much lower than design pressures, so typically only external loads or shocks could to initiate a brittle fracture,
 - no piping wall thicknesses exceed 1/4-inch [VERIFY -- TYPICALLY TRUE FOR 16' AND SMALLER PIPE SIZES] (brittle fracture is more likely in thicker steel)
-- all vessels except [LIST ANY VESSELS LOCATION OUTSIDE] are located indoors and these outdoor vessels have a low likelihood of brittle fracture for the following additional reasons
+- all vessels except [LIST ANY VESSELS LOCATION OUTSIDE] are located indoors and the outdoor vessels have a low likelihood of brittle fracture for the following additional reasons
 > [LIST ANY REASONS, FOR EXAMPLE, FOR AN OUTDOOR HIGH-PRESSURE RECEIVER, THESE MAY INCLUDE]
-> the vessel has been post-weld heat treated and has a steel-wall thickness of [THICKNESS]."
+> the vessel has been post-weld heat treated and has a steel-wall thickness of [THICKNESS],
+> the vessel typically contains only suction pressure and has a MAWP of [TYPICALLY SEVERAL TIMES HIGHER THAN SUCTION PRESSURE]."
 "Existing Safeguard"|"Transfer system and its piping are adequately built, controlled, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 [SEE TRANSFER SYSTEM SCENARIOS AND CHECK DETAILS, INCLUDING VERIFYING THAT:]
 * Liquid ammonia is unlikely to flow from larger vessels, through the transfer system, and into the relief-vent (RV) piping, even during a fire."

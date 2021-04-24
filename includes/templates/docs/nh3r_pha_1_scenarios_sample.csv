@@ -111,10 +111,11 @@
 (8) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
 (9) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
 (10) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(11) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(12) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(13) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(14) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(11) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(12) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(13) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(14) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(15) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A1. Equipment and piping in general"|"6"|"Liquid ammonia is trapped in piping or a small vessel or heat exchanger, such as an oil pot or a compressor-oil cooler."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Design, fabrication, construction, or installation shortcoming or error.
 (2) Human error or poor judgment.
 (3) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth.
@@ -273,14 +274,15 @@
 (3) Hinders safety, security, health, or environmental protection.
 (4) Overpressure in equipment or piping.
 (5) Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load.
-(6) Shocks that could damage equipment, piping, or supports."|"(1) Change management is adequate.
-(2) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
-(3) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
-(4) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
-(5) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
-(6) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(7) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(8) Separation of ammonia refrigeration from people is adequate and considered in change management."|""
+(6) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Change management is adequate.
+(3) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(4) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(5) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(6) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
+(7) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(8) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(9) Separation of ammonia refrigeration from people is adequate and considered in change management."|""
 "A1. Equipment and piping in general"|"13"|"Pressure-relief system carries liquid or two-phase flow when built for gas only."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Condensation
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Explosion or fire more likely.

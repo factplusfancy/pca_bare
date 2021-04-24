@@ -83,182 +83,226 @@ if (isset($_GET['act_notice_1'])) {
     $Zfpf->save_and_exit_1c();
 }
 
-// Import a template PHA from a JSON file.
-if (isset($_POST['template_pha_import'])) {
-    $Zfpf->files_array_check_1e('pha_json_file', 'practice_o1.php'); // This function echos and exits if there is a problem.
-    if (!isset($_FILES['file_1_pha_json_file']['tmp_name']))
+// Import a PHA from a JSON file as a deployment-wide template PHA or as a process's current working draft (CWD) PHA.
+if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first']) or isset($_POST['pha_import_template'])) {
+    if (!isset($_SESSION['SelectResults']['t0pha'])) // Always set by pha_i1m.php. If nothing was selected, would be int(0) -- the integer 0.
         $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
-    $ArrayPHA = $Zfpf->read_file_1e($_FILES['file_1_pha_json_file']['tmp_name']); // Returns empty string (false) on failure.
-    if ($ArrayPHA) {
-        $ArrayPHA = json_decode($ArrayPHA, TRUE); // The second parameter must be TRUE to return an array.
-        $ProblemMessage = '';
-        if (!isset($ArrayPHA['t0pha']))
-            $ProblemMessage .= '<p>A t0pha field was not found in the JSON file you selected.</p>';
-        elseif (count($ArrayPHA['t0pha']) != 1)
-            $ProblemMessage .= '<p>More than one t0pha fields were found in the JSON file you selected. Currently, only one PHA can be imported per JSON file.</p>';
-        if ($ProblemMessage) {
-            echo $Zfpf->xhtml_contents_header_1c().'<h2>
-            Problem importing a template PHA from a JSON file</h2>
-            '.$ProblemMessage.'
-            <p>
-            Contact your supervisor or an app admin for assistance.</p>
-            <form action="practice_o1.php" method="post"><p>
-                <input type="submit" value="Go back" /></p>
-            </form>
-            '.$Zfpf->xhtml_footer_1c();
-            $Zfpf->save_and_exit_1c();
-        }
-        $EncryptedNobody = $Zfpf->encrypt_1c('[Nobody is editing.]');
-        // t0pha
-        $ImportFields = array('c6team_qualifications', 'c6background', 'c6method', 'c6prior_incident_id');
-        $Uploader = $Zfpf->current_user_info_1c();
-        $DBMSresource = $Zfpf->credentials_connect_instance_1s();
-        $HighestTemplatePHAKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0pha', 't0pha', 99999);
-        foreach ($ArrayPHA['t0pha'] as $Vr) { // r stands for row, of a database table. Only one value in this t0pha array, with key the imported k0pha, but we don't know this k0pha.
-            $PHARow['k0pha'] = ++$HighestTemplatePHAKey; // Assign a new k0pha that is less than 10,000 but otherwise the highest k0pha.
-            $PHARow['k0process'] = 0; // See schema -- 0 for template PHAs.
-            $PHARow['c6bfn_act_notice'] = $EncryptedNothing;
-            $PHARow['c6bfn_attendance'] = $EncryptedNothing;
-            $PHARow['c6bfn_pha_as_issued'] = $EncryptedNothing;
-            $PHARow['k0user_of_leader'] = 0; // See schema.
-            $PHARow['c5ts_leader'] = $EncryptedNothing;
-            $PHARow['c6nymd_leader'] = $Zfpf->encrypt_1c('Template PHA imported '.$Zfpf->timestamp_to_display_1c(time()).' by '.$Uploader['NameTitle'].', '.$Uploader['Employer'].' '.$Uploader['WorkEmail']); // See schema.
-            $PHARow['c5who_is_editing'] = $EncryptedNobody;
-            foreach ($ImportFields as $Vfn) { // fn stands for field name -- aka database table column name.
-                if (isset($Vr[$Vfn]))
-                    $PHARow[$Vfn] = $Zfpf->encrypt_1c($Vr[$Vfn]);
-                else
-                    $PHARow[$Vfn] = $EncryptedNothing;
-            }
-            $Zfpf->insert_sql_1s($DBMSresource, 't0pha', $PHARow, FALSE); // No history insert for templates.
-        }
-        $SpCount = 0;
-        $ScCount = 0;
-        $ImportFields = array('c5name', 'c5type', 'c5severity', 'c5likelihood'); // for t0scenario, nested in t0subprocess
-        // t0subprocess
-        if (isset($ArrayPHA['t0subprocess'])) foreach ($ArrayPHA['t0subprocess'] as $Ksp => $Vsp) { // $Ksp has the key from the JSON source file, same as $Vsp['k0subprocess'].
-            $SpRow['k0subprocess'] = time().mt_rand(100, 999).$SpCount++; // Allows up to 10,000 subprocesses (aka subsystems) while avoiding conflicts for these inserts.
-            $SpRow['k0pha'] = $PHARow['k0pha']; // Only one PHA row allowed for imports.
-            if (isset($Vsp['c5name']))
-                $SpRow['c5name'] = $Zfpf->encrypt_1c($Vsp['c5name']);
-            else // Required if input via app, but don't fail if not in JSON file.
-                $SpRow['c5name'] = $EncryptedNothing;
-            $SpRow['c5who_is_editing'] = $EncryptedNobody;
-            $Zfpf->insert_sql_1s($DBMSresource, 't0subprocess', $SpRow, FALSE);
-            // t0scenario
-            if (isset($ArrayPHA['t0scenario'])) foreach ($ArrayPHA['t0scenario'] as $Ksc => $Vsc) {
-                if (isset($Vsc['k0subprocess']) and $Vsc['k0subprocess'] == $Ksp) { // The scenario is in this subprocess.
-                    $NewRow['k0scenario'] = time().mt_rand(100, 999).$ScCount++;
-                    $ScMap[$Ksc] = $NewRow['k0scenario']; // $Ksc is the old k0scenario, $NewRow['k0scenario'] is the new k0scenario.
-                    $NewRow['k0subprocess'] = $SpRow['k0subprocess']; // The new k0subprocess.
-                    $NewRow['c5who_is_editing'] = $EncryptedNobody;
-                    foreach ($ImportFields as $Vfn) {
-                        if (isset($Vsc[$Vfn]))
-                            $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vsc[$Vfn]);
-                        else
-                            $NewRow[$Vfn] = $EncryptedNothing;
-                    }
-                    $Zfpf->insert_sql_1s($DBMSresource, 't0scenario', $NewRow, FALSE);
-                }
-            }
-        }
-        // t0cause
-        unset($NewRow);
-        $NewRow['c5who_is_editing'] = $EncryptedNobody;
-        $Count = 0;
-        $ImportFields = array('c5name', 'c6description');
-        if (isset($ArrayPHA['t0cause'])) foreach ($ArrayPHA['t0cause'] as $Kx => $Vx) {
-            $NewRow['k0cause'] = time().mt_rand(100, 999).$Count++;
-            $ccsaMap['cause'][$Kx] = $NewRow['k0cause'];
-            foreach ($ImportFields as $Vfn) {
-                if (isset($Vx[$Vfn]))
-                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
-                else
-                    $NewRow[$Vfn] = $EncryptedNothing;
-            }
-            $Zfpf->insert_sql_1s($DBMSresource, 't0cause', $NewRow, FALSE);
-        }
-        // t0consequence
-        unset($NewRow);
-        $NewRow['c5who_is_editing'] = $EncryptedNobody;
-        $Count = 0;
-        $ImportFields = array('c5name', 'c6description');
-        if (isset($ArrayPHA['t0consequence'])) foreach ($ArrayPHA['t0consequence'] as $Kx => $Vx) {
-            $NewRow['k0consequence'] = time().mt_rand(100, 999).$Count++;
-            $ccsaMap['consequence'][$Kx] = $NewRow['k0consequence'];
-            foreach ($ImportFields as $Vfn) {
-                if (isset($Vx[$Vfn]))
-                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
-                else
-                    $NewRow[$Vfn] = $EncryptedNothing;
-            }
-            $Zfpf->insert_sql_1s($DBMSresource, 't0consequence', $NewRow, FALSE);
-        }
-        // t0safeguard
-        unset($NewRow);
-        $NewRow['c5who_is_editing'] = $EncryptedNobody;
-        $Count = 0;
-        $ImportFields = array('c5name', 'c5hierarchy', 'c6description');
-        if (isset($ArrayPHA['t0safeguard'])) foreach ($ArrayPHA['t0safeguard'] as $Kx => $Vx) {
-            $NewRow['k0safeguard'] = time().mt_rand(100, 999).$Count++;
-            $ccsaMap['safeguard'][$Kx] = $NewRow['k0safeguard'];
-            foreach ($ImportFields as $Vfn) {
-                if (isset($Vx[$Vfn]))
-                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
-                else
-                    $NewRow[$Vfn] = $EncryptedNothing;
-            }
-            $Zfpf->insert_sql_1s($DBMSresource, 't0safeguard', $NewRow, FALSE);
-        }
-        // t0action -- typically not in templates, but need to import a customized PHA that someone wants to use as a template.
-        unset($NewRow);
-        $NewRow['c5who_is_editing'] = $EncryptedNobody;
-        $Count = 0;
-        $ImportFields = array('c5name', 'c5priority', 'c6deficiency', 'c6details');
-        if (isset($ArrayPHA['t0action'])) foreach ($ArrayPHA['t0action'] as $Kx => $Vx) {
-            $NewRow['k0action'] = time().mt_rand(100, 999).$Count++;
-            $ccsaMap['action'][$Kx] = $NewRow['k0action'];
-            $NewRow['c5status'] = $Zfpf->encrypt_1c('Draft proposed action');
-            $NewRow['c5affected_entity'] = $EncryptedNothing; // Would have to be input later, if/when the action is first edited.
-            $NewRow['k0affected_entity'] = 0;
-            $NewRow['c5ts_target'] = $EncryptedNothing;
-            $NewRow['k0user_of_leader'] = 0;
-            $NewRow['c5ts_leader'] = $EncryptedNothing;
-            $NewRow['c6nymd_leader'] = $EncryptedNothing;
-            $NewRow['c6notes'] = $EncryptedNothing;
-            $NewRow['c6bfn_supporting'] = $EncryptedNothing;
-            $NewRow['k0user_of_ae_leader'] = -2;
-            $NewRow['c5ts_ae_leader'] = $EncryptedNothing;
-            $NewRow['c6nymd_ae_leader'] = $EncryptedNothing;
-            foreach ($ImportFields as $Vfn) {
-                if (isset($Vx[$Vfn]))
-                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
-                else
-                    $NewRow[$Vfn] = $EncryptedNothing;
-            }
-            $Zfpf->insert_sql_1s($DBMSresource, 't0action', $NewRow, FALSE);
-        }
-        // Juntion tables: t0scenario_cause, t0scenario_consequence, t0scenario_safeguard, and t0scenario_action
-        $Types = array('cause', 'consequence', 'safeguard', 'action');
-        foreach ($Types as $ccsa) {
-            unset($NewRow);
-            $NewRow['c5who_is_editing'] = $EncryptedNobody;
-            $Count = 0;
-            if (isset($ArrayPHA['t0scenario_'.$ccsa])) foreach ($ArrayPHA['t0scenario_'.$ccsa] as $Vx) {
-                $ScKeyOld = $Vx['k0scenario'];
-                $ccsaKeyOld = $Vx['k0'.$ccsa];
-                if (isset($ScMap[$ScKeyOld]) and isset($ccsaMap[$ccsa][$ccsaKeyOld])) {
-                    $NewRow['k0scenario_'.$ccsa] = time().mt_rand(100, 999).$Count++;
-                    $NewRow['k0scenario'] = $ScMap[$ScKeyOld];
-                    $NewRow['k0'.$ccsa] = $ccsaMap[$ccsa][$ccsaKeyOld];
-                    $Zfpf->insert_sql_1s($DBMSresource, 't0scenario_'.$ccsa, $NewRow, FALSE);
-                }
-            }
-        }
-        $Zfpf->close_connection_1s($DBMSresource);
+    $ArrayPHA = '';
+    $ProblemMessage = '';
+    if (isset($_POST['pha_import_replace_cwd']) and isset($_FILES['file_1_replace_cwd_pha_json']['tmp_name'])) {
+        $Zfpf->files_array_check_1e('replace_cwd_pha_json', 'practice_o1.php'); // This function echos and exits if there is a problem.
+        $ArrayPHA = $Zfpf->read_file_1e($_FILES['file_1_replace_cwd_pha_json']['tmp_name']); // Returns empty string (false) on failure.
     }
+    if (isset($_POST['pha_import_first']) and isset($_FILES['file_1_first_pha_json']['tmp_name'])) {
+        $Zfpf->files_array_check_1e('first_pha_json', 'practice_o1.php');
+        $ArrayPHA = $Zfpf->read_file_1e($_FILES['file_1_first_pha_json']['tmp_name']);
+    }
+    if (isset($_POST['pha_import_template']) and isset($_FILES['file_1_template_pha_json']['tmp_name'])) {
+        $Zfpf->files_array_check_1e('template_pha_json', 'practice_o1.php');
+        $ArrayPHA = $Zfpf->read_file_1e($_FILES['file_1_template_pha_json']['tmp_name']);
+    }
+    if (!$ArrayPHA) 
+        $ProblemMessage = '<p>The app couldn\'t read the JSON file you selected.</p>'; // Most errors, like no file selected, are caught above by FilesZfpf::files_array_check_1e
+    $ArrayPHA = json_decode($ArrayPHA, TRUE); // The second parameter must be TRUE to return an array.
+    if (!isset($ArrayPHA['t0pha']))
+        $ProblemMessage .= '<p>A t0pha field was not found in the JSON file you selected.</p>';
+    elseif (count($ArrayPHA['t0pha']) != 1)
+        $ProblemMessage .= '<p>More than one t0pha fields were found in the JSON file you selected. Currently, only one PHA can be imported per JSON file.</p>';
+    if (isset($_POST['pha_import_first']) and $_SESSION['SelectResults']['t0pha']) foreach ($_SESSION['SelectResults']['t0pha'] as $V) { 
+        if ($V['k0pha'] >= 100000) { // Stop import because if there is a CWD, need to delete it.
+            $ProblemMessage .= '<p>The app found a PHA for the current process so cannot import its first PHA.</p>';
+            break;
+        }
+    }
+    if ($ProblemMessage) {
+        echo $Zfpf->xhtml_contents_header_1c().'<h2>
+        Problem importing a template PHA from a JSON file</h2>
+        '.$ProblemMessage.'
+        <p>
+        Contact your supervisor or an app admin for assistance.</p>
+        <form action="practice_o1.php" method="post"><p>
+            <input type="submit" value="Go back" /></p>
+        </form>
+        '.$Zfpf->xhtml_footer_1c();
+        $Zfpf->save_and_exit_1c();
+    }
+    if (isset($_POST['pha_import_replace_cwd']) and $_SESSION['SelectResults']['t0pha']) foreach ($_SESSION['SelectResults']['t0pha'] as $V) {
+        // Find the CWD and archive it. If none, still import JSON to CWD. If for some reason there are more than one CWD, achieve them all.
+        if ($V['k0pha'] >= 100000 and $Zfpf->decrypt_1c($V['c5ts_leader']) == '[Nothing has been recorded in this field.]') { // See schema.
+            $Changes['c5ts_leader'] = $Zfpf->encrypt_1c('Superseded draft archived on '.date('\Y\e\a\r Y, \M\o\n\t\h n, \D\a\y j, \T\i\m\e H:i:s', time()));
+            $Conditions[0] = array('k0pha', '=', $V['k0pha']);
+            $Affected = $Zfpf->one_shot_update_1s('t0pha', $Changes, $Conditions, TRUE, $htmlFormArray);
+            if ($Affected != 1)
+                $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' Affected: '.@$Affected);
+        }
+    }
+    $EncryptedNobody = $Zfpf->encrypt_1c('[Nobody is editing.]');
+    // t0pha
+    $ImportFields = array('c6team_qualifications', 'c6background', 'c6method', 'c6prior_incident_id');
+    $jsonPHAKey = key($ArrayPHA['t0pha']); // Verified above that $ArrayPHA['t0pha'] holds exactly one value.
+    $Uploader = $Zfpf->current_user_info_1c();
+    $DBMSresource = $Zfpf->credentials_connect_instance_1s();
+    if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first'])) {
+        if (!isset($_SESSION['StatePicked']['t0process']['k0process']))
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
+        $PHARow['k0pha'] = time().mt_rand(1000000, 9999999);
+        $PHARow['k0process'] = $_SESSION['StatePicked']['t0process']['k0process'];
+        $PHARow['k0user_of_leader'] = $_SESSION['t0user']['k0user']; // Make the current user, who's importing the PHA, the PHA-team leader.
+        $PHARow['c6nymd_leader'] = $EncryptedNothing;
+    }
+    if (isset($_POST['pha_import_template'])) {
+        $HighestTemplatePHAKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0pha', 't0pha', 99999);
+        $PHARow['k0pha'] = ++$HighestTemplatePHAKey; // Assign a new k0pha that is less than 10,000 but otherwise the highest k0pha.
+        $PHARow['k0process'] = 0; // See schema -- 0 for template PHAs.
+        $PHARow['k0user_of_leader'] = 0; // See schema.
+        $PHARow['c6nymd_leader'] = $Zfpf->encrypt_1c('Template PHA imported '.$Zfpf->timestamp_to_display_1c(time()).' by '.$Uploader['NameTitle'].', '.$Uploader['Employer'].' '.$Uploader['WorkEmail']); // See schema.
+    }
+    $PHARow['c6bfn_act_notice'] = $EncryptedNothing;
+    $PHARow['c6bfn_attendance'] = $EncryptedNothing;
+    $PHARow['c6bfn_pha_as_issued'] = $EncryptedNothing;
+    $PHARow['c5ts_leader'] = $EncryptedNothing;
+    $PHARow['c5who_is_editing'] = $EncryptedNobody;
+    foreach ($ImportFields as $Vfn) { // fn stands for field name -- aka database table column name.
+        if (isset($ArrayPHA['t0pha'][$jsonPHAKey][$Vfn]))
+            $PHARow[$Vfn] = $Zfpf->encrypt_1c($ArrayPHA['t0pha'][$jsonPHAKey][$Vfn]);
+        else
+            $PHARow[$Vfn] = $EncryptedNothing;
+    }
+    $Zfpf->insert_sql_1s($DBMSresource, 't0pha', $PHARow);
+    $SpCount = 0;
+    $ScCount = 0;
+    $ImportFields = array('c5name', 'c5type', 'c5severity', 'c5likelihood'); // for t0scenario, nested in t0subprocess
+    // t0subprocess
+    if (isset($ArrayPHA['t0subprocess'])) foreach ($ArrayPHA['t0subprocess'] as $Ksp => $Vsp) { // $Ksp has the key from the JSON source file, same as $Vsp['k0subprocess'].
+        $SpRow['k0subprocess'] = time().mt_rand(100, 999).$SpCount++; // Allows up to 10,000 subprocesses (aka subsystems) while avoiding conflicts for these inserts.
+        $SpRow['k0pha'] = $PHARow['k0pha']; // Only one PHA row allowed for imports.
+        if (isset($Vsp['c5name']))
+            $SpRow['c5name'] = $Zfpf->encrypt_1c($Vsp['c5name']);
+        else // Required if input via app, but don't fail if not in JSON file.
+            $SpRow['c5name'] = $EncryptedNothing;
+        $SpRow['c5who_is_editing'] = $EncryptedNobody;
+        $Zfpf->insert_sql_1s($DBMSresource, 't0subprocess', $SpRow, FALSE);
+        // t0scenario
+        if (isset($ArrayPHA['t0scenario'])) foreach ($ArrayPHA['t0scenario'] as $Ksc => $Vsc) {
+            if (isset($Vsc['k0subprocess']) and $Vsc['k0subprocess'] == $Ksp) { // The scenario is in this subprocess.
+                $NewRow['k0scenario'] = time().mt_rand(100, 999).$ScCount++;
+                $ScMap[$Ksc] = $NewRow['k0scenario']; // $Ksc is the old k0scenario, $NewRow['k0scenario'] is the new k0scenario.
+                $NewRow['k0subprocess'] = $SpRow['k0subprocess']; // The new k0subprocess.
+                $NewRow['c5who_is_editing'] = $EncryptedNobody;
+                foreach ($ImportFields as $Vfn) {
+                    if (isset($Vsc[$Vfn]))
+                        $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vsc[$Vfn]);
+                    else
+                        $NewRow[$Vfn] = $EncryptedNothing;
+                }
+                $Zfpf->insert_sql_1s($DBMSresource, 't0scenario', $NewRow, FALSE);
+            }
+        }
+    }
+    // t0cause
+    unset($NewRow);
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    $ImportFields = array('c5name', 'c6description');
+    if (isset($ArrayPHA['t0cause'])) foreach ($ArrayPHA['t0cause'] as $Kx => $Vx) {
+        $NewRow['k0cause'] = time().mt_rand(100, 999).$Count++;
+        $ccsaMap['cause'][$Kx] = $NewRow['k0cause'];
+        foreach ($ImportFields as $Vfn) {
+            if (isset($Vx[$Vfn]))
+                $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
+            else
+                $NewRow[$Vfn] = $EncryptedNothing;
+        }
+        $Zfpf->insert_sql_1s($DBMSresource, 't0cause', $NewRow, FALSE);
+    }
+    // t0consequence
+    unset($NewRow);
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    $ImportFields = array('c5name', 'c6description');
+    if (isset($ArrayPHA['t0consequence'])) foreach ($ArrayPHA['t0consequence'] as $Kx => $Vx) {
+        $NewRow['k0consequence'] = time().mt_rand(100, 999).$Count++;
+        $ccsaMap['consequence'][$Kx] = $NewRow['k0consequence'];
+        foreach ($ImportFields as $Vfn) {
+            if (isset($Vx[$Vfn]))
+                $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
+            else
+                $NewRow[$Vfn] = $EncryptedNothing;
+        }
+        $Zfpf->insert_sql_1s($DBMSresource, 't0consequence', $NewRow, FALSE);
+    }
+    // t0safeguard
+    unset($NewRow);
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    $ImportFields = array('c5name', 'c5hierarchy', 'c6description');
+    if (isset($ArrayPHA['t0safeguard'])) foreach ($ArrayPHA['t0safeguard'] as $Kx => $Vx) {
+        $NewRow['k0safeguard'] = time().mt_rand(100, 999).$Count++;
+        $ccsaMap['safeguard'][$Kx] = $NewRow['k0safeguard'];
+        foreach ($ImportFields as $Vfn) {
+            if (isset($Vx[$Vfn]))
+                $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
+            else
+                $NewRow[$Vfn] = $EncryptedNothing;
+        }
+        $Zfpf->insert_sql_1s($DBMSresource, 't0safeguard', $NewRow, FALSE);
+    }
+    // t0action -- typically not in templates, but need to import a customized PHA that someone wants to use as a template or importing an existing PHA into a new deployment.
+    unset($NewRow);
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    $ImportFields = array('c5name', 'c5priority', 'c5affected_entity', 'c6deficiency', 'c6details');
+    if (isset($ArrayPHA['t0action'])) foreach ($ArrayPHA['t0action'] as $Kx => $Vx) {
+        $NewRow['k0action'] = time().mt_rand(100, 999).$Count++;
+        $ccsaMap['action'][$Kx] = $NewRow['k0action'];
+        $NewRow['c5status'] = $Zfpf->encrypt_1c('Draft proposed action');
+        $NewRow['k0affected_entity'] = 0; // Update below, if c5affected_entity is imported for an action.
+        $NewRow['c5ts_target'] = $EncryptedNothing;
+        $NewRow['k0user_of_leader'] = 0;
+        $NewRow['c5ts_leader'] = $EncryptedNothing;
+        $NewRow['c6nymd_leader'] = $EncryptedNothing;
+        $NewRow['c6notes'] = $EncryptedNothing;
+        $NewRow['c6bfn_supporting'] = $EncryptedNothing;
+        $NewRow['k0user_of_ae_leader'] = -2;
+        $NewRow['c5ts_ae_leader'] = $EncryptedNothing;
+        $NewRow['c6nymd_ae_leader'] = $EncryptedNothing;
+        foreach ($ImportFields as $Vfn) {
+            if (isset($Vx[$Vfn])) {
+                $NewRow[$Vfn] = $Zfpf->encrypt_1c($Vx[$Vfn]);
+                if ($Vfn == 'c5affected_entity') {
+                    if ($Vx[$Vfn] == 'Owner-wide')
+                        $NewRow['k0affected_entity'] = $_SESSION['StatePicked']['t0owner']['k0owner'];
+                    if ($Vx[$Vfn] == 'Facility-wide')
+                        $NewRow['k0affected_entity'] = $_SESSION['StatePicked']['t0facility']['k0facility'];
+                    if ($Vx[$Vfn] == 'Process-wide')
+                        $NewRow['k0affected_entity'] = $_SESSION['StatePicked']['t0process']['k0process'];
+                }
+            }
+            else
+                $NewRow[$Vfn] = $EncryptedNothing;
+        }
+        $Zfpf->insert_sql_1s($DBMSresource, 't0action', $NewRow, FALSE);
+    }
+    // Juntion tables: t0scenario_cause, t0scenario_consequence, t0scenario_safeguard, and t0scenario_action
+    $Types = array('cause', 'consequence', 'safeguard', 'action');
+    foreach ($Types as $ccsa) {
+        unset($NewRow);
+        $NewRow['c5who_is_editing'] = $EncryptedNobody;
+        $Count = 0;
+        if (isset($ArrayPHA['t0scenario_'.$ccsa])) foreach ($ArrayPHA['t0scenario_'.$ccsa] as $Vx) {
+            $ScKeyOld = $Vx['k0scenario'];
+            $ccsaKeyOld = $Vx['k0'.$ccsa];
+            if (isset($ScMap[$ScKeyOld]) and isset($ccsaMap[$ccsa][$ccsaKeyOld])) {
+                $NewRow['k0scenario_'.$ccsa] = time().mt_rand(100, 999).$Count++;
+                $NewRow['k0scenario'] = $ScMap[$ScKeyOld];
+                $NewRow['k0'.$ccsa] = $ccsaMap[$ccsa][$ccsaKeyOld];
+                $Zfpf->insert_sql_1s($DBMSresource, 't0scenario_'.$ccsa, $NewRow, FALSE);
+            }
+        }
+    }
+    $Zfpf->close_connection_1s($DBMSresource);
     echo $Zfpf->xhtml_contents_header_1c().'<h2>
-    Importing template PHA from a JSON file complete.</h2>
+    Importing PHA from a JSON file complete.</h2>
     <p>
     Review the PHA to verify this import was complete and correct.</p>
     <form action="practice_o1.php" method="post"><p>
