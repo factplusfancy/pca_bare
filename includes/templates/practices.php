@@ -496,13 +496,13 @@ An offsite-consequences evaluation that the EPA may deem reasonable is:
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
     57 => array(
-        'c5name' => $Zfpf->encrypt_1c('Planning and Reporting'),
+        'c5name' => $Zfpf->encrypt_1c('Planning, Reporting, and Updating'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('MMMCCC'),
         'c6description' => $Zfpf->encrypt_1c('(1) See the Emergency Action Plan compliance practice for details on coordinating with the community were the facility is located and with offsite emergency responders. 
-(2) In the USA, see 40 CFR 68, Subpart G, and the EPA Central Data Exchange (CDX) website at https://cdx.epa.gov for details on Risk Management Plan (RMP) and other reporting. 
+(2) In the USA, see 40 CFR 68, Subparts B, E, and G, and also the EPA Central Data Exchange (CDX) website at https://cdx.epa.gov for details on offsite consequences, emergency response, Risk Management Plan (RMP), and other reporting and updating. 
 (2.1) You may contact the CDX help desk for assistance at https://cdx.epa.gov/help -- they may turn out to be the most helpful help desk you have ever contacted! 
-(2.2) Five-year accident history reporting information may be available from records associated with the Incident Investigation Form and Records compliance practice in this PSM-CAP App, 
+(2.2) Five-year accident history reporting information may be available from records associated with the Incident Investigation Form and Records compliance practice in this PSM-CAP App. 
 (3) Retain copies of all submitted documents, including any RMPs, and related communications. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,

@@ -374,7 +374,6 @@ class ccsaZfpf {
 
     // The $_SESSION variables used below must be set.
     // Called by $this->checkbox_wrangler, $this->ccsa_remove, scenario i3 code (for new or edited scenarios), and subprocess_io03.php (for removing subprocesses).
-    // Not called when adding template subprocess/subsystem, because S and L are not defined in templates, to encourage customization.
     // Not called when creating a new action because it will be associated only with the scenario it was first added to.
     // $AffectedActions is associative array. Its keys are one or more t0action row primary keys (k0action). Its values are the priority of the scenario being edited, removed, or having actions associated or removed.
     // For removed scenarios, all values in $AffectedActions should be set to _00_PRIORITY_ZFPF

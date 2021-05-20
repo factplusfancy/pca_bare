@@ -78,8 +78,8 @@
 * corrosive materials are mixed, stored, transferred, or used nearby or
 * cleaning or sanitizing with corrosive materials.
 "
-"Possible Cause"|"Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, for faster production or to keep temperatures adequately low in product or room air."
-"Possible Cause"|"Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Some examples are below.
+"Possible Cause"|"Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, for faster production or to keep temperatures adequately low in product or room air."
+"Possible Cause"|"Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Some examples are below.
 * An ammonia-refrigerant suction control valve rapidly opens (or regulates at a lower pressure) at the start of a power outage,
 - if the evaporator was defrosting and filled with hot gas and some liquid (that condensed during defrosting) when the power fails,
 > the hot gas, possibly mixed with liquid, may cause shocks in the downstream suction piping, including from vapor-propelled liquid slugs.
@@ -92,6 +92,16 @@
 * Low loads may cause liquid in a coil and piping to evaporate slower than expected, so that
 - a pre-set pump-down time is not long enough, leading to
 > hot gas entering a coil and piping that are partly filled with liquid.
+* Low loads may be caused by:
+- higher humidity in the cooled room, thicker frost layers on the coil, and so less heat transfer,
+- cold air entering the cooled room,
+- less heat generated in or entering the cooled room,
+- and so forth."
+"Possible Cause"|"Defrost, using water, time for pump down is either inadequate normally or unsafely reduced. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* The pump-down time might be reduced:
+- for faster production or
+- to keep temperatures adequately low in product or room air.
+* Low loads may cause liquid in a coil and piping to evaporate slower than expected, so that
+- a pre-set pump-down time is not long enough.
 * Low loads may be caused by:
 - higher humidity in the cooled room, thicker frost layers on the coil, and so less heat transfer,
 - cold air entering the cooled room,
@@ -110,7 +120,8 @@
 - and so forth."
 "Possible Cause"|"Expansion valve open too much, shock each time solenoid valve opens."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Fasteners, hangers, rods, or other support components -- loose or missing."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
-"Possible Cause"|"Filter or strainer clogged."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"This includes: 
+"Possible Cause"|"Filter or strainer clogged."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"On suction piping, this may lengthen the time needed for pump down.
+This cause includes:
 * filters for
 - lubricating oil, including for the ammonia-refrigerant compressors,
 - cooling-water for evaporative condensers,
@@ -605,7 +616,7 @@ The facility's ammonia-refrigeration system is:
 * [________________] feet away from the nearest railroad track, besides low-speed spurs,
 * adequately protected from vehicle traffic by barriers or distance, and
 * not located with a floodplain, 0.2% or higher annual risk [__OR COMPARE TO 0.2% OR 1% ANNUAL-RISK FLOOD ELEVATION__]."
-"Existing Safeguard"|"Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
+"Existing Safeguard"|"Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 The facility's ammonia-refrigeration system has the following in place.
 * Hot-gas defrost (HGD) piping pitches to
 - a liquid drainer,
@@ -633,6 +644,8 @@ The facility's ammonia-refrigeration system has the following in place.
 > freeze on (also called rechill) before fans start, as needed to prevent water droplets from blowing onto people, product, etc.,
 > staggering of valve openings, to avoid excessive flows in piping headers or to vessels,
 * If run-time clocks are reset by a power outage or blip, controls stagger them on restart so that needed defrosting happens soon but all evaporators do not defrost at once."
+"Existing Safeguard"|"Defrost, water, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
+[DESCRIBE ANY WATER DEFROSTING, AUTOMATED OR ROUTINELY DONE, ON THE AMMONIA-REFRIGERATION SYSTEM.]"
 "Existing Safeguard"|"Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 The written emergency-action plan, or documents it references, describe:
 * training that includes
@@ -767,13 +780,18 @@ The safety of other mechanical systems at the facility, including controls, duct
 - Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout."
 "Existing Safeguard"|"Metal-fatigue prevention is adequate to avoid all but small leaks."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 [SOMETIMES APPLICABLE TO:
+
 * TUBE-IN-SHELL HEAT EXCHANGERS SUBJECT TO TEMPERATURE CYCLES OR WITH DIFFERENT MATERIALS FOR TUBE AND TUBESHEET.
 SAFEGUARDS MAY INCLUDE:
-* USE A WELDED-PLATE OR PLATE-IN-SHELL HEAT EXCHANGER -- IF STRESSES IN THEM WOULD BE LOWER OR WITHIN ACCEPTABLE RANGES.
-* EXPANSION JOINTS -- PROPERLY BUILT, INSTALLED, AND MAINTAINED (ONE END OF STAND ALLOWS MOVEMENT, GREASED...)
-* INSPECTION FOR CRACKS NEAR TUBE TO TUBESHEET WELDS, ESPECIALLY DURING REPAIRS.
-* RATE OR AMOUNT OF TEMPERATURE CHANGE KEEPS STRESSES LOW ENOUGH THAT THE NUMBER OF ALLOWED CYCLES, PER S-N CURVE, IS NOT EXPECTED TO OCCUR WITHIN PLANNED LIFE OF THE EQUIPMENT.
-* DEMONSTRATING THAT CATASTROPHIC FAILURE IS UNLIKELY BEFORE WARNING FROM A SMALL LEAK.]"
+- USE A WELDED-PLATE OR PLATE-IN-SHELL HEAT EXCHANGER -- IF STRESSES IN THEM WOULD BE LOWER OR WITHIN ACCEPTABLE RANGES.
+- EXPANSION JOINTS -- PROPERLY BUILT, INSTALLED, AND MAINTAINED (ONE END OF STAND ALLOWS MOVEMENT, GREASED...)
+- INSPECTION FOR CRACKS NEAR TUBE TO TUBESHEET WELDS, ESPECIALLY DURING REPAIRS.
+- RATE OR AMOUNT OF TEMPERATURE CHANGE KEEPS STRESSES LOW ENOUGH THAT THE NUMBER OF ALLOWED CYCLES, PER S-N CURVE, IS NOT EXPECTED TO OCCUR WITHIN PLANNED LIFE OF THE EQUIPMENT.
+- DEMONSTRATING THAT CATASTROPHIC FAILURE IS UNLIKELY BEFORE WARNING FROM A SMALL LEAK.
+
+* COILS THAT ARE CLEANED OR DEFROSTED WITH WATER OR SIMILAR.
+SAFEGUARDS MAY INCLUDE:
+- RATE OR AMOUNT OF TEMPERATURE CHANGE KEEPS STRESSES LOW ENOUGH THAT THE NUMBER OF ALLOWED CYCLES, PER S-N CURVE, IS NOT EXPECTED TO OCCUR WITHIN PLANNED LIFE OF THE EQUIPMENT.]"
 "Existing Safeguard"|"Oil-draining equipment and piping are adequately built, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 In the facility's ammonia-refrigeration system,
 * self-closing valves are installed on all oil-draining outlets to the atmosphere (oil drains), including

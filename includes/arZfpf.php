@@ -23,7 +23,7 @@ class arZfpf {
             'c5status' => '<a id="c5status"></a>Status',
             'c5priority' => '<a id="c5priority"></a>Priority (aka risk rank or relative risk from PHA or HIRA)',
             'c5affected_entity' => '<a id="c5affected_entity"></a>Maximum scope of the action (the affected entity)',
-            'c6deficiency' => '<a id="c6deficiency"></a>Deficiency summary. Required for audit and hazard-review findings, otherwise optional but recommended -- if it\'s not broke, don\'t fix it. See also details in any recommending report.',
+            'c6deficiency' => '<a id="c6deficiency"></a>Deficiency summary. Required for audit and hazard-review findings, otherwise optional. See also details in any recommending report.',
             'c6details' => '<a id="c6details"></a>Additional information, including any resolution options',
             'c5ts_target' => '<a id="c5ts_target"></a>Target resolution date and time',
             'k0user_of_leader' => '<a id="k0user_of_leader"></a>Resolution assigned to',
@@ -36,7 +36,7 @@ class arZfpf {
         if ($Context == 'Draft proposed action unassociated' or $Context == 'obsresult' or $Context == 'incident' or $Context == 'scenario') {
             $Required['c5name'] = REQUIRED_FIELD_ZFPF;
             $Required['c5affected_entity'] = REQUIRED_FIELD_ZFPF;
-            $Legend['c6deficiency'] = '<a id="c6deficiency"></a>Deficiency summary. Optional but recommended -- if it\'s not broke, don\'t fix it';
+            $Legend['c6deficiency'] = '<a id="c6deficiency"></a>Deficiency summary. Optional but suggested';
             $Legend['c6details'] = '<a id="c6details"></a>Additional information, including any resolution options';
             if ($Context == 'Draft proposed action unassociated' or $Context == 'obsresult' or $Context == 'incident') {
                 $Legend['c5priority'] = '<a id="c5priority"></a>Priority';
@@ -65,7 +65,7 @@ class arZfpf {
                 }
             }
             if ($Context == 'incident' or $Context == 'scenario') {
-                $Legend['c5name'] = '<a id="c5name"></a>Action name (the recommendation, summarized uniquely; used for sorting, so pick first word well)';
+                $Legend['c5name'] = '<a id="c5name"></a>Recommended action name (summarized uniquely; used for sorting, so pick first word well)';
                 $AERadioButtons = array('Process-wide', 'Facility-wide', 'Owner-wide'); // An incident investigation, PHA or HIRA is always associated with the process, but their recommendations may relate to the facility or the owner, but not to a contractor (except indirectly via another affected entity).
             }
         }

@@ -177,8 +177,8 @@
 (6) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (7) Transfer system and its piping are adequately built, controlled, located, inspected, tested, and maintained."|""
 "A1. Equipment and piping in general"|"9"|"Piping joint, bolted or threaded, problem -- with bolts, flanges, gaskets, nuts, threaded couplings, unions, and so forth."|"Prior incident anywhere"|"Nuisance on-site"|"5% to 20% per year (every 5 to 20 years or so)"|"03. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
-(2) Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced.
-(3) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc.
+(2) Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced. [OK?]
+(3) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc. [OK?]
 (4) Design, fabrication, construction, or installation shortcoming or error.
 (5) Expansion valve open too much, shock each time solenoid valve opens.
 (6) Fasteners, hangers, rods, or other support components -- loose or missing.
@@ -204,7 +204,7 @@
 (6) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
 (7) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation."|"(1) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (2) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
-(3) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(3) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (4) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (5) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (6) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
@@ -313,8 +313,8 @@
 (11) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
 (12) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (13) Transfer system and its piping are adequately built, controlled, located, inspected, tested, and maintained."|""
-"A1. Equipment and piping in general"|"14"|"Shocks or vibrations damage equipment (includes vessels) or piping (includes valves)."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"2% to 5% per year (every 20 to 50 years or so)"|"06. Attention needed -- if any recommended actions, review status at least monthly."|"(1) Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced.
-(2) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc.
+"A1. Equipment and piping in general"|"14"|"Shocks or vibrations damage equipment (includes vessels) or piping (includes valves)."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"2% to 5% per year (every 20 to 50 years or so)"|"06. Attention needed -- if any recommended actions, review status at least monthly."|"(1) Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced. [OK?]
+(2) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc. [OK?]
 (3) Design, fabrication, construction, or installation shortcoming or error.
 (4) Expansion valve open too much, shock each time solenoid valve opens.
 (5) Human error or poor judgment.
@@ -334,7 +334,7 @@
 (3) Change management is adequate.
 (4) Cleaning on or near the ammonia-refrigeration system is adequately safe, including clean-in-place.
 (5) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
-(6) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(6) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (7) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (8) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (9) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
@@ -685,7 +685,7 @@
 (5) Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained.
 (6) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
 (7) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
-(8) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(8) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (9) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (10) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (11) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
@@ -772,8 +772,10 @@
 (8) Pump safety shutoffs are adequate, for both ammonia and cooling-water pumps, including for their motors.
 (9) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
 (10) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout."|""
-"A2. Human factors and human errors in general"|"7"|"Cutting or opening, accidental, of ammonia-refrigeration equipment or piping."|"Prior incident anywhere and human factors"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Human error or poor judgment.
-(2) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports."|"(1) Explosion or fire more likely.
+"A2. Human factors and human errors in general"|"7"|"Cutting or opening, accidental, of ammonia-refrigeration equipment or piping."|"Prior incident anywhere and human factors"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
+(2) Design, fabrication, construction, or installation shortcoming or error.
+(3) Human error or poor judgment.
+(4) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports."|"(1) Explosion or fire more likely.
 (2) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
 (3) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
 (4) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
@@ -784,18 +786,19 @@
 (9) Leak of ammonia that will probably cause strong odors or worse offsite."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Change management is adequate.
-(4) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
-(5) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
-(6) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
-(7) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
-(8) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(9) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
-(10) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(11) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
-(12) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(13) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(14) Separation of ammonia refrigeration from people is adequate and considered in change management.
-(15) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(4) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
+(5) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(6) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(7) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(8) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(9) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(10) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(11) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(12) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(13) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(14) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(15) Separation of ammonia refrigeration from people is adequate and considered in change management.
+(16) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A2. Human factors and human errors in general"|"8"|"Incompetence or understaffing, of employees or contractors, due to changes in equipment or personnel."|"Prior incident anywhere and human factors"|"Nuisance on-site"|"20% to 90% per year (every couple-few years)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Policies or programs -- for contractors, human resources, safety, or training -- are inadequately designed or implemented."|"(1) Compressor package internal or seal damage, and if safeties fail, leak or fire.
 (2) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
 (3) Equipment or piping becomes more susceptible to external physical damage.
@@ -1127,22 +1130,23 @@
 (24) Water contamination in the ammonia refrigerant becomes too high."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Change management is adequate.
-(4) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
-(5) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
-(6) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
-(7) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
-(8) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(9) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
-(10) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(11) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
-(12) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
-(13) Production monitoring and quality control.
-(14) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(15) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
-(16) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(17) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(18) Separation of ammonia refrigeration from people is adequate and considered in change management.
-(19) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(4) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
+(5) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(6) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(7) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(8) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(9) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(10) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(11) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(12) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(13) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
+(14) Production monitoring and quality control.
+(15) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(16) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
+(17) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(18) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(19) Separation of ammonia refrigeration from people is adequate and considered in change management.
+(20) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A2. Human factors and human errors in general"|"20"|"Safety challenges follow-up is inadequate, including when incidents, near misses, or suggestions should have identified a need."|"Prior incident anywhere and human factors"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Policies or programs -- for contractors, human resources, safety, or training -- are inadequately designed or implemented."|"(1) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
 (2) Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth.
 (3) Hinders maintenance or increases the need for repairs.
@@ -1327,7 +1331,11 @@
 (3) Human error or poor judgment.
 (4) Vehicle moves unexpectedly.
 (5) Willful misconduct."|"(1) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(2) Leak of ammonia that will probably cause strong odors or worse offsite."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(3) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(4) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(5) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(6) Leak of ammonia that will probably cause strong odors or worse offsite."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Change management is adequate.
 (4) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
@@ -1350,7 +1358,7 @@
 (4) Willful misconduct."|"(1) Explosion or fire more likely.
 (2) Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load."|"(1) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (2) Change management is adequate.
-(3) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(3) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (4) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (5) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
 (6) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
@@ -1383,7 +1391,7 @@
 (8) Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained.
 (9) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
 (10) Crash, derailment, and flooding risks are reasonable (airplanes, trains, trucks, floodplains, and so forth).
-(11) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(11) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (12) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (13) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (14) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
@@ -1421,7 +1429,7 @@
 (8) Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained.
 (9) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
 (10) Crash, derailment, and flooding risks are reasonable (airplanes, trains, trucks, floodplains, and so forth).
-(11) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(11) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (12) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (13) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (14) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
@@ -1586,7 +1594,7 @@
 (11) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
 (12) Separation of ammonia refrigeration from people is adequate and considered in change management.
 (13) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
-"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"18"|"Vehicle or heavy cart hits ammonia-refrigeration equipment, piping, or supports. "|"Prior incident anywhere and human factors"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Concrete cracking, creep, efflorescence, sagging, or spalling.
+"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"18"|"Vehicle or heavy cart hits ammonia-refrigeration equipment, piping, or supports. "|"All of above"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Concrete cracking, creep, efflorescence, sagging, or spalling.
 (2) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (3) Corrosive materials in vicinity.
 (4) Design, fabrication, construction, or installation shortcoming or error.
@@ -1598,14 +1606,15 @@
 (10) Vehicle moves unexpectedly.
 (11) Willful misconduct."|"(1) Explosion or fire more likely.
 (2) Hinders maintenance or increases the need for repairs.
-(3) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
-(4) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
-(5) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
-(6) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
-(7) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
-(8) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(9) Leak of ammonia that will probably cause strong odors or worse offsite.
-(10) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(3) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
+(4) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(5) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(6) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(7) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(8) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(9) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(10) Leak of ammonia that will probably cause strong odors or worse offsite.
+(11) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Change management is adequate.
 (3) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
 (4) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
@@ -1670,8 +1679,10 @@
 (4) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
 (5) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Hinders operations. [UPDATE - SYSTEM SPECIFIC]"|"(1) Compressor controls and safety shutoffs are adequate, including for the motor(s) and the vessel(s) that feed the compressor(s)."|""
 "A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"22"|"Working alone in a mechanical penthouse, on a roof, or elsewhere people rarely go."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Human error or poor judgment.
-(2) Normal activity that is reasonably safe with proper precautions."|"(1) Hinders safety, security, health, or environmental protection.
-(2) Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load."|"(1) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness."|""
+(2) Normal activity that is reasonably safe with proper precautions."|"(1) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
+(2) Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth.
+(3) Hinders safety, security, health, or environmental protection.
+(4) Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load."|"(1) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness."|""
 "A4. Charging ammonia into the ammonia-refrigeration system"|"1"|"Charging hose or connection leak."|"Prior incident anywhere and human factors"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
@@ -1681,9 +1692,12 @@
 (7) Shocks or vibrations cause damage.
 (8) Stop valve closed without proper pump-out or manual opening of control valves.
 (9) Temperature or humidity changes within or moderately outside of typically expected ranges.
-(10) Vehicle moves unexpectedly."|"(1) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
-(2) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
-(3) Leak of ammonia that will probably cause strong odors or worse offsite."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(10) Vehicle moves unexpectedly."|"(1) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
+(2) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(3) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(4) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(5) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(6) Leak of ammonia that will probably cause strong odors or worse offsite."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Charging ammonia -- equipment, piping, and procedures are adequate.
 (4) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
@@ -1719,16 +1733,18 @@
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Charging ammonia -- equipment, piping, and procedures are adequate.
 (4) Compressor controls and safety shutoffs are adequate, including for the motor(s) and the vessel(s) that feed the compressor(s).
-(5) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
-(6) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
-(7) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
-(8) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
-(9) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(10) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
-(11) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(12) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
-(13) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(14) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout."|""
+(5) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
+(6) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(7) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(8) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(9) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(10) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(11) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(12) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(13) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(14) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
+(15) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(16) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout."|""
 "B1. Compressors"|"1"|"Check [or stop-check] valve [is left open] or leaks by (back-flow occurs) on discharge, screw-compressor suction, or both."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Human error or poor judgment.
@@ -1818,10 +1834,11 @@
 (9) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (10) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
 (11) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(12) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(13) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(14) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(15) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(12) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(13) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(14) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(15) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(16) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "B1. Compressors"|"4"|"Compressor suction blocked, by closed stop valve, check valve (if any) fails shut, plugging, or something else."|"Prior incident anywhere"|"Little or none"|"2% to 5% per year (every 20 to 50 years or so)"|"00. No action needed."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Human error or poor judgment.
 (3) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth."|"(1) Compressor package internal or seal damage, and if safeties fail, leak or fire.
@@ -1846,14 +1863,16 @@
 (14) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
 (15) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
 (16) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
-"B1. Compressors"|"5"|"Compressor, reciprocating, internal pressure-relief valve, from crank-case discharge to suction sides, doesn't open when needed."|"Prior incident anywhere"|"Nuisance on-site"|"Very unlikely (less than every 50 years)"|"01. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Human error or poor judgment.
+"B1. Compressors"|"5"|"Compressor, reciprocating, internal pressure-relief valve, from crank-case discharge to suction sides, plugged or stuck shut."|"Prior incident anywhere"|"Nuisance on-site"|"Very unlikely (less than every 50 years)"|"01. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Human error or poor judgment.
 (2) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth.
 (3) Spring problem."|"(1) Compressor package internal or seal damage, and if safeties fail, leak or fire.
-(2) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(3) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
-(4) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
-(5) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
-(6) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Explosion or fire more likely.
+(3) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
+(4) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(5) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(6) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(7) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(8) Leak of ammonia that will probably cause strong odors or worse offsite."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Compressor controls and safety shutoffs are adequate, including for the motor(s) and the vessel(s) that feed the compressor(s).
 (4) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
@@ -1874,7 +1893,8 @@
 (3) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
 (4) Reciprocating compressors are more tolerant of liquid-ammonia refrigerant than screw compressors."|""
 "B1. Compressors"|"7"|"Gasket or shaft-seal failure on compressor, oil separator, screw-compressor oil pump, or oil piping."|"Prior incident anywhere"|"Nuisance on-site"|"20% to 90% per year (every couple-few years)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
-(2) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Compressor package internal or seal damage, and if safeties fail, leak or fire.
+(2) Design, fabrication, construction, or installation shortcoming or error.
+(3) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Compressor package internal or seal damage, and if safeties fail, leak or fire.
 (2) Hinders maintenance or increases the need for repairs.
 (3) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (4) Hinders safety, security, health, or environmental protection.
@@ -2100,9 +2120,10 @@
 (6) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (7) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
 (8) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
-(9) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
-(10) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(11) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
+(9) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(10) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
+(11) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(12) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
 "B1. Compressors"|"16"|"Vibrations, in compressor or its motor, start to become excessive."|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Inspection, testing, or maintenance (ITM) shortcoming or error.
@@ -2550,16 +2571,38 @@
 (4) Pump safety shutoffs are adequate, for both ammonia and cooling-water pumps, including for their motors.
 (5) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (6) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
-"D1. Air-cooling equipment, including defrosting"|"1"|"Check valve between drip pan (heated by hot gas during defrost) and coil leaks by. [IF APPLICABLE]"|"Prior incident anywhere"|"Little or none"|"2% to 5% per year (every 20 to 50 years or so)"|"00. No action needed."|"(1) Inspection, testing, or maintenance (ITM) shortcoming or error.
+"D1. Air-cooling equipment, including defrosting"|"1"|"Check valve between drip pan (heated by hot gas during defrost) and coil leaks by. [IF APPLICABLE]"|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (2) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth.
 (3) Spring problem.
 (4) Valve-seat seal failure (seat-gasket degraded, debris on seat, not tight enough, etc.)"|"(1) Hinders maintenance or increases the need for repairs.
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection.
-(4) Shocks that could damage equipment, piping, or supports."|"(1) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
-(2) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(3) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(4) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
+(4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
+(5) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(6) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(7) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(8) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(9) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(10) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(11) Leak of ammonia that will probably cause strong odors or worse offsite.
+(12) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
+(3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
+(4) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
+(5) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
+(6) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(7) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(8) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(9) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(10) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(11) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(12) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(13) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(14) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(15) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(16) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(17) Separation of ammonia refrigeration from people is adequate and considered in change management.
+(18) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "D1. Air-cooling equipment, including defrosting"|"2"|"Coil corrosion or erosion, external or internal."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Corrosive materials in vicinity.
 (3) Design, fabrication, construction, or installation shortcoming or error.
@@ -2604,18 +2647,27 @@
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Hinders maintenance or increases the need for repairs.
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
-(3) Hinders safety, security, health, or environmental protection."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(3) Hinders safety, security, health, or environmental protection.
+(4) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(5) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(6) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(7) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
 (3) Change management is adequate.
 (4) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
-(5) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
-(6) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(7) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
-(8) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(9) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
-(10) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(11) Separation of ammonia refrigeration from people is adequate and considered in change management."|""
-"D1. Air-cooling equipment, including defrosting"|"5"|"Frost layer builds thicker than usual on coil, less heat transfer, more liquid in coil, and inadequate pump out before defrost."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"Very unlikely (less than every 50 years)"|"03. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
+(5) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(6) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(7) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(8) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(9) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(10) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(11) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(12) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
+(13) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(14) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
+(15) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(16) Separation of ammonia refrigeration from people is adequate and considered in change management."|""
+"D1. Air-cooling equipment, including defrosting"|"5"|"Frost layer builds thicker than usual on coil, less heat transfer, more liquid in coil, and inadequate pump down before defrost."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"Very unlikely (less than every 50 years)"|"03. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
 (2) Controls are confusing, cumbersome, difficult, or inadequate -- such as too dim, exposed, loud, quiet, sensitive, or small.
 (3) Design, fabrication, construction, or installation shortcoming or error.
 (4) Human error or poor judgment.
@@ -2624,32 +2676,37 @@
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection.
 (4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(5) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
-(6) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(7) Leak of ammonia that will probably cause strong odors or worse offsite.
-(8) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(5) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(6) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(7) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(8) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(9) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(10) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(11) Leak of ammonia that will probably cause strong odors or worse offsite.
+(12) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
 (3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (4) Change management is adequate.
 (5) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
 (6) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
-(7) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(7) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (8) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (9) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (10) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
 (11) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (12) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(13) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(14) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
-(15) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(16) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(17) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(18) Separation of ammonia refrigeration from people is adequate and considered in change management.
-(19) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(13) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(14) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(15) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(16) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(17) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(18) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(19) Separation of ammonia refrigeration from people is adequate and considered in change management.
+(20) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "D1. Air-cooling equipment, including defrosting"|"6"|"Hot gas enters evaporator or suction piping with some liquid ammonia, causing shocks, such as vapor propelled liquid slugs."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"Very unlikely (less than every 50 years)"|"03. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Control valve allows too much flow or remains fully open -- but not including shocks from expansion valves too far open.
 (2) Controls are confusing, cumbersome, difficult, or inadequate -- such as too dim, exposed, loud, quiet, sensitive, or small.
-(3) Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced.
-(4) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc.
+(3) Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced. [OK?]
+(4) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc. [OK?]
 (5) Design, fabrication, construction, or installation shortcoming or error.
 (6) Human error or poor judgment.
 (7) Inspection, testing, or maintenance (ITM) shortcoming or error.
@@ -2657,23 +2714,27 @@
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection.
 (4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(5) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
-(6) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(7) Leak of ammonia that will probably cause strong odors or worse offsite.
-(8) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(5) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(6) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(7) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(8) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(9) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(10) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(11) Leak of ammonia that will probably cause strong odors or worse offsite.
+(12) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
 (3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (4) Change management is adequate.
 (5) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
-(6) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(6) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (7) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (8) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (9) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
 (10) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (11) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(12) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(13) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
-(14) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(12) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(13) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(14) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
 (15) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (16) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
 (17) Separation of ammonia refrigeration from people is adequate and considered in change management.
@@ -2686,10 +2747,13 @@
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection.
 (4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(5) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
-(6) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(7) Leak of ammonia that will probably cause strong odors or worse offsite.
-(8) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(5) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(6) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(7) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(8) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(9) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(10) Leak of ammonia that will probably cause strong odors or worse offsite.
+(11) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
 (3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (4) Change management is adequate.
@@ -2699,13 +2763,14 @@
 (8) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
 (9) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (10) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(11) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(12) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
-(13) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(14) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
-(15) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(16) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(17) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(11) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(12) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(13) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(14) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(15) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
+(16) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(17) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(18) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "D1. Air-cooling equipment, including defrosting"|"8"|"Leak by liquid solenoid valve on defrosted equipment, so hot gas and liquid mix, while defrosting, causing noise and shocks."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Control valve allows too much flow or remains fully open -- but not including shocks from expansion valves too far open.
 (2) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (3) Inspection, testing, or maintenance (ITM) shortcoming or error.
@@ -2714,10 +2779,13 @@
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection.
 (4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(5) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
-(6) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(7) Leak of ammonia that will probably cause strong odors or worse offsite.
-(8) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(5) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(6) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(7) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(8) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(9) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(10) Leak of ammonia that will probably cause strong odors or worse offsite.
+(11) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
 (3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (4) Change management is adequate.
@@ -2727,17 +2795,18 @@
 (8) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
 (9) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (10) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(11) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(12) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
-(13) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(14) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
-(15) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(16) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(17) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(11) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(12) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(13) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(14) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(15) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
+(16) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(17) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(18) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "D1. Air-cooling equipment, including defrosting"|"9"|"Liquid ammonia enters an evaporator coil and piping while they still contain hot gas, causing condensation-induced shocks."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Control valve allows too much flow or remains fully open -- but not including shocks from expansion valves too far open.
 (2) Controls are confusing, cumbersome, difficult, or inadequate -- such as too dim, exposed, loud, quiet, sensitive, or small.
-(3) Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced.
-(4) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc.
+(3) Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced. [OK?]
+(4) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc. [OK?]
 (5) Design, fabrication, construction, or installation shortcoming or error.
 (6) Human error or poor judgment.
 (7) Inspection, testing, or maintenance (ITM) shortcoming or error.
@@ -2745,27 +2814,31 @@
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection.
 (4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(5) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
-(6) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(7) Leak of ammonia that will probably cause strong odors or worse offsite.
-(8) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(5) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(6) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(7) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(8) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(9) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(10) Leak of ammonia that will probably cause strong odors or worse offsite.
+(11) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
 (3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (4) Change management is adequate.
 (5) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
-(6) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(6) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (7) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (8) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (9) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
 (10) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (11) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(12) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(13) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
-(14) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(15) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(16) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(17) Separation of ammonia refrigeration from people is adequate and considered in change management.
-(18) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(12) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(13) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(14) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(15) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(16) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(17) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(18) Separation of ammonia refrigeration from people is adequate and considered in change management.
+(19) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "D1. Air-cooling equipment, including defrosting"|"10"|"More ammonia refrigerant evaporates than suction piping can remove, including during pump down before defrost."|"Prior incident anywhere"|"Nuisance on-site"|"5% to 20% per year (every 5 to 20 years or so)"|"03. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Filter or strainer clogged.
@@ -2775,29 +2848,79 @@
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection.
 (4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(5) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
-(6) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(7) Leak of ammonia that will probably cause strong odors or worse offsite.
-(8) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(5) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(6) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(7) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(8) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(9) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(10) Leak of ammonia that will probably cause strong odors or worse offsite.
+(11) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
 (3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (4) Change management is adequate.
 (5) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
-(6) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances.
+(6) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (7) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (8) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (9) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
 (10) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (11) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(12) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
-(13) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
-(14) Production monitoring and quality control.
-(15) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
-(16) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
-(17) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(18) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(19) Separation of ammonia refrigeration from people is adequate and considered in change management.
-(20) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(12) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(13) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(14) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(15) Production monitoring and quality control.
+(16) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(17) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
+(18) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(19) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(20) Separation of ammonia refrigeration from people is adequate and considered in change management.
+(21) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+"D1. Air-cooling equipment, including defrosting"|"11"|"Water or similar sprayed on coil, for cleaning or defrost, while it contains liquid ammonia, during cooling or before pump down."|"Prior incident anywhere and human factors"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
+(2) Control valve allows too much flow or remains fully open -- but not including shocks from expansion valves too far open.
+(3) Controls are confusing, cumbersome, difficult, or inadequate -- such as too dim, exposed, loud, quiet, sensitive, or small.
+(4) Defrost, using water, time for pump down is either inadequate normally or unsafely reduced. [OK?]
+(5) Design, fabrication, construction, or installation shortcoming or error.
+(6) Filter or strainer clogged.
+(7) Human error or poor judgment.
+(8) Inspection, testing, or maintenance (ITM) shortcoming or error.
+(9) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth.
+(10) Procedure is confusing, ignored, misunderstood, or wrong.
+(11) Spring problem.
+(12) Temperature or humidity changes within or moderately outside of typically expected ranges.
+(13) Valve-seat seal failure (seat-gasket degraded, debris on seat, not tight enough, etc.)"|"(1) Hinders maintenance or increases the need for repairs.
+(2) Hinders safety, security, health, or environmental protection.
+(3) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
+(4) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(5) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(6) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(7) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(8) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(9) Leak of ammonia into water or other liquids that may cause odors or flow into floor drains or similar.
+(10) Leak of ammonia that will probably cause strong odors or worse offsite.
+(11) Overpressure in equipment or piping.
+(12) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
+(3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
+(4) Change management is adequate.
+(5) Cleaning on or near the ammonia-refrigeration system is adequately safe, including clean-in-place.
+(6) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
+(7) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
+(8) Defrost, water, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
+(9) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(10) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(11) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(12) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(13) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(14) Labeling of equipment, pipes, and valves is adequate, inspected at least yearly, and maintained as needed.
+(15) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(16) Metal-fatigue prevention is adequate to avoid all but small leaks.
+(17) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(18) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(19) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(20) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
+(21) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(22) Separation of ammonia refrigeration from people is adequate and considered in change management.
+(23) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "D2. Liquid chillers or heaters such as ice builders, film, plate, scraped surface, tube-in-shell... for brine, glycol, water..."|"1"|"Ammonia leaks across a heat exchanger into piping (for brine, glycol, water...) that cannot handle the resulting pressure."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Explosion or fire more likely.
@@ -2868,10 +2991,11 @@
 "D2. Liquid chillers or heaters such as ice builders, film, plate, scraped surface, tube-in-shell... for brine, glycol, water..."|"3"|"Corrosive liquid, like water or brine, flows in or splashes on carbon steel, such as piping above the normal liquid level."|"Prior incident anywhere"|"Little or none"|"Very unlikely (less than every 50 years)"|"00. No action needed."|"(1) Design, fabrication, construction, or installation shortcoming or error."|"(1) Hinders maintenance or increases the need for repairs.
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection."|"(1) Change management is adequate.
-(2) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(3) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(4) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
-(5) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
+(2) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(3) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(4) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(5) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
+(6) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
 "D2. Liquid chillers or heaters such as ice builders, film, plate, scraped surface, tube-in-shell... for brine, glycol, water..."|"4"|"Ice builds up too thick on ice-builder plates."|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Control valve allows too much flow or remains fully open -- but not including shocks from expansion valves too far open.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Hinders maintenance or increases the need for repairs.
@@ -2914,16 +3038,18 @@
 (4) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
 (5) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (6) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
-"D2. Liquid chillers or heaters such as ice builders, film, plate, scraped surface, tube-in-shell... for brine, glycol, water..."|"6"|"Oil buildup, scale, or biofilm growth on the heat-exchanger surfaces exposed to the liquid being chilled or heated."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Design, fabrication, construction, or installation shortcoming or error.
+"D2. Liquid chillers or heaters such as ice builders, film, plate, scraped surface, tube-in-shell... for brine, glycol, water..."|"6"|"Oil buildup, scale, or biofilm growth on the heat-exchanger surfaces exposed to the liquid being chilled or heated."|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Design, fabrication, construction, or installation shortcoming or error.
 (2) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (3) Wrong substance or concentration added or used."|"(1) Hinders maintenance or increases the need for repairs.
-(2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]"|"(1) Change management is adequate.
-(2) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
-(3) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(4) Production monitoring and quality control.
-(5) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
-(6) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(7) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+(2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
+(3) Hinders safety, security, health, or environmental protection."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Change management is adequate.
+(3) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(4) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(5) Production monitoring and quality control.
+(6) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
+(7) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(8) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "D2. Liquid chillers or heaters such as ice builders, film, plate, scraped surface, tube-in-shell... for brine, glycol, water..."|"7"|"Plates, tubes, or their joints leak ammonia into air or the chilled or heated liquid and so possibly the air near the liquid."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Joint, bolted, problem."|"(1) Explosion or fire more likely.
@@ -2967,14 +3093,15 @@
 (4) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (5) Hinders safety, security, health, or environmental protection.
 (6) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
-(7) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
-(8) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
-(9) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
-(10) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
-(11) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(12) Leak of ammonia into water or other liquids that may cause odors or flow into floor drains or similar.
-(13) Leak of ammonia that will probably cause strong odors or worse offsite.
-(14) Water contamination in the ammonia refrigerant becomes too high."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(7) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(8) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(9) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(10) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(11) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(12) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(13) Leak of ammonia into water or other liquids that may cause odors or flow into floor drains or similar.
+(14) Leak of ammonia that will probably cause strong odors or worse offsite.
+(15) Water contamination in the ammonia refrigerant becomes too high."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Change management is adequate.
 (4) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
@@ -3002,19 +3129,29 @@
 (3) Hinders safety, security, health, or environmental protection.
 (4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
 (5) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
-(6) Overpressure in equipment or piping.
-(7) Shocks that could damage equipment, piping, or supports."|"(1) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
-(2) Change management is adequate.
-(3) Cleaning on or near the ammonia-refrigeration system is adequately safe, including clean-in-place.
-(4) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
-(5) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
-(6) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
-(7) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(8) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
-(9) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(10) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
-(11) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
-(12) Separation of ammonia refrigeration from people is adequate and considered in change management."|""
+(6) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(7) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(8) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(9) Leak of ammonia that will probably cause strong odors or worse offsite.
+(10) Overpressure in equipment or piping.
+(11) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
+(3) Change management is adequate.
+(4) Cleaning on or near the ammonia-refrigeration system is adequately safe, including clean-in-place.
+(5) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
+(6) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
+(7) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(8) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(9) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(10) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(11) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(12) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(13) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(14) Pressure-relief systems are adequately built, located, inspected, tested, and maintained.
+(15) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(16) Safety and improvements ideas are encouraged and assessed through informal talking, routine meetings, and suggestion systems.
+(17) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(18) Separation of ammonia refrigeration from people is adequate and considered in change management."|""
 "D3. Silos and tanks with ammonia-cooled jackets that don't contact the cooled liquid"|"2"|"Cooling jacket or tubing corrodes in the insulated space between inner and outer silo or tank walls, due to moisture there, etc."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Hinders maintenance or increases the need for repairs.
@@ -3022,7 +3159,10 @@
 (3) Hinders safety, security, health, or environmental protection.
 (4) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
 (5) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
-(6) Leak of ammonia that will probably cause strong odors or worse offsite."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(6) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(7) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(8) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(9) Leak of ammonia that will probably cause strong odors or worse offsite."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Change management is adequate.
 (4) Cleaning on or near the ammonia-refrigeration system is adequately safe, including clean-in-place.

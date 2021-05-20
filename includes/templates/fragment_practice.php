@@ -776,6 +776,118 @@ $fragment_practice = array(
     193 => array(
         'k0fragment' => $cap_fragments[191]['k0fragment'], // EPA CAP - 40 CFR 68.210, public meetings for five-year accident history incidents
         'k0practice' => $practices[27]['k0practice']  // Incident Investigation Form and Records
+    ),
+    194 => array(
+        'k0fragment' => $cap_fragments[54]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[55]['k0practice']  // Release Scenarios
+    ),
+    195 => array(
+        'k0fragment' => $cap_fragments[54]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[56]['k0practice']  // Offsite-Consequences Evaluation
+    ),
+    196 => array(
+        'k0fragment' => $cap_fragments[55]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[55]['k0practice']  // Release Scenarios
+    ),
+    197 => array(
+        'k0fragment' => $cap_fragments[55]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[56]['k0practice']  // Offsite-Consequences Evaluation
+    ),
+    198 => array(
+        'k0fragment' => $cap_fragments[56]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[55]['k0practice']  // Release Scenarios
+    ),
+    199 => array(
+        'k0fragment' => $cap_fragments[56]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[56]['k0practice']  // Offsite-Consequences Evaluation
+    ),
+    200 => array(
+        'k0fragment' => $cap_fragments[57]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[55]['k0practice']  // Release Scenarios
+    ),
+    201 => array(
+        'k0fragment' => $cap_fragments[57]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[56]['k0practice']  // Offsite-Consequences Evaluation
+    ),
+    202 => array(
+        'k0fragment' => $cap_fragments[58]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[55]['k0practice']  // Release Scenarios
+    ),
+    203 => array(
+        'k0fragment' => $cap_fragments[58]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[56]['k0practice']  // Offsite-Consequences Evaluation
+    ),
+    204 => array(
+        'k0fragment' => $cap_fragments[59]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[55]['k0practice']  // Release Scenarios
+    ),
+    205 => array(
+        'k0fragment' => $cap_fragments[59]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment
+        'k0practice' => $practices[56]['k0practice']  // Offsite-Consequences Evaluation
+    ),
+    206 => array(
+        'k0fragment' => $cap_fragments[60]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment -- Review and update
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating
+    ),
+    207 => array(
+        'k0fragment' => $cap_fragments[61]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment -- Documentation
+        'k0practice' => $practices[55]['k0practice']  // Release Scenarios
+    ),
+    208 => array(
+        'k0fragment' => $cap_fragments[61]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment -- Documentation
+        'k0practice' => $practices[56]['k0practice']  // Offsite-Consequences Evaluation
+    ),
+    209 => array(
+        'k0fragment' => $cap_fragments[61]['k0fragment'], // EPA CAP - 40 CFR 68 Subpart B -- Hazard Assessment -- Documentation
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating
+    ),
+    210 => array(
+        'k0fragment' => $cap_fragments[62]['k0fragment'], // EPA CAP - 40 CFR 68.42, Five-year accident history
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating. See also link to Incident Investigation Form and Records above.
+    ),
+    211 => array(
+        'k0fragment' => $cap_fragments[178]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    212 => array(
+        'k0fragment' => $cap_fragments[179]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    213 => array(
+        'k0fragment' => $cap_fragments[180]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    214 => array(
+        'k0fragment' => $cap_fragments[181]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    215 => array(
+        'k0fragment' => $cap_fragments[182]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    216 => array(
+        'k0fragment' => $cap_fragments[183]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    217 => array(
+        'k0fragment' => $cap_fragments[184]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    218 => array(
+        'k0fragment' => $cap_fragments[185]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    219 => array(
+        'k0fragment' => $cap_fragments[186]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    220 => array(
+        'k0fragment' => $cap_fragments[187]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
+    ),
+    221 => array(
+        'k0fragment' => $cap_fragments[188]['k0fragment'], // EPA CAP - 40 CFR 68, Subpart G, Risk Management Plan (RMP) reporting and updating
+        'k0practice' => $practices[57]['k0practice']  // Planning, Reporting, and Updating.
     )
 );
 // Keys less than 100000 are reserved for templates.

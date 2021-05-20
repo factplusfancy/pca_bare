@@ -682,6 +682,10 @@ $practice_division = array(
     169 => array(
         'k0practice' => $practices[57]['k0practice'], // Planning and Reporting
         'k0division' => $divisions[31]['k0division'] // EPA CAP division method - Hazard Assessment
+    ),
+    170 => array(
+        'k0practice' => $practices[57]['k0practice'], // Planning and Reporting
+        'k0division' => $divisions[46]['k0division'] // EPA CAP division method - Risk Management Plan (RMP)
     )
 );
 foreach ($practice_division as $K => $V) {

@@ -502,7 +502,7 @@ $Schema = array(
         'c6prior_incident_id',
         'c6bfn_pha_as_issued', // PHAs need to be kept for life of the process, so save an extra "as issued" copy here. In addition to copies email and in database.
         'k0user_of_leader', // 0 for templates. The PHA or HIRA team leader, which is initially set to the user who created the PHA or HIRA via pha_i1n.php. See CoreZfpf::record_in_history_1c
-        'c5ts_leader', // '[Nothing has been recorded in this field.]' or the time stamp when issued by team leader.
+        'c5ts_leader', // '[Nothing has been recorded in this field.]', the time stamp when issued by team leader, or special cases, like superseded and archived drafts.
         'c6nymd_leader', // Allowed values: 
                          // - the name of a template PHA (templates are never issued),
                          // - before issuing: * the source-template k0pha or

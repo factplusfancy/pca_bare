@@ -130,6 +130,7 @@ if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first'])
         // Find the CWD and archive it. If none, still import JSON to CWD. If for some reason there are more than one CWD, achieve them all.
         if ($V['k0pha'] >= 100000 and $Zfpf->decrypt_1c($V['c5ts_leader']) == '[Nothing has been recorded in this field.]') { // See schema.
             $Changes['c5ts_leader'] = $Zfpf->encrypt_1c('Superseded draft archived on '.date('\Y\e\a\r Y, \M\o\n\t\h n, \D\a\y j, \T\i\m\e H:i:s', time()));
+            $Changes['c5who_is_editing'] = $Zfpf->encrypt_1c('PERMANENTLY LOCKED: This is a superseded draft PHA, so it cannot be edited.');
             $Conditions[0] = array('k0pha', '=', $V['k0pha']);
             $Affected = $Zfpf->one_shot_update_1s('t0pha', $Changes, $Conditions, TRUE, $htmlFormArray);
             if ($Affected != 1)
@@ -448,9 +449,11 @@ if (isset($_POST['pha_o1'])) {
             echo '<p><b>'.$who_is_editing.' is editing the PHA record you selected.</b><br />
             If needed, contact them to coordinate editing this record. You will not be able to edit it until they are done.</p>';
         else
+            if (is_numeric($Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_leader']))) // Otherwise a special case, like: PERMANENTLY LOCKED: This is a superseded draft PHA, so it cannot be edited.
+                echo '<p>
+                <b>Issued by: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']).'</b><br />
+                This is not a draft PHA record. Once a PHA has been issued by its team leader, the issued version cannot be changed. You may revise the working draft, and, when ready, issue that as the latest PHA.</p>';
             echo '<p>
-            <b>Issued by: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']).'</b><br />
-            This is not a draft PHA record. Once a PHA has been issued by its team leader, the issued version cannot be changed. You may revise the working draft, and, when ready, issue that as the latest PHA.</p><p>
             '.$who_is_editing.'</p>'; // This should echo the permanent-lock message. This also prevents an issued PHA from getting to next elseif clause.
         if ($EditAuth) // Allow exporting an edit-locked or issued PHA.
             echo '<p>
@@ -527,7 +530,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
         // t0pha can be viewed by issuing draft report. A CSV action list can be downloaded from the action register. 
         // So only included the scenarios in the CSV file.
         $Types = array('cause', 'consequence', 'safeguard', 'action'); // A definition of "ccsa"
-        $DisplayType = array('cause' => 'Possible Cause', 'consequence' => 'Possible Consequence', 'safeguard' => 'Existing Safeguard', 'action' => 'Recommended Actions');
+        $DisplayType = array('cause' => 'Possible Cause', 'consequence' => 'Possible Consequence', 'safeguard' => 'Existing Safeguard', 'action' => 'Recommended Action');
         $FileAsString = '';
         $PHAKey = $_SESSION['Selected']['k0pha'];  // Use database-table keys as array keys to avoid conflicts, especially with ccsa and their juntion tables (jt).
         $ArrayPHA['t0pha'][$PHAKey] = $_SESSION['Selected'];
@@ -726,7 +729,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
             $Zfpf->edit_lock_1c('subprocess', 'PHA subsystem '.$SubprocessName[$K], $V); // Check and edit_lock nested subprocesses.
         }
         array_multisort($SubprocessName, $SRSp); // Sort alphabetically by name.
-        $ApprovalText .= '<p><b><a id="subsystems_list"></a>
+        $ApprovalText .= '<p style="page-break-before: always"><b><a id="subsystems_list"></a>
         Subsystems List</b><br />';
         foreach ($SubprocessName as $K => $V)
             $ApprovalText .= '<a class="toc" href="#subprocess_'.$K.'">'.$V.'</a><br />';
@@ -735,7 +738,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
         // Select all scenarios and echo with links, grouped by subprocess
         $Types = array('cause' => 'Possible Causes', 'consequence' => 'Possible Consequences', 'safeguard' => 'Existing Safeguards', 'action' => 'Recommended Actions');
         foreach ($SRSp as $KA => $VA) {
-            $ApprovalText .= '<p><a id="subprocess_'.$KA.'"></a><b>Scenario list for subsystem '.$SubprocessName[$KA].'</b><br />';
+            $ApprovalText .= '<p style="page-break-before: always"><a id="subprocess_'.$KA.'"></a><b>Subsystem '.$SubprocessName[$KA].'</b><br />';
             $Conditions[0] = array('k0subprocess', '=', $VA['k0subprocess']);
             list($SRSc, $RRSc) = $Zfpf->select_sql_1s($DBMSresource, 't0scenario', $Conditions);
             if (!$RRSc)
@@ -764,7 +767,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
             $htmlFormArray = $ccsaZfpf->html_form_array($KA, $Zfpf, 'scenario', $arZfpf);
             list($SRccsa, $Message) = $ccsaZfpf->other_ccsa_in_pha($KA, $Zfpf, $_SESSION['Selected']['k0pha']);
             if ($SRccsa) {
-                $ApprovalText .= '<a id="CCSA_'.$KA.'"></a><h2 class="topborder" style="page-break-before: always">'.$VA.'</h2>';
+                $ApprovalText .= '<a id="CCSA_'.$KA.'"><h2 class="topborder" style="page-break-before: always">'.$VA.'</h2></a>';
                 $ApprovalText .= '<p>';
                 foreach ($SRccsa as $KB => $VB)
                     $ApprovalText .= '<a class="toc" href="#ccsa_'.$KA.'_'.$KB.'">'.$Zfpf->decrypt_1c($VB['c5name']).'</a><br />';

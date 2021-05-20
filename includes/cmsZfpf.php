@@ -75,45 +75,54 @@ class cmsZfpf {
 (2.2) hazardous-substance procedures and safe-work practices, 
 (2.3) inspection, testing, and maintenance (ITM) program, 
 (2.4) emergency plans, and so forth', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_dr' => array('<a id="c6bfn_dr"></a><b>Design review</b>, leader. Effort may include uploading copies of, as needed: 
-(1) permit applications and permits, including building, electrical, environmental, hazardous substance, mechanical, and so forth, 
-(2) plans, specifications, and calculations, showing the edition of applicable codes and standards, and including 
-(2.1) any needed evaluations of performance -- such as contraction and expansion, corrosion, erosion, reactions (chemical, physical, or other), shocks, vibrations, and so forth -- over the anticipated normal and upset/failure ranges for 
-(2.1.1) temperature, 
-(2.1.2) pressure, 
-(2.1.3) flow, 
-(2.1.4) composition, 
-(2.1.5) any other relevant process parameters, 
-(2.1.6) any needed utilities, such as compressed air, electrical (outages, blips, restoration), or water, and
-(2.1.7) relevant external conditions, including earthquakes/seismic, humidity, rain, salinity (sea spray, deicing...), sand or dust storms, snow, wind, and so forth, 
-(3) documentation that '.HAZSUB_NAME_ADJECTIVE_ZFPF.' equipment and piping, installed as part of the change, were separated from people to the extent practical, such as by locating them in machinery rooms or penthouses, above roofs, or outdoors, 
-(4) welding-procedure specifications and qualification records, 
-(5) paint and insulation specifications, including corrosion-under-insulation prevention as needed,
-(6) documentation of post-design changes (change orders), and so forth, 
-<b> after reviewing them as needed to verify that they describe how to safely and legally complete changes to, as applicable: </b>
-(A) the '.HAZSUB_PROCESS_NAME_ZFPF.', including 
-(A.1) its instrumentation and controls and 
-(A.2) its primary-containment envelope, such as 
-(A.2.1) piping and 
-(A.2.2) equipment, including compressors, pumps, and vessels, 
-(B) safety systems for the '.HAZSUB_PROCESS_NAME_ZFPF.', such as 
-(B.1) alarms, including audible and visible alarms and notification systems that call, text, or email Owner/Operator representatives, 
-(B.2) automatic shutoffs, including for compressors, pumps, valves, and so forth, 
-(B.3) interlocks, 
-(B.4) instrumentation and controls for safety systems, including sensors, detectors, microprocessors and so forth, 
-(B.5) pressure-relief systems, 
-(B.6) suppression systems, and 
-(B.7) ventilation systems, and so forth, and 
-(C) things the '.HAZSUB_PROCESS_NAME_ZFPF.' relies on, such as 
-(C.1) supports, including
-(C.1.1) hangers, rods, saddles, and so forth, 
-(C.1.2) building structures,  
-(C.1.3) other structures, 
-(C.1.4) foundations and geotechnical/subsurface conditions, and
-(C.1.5) all support-related fasteners, 
-(C.2) room and building envelopes or other protection from the weather, 
-(C.3) electrical systems, including 
-(C.3.1) any hazardous-location classifications and related engineering or administrative controls, 
+                'k0user_of_dr' => array('<a id="c6bfn_dr"></a><b>Design review</b>, leader. Effort may include uploading copies of, as needed:<br />
+(1) permit applications and permits, including building, electrical, environmental, hazardous substance, mechanical, and so forth,<br />
+(2) plans, specifications, and calculations, showing the edition of applicable codes and standards, and including any needed <b>evaluations of performance</b> -- such as contraction and expansion, corrosion, erosion, reactions (chemical, physical...), shocks, stresses and strains, vibrations, weakening, and so forth -- <b>over the code-required design or other reasonably possible ranges for</b><br />
+(2.1) '.HAZSUB_PROCESS_NAME_ZFPF.' internal conditions, such as<br />
+(2.1.1) temperature,<br />
+(2.1.2) pressure,<br />
+(2.1.3) flow,<br />
+(2.1.4) composition,<br />
+(2.1.5) any other relevant process parameters,<br />
+(2.2) failures of any needed utilities, for example compressed air, electrical (outages, blips, restoration...), or water,<br />
+(2.3) relevant external circumstances, such as<br />
+(2.3.1) earthquakes/seismic,<br />
+(2.3.2) substances stored or handled nearby and the corrosion, ignition sources, fires, or explosions they may cause or promote (cleaning, corrosive, combustible, oxidizers, and electrical equipment, transformers, and wires...),<br />
+(2.3.3) traffic (impacts from airplanes, carts, forklifts, trains, trucks...),<br />
+(2.3.4) vandalism, terrorism, or theft,<br />
+(2.3.5) weather (ice, humidity, hurricanes, rain, salinity/sea spray, sand or dust storms, snow, tornadoes, wind...), and so forth,<br />
+(3) protecting people (life safety), onsite or offsite, documentation, such as any needed<br />
+(3.1) locating and siting studies,<br />
+(3.1) assessments of explosions, fires, or leaks,<br />
+(3.2) code-required separations, and/or<br />
+(3.3) separation of '.HAZSUB_NAME_ADJECTIVE_ZFPF.' equipment and piping, installed as part of the change, from people to the extent practical (for example by locating them in machinery rooms or penthouses, above roofs, or outdoors),<br />
+(4) fastening and joining procedures, including welding-procedure specifications and qualification records,<br />
+(5) insulation and paint specifications, covering any needed corrosion-under-insulation prevention,<br />
+(6) documentation of post-design changes (change orders), and so forth,<br />
+<b> after reviewing them as needed to verify that they describe how to safely and legally complete changes to, as applicable: </b><br />
+(A) the '.HAZSUB_PROCESS_NAME_ZFPF.', including<br />
+(A.1) its instrumentation and controls and<br />
+(A.2) its primary-containment envelope, such as<br />
+(A.2.1) piping and<br />
+(A.2.2) equipment, including compressors, pumps, and vessels,<br />
+(B) safety systems for the '.HAZSUB_PROCESS_NAME_ZFPF.', such as<br />
+(B.1) alarms, including audible and visible alarms and notification systems that call, text, or email Owner/Operator representatives,<br />
+(B.2) automatic shutoffs, including for compressors, pumps, valves, and so forth,<br />
+(B.3) interlocks,<br />
+(B.4) instrumentation and controls for safety systems, including sensors, detectors, microprocessors and so forth,<br />
+(B.5) pressure-relief systems,<br />
+(B.6) suppression systems, and<br /> 
+(B.7) ventilation systems, and so forth, and<br />
+(C) things the '.HAZSUB_PROCESS_NAME_ZFPF.' relies on, such as<br />
+(C.1) supports, including<br />
+(C.1.1) hangers, rods, saddles, and so forth,<br />
+(C.1.2) building structures,<br />
+(C.1.3) other structures,<br />
+(C.1.4) foundations and geotechnical/subsurface conditions, and<br />
+(C.1.5) all support-related fasteners,<br />
+(C.2) room and building envelopes or other protection from the weather,<br />
+(C.3) electrical systems, including<br />
+(C.3.1) any hazardous-location classifications and related engineering or administrative controls,<br />
 (C.4) other utilities, and so forth', '', C5_MAX_BYTES_ZFPF, array('Typically needed if mechanical, structural, or other engineered/designed systems will be changed.', 'Design Review')),
                 'c6notes_dr' => array('Design review notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_dr' => array('Design review supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
@@ -123,7 +132,7 @@ class cmsZfpf {
                 'k0user_of_hrr' => array('<a id="c6bfn_hrr"></a><b>Human-resources (HR) review</b>, leader', '', C5_MAX_BYTES_ZFPF, array('Typically needed if the change may increase workload, needed skills, or responsibilities.', 'HR Review')),
                 'c6notes_hrr' => array('HR review notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_hrr' => array('HR review supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
-                'k0user_of_cont_qual' => array('<a id="c6bfn_cont_qual"></a><b>Contractor Qualification</b> for this change, leader. Effort may include uploading welder performance qualifications and continuity records as well as completing applicable requirements in the "contractor" division of this PSM-CAP App', '', C5_MAX_BYTES_ZFPF, array('', 'Contractor Qualification')),
+                'k0user_of_cont_qual' => array('<a id="c6bfn_cont_qual"></a><b>Contractor Qualification</b> for this change, leader. Effort may include uploading welder performance qualification and continuity records as well as completing applicable requirements in the "contractor" division of this PSM-CAP App', '', C5_MAX_BYTES_ZFPF, array('', 'Contractor Qualification')),
                 'c6notes_cont_qual' => array('Contractor qualification notes', '', C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_cont_qual' => array('Contractor qualification supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
                 'k0user_of_act_notice' => array('<a id="c6bfn_act_notice"></a><b>Activity Notice</b> -- posting and filing, leader', '', C5_MAX_BYTES_ZFPF, array('', 'Activity Notice')),

@@ -7,7 +7,7 @@
 // PHP require is used rather than PHP include to halt PHP execution if the desired file is not found.
 // 
 // Settings are placed in a separate directory so they can be placed in a special secure location,
-// since they contain keys an hash salts.
+// since they contain keys and hash salts.
 // This also helps assure only setting files will be edited on installation.
 // 
 // The default constant definitions below below assume the /settings/ and /includes/ 
