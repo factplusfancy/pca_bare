@@ -532,7 +532,7 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
         unset($_SESSION['Scratch']['t0obsresult']);
     $Zfpf->clear_edit_lock_1c(); // Clears t0audit edit lock -- defaults to $_SESSION['Selected']; set in i1... code below.
     // Many to many relationships between t0obsresult, t0obsmethod, and t0obstopic
-    // Here, show all obsresult for an obsmethod, regarless of obstopic. obsresult hols the specific "topic ID", in field c5_obstopic_id.
+    // Here, show all obsresult for an obsmethod, regarless of obstopic. obsresult holds the specific "topic ID", in field c5_obstopic_id.
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     $Conditions[0] = array('k0obsmethod', '=', $_SESSION['Scratch']['t0obsmethod']['k0obsmethod']);
     $Conditions[1] = array('k0audit', '=', $_SESSION['Selected']['k0audit'], '', 'AND');

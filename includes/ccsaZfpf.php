@@ -290,7 +290,7 @@ class ccsaZfpf {
             Select '.$ccsa.'s to add to the scenario.</p><p>';
             foreach ($OtherCCSA as $K => $V) {
                 $Message .= '
-                <input type="checkbox" name="'.$ccsa.$K.'" value="1" />'.$Name[$K].'<br />';
+                <input type="checkbox" name="'.$ccsa.$K.'" value="1" /><a class="toc" href="'.$ccsa.'_io03.php?'.$ccsa.'_o1='.$K.'">'.$Name[$K].'</a><br />';
             }
             $Message .= '</p><p>
             <input type="submit" name="checkbox_wrangler" value="Add '.$ccsa.'(s) to scenario" /></p>';
@@ -741,7 +741,15 @@ class ccsaZfpf {
         }
         // o1 code
         // SPECIAL CASES: $_SESSION['Scratch']['t0'.$ccsa] serves like $_SESSION['Selected'].  $_SESSION['Selected'] keeps holding a t0pha, t0incident, or t0audit row.
-        if (isset($_POST[$ccsa.'_o1'])) {
+        if (isset($_POST[$ccsa.'_o1']) or isset($_GET[$ccsa.'_o1'])) {
+            if (isset($_GET[$ccsa.'_o1'])) {
+                $SelectedLink = $_GET[$ccsa.'_o1'];
+                if (isset($_SESSION['SelectResults']['t0'.$ccsa][$SelectedLink]))
+                    $_SESSION['Scratch']['t0'.$ccsa] = $_SESSION['SelectResults']['t0'.$ccsa][$SelectedLink];
+                else
+                    $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+                unset($_SESSION['SelectResults']);
+            }
             // Additional security check.
             if (!isset($_SESSION['Scratch']['t0'.$ccsa]) and (!isset($_POST['selected']) or !isset($_SESSION['SelectResults']['t0'.$ccsa])))
                 $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
@@ -764,48 +772,56 @@ class ccsaZfpf {
                 unset($_SESSION['SelectResults']);
             }
             $Display = $Zfpf->select_to_display_1e($htmlFormArray, $_SESSION['Scratch']['t0'.$ccsa]);
-            echo $Zfpf->xhtml_contents_header_1c($ccsa).$Heading.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Scratch']['t0'.$ccsa], $Display);
+            $Message = $Heading.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Scratch']['t0'.$ccsa], $Display);
             if ($EditLocked) {
                 if (substr($who_is_editing, 0, 19) != 'PERMANENTLY LOCKED:')
-                    echo '<p><b>'.$who_is_editing.' is editing '.$EditLockMessage.'.</b><br />
+                    $Message .= '<p><b>'.$who_is_editing.' is editing '.$EditLockMessage.'.</b><br />
                     If needed, contact them to coordinate. You will not be able to edit these, nor add new '.$ccsa.'s, until they are done.</p>';
                 else
-                    echo '<p>'.$who_is_editing.'</p>'; // This should echo the permanent-lock message.
+                    $Message .= '<p>'.$who_is_editing.'</p>'; // This should echo the permanent-lock message.
             }
-            elseif (!$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and (!isset($_SESSION['Selected']['k0pha']) or $_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes'))) {
-                echo '
+            elseif (!isset($_GET[$ccsa.'_o1']) and !$Issued and $User['GlobalDBMSPrivileges'] == MAX_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF and (!isset($_SESSION['Selected']['k0pha']) or $_SESSION['Selected']['k0pha'] >= 100000 or ($_SESSION['Selected']['k0pha'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes'))) {
+                $Message .= '
                 <form action="'.$ccsa.'_io03.php" method="post"><p>';
                 if ($ccsa != 'action' or $Zfpf->decrypt_1c($_SESSION['Scratch']['t0action']['c5status']) == 'Draft proposed action')
-                    echo '
+                    $Message .= '
                     <input type="submit" name="'.$ccsa.'_o1_from" value="Update this '.$ccsa.'" /><br />';
                 else
-                    echo '<b>Not draft, cannot edit.</b> This action is associated with an issued document. Comments and resolution documentation may be added to it via this app\'s action register.<br /><br />';
-                echo '
+                    $Message .= '<b>Not draft, cannot edit.</b> This action is associated with an issued document. Comments and resolution documentation may be added to it via this app\'s action register.<br /><br />';
+                $Message .= '
                     Remove this '.$ccsa.' from the current '.$ReportType.'<br />
                     <input type="submit" name="'.$ccsa.'_remove" value="Remove '.$ccsa.'" /></p>
                 </form>';
             }
-            else {
-                echo '
+            elseif (!isset($_GET[$ccsa.'_o1'])) {
+                $Message .= '
                 <p>You don\'t have updating privileges on this record.</p>';
                 if ($Issued)
-                    echo '<p>
+                    $Message .= '<p>
                     Once a document has been issued, like this one, it cannot be edited.</p>';
                 if ($UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
-                    echo '<p><b>
+                    $Message .= '<p><b>
                     Practice Privileges Notice</b>: You don\'t have update privileges for this practice, if you need to edit any records for this practice, please contact your supervisor or a PSM-CAP App administrator.</p>';
                 if ($User['GlobalDBMSPrivileges'] != MAX_PRIVILEGES_ZFPF)
-                    echo '<p><b>
+                    $Message .= '<p><b>
                     Global Privileges Notice</b>: You don\'t have privileges to edit PSM-CAP App records. If you need this, please contact your supervisor or a PSM-CAP App administrator and ask them to upgrade your PSM-CAP App global privileges.</p>';
             }
-            echo '
-            <form action="'.$ccsa.'_io03.php" method="post"><p>
-                <input type="submit" name="'.$ccsa.'_history_o1" value="History of this record" /></p>
-            </form>
-            <form action="'.$TableRoot.'_io03.php" method="post"><p>
-                <input type="submit" name="'.$TableRoot.'_o1" value="Go back" /></p>
-            </form>
-            '.$Zfpf->xhtml_footer_1c();
+            $Message .= '
+            <form action="'.$ccsa.'_io03.php" method="post">';
+            if (isset($_GET[$ccsa.'_o1']))
+                $Message .= '<p>
+                <input type="submit" name="'.$ccsa.'_i1aic" value="Go back" /></p>';
+            else 
+                $Message .= '<p>
+                <input type="submit" name="'.$ccsa.'_history_o1" value="History of this record" /></p>';
+            $Message .= '
+            </form>';
+            if (!isset($_GET[$ccsa.'_o1']))
+                $Message .= '
+                <form action="'.$TableRoot.'_io03.php" method="post"><p>
+                    <input type="submit" name="'.$TableRoot.'_o1" value="Go back" /></p>
+                </form>';
+            echo $Zfpf->xhtml_contents_header_1c($ccsa).$Message.$Zfpf->xhtml_footer_1c();
             $Zfpf->save_and_exit_1c();
         }
         // i1 & i2 and $ccsa.'_remove code

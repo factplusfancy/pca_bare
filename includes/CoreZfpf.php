@@ -2213,8 +2213,16 @@ class CoreZfpf {
         if (!$HostSpec)
             $HostSpec = '[Nothing has been recorded in this field.]';
         $HostSpec = $this->max_length_1c($HostSpec);
+        $UniqueKey = FALSE;
+        while (!$UniqueKey) { // Primary key conflicts more likely in t0history table
+            $CheckedKey = time().mt_rand(1000000, 9999999);
+            $Conditions[0] = array('k0history', '=', $CheckedKey);
+            list($SR, $RR) = $this->select_sql_1s($DBMSresource, 't0history', $Conditions);
+            if (!$RR)
+                $UniqueKey = TRUE;
+        }
         $History = array(
-            'k0history' => time().mt_rand(1000000, 9999999),
+            'k0history' => $CheckedKey,
             'k0user' => $_SESSION['t0user']['k0user'], // The user who made the change.
             'k0_1st_in_row_affected' => $PrimaryKey,
             'k0_2nd_in_row_affected' => $OtherKeys[0],

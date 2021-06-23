@@ -185,25 +185,29 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5number' => $Zfpf->encrypt_1c('HHHAJJ'),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
 (1) compressor-safety shutoffs -- test following the Safety-Shutoffs Testing hazardous-substance procedure and calibrate, fix, or replace if needed, as applicable, the safety shutoffs for 
-(1.1) high-discharge pressure, 
-(1.2) high-discharge temperature (if any), 
+(1.1) high discharge pressure, 
+(1.2) high discharge temperature (if any), 
 (1.3) high level in vessel(s) that feed compressors, 
-(1.4) low-oil pressure, 
-(1.5) low-suction pressure, and 
-(1.6) any other safety shutoffs or sensors that the manufacturer recommends testing or calibrating, 
+(1.4) low oil pressure (also verify operating oil pressure meets manufacturer recommendations), 
+(1.5) low suction pressure, 
+(1.6) high oil temperature, low cooling-water flow, or other loss-of-cooling shutoff (if any), and 
+(1.7) any other safety shutoffs or sensors that the manufacturer recommends testing or calibrating, 
 (2) electrical for/between motor controller, motor, oil heater, controls, and any local control panel -- 
-(2.1) thermal scan, 
+(2.1) thermal scan as needed, 
 (2.2) calibrate motor-current sensor, 
 (2.3) inspect/note/fix other motor safeties, and 
 (2.4) inspect/note/fix any connection, enclosures, timer, relay, or other problem, 
 (3) foundation, mounting fasteners, and any needed vibration isolation -- inspect/note/fix if missing, loose, cracking, deteriorating, or other problem, 
 (4) drives 
-(4.1) if direct drive: motor-to-compressor alignment, coupling, coupling fasteners, and shafts -- inspect/note/fix if loose, worn, shaft float or end play, or other problem, measure hot alignment, and realign as needed, 
-(4.2) if belt drive: belts, pulleys, fasteners, and shafts -- inspect/note/fix if missing, loose (measure belt tensions), worn, misaligned, shaft float or end play, or other problem, 
-(5) oil and filter maintenance -- either replace based on oil analysis and filter pressure drop or replace yearly, 
+(4.1) if direct drive: motor-to-compressor alignment, coupling, any coupling fasteners, and shafts -- inspect/note/fix if loose, worn, excessive shaft float/end play, or other problem, measure hot alignment, and realign as needed, 
+(4.2) if belt drive: belts, pulleys, fasteners, and shafts -- inspect/note/fix if missing, loose (measure belt tensions), worn, misaligned, excessive shaft float/end play, or other problem, 
+(5) oil and filter maintenance -- either replace based on oil analysis and filter pressure drop or replace every 10,000 run hours (or yearly), 
+(5.1) oil strainer -- inspect/note/fix and clean as needed, 
 (6) oil heaters -- verify operation, 
-(7) cylinder valves, valve seats, liners, connecting-rod bearings, and crankshaft bearings -- inspect, test, and maintain if/as needed, on one or more cylinder, per manufacturer recommendations or documented operating experience, 
-(8) cylinder-head cooling system -- clean strainer and also clean internal scale and inspect/note/fix corrosion if/when removing cylinder heads, 
+(7) compressor internals, some or all may be inspected at reduced frequencies, per manufacturer recommendations or documented operating experience 
+(7.1) gaskets, suction screens, safety heads, any unloaders, cylinder valves, valve seats, and liners, pistons, wrist pins and bushings, connecting rods, connecting-rod bearings and their crankshaft journals, and crankshaft main-bearings float -- inspect/note/fix as needed, 
+(7.2) cylinder-head cooling system -- verify operation, clean strainer, and, if removing cylinder heads for other work, clean internal scale and inspect/note/fix any corrosion, 
+(8) pressure gauges and thermometers verify reading correctly, and inspect/note/fix as needed, 
 (9) exterior surface -- complete ITM per the Insulation, Paint, and Underlying Steel Sub-practice, 
 (10) sight glasses -- complete ITM per the Sight Glass Sub-practice, 
 (11) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice,
@@ -218,7 +222,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5number' => $Zfpf->encrypt_1c('HHHAKK'),
     'c6description' => $Zfpf->encrypt_1c('Complete the following per facility hazardous-substance procedures and safe-work practices. 
 (1) Shaft-seals -- measure oil-drip rate. Compare to acceptable rate based on manufacturer recommendations or documented operating experience. Replace if needed, per method in manufacturer recommendations. Monthly frequency acceptable if checks for excessive oil-drip rate from shaft seals are done in the Daily Inspection hazardous-substance procedure. Otherwise, use the frequency in the latest IIAR 6 edition. 
-(2) Slide valves -- inspect and maintain per manufacturer recommendations, and at least verify operation of capacity and volume ratio controls through their full range and verify correct position at 0% and 100%. Calibrate, fix, or replace as needed. 
+(2) Slide valves -- inspect/note/fix per manufacturer recommendations, and at least verify operation of capacity and volume-ratio slide valves through their full range and verify correct position at 0% and 100%. Calibrate, fix, or replace as needed. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -228,29 +232,35 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5number' => $Zfpf->encrypt_1c('HHHALL'),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
 (1) compressor-safety shutoffs -- test following the Safety-Shutoffs Testing hazardous-substance procedure and calibrate, fix, or replace if needed, as applicable, the safety shutoffs for 
-(1.1) high-discharge pressure, 
-(1.2) high-discharge temperature, 
+(1.1) high discharge pressure, 
+(1.2) high discharge temperature, 
 (1.3) high level in vessel(s) that feed compressors, 
-(1.4) high-oil temperature, 
-(1.5) low-oil pressure, 
-(1.6) low-suction pressure, and 
+(1.4) high oil temperature, 
+(1.5) low oil pressure, 
+(1.6) low suction pressure, and 
 (1.7) any other safety shutoffs or sensors that the manufacturer recommends testing or calibrating, 
 (2) electrical for/between motor controller(s), motor(s), oil heater, controls, and local control panel -- 
-(2.1) thermal scan, 
+(2.1) thermal scan as needed, 
 (2.2) calibrate motor-current sensor, 
 (2.3) inspect/note/fix other motor safeties, and 
 (2.4) inspect/note/fix any connection, enclosures, timer, relay, or other problem, 
 (3) foundation, mounting fasteners, and any needed vibration isolation -- inspect/note/fix if missing, loose, cracking, deteriorating, or other problem, 
-(4) motor-to-compressor alignment, coupling, coupling fasteners, and shafts -- inspect/note/fix if loose, worn, shaft float or end play, or other problem, measure hot alignment, and realign as needed, 
-(5) oil and filter maintenance -- either replace based on oil analysis and filter pressure drop or replace yearly, 
+(4) motor-to-compressor alignment, coupling, any coupling fasteners, and shafts -- inspect/note/fix if loose, worn, excessive shaft float/end play, or other problem, measure hot alignment, and realign as needed, 
+(5) oil and filter maintenance -- either replace based on oil analysis and filter pressure drop or replace every 10,000 run hours (or yearly), 
+(5.1) oil strainer -- inspect/note/fix and clean as needed, 
 (6) oil heaters -- verify operation, 
 (7) exterior surface -- complete ITM per the Insulation, Paint, and Underlying Steel Sub-practice, 
 (8) sight glasses -- complete ITM per the Sight Glass Sub-practice, 
-(9) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice,
-(10) any other tasks that the manufacturer recommends, such as inspect/note/fix for
-(10.1) proper oil flow in any oil return line from the coalescing side of oil separators,
-(10.2) proper equalize-to-suction time after compressor shutoff, via a suction check-valve bypass or similar, so confirming the suction check valve is holding,
-(10.3) discharge check valve (or stop/check valve) -- verify holding when the compressor is off. 
+(9) oil separator -- complete ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice, 
+(10) any other needed or manufacturer-recommended tasks, such as 
+(10.1) proper oil flow in any oil return line from the coalescing side of oil separators -- inspect/note/fix,
+(10.2) proper equalize-to-suction time after compressor shutoff, via a suction check-valve bypass or similar, so confirming the suction check valve is holding -- inspect/note/fix,
+(10.3) discharge check valve (or stop/check valve) -- verify holding when the compressor is off,
+(10.4) suction screen -- inspect/note/fix and clean as needed, 
+(10.4.1) any economizer piping -- clean strainer and verify proper operation, including of any regulator, 
+(10.5) oil-separator coalescing filter elements -- replace as needed or per manufacturer recommendations, 
+(10.6) any liquid-injection cooling -- clean strainer as needed, inspect/note/fix any problems, verify operation, and for any pump, complete applicable ITM under the Pumps, Yearly or Every 10,000 Run Hours, PSM-CAP compliance practice, 
+(10.7) any oil-cooling heat exchanger, such as plate or tube-in-shell -- complete applicable ITM per the Pressure Vessels, Yearly, PSM-CAP compliance practice. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -261,9 +271,9 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices, if applicable: 
 (1) oil pumps 
 (1.1) inlet strainer -- clean, 
-(1.2) motor-to-pump alignment, coupling, any coupling fasteners, and shafts -- inspect/note/fix if loose, worn, shaft float or end play, or other problem, measure alignment, and realign as needed, and 
+(1.2) motor-to-pump alignment, coupling, any coupling fasteners, and shafts -- as applicable, inspect/note/fix if loose, worn, excessive shaft float/end play, or other problem, measure alignment, and realign as needed, and 
 (1.3) inspect/note/fix any problems, 
-(2) regulators, valves, heat exchangers, and other components -- inspect/note/fix any problems. 
+(2) any regulators, thermostatic-mixing valves, heat exchangers, and other components on the external oil circuit -- inspect/note/fix any problems; lubricate stems and exercise (close and re-open) stop valves. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c5require_file' => $Encrypted_document_i1m_php,
     'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -285,7 +295,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
 (1) guards, shrouds, housing/enclosure exterior, and nearby piping -- inspect/note/fix if missing, loose, water leaks, air-flow obstructions, unclean, worn, cracks, dents, scratches, impact marks, or other damage, 
 (2) fan drives, including any belts, pulleys, couplings, fasteners, and shafts -- 
-(2.1) inspect/note/fix if missing, loose (measure belt tensions), worn, shaft float or end play, or other problem, 
+(2.1) inspect/note/fix if missing, loose (measure belt tensions), worn, excessive shaft float/end play, or other problem, 
 (2.2) shaft bearings -- lubricate as needed, 
 (2.3) any gear boxes -- inspect/note/fix oil level, 
 (3) fan blades, hubs, fasteners, and any balancing weights -- inspect/note/fix if cracks, loose or missing fasteners, or other problem, 
@@ -312,7 +322,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
 (1) guards, shrouds, housing/enclosure exterior, and nearby piping -- inspect/note/fix if missing, loose, water leaks, air-flow obstructions, unclean, worn, cracks, dents, scratches, impact marks, or other damage, 
 (2) fan drives, including any belts, pulleys, couplings, fasteners, and shafts -- 
-(2.1) inspect/note/fix if missing, loose (measure belt tensions), worn, shaft float or end play, or other problem, 
+(2.1) inspect/note/fix if missing, loose (measure belt tensions), worn, excessive shaft float/end play, or other problem, 
 (2.2) shaft bearings -- lubricate as needed, 
 (2.3)  any gear boxes -- inspect/note/fix oil level, 
 (3) fan blades, hubs, fasteners, and any balancing weights -- inspect/note/fix if cracks, loose or missing fasteners, or other problem. 
@@ -329,12 +339,12 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (1.2) low seal oil, 
 (1.3) vibration/cavitation, 
 (2) electrical for/between any motor controller, motor, oil heater, controls, and local control panel -- 
-(2.1) thermal scan, 
+(2.1) thermal scan as needed, 
 (2.2) calibrate any motor-current sensor, 
 (2.3) inspect/note/fix other motor safeties, and 
 (2.4) inspect/note/fix any connection, enclosures, timer, relay, or other problem, 
 (3) any foundation, mounting fasteners, and any needed vibration isolation -- inspect/note/fix if missing, loose, cracking, deteriorating, or other problem, 
-(4) if belt driven or has motor-to-pump shafts coupling: any belts, pulleys, couplings, fasteners, and shafts -- inspect/note/fix if missing, loose (measure belt tensions), worn, shaft float or end play, or other problem, 
+(4) if belt driven or has a motor-to-pump shafts coupling: any belts and pulleys, couplings, fasteners, and shafts -- inspect/note/fix if loose (measure belt tensions), misaligned, worn, excessive shaft float/end play, or other problem, 
 (5) any oil heaters -- verify operation, 
 (6) exterior surface -- complete ITM per the Insulation, Paint, and Underlying Steel Sub-practice. 
 See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
@@ -378,7 +388,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
 (1) guards, shrouds, housing/enclosure exterior, and nearby piping -- inspect/note/fix if missing, loose, air-flow obstructions, unclean, worn, cracks, dents, scratches, impact marks, or other damage, 
 (2) fan drives, including any belts, pulleys, couplings, fasteners, and shafts -- 
-(2.1) inspect/note/fix if missing, loose (measure belt tensions), worn, shaft float or end play, or other problem, 
+(2.1) inspect/note/fix if missing, loose (measure belt tensions), worn, excessive shaft float/end play, or other problem, 
 (2.2) shaft bearings -- lubricate as needed, 
 (3) fan blades, hubs, fasteners, and any balancing weights -- inspect/note/fix if cracks, loose or missing fasteners, or other problem, 
 (4) any drip pan -- inspect/note/fix if obstructed, such as water or ice accumulating in the pan, 
@@ -435,7 +445,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
     'c6description' => $Zfpf->encrypt_1c('Inspect, test, and maintain per manufacturer recommendations, industry standards, and facility hazardous-substance procedures and safe-work practices: 
 (1) guards, shrouds, housing/enclosure exterior, and nearby piping -- inspect/note/fix if missing, loose, air-flow obstructions, unclean, worn, cracks, dents, scratches, impact marks, or other damage, 
 (2) fan drives, including any belts, pulleys, couplings, fasteners, and shafts -- 
-(2.1) inspect/note/fix if missing, loose (measure belt tensions), worn, shaft float or end play, or other problem, 
+(2.1) inspect/note/fix if missing, loose (measure belt tensions), worn, excessive shaft float/end play, or other problem, 
 (2.2) shaft bearings -- lubricate as needed, 
 (3) fan blades, hubs, fasteners, and any balancing weights -- inspect/note/fix if cracks, loose or missing fasteners, or other problem, 
 (4) air filters -- inspect/note/fix if unclean or excessive pressure drop across the filter (differential pressure too high), replace if needed, 
@@ -687,7 +697,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (2.2.7) maintenance needed (based on run-time hours or condition), and then 
 (2.3) turn the switch back to "auto", 
 (3) fan drives, including any belts, pulleys, couplings, fasteners, and shafts -- 
-(3.1) inspect/note/fix if missing, loose (measure belt tensions), worn, shaft float or end play, or other problem, 
+(3.1) inspect/note/fix if missing, loose (measure belt tensions), worn, excessive shaft float/end play, or other problem, 
 (3.2) shaft bearings -- lubricate as needed, 
 (4) fan blades, hubs, fasteners, and any balancing weights -- inspect/note/fix if cracks, loose or missing fasteners, or other problem, 
 (5) ammonia sensors, detectors, and alarm systems, including any computer controls -- 

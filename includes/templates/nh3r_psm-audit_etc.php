@@ -8,7 +8,7 @@
 $AmmoniaRefrigerationAudit = array(
     1 => array(
         'k0audit' => 1, // For processes subject to OSHA PSM, the EPA's Program 3 Prevention Program, or equivalent.
-        'c5name' => $Zfpf->encrypt_1c('PSM audit and hazard review for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2020-08-13 template.'), // k0process is handled before SQL insert below.
+        'c5name' => $Zfpf->encrypt_1c('PSM audit and hazard review for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2021-06-18 template.'), // k0process is handled before SQL insert below.
         'c5ts_as_of' => $EncryptedNothing,
         'k0user_of_leader' => 0,
         'c6bfn_act_notice' => $EncryptedNothing,
@@ -167,7 +167,7 @@ However, the scope did include observations of a sample of:
 (2) access to and egress from rooms or areas where the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, to assess the Owner/Operator\'s systems for ensuring safe access and egress. 
 Findings about out-of-scope topics may be included in this report if discovered during the audit and hazard review. 
 
-The scope did not include evaluating health, safety, environmental, engineering, construction, financial, security or other considerations required for implementing any resolution options or other suggestions made in this report. Safe and effective resolution of audit and hazard review findings -- including careful evaluation of resolution options or other suggestions made in this report and also including means, methods, and sequences -- is the responsibility of the Owner/Operator.
+The scope did not include evaluating health, safety, environmental, engineering, construction, financial, security or other considerations required for implementing any resolution options or other suggestions made in this report. Safe and effective resolution of audit and hazard review findings -- including careful evaluation of resolution options or other suggestions made in this report and also including means, methods, and sequences -- remains the responsibility of the Owner/Operator of the facility or contractors that may take on specific projects.
 
 The EPA\'s Hazard Assessment requirements at 40 CFR 68, Subpart B -- including the release scenarios, offsite consequences, and five-year accident history -- as well as its Risk Management Plan (RMP) reporting requirements at 40 CFR 68, Subpart G, do not need to be included in the scope because they are aspects of 40 CFR 68 applicable to neither the Program 3 Prevention Program at 40 CFR 68, Subpart D, nor the OSHA PSM standard at 29 CFR 1910.119. The Owner/Operator is required to: 
 (1) review, update, and resubmit the Hazard Assessment and the RMP every five years under 40 CFR 68.36 and 68.190 and also 
@@ -182,7 +182,7 @@ If you have any questions or concerns about the scope of this audit and hazard r
     ),
     2 => array(
         'k0audit' => 2,  // For processes subject to general duty only or the EPA's Program 2 Prevention Program.
-        'c5name' => $Zfpf->encrypt_1c('General-duty only hazard review and compliance audit for anhydrous-ammonia mechanical refrigeration. 2020-08-13 template.'), // k0process is handled before SQL insert below.
+        'c5name' => $Zfpf->encrypt_1c('General-duty only hazard review and compliance audit for anhydrous-ammonia mechanical refrigeration. 2021-06-18 template.'), // k0process is handled before SQL insert below.
         'c5ts_as_of' => $EncryptedNothing,
         'k0user_of_leader' => 0,
         'c6bfn_act_notice' => $EncryptedNothing,
@@ -330,7 +330,7 @@ However, the scope did include observations of a sample of:
 (2) access to and egress from rooms or areas where the '.HAZSUB_PROCESS_NAME_ZFPF.' was located, to assess the Owner/Operator\'s systems for ensuring safe access and egress. 
 Findings about out-of-scope topics may be included in this report if discovered during the audit and hazard review. 
 
-The scope did not include evaluating health, safety, environmental, engineering, construction, financial, security or other considerations required for implementing any resolution options or other suggestions made in this report. Safe and effective resolution of audit and hazard review findings -- including careful evaluation of resolution options or other suggestions made in this report and also including means, methods, and sequences -- is the responsibility of the Owner/Operator.
+The scope did not include evaluating health, safety, environmental, engineering, construction, financial, security or other considerations required for implementing any resolution options or other suggestions made in this report. Safe and effective resolution of audit and hazard review findings -- including careful evaluation of resolution options or other suggestions made in this report and also including means, methods, and sequences -- remains the responsibility of the Owner/Operator of the facility or contractors that may take on specific projects.
 
 If you have any questions or concerns about the scope of this audit and hazard review, please contact its author(s).'),
         'c6audit_method' => $Zfpf->encrypt_1c('On [DATES ON-SITE SERVICES DONE] the report leader(s) listed above completed the on-site services for the audit and hazard review described in this report. Additional document review was done off-site. [List managers who participated in the entrance and exit meetings. Briefly summarize people talked with, equipment viewed, and documents reviewed  -- details on these go in the as-done observation methods, in each observation record.]'),

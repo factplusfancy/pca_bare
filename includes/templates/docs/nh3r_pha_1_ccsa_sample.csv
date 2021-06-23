@@ -498,30 +498,43 @@ because it includes, in the desired direction of flow:
 * Liquid chillers with CIP
 - [DESCRIBE SAFEGUARDS]
 [END EXAMPLES]"
-"Existing Safeguard"|"Compressor controls and safety shutoffs are adequate, including for the motor(s) and the vessel(s) that feed the compressor(s)."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Improves Instrumentation, Controls, or Machinery Reliability
+"Existing Safeguard"|"Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Improves Instrumentation, Controls, or Machinery Reliability
 At the facility, these controls and safety shutoffs include the following.
 * Redundant safeguards, via local controls in the compressor packages, in addition to the central ammonia-refrigeration controls.
 * On the vessel [VESSELS] that feeds the all facility ammonia-refrigerant compressors, [__LIST VESSEL(S)__], these include:
 - a level probe, which outputs to controls that [OFTEN OPTIONAL]
 > signal alarms at an alarm level and then, [OFTEN OPTIONAL]
 > on high-level, send shutoff signals to compressor local controls, [OFTEN OPTIONAL]
-- a high-high-level float switch that shuts off compressor motors, wired fail safe (no signal or open circuit causes shutoff) and independently from the central ammonia-refrigeration controls.
-* In all the ammonia-refrigerant compressor packages, these shutoffs include, at least:
+- a high-high-level float switch for compressor-safety shutoff, wired fail safe (no signal or open circuit causes shut off) and independently from the central ammonia-refrigeration controls.
+* In all the ammonia-refrigerant compressor packages, these compressor-safety shutoffs include, at least:
 - compressor motor high current (amps) -- also called overload or overcurrent protection,
 - compressor motor high temperature (thermal protection),
 - high discharge pressure,
 - low suction pressure, and
 - low oil pressure (the differential pressure that drives lubricating-oil flow, such as shaft-seal-chamber pressure minus suction pressure in Vilter reciprocating compressors).
-* In the ammonia-refrigerant screw-compressor packages, these shutoffs also include, at least:
+* In the ammonia-refrigerant screw-compressor packages, these compressor-safety shutoffs also include, at least:
 - high discharge temperature, of the ammonia-refrigerant gas,
 - high oil-filter differential pressure, 
 - high oil temperature (after cooling and typically before injection into the screw lubrication system), 
 - low oil temperature (also prevents the screw compressor from starting until the oil heater has adequately warmed the oil), 
 - oil-pump motor high current (amps), and
 - oil-pump motor high temperature (thermal protection).
-* All of the above compressor-safety shutoffs fail safe (no signal or open circuit causes shutoff).
-* The screw-compressor slide valves (capacity control and volume ratio) automatically unload when the compressor shuts off or when power is restored after a power outage. The screw compressor local controllers prevent restart until slide valves are unloaded to below 10% of their limits.
-* The central ammonia-refrigeration controls automate the loading and unloading of both its reciprocating and screw compressors.
+* All of the above compressor-safety shutoffs: 
+- fail safe (no signal or open circuit causes shut off) and
+- cause local compressor controls to de-energize compressor-package components as needed for safe shut off, including
+> the compressor motor,
+> the oil heater (except in special cases when an automatic restart may be allowed),
+> any oil-pump motor,
+> any liquid-injection cooling pump motors and/or solenoid valves.
+* Local screw-compressor controls:
+- prevent all motors in the compressor package from starting too often,
+- automatically unload screw-compressor slide valves (capacity control and volume ratio) when the compressor shuts off or when power is restored after a power outage,
+- prevent restart until slide valves are unloaded to below 10% of their limits, and
+- correct most slide-valve drift via anti-drift functions.
+[OR SLIDE-VALVE DRIFT MAY BE ADDRESSED VIA ITM]
+* The central ammonia-refrigeration controls:
+- prevent the compressors from starting too often and
+- automate their starting, loading, unloading, and shutoff.
 * Inspection, testing, and maintenance (ITM) of the above controls and safeguards are scheduled, described, and documented in
 - the facility's maintenance-management system.
 *** The following apply to the ammonia-refrigeration system at the facility. ***
@@ -560,11 +573,14 @@ At the facility, these controls and safety shutoffs include the following.
 - has little effect on reciprocating compressors,
 - may lead to wear or internal damage to screw-compressor packages, including their motors,
 - if this results in a rapid suction pressure drop, excessive refrigerant boiling in vessels that feed compressors may cause liquid droplets to reach compressors, see the scenario on liquid ammonia sucked into compressors, lots of large droplets or more (slugging).
-* Oil pump (for screw compressor) inlet or outlet valve closed when starting or running
-- may cause a leak, mostly oil, at the motor-shaft seal, valve-stem seal, or piping joints,
-- if an outlet valve, typically the oil-cooler, oil-side, pressure-relief valve would open and relieve the pressure to the compressor oil separator,
-- the screw compressor would not start, or would shutoff, on low-oil pressure,
-- the oil-pump motor may be shut off by high current (amps) protection."
+* If a screw-compressor oil-pump inlet or outlet valve is closed when the oil pump starts or is running:
+- the compressor local controls would not start the compressor motor, or would shut it off (for low-stage/booster compressors that run the oil pump during normal operation), due to low oil pressure,
+> which, possibly after a time delay, would cause the compressor local controls to shut off the oil-pump motor, or otherwise
+- the oil-pump motor may be shut off by its high current (amps) or thermal protection.
+- If the oil-pump outlet valve is closed (or both the inlet and outlet valves are closed) and the oil pump motor isn't shutoff by the above safeties, this may cause:
+> a leak, mostly oil, at the motor-shaft seal, a valve-stem seal, or some piping joints,
+> any pump internal pressure-relief device, from outlet to inlet, to open [CHECK IF THE PUMP HAS INTERNAL PRESSURE RELIEF],
+> [IF NOT LIQUID INJECTION COOLED] the oil-cooler, oil-side, pressure-relief valve to open and relieve the pressure by allowing oil flow back to the compressor oil separator that feeds the oil pump."
 "Existing Safeguard"|"Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 For the all the condensers in the facility's ammonia-refrigeration system, which are all evaporative condensers,
 * access for maintenance is adequate, including to the fans and the inside and top of the condenser housing, as needed,
@@ -588,6 +604,7 @@ For the all the condensers in the facility's ammonia-refrigeration system, which
 * Ammonia-refrigeration controls hardware is enclosed or located so that it is unlikely to be damaged by a heat, steam, water, or other leaks or environmental conditions.
 * Electrical-surge protection for ammonia-refrigeration controls is adequate.
 * Thermal scans of electrical systems are completed as recommended by the facility's qualified electrical contractor.
+* Variable-frequency drives and power cables are adequately grounded and shielded. [IF APPLICABLE]
 * Qualified employees and/or contractors have 
 - secure, remote access to the ammonia-refrigeration controls that allow at least shutting off compressors, pumps, and/or refrigeration to equipment (stopping liquid and hot gas flows to equipment, and so, in effect, initiating a pump down to suction pressure.),
 > protected by both passwords and two-step authentication (something you know, something you have).
@@ -690,7 +707,10 @@ The written emergency-action plan, or documents it references, describe:
 * All equipment in the ammonia-refrigeration system was supplied by reputable manufacturers, including
 - [REFERENCE A COMPONENT LIST, CHANGE-MANAGEMENT DOCUMENTATION, OR LIST FOR AT LEAST MAJOR PACKAGES: COMPRESSORS, PUMPS, VESSELS...]
 * In the facility's ammonia-refrigeration system:
-- Control valves do not trap liquid ammonia if controls fail or there is a power outage because its solenoid valves and regulators allow flow in the reverse direction and it has no motorized valves upstream of solenoid valves,
+- Control valves do not trap liquid ammonia if controls fail or there is a power outage because 
+> the solenoid valves and regulators allow flow in the reverse direction, 
+> no motorized valves are located upstream of solenoid valves,
+> no ammonia-refrigerant pumps are located upstream of solenoid valves or motorized valves, including on piping for liquid-injection cooling, unless appropriate safeguards are in place, such as minimum-flow bypass or pressure relief for the pump discharge,
 - the automatic King valve has adequate safeguards to avoid shocks when it re-opens (pressure equalization) [PROVIDE DETAILS ON HOW, IF ONE IS INSTALLED],
 - all valves have stainless-steel stems, including control-valve manual-opening stems,
 - interior erosion of the steel primary-containment envelope is negligible because 

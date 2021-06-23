@@ -397,10 +397,11 @@ including, for anhydrous ammonia:
 (4) any needed shutdown of critical plant equipment before evacuating (may reference leak mitigation and emergency shutdown procedures), 
 (5) calls to needed emergency responders, such as the local fire department and a contractor, pre-qualified to provide emergency response, 
 (6) any rescue or medical duties done by employees, 
-(7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to 
+(7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to emergency-response authorities including 
 (7.1) local (typically 911), 
 (7.2) state, and 
-(7.3) federal (the National Response Center) emergency-response authorities, 
+(7.3) federal (the National Response Center, NRC, at 1-800-424-8802),
+(7.3.1) and emailing the NRC identification number to report@csb.gov within 30-minutes of submitting the report to NRC,
 (8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs),  
 (8.1) keeping in a prearranged location or giving emergency responders the information they need, such as 
 (8.1.1) the Emergency Action Plan,

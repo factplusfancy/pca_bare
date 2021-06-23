@@ -61,28 +61,32 @@ $NH3ROm = array( // Indent as done below for better display in HTML text areas a
     ),
     12 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Operating limits, deviation consequences, controls, safety systems, and corrective actions -- obtained or made a list of documents describing these. Asked a person experienced with the facility\'s '.HAZSUB_PROCESS_NAME_ZFPF.' to provide a "tour" of the '.HAZSUB_PROCESS_NAME_ZFPF.' controls user interface(s), and together assessed consistency between: these documents, the controls, and what we considered to be good practices. Checked if these documents described: 
-(1) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' compressors shutoff by
-(1.1) high-discharge pressure (IIAR 9-2020 7.4.5),
-(1.2) low-suction pressure,
-(1.3) high-liquid level in vessels that fed them (IIAR 9-2020 7.4.4), 
-(2) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pumps shutoff by low-liquid level in vessels that fed them, 
+(1) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' compressors shut off by, at least 
+(1.1) high discharge pressure (IIAR 9-2020 7.4.5), 
+(1.2) high liquid level in vessels that fed them (IIAR 9-2020 7.4.4), 
+(1.3) low suction pressure, 
+(1.4) low oil pressure (the differential pressure that drives lubricating-oil flow), 
+(1.5) compressor motor high current (amps) -- also called overload or overcurrent protection, 
+(1.6) compressor motor high temperature (thermal protection) -- may be optional in some jurisdictions, 
+(1.7) typically, additional shutoffs for screw compressors, 
+(2) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pumps shut off by low-liquid level in vessels that fed them, 
 (3) '.HAZSUB_PROCESS_NAME_ZFPF.' emergency-stop switch/button(s), 
 (4) all ammonia sensors and the setpoints for actions that they trigger, such as 
 (4.1) notifying Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list),
 (4.2) audio/visual alarms outside all entrances into and inside the refrigerating-machinery room(s), 
 (4.3) emergency ventilation,
-(4.4) '.HAZSUB_PROCESS_NAME_ZFPF.' shutoff,
-(5) adequate instrumentation and controls for the safe operation of the '.HAZSUB_PROCESS_NAME_ZFPF.', including shutdowns and restarting (IIAR 9-2020 7.4.7.1),
+(4.4) '.HAZSUB_PROCESS_NAME_ZFPF.' shut off,
+(5) adequate instrumentation and controls for the safe operation of the '.HAZSUB_PROCESS_NAME_ZFPF.', including shutdowns and restarting (IIAR 9-2020 7.4.7.1), and
 (6) controls physical and cyber security, including limiting
 (6.1) who can change settings to trusted and authorized people, especially for safety settings, (IIAR 9-2020 7.4.7.3) and
-(6.2) remote access, such as with "something you have and something you know" two-step authentication, in other words, a password plus a temporary, single use, security code sent to the authorized person\'s mobile phone, and
-(7) design pressures and temperatures of instruments that were part of the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pressure-containing envelope, including sight glasses, or references to manufacturer manuals with this information and a statement indicating they were suitable for service at their location in the  '.HAZSUB_PROCESS_NAME_ZFPF.' (IIAR 9-2020 7.4.7.4.')
+(6.2) remote access, such as with "something you have and something you know" two-step authentication, in other words, a password plus a temporary, single use, security code sent to the authorized person\'s mobile phone.')
     ),
     13 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Materials of construction -- checked a sample of documents about piping and equipment for completeness, including: 
 (1) information-location summary, such as change-management number references on components lists, 
 (2) vessel-manufacturer data reports (U forms), shop drawings, and any optional nameplate photographs, 
 (3) equipment, valve, instrumentation, and controls manufacturer manuals, 
+(3.1) these manufacturer manuals or other documentation showed the component\'s initial suitability for service at the installed location, such as adequate design pressures and temperatures if part of the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pressure-containing envelope, including sight glasses and some instruments (IIAR 9-2020 7.4.7.4), 
 (4) piping material-test reports (linked to the '.HAZSUB_PROCESS_NAME_ZFPF.' by heat numbers on delivery documentation, post-installation inspection reports, or similar), 
 (5) insulation and paint specifications, 
 (6) supports specifications, and 
@@ -108,12 +112,12 @@ For a pre-2010 '.HAZSUB_PROCESS_NAME_ZFPF.', this information may reasonably not
 (3.2) RV piping lengths, geometry, and fittings, including outlet moisture-entry prevention devices, 
 (4) needed special measures for any stop valves on RV piping, 
 (5) a safe discharge-to-atmosphere location(s), direction, and method, such as a tractor cap compatible with the RV piping material, 
-(6) a reasonable pressure difference (allowance) between pressure-limiting and pressure-relief devices, such as between the setpoints for the compressor high-pressure shutoff and the oil-separator pressure-relief valve, and 
+(6) a reasonable pressure difference (allowance) between pressure-limiting and pressure-relief devices, such as between the setpoints for the compressor high-pressure shut off and the oil-separator pressure-relief valve, and 
 (7) that, if pressure-relief devices were protecting pressure vessels connected sufficiently to be at similar pressures during the design scenario, these pressure-relief devices had the same opening setpoint, at or below the lowest design pressure of all piping and equipment (including pressure vessels) that were so connected, for example, one setpoint for the low-side, at least 150 pounds per square inch (PSI), and one setpoint for the high-side, at least 250 PSI with evaporative condensers and 300 PSI with air-only condensers (IIAR 9-2020 7.2.2.1, 7.4.1, 7.4.2, and 7.4.3). 
 Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used, such as the software or spreadsheet source. Checked a sample of as-built design documents for obvious errors.')
     ),
     17 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Pressure-relief system -- checked a sample of system for: 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Pressure-relief system(s) -- checked a sample for: 
 (1) consistency with as-built design documents, including 
 (1.1) if the pressure-vessel nameplate (or photograph of it) could be found and was legible and 
 (1.2) if the pressure-vessel nameplate maximum allowable working pressure (MAWP) was equal to or greater than the opening setpoint of the pressure-relief device that protected the vessel, 
@@ -170,7 +174,7 @@ Quality depends on detailed measurements and calculations beyond the scope, so n
 (7.1) emergency-ventilation control via manual on/auto switch and ammonia sensors and
 (7.2) temperature control via thermostat or, if the room is normally attended, by a manual switch or equivalent,
 (7.3) any backup power and also restart after power outages built to avoid creating ignition sources in flammable atmospheres, such as ammonia sensors that turn on emergency ventilation if needed before any equipment that could create a ignition source receives backup or restored electrical power,
-(8) electrical-power supply for emergency ventilation not shutoff by any emergency-stop switch/button, ammonia sensors, and similar, and 
+(8) electrical-power supply for emergency ventilation not shut off by any emergency-stop switch/button, ammonia sensors, and similar, and 
 (9) alarms on loss of power or known failure of ventilation systems that notify Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list). (IIAR 9-2020 7.3.13.2)
 Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used. Checked a sample of as-built design documents for obvious errors.')
     ),
@@ -238,9 +242,9 @@ Asked about this during tours and discussions.')
 (1.3) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leak mitigation and emergency shutdown, 
 (1.4) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' small leaks, 
 (1.5) start-up after power failures or emergency shutdowns, 
-(1.6) oil charging, draining, and sampling, including, if not permanently installed, installing a temporary self-closing valve before draining or sampling, unless the procedure called for pump-down and isolation before oil draining or sampling, 
+(1.6) oil charging, draining, and sampling, including, if not permanently installed, installing a temporary self-closing valve before draining or sampling, unless the procedure called for pump down and isolation before oil draining or sampling, 
 (1.7) ammonia charging, 
-(1.8) removal and return to service for ITM, including shutoff-valve closing/re-opening and any control-valve manual opening/closing sequences for pump-down, isolation, leak-by checks, any venting to water, and return-to-service low-pressure then operating pressure and temperature leak checks, or equivalent, and 
+(1.8) removal and return to service for ITM, including stop valve and any needed control-valve manual opening/closing sequences for pump down, isolation, leak-by checks, any venting to water, and return-to-service low-pressure then operating pressure and temperature leak checks, or equivalent, and 
 (1.9) tie-in of additions, commissioning, and decommissioning, 
 (2) hazards of a task and other needed information for completing the task before or in the description of the task\'s steps (references to information are okay to keep procedures concise), 
 (3) how to recognize and address reasonably possible failures during the procedure, such as leak-by a closed valve, a control-valve malfunction, packing or bonnet leaks, and so forth, 
@@ -277,7 +281,7 @@ Asked about this during tours and discussions.')
 (5.12) how they were trained before first doing a task, 
 (5.13) their satisfaction with the refresher-training frequency, 
 (5.14) how they were informed of and trained on any changes affecting their work in the prior three years, and 
-(5.15) whether any level sensors or float switches had shutoff '.HAZSUB_PROCESS_NAME_ZFPF.' compressors in the prior three years and, if so, how the restart from this was done.')
+(5.15) whether any level sensors or float switches had shut off '.HAZSUB_PROCESS_NAME_ZFPF.' compressors in the prior three years and, if so, how the restart from this was done.')
     ),
     30 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Procedure current and accurate certification -- checked if Owner/Operator had certified each year, for the prior three years, that the hazardous-substance procedures and safe-work practices (or equivilent administrative controls) were current and accurate.')
@@ -686,7 +690,7 @@ for anhydrous ammonia:
 (21) ammonia sensors were not installed, in rooms or areas where they were required by the applicable mechanical code or by the facility\'s insurance carrier, or the ammonia sensors didn\'t trigger the following, typically at 25 parts per million by volume (ppm), if required,
 (21.1) audible and visible alarms in the room(s) where the sensors detected ammonia,
 (21.2) notification of Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list), and 
-(21.3) shutoff of any liquid and hot gas ammonia supplies to equipment in the rooms (IIAR 2-2019 7.2.3 or insurance carrier rules),
+(21.3) shut off of any liquid and hot gas ammonia supplies to equipment in the rooms (IIAR 2-2019 7.2.3 or insurance carrier rules),
 (22) industrial occupancies that were not separated from other occupancy classifications by a well-sealed envelope (walls, floors, ceilings, and so forth), and that contained, or that were open to mechanical penthouses which contained, '.HAZSUB_NAME_ADJECTIVE_ZFPF.' piping or equipment (IIAR 2-2019 7.2.1), or 
 (23) ammonia odors.')
     ),
@@ -742,7 +746,7 @@ for anhydrous ammonia:
 (7.7) the room was tidy and its floors were not slippery, such as due to oil spills or similar, 
 (8) neither open flames nor surfaces greater than 800 F (427 C) were in the room, except: 
 (8.1) fuel-burning appliances that 
-(8.1.1) were shutoff by a sensor upon detection of ammonia at the concentration that starts the emergency ventilation or 
+(8.1.1) were shut off by a sensor upon detection of ammonia at the concentration that starts the emergency ventilation or 
 (8.1.2) had a sealed combustion chamber reliably fed by air from outside the room that was unlikely to contain ammonia during a leak and 
 (8.2) matches and sulfur sticks used to detect leaks if any ongoing oil or ammonia draining or charging had been stopped once the leak started (IIAR 9-2020 7.3.5), 
 (9) safety showers and eye/face washes --
