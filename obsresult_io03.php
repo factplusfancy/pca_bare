@@ -63,7 +63,7 @@ function lm_obsresults_io03Zfpf($Zfpf, $EditLocked, $who_is_editing, $ReportType
     return $LimitsMessage;
 }
 
-// obsresult_i1m code
+// obsresult_i1m code aka "all topics"
 // SPECIAL CASE: this code is in obsresult_io03.php because user gets here by pressing HTML button output by audit_io03.php...
 if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
     // Additional security check: none possible here.
@@ -100,7 +100,7 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
         $i = 0;
         foreach ($SROt as $KOt => $VOt) {
             $OtName = $Zfpf->decrypt_1c($VOt['c5name']);
-            $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'][$KOt] = substr($OtName, 0, 30).'...'; // Truncate for left-hand contents.
+            $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'][$KOt] = substr($OtName, 0, 20).'...'; // Truncate for left-hand contents.
             $Message .= '<p><a id="'.$KOt.'"></a>';
             $Conditions[0] = array('k0obstopic', '=', $VOt['k0obstopic']);
             list($SROtOm, $RROtOm) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic_obsmethod', $Conditions);
@@ -140,7 +140,7 @@ if (isset($_GET['obsresult_i1m']) or isset($_POST['obsresult_i1m'])) {
         $Message .= '<p>
         <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Choose observation topics to include in the scope.</a></p>';
     $Message .= $LimitsMessage.'<p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
@@ -165,10 +165,14 @@ if (isset($_GET['choose_obstopic_1'])) {
     if ($RRAuOt) foreach ($SRAuOt as $VAuOt) {
         $_SESSION['SR']['PlainText']['OtInReportKeys'][] = $VAuOt['k0obstopic'];
         // Check if Ot already has Or (for this report), in which case this Ot cannot be removed from report.
-        $Conditions[1] = array('k0obstopic', '=', $VAuOt['k0obstopic'], '', 'AND');
-        list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
-        if ($RROr) foreach ($SROr as $VOr)
-            $OtHasOrKeys[] = $VAuOt['k0obstopic']; // Need the Ot key here, not the Or key.
+        $Conditions[0] = array('k0obstopic', '=', $VAuOt['k0obstopic']);
+        list($SROtOm, $RROtOm) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic_obsmethod', $Conditions);
+        if ($RROtOm) foreach ($SROtOm as $VOtOm) {
+            $Conditions[0] = array('k0obsmethod', '=', $VOtOm['k0obsmethod']);
+            list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
+            if ($RROr and !in_array($VAuOt['k0obstopic'], $OtHasOrKeys))
+                $OtHasOrKeys[] = $VAuOt['k0obstopic']; // Need the Ot key here, not the Or key.
+        }
     }
     // Get all possible Ot, then show either no checkbox, empty checkbox, or checked checkbox.
     list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', 'No Condition -- All Rows Included');
@@ -200,7 +204,7 @@ if (isset($_GET['choose_obstopic_1'])) {
     $Message .= '
     </form><p>
     <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
@@ -251,36 +255,41 @@ if (isset($_POST['choose_obstopic_2'])) {
     $Message .= '<p>
     <a class="toc" href="obsresult_io03.php?choose_obstopic_1">Back to choose observation topics</a></p><p>
     <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     unset($_SESSION['SR']);
     $Zfpf->clear_edit_lock_1c();
     $Zfpf->save_and_exit_1c();
 }
 
+// Input all, for the current topic
 if (isset($_GET['Ot_all_Om_i0']) or isset($_POST['Ot_all_Om_i0'])) {
     // Additional security checks and handle $_GET
     if ($_SESSION['Selected']['k0audit'] < 100000) // Templates cannot have observation results.
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     if (!isset($_SESSION['Scratch']['t0obstopic'])) {
         if (!is_numeric($_GET['Ot_all_Om_i0']) or strlen($_GET['Ot_all_Om_i0']) > 9)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
         $i = $_GET['Ot_all_Om_i0'];
         if (!isset($_SESSION['SR']['t0obstopic'][$i]))
-            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
         $_SESSION['Scratch']['t0obstopic'] = $_SESSION['SR']['t0obstopic'][$i];
         unset($_SESSION['SR']);
     }
+    if (isset($_SESSION['SR']))
+        unset($_SESSION['SR']);
+    if (isset($_SESSION['Scratch']['t0obsmethod']))
+        unset($_SESSION['Scratch']['t0obsmethod']);
+    if (isset($_SESSION['Scratch']['t0obsresult']))
+        unset($_SESSION['Scratch']['t0obsresult']);
     $Zfpf->clear_edit_lock_1c(); // Handles go back...
     $OtName = $Zfpf->decrypt_1c($_SESSION['Scratch']['t0obstopic']['c5name']);
     $Message = '<h2>';
     if ($ReportType)
         $Message .= $ReportType.'</h2><h2>';
     $Message .= '
-    Sample Observation Methods<br />
-    '.$Process['AEFullDescription'].'</h2><p>
-    Insert new observations via the links below, to sample observation methods.<br />
-    <a class="toc" href="obsresult_io03.php?Ot_all_Om_done_o1">To view results on the observation topic below, click here.</a></p>';
+    All Sample Observation Methods for an Observation Topic<br />
+    at '.$Process['AEFullDescription'].'</h2>';
     // Get sample observation methods (Om) associated with the selected observation topic (Ot).
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     $Conditions[0] = array('k0obstopic', '=', $_SESSION['Scratch']['t0obstopic']['k0obstopic']);
@@ -296,7 +305,7 @@ if (isset($_GET['Ot_all_Om_i0']) or isset($_POST['Ot_all_Om_i0'])) {
         foreach ($SROm as $KOm => $VOm) {
             $_SESSION['SR']['t0obsmethod'][$KOm] = $VOm;
             $Message .= '<br />
-            <a class="toc" href="obsresult_io03.php?obsresult_i0n_get_Om='.$KOm.'">'.substr($Zfpf->decrypt_1c($VOm['c6obsmethod']), 0, 60).'...</a>';
+            <a class="toc" href="obsresult_io03.php?Om_all_Or_o1='.$KOm.'">'.substr($Zfpf->decrypt_1c($VOm['c6obsmethod']), 0, 60).'...</a>';
         }
         $Message .= '</p>';
     }
@@ -304,12 +313,13 @@ if (isset($_GET['Ot_all_Om_i0']) or isset($_POST['Ot_all_Om_i0'])) {
         $Message .= '<p><b>None found.</b> No '.$OtName.' sample observation methods have been recorded in this deployment of the app. Contact app admin.</p>';
     $Message .= '<p>
     <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     $Zfpf->close_connection_1s($DBMSresource);
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
 
+// "Reults" -- all observation results whose sample observation methods are associate with the select observation topic.
 if (isset($_GET['Ot_all_Om_done_o1']) or isset($_POST['Ot_all_Om_done_o1'])) { // isset($_POST['Ot_all_Om_done_o1']) needed for go back button below.
     if (isset($_SESSION['SelectResults'])) // May be set by ccsaZfpf::scenario_CCSA_Zfpf
         unset($_SESSION['SelectResults']);
@@ -317,37 +327,41 @@ if (isset($_GET['Ot_all_Om_done_o1']) or isset($_POST['Ot_all_Om_done_o1'])) { /
         unset($_SESSION['Scratch']['t0obsresult']);
     // Additional security checks and handle $_GET
     if ($_SESSION['Selected']['k0audit'] < 100000) // Templates cannot have observation results.
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     if (!isset($_SESSION['Scratch']['t0obstopic'])) {
         if (!is_numeric($_GET['Ot_all_Om_done_o1']) or strlen($_GET['Ot_all_Om_done_o1']) > 9)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
         $i = $_GET['Ot_all_Om_done_o1'];
         if (!isset($_SESSION['SR']['t0obstopic'][$i]))
-            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
         $_SESSION['Scratch']['t0obstopic'] = $_SESSION['SR']['t0obstopic'][$i];
         unset($_SESSION['SR']);
     }
     $Message = '<h2>
     Observation results at<br />
     '.$Process['AEFullDescription'].'</h2><p>
-    <b><a class="toc" href="glossary.php#obstopic" target="_blank">Observation topic</a>:<br />
+    <b>Potentially relevant <a class="toc" href="glossary.php#obstopic" target="_blank">observation object unique identifiers (object IDs)</a> and <a class="toc" href="glossary.php#obstopic" target="_blank">as-done observation methods</a> are listed below, truncated for <a class="toc" href="glossary.php#obstopic" target="_blank">observation topic</a>:<br />
     '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0obstopic']['c5name']).'</b></p>';
     // Get observation results (Or) associated with the selected observation topic (Ot).
+    $OrInOt = array();
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
-    $Conditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit'], 'AND');
-    $Conditions[1] = array('k0obstopic', '=', $_SESSION['Scratch']['t0obstopic']['k0obstopic']);
-    list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
+    $Conditions[0] = array('k0obstopic', '=', $_SESSION['Scratch']['t0obstopic']['k0obstopic']);
+    list($SROtOm, $RROtOm) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic_obsmethod', $Conditions);
+    if ($RROtOm) foreach ($SROtOm as $VOtOm) {
+        $Conditions[0] = array('k0obsmethod', '=', $VOtOm['k0obsmethod']);
+        list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
+        if ($RROr)
+            $OrInOt = array_merge($OrInOt, $SROr);
+    }
     $Zfpf->close_connection_1s($DBMSresource);
     $i = 0;
-    if ($RROr) {
-        $Message .= '<p>
-        <a class="toc" href="glossary.php#obstopic" target="_blank">Specific-observation-topic unique identifiers (topic ID)</a> and <a class="toc" href="glossary.php#obstopic" target="_blank">as-done observation methods</a> are listed below, truncated.</p>';
-        foreach ($SROr as $VOr)
+    if ($OrInOt) {
+        foreach ($OrInOt as $VOr)
             $OtId[] = $Zfpf->decrypt_1c($VOr['c5_obstopic_id']);
-        array_multisort($OtId, $SROr); // Sort observation results (Or) by their specific observation topic (OtId aka c5_obstopic_id).
+        array_multisort($OtId, $OrInOt); // Sort observation results (Or) by their observation object unique identifier (object ID aka OtId aka c5_obstopic_id).
         // Group Or by OtId
         $PriorOtId = $OtId[0]; // array_multisort re-indexes numeric arrays, is this is the first OtId after sorting.
-        foreach ($SROr as $KOr => $VOr) {
+        foreach ($OrInOt as $KOr => $VOr) {
             if ($OtId[$KOr] == $PriorOtId)
                 $OrArray[$PriorOtId][] = $VOr;
             else {
@@ -360,7 +374,7 @@ if (isset($_GET['Ot_all_Om_done_o1']) or isset($_POST['Ot_all_Om_done_o1'])) { /
             foreach ($VOtId as $VOr)
                 $Omad[] = $Zfpf->decrypt_1c($VOr['c6obsmethod_as_done']);
             array_multisort($Omad, $VOtId); // Sort each Ot group of Or by Omad.
-            $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'][$i] = substr($KOtId, 0, 30).'...'; // Truncate for left-hand contents.
+            $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'][$i] = substr($KOtId, 0, 20).'...'; // Truncate for left-hand contents.
             $Message .= '<p><a id="'.$i.'"></a>
             <b>'.$KOtId.'</b>';
             foreach ($VOtId as $KOr => $VOr) {
@@ -376,7 +390,7 @@ if (isset($_GET['Ot_all_Om_done_o1']) or isset($_POST['Ot_all_Om_done_o1'])) { /
         No results found for this observation topic.</p>';
     $Message .= '<p>
     <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
@@ -384,7 +398,7 @@ if (isset($_GET['Ot_all_Om_done_o1']) or isset($_POST['Ot_all_Om_done_o1'])) { /
 // history_o1 code
 if (isset($_GET['obsresult_history_o1'])) {
     if ($_SESSION['Selected']['k0audit'] < 100000) // Templates cannot have observation results.
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     if (!isset($_SESSION['Scratch']['t0obsresult']))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/HistoryGetZfpf.php';
@@ -413,14 +427,14 @@ if (isset($_POST['download_selected']) or isset($_POST['download_all'])) {
 // o1 code
 if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_POST['obsresult_o1']) needed for go back from HistoryGetZfpf::selected_changes_html_h
     if ($_SESSION['Selected']['k0audit'] < 100000) // Templates cannot have observation results.
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     // Handle $_GET
     if (!isset($_SESSION['Scratch']['t0obsresult'])) {
         if (!is_numeric($_GET['obsresult_o1']) or strlen($_GET['obsresult_o1']) > 9)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
         $i = $_GET['obsresult_o1'];
         if (!isset($_SESSION['SR']['t0obsresult'][$i]))
-            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
         $_SESSION['Scratch']['t0obsresult'] = $_SESSION['SR']['t0obsresult'][$i];
         unset($_SESSION['SR']);
     }
@@ -481,27 +495,27 @@ if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_
         <a class="toc" href="obsresult_io03.php?obsresult_delete_1">Remove this observation from the report</a></p>';
     $Message .= '<p>
         <a class="toc" href="obsresult_io03.php?obsresult_history_o1">History of this record</a></p>';
-    if (isset($_SESSION['Scratch']['t0obstopic'])) {
-        if (!$_SESSION['Selected']['k0user_of_certifier'])
-            $Message .= '<p>
-            <a class="toc" href="obsresult_io03.php?Ot_all_Om_i0">Back to input all</a></p>';
-        $Message .= '<p>
-        <a class="toc" href="obsresult_io03.php?Ot_all_Om_done_o1">Back to results</a></p>';
-    }
     if (isset($_SESSION['Scratch']['t0obstopic']) and isset($_SESSION['Scratch']['t0obsmethod']))
         $Message .= '<p>
         <a class="toc" href="obsresult_io03.php?Om_all_Or_o1">Back to all observations for this method</a></p>';
+    if (isset($_SESSION['Scratch']['t0obstopic'])) {
+        $Message .= '<p>
+        <a class="toc" href="obsresult_io03.php?Ot_all_Om_done_o1">Back to results</a></p>';
+        if (!$_SESSION['Selected']['k0user_of_certifier'])
+            $Message .= '<p>
+            <a class="toc" href="obsresult_io03.php?Ot_all_Om_i0">Back to input all, for the current topic</a></p>';
+    }
     if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0audit_fragment']))
         $Message .= '<p>
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_o1">Back to compliance verification</a></p>';
     $Message .= '<p>
         <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();    
     $Zfpf->save_and_exit_1c();
 }
 
-// Om_all_Or_o1, a multi o1 code
+// Om_all_Or_o1, a multi o1 code -- all observation results for a sample observation method.
 // SPECIAL CASES, many, including handling junction tables: $_SESSION['Selected'] keeps holding a t0audit row;
 // sets $_SESSION['Scratch']['t0obstopic'] and $_SESSION['Scratch']['t0obsmethod']
 if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
@@ -511,10 +525,16 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
         if (!isset($_GET['Om_all_Or_o1']) or !is_numeric($_GET['Om_all_Or_o1']) or strlen($_GET['Om_all_Or_o1']) > 9)
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
         $i = $_GET['Om_all_Or_o1'];
-        if (!isset($_SESSION['SR']['t0obstopic'][$i]) or !isset($_SESSION['SR']['t0obsmethod'][$i]))
-            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
-        $_SESSION['Scratch']['t0obstopic'] = $_SESSION['SR']['t0obstopic'][$i];
-        $_SESSION['Scratch']['t0obsmethod'] = $_SESSION['SR']['t0obsmethod'][$i];
+        if (!isset($_SESSION['Scratch']['t0obstopic'])) {
+            if (!isset($_SESSION['SR']['t0obstopic'][$i]))
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
+            $_SESSION['Scratch']['t0obstopic'] = $_SESSION['SR']['t0obstopic'][$i];
+        }
+        if (!isset($_SESSION['Scratch']['t0obsmethod'])) {
+            if (!isset($_SESSION['SR']['t0obsmethod'][$i]))
+                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
+            $_SESSION['Scratch']['t0obsmethod'] = $_SESSION['SR']['t0obsmethod'][$i];
+        }
         unset($_SESSION['SR']);
     }
     // $_SESSION cleanup
@@ -532,7 +552,7 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
         unset($_SESSION['Scratch']['t0obsresult']);
     $Zfpf->clear_edit_lock_1c(); // Clears t0audit edit lock -- defaults to $_SESSION['Selected']; set in i1... code below.
     // Many to many relationships between t0obsresult, t0obsmethod, and t0obstopic
-    // Here, show all obsresult for an obsmethod, regarless of obstopic. obsresult holds the specific "topic ID", in field c5_obstopic_id.
+    // Here, show all obsresult for an obsmethod, regarless of obstopic. obsresult holds the specific "object ID", in field c5_obstopic_id.
     $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     $Conditions[0] = array('k0obsmethod', '=', $_SESSION['Scratch']['t0obsmethod']['k0obsmethod']);
     $Conditions[1] = array('k0audit', '=', $_SESSION['Selected']['k0audit'], '', 'AND');
@@ -565,7 +585,7 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
     if ($RROr) {
         $i = 0;
         foreach ($SROr as $KOr => $VOr) {
-            $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'][$KOr] = substr($Zfpf->decrypt_1c($VOr['c5_obstopic_id']), 0, 30).'...'; // Truncate for left-hand contents.
+            $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'][$KOr] = substr($Zfpf->decrypt_1c($VOr['c5_obstopic_id']), 0, 20).'...'; // Truncate for left-hand contents.
             $Message .= '<a id="'.$KOr.'"></a>';
             $Display = $Zfpf->select_to_display_1e($htmlFormArray, $VOr); // Cannot allow downloads form here (3rd parameter default of FALSE) because $_SESSION['Scratch']['t0obsresult'] is not set. 
             $Message .= $Zfpf->select_to_o1_html_1e($htmlFormArray, 'obsresult_io03.php', $VOr, $Display, ' class="topborder"');
@@ -586,10 +606,11 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
         }
         if (!$LimitsMessage and $_SESSION['Selected']['k0audit'] >= 100000)
             $Message .= '<p class="topborder">
-            <a class="toc" href="obsresult_io03.php?obsresult_i0n">Insert a new observation for the selected sample observation method (shown above) and observation topic:<br />'.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0obstopic']['c5name']).'</a></p>';
-        $Message .= $LimitsMessage.'<p>
+            <a class="toc" href="obsresult_io03.php?obsresult_i0n">Insert a new observation for the selected sample observation method (shown above)</a></p>';
+        $Message .= $LimitsMessage.'<p><p>
+        <a class="toc" href="obsresult_io03.php?Ot_all_Om_i0">Back to input all, for the current topic</a></p>
         <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();    
         $Zfpf->save_and_exit_1c();
     }
@@ -599,7 +620,7 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
             No observations found for this sample observation method.</p>
             '.$LimitsMessage.'<p>
             <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-            <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+            <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
             echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();    
             $Zfpf->save_and_exit_1c();
         }
@@ -617,7 +638,7 @@ if (isset($_POST['obsresult_i0n']) or isset($_GET['obsresult_i0n']) or isset($_G
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
         $i = $_GET['obsresult_i0n_get_Om'];
         if (!isset($_SESSION['SR']['t0obsmethod'][$i]))
-            $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
         $_SESSION['Scratch']['t0obsmethod'] = $_SESSION['SR']['t0obsmethod'][$i];
         unset($_SESSION['SR']);
         $_POST['obsresult_i0n'] = TRUE;
@@ -630,10 +651,9 @@ if (isset($_POST['obsresult_i0n']) or isset($_GET['obsresult_i0n']) or isset($_G
     $_SESSION['Scratch']['t0obsresult'] = array(
         'k0obsresult' => time().mt_rand(1000000, 9999999),
         'k0audit' => $_SESSION['Selected']['k0audit'],
-        'k0obstopic' => $_SESSION['Scratch']['t0obstopic']['k0obstopic'],
         'k0obsmethod' => $_SESSION['Scratch']['t0obsmethod']['k0obsmethod'],
-        'c5_obstopic_id' => $_SESSION['Scratch']['t0obstopic']['c5name'], // Supply general observation topic (Ot) as sample for specific Otid.
-        'c6obsmethod_as_done' => $_SESSION['Scratch']['t0obsmethod']['c6obsmethod'], // Supply general observation method (Om) as sample for Om as done.
+        'c5_obstopic_id' => $_SESSION['Scratch']['t0obstopic']['c5name'], // Supply observation topic (Ot) as example for object ID.
+        'c6obsmethod_as_done' => $_SESSION['Scratch']['t0obsmethod']['c6obsmethod'], // Supply sample observation method (Om) as example for as-done Om.
         'c6obsresult' => $EncryptedNothing,
         'c6bfn_supporting' => $EncryptedNothing,
         'c5who_is_editing' => $Zfpf->encrypt_1c('[A new database row is being created.]')
@@ -646,7 +666,7 @@ if (isset($_GET['obsresult_o1_from']) and !isset($_SESSION['Scratch']['t0obsresu
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
     $i = $_GET['obsresult_o1_from'];
     if (!isset($_SESSION['SR']['t0obsresult'][$i]))
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Please try again. Using the browser back button is currently not supported.</p>');
     $_SESSION['Scratch']['t0obsresult'] = $_SESSION['SR']['t0obsresult'][$i];
     unset($_SESSION['SR']);
 } // Don't exit, continue to i1 code.
@@ -655,7 +675,7 @@ if (isset($_GET['obsresult_o1_from']) and !isset($_SESSION['Scratch']['t0obsresu
 if (isset($_SESSION['Scratch']['t0obsresult'])) {
     // Additional security checks
     if ($_SESSION['Selected']['k0audit'] < 100000) // Templates cannot have observation results.
-        $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     if ($EditLocked or $_SESSION['Selected']['k0user_of_certifier'] or !$EditAuth)
         $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
     if ($who_is_editing == '[Nobody is editing.]')
@@ -693,7 +713,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         Take no action and go...</p><p>
         <a class="toc" href="obsresult_io03.php?obsresult_o1">Back to this observation</a></p><p>
         <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-        <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
@@ -710,7 +730,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         '.$Process['AEFullDescription'].'</h2><p>
         The app removed the observation.</p><p>
         <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-        <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         $Zfpf->clear_edit_lock_1c();
         unset($_SESSION['Scratch']['t0obsresult']);
         unset($_SESSION['Scratch']['t0obsmethod']);
@@ -768,7 +788,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         $Message .= '
         Edit this observation of<br />
         '.$Process['AEFullDescription'].'</h2><p>
-        Use exactly the same characters for each <a class="toc" href="glossary.php#obstopic" target="_blank">Specific-observation-topic unique identifiers (topic ID)</a>, whenever written. For example, an observation topic might be "compressors", with "Compressor RC1" as the topic ID. Be guided by the sample observation method but record the as-done observation method.</p>
+        Use exactly the same characters for each <a class="toc" href="glossary.php#obstopic" target="_blank">Observation object unique identifiers (object ID)</a>, whenever written. For example, an observation topic could be "Refrigerating-Machinery Room Tour", with "Compressor RC1" as the object ID, and another topic could be "People with Management Responsibilities" with "Plant Manager" as the object ID. When making an observation, be guided by the sample observation method, but record the as-done observation method.</p>
         <form action="obsresult_io03.php" method="post" enctype="multipart/form-data" >'; // upload_files special case 2 of 3. To upload files via PHP, the following form attributes are required: method="post" enctype="multipart/form-data"
         $Message .= $Zfpf->make_html_form_1e($Zfpf->decrypt_decode_1c($_SESSION['Scratch']['htmlFormArray']), $Display, $_SESSION['Scratch']['t0obsresult']); // SPECIAL CASE $_SESSION['Scratch']['t0obsresult'] is selected row. Only relevant when the selected row contains c6bfn fields.
         $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Scratch']['t0obsresult'], $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types);
@@ -779,15 +799,15 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         if ($Zfpf->decrypt_1c($_SESSION['Scratch']['t0obsresult']['c5who_is_editing']) != '[A new database row is being created.]')
             $Message .= '<p>
             <a class="toc" href="obsresult_io03.php?obsresult_o1">Back to this observation</a></p>'; // Cannot go from i1 to o1 in i0n case.
-        if (isset($_SESSION['Scratch']['t0obstopic']))
-            $Message .= '<p>
-            <a class="toc" href="obsresult_io03.php?Ot_all_Om_i0">Back to input all</a></p>';
         if (isset($_SESSION['Scratch']['t0obstopic']) and isset($_SESSION['Scratch']['t0obsmethod']))
             $Message .= '<p>
             <a class="toc" href="obsresult_io03.php?Om_all_Or_o1">Back to all observations for this method</a></p>';
+        if (isset($_SESSION['Scratch']['t0obstopic']))
+            $Message .= '<p>
+            <a class="toc" href="obsresult_io03.php?Ot_all_Om_i0">Back to input all, for the current topic</a></p>';
         $Message .= '<p>
         <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-        <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
@@ -821,15 +841,15 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         The draft report you were editing has been updated with your changes. It will remain a draft until it is issued by its report leader.</p>
         <p>
         <a class="toc" href="obsresult_io03.php?obsresult_o1">Back to this observation</a></p>';
-        if (isset($_SESSION['Scratch']['t0obstopic']))
-            $Message .= '<p>
-            <a class="toc" href="obsresult_io03.php?Ot_all_Om_i0">Back to input all</a></p>';
         if (isset($_SESSION['Scratch']['t0obstopic']) and isset($_SESSION['Scratch']['t0obsmethod']))
             $Message .= '<p>
             <a class="toc" href="obsresult_io03.php?Om_all_Or_o1">Back to all observations for this method</a></p>';
+        if (isset($_SESSION['Scratch']['t0obstopic']))
+            $Message .= '<p>
+            <a class="toc" href="obsresult_io03.php?Ot_all_Om_i0">Back to input all, for the current topic</a></p>';
         $Message .= '<p>
         <a class="toc" href="obsresult_io03.php?obsresult_i1m">Back to all topics</a></p><p>
-        <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }

@@ -107,17 +107,23 @@
 - cold air entering the cooled room,
 - less heat generated in or entering the cooled room,
 - and so forth."
-"Possible Cause"|"Design, fabrication, construction, or installation shortcoming or error."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example,
-- not suited for location, including too many people often nearby or a corrosive environment, 
-- alignment inadequate, including motor-to-compressor, bolted-joint flanges, etc.,
-- guarding for external impacts, such as vehicle traffic, is inadequate,
-- guarding of moving parts is inadequate,
-- interior erosion of the steel primary-containment envelop occurs, including because
-> flow speeds in ammonia-refrigerant piping are above erosional speeds, such as at elbows, or
-> pressure-vessel inlets cause erosional impingement against the interior of the vessel's walls,
-- makes something harder than it needs to be,
-- shortcoming creates a small risk viewed as impractical to avoid, by engineering controls,
-- and so forth."
+"Possible Cause"|"Design, fabrication, construction, or installation shortcoming or error."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, 
+* alignment is inadequate, including motor-to-compressor, bolted-joint flanges, etc.,
+* equipment, piping, or the entire facility are not suited for their location, including
+- a corrosive environment,
+- external hazards create unreasonable risks, or
+- too many people are often nearby,
+* external hazards are not adequately protected against, in the USA, see 
+- the National Risk Index for Natural Hazards and
+- ASCE 7, Minimum Design Loads and Associated Criteria for Buildings and Other Structures, which describes the means for determining dead, live, soil, flood, tsunami, snow, rain, atmospheric ice, earthquake, and wind loads, and their combinations for general structural design,
+* getting somewhere or doing something is harder than it needs to be,
+* guarding from potential external impacts, such as vehicle traffic, is inadequate,
+* guarding of moving parts is inadequate,
+* interior erosion of the steel primary-containment envelop occurs, including because
+- flow speeds in ammonia-refrigerant piping are above erosional speeds, such as at elbows, or
+- pressure-vessel inlets cause erosional impingement against the interior of the vessel's walls,
+* a minor shortcoming creates a small risk viewed as impractical to avoid, except perhaps by administrative controls,
+* and so forth."
 "Possible Cause"|"Expansion valve open too much, shock each time solenoid valve opens."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Fasteners, hangers, rods, or other support components -- loose or missing."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Filter or strainer clogged."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"On suction piping, this may lengthen the time needed for pump down.
@@ -131,19 +137,38 @@ This cause includes:
 - liquid piping,
 - suction piping,
 - and so forth."
-"Possible Cause"|"Fire, nearby and severe, or worse, and the resulting heat and temperatures."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
+"Possible Cause"|"Fire, nearby and severe, or worse, and the resulting heat and temperatures."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes all types fires, if close enough, such as
+- building fires,
+- transportation-related fires,
+- wildfires,
+- and so forth."
 "Possible Cause"|"Flood waters reach the ammonia-refrigeration system, its supports, or the building they are in or on."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
-"Possible Cause"|"Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example,
-* impact from airplane crash, derailed train, truck or other vehicle hitting,
+"Possible Cause"|"Force or impact too strong"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes:
+* impact from
+- avalanche,
+- airplane crash, 
+- debris flow, mudslide, or volcanic flows (lahars, lava, pyroclastic, etc.),
+- hail,
+- hit with hammer, maybe because its stuck,
+- train derailment,
+- truck or other vehicle hits,
+- waves (storm, tsunami, and so forth),
+* pressure or weight from
+- ice,
+- flood waters,
+- snow,
+- tsunami,
+- volcanic flows or ash,
+- wind,
 * shocks from explosions,
 * stepping on piping,
-* supports problem causes forces too high in supported thing,
+* supports problem causes forces too high in supported thing, such as piping holding up the support where roof sagged,
 * too much force used, including when turning a valve or tightening a threaded joint,
 * tool dropped from height, 
 * wind loads from hurricanes, tornadoes, and other high winds,
 * wind- or explosion-driven projectile, 
 * and so forth."
-"Possible Cause"|"Foundations shifting."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
+"Possible Cause"|"Foundations move due to settling, shifting, earthquake, landslide, soil liquefaction, and so forth."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Hose, ammonia, problem."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example,
 * damaged,
 * degraded, especially if past its expiration date,
@@ -189,6 +214,7 @@ This cause includes:
 "Possible Cause"|"Joint, threaded, problem."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Examples: (A) loose, (B) threads damaged or inadequate, or (C) any needed gaskets (including o-rings) damaged, missing, or inadequate."
 "Possible Cause"|"Level signal wrong -- higher than actual, or float switch stuck in high position."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Level signal wrong -- lower than actual, or float switch stuck in low position."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
+"Possible Cause"|"Lightning strike"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Liquid accumulation in hot-gas piping."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* Ammonia-refrigerant hot gas may condense into a liquid when there is little or no flow in hot-gas defrost (HGD) piping, between defrosts, and so may need to be safely drained before enough accumulates to cause vapor propelled liquid slugs. 
 * The following may result in shocks.
 - HGD piping that does not pitch to
@@ -197,7 +223,7 @@ This cause includes:
 - A liquid drainer on hot-gas piping does not drain liquid, due to
 > a stop valve to/from it is left closed (human error),
 > mechanical jam or plugging."
-"Possible Cause"|"Loads added without properly evaluating."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, additional,
+"Possible Cause"|"Loads added without properly evaluating."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, additional:
 * equipment installed on a roof or floor, 
 * piping installed on a rack or hanger, or
 * heat or refrigeration loads added to an existing system."
@@ -240,9 +266,11 @@ that damages
 * envelopes of buildings or rooms (that control air or moisture movement),
 * equipment,
 * floors,
-* piping, 
-* structures, or
-* supports."
+* piping, or
+* supports, including 
+- buildings, 
+- hangers, or
+- structures."
 "Possible Cause"|"Shocks or vibrations cause damage."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, damage to
 * insulation,
 * paint,
@@ -311,15 +339,18 @@ that damages
 - near the compressor that drained into it.
 * It can happen when a cold draft blows against a compressor, its oil separator, or its discharge piping."
 "Possible Consequence"|"Compressor package internal or seal damage, and if safeties fail, leak or fire."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"See safeguard on: Compressor controls and safety shutoffs..."
-"Possible Consequence"|"Damage due loads (weight, torque, seismic etc.) exceeding capacity."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
+"Possible Consequence"|"Damage due forces or loads exceeding capacity."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes:
+* dead, live, soil, flood, tsunami, snow, rain, atmospheric ice, earthquake, and wind loads,
+* torque,
+* and so forth."
 "Possible Consequence"|"Equipment or piping becomes more susceptible to external physical damage."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example,
 * vessels operated below their minimum design metal temperature (MDMT) during normal operations or an upset condition, such as
 - equipment or piping vented to the atmosphere while it still contains liquid ammonia refrigerant."
-"Possible Consequence"|"Explosion or fire more likely."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* When oil droplets are mixed with ammonia in air, its lower-flammability limit is lower than pure ammonia.
+"Possible Consequence"|"Explosion or fire more likely."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* When oil droplets/mists are mixed with ammonia in air, the mixture's lower-flammability limit is lower than pure ammonia.
 * The flammable range for pure ammonia (no oil droplets) in dry air is about 15% to 27% (150,000 to 270,000 ppm), and in very humid air is about 16% to 26.5%.
-* Leaks in oil separators for ammonia-refrigerant compressor or in downstream discharge piping can cause:
+* Leaks in oil separators for ammonia-refrigerant compressors or in downstream discharge piping can cause:
 - rapid pressure drops 
-- foaming in oil, as ammonia dissolved in it boils,
+- foaming in oil, as ammonia dissolved the oil boils,
 - spraying of oil and ammonia mixtures from the leak, and
 - fire or explosions where the compressor is located.
 * If ammonia leaks across a heat exchanger into lower-pressure piping, the pressure-relief systems on the ammonia piping will not typically prevent the lower pressure piping from exploding or bursting open. 
@@ -343,7 +374,8 @@ that damages
 - transfer systems for liquid-ammonia refrigerant. [IF PRESENT]"
 "Possible Consequence"|"Hinders safety, security, health, or environmental protection."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Consequence"|"Human errors become more likely or more severe."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
-"Possible Consequence"|"Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
+"Possible Consequence"|"Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes:
+* 150 PSI pressure-relief valve opens during a hot-weather power outage."
 "Possible Consequence"|"Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* The following ammonia-refrigeration equipment or piping is located near walkways, parking lots, or other outdoor areas:
 [DESCRIBE ANY -- NOTE IF PEOPLE ARE OFTEN PRESENT THERE -- NOT JUST DURING WORK ON THE EQUIPMENT THERE.]
 * This consequence also includes:
@@ -351,7 +383,7 @@ that damages
 > a ventilation outlet in a wall,
 > an often-open door or window,
 > a pressure relief valve located low enough for this to happen, and
-> a big enough ammonia leak above a roof, under conditions when the cold air caused by the leak will sink."
+> a big enough ammonia leak above a roof, under conditions when air cooled by the refrigerant leak will sink."
 "Possible Consequence"|"Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* For example, an ammonia leak that contaminates the air in: 
 - the facility's refrigerating-machinery room.
 [DESCRIBE ANY OTHER ROOMS OR SPACES AT THE FACILITY WITH THESE SAFETY SYSTEMS, INCLUDING, IF APPLICABLE AND IF AN AMMONIA LEAK MAY OCCUR OR ENTER THERE: PITS, TUNNELS, SPACES BETWEEN CEILINGS AND ROOFS, ETC.]
@@ -367,11 +399,15 @@ that damages
 * Normal ventilation means air circulation and air exchanges for comfort and air quality, for example per the building code for the type of occupancy."
 "Possible Consequence"|"Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* For example, an ammonia leak that contaminates the air in:
 - [COOLERS OR FREEZERS OFTEN HAVE LITTLE-OR-NO VENTILATION, ONLY AIR CIRCULATION WITHIN THEM.]
-- [DESCRIBE ROOMS AT THE FACILITY WITH AMMONIA-IN-AIR SENSORS BUT LITTLE-OR-NO VENTILATION, INCLUDING, IF APPLICABLE AND IF AN AMMONIA LEAK MAY OCCUR OR ENTER THERE: PITS, TUNNELS, SPACES BETWEEN CEILINGS AND ROOFS, ETC.]"
+- [DESCRIBE ROOMS AT THE FACILITY WITH AMMONIA-IN-AIR SENSORS BUT LITTLE-OR-NO VENTILATION, INCLUDING, IF APPLICABLE AND IF AN AMMONIA LEAK MAY OCCUR OR ENTER THERE: PITS, TUNNELS, SPACES BETWEEN CEILINGS AND ROOFS, ETC.]
+* Includes:
+- leaks caused by shocks due to an electrical power outage or restoration, such as from inadequately built or controlled defrosting."
 "Possible Consequence"|"Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* For example, an ammonia leak that contaminates the air in:
 - a room whose ammonia-in-air sensors or ventilation fail to work, perhaps because they have no electrical power,
 - [COOLERS OR FREEZERS OFTEN HAVE LITTLE-OR-NO VENTILATION, ONLY AIR CIRCULATION WITHIN THEM.]
-- [DESCRIBE ROOMS AT THE FACILITY WITH NO AMMONIA-IN-AIR SENSORS AND LITTLE-OR-NO VENTILATION, INCLUDING, IF APPLICABLE AND IF AN AMMONIA LEAK MAY OCCUR OR ENTER THERE: PITS, TUNNELS, SPACES BETWEEN CEILINGS AND ROOFS, ETC.]"
+- [DESCRIBE ROOMS AT THE FACILITY WITH NO AMMONIA-IN-AIR SENSORS AND LITTLE-OR-NO VENTILATION, INCLUDING, IF APPLICABLE AND IF AN AMMONIA LEAK MAY OCCUR OR ENTER THERE: PITS, TUNNELS, SPACES BETWEEN CEILINGS AND ROOFS, ETC.]
+* Includes:
+- leaks caused by shocks due to an electrical power outage or restoration, such as from inadequately built or controlled defrosting."
 "Possible Consequence"|"Leak of ammonia into water or other liquids that may cause odors or flow into floor drains or similar."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[UPDATE BELOW FOR THE FACILITY]
 * This includes ammonia leaking and dissolving into brine, water, glycol-water mixtures, or other liquids.
 * The following flow into the facility's sanitary plumbing:
@@ -627,12 +663,16 @@ For the all the condensers in the facility's ammonia-refrigeration system, which
 * See also the safeguards, including automated shutoffs, for:
 - compressors, ammonia-refrigerant, and
 - pumps, ammonia-refrigerant [IF APPLICABLE]."
-"Existing Safeguard"|"Crash, derailment, and flooding risks are reasonable (airplanes, trains, trucks, floodplains, and so forth)."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
+"Existing Safeguard"|"Crash, derailment, avalanche/debris flow/landslide/mudslide, flood, tsunami, volcano, and wildfire risks are reasonable."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
 The facility's ammonia-refrigeration system is:
 * [________________] miles away from the nearest airport,
 * [________________] feet away from the nearest railroad track, besides low-speed spurs,
-* adequately protected from vehicle traffic by barriers or distance, and
-* not located with a floodplain, 0.2% or higher annual risk [__OR COMPARE TO 0.2% OR 1% ANNUAL-RISK FLOOD ELEVATION__]."
+* adequately protected from vehicle traffic by barriers or distance,
+* not located in an area with avalanche/debris flow/landslide/mudslide hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
+* not located in a floodplain, 0.2% or higher annual risk [OR COMPARE TO 0.2% OR 1% ANNUAL-RISK FLOOD ELEVATION, DESCRIBE PROTECTION/MITIGATION AS NEEDED],
+* not located in an area with tsunami hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
+* not located in an area with volcano hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
+* not located in an area with wildfire hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION]."
 "Existing Safeguard"|"Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 The facility's ammonia-refrigeration system has the following in place.
 * Hot-gas defrost (HGD) piping pitches to
@@ -707,7 +747,7 @@ The written emergency-action plan, or documents it references, describe:
 * All equipment in the ammonia-refrigeration system was supplied by reputable manufacturers, including
 - [REFERENCE A COMPONENT LIST, CHANGE-MANAGEMENT DOCUMENTATION, OR LIST FOR AT LEAST MAJOR PACKAGES: COMPRESSORS, PUMPS, VESSELS...]
 * In the facility's ammonia-refrigeration system:
-- Control valves do not trap liquid ammonia if controls fail or there is a power outage because 
+- control valves do not trap liquid ammonia if controls fail or there is a power outage because 
 > the solenoid valves and regulators allow flow in the reverse direction, 
 > no motorized valves are located upstream of solenoid valves,
 > no ammonia-refrigerant pumps are located upstream of solenoid valves or motorized valves, including on piping for liquid-injection cooling, unless appropriate safeguards are in place, such as minimum-flow bypass or pressure relief for the pump discharge,
@@ -715,22 +755,25 @@ The written emergency-action plan, or documents it references, describe:
 - all valves have stainless-steel stems, including control-valve manual-opening stems,
 - interior erosion of the steel primary-containment envelope is negligible because 
 > flow speeds in ammonia-refrigerant piping are below erosional speeds and
-> pressure-vessel inlets are built to avoid erosional impingement against the interior of the vessel's walls
-- [IF APPLICABLE On the [TYPE] chillers, preventing corrosion by cooled liquid, fatigue by different steel types expanding differently, and brittle fracture
-> [REVIEW MATERIALS OF PLATES OR TUBES AND TUBE SHEETS FOR THESE FAILURES, CONSIDER
-   LIQUID IN CONTACT WITH PLATES OR TUBES
-FATIGUE AND BRITTLE FRACTURE, ESPECIALLY WITH TUBE-IN-SHELL CHILLERS
-   THICKNESS OF TUBE SHEETS
-   IF CARBON STEEL NORMALIZED
-   ANY POST-WELD HEAT TREATMENT
-   ANY EXPANSION JOINTS
-   ETC.]"
+> pressure-vessel inlets are built to avoid erosional impingement against the interior of the vessel's walls,
+- gas-flow speeds in vessels, at their maximum operating level, are slow enough for adequate gas-liquid separation where needed, such as in vessels that feed compressors (accumulators, recirculators, suction traps...) and so
+> prevent liquid droplets, entrained in gas, from reaching compressor suction inlets,
+- [IF APPLICABLE] on the [TYPE] chillers, preventing corrosion by the cooled liquid, fatigue by different steel types expanding differently, and brittle fracture are accomplished by
+> [REVIEW MATERIALS OF PLATES OR TUBES AND TUBE SHEETS FOR THESE FAILURES, CONSIDER 
+(1) LIQUID IN CONTACT WITH PLATES OR TUBES 
+(2) FATIGUE AND BRITTLE FRACTURE, ESPECIALLY WITH TUBE-IN-SHELL CHILLERS
+(2.1) THICKNESS OF TUBE SHEETS
+(2.2) IF CARBON STEEL, IS IT NORMALIZED,
+(2.3) ANY POST-WELD HEAT TREATMENT,
+(2.4) ANY EXPANSION JOINTS, 
+AND SO ON.]"
 "Existing Safeguard"|"Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 * At the facility, this includes inspection, testing, and maintenance of, properly built and located:
 - emergency communications, such a loud-speaker system or radios with adequate coverage,
-- smoke and fire sensor and alarm systems,
+- heat, smoke, and fire sensor and alarm systems,
 - fire extinguishers,
-- means of egress, such as for blocked exit doors,
+- fire sprinkler systems,
+- means of egress, including inspections for blocked exit doors,
 - wind indicators,
 - and so forth.
 * Fire inspectors, with local authorities, routinely inspect the facility."
@@ -1096,10 +1139,14 @@ See the facility's plans, programs, and records for
 * Human security: see the
 - contractor and human resources policies of the facility's Owner/Operator.
 * Physical security at the facility includes:
-- all doors or gates that provide access to the buildings or roofs that contain the ammonia-refrigeration system are locked or attended, 
+- the ammonia-refrigeration system is located in buildings, in outdoor areas, or on roofs, to which access is controlled by reasonably secure
+> door or gates that are locked or attended,
+> fences, 
+> walls, and
+> windows, air inlet or exhausts, or other building openings -- with locks, bars, grills, or grating as needed,
 - attended at all times (24/7),
-- exterior lighting,
-- security cameras that monitor and record in some locations."
+- exterior lighting where reasonably needed,
+- security cameras that monitor and record where reasonably needed."
 "Existing Safeguard"|"Separation of ammonia refrigeration from people is adequate and considered in change management."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
 For/at the facility, the ammonia-refrigeration system:
 * valves, control and stop, [ALL, MOST, OR DESCRIBE] are located in the refrigerating-machinery room, in mechanical penthouses, above roofs, or outdoors;
@@ -1146,7 +1193,7 @@ In the facility's ammonia-refrigeration system,
 * Stop valves are also called hand valves or shutoff valves."
 "Existing Safeguard"|"Vehicle or heavy cart traffic unlikely to damage ammonia-refrigeration equipment, piping, or supports."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
 At the facility,
-* adequate guarding is in place where vehicle or heavy cart traffic comes close to ammonia-refrigeration piping, equipment, or supports, including
+* adequate guarding is in place where vehicle or heavy cart traffic comes close to ammonia-refrigeration equipment, piping, or supports, including
 - [NOTE AREAS WITH EQUIPMENT OR PIPING NEAR TRAFFIC THAT ESPECIALLY REQUIRES GUARDING]
 * most ammonia-refrigeration equipment and piping is located
 - in the refrigerating-machinery room, an authorized personnel only room, with less-frequent and carefully-done moving of heavy stuff,

@@ -65,13 +65,13 @@ $NH3ROt = array(
         'c5name' => $Zfpf->encrypt_1c('Emergency Response') // if any, including plans, training, equipment quality and maintenance, and scheduling and recordkeeping.
     ),
     21 => array(
-        'c5name' => $Zfpf->encrypt_1c('Refrigerating-Machinery Rooms Tour')
+        'c5name' => $Zfpf->encrypt_1c('Tour of Refrigerating-Machinery Rooms')
     ),
     22 => array(
-        'c5name' => $Zfpf->encrypt_1c('Industrial Occupancies Tour')
+        'c5name' => $Zfpf->encrypt_1c('Tour of Industrial Occupancies')
     ),
     23 => array(
-        'c5name' => $Zfpf->encrypt_1c('Roofs and Outside Tour') // nh3r PSM audit -- END   nh3r_psm-audit_obstopic.php relies on these k0obstpoic values
+        'c5name' => $Zfpf->encrypt_1c('Tour of Roofs and Outside') // nh3r PSM audit -- END   nh3r_psm-audit_obstopic.php relies on these k0obstpoic values
     ),
     24 => array(
         'c5name' => $Zfpf->encrypt_1c('Compressors') // TO DO 2020-07-22 placeholder for ITM obsmethods

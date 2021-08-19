@@ -18,7 +18,7 @@ $NH3ROm = array( // Indent as done below for better display in HTML text areas a
         'c6obsmethod' => $Zfpf->encrypt_1c('Employee-participation plan content -- checked if a written plan covered employee information access and consultation.')
     ),
     4 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Employee-participation plan quality --  with the responsible individual(s), per the Owner/Operator management system or the employee-participation plan, discussed if the employee-participation plan reflected current information access, consultation, and feedback opportunities for employees.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Employee-participation plan quality -- with the responsible individual(s), per the Owner/Operator management system or the employee-participation plan, discussed if the employee-participation plan reflected current information access, consultation, and feedback opportunities for employees.')
     ),
     5 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Employee-participation plan documents -- checked a sample of employee-participation documents, from the prior three years or most recent if older, for, if called for by the plan: 
@@ -94,13 +94,13 @@ $NH3ROm = array( // Indent as done below for better display in HTML text areas a
 For a pre-2010 '.HAZSUB_PROCESS_NAME_ZFPF.', this information may reasonably not be available -- particularly for piping, small pressure vessels that may have been field fabricated from piping, insulation, paint, and supports. Regardless, if not available, the mechanical-integrity program should address any resulting uncertainties.')
     ),
     14 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Piping and instrumentation diagram (P&amp;ID) -- checked a sample of P&amp;ID against flow diagram and, during tour, some equipment packages, including items not visible on the piping, such as check valves under insulation near refrigerant-pump discharges. Compared P&amp;ID revision dates to change-management documents.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Piping and instrumentation diagram (P&amp;ID) -- checked a portion of the ammonia-refrigeration P&amp;ID against the flow diagram and, during the tour, some equipment packages, including items not visible on the piping, such as check valves under insulation near refrigerant-pump discharges. Compared P&amp;ID revision dates to change-management documents.')
     ),
     15 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Electrical classification -- checked explanation of why no areas were classified as hazardous locations under applicable electrical code. Or, checked a sample of areas classified as hazardous locations for non-compliant electrical equipment, focusing on equipment added after original installation or temporary activities, and also checked a sample of plans/policies covering these areas and change management in them.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Electrical classification -- checked explanation of why no areas were classified as hazardous locations under the applicable electrical code. Or, checked a sample of areas classified as hazardous locations for non-compliant electrical equipment, focusing on any equipment added after the original installation or any temporary activities, and also checked a sample of plans/policies covering these areas and change management in them.')
     ),
     16 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Pressure-relief documents -- checked that as-built design documents showed: 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Pressure-relief documents -- checked that as-built documentation showed: 
 (1) the design standard and edition, 
 (2) relief-device opening setpoint and capacity selection based on 
 (2.1) the protected pressure vessel\'s maximum allowable working pressure (MAWP), 
@@ -114,22 +114,22 @@ For a pre-2010 '.HAZSUB_PROCESS_NAME_ZFPF.', this information may reasonably not
 (5) a safe discharge-to-atmosphere location(s), direction, and method, such as a tractor cap compatible with the RV piping material, 
 (6) a reasonable pressure difference (allowance) between pressure-limiting and pressure-relief devices, such as between the setpoints for the compressor high-pressure shut off and the oil-separator pressure-relief valve, and 
 (7) that, if pressure-relief devices were protecting pressure vessels connected sufficiently to be at similar pressures during the design scenario, these pressure-relief devices had the same opening setpoint, at or below the lowest design pressure of all piping and equipment (including pressure vessels) that were so connected, for example, one setpoint for the low-side, at least 150 pounds per square inch (PSI), and one setpoint for the high-side, at least 250 PSI with evaporative condensers and 300 PSI with air-only condensers (IIAR 9-2020 7.2.2.1, 7.4.1, 7.4.2, and 7.4.3). 
-Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used, such as the software or spreadsheet source. Checked a sample of as-built design documents for obvious errors.')
+Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built documentation, and (2) the design method used, such as the software or spreadsheet source. Checked a sample of the as-built documentation for obvious errors.')
     ),
     17 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Pressure-relief system(s) -- checked a sample for: 
-(1) consistency with as-built design documents, including 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Pressure-relief system(s)  -- with the responsible individual(s), per the Owner/Operator management system -- checked a sample for: 
+(1) any obvious inconsistencies with the as-built documentation, including 
 (1.1) if the pressure-vessel nameplate (or photograph of it) could be found and was legible and 
 (1.2) if the pressure-vessel nameplate maximum allowable working pressure (MAWP) was equal to or greater than the opening setpoint of the pressure-relief device that protected the vessel, 
 (2) needed overpressure protection missing, such as for 
 (2.1) pressure vessels or 
 (2.2) piping or equipment that could trap '.HAZSUB_NAME_ADJECTIVE_ZFPF.' liquid due to 
-(2.2.1) normal or emergency automatic valves, such as some King solenoid valves, 
-(2.2.2) leaks into periodically isolated equipment that isn\'t continuously monitored, vented, or pumped out, such as some condensers in winter if not continuously pumped out to an automatic purger, and 
+(2.2.1) normal or emergency automatic valves, such as some automatic King valves, 
+(2.2.2) leaks into periodically isolated equipment that isn\'t continuously monitored, pumped down, or vented -- such any condensers that are valved off in winter (if they are not continuously pumped down to an automatic purger), and 
 (2.2.3) a reasonably likely failure or human error, such as, perhaps, closing a stop valve downstream of a check valve on a pump discharge, 
 (3) pressure-relief devices 
 (3.1) chattering, 
-(3.2) frosted (possible leak-by),
+(3.2) frosted (possible leak-by), 
 (3.3) installed too long ago (over 5-years unless a facility-specific testing program was in place or discharge is back into the '.HAZSUB_PROCESS_NAME_ZFPF.'), or 
 (3.4) visibly tampered with, broken ASME seal, or damaged, and 
 (4) device outlet or relief-vent (RV) piping problems, including 
@@ -145,7 +145,7 @@ Quality depends on detailed measurements and calculations beyond the scope, so n
 (4.5.5) outlet was likely to allow water entry. (IIAR 9-2020 7.2.2.1, 7.4.1, 7.4.2, and 7.4.3)')
     ),
     18 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Ventilation for refrigerating-machinery room (the room) documents -- taking into account that some ammonia leaks, either inside or outside the room, cannot practically be controlled by the room\'s safety systems and so would require incident-specific evacuation or shelter-in-place --  checked that as-built design documents showed: 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Ventilation for refrigerating-machinery room (the room) documents -- taking into account that some ammonia leaks, either inside or outside the room, cannot practically be controlled by the room\'s safety systems and so would require incident-specific evacuation or shelter-in-place -- checked that as-built documentation showed: 
 (1) the design standard and edition, 
 (2) all required emergency, occupant/normal, and temperature-control exhaust and makeup air-flow calculations, 
 (3) exhaust-fan(s) specifications, including 
@@ -167,20 +167,20 @@ Quality depends on detailed measurements and calculations beyond the scope, so n
 (6.2) adequately far from air intakes, doors, ladders, property boundaries, walkways, windows that are sometimes open, and work areas,
 (6.3) where it is reasonably unlikely to contaminate breathing air, in excess of 150 ppm, 220 ppm, or another reasonable target -- considering any nearby higher roofs and air recirculation (swirling and eddies) on the downwind side of the building with the ventilation outlet -- in
 (6.3.1) areas where people are routinely present or
-(6.3.2) exit routes from normally occupied spaces,
-150 ppm is the 1-hour exposure 2016 ERPG-2 (American Industrial Hygiene Association, Emergency Response Planning Guideline 2) -- the maximum airborne concentration below which nearly all people could be exposed for up to 1 hour without experiencing or developing irreversible or other serious health effects or symptoms which could impair a persons ability to take protective action.
-220 ppm is both the 10 and 30-minute exposure 2017 AEGL-2 (Acute Exposure Guideline Levels, published by the U.S. EPA) -- the concentration above which it is predicted that the general population, including susceptible individuals, could experience irreversible or other serious, long-lasting adverse health effects or an impaired ability to escape.
+(6.3.2) exit routes from normally occupied spaces  -- 
+* 150 ppm is the 1-hour exposure 2016 ERPG-2 (American Industrial Hygiene Association, Emergency Response Planning Guideline 2), which estimates the maximum airborne concentration below which nearly all people could be exposed for up to 1 hour without experiencing or developing irreversible or other serious health effects or symptoms which could impair a persons ability to take protective action;
+* 220 ppm is both the 10 and 30-minute exposure 2017 AEGL-2 (Acute Exposure Guideline Levels, published by the U.S. EPA), which estimates the concentration above which it is predicted that the general population, including susceptible individuals, could experience irreversible or other serious, long-lasting adverse health effects or an impaired ability to escape  -- 
 (7) ventilation controls (unless always on with alarm on failure), including
 (7.1) emergency-ventilation control via manual on/auto switch and ammonia sensors and
 (7.2) temperature control via thermostat or, if the room is normally attended, by a manual switch or equivalent,
 (7.3) any backup power and also restart after power outages built to avoid creating ignition sources in flammable atmospheres, such as ammonia sensors that turn on emergency ventilation if needed before any equipment that could create a ignition source receives backup or restored electrical power,
 (8) electrical-power supply for emergency ventilation not shut off by any emergency-stop switch/button, ammonia sensors, and similar, and 
 (9) alarms on loss of power or known failure of ventilation systems that notify Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list). (IIAR 9-2020 7.3.13.2)
-Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built design documents, and (2) the design method used. Checked a sample of as-built design documents for obvious errors.')
+Quality depends on detailed measurements and calculations beyond the scope, so noted: (1) any documentation on the competence of the individual and organization that provided the design, preferably in the as-built documentation, and (2) the design method used. Checked a sample of the as-built documentation for obvious errors.')
     ),
     19 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Ventilation for refrigerating-machinery room(s) system -- with the responsible individual(s), per the Owner/Operator management system, cursorily looked over for and asked about:
-(1) consistency with as-built design documents, 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Ventilation for refrigerating-machinery room(s) -- with the responsible individual(s), per the Owner/Operator management system -- checked for:
+(1) any obvious inconsistencies with the as-built documentation, such as the number, location, and approximate size of inlets and outlets, including fans, 
 (2) emergency ventilation would sweep each refrigerating-machinery room (the room) with no obvious dead zones, based on inlet and outlet locations, 
 (3) ammonia sensor(s) not near fresh-air inlets, 
 (4) exhaust discharge(s) not near air intakes, building openings, or walking-working surfaces, 
@@ -237,19 +237,19 @@ Asked about this during tours and discussions.')
     27 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Procedure written descriptions -- with the responsible individual(s), per the Owner/Operator management system, discussed overall approach and checked a sample of the written descriptions of hazardous-substance procedures and safe-work practices and any separate inspection, testing, and maintenance (ITM) procedures to assess if -- in combination with each other, the facility change-management program, and the facility emergency plans -- they correctly described, as needed: 
 (1) how to safely handle 
-(1.1) normal operations, 
+(1.1) normal operations, such as daily to weekly inspections and inspector next steps if problems found (allowed corrective actions or who to contact), 
 (1.2) non-automated tasks for unusual refrigeration loads, such as production shutdowns, 
 (1.3) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leak mitigation and emergency shutdown, 
 (1.4) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' small leaks, 
 (1.5) start-up after power failures or emergency shutdowns, 
 (1.6) oil charging, draining, and sampling, including, if not permanently installed, installing a temporary self-closing valve before draining or sampling, unless the procedure called for pump down and isolation before oil draining or sampling, 
 (1.7) ammonia charging, 
-(1.8) removal and return to service for ITM, including stop valve and any needed control-valve manual opening/closing sequences for pump down, isolation, leak-by checks, any venting to water, and return-to-service low-pressure then operating pressure and temperature leak checks, or equivalent, and 
+(1.8) removal from and return to service for ITM, including stop valve and any needed control-valve manual opening/closing sequences for pump down, isolation, leak-by checks, any venting to water, and return-to-service low-pressure then operating pressure and temperature leak checks, or equivalent, and 
 (1.9) tie-in of additions, commissioning, and decommissioning, 
 (2) hazards of a task and other needed information for completing the task before or in the description of the task\'s steps (references to information are okay to keep procedures concise), 
 (3) how to recognize and address reasonably possible failures during the procedure, such as leak-by a closed valve, a control-valve malfunction, packing or bonnet leaks, and so forth, 
 (4) required equipment, including personal-protective equipment (PPE), 
-(5) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' first aid, and 
+(5) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' decontamination and first aid, and 
 (6) roles, responsibilities, and required training, including training, fit testing, or medical testing/questionnaires on the required equipment.')
     ),
     28 => array(
@@ -284,7 +284,7 @@ Asked about this during tours and discussions.')
 (5.15) whether any level sensors or float switches had shut off '.HAZSUB_PROCESS_NAME_ZFPF.' compressors in the prior three years and, if so, how the restart from this was done.')
     ),
     30 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Procedure current and accurate certification -- checked if Owner/Operator had certified each year, for the prior three years, that the hazardous-substance procedures and safe-work practices (or equivilent administrative controls) were current and accurate.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Procedure current and accurate certification -- checked if Owner/Operator had certified each year, for the prior three years, that the hazardous-substance procedures and safe-work practices (or equivalent administrative controls) were current and accurate.')
     ),
     31 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Access controls -- assessed and discussed these, such as: 
@@ -297,7 +297,7 @@ Asked about this during tours and discussions.')
 (7) video, motion sensors, door or window contact sensors, or other security systems.')
     ),
     32 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Refresher training -- for a sample of initial and refresher training records, checked if they showed: 
+        'c6obsmethod' => $Zfpf->encrypt_1c('Training records -- for a sample of initial and refresher training records, checked if they showed: 
 (1) that employees were trained before doing tasks covered by hazardous-substance procedures and safe-work practices (the tasks) by comparing discussions with management, employees, and any relevant contractors about "who does what" with training records, 
 (2) that employees who did the tasks completed refresher training at least every three years, 
 (3) that employees who did the tasks were consulted on the frequency of refresher training, 
@@ -403,7 +403,7 @@ Asked about this during tours and discussions.')
 (2.1) job titles of who can approve hot-work permits and their training, 
 (2.2) fire-watcher training, typically at least fire extinguishers and how to sound the fire alarm, and 
 (2.3) any areas where hot work is allowed without a permit. 
-(3) Checked if the facility\'s hot-work permit form covered: 
+(3) Checked if the facility\'s hot-work permit form or its instructions covered: 
 (3.1) avoiding hot work or moving hot-work object; otherwise... 
 (3.2) timing, location, inspection, authorization: 
 (3.2.1) date(s) authorized for hot work, 
@@ -419,11 +419,10 @@ Asked about this during tours and discussions.')
 (3.4) within 35 feet of hot work:  
 (3.4.1) move out all readily movable combustibles, 
 (3.4.2) shield all other combustibles, including floors, walls, partitions, ceilings, or roofs of combustible construction, 
-(3.5) things that can carry heat, sparks... past floors, walls... or over 35 feet 
-(and needed addition protection or fire watchers): 
+(3.5) things that can carry heat, sparks... past floors, walls... or over 35 feet and needed additional protection or fire watchers: 
 (3.5.1) openings, cracks, holes, drains, elevated work... 
 (3.5.2) ventilation or conveyors, 
-(3.5.3) heat applied to thermally conductive material that passes through, such as steel pipes, beams... 
+(3.5.3) heat applied to thermally conductive material that passes through floors, walls..., such as steel pipes, beams... 
 (3.5.4) combustible materials adjacent to the opposite side of conductive wall, 
 (3.6) high fire-risk situations: 
 (3.6.1) places where explosive atmospheres may develop, from flammable gases, vapors, liquids, lint, dust... 
@@ -431,9 +430,8 @@ Asked about this during tours and discussions.')
 (3.6.3) hot-work on assemblies that include combustibles, such as in coatings, sandwiched inside, torch-applied roofing...')
     ),
     42 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Change and incident discussions -- asked the responsible individual(s), per the Owner/Operator management system, and also a sample of the people who operate, inspect, test, or maintain the facility\'s '.HAZSUB_PROCESS_NAME_ZFPF.' about, in the prior three years: 
-(1) any changes to the '.HAZSUB_PROCESS_NAME_ZFPF.' and to chemicals (including lubricating oil in it and sanitation chemicals used near it), technology, equipment, procedures, buildings, structures, traffic patterns, or nearby activities that could affect the '.HAZSUB_PROCESS_NAME_ZFPF.' or that it could affect, such as during a fire or explosion, and also 
-(2) any '.HAZSUB_NAME_ADJECTIVE_ZFPF.' leaks or other incidents involving the '.HAZSUB_PROCESS_NAME_ZFPF.', including any fires or explosions.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Change discussions -- asked the responsible individual(s), per the Owner/Operator management system, and also a sample of the people who operate, inspect, test, or maintain the facility\'s '.HAZSUB_PROCESS_NAME_ZFPF.' about, in the prior three years: 
+* any changes to the '.HAZSUB_PROCESS_NAME_ZFPF.' and to chemicals (including lubricating oil in it and sanitation chemicals used near it), technology, equipment, procedures, buildings, structures, traffic patterns, or nearby activities that could affect the '.HAZSUB_PROCESS_NAME_ZFPF.' or that it could affect, such as during a fire or explosion.')
     ),
     43 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Change and incident tour observations -- checked for, on or near the '.HAZSUB_PROCESS_NAME_ZFPF.': 
@@ -445,7 +443,7 @@ Asked about this during tours and discussions.')
     ),
     44 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Change-management documents -- 
-(1) reviewed forms and instructions to assess if properly completing them would meet pre-startup safety review, new-construction mechanical integrity, and management of change requirements at 29 CFR 1910.119(i), 1910.119(j)(6)(i) and (ii), and 1910.119(l), by checking if they include: 
+(1) reviewed forms and instructions to assess if properly completing them would meet pre-startup safety review, new-construction mechanical integrity, and management of change requirements at 29 CFR 1910.119(i), 1910.119(j)(6)(i) and (ii), and 1910.119(l), respectively, by checking if they include: 
 (1.1) the change\'s 
 (1.1.1) technical basis, such as a comprehensive design review, 
 (1.1.2) affects on safety and health, 
@@ -545,20 +543,31 @@ Asked about this during tours and discussions.')
     ),
     50 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Emergency Action Plan documents -- checked if the plan(s) addressed 
-(A) the full range of potential incidents and 
-(B) in the USA, employee safety per 29 CFR 1910.38 (Items 1 to 6 and 10), release reporting per CERCLA and EPCRA (Item 7), good practices (Item 8), community-responder coordination per 40 CFR 68.90, 68.93, and 68.96(a) (Item 9), and identifying offsite "hazards which may result from ... releases" per the Clean Air Act 112(r)(1) General Duty Clause (Item 9.1.5), including, 
-for anhydrous ammonia: 
-(1) "what to do if I smell ammonia or notice other hazards" -- such as how to notify facility management and individual move-to-safety, 
+(A) employee safety (Items 1 to 6 and 10 -- in USA to meet 29 CFR 1910.38), 
+(B) release reporting (Item 7 -- in USA to meet CERCLA and EPCRA), 
+(C) good practices (Item 8), 
+(D) community-responder coordination (Item 9 -- in USA to meet 40 CFR 68.90, 68.93, and 68.96(a)), and 
+(E) identifying offsite "hazards which may result from ... releases" (Item 9.1.5 -- in USA to meet Clean Air Act 112(r)(1) General Duty Clause), 
+* including, for anhydrous ammonia: 
+(1) "what to do if I smell ammonia or notice other hazards" -- such as how to notify facility management and individual move-to-safety and 
+* who will do the following and how (often an emergency coordinator is designated for each shift or on call after hours, and job titles for other tasks are also designated): 
 (2) determining and communicating routes to safe locations inside (shelter-in-place) or outside (evacuation), 
 (3) sweeps, if safe, while leaving and headcount, 
 (4) any needed shutdown of critical plant equipment before evacuating (may reference leak mitigation and emergency shutdown procedures), 
-(5) calls to needed emergency responders, such as the local fire department and a contractor, pre-qualified to provide emergency response, 
+(5) calls to needed emergency responders, such as the local fire department and a contractor pre-qualified to provide emergency response, 
 (6) any rescue or medical duties done by employees, 
-(7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to 
+(7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to emergency-response authorities including 
 (7.1) local (typically 911), 
 (7.2) state, and 
-(7.3) federal (the National Response Center) emergency-response authorities, 
-(8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs), 
+(7.3) federal (the National Response Center, NRC, at 1-800-424-8802),
+(7.3.1) and emailing the NRC identification number to report@csb.gov within 30-minutes of submitting the report to NRC,
+(8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs),  
+(8.1) keeping in a prearranged location or giving emergency responders the information they need, such as 
+(8.1.1) the Emergency Action Plan,
+(8.1.2) piping and instrumentation diagrams,
+(8.1.3) floor plans and site maps, 
+(8.1.4) the Leak Mitigation and Emergency Shutdown procedure, and
+(8.1.5) the Small-Leak Notifications, Investigation, and Actions procedure,
 (9) advanced coordination with local emergency responders, including 
 (9.1) at least yearly checking, and attempting to ensure, that the emergency plan of the community where the facility is located has up-to-date information on 
 (9.1.1) facility contacts, 
@@ -567,7 +576,7 @@ for anhydrous ammonia:
 (9.1.4) any facility resources helpful during incidents, and
 (9.1.5) a reasonably accurate worst-case release scenario and offsite-consequences evaluation for the facility, such as 
 (9.1.5.1) a distance-to-endpoint output by the U.S. EPA\'s RMP*Comp program based on either the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' maximum-intended inventory or the volume of the largest pressure vessel in the '.HAZSUB_PROCESS_NAME_ZFPF.', 
-(9.1.5.2) a circle on a map, centered at a potential release point at the facility, such as the refrigerating-machinery room, showing with reasonable detail the area within the distance-to-endpoint, 
+(9.1.5.2) a circle on a map, centered at a likely release point at the facility, such as the refrigerating-machinery room, showing with reasonable detail the area within the distance-to-endpoint, 
 (9.1.5.3) a residential human population estimate within the distance-to-endpoint, and 
 (9.1.5.4) a list of schools, hospitals, prisons, major commercial, office, or industrial areas, parks, wildlife preserves, wilderness areas, and similar within the distance-to-endpoint, 
 (9.2) promptly notifying the local emergency responders when a change occurs at the facility that may affect offsite-response plans, such as 
@@ -583,7 +592,8 @@ for anhydrous ammonia:
 (10.2) when an employee\'s responsibilities under the Emergency Action Plan change, 
 (10.3) when the Emergency Action Plan changes, and typically 
 (10.4) yearly drills or refreshers, and 
-(11) all other applicable requirements in 29 CFR 1910.38 and other relevant rules, depending on any other hazardous substances and circumstances at the facility, covering, for example, medical emergencies, earthquakes, hurricanes, tornadoes, bomb threats, and so forth.')
+(11) all other applicable requirements, depending on any other hazardous substances and circumstances at the facility, covering, for example, medical emergencies, earthquakes, hurricanes, tornadoes, bomb threats, and so forth, including 
+(11.1) any required reporting to building, boiler, refrigeration, pressure vessel, or hazardous-substance inspectors with state or local government.')
     ),
     51 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Emergency-response discussions, equipment, and documents -- if facility employees plan to do emergency response, 
@@ -626,7 +636,7 @@ for anhydrous ammonia:
 (5) showed that the Owner/Operator had 
 (5.1) promptly determined and documented an appropriate response to each finding in the reports, 
 (5.2) documented that deficiencies, discovered due to the reported findings, had been corrected, and 
-(5.3) adequately certified that they had evaluated compliance, if applicable (cases 2.2, 2.3, and 2.4 above).')
+(5.3) adequately certified that they had evaluated compliance, if applicable (cases 2.2 and 2.3 above).')
     ),
     53 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('Maintenance employees or contractors not authorized to work on the '.HAZSUB_PROCESS_NAME_ZFPF.' -- if any at the facility, asked a sample of these individuals, 
@@ -687,10 +697,10 @@ for anhydrous ammonia:
 (20.3.1) adequate protection against impacts from all directions over their entire length and 
 (20.3.2) excess-flow valves, such as spring-check valves, at their inlets and vents, or
 (20.4) not suitable for service in the '.HAZSUB_PROCESS_NAME_ZFPF.' (IIAR 9-2020 7.4.7),
-(21) ammonia sensors were not installed, in rooms or areas where they were required by the applicable mechanical code or by the facility\'s insurance carrier, or the ammonia sensors didn\'t trigger the following, typically at 25 parts per million by volume (ppm), if required,
+(21) ammonia sensors were not installed, in rooms or areas where they were required by the applicable building code or by the facility\'s insurance carrier, or the ammonia sensors didn\'t trigger the following if required, typically at 25 parts per million by volume (ppm),
 (21.1) audible and visible alarms in the room(s) where the sensors detected ammonia,
-(21.2) notification of Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list), and 
-(21.3) shut off of any liquid and hot gas ammonia supplies to equipment in the rooms (IIAR 2-2019 7.2.3 or insurance carrier rules),
+(21.2) notification of Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list) (IIAR 2-2019 7.2.3), and 
+(21.3) shut off of any liquid and hot gas ammonia supplies to equipment in the rooms,
 (22) industrial occupancies that were not separated from other occupancy classifications by a well-sealed envelope (walls, floors, ceilings, and so forth), and that contained, or that were open to mechanical penthouses which contained, '.HAZSUB_NAME_ADJECTIVE_ZFPF.' piping or equipment (IIAR 2-2019 7.2.1), or 
 (23) ammonia odors.')
     ),
@@ -769,24 +779,36 @@ for anhydrous ammonia:
 (12) no exposed wiring and covers installed on a sample of electrical panels or junction boxes.')
     ),
     56 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Compressors, pumps, and pressure vessels located in miscellaneous indoor areas, such as pits, tunnels, attics, on top of freezer tunnels, between false ceilings the floor or roof above, or located in outside areas, tours -- checked any of these, in the '.HAZSUB_PROCESS_NAME_ZFPF.', and the areas around them against applicable refrigerating-machinery room requirements, except:
-(1) outdoor areas may have had suitable "natural" ventilation from their free opening areas, did\'t need to be well sealed, and so forth,
-(2) fresh intake air for pits and tunnels should have been supplied near their lowest areas, such as their floors, and
-(3) ventilation flow for pits and tunnels should have accounted for the volume of any rooms they exhaust through (IIAR 2-2019 7.3).')
+        'c6obsmethod' => $Zfpf->encrypt_1c('Compressors, pumps, and pressure vessels located outdoors or located in miscellaneous indoor areas tours, if accessible, including pits, tunnels, attics, on top of freezer tunnels, between false ceilings and the floor or roof above -- checked any of these, in the '.HAZSUB_PROCESS_NAME_ZFPF.', and the areas around them, against applicable requirements, such as: 
+(1) any applicable refrigerating-machinery room requirements, 
+(2) outdoor areas had adequate ventilation from their openings to the outdoors, "free-aperture cross section", or otherwise from mechanical ventilation, 
+(3) ventilation flow for pits and tunnels 
+(3.1) swept them well, including their lowest areas, 
+(3.2) facilitated safe egress, such as flowed from exit routes towards likely leak locations, and 
+(3.3) accounted for the volume of any rooms they exhausted through (IIAR 2-2019 7).')
     ),
     57 => array(
-        'c6obsmethod' => $Zfpf->encrypt_1c('Seismic discussions, documents, and tours -- with the responsible individual(s), per the Owner/Operator management system, 
-(1) reviewed published seismic maps, such as, in the USA, USGS Seismic Hazard Maps, and discussed seismic risks where the facility was located, and, if applicable:
-(2) reviewed the conclusions and recommendations of any reports specifically assessing the as-built seismic safety of the '.HAZSUB_PROCESS_NAME_ZFPF.', including any damage assessments from prior earthquakes,
-(3) reviewed a sample of as-built design documents for statements by structural engineers indicating coverage of seismic risks, per indicated design codes and editions, focusing on larger and heavier things, especially when such things were on long supports, creating additional risks from oscillations at their resonance frequency, and also focusing on flexible things near rigid things, such as pipe penetrations through concrete walls, for example,
-(3.1) buildings,
-(3.2) condenser support structures,
-(3.3) large pressure vessels that contained liquid, such as receivers and recirculators, and their supports,
-(3.4) anything heavier than piping, such as liquid-containing pressure vessels, that was hung from supports above it,
-(3.5) piping supports,
-(3.6) pipe penetrations through room or building envelopes, such as walls and floors, which need to be well sealed while allowing for differential movement during earthquakes, and
-(3.7) the foundations of all of the above, where applicable, and
-(4) during tours, checked a sample of the '.HAZSUB_PROCESS_NAME_ZFPF.' and its supports for consistency with seismic aspects of as-built design documents.')
+        'c6obsmethod' => $Zfpf->encrypt_1c('External hazards, protection, and security -- discussions, documents, and tours -- with the responsible individual(s), per the Owner/Operator management system, 
+(1) reviewed external hazards that may influence designing, building, maintaining, and securing the facility, such as avalanche/debris flow/landslide/mudslide, cold, earthquake, flood, hail, heat, ice, lightning, rain, snow, terrorism/theft/vandalism, tsunami, volcanic activity, wildfire, and wind (including from hurricanes and tornadoes), for example by reviewing 
+(1.1) multi-hazard maps (such as, in the USA, the National Risk Index for Natural Hazards and the ASCE 7 Hazard Tool), 
+(1.2) flood maps (in the USA, published by FEMA), 
+(1.3) seismic maps (such as, in the USA, USGS Seismic Hazard Maps), and 
+(1.4) the facility and local history of external hazards, based on discussions with facility managers, employees, or others, and if applicable 
+(2) reviewed the conclusions and recommendations of any reports assessing the protection of the '.HAZSUB_PROCESS_NAME_ZFPF.' from these hazards, including any damage assessments from prior events, that the responsible individual(s), per the Owner/Operator management system, were aware of and provided to the auditor, 
+(2.1) reviewed how the latest process-hazard analysis (PHA), for the '.HAZSUB_PROCESS_NAME_ZFPF.', covered these hazards, 
+(3) checked if as-built documentation indicated consideration of external hazards, as needed, such as by listing applicable building codes and editions, structural design criteria, or similar, on a sample that included as-built documentation for 
+(3.1) buildings or structures that support or protect the '.HAZSUB_PROCESS_NAME_ZFPF.', 
+(3.2) piping supports or hangers, 
+(3.3) for earthquake/seismic hazards, larger and heavier things, especially when they were on long supports, creating risks from oscillations at their resonance frequency, and also flexible things near rigid things, for example, 
+(3.3.1) condenser support structures, 
+(3.3.2) large pressure vessels that contained liquid, such as receivers and recirculators, and their supports, 
+(3.3.3) anything heavier than piping, such as liquid-containing pressure vessels, that was hung from supports above it, 
+(3.3.4) pipe penetrations through room or building envelopes, such as floors, roofs, and walls, which need to be well sealed while allowing for differential movement during earthquakes, and 
+(3.4) the foundations of all of the above, where applicable, and 
+(4) during tours, checked a sample of the '.HAZSUB_PROCESS_NAME_ZFPF.', its supports, and its security for consistency with intended protections from external hazards.')
+    ), 
+    58 => array(
+        'c6obsmethod' => $Zfpf->encrypt_1c('Process safety management (PSM) compliance-practice descriptions -- such as instructions or summaries of how the Owner/Operator ensured that the facility and its '.HAZSUB_PROCESS_NAME_ZFPF.' complied with PSM and related rules -- reviewed a sample and noted (1) any cases when they were inadequate and (2) any significant inconsistencies with what the auditor discovered from document reviews, discussions, tours at the facility.')
     )
 );
 foreach ($NH3ROm as $K => $V) {

@@ -699,6 +699,18 @@ $PSMAuFNH3ROm = array( // This array links to all the fragments asociated with t
     174 => array(
         'k0audit_fragment' => $PSMAuditFragment[20]['k0audit_fragment'], // Good Practices
         'k0obsmethod' => $NH3ROm[57]['k0obsmethod'],
+    ),
+    175 => array(
+        'k0audit_fragment' => $PSMAuditFragment[45]['k0audit_fragment'], // Safety Systems
+        'k0obsmethod' => $NH3ROm[29]['k0obsmethod'],
+    ),
+    176 => array(
+        'k0audit_fragment' => $PSMAuditFragment[45]['k0audit_fragment'], // Safety Systems
+        'k0obsmethod' => $NH3ROm[12]['k0obsmethod'],
+    ),
+    177 => array(
+        'k0audit_fragment' => $PSMAuditFragment[58]['k0audit_fragment'], // Safe Work Practices and Access Control
+        'k0obsmethod' => $NH3ROm[27]['k0obsmethod'],
     )
 );
 foreach ($PSMAuFNH3ROm as $K => $V) {

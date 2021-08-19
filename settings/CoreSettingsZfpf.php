@@ -211,15 +211,14 @@ define('REQUIRED_FIELD_ZFPF', ' <span class="red">[Required]</span>');
 // These are used to check or truncate user input from text or textarea fields.
 // See Encryption Max-Length Note. $MaxLength... in 0read_me_psm_cap_app_standards.txt
 // See also CoreZfpf::max_length_1c in file CoreZfpf.php
-define('C5_MAX_BYTES_ZFPF', 192);
-define('C6SHORT_MAX_BYTES_ZFPF', 8000);
-define('C6LONG_MAX_BYTES_ZFPF', 40000);
-define('HTML_MAX_CHAR_DIVISOR_ZFPF', 1.5);
+define('C5_MAX_BYTES_ZFPF', 3000);
+define('C6SHORT_MAX_BYTES_ZFPF', 24000);
+define('C6LONG_MAX_BYTES_ZFPF', 120000);
+define('HTML_MAX_CHAR_DIVISOR_ZFPF', 3);
     // The above max lengths are divided by this HTML_MAX_CHAR_DIVISOR_ZFPF constant to give the HTML form maxlength attribute for text and textarea fields.
     // Used in ConfirmZfpf::html_form_field_1e
-    // If C5_MAX_BYTES_ZFPF = 192, then allowed values are: 1, 1.2, 1.5, 2, 3, or 4 -- to give HTML maxlengths of 192, 160, 128, 96, 64, or 32 characters.
     // Use HTML_MAX_CHAR_DIVISOR_ZFPF = 3 if 3-byte UTF-8 characters (Chinese characters, etc.) will be input.
-    // Otherwise, HTML_MAX_CHAR_DIVISOR_ZFPF = 1.5 provides a 64-byte safety factor for use of  <  >  &  
+    // Otherwise, HTML_MAX_CHAR_DIVISOR_ZFPF = 1.5 provides a safety factor for use of  <  >  &  
     // which are encoded as the multi-byte HTML character entities by the app:  &lt;  &gt;  &amp;  
     // If a max length is exceeded, the user input is truncated to the max length - 3 (plus ...), after the above HTML character encoding. 
     // This is done in function ConfirmZfpf::post_to_display_1e by functions CoreZfpf::max_length_1c and CoreZfpf::xss_prevent_1c. 

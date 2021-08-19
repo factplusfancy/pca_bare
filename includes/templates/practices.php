@@ -180,7 +180,7 @@ For these practices, the app can generate an activity notice, with instructions 
         'c5name' => $Zfpf->encrypt_1c('PSM-Audit Reports -- View, Create, Edit, Issue, and Certify'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('KKKBBB'),
-        'c6description' => $Zfpf->encrypt_1c('View draft or issued reports. Create, edit, or issue a report. To meet PSM requirements and good practices, the audit shall be conducted by at least one person knowledgeable in the '.HAZSUB_PROCESS_NAME_ZFPF.'. Describe auditor qualifications and methods in the report. Certify that the Owner/Operator has "evaluated compliance ... to verify that the [PSM] procedures and practices are adequate and are being followed". Once the report has been issued by the report leader, this certification is typically made by the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, which is how the PSM-CAP App designates the responsible Owner/Operator representative, per the management system. Interpretations vary what needs to be certified; the certification language in the PSM-CAP App follows the wording in the PSM and CAP rules. The PSM-CAP App retains PSM-audit reports indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
+        'c6description' => $Zfpf->encrypt_1c('View draft or issued reports. Create, edit, or issue a report. To meet PSM requirements and good practices, the audit shall be conducted by at least one person knowledgeable in the '.HAZSUB_PROCESS_NAME_ZFPF.'. Describe auditor qualifications and methods in the report. Certify that the Owner/Operator has "evaluated compliance ... to verify that the [PSM] procedures and practices are adequate and are being followed". Once the report has been issued by the report leader, this certification is typically made by the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, which is how the PSM-CAP App designates the responsible Owner/Operator representative, per the management system. Interpretations vary on what needs to be certified; the certification language in the PSM-CAP App follows the wording in the PSM and CAP rules. The PSM-CAP App retains PSM-audit reports indefinitely, as long as its database is maintained, unless purged per Owner/Operator policies.'),
         'c5require_file' => $Zfpf->encrypt_1c('audit_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ), /*  2018-10-03 JDH combined with practice above.
@@ -321,10 +321,10 @@ For these practices, the app can generate an activity notice, with instructions 
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),
     39 => array(
-        'c5name' => $Zfpf->encrypt_1c('Entrance Privileges and Records of each Contractor Individual'),
+        'c5name' => $Zfpf->encrypt_1c('Entrance and Work Privileges and Records of each Contractor Individual'),
         'c2standardized' => 'Owner Standard Practice',
         'c5number' => $Zfpf->encrypt_1c('GGGEEE'),
-        'c6description' => $Zfpf->encrypt_1c('Check if an individual human working as a contractor (a "contractor individual") has privileges to enter a facility, a particular area or room, or a job site. View the training or other records that may justify these entrance privileges. Upload training or other records and grant or revoke entrance privileges.'),
+        'c6description' => $Zfpf->encrypt_1c('Check if an individual human working as a contractor (a "contractor individual") has privileges to enter a facility, a particular area or room, or a job site and has privileges to complete specific types of work there. View the training or other records that may justify these entrance and work privileges. Upload training or other records and grant or revoke entrance or work privileges.'),
         'c5require_file' => $Zfpf->encrypt_1c('contractor_priv_i1m.php'),
         'c5require_file_privileges' => $EncryptedLowPrivileges
     ),

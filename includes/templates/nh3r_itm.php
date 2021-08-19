@@ -694,8 +694,8 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (2.2.4) louvers or dampers don\'t open properly, 
 (2.2.5) air-flow-verification device(s), such as sail switch, vane switch, or anemometer, indicates inadequate air flow, 
 (2.2.6) "not working right" (including alarms), or 
-(2.2.7) maintenance needed (based on run-time hours or condition), and then 
-(2.3) turn the switch back to "auto", 
+(2.2.7) maintenance needed, based on runtime hours or condition, and then 
+(2.3) turn the switch back to "auto" (see lockout-tagout and Safety-System Testing or Disabling for Maintenance safe-work practices), 
 (3) fan drives, including any belts, pulleys, couplings, fasteners, and shafts -- 
 (3.1) inspect/note/fix if missing, loose (measure belt tensions), worn, excessive shaft float/end play, or other problem, 
 (3.2) shaft bearings -- lubricate as needed, 

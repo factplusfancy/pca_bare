@@ -16,7 +16,7 @@ SAMPLE GLOSSARY ENTRY:
 <b>FOO_BAR</b> means [insert definition of FOO_BAR]</p>
 
 SAMPLE LINKS TO A GLOSSARY ENTRY HTML FILE OUTPUT BY APP:
-<a class="toc" href="glossary.php#foo_bar" target="_blank">FOO_BAR</a>  // Blue but no underline hyperlink format (or however class="toc" is defined in your cascading style sheets, css).
+<a href="glossary.php#foo_bar" target="_blank">FOO_BAR</a>
 
 */
 
@@ -52,7 +52,7 @@ Glossary</h1>
 This glossary describes how words and acronyms are used in this <a class="toc" href="#psm">PSM</a>-<a class="toc" href="#cap">CAP</a> App, which is not necessarily how they are used by regulatory agencies or others.</p>
 
 <a id="actions"></a><p>
-<b>Actions</b>, in the context of this app\'s action register, are the tasks done to resolve findings and recommendations, including from audits, investigations, <a class="toc" href="#pha">PHA</a> or other <a class="toc" href="#hira">HIRA</a>, and so forth. This app allows tracking these through its action register. Any deficiency or recommendation that can be resolved by completing an open action, already in this app\'s action register, should reference that open action; otherwise, a proposed action should be drafted. See the <a class="toc" href="ar_i0m.php">action register</a> for details.</p>
+<b>Actions</b>, in the context of this app\'s action register, are the tasks done to resolve findings and recommendations, including from audits, investigations, <a class="toc" href="#pha">PHA</a> or other <a class="toc" href="#hira">HIRA</a>, and so forth. This app allows tracking these through its action register. Any deficiency or recommendation that can be resolved by completing an open action, already in this app\'s action register, should reference that open action; otherwise, a proposed action should be drafted. See the action register for details.</p>
 
 <a id="cap"></a><p>
 <b>CAP</b> means chemical-accident prevention in general, and for facilities located in the USA, the <a class="toc" href="#epa">EPA</a> regulations at 40 CFR 68, which may require a Risk Management Plan (RMP) and are sometimes referred to as the EPA\'s Risk Management regulations.</p>
@@ -89,7 +89,7 @@ This glossary describes how words and acronyms are used in this <a class="toc" h
 (5) only proceed with a fix if qualified and authorized by the responsible individual(s), per the Owner/Operator management system.</p>
 
 <a id="obstopic"></a><p>
-<b>Observation topics</b> are sets of <b>sample observation methods</b>, grouped by convenience for making the observations. The PSM-CAP App records each <b>observation result</b> paired with its (1) observation topic, (2) <b>specific-observation-topic unique identifier (topic ID)</b>, (3) sample observation method, and (4) <b>as-done observation method</b>. For example, an observation topic could be "Refrigerating-Machinery Room Tour", with "Compressor RC1" as the topic ID, and another topic could be "People with Management Responsibilities" with "Plant Manager" as the topic ID. When making an observation, be guided by the sample observation method but record the as-done observation method.</p>
+<b>Observation topics</b> are sets of <b>sample observation methods</b>, grouped by convenience for making the observations. The PSM-CAP App records each <b>observation result</b> paired with its (1) observation topic(s), (2) <b>observation object unique identifier (object ID)</b>, (3) sample observation method, and (4) <b>as-done observation method</b>. For example, an observation topic could be "Refrigerating-Machinery Room Tour", with "Compressor RC1" as the object ID, and another topic could be "People with Management Responsibilities" with "Plant Manager" as the object ID. When making an observation, be guided by the sample observation method, but record the as-done observation method.</p>
 
 <a id="osha"></a><p>
 <b>OSHA</b> means the Occupational Safety and Health Administration of the United States Department of Labor.</p>
@@ -105,10 +105,11 @@ This glossary describes how words and acronyms are used in this <a class="toc" h
 
 <a id="p3pp"></a><p>
 <b>Program 3 Prevention Program</b> means the rules, similar to <a class="toc" href="#psm">PSM</a>, at 40 CFR 68, Subpart D, which is a portion of the <a class="toc" href="#cap">CAP</a> rule administered by the <a class="toc" href="#epa">EPA</a>. The elements of the <a class="toc" href="#osha">OSHA</a> PSM standard and the EPA Program 3 Prevention Program are very similar, except for emergency planning and trade secrets. The main differences are that the Program 3 Prevention Program substitutes:<br />
-- "owners and operators" for "employers",<br />
+- "owner or operator" for "employer",<br />
 - "regulated substance" for "highly hazardous chemical",<br />
-- "stationary source" for "facility", and<br />
-- in the definition of "catastrophic release", "presents imminent and substantial endangerment to public health and the environment" for "presents serious danger to employees in the workplace";<br />
+- "stationary source" for "facility",<br />
+- in the definition of "catastrophic release", "presents imminent and substantial endangerment to public health and the environment" for "presents serious danger to employees in the workplace", and
+- for contractors, 40 CFR 68.87(b)(3), "the applicable provisions of subpart E [Emergency Response]" for "the applicable provisions of the emergency action plan", in the list of information that needs to be explained to contractors, which would typically only be relevant to emergency-response contractors;<br />
 Also, compared to the OSHA PSM standard, the Program 3 Prevention Program doesn\'t have:<br />
 - the phrase "in the workplace" or "on employees in the workplace" in the PHA content and incident investigation applicability requirements and<br />
 - any injury and illness log requirement for contractors resembling 29 CFR 1910.119(h)(2)(vi).</p><p>

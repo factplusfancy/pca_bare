@@ -634,7 +634,6 @@ $Schema = array(
     't0obsresult' => array( // No "by who" and "when" fields below, they are covered by history table.
         'k0obsresult', // Less than 100000 for templates.
         'k0audit',
-        'k0obstopic',
         'k0obsmethod',
         'c5_obstopic_id', // c5obstopic may be compressors, c5_obstopic_id may be Compressor 2 or an asset ID.
         'c6obsmethod_as_done', // t0obsmethod:c6obsmethod may change, so record here how actually done for the recorded c6obsresult.

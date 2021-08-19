@@ -470,16 +470,24 @@ $AmmoniaRefrigPSMAuditOm = array(
         'k0obsmethod' => $NH3ROm[56]['k0obsmethod'],
     ),
     118 => array(
-        'k0obstopic' => $NH3ROt[21]['k0obstopic'], // Refrigerating-Machinery Rooms Tour
+        'k0obstopic' => $NH3ROt[1]['k0obstopic'], // People with Management Responsibilities
         'k0obsmethod' => $NH3ROm[57]['k0obsmethod'],
     ),
     119 => array(
-        'k0obstopic' => $NH3ROt[22]['k0obstopic'], // Industrial Occupancies Tour
+        'k0obstopic' => $NH3ROt[21]['k0obstopic'], // Refrigerating-Machinery Rooms Tour
         'k0obsmethod' => $NH3ROm[57]['k0obsmethod'],
     ),
     120 => array(
+        'k0obstopic' => $NH3ROt[22]['k0obstopic'], // Industrial Occupancies Tour
+        'k0obsmethod' => $NH3ROm[57]['k0obsmethod'],
+    ),
+    121 => array(
         'k0obstopic' => $NH3ROt[23]['k0obstopic'], // Roofs and Outside Tour
         'k0obsmethod' => $NH3ROm[57]['k0obsmethod'],
+    ),
+    122 => array(
+        'k0obstopic' => $NH3ROt[7]['k0obstopic'], // Compliance-Practice Descriptions and Miscellaneous Records
+        'k0obsmethod' => $NH3ROm[58]['k0obsmethod'],
     )
 );
 foreach ($AmmoniaRefrigPSMAuditOm as $K => $V) {

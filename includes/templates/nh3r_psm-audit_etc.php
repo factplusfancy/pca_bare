@@ -147,10 +147,11 @@ For design and building codes, the editions in effect when the permits were appr
 (3) the supports for piping and equipment of the '.HAZSUB_PROCESS_NAME_ZFPF.', if a change significantly increased their loads. 
 
 The compliance verifications included with this report cite only the OSHA PSM standard. The EPA Program 3 Prevention Program requirements are nearly identical; the Program 3 Prevention Program substitutes:
-- "owners and operators" for "employers",
+- "owner or operator" for "employer",
 - "regulated substance" for "highly hazardous chemical",
-- "stationary source" for "facility", and
-- in the definition of "catastrophic release", "presents imminent and substantial endangerment to public health and the environment" for "presents serious danger to employees in the workplace";
+- "stationary source" for "facility", 
+- in the definition of "catastrophic release", "presents imminent and substantial endangerment to public health and the environment" for "presents serious danger to employees in the workplace, and
+- for contractors, 40 CFR 68.87(b)(3), "the applicable provisions of subpart E [Emergency Response]" for "the applicable provisions of the emergency action plan", in the list of information that needs to be explained to contractors, which would typically only be relevant to emergency-response contractors";
 Also, compared to the OSHA PSM standard, the Program 3 Prevention Program doesn\'t have:
 - the phrase "in the workplace" or "on employees in the workplace" in the PHA content and incident investigation applicability requirements and
 - any injury and illness log requirement for contractors resembling 29 CFR 1910.119(h)(2)(vi).

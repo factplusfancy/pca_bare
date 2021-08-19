@@ -65,15 +65,19 @@ if (isset($_POST['setup'])) {
     }
     $DBMSresource = $Zfpf->connect_instance_1s($_POST['dbms_admin_username'], $_POST['dbms_admin_password'], FALSE); // FALSE here indicates no database instance.
     echo ' done.<br />';
-    // TO DO FOR PRODUCTION VERSION - START - determine if this needed based on server defaults.
-    // This is MySQL specific and requires MyQSL SUPER privilege, which Google Cloud SQL -- the != /cloudsql/ case below -- doesn't allow.
-    // But Google Cloud SQL already uses innodb with Barracuda... app works there.
-    // If applicable, ensure MySQL global variables are set to allow tables with many columns (to avoid "Row size too large (> 8126)" MySQL error).
+    // TO DO FOR PRODUCTION VERSION - START - determine if this needed based on server configuration.
+    // If applicable, ensure MySQL global variables are set to allow tables with many columns (to avoid "Row size too large (> 8126)" MySQL or MariaDB error).
+    // Below is pre-2020 MySQL specific and requires MyQSL SUPER privilege
+    // Google Cloud SQL already uses innodb with Barracuda or equivalent ... app works there.
+    // In MariaDB 10.2.2 and later, the default file format is Barracuda and Antelope is deprecated.
+    // In MariaDB 10.3.30 default storage engine is InnoDB Barracuda with innodb_file_per_table = ON
+    /*
     if (DBMS_NAME_ZFPF == 'mysqli' and substr(DBMS_SOCKET_ZFPF, 0, 10)  != '/cloudsql/') {
         if (!$Zfpf->query_1s($DBMSresource, 'SET GLOBAL innodb_file_format = Barracuda')) exit; // Don't save and exit.
         if (!$Zfpf->query_1s($DBMSresource, 'SET GLOBAL innodb_file_format_max = Barracuda')) exit; // Don't save and exit.
         if (!$Zfpf->query_1s($DBMSresource, 'SET GLOBAL innodb_file_per_table = ON')) exit; // Don't save and exit.
     }
+    */
     // TO DO FOR PRODUCTION VERSION - END - determine if this needed based on server defaults.
     $CreateDatabaseInstance = TRUE; // TO DO FOR PRODUCTION VERSION if database instance already created, change to FALSE.
     if ($CreateDatabaseInstance) {

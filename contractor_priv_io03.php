@@ -30,7 +30,7 @@ $htmlFormArray = array(
         - name and employer of the contractor individual,<br />
         - date of the training, and<br />
         - means used to verify that the contractor individual understood the training.<br />
-        Either facility-specific training (recorded here) or general training (recorded with the user-contractor record) shall cover:<br />
+        <b>Either facility-specific training (recorded here) or general training (recorded with the user-contractor record) shall cover:</b><br />
         (1) facility emergency-plan training, appropriate for where and what this individual is authorized to go and do, at a minimum:<br />
         (1.1) how to call for help in emergencies,<br />
         (1.2) recognizing facility alarms,<br />
@@ -55,11 +55,11 @@ $htmlFormArray = array(
         'upload_files'
     ),
     'c5process_priv' => array(
-        '<a id="c5process_priv"></a><b>Process Privileges.</b> Optional description of specific process areas that this contractor individual may enter',
+        '<a id="c5process_priv"></a><b>Process Privileges.</b> Optional description of specific process areas that this contractor individual may enter and the work they may do there',
         ''
     ),
 	'c5job_site_priv' => array(
-        '<a id="c5job_site_priv"></a><b>Job Site Privileges.</b> Optional description of specific job sites that this contractor individual may enter',
+        '<a id="c5job_site_priv"></a><b>Job Site Privileges.</b> Optional description of specific job sites that this contractor individual may enter and the work they may do there',
         ''
     ),
 	'c6notes' => array(
@@ -109,7 +109,7 @@ if (isset($_POST['contractor_priv_history_o1'])) {
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/HistoryGetZfpf.php';
     $HistoryGetZfpf = new HistoryGetZfpf;
     list($SR, $RR) = $HistoryGetZfpf->one_row_h($Zfpf, 't0contractor_priv', $_SESSION['Selected']['k0contractor_priv']);
-    $HistoryGetZfpf->selected_changes_html_h($Zfpf, $SR, $RR, 'History of Entrance Privileges and Records of a Contractor Individual', 'contractor_priv_io03.php', 'contractor_priv_o1'); // This echos and exits.
+    $HistoryGetZfpf->selected_changes_html_h($Zfpf, $SR, $RR, 'History of Entrance and Work Privileges and Records of a Contractor Individual', 'contractor_priv_io03.php', 'contractor_priv_o1'); // This echos and exits.
 }
 
 // Download files.
@@ -148,7 +148,7 @@ if (isset($_POST['contractor_priv_o1'])) {
             $_SESSION['Selected'] = $SR[0];
         else { // Echo HTML with i0n button
             echo $Zfpf->xhtml_contents_header_1c().'<h2>
-            Entrance Privileges and Records of a Contractor Individual</h2><p>
+            Entrance and Work Privileges and Records of a Contractor Individual</h2><p>
             <b>None found.</b> No record on this was found, for the contractor individual and facility that you selected.</p>';
             if ($User['GlobalDBMSPrivileges'] != LOW_PRIVILEGES_ZFPF) // Need at least INSERT global privileges to start a new record.
                 echo '<p>
@@ -173,7 +173,7 @@ if (isset($_POST['contractor_priv_o1'])) {
     $ContractorIndividual = $Zfpf->user_job_info_1c($_SESSION['Scratch']['t0user_facility']['k0user']);
     $Display['k0user_facility'] = $ContractorIndividual['NameTitleEmployerWorkEmail'];
 	echo $Zfpf->xhtml_contents_header_1c().'<h2>
-    Entrance Privileges and Records of a Contractor Individual</h2>
+    Entrance and Work Privileges and Records of a Contractor Individual</h2>
     <form action="user_io03.php" method="post"><p>
         <input type="submit" name="user_o1" value="View emergency and personal contacts" /></p>
     </form>
@@ -272,7 +272,7 @@ if (isset($_SESSION['Selected']['k0contractor_priv'])) {
     if (isset($Display) and isset($_SESSION['Scratch']['htmlFormArray'])) { // This is simplification instead of repeating above $_POST cases or nesting within them.
         // Create HTML form
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
-        Entrance Privileges and Records of a Contractor Individual</h2>
+        Entrance and Work Privileges and Records of a Contractor Individual</h2>
         <form action="contractor_priv_io03.php" method="post" enctype="multipart/form-data" >'; // upload_files special case 2 of 3. To upload files via PHP, the following form attributes are required: method="post" enctype="multipart/form-data"
         echo $Zfpf->make_html_form_1e($Zfpf->decrypt_decode_1c($_SESSION['Scratch']['htmlFormArray']), $Display);
         echo '<p>
@@ -320,7 +320,7 @@ if (isset($_SESSION['Selected']['k0contractor_priv'])) {
         $Zfpf->close_connection_1s($DBMSresource);
         unset($_SESSION['Post']);
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
-        Entrance Privileges and Records of a Contractor Individual</h2><p>
+        Entrance and Work Privileges and Records of a Contractor Individual</h2><p>
         The information you input and reviewed has been recorded in the contractor-individual\'s record for the currently selected facility.</p>
         <form action="contractor_priv_io03.php" method="post"><p>
             <input type="submit" name="contractor_priv_o1" value="Back to record" /></p>

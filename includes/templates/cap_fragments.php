@@ -1180,7 +1180,7 @@ $cap_fragments = array(
         'c5name' => $Zfpf->encrypt_1c('Safe Work Practices and Access Control'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('40 CFR 68.87(b)(4)'),
-        'c6quote' => $Zfpf->encrypt_1c('The owner or operator shall develop and implement safe work practices consistent with [40 CFR] 68.69(d), to control the entrance, presence, and exit of the contract owner or operator and contract employees in covered process areas.'),
+        'c6quote' => $Zfpf->encrypt_1c('The owner or operator shall develop and implement safe work practices consistent with [40 CFR] 68.69(d), to control the entrance, presence, and exit of the contract owner or operator and contract employees in covered process areas. [See also 40 CFR 68.69(d), which applies to contractors]'),
         'c5source' => $Zfpf->encrypt_1c('40 CFR Chapter I (2014-07-01)')
     ),
     165 => array(

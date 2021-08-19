@@ -1789,20 +1789,35 @@ class CoreZfpf {
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // This function returns the highest value in column $ColumnName of table $TableName, less than $MaxValue
+    // This function returns the highest value in column $ColumnName of table $TableName, 
+    // or the highest value less than or equal to $MaxValue
     // For what is meant by "highest", see https://www.php.net/manual/en/function.max.php 
     // It may be used to get the highest primary key in a database table, including the keys below a $MaxValue indicating a template or sample entry.
     function get_highest_in_table($DBMSresource, $ColumnName, $TableName, $MaxValue = FALSE) {
+        $ColumnValues = array();
         list($SR, $RR) = $this->select_sql_1s($DBMSresource, $TableName, 'No Condition -- All Rows Included', array($ColumnName));
-        if ($RR) {
+        if (!$RR)
+            return 0; // Case when table has no rows.
+        elseif (!$MaxValue) {
             foreach ($SR as $V) {
-                if (!$MaxValue or $V[$ColumnName] <= $MaxValue)
+                if (isset($V[$ColumnName]) and $V[$ColumnName])
                     $ColumnValues[] = $V[$ColumnName];
             }
-            return max($ColumnValues);
+            if (!$ColumnValues)
+                return 0; // Case when there are only 0, '0', NULL, FALSE, or '' (empty string) values in the $ColumnName database column.
+            else
+                return max($ColumnValues);
         }
-        else
-            return 0; // Case when table has no rows.
+        else {
+            foreach ($SR as $V) {
+                if (isset($V[$ColumnName]) and $V[$ColumnName] and $V[$ColumnName] <= $MaxValue)
+                    $ColumnValues[] = $V[$ColumnName];
+            }
+            if (!$ColumnValues)
+                return 0; // Case when there are no values <= $MaxValue, except possibly 0, '0', NULL, FALSE, or '' (empty string) values.
+            else
+                return max($ColumnValues);
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1908,11 +1923,11 @@ class CoreZfpf {
                     case 'MDB2':
                         return 'text'; // VARBINARY treated like text. Potentially DBMS SPECIFIC INSTRUCTION
                     case 'mssql':
-                        return 'varbinary(255)';
+                        return 'image';
                     case 'mysqli':
-                        return 'VARBINARY(255)';
+                        return 'BLOB';
                     case 'oci8':
-                        return 'RAW(255)';
+                        return 'BLOB';
                 }
             case '6':
                 switch ($DBMStype) {

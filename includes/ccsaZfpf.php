@@ -109,7 +109,7 @@ class ccsaZfpf {
         elseif ($Context == 'obsresult') {
             // $TableRoot is not used below, so it can be left in its default value.
             $htmlFormArray = array(
-                'c5_obstopic_id' => array('<a id="c5_obstopic_id"></a>Specific-observation-topic unique identifier (topic ID). Use exactly the same characters for each topic ID, whenever written', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF),
+                'c5_obstopic_id' => array('<a id="c5_obstopic_id"></a>Observation object unique identifier (object ID).', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF),
                 'c6obsmethod_as_done' => array('<a id="c6obsmethod_as_done"></a>Observation method, as done', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
                 'c6obsresult' => array('<a id="c6obsresult"></a>Results', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
                 'c6bfn_supporting' => array('<a id="c6bfn_supporting"></a>Supporting documents', '', MAX_FILE_SIZE_ZFPF, 'upload_files')

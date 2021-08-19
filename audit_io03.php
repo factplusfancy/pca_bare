@@ -47,7 +47,7 @@ if (isset($_SESSION['StatePicked']['t0process']['k0process'])) { // This app req
 // $htmlFormArray is specified in the PSM-CAP App Standards, in file 0read_me_psm_cap_app_standards.txt.
 $htmlFormArray = array(
     'c5name' => array('<a id="c5name"></a>Report type. Used in report headings', REQUIRED_FIELD_ZFPF, C5_MAX_BYTES_ZFPF),
-    'c5ts_as_of' => array('<a id="c5ts_as_of"></a>"As of" date and time, approximately marking when observations were made, such as when the report leader, below, fisnished giving a preliminary spoken or written report to the reponsible Owner/Operator represenative', ''), // This field isn\'t required because the "as of" date may not be known initially; for example, a user may start a report before the exit meeting.
+    'c5ts_as_of' => array('<a id="c5ts_as_of"></a>"As of" date and time, approximately marking when observations were made, such as when the report leader, below, finished giving a preliminary spoken or written report to the reponsible Owner/Operator represenative', ''), // This field isn\'t required because the "as of" date may not be known initially; for example, a user may start a report before the exit meeting.
     'k0user_of_leader' => array('<a id="k0user_of_leader"></a>Leader for this report and the observations and conclusions it describes (the report leader)', ''),
     'c6audit_scope' => array('<a id="c6audit_scope"></a>Scope', REQUIRED_FIELD_ZFPF, C6LONG_MAX_BYTES_ZFPF),
     'c6bfn_act_notice' => array('<a id="c6bfn_act_notice"></a>Activity notice(s) posted', '', MAX_FILE_SIZE_ZFPF, 'upload_files'),
@@ -60,7 +60,7 @@ $htmlFormArray = array(
 );
 
 // Left-hand contents
-if (isset($_POST['audit_i0n']) or isset($_POST['audit_template']) or isset($_POST['audit_o1']) or isset($_GET['audit_o1']) or isset($_POST['audit_o1_from']) or isset($_POST['undo_confirm_post_1e']) or isset($_POST['modify_confirm_post_1e']) or isset($_POST['problem_c6bfn_files_upload_1e']) or isset($_POST['leader_approval_1']))
+if (isset($_POST['audit_i0n']) or isset($_POST['audit_template']) or isset($_POST['audit_o1']) or isset($_GET['audit_o1']) or isset($_GET['audit_o1_from']) or isset($_POST['undo_confirm_post_1e']) or isset($_POST['modify_confirm_post_1e']) or isset($_POST['problem_c6bfn_files_upload_1e']) or isset($_GET['leader_approval_1']))
     $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors'] = array(
         'c5name' => 'Type of report',
         'c5ts_as_of' => '"As of" date and time',
@@ -76,6 +76,203 @@ if (isset($_POST['audit_i0n']) or isset($_POST['audit_template']) or isset($_POS
     );
 
 // The if clauses below determine which HTML button the user pressed.
+
+// Import a draft report from a JSON file.
+// TO DO IF NEEDED IN THE FUTURE -- START
+    // The audit_json_import code below assumes that k0fragment, k0obsmethod, and k0obstopic in the imported JSON 
+    // are numbered exactly like in the PSM-CAP App template files and point to the same content. In other words, 
+    // the code below assumes that there have been neither primary key (k0) changes nor unwanted content changes 
+    // to the template files below since the report, that the JSON was exported from, was first created.
+    // includes/templates/cap_fragments.php
+    // includes/templates/nh3r_general_duty.php (the general duty rule fragments)
+    // includes/templates/psm_fragments.php
+    // includes/templates/nh3r_obsmethod.php (these are sample observation methods)
+    // includes/templates/nh3r_obstopic.php
+    //
+    // The export_audit_json_1 code below exports all t0fragment, t0obsmethod, and t0obstopic data, so JSON files created by it
+    // could be used to import the rule fragments, sample observation methods, and observation topics in the JSON file,
+    // but code for this additional importing would need to be written.
+// TO DO IF NEEDED IN FUTURE -- END
+if (isset($_POST['audit_json_import'])) {
+    // Additional security check
+    if (!isset($_SESSION['StatePicked']['t0process']['k0process']) or $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF or $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
+    $ArrayAudit = '';
+    $ProblemMessage = '';
+    if (isset($_FILES['file_1_audit_json']['tmp_name'])) {
+        $Zfpf->files_array_check_1e('audit_json', 'practice_o1.php'); // This function echos and exits if there is a problem.
+        $ArrayAudit = $Zfpf->read_file_1e($_FILES['file_1_audit_json']['tmp_name']); // Returns empty string (false) on failure.
+    }
+    if (!$ArrayAudit)
+        $ProblemMessage = '<p>The app couldn\'t read the JSON file you selected.</p>'; // Most errors, like no file selected, are caught above by FilesZfpf::files_array_check_1e
+    $ArrayAudit = json_decode($ArrayAudit, TRUE); // The second parameter must be TRUE to return an array.
+    if (!isset($ArrayAudit['t0audit']))
+        $ProblemMessage .= '<p>A t0audit field was not found in the JSON file you selected.</p>';
+    elseif (count($ArrayAudit['t0audit']) != 1)
+        $ProblemMessage .= '<p>More than one t0audit fields were found in the JSON file you selected. Currently, only one report can be imported per JSON file.</p>';
+    if ($ProblemMessage) {
+        echo $Zfpf->xhtml_contents_header_1c().'<h2>
+        Problem importing draft report from JSON file</h2>
+        '.$ProblemMessage.'
+        <p>
+        Contact your supervisor or an app admin for assistance.</p>
+        <form action="practice_o1.php" method="post"><p>
+            <input type="submit" value="Go back" /></p>
+        </form>
+        '.$Zfpf->xhtml_footer_1c();
+        $Zfpf->save_and_exit_1c();
+    }
+    $EncryptedNobody = $Zfpf->encrypt_1c('[Nobody is editing.]');
+    // t0audit
+    $ImportFields = array('c5name', 'c6howtoinstructions', 'c6background', 'c6audit_scope', 'c6audit_method');
+    $ImportedAuditKey = key($ArrayAudit['t0audit']); // Verified above that $ArrayAudit['t0audit'] holds exactly one value.
+    $Uploader = $Zfpf->current_user_info_1c();
+    $AuditRow = array(
+        'k0audit' => time().mt_rand(1000000, 9999999),
+        'k0process' => $_SESSION['StatePicked']['t0process']['k0process'],
+        'c5name' => $EncryptedNothing,
+        'c5ts_as_of' => $EncryptedNothing,
+        'k0user_of_leader' => $_SESSION['t0user']['k0user'], // Default leader is the user who creates the record here. Can change later.
+        'c6bfn_act_notice' => $EncryptedNothing,
+        'c5ts_leader' => $EncryptedNothing,
+        'c6nymd_leader' => $EncryptedNothing,
+        'k0user_of_certifier' => 0,
+        'c5ts_certifier' => $EncryptedNothing,
+        'c6nymd_certifier' => $EncryptedNothing,
+        'c6howtoinstructions' => $EncryptedNothing,
+        'c6background' => $EncryptedNothing,
+        'c6audit_scope' => $EncryptedNothing,
+        'c6audit_method' => $EncryptedNothing,
+        'c6auditor_qualifications' => $EncryptedNothing,
+        'c6bfn_auditor_notes' => $EncryptedNothing,
+        'c6suggestions' => $EncryptedNothing,
+        'c5who_is_editing' => $EncryptedNobody
+    );
+    foreach ($ImportFields as $Vfn) { // fn stands for field name -- aka database table column name.
+        if (isset($ArrayAudit['t0audit'][$ImportedAuditKey][$Vfn]))
+            $AuditRow[$Vfn] = $Zfpf->encrypt_1c($ArrayAudit['t0audit'][$ImportedAuditKey][$Vfn]); // $ArrayAudit was decoded above from a JSON file, whose elements cannot be encrypted, so encrypt now. (If the entire JSON file was encrypted, it would have needed to be decrypted before uploading (importing) to the app. A purpose of JSON file export/import is to create a file that stands alone, independent from the app or a particular deployment of the app, so the app's encryption cannot be used for it.)
+    }
+    $DBMSresource = $Zfpf->credentials_connect_instance_1s();
+    $Zfpf->insert_sql_1s($DBMSresource, 't0audit', $AuditRow);
+    // t0audit_obstopic
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    if (isset($ArrayAudit['t0audit_obstopic'])) foreach ($ArrayAudit['t0audit_obstopic'] as $V) {
+        if (isset($V['k0obstopic'])) { // Don't bother inserting unless this is set.
+            $NewRow['k0audit_obstopic'] = time().mt_rand(100, 999).$Count++; // Allows up to 10,000 database-table rows while avoiding conflicts for these inserts.
+            $NewRow['k0audit'] = $AuditRow['k0audit'];
+            $NewRow['k0obstopic'] = $V['k0obstopic'];
+            $Zfpf->insert_sql_1s($DBMSresource, 't0audit_obstopic', $NewRow, FALSE); // False means don't record in history because this is done for t0audit, which is adequate.
+        }
+    }
+    unset($NewRow);
+    // t0audit_fragment
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    if (isset($ArrayAudit['t0audit_fragment'])) foreach ($ArrayAudit['t0audit_fragment'] as $K => $V) {
+        if (isset($V['k0fragment'])) { // Don't bother inserting unless this is set.
+            $NewRow['k0audit_fragment'] = time().mt_rand(100, 999).$Count++;
+            $AuFMap[$K] = $NewRow['k0audit_fragment']; // $K is the old k0audit_fragment, $NewRow['k0audit_fragment'] is the new k0audit_fragment.
+            $NewRow['k0audit'] = $AuditRow['k0audit'];
+            $NewRow['k0fragment'] = $V['k0fragment'];
+            $Zfpf->insert_sql_1s($DBMSresource, 't0audit_fragment', $NewRow, FALSE);
+        }
+    }
+    unset($NewRow);
+    // t0audit_fragment_obsmethod
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    if (isset($ArrayAudit['t0audit_fragment_obsmethod'])) foreach ($ArrayAudit['t0audit_fragment_obsmethod'] as $V) {
+        $AuFKeyOld = $V['k0audit_fragment'];
+        // $ActionKeyOld = $V['k0action'];
+        if (isset($AuFMap[$AuFKeyOld]) and isset($V['k0obsmethod'])) {
+            $NewRow['k0audit_fragment_obsmethod'] = time().mt_rand(100, 999).$Count++;
+            $NewRow['k0audit_fragment'] = $AuFMap[$AuFKeyOld];
+            $NewRow['k0obsmethod'] = $V['k0obsmethod'];
+            $Zfpf->insert_sql_1s($DBMSresource, 't0audit_fragment_obsmethod', $NewRow, FALSE);
+        }
+    }
+    unset($NewRow);
+    // t0obsresult
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    $ImportFields = array('c5_obstopic_id', 'c6obsmethod_as_done', 'c6obsresult', 'c6bfn_supporting');
+    if (isset($ArrayAudit['t0obsresult'])) foreach ($ArrayAudit['t0obsresult'] as $K => $V) {
+        if (isset($V['k0obsmethod'])) { // Don't bother inserting unless this is set.
+            $NewRow['k0obsresult'] = time().mt_rand(100, 999).$Count++;
+            $OrMap[$K] = $NewRow['k0obsresult']; // $K is the old k0obsresult, $NewRow['k0obsresult'] is the new k0obsresult.
+            $NewRow['k0audit'] = $AuditRow['k0audit'];
+            $NewRow['k0obsmethod'] = $V['k0obsmethod'];
+            foreach ($ImportFields as $Vfn) {
+                if (isset($V[$Vfn]))
+                    $NewRow[$Vfn] = $Zfpf->encrypt_1c($V[$Vfn]);
+                else
+                    $NewRow[$Vfn] = $EncryptedNothing;
+            }
+            $Zfpf->insert_sql_1s($DBMSresource, 't0obsresult', $NewRow, FALSE);
+        }
+    }
+    unset($NewRow);
+    // t0action -- typically not in templates, but needed to import an existing report into a new deployment...
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    $ImportFields = array('c5name', 'c5priority', 'c5affected_entity', 'c6deficiency', 'c6details');
+    if (isset($ArrayAudit['t0action'])) foreach ($ArrayAudit['t0action'] as $K => $V) {
+        $NewRow['k0action'] = time().mt_rand(100, 999).$Count++;
+        $ActionMap[$K] = $NewRow['k0action'];
+        $NewRow['c5status'] = $Zfpf->encrypt_1c('Draft proposed action');
+        $NewRow['k0affected_entity'] = 0; // Update below, if c5affected_entity is imported for an action.
+        $NewRow['c5ts_target'] = $EncryptedNothing;
+        $NewRow['k0user_of_leader'] = 0;
+        $NewRow['c5ts_leader'] = $EncryptedNothing;
+        $NewRow['c6nymd_leader'] = $EncryptedNothing;
+        $NewRow['c6notes'] = $EncryptedNothing;
+        $NewRow['c6bfn_supporting'] = $EncryptedNothing;
+        $NewRow['k0user_of_ae_leader'] = -2;
+        $NewRow['c5ts_ae_leader'] = $EncryptedNothing;
+        $NewRow['c6nymd_ae_leader'] = $EncryptedNothing;
+        foreach ($ImportFields as $Vfn) {
+            if (isset($V[$Vfn])) {
+                $NewRow[$Vfn] = $Zfpf->encrypt_1c($V[$Vfn]);
+                if ($Vfn == 'c5affected_entity') {
+                    if ($V[$Vfn] == 'Owner-wide')
+                        $NewRow['k0affected_entity'] = $_SESSION['StatePicked']['t0owner']['k0owner'];
+                    if ($V[$Vfn] == 'Facility-wide')
+                        $NewRow['k0affected_entity'] = $_SESSION['StatePicked']['t0facility']['k0facility'];
+                    if ($V[$Vfn] == 'Process-wide')
+                        $NewRow['k0affected_entity'] = $_SESSION['StatePicked']['t0process']['k0process'];
+                }
+            }
+            else
+                $NewRow[$Vfn] = $EncryptedNothing;
+        }
+        $Zfpf->insert_sql_1s($DBMSresource, 't0action', $NewRow, FALSE);
+    }
+    unset($NewRow);
+    // t0obsresult_action
+    $NewRow['c5who_is_editing'] = $EncryptedNobody;
+    $Count = 0;
+    if (isset($ArrayAudit['t0obsresult_action'])) foreach ($ArrayAudit['t0obsresult_action'] as $V) {
+        $OrKeyOld = $V['k0obsresult'];
+        $ActionKeyOld = $V['k0action'];
+        if (isset($OrMap[$OrKeyOld]) and isset($ActionMap[$ActionKeyOld])) {
+            $NewRow['k0obsresult_action'] = time().mt_rand(100, 999).$Count++;
+            $NewRow['k0obsresult'] = $OrMap[$OrKeyOld];
+            $NewRow['k0action'] = $ActionMap[$ActionKeyOld];
+            $Zfpf->insert_sql_1s($DBMSresource, 't0obsresult_action', $NewRow, FALSE);
+        }
+    }
+    $Zfpf->close_connection_1s($DBMSresource);
+    echo $Zfpf->xhtml_contents_header_1c().'<h2>
+    Importing report from a JSON file complete.</h2>
+    <p>
+    Review the report to verify this import was complete and correct.</p>
+    <form action="practice_o1.php" method="post"><p>
+        <input type="submit" value="Go back" /></p>
+    </form>
+    '.$Zfpf->xhtml_footer_1c();
+    $Zfpf->save_and_exit_1c();
+}
 
 // generate activity notice code, put before i0n initialization of $_SESSION['Selected'], for security check below.
 if (isset($_GET['act_notice_1'])) {
@@ -121,6 +318,18 @@ if (isset($_POST['audit_i0n']) or isset($_POST['audit_template'])) {
         $CheckedPost = $Zfpf->post_length_blank_1c('selected');
         if (!is_numeric($CheckedPost) or !isset($_SESSION['SelectResults']['t0audit'][$CheckedPost]['k0audit'])) // See audit_i1m.php
             $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
+        if ($_SESSION['SelectResults']['t0audit'][$CheckedPost]['k0user_of_certifier'] == 0 and $_SESSION['SelectResults']['t0audit'][$CheckedPost]['k0audit'] >= 100000) { // See schema
+            unset($_SESSION['Selected']);
+            echo $Zfpf->xhtml_contents_header_1c().'<h2>
+            You selected a draft audit report</h2>
+            <p>
+            Draft audit reports may be created from issued or template audit reports, but not from draft reports.</p>
+            <form action="practice_o1.php" method="post"><p>
+                <input type="submit" value="Go back" /></p>
+            </form>
+            '.$Zfpf->xhtml_footer_1c();
+            $Zfpf->save_and_exit_1c();
+        }
         // Overwrite the array elements below with their template values. Other elements remain as initialized by i0n code.
         $_SESSION['Selected']['c5name'] = $_SESSION['SelectResults']['t0audit'][$CheckedPost]['c5name'];
         $_SESSION['Selected']['c6nymd_leader'] = $Zfpf->encrypt_1c($_SESSION['SelectResults']['t0audit'][$CheckedPost]['k0audit']); // See schema and $SourceTemplateKey below.
@@ -146,7 +355,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
 }
 
 // history_o1 code
-if (isset($_POST['audit_history_o1'])) {
+if (isset($_GET['audit_history_o1'])) {
     if (!isset($_SESSION['Selected']['k0audit']))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
     require INCLUDES_DIRECTORY_PATH_ZFPF.'/HistoryGetZfpf.php';
@@ -216,19 +425,14 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
     '.$Process['AEFullDescription'].'</h2>
     '.$Zfpf->select_to_o1_html_1e($htmlFormArray, 'audit_io03.php', $_SESSION['Selected'], $Display);
     if ($_SESSION['Selected']['k0audit'] >= 100000) // Templates cannot have actions.
-        $Message .= '
-        <form action="audit_io03.php" method="post">
-            <b>View <a class="toc" href="glossary.php#actions" target="_blank">actions</a></b>, proposed or referenced.<br />
-            <input type="submit" name="view_audit_actions" value="Actions" /></p>
-        </form>';
-    $Message .= '<form action="audit_fragment_io03.php" method="post"><p>
-        <b>View compliance verifications</b> for <a class="toc" href="glossary.php#fragment" target="_blank">rule fragments.</a><br />
-        <input type="submit" name="audit_fragment_i1m" value="Compliance verifications" /></p>
-    </form>
-    <form action="obsresult_io03.php" method="post"><p><p><a id="oacv_buttons"></a>
-        <b>View or input <a class="toc" href="glossary.php#obstopic" target="_blank">observations</a></b> potentially needed and actually made for this report.<br />
-        <input type="submit" name="obsresult_i1m" value="Observations" /></p>
-    </form>';
+        $Message .= '<p>
+        <a class="toc" href="audit_io03.php?view_audit_actions"><b>Actions, proposed or referenced, view.</b></a><br />
+        <a href="glossary.php#actions" target="_blank">Actions</a> may include observed deficiencies and resolution options.</p>';
+    $Message .= '<p>
+        <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1"><b>Compliance verifications, view.</b></a><br />
+        Lists <a href="glossary.php#fragment" target="_blank">rule fragments</a> and observations made to check compliance with them.</p><p>
+        <a class="toc" href="obsresult_io03.php?obsresult_i1m"><b>Observations, view or input.</b></a><br />
+        Potentially needed and any actually made <a href="glossary.php#obstopic" target="_blank">observations topics, sample methods, as-done methods, and results</a></p>';
     // Check if anyone else is editing the selected row and check user privileges. See messages to the user below regarding privileges.
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
     if ($who_is_editing != '[Nobody is editing.]')
@@ -240,54 +444,43 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
                 $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
             if ($_SESSION['Selected']['k0user_of_certifier'] == 1) {
                 if ($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'])
-                    $Message .= '
-                    <form action="audit_io03.php" method="post"><p>
-                        Retract this report, including its observations.<br />
-                        <input type="submit" name="leader_approval_c1" value="Retract report"/></p>
-                    </form>';
+                    $Message .= '<p>
+                    <a class="toc" href="audit_io03.php?leader_approval_c1">Retract this report, including its observations.</a></p>';
                 if ($UserIsProcessPSMLeader)
-                    $Message .= '
-                    <form action="audit_io03.php" method="post"><p>
-                        <input type="submit" name="certifier_approval_1" value="Owner/Operator certification"/></p>
-                    </form>';
+                    $Message .= '<p>
+                    <a class="toc" href="audit_io03.php?certifier_approval_1">Owner/Operator certification</a></p>';
             }
             else {
                 $Message .= $Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_certifier']);
                 if ($UserIsProcessPSMLeader)
-                    $Message .= '
-                    <form action="audit_io03.php" method="post"><p>
-                        <input type="submit" name="certifier_approval_c1" value="Cancel above certification"/></p>
-                    </form>';
+                    $Message .= '<p>
+                    <a class="toc" href="audit_io03.php?certifier_approval_c1">Cancel above certification.</a></p>';
             }
         }
         else {
-            $Message .= '
-            <form action="audit_io03.php" method="post">';
             if ($_SESSION['Selected']['k0audit'] >= 100000 or $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes') // Only app admins can edit templates.
                 $Message .= '<p>
-                <input type="submit" name="audit_o1_from" value="Update introductory text" /></p>';
+                <a class="toc" href="audit_io03.php?audit_o1_from">Update introductory text.</a></p>';
             if ($_SESSION['Selected']['k0audit'] < 100000) // A web_app_admin viewing a template.
                 $Message .= '<p>
-                This is a template report. It cannot have actions. Templates cannot be issued, and only app admins can edit them.</p>';
+                This is a template report. It cannot have actions. Templates cannot be issued, and only app admins can edit or export them.</p>';
             elseif ($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'] or $UserIsProcessPSMLeader) {
                 if ($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'])
                     $Message .= '<p>
-                    Issue this report, including its observations and proposed actions, and permanently log the proposed actions in this app\'s action register.<br />
-                    <input type="submit" name="leader_approval_1" value="Issue report"/></p>'; // TO DO give option to issue report with rule-fragment compliance verifications as well.
+                    <a class="toc" href="audit_io03.php?leader_approval_1">Issue this report, including its observations and proposed actions, and permanently log the proposed actions in this app\'s action register.</a></p>'; // TO DO give option to issue report with rule-fragment compliance verifications as well.
                 else
                     $Message .= '<p>
-                    An report can only be issued by its report leader. You are not the recorded report leader.</p>';
+                    An audit report can only be issued by its report leader. You are not the recorded report leader.</p>';
                 if ($UserIsProcessPSMLeader)
                     $Message .= '<p>
-                    Change the leader for this report and the observations and conclusions it describes (the report leader)<br />
-                    <input type="submit" name="change_leader_1" value="Change the report leader"/></p>';
+                    <a class="toc" href="audit_io03.php?change_leader_1">Change the report leader, who can issue an audit report or retract one that hasn\'t been certified.</a></p>';
                 $Message .= '<p>
-                Discard this draft report, including its observations.<br />
-                <input type="submit" name="discard_draft_audit_1" value="Discard draft report"/></p>';
+                <a class="toc" href="audit_io03.php?discard_draft_audit_1">Discard this draft report, including its observations.</a></p>';
             }
-            $Message .= '
-            </form>';
         }
+        if ($_SESSION['Selected']['k0audit'] >= 100000 or $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) == 'Yes') // Only app admins can export templates. 
+            $Message .= '<p>
+            <a class="toc" href="audit_io03.php?export_audit_json_1">Export audit to JSON file</a></p>';
     }
     elseif (!$_SESSION['Selected']['k0user_of_certifier']) {
         if ($UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
@@ -301,13 +494,9 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
         $Message .= '<p>
         <b>Issued by: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']).'</b><br />
         This is not a draft report. Once a report has been issued by its report leader, the issued version cannot be changed. The report leader may retract the report and then it may be edited. Or, the action register allows resolving actions without completing them, via its "resolution method" field, if a proposed action turns out to be unneeded or counterproductive.</p>';
-    $Message .= '
-    <form action="audit_io03.php" method="post"><p>
-        <input type="submit" name="audit_history_o1" value="History of this record" /></p>
-    </form>
-    <form action="practice_o1.php" method="post"><p>
-        <input type="submit" value="Go back" /></p>
-    </form>';
+    $Message .= '<p>
+    <a class="toc" href="audit_io03.php?audit_history_o1">History of this record</a></p><p>
+    <a class="toc" href="practice_o1.php">Go back</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
@@ -323,8 +512,8 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     // Additional security check 1.
     if ($_SESSION['Selected']['k0audit'] >= 100000 and (!isset($_SESSION['StatePicked']['t0process']) or $_SESSION['Selected']['k0process'] != $_SESSION['StatePicked']['t0process']['k0process']))
         $Zfpf->eject_1c(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__);
-    if (isset($_POST['audit_o1_from']) or isset($_POST['leader_approval_1']))
-        $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records'); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error. Edit lock for isset($_POST['change_leader_1']) is done in change_leader_2, so it can be cleared in change_leader_1. Not needed for leader_approval_c1
+    if (isset($_GET['audit_o1_from']) or isset($_GET['leader_approval_1']))
+        $Zfpf->edit_lock_1c('audit', 'this report or one of its supporting records'); // This re-does SELECT query, checks edit lock, and if none, starts edit lock. In i0n case would trigger error. Edit lock for change_leader_1 is done in change_leader_2, so it can be cleared in change_leader_1. Not needed for leader_approval_c1
     // Get useful information
     if ($_SESSION['Selected']['k0audit'] < 100000)
         $Process['AEFullDescription'] = 'Not associated with a process because this is a template.';
@@ -332,7 +521,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         $ReportLeader = $Zfpf->user_job_info_1c($_SESSION['Selected']['k0user_of_leader']);
 
     // view_audit_actions code
-    if (isset($_POST['view_audit_actions'])) {
+    if (isset($_GET['view_audit_actions']) or isset($_POST['view_audit_actions'])) {
         // Additional security check -- none possible: privileges to view audit also allow viewing list of its actions.
         $Message = '<h2>';
         if ($ReportType)
@@ -357,10 +546,8 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         else
             $Message .= '<p>
             <b>None found.</b> No actions, proposed or referenced, were found in this report. Actions are added when documenting observations that find deficiencies, by users with proper privileges.</p>';
-        $Message .= '
-        <form action="audit_io03.php" method="post"><p>
-            <input type="submit" name="audit_o1" value="Go back" /></p>
-        </form>';
+        $Message .= '<p>
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
@@ -369,8 +556,98 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     if (($who_is_editing != '[A new database row is being created.]' and (!$EditAuth or ($_SESSION['Selected']['k0audit'] < 100000 and $Zfpf->decrypt_1c($_SESSION['t0user']['c5app_admin']) != 'Yes'))) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
         $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
 
+    // Export to JSON
+    if (isset($_GET['export_audit_json_1'])) {
+        $OmKeys = array();
+        $FKeys = array();
+        $AKeys = array();
+        $AuditKey = $_SESSION['Selected']['k0audit'];  // Use database-table keys as array keys to avoid conflicts
+        $ArrayAudit['t0audit'][$AuditKey] = $_SESSION['Selected'];
+        $DBMSresource = $Zfpf->credentials_connect_instance_1s();
+        $AuConditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit']);
+        list($SRAuOt, $RRAuOt) = $Zfpf->select_sql_1s($DBMSresource, 't0audit_obstopic', $AuConditions);
+        if ($RRAuOt) foreach ($SRAuOt as $VAuOt) {
+            $AuOtKey = $VAuOt['k0audit_obstopic'];
+            $ArrayAudit['t0audit_obstopic'][$AuOtKey] = $VAuOt;
+            $Conditions[0] = array('k0obstopic', '=', $VAuOt['k0obstopic']);
+            list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', $Conditions);
+            if ($RROt != 1)
+                error_log(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.'. '.@$RROt.' t0obstopic rows returned for k0obstopic = '.@$VAuOt['k0obstopic']);
+            if ($RROt) { // Regardless of error above, add first observation topic (Ot) to array that will be JSON encoded.
+                $OtKey = $SROt[0]['k0obstopic'];
+                $ArrayAudit['t0obstopic'][$OtKey] = $SROt[0];
+            }
+            list($SROtOm, $RROtOm) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic_obsmethod', $Conditions);
+            if ($RROtOm) foreach ($SROtOm as $VOtOm) {
+                $OtOmKey = $VOtOm['k0obstopic_obsmethod'];
+                $ArrayAudit['t0obstopic_obsmethod'][$OtOmKey] = $VOtOm;
+                if (!in_array($VOtOm['k0obsmethod'], $OmKeys)) {
+                    $OmKey = $VOtOm['k0obsmethod'];
+                    $OmKeys[] = $OmKey;
+                    $Conditions[0] = array('k0obsmethod', '=', $OmKey);
+                    list($SROm, $RROm) = $Zfpf->select_sql_1s($DBMSresource, 't0obsmethod', $Conditions);
+                    if ($RROm != 1)
+                        error_log(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.'. '.@$RROm.' t0obsmethod rows returned for k0obsmethod = '.@$OmKey);
+                    if ($RROm)
+                        $ArrayAudit['t0obsmethod'][$OmKey] = $SROm[0];
+                }
+            }
+        }
+        list($SRAuF, $RRAuF) = $Zfpf->select_sql_1s($DBMSresource, 't0audit_fragment', $AuConditions);
+        if ($RRAuF) foreach ($SRAuF as $VAuF) {
+            $AuFKey = $VAuF['k0audit_fragment'];
+            $ArrayAudit['t0audit_fragment'][$AuFKey] = $VAuF;
+            $Conditions[0] = array('k0audit_fragment', '=', $VAuF['k0audit_fragment']);
+            list($SRAuFOm, $RRAuFOm) = $Zfpf->select_sql_1s($DBMSresource, 't0audit_fragment_obsmethod', $Conditions);
+            if ($RRAuFOm) foreach ($SRAuFOm as $VAuFOm) {
+                $AuFOmKey = $VAuFOm['k0audit_fragment_obsmethod'];
+                $ArrayAudit['t0audit_fragment_obsmethod'][$AuFOmKey] = $VAuFOm;
+            }
+            if (!in_array($VAuF['k0fragment'], $FKeys)) {
+                $FKey = $VAuF['k0fragment'];
+                $FKeys[] = $FKey;
+                $Conditions[0] = array('k0fragment', '=', $FKey);
+                list($SRF, $RRF) = $Zfpf->select_sql_1s($DBMSresource, 't0fragment', $Conditions);
+                if ($RRF != 1)
+                    error_log(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.'. '.@$RRF.' t0fragment rows returned for k0fragment = '.@$FKey);
+                if ($RRF)
+                    $ArrayAudit['t0fragment'][$FKey] = $SRF[0];
+            }
+        }
+        list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $AuConditions);
+        if ($RROr) foreach ($SROr as $VOr) {
+            $OrKey = $VOr['k0obsresult'];
+            $ArrayAudit['t0obsresult'][$OrKey] = $VOr;
+            $Conditions[0] = array('k0obsresult', '=', $VOr['k0obsresult']);
+            list($SROrA, $RROrA) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult_action', $Conditions);
+            if ($RROrA) foreach ($SROrA as $VOrA) {
+                $OrAKey = $VOrA['k0obsresult_action'];
+                $ArrayAudit['t0obsresult_action'][$OrAKey] = $VOrA;
+            }
+            if (!in_array($VOr['k0action'], $AKeys)) {
+                $AKey = $VOr['k0action'];
+                $AKeys[] = $AKey;
+                $Conditions[0] = array('k0action', '=', $AKey);
+                list($SRA, $RRA) = $Zfpf->select_sql_1s($DBMSresource, 't0action', $Conditions);
+                if ($RRA != 1)
+                    error_log(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.'. '.@$RRA.' t0action rows returned for k0action = '.@$AKey);
+                if ($RRA)
+                    $ArrayAudit['t0action'][$AKey] = $SRA[0];
+            }
+        }
+        $Zfpf->close_connection_1s($DBMSresource);
+        $ArrayAudit = json_encode($Zfpf->decrypt_array_1c($ArrayAudit)); // Must decrypt before JSON encoding. json_encode returns false on failure.
+        if (!$ArrayAudit) {
+            $ArrayAudit = 'JSON encoding the process-safety audit failed.';
+            $LocalName = 'audit_json_encoding_failed_at_'.time().'.txt';
+        }
+        else
+            $LocalName = 'audit_'.$AuditKey.'_downloaded_at_'.time().'.json';
+        $Zfpf->download_one_file($ArrayAudit, $LocalName); // FilesZfpf::download_one_file echos and exits.
+    }
+
     // discard_draft_audit code
-    if (isset($_POST['discard_draft_audit_1'])) {
+    if (isset($_GET['discard_draft_audit_1'])) {
         // Additional security check.
         if (!$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
             $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
@@ -382,9 +659,9 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         The information in the draft report will remain in this app\'s history tables, until they are purged per the Owner/Operator\'s policies.</p><p>
         A draft report may only be discarded by its report leader or the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader.</p>
         <form action="audit_io03.php" method="post"><p>
-            <input type="submit" name="discard_draft_audit_2" value="Discard draft report" /></p><p>
-            <input type="submit" name="audit_o1" value="Go back" /></p>
-        </form>';
+            <input type="submit" name="discard_draft_audit_2" value="Discard draft report" /></p>
+        </form><p>
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
@@ -433,7 +710,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             list($SROrA, $RROrA) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult_action', $Conditions);
             if ($RROrA) foreach ($SROrA as $VOrA) {
                 $Conditions[0] = array('k0obsresult_action', '=', $VOrA['k0obsresult_action']);
-                $Affected = $Zfpf->delete_sql_1s($DBMSresource, 'k0obsresult_action', $Conditions);
+                $Affected = $Zfpf->delete_sql_1s($DBMSresource, 't0obsresult_action', $Conditions);
                 if ($Affected != 1)
                     $ErrorLog .= ' t0audit_fragment_obsmethod rows deleted: '.$Affected;
                 $Conditions[0] = array('k0action', '=', $VOrA['k0action']);
@@ -459,22 +736,20 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     }
 
     // leader_approval_1 and leader_approval_c1 code
-    if (isset($_POST['leader_approval_1']) or isset($_POST['leader_approval_c1'])) {
+    if (isset($_GET['leader_approval_1']) or isset($_GET['leader_approval_c1'])) {
         // Additional security check.
-        if (!$EditAuth or (isset($_POST['leader_approval_1']) and $_SESSION['Selected']['k0user_of_certifier']) or (isset($_POST['leader_approval_c1']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
+        if (!$EditAuth or (isset($_GET['leader_approval_1']) and $_SESSION['Selected']['k0user_of_certifier']) or (isset($_GET['leader_approval_c1']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
             $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         // Set variables with applicable text.
-        if (isset($_POST['leader_approval_1'])) {
+        if (isset($_GET['leader_approval_1'])) {
             $AsOf = $Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_as_of']);
             if (!is_numeric($AsOf) or $AsOf > time() or $AsOf < time()-31700000) { // Cannot be in the future or more than a year ago.
                 echo $Zfpf->xhtml_contents_header_1c().'<h2>
                 Invalid "as of" date and time</h2><p>
                 The "as of" date and time is currently recorded as:<br />
                 '.$Zfpf->timestamp_to_display_1c($AsOf).'</p><p>
-                The "as of" date and time approximately marks the evaluation period, and the app requires that these be recorded. You may input a date and time in most common formats, which the app can typically convert into a timestamp. This cannot be an unreasonable date, such as in the future or more than a year ago.
-                <form action="audit_io03.php" method="post"><p>
-                    <input type="submit" name="audit_o1" value="Go back" /></p>
-                </form>
+                The "as of" date and time approximately marks the evaluation period, and the app requires that these be recorded. You may input a date and time in most common formats, which the app can typically convert into a timestamp. This cannot be an unreasonable date, such as in the future or more than a year ago.</p><p>
+                <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>
                 '.$Zfpf->xhtml_footer_1c();
                 $Zfpf->save_and_exit_1c();
             }
@@ -529,17 +804,27 @@ if (isset($_SESSION['Selected']['k0audit'])) {
                 $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['Ot'.$KOt] = substr($OtName, 0, 20).'...'; // Truncate for left-hand contents.
                 $ApprovalText .= '<h2 class="topborder"><a id="Ot'.$KOt.'"></a>
                 '.$OtName.'</h2>';
-                $Conditions[1] = array('k0obstopic', '=', $VOt['k0obstopic'], '', 'AND');
-                list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
+                // Get observation results (Or) associated with the selected observation topic (Ot).
+                // TO DO re-think report -- as is: an obsresult may be listed multiple times, under each applicable obstopic. 
+                // TO DO so -- list truncated obsresult under each obstopic, with hyperlinks to a single list of full obsresults.
+                $OrInOt = array();
+                $Conditions[0] = array('k0obstopic', '=', $VOt['k0obstopic']);
+                list($SROtOm, $RROtOm) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic_obsmethod', $Conditions);
+                if ($RROtOm) foreach ($SROtOm as $VOtOm) {
+                    $Conditions[0] = array('k0obsmethod', '=', $VOtOm['k0obsmethod']);
+                    list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
+                    if ($RROr)
+                        $OrInOt = array_merge($OrInOt, $SROr);
+                }
                 $OtId = array();
-                if ($RROr) {
-                    foreach ($SROr as $VOr)
+                if ($OrInOt) {
+                    foreach ($OrInOt as $VOr)
                         $OtId[] = $Zfpf->decrypt_1c($VOr['c5_obstopic_id']);
-                    array_multisort($OtId, $SROr); // Sort observation results (Or) by their specific observation topic (OtId aka c5_obstopic_id).
+                    array_multisort($OtId, $OrInOt); // Sort observation results (Or) by their observation object unique identifier (object ID aka OtId aka c5_obstopic_id).
                     // Group Or by OtId
                     $PriorOtId = $OtId[0]; // array_multisort re-indexes numeric arrays, is this is the first OtId after sorting.
                     $OrArray = array();
-                    foreach ($SROr as $KOr => $VOr) {
+                    foreach ($OrInOt as $KOr => $VOr) {
                         if ($OtId[$KOr] == $PriorOtId)
                             $OrArray[$PriorOtId][] = $VOr;
                         else {
@@ -553,7 +838,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
                             $Omad[] = $Zfpf->decrypt_1c($VOr['c6obsmethod_as_done']);
                         array_multisort($Omad, $VOtId); // Sort each Ot group of Or by Omad.
                         $ApprovalText .= '<p>
-                        <b><i>Topic ID</i>: '.$KOtId.'</b></p>';
+                        <b><i>Object ID</i>: '.$KOtId.'</b></p>';
                         foreach ($VOtId as $KOr => $VOr) {
                             $ApprovalText .= '<p>
                             <i>As-done method:</i><br />'.$Omad[$KOr].'<br />
@@ -595,15 +880,14 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             $FixedLeftContents .= '<br />
             | <a class="toc" href="#'.$K.'">'.$V.'</a>'; // $K is Id and $V is description, of anchors.
         unset($_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']);
-        $FixedLeftContents .= '</p>
-        <form action="audit_io03.php" method="post"><p>
-            <input type="submit" name="audit_o1" value="Go back" /></p>
-        </form>';                                      // FALSE means no log-off button, force "go back" to clear edit locks.
+        $FixedLeftContents .= '</p><p>
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>';
+        // The second FALSE below, in function CoreZfpf::xhtml_contents_header_1c, means no log-off button, encourage "go back" to clear edit locks.
         echo $Zfpf->xhtml_contents_header_1c(FALSE, FALSE, $FixedLeftContents).$ApprovalText.'
         <form action="audit_io03.php" method="post"><p>
-            <input type="submit" name="'.$ConfirmationButtonName.'" value="'.$ConfirmationButtonValue.'" /></p><p>
-            <input type="submit" name="audit_o1" value="Go back" /></p>
-        </form>
+            <input type="submit" name="'.$ConfirmationButtonName.'" value="'.$ConfirmationButtonValue.'" /></p>
+        </form><p>
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>
         '.$Zfpf->xhtml_footer_1c();
         $_SESSION['Scratch']['ApprovalText'] = $Zfpf->encrypt_1c($ApprovalText);
         $_SESSION['Scratch']['c6nymd_leader'] = $Zfpf->encrypt_1c($User['NameTitle'].', '. $User['Employer'].' '.$User['WorkEmail'].' on '.$CurrentDate);
@@ -613,7 +897,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     // leader_approval_2 and leader_approval_c2 code
     if (isset($_POST['leader_approval_2']) or isset($_POST['leader_approval_c2'])) {
         // Additional security check.
-        if (!$EditAuth or (isset($_POST['leader_approval_1']) and $_SESSION['Selected']['k0user_of_certifier']) or (isset($_POST['leader_approval_c1']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
+        if (!$EditAuth or (isset($_POST['leader_approval_2']) and $_SESSION['Selected']['k0user_of_certifier']) or (isset($_POST['leader_approval_c2']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_leader'] or $_SESSION['Selected']['k0audit'] < 100000)
             $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Conditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit']);
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
@@ -694,11 +978,11 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     }
 
     // certifier_approval_1 and certifier_approval_c1 code
-    if (isset($_POST['certifier_approval_1']) or isset($_POST['certifier_approval_c1'])) {
+    if (isset($_GET['certifier_approval_1']) or isset($_GET['certifier_approval_c1'])) {
         // Additional security check.
-        if (!$EditAuth or (isset($_POST['certifier_approval_1']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or (isset($_POST['certifier_approval_c1']) and $_SESSION['Selected']['k0user_of_certifier'] <= 1) or !$UserIsProcessPSMLeader or $_SESSION['Selected']['k0audit'] < 100000)
+        if (!$EditAuth or (isset($_GET['certifier_approval_1']) and $_SESSION['Selected']['k0user_of_certifier'] != 1) or (isset($_GET['certifier_approval_c1']) and $_SESSION['Selected']['k0user_of_certifier'] <= 1) or !$UserIsProcessPSMLeader or $_SESSION['Selected']['k0audit'] < 100000)
             $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
-        if (isset($_POST['certifier_approval_1'])) {
+        if (isset($_GET['certifier_approval_1'])) {
             $ConfirmationButtonName = 'certifier_approval_2';
             $ConfirmationButtonValue = 'Approve certification statement';
             $ApprovalText = '<h2>
@@ -730,9 +1014,9 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         echo $Zfpf->xhtml_contents_header_1c().$ApprovalText.'
         <form action="audit_io03.php" method="post"><p>
             '.$ConfirmationButtonValue.' by clicking the button below.<br />
-            <input type="submit" name="'.$ConfirmationButtonName.'" value="'.$ConfirmationButtonValue.'" /></p><p>
-            <input type="submit" name="audit_o1" value="Go back" /></p>
-        </form>
+            <input type="submit" name="'.$ConfirmationButtonName.'" value="'.$ConfirmationButtonValue.'" /></p>
+        </form><p>
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>
         '.$Zfpf->xhtml_footer_1c();
         $_SESSION['Scratch']['ApprovalText'] = $Zfpf->encrypt_1c($ApprovalText);
         $Zfpf->save_and_exit_1c();
@@ -792,7 +1076,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     }
     
     // Change the report leader code
-    if (isset($_POST['change_leader_1'])) {
+    if (isset($_POST['change_leader_1']) or isset($_GET['change_leader_1'])) {
         if (!$EditAuth or $_SESSION['Selected']['k0user_of_certifier'] or !$UserIsProcessPSMLeader)
             $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
         $Zfpf->clear_edit_lock_1c(); // In case arrived here by canceling from change_leader_2
@@ -899,7 +1183,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
     // i1 code
     // HTML input buttons named 'undo_confirm_post_1e' and 'modify_confirm_post_1e' are generated by a function in class ConfirmZfpf.
     // 1.1 $_SESSION['Selected'] is only source of $Display.
-    if (isset($_POST['audit_i0n']) or isset($_POST['audit_o1_from'])) {
+    if (isset($_POST['audit_i0n']) or isset($_GET['audit_o1_from'])) {
         $Display = $Zfpf->select_to_display_1e($htmlFormArray, FALSE, FALSE, TRUE);
         // Modify $Display for k0 or app_assigned fields or modify $htmlFormArray to express user roles and privileges.
         if ($_SESSION['Selected']['k0audit'] < 100000) // Templates don't have a report leader.
@@ -963,15 +1247,11 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             If you only wanted to upload files, you are done. Click on "Go back"</p>
         </form>'; // upload_files special case 3 of 3.
         if ($who_is_editing == '[A new database row is being created.]')
-            $Message .= '
-            <form action="practice_o1.php" method="post"><p>
-                <input type="submit" value="Go back" /></p>
-            </form>';
+            $Message .= '<p>
+            <a class="toc" href="practice_o1.php">Go back</a></p>';
         else
-            $Message .= '
-            <form action="audit_io03.php" method="post"><p>
-                <input type="submit" name="audit_o1" value="Go back" /></p>
-            </form>';
+            $Message .= '<p>
+            <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }

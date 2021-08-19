@@ -1,6 +1,6 @@
 "Subsystem"|"Scenario"|"Name (what-if...)"|"Type"|"Severity with existing safeguards in place"|"Likelihood of this severity with existing safeguards in place"|"Risk Ranking"|"Possible Causes"|"Possible Consequences"|"Existing Safeguards"|"Recommended Actions"
 "A1. Equipment and piping in general"|"1"|"Brittle fracture of equipment (includes vessels) or piping (includes valves) risks are too high."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Design, fabrication, construction, or installation shortcoming or error.
-(2) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(2) Force or impact too strong
 (3) Human error or poor judgment.
 (4) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (5) Loads added without properly evaluating.
@@ -68,7 +68,7 @@
 (20) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
 (21) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A1. Equipment and piping in general"|"4"|"Instrumentation or its connection, leaks out into building or outside"|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Design, fabrication, construction, or installation shortcoming or error.
-(2) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(2) Force or impact too strong
 (3) Human error or poor judgment.
 (4) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (5) Joint, bolted, problem.
@@ -182,8 +182,8 @@
 (4) Design, fabrication, construction, or installation shortcoming or error.
 (5) Expansion valve open too much, shock each time solenoid valve opens.
 (6) Fasteners, hangers, rods, or other support components -- loose or missing.
-(7) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
-(8) Foundations shifting.
+(7) Force or impact too strong
+(8) Foundations move due to settling, shifting, earthquake, landslide, soil liquefaction, and so forth.
 (9) Human error or poor judgment.
 (10) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
 (11) Inspection, testing, or maintenance (ITM) shortcoming or error.
@@ -347,7 +347,7 @@
 "A1. Equipment and piping in general"|"15"|"Sight glass, its housing, their gaskets, or connections -- break, crack, cut, degraded, loose, or other problem."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"Very unlikely (less than every 50 years)"|"03. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Corrosive materials in vicinity.
 (3) Design, fabrication, construction, or installation shortcoming or error.
-(4) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(4) Force or impact too strong
 (5) Joint, threaded, problem.
 (6) Shocks or vibrations cause damage."|"(1) Equipment or piping becomes more susceptible to external physical damage.
 (2) Explosion or fire more likely.
@@ -463,8 +463,8 @@
 (5) Fasteners, hangers, rods, or other support components -- loose or missing.
 (6) Fire, nearby and severe, or worse, and the resulting heat and temperatures.
 (7) Flood waters reach the ammonia-refrigeration system, its supports, or the building they are in or on.
-(8) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
-(9) Foundations shifting.
+(8) Force or impact too strong
+(9) Foundations move due to settling, shifting, earthquake, landslide, soil liquefaction, and so forth.
 (10) Human error or poor judgment.
 (11) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
 (12) Inspection, testing, or maintenance (ITM) shortcoming or error.
@@ -476,7 +476,7 @@
 (18) Shocks or vibrations cause damage.
 (19) Temperature or humidity changes within or moderately outside of typically expected ranges.
 (20) Vehicle moves unexpectedly.
-(21) Willful misconduct."|"(1) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
+(21) Willful misconduct."|"(1) Damage due forces or loads exceeding capacity.
 (2) Equipment or piping becomes more susceptible to external physical damage.
 (3) Explosion or fire more likely.
 (4) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
@@ -507,7 +507,7 @@
 (13) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A1. Equipment and piping in general"|"20"|"Threaded bonnet removed when hand turning a valve stem, including manual-opening stems on control valves."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Design, fabrication, construction, or installation shortcoming or error.
-(3) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(3) Force or impact too strong
 (4) Human error or poor judgment.
 (5) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (6) Joint, threaded, problem.
@@ -535,7 +535,7 @@
 (13) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (14) Separation of ammonia refrigeration from people is adequate and considered in change management.
 (15) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
-"A1. Equipment and piping in general"|"21"|"Valve stem, too much torque applied -- when closed, fully opened, or stuck."|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Human error or poor judgment."|"(1) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
+"A1. Equipment and piping in general"|"21"|"Valve stem, too much torque applied -- when closed, fully opened, or stuck."|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Human error or poor judgment."|"(1) Damage due forces or loads exceeding capacity.
 (2) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
 (3) Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth.
 (4) Hinders maintenance or increases the need for repairs.
@@ -552,7 +552,7 @@
 (10) Separation of ammonia refrigeration from people is adequate and considered in change management.
 (11) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A1. Equipment and piping in general"|"22"|"Valve, control, leaks out into building or outside."|"Prior incident anywhere and human factors"|"Room evacuation or off-site nuisance"|"5% to 20% per year (every 5 to 20 years or so)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Design, fabrication, construction, or installation shortcoming or error.
-(2) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(2) Force or impact too strong
 (3) Human error or poor judgment.
 (4) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (5) Joint, bolted, problem.
@@ -586,7 +586,7 @@
 (3) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (4) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A1. Equipment and piping in general"|"24"|"Valve, stop, leaks out into building or outside."|"Prior incident anywhere and human factors"|"Room evacuation or off-site nuisance"|"5% to 20% per year (every 5 to 20 years or so)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Design, fabrication, construction, or installation shortcoming or error.
-(2) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(2) Force or impact too strong
 (3) Human error or poor judgment.
 (4) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (5) Joint, bolted, problem.
@@ -653,7 +653,7 @@
 (4) Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors.
 (5) Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained.
 (6) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
-(7) Crash, derailment, and flooding risks are reasonable (airplanes, trains, trucks, floodplains, and so forth).
+(7) Crash, derailment, avalanche/debris flow/landslide/mudslide, flood, tsunami, volcano, and wildfire risks are reasonable.
 (8) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
 (9) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
 (10) Purging non-condensable gases is done effectively.
@@ -717,7 +717,7 @@
 (2) Human error or poor judgment.
 (3) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
 (4) Inspection, testing, or maintenance (ITM) shortcoming or error.
-(5) Willful misconduct."|"(1) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
+(5) Willful misconduct."|"(1) Damage due forces or loads exceeding capacity.
 (2) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
 (3) Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth.
 (4) Hinders maintenance or increases the need for repairs.
@@ -800,7 +800,7 @@
 (15) Separation of ammonia refrigeration from people is adequate and considered in change management.
 (16) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A2. Human factors and human errors in general"|"8"|"Incompetence or understaffing, of employees or contractors, due to changes in equipment or personnel."|"Prior incident anywhere and human factors"|"Nuisance on-site"|"20% to 90% per year (every couple-few years)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Policies or programs -- for contractors, human resources, safety, or training -- are inadequately designed or implemented."|"(1) Compressor package internal or seal damage, and if safeties fail, leak or fire.
-(2) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
+(2) Damage due forces or loads exceeding capacity.
 (3) Equipment or piping becomes more susceptible to external physical damage.
 (4) Explosion or fire more likely.
 (5) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
@@ -1106,7 +1106,7 @@
 (4) Procedure is confusing, ignored, misunderstood, or wrong.
 (5) Willful misconduct."|"(1) Compressor contains liquid ammonia refrigerant, when it starts, due to condensation while off.
 (2) Compressor package internal or seal damage, and if safeties fail, leak or fire.
-(3) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
+(3) Damage due forces or loads exceeding capacity.
 (4) Equipment or piping becomes more susceptible to external physical damage.
 (5) Explosion or fire more likely.
 (6) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
@@ -1196,7 +1196,7 @@
 (4) Fasteners, hangers, rods, or other support components -- loose or missing.
 (5) Fire, nearby and severe, or worse, and the resulting heat and temperatures.
 (6) Flood waters reach the ammonia-refrigeration system, its supports, or the building they are in or on.
-(7) Foundations shifting.
+(7) Foundations move due to settling, shifting, earthquake, landslide, soil liquefaction, and so forth.
 (8) Human error or poor judgment.
 (9) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
 (10) Inspection, testing, or maintenance (ITM) shortcoming or error.
@@ -1223,15 +1223,15 @@
 (5) Fasteners, hangers, rods, or other support components -- loose or missing.
 (6) Fire, nearby and severe, or worse, and the resulting heat and temperatures.
 (7) Flood waters reach the ammonia-refrigeration system, its supports, or the building they are in or on.
-(8) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
-(9) Foundations shifting.
+(8) Force or impact too strong
+(9) Foundations move due to settling, shifting, earthquake, landslide, soil liquefaction, and so forth.
 (10) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
 (11) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (12) Joint, bolted, problem.
 (13) Joint, threaded, problem.
 (14) Loads added without properly evaluating.
 (15) Roof, piping, or other leak causes damage.
-(16) Shocks or vibrations cause damage."|"(1) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
+(16) Shocks or vibrations cause damage."|"(1) Damage due forces or loads exceeding capacity.
 (2) Explosion or fire more likely.
 (3) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
 (4) Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth.
@@ -1250,7 +1250,7 @@
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Change management is adequate.
 (4) Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained.
-(5) Crash, derailment, and flooding risks are reasonable (airplanes, trains, trucks, floodplains, and so forth).
+(5) Crash, derailment, avalanche/debris flow/landslide/mudslide, flood, tsunami, volcano, and wildfire risks are reasonable.
 (6) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (7) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
 (8) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
@@ -1263,23 +1263,25 @@
 (15) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
 (16) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
 (17) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(18) Temperatures of equipment and piping are kept above their minimum design metal temperature (MDMT).
-(19) Transfer system and its piping are adequately built, controlled, located, inspected, tested, and maintained.
-(20) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access.
-(21) Vehicle or heavy cart traffic unlikely to damage ammonia-refrigeration equipment, piping, or supports."|""
+(18) Security, of the facility, no shortcomings discovered by the PHA team.
+(19) Temperatures of equipment and piping are kept above their minimum design metal temperature (MDMT).
+(20) Transfer system and its piping are adequately built, controlled, located, inspected, tested, and maintained.
+(21) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access.
+(22) Vehicle or heavy cart traffic unlikely to damage ammonia-refrigeration equipment, piping, or supports."|""
 "A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"3"|"Combustible materials are unsafely stored or transferred in or near the refrigerating-machinery room or outdoor vessels."|"Prior incident anywhere"|"Little or none"|"Very unlikely (less than every 50 years)"|"00. No action needed."|"(1) Human error or poor judgment.
 (2) Willful misconduct."|"(1) Explosion or fire more likely.
 (2) Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load."|"(1) Change management is adequate.
 (2) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
 (3) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate."|""
 "A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"4"|"Compressed air problem -- the ammonia-refrigeration system does not use or rely compressed air."|"Prior incident anywhere"|"Little or none"|"Very unlikely (less than every 50 years)"|"00. No action needed."|""|""|""|""
-"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"5"|"Electrical blip, flicker, outage then restoration, or surge, facility-wide or smaller, possibly coinciding with an ammonia leak."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
+"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"5"|"Electrical blip, flicker, outage then restoration, or surge (from lightning, etc.), facility-wide or smaller, possibly coinciding with an ammonia leak."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Fasteners, hangers, rods, or other support components -- loose or missing.
 (3) Fire, nearby and severe, or worse, and the resulting heat and temperatures.
 (4) Flood waters reach the ammonia-refrigeration system, its supports, or the building they are in or on.
-(5) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(5) Force or impact too strong
 (6) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
-(7) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Explosion or fire more likely.
+(7) Inspection, testing, or maintenance (ITM) shortcoming or error.
+(8) Lightning strike"|"(1) Explosion or fire more likely.
 (2) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
 (3) Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth.
 (4) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
@@ -1287,9 +1289,10 @@
 (6) Human errors become more likely or more severe.
 (7) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
 (8) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
-(9) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
-(10) Leak of ammonia that will probably cause strong odors or worse offsite.
-(11) Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(9) Leak of ammonia enters a room (Case D) with ammonia-in-air sensors but little-or-no ventilation.
+(10) Leak of ammonia enters a room (Case E) with no ammonia-in-air sensors and little-or-no ventilation.
+(11) Leak of ammonia that will probably cause strong odors or worse offsite.
+(12) Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
 (2) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
 (3) Change management is adequate.
 (4) Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors.
@@ -1303,7 +1306,7 @@
 (12) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
 (13) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (14) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
-"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"6"|"Evacuation routes or gathering points cannot be adjusted if they become unsafe."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Alarm, public-address, paging, radio, or other emergency-communication system stops working.
+"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"6"|"Evacuation-route or gathering-point changes cannot be communicated fast enough, if they become unsafe."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Alarm, public-address, paging, radio, or other emergency-communication system stops working.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Human error or poor judgment.
 (4) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
@@ -1330,8 +1333,9 @@
 "A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"7"|"Fire heats ammonia-refrigeration equipment or piping until their internal pressure should cause pressure-relief valves to open."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Design, fabrication, construction, or installation shortcoming or error.
 (2) Fire, nearby and severe, or worse, and the resulting heat and temperatures.
 (3) Human error or poor judgment.
-(4) Vehicle moves unexpectedly.
-(5) Willful misconduct."|"(1) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
+(4) Lightning strike
+(5) Vehicle moves unexpectedly.
+(6) Willful misconduct."|"(1) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
 (2) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
 (3) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
 (4) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
@@ -1391,7 +1395,7 @@
 (7) Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors.
 (8) Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained.
 (9) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
-(10) Crash, derailment, and flooding risks are reasonable (airplanes, trains, trucks, floodplains, and so forth).
+(10) Crash, derailment, avalanche/debris flow/landslide/mudslide, flood, tsunami, volcano, and wildfire risks are reasonable.
 (11) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (12) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (13) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
@@ -1429,7 +1433,7 @@
 (7) Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors.
 (8) Condensers, evaporative, and their water treatment are adequately built, controlled, located, inspected, tested, and maintained.
 (9) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
-(10) Crash, derailment, and flooding risks are reasonable (airplanes, trains, trucks, floodplains, and so forth).
+(10) Crash, derailment, avalanche/debris flow/landslide/mudslide, flood, tsunami, volcano, and wildfire risks are reasonable.
 (11) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
 (12) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
 (13) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
@@ -1506,12 +1510,13 @@
 (12) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
 (13) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (14) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
-"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"15"|"Security, of the facility, does not reasonably protect the ammonia-refrigeration system."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Design, fabrication, construction, or installation shortcoming or error.
-(2) Human error or poor judgment.
-(3) Inspection, testing, or maintenance (ITM) shortcoming or error.
-(4) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth.
-(5) Policies or programs -- for contractors, human resources, safety, or training -- are inadequately designed or implemented.
-(6) Willful misconduct."|"(1) Equipment or piping becomes more susceptible to external physical damage.
+"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"15"|"Security, of the facility, does not reasonably protect the ammonia-refrigeration system."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Alarm, public-address, paging, radio, or other emergency-communication system stops working.
+(2) Design, fabrication, construction, or installation shortcoming or error.
+(3) Human error or poor judgment.
+(4) Inspection, testing, or maintenance (ITM) shortcoming or error.
+(5) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth.
+(6) Policies or programs -- for contractors, human resources, safety, or training -- are inadequately designed or implemented.
+(7) Willful misconduct."|"(1) Equipment or piping becomes more susceptible to external physical damage.
 (2) Explosion or fire more likely.
 (3) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
 (4) Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth.
@@ -1549,8 +1554,8 @@
 (3) Corrosive materials in vicinity.
 (4) Design, fabrication, construction, or installation shortcoming or error.
 (5) Fasteners, hangers, rods, or other support components -- loose or missing.
-(6) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
-(7) Foundations shifting.
+(6) Force or impact too strong
+(7) Foundations move due to settling, shifting, earthquake, landslide, soil liquefaction, and so forth.
 (8) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
 (9) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (10) Joint, bolted, problem.
@@ -1558,7 +1563,7 @@
 (12) Loads added without properly evaluating.
 (13) Roof, piping, or other leak causes damage.
 (14) Shocks or vibrations cause damage.
-(15) Temperature or humidity changes within or moderately outside of typically expected ranges."|"(1) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
+(15) Temperature or humidity changes within or moderately outside of typically expected ranges."|"(1) Damage due forces or loads exceeding capacity.
 (2) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
 (3) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
 (4) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
@@ -1650,7 +1655,7 @@
 (10) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
 (11) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (12) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
-"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"20"|"Ventilation is inadequate to prevent dangerous ammonia concentrations in the air of a room ammonia leaks into."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Design, fabrication, construction, or installation shortcoming or error.
+"A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"20"|"Ventilation is inadequate to prevent dangerous ammonia concentrations in the air of a room into which ammonia leaks."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Design, fabrication, construction, or installation shortcoming or error.
 (2) Filter or strainer clogged.
 (3) Human error or poor judgment.
 (4) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Explosion or fire more likely.
@@ -1676,7 +1681,7 @@
 (15) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
 "A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"21"|"Water-supply problem -- no make-up water for condensers or [IF APPLICABLE] compressors."|"Prior incident anywhere"|"Nuisance on-site"|"5% to 20% per year (every 5 to 20 years or so)"|"03. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Controls are confusing, cumbersome, difficult, or inadequate -- such as too dim, exposed, loud, quiet, sensitive, or small.
 (2) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
-(3) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(3) Force or impact too strong
 (4) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports.
 (5) Inspection, testing, or maintenance (ITM) shortcoming or error."|"(1) Hinders operations. [UPDATE - SYSTEM SPECIFIC]"|"(1) Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors."|""
 "A3. Location, siting, and surroundings plus equipment, plans, and systems for emergencies, safety, and security."|"22"|"Working alone in a mechanical penthouse, on a roof, or elsewhere people rarely go."|"Prior incident anywhere and facility siting"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Human error or poor judgment.
@@ -1686,7 +1691,7 @@
 (4) Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load."|"(1) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness."|""
 "A4. Charging ammonia into the ammonia-refrigeration system"|"1"|"Charging hose or connection leak."|"Prior incident anywhere and human factors"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Design, fabrication, construction, or installation shortcoming or error.
-(3) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
+(3) Force or impact too strong
 (4) Hose, ammonia, problem.
 (5) Human error or poor judgment.
 (6) Joint, threaded, problem.
@@ -1988,8 +1993,8 @@
 (4) Design, fabrication, construction, or installation shortcoming or error.
 (5) Fasteners, hangers, rods, or other support components -- loose or missing.
 (6) Fire, nearby and severe, or worse, and the resulting heat and temperatures.
-(7) Force or impact, too strong -- stepped on, tool dropped from height hits, vehicle hits, wind, and so forth.
-(8) Foundations shifting.
+(7) Force or impact too strong
+(8) Foundations move due to settling, shifting, earthquake, landslide, soil liquefaction, and so forth.
 (9) Inspection, testing, or maintenance (ITM) shortcoming or error.
 (10) Joint, bolted, problem.
 (11) Loads added without properly evaluating.
@@ -2208,7 +2213,7 @@
 "B2. Condensers"|"3"|"Cooling water freezes on condenser coils, housing, piping, support structure, or its walking-working surfaces."|"Prior incident anywhere"|"Nuisance on-site"|"Very unlikely (less than every 50 years)"|"01. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Controls are confusing, cumbersome, difficult, or inadequate -- such as too dim, exposed, loud, quiet, sensitive, or small.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Human error or poor judgment.
-(4) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports."|"(1) Damage due loads (weight, torque, seismic etc.) exceeding capacity.
+(4) Ice, frost, snow, or other-frozen-water buildup in or on equipment, floor, piping, roofs, or supports."|"(1) Damage due forces or loads exceeding capacity.
 (2) Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth.
 (3) Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth.
 (4) Hinders maintenance or increases the need for repairs.
@@ -2454,7 +2459,44 @@
 (14) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (15) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
 (16) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
-"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"2"|"Liquid level too high or too low in recirculator vessel."|"Prior incident anywhere"|"Nuisance on-site"|"5% to 20% per year (every 5 to 20 years or so)"|"03. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
+"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"2"|"Liquid droplets are entrained in gas flowing to compressors, such as because the gas-flow speed is too fast in a suction vessel."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Control valve allows too much flow or remains fully open -- but not including shocks from expansion valves too far open.
+(2) Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc. [OK?]
+(3) Design, fabrication, construction, or installation shortcoming or error.
+(4) Level signal wrong -- lower than actual, or float switch stuck in low position.
+(5) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth.
+(6) Policies or programs -- for contractors, human resources, safety, or training -- are inadequately designed or implemented."|"(1) Compressor package internal or seal damage, and if safeties fail, leak or fire.
+(2) Explosion or fire more likely.
+(3) Hinders maintenance or increases the need for repairs.
+(4) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
+(5) Hinders safety, security, health, or environmental protection.
+(6) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
+(7) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(8) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(9) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(10) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(11) Leak of ammonia that will probably cause strong odors or worse offsite.
+(12) Overpressure in equipment or piping.
+(13) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
+(3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
+(4) Change management is adequate.
+(5) Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors.
+(6) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
+(7) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
+(8) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
+(9) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(10) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(11) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(12) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(13) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(14) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(15) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(16) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(17) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
+(18) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(19) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(20) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"3"|"Liquid level too high or too low in recirculator vessel."|"Prior incident anywhere"|"Injury on-site (needing treatment beyond first aid) or small off-site evacuation/shelter-in-place"|"Very unlikely (less than every 50 years)"|"05. Attention needed -- if any recommended actions, review status at least quarterly."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
 (2) Control valve allows too much flow or remains fully open -- but not including shocks from expansion valves too far open.
 (3) Controls are confusing, cumbersome, difficult, or inadequate -- such as too dim, exposed, loud, quiet, sensitive, or small.
 (4) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
@@ -2468,17 +2510,41 @@
 (12) Procedure is confusing, ignored, misunderstood, or wrong.
 (13) Shocks or vibrations cause damage.
 (14) Spring problem.
-(15) Valve-seat seal failure (seat-gasket degraded, debris on seat, not tight enough, etc.)"|"(1) Hinders maintenance or increases the need for repairs.
-(2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
-(3) Hinders safety, security, health, or environmental protection."|"(1) Change management is adequate.
-(2) Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors.
-(3) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
-(4) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
-(5) Pump safety shutoffs are adequate, for both ammonia and cooling-water pumps, including for their motors.
-(6) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
-(7) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
-(8) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
-"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"3"|"Pump overheats due to inadequate ammonia-refrigerant flow to motor, sealed in same housing as pump impeller. [IF APPLICABLE]"|"Prior incident anywhere"|"Nuisance on-site"|"Very unlikely (less than every 50 years)"|"01. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Design, fabrication, construction, or installation shortcoming or error.
+(15) Valve-seat seal failure (seat-gasket degraded, debris on seat, not tight enough, etc.)"|"(1) Compressor contains liquid ammonia refrigerant, when it starts, due to condensation while off.
+(2) Explosion or fire more likely.
+(3) Hinders maintenance or increases the need for repairs.
+(4) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
+(5) Hinders safety, security, health, or environmental protection.
+(6) Leak of ammonia contaminates the air above a roof but is unlikely to cause significant odors offsite.
+(7) Leak of ammonia contaminates the air near ground level but is unlikely to cause significant odors offsite.
+(8) Leak of ammonia enters a room (Case A) with ammonia-in-air sensors, audio-visual alarms, and normal and emergency ventilation.
+(9) Leak of ammonia enters a room (Case B) with ammonia-in-air sensors and only normal ventilation.
+(10) Leak of ammonia enters a room (Case C) with no ammonia-in-air sensors and normal ventilation.
+(11) Leak of ammonia that will probably cause strong odors or worse offsite.
+(12) Overpressure in equipment or piping.
+(13) Shocks that could damage equipment, piping, or supports."|"(1) Access is adequate to ammonia-refrigeration equipment and piping.
+(2) Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained.
+(3) Ammonia has good warning properties, unlike, for example, propane or halocarbon refrigerants.
+(4) Change management is adequate.
+(5) Compressor controls and safety shutoffs are adequate, including for their motors and the vessel(s) that feed the compressors.
+(6) Controls and electrical systems for ammonia refrigeration are adequately built, located, inspected, tested, and maintained.
+(7) Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training.
+(8) Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]
+(9) Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness.
+(10) Emergency-response capabilities and coordination are adequate, considering off-site populations and potential incidents.
+(11) Equipment and piping -- including valves, vessels, and supports -- are all suitable for their ammonia-refrigeration service.
+(12) Fire-safety systems and means of egress are adequately built, located, inspected, tested, and maintained.
+(13) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
+(14) Leak detection includes ammonia-in-air sensors that trigger alarms and other actions.
+(15) Open flames and over 800 F surfaces, reasonable separation from where an ammonia leak may cause a flammable atmosphere.
+(16) Pump safety shutoffs are adequate, for both ammonia and cooling-water pumps, including for their motors.
+(17) Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained
+(18) Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service.
+(19) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
+(20) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
+(21) Transfer system and its piping are adequately built, controlled, located, inspected, tested, and maintained.
+(22) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
+"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"4"|"Pump overheats due to inadequate ammonia-refrigerant flow to motor, sealed in same housing as pump impeller. [IF APPLICABLE]"|"Prior incident anywhere"|"Nuisance on-site"|"Very unlikely (less than every 50 years)"|"01. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Design, fabrication, construction, or installation shortcoming or error.
 (2) Human error or poor judgment."|"(1) Hinders maintenance or increases the need for repairs.
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection."|"(1) Change management is adequate.
@@ -2486,13 +2552,13 @@
 (3) Pumps, ammonia-refrigerant, and their piping are adequately built, controlled, located, inspected, tested, and maintained.
 (4) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (5) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
-"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"4"|"Pump-discharge check valve leaks by, so some flow in reverse direction."|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
+"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"5"|"Pump-discharge check valve leaks by, so some flow in reverse direction."|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Corroding, cracking, deteriorating, flexing, stretching, warping, or wear.
 (2) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth.
 (3) Spring problem."|"(1) Hinders operations. [UPDATE - SYSTEM SPECIFIC]"|"(1) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
 (2) Production monitoring and quality control.
 (3) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (4) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
-"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"5"|"Pump-discharge piping or minimum-flow bypass piping has liquid speeds that cause interior erosion of piping."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Design, fabrication, construction, or installation shortcoming or error.
+"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"6"|"Pump-discharge piping or minimum-flow bypass piping has liquid speeds that cause interior erosion of piping."|"Prior incident anywhere"|"Room evacuation or off-site nuisance"|"2% to 5% per year (every 20 to 50 years or so)"|"04. Attention needed -- if any recommended actions, review status at least twice per year."|"(1) Design, fabrication, construction, or installation shortcoming or error.
 (2) Human error or poor judgment."|"(1) Hinders maintenance or increases the need for repairs.
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection.
@@ -2519,7 +2585,7 @@
 (14) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety.
 (15) Separation of ammonia refrigeration from people is adequate and considered in change management.
 (16) Valves are present where needed for maintenance and leak mitigation, with adequate backup and access."|""
-"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"6"|"Pump-discharge pressure too high due to closed valve, design shortcoming, plugged orifice, and so forth."|"Prior incident anywhere"|"Nuisance on-site"|"Very unlikely (less than every 50 years)"|"01. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
+"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"7"|"Pump-discharge pressure too high due to closed valve, design shortcoming, plugged orifice, and so forth."|"Prior incident anywhere"|"Nuisance on-site"|"Very unlikely (less than every 50 years)"|"01. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Human error or poor judgment.
 (4) Pressure-relief system inadequate."|"(1) Hinders maintenance or increases the need for repairs.
@@ -2529,7 +2595,7 @@
 (4) Pumps, ammonia-refrigerant, and their piping are adequately built, controlled, located, inspected, tested, and maintained.
 (5) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (6) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
-"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"7"|"Pump-suction pressure too low due to closed valve, liquid-level low, design shortcoming, etc., causing cavitation, etc."|"Prior incident anywhere"|"Little or none"|"5% to 20% per year (every 5 to 20 years or so)"|"00. No action needed."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
+"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"8"|"Pump-suction pressure too low due to closed valve, liquid-level low, design shortcoming, etc., causing cavitation, etc."|"Prior incident anywhere"|"Little or none"|"5% to 20% per year (every 5 to 20 years or so)"|"00. No action needed."|"(1) Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators.
 (2) Design, fabrication, construction, or installation shortcoming or error.
 (3) Human error or poor judgment.
 (4) Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth."|"(1) Hinders maintenance or increases the need for repairs.
@@ -2540,7 +2606,7 @@
 (4) Pumps, ammonia-refrigerant, and their piping are adequately built, controlled, located, inspected, tested, and maintained.
 (5) Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout.
 (6) Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|""
-"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"8"|"Volute-vent valve left closed while pump cycles on and off, causing vapor lock or cavitation. [IF APPLICABLE]"|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Human error or poor judgment."|"(1) Hinders maintenance or increases the need for repairs.
+"C2. Recirculator(s) and ammonia-refrigerant pumps [UPDATE IF MULTIPLE]"|"9"|"Volute-vent valve left closed while pump cycles on and off, causing vapor lock or cavitation. [IF APPLICABLE]"|"Prior incident anywhere"|"Nuisance on-site"|"2% to 5% per year (every 20 to 50 years or so)"|"02. Lower priority -- track any recommended actions on action register and resolve if convenient."|"(1) Human error or poor judgment."|"(1) Hinders maintenance or increases the need for repairs.
 (2) Hinders operations. [UPDATE - SYSTEM SPECIFIC]
 (3) Hinders safety, security, health, or environmental protection."|"(1) Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate.
 (2) Pumps, ammonia-refrigerant, and their piping are adequately built, controlled, located, inspected, tested, and maintained.

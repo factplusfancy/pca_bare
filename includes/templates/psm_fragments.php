@@ -535,7 +535,7 @@ $psm_fragments = array(
         'c5name' => $Zfpf->encrypt_1c('Safe Work Practices and Access Control'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(h)(2)(iv)'),
-        'c6quote' => $Zfpf->encrypt_1c('The employer shall develop and implement safe work practices consistent with paragraph (f)(4) of this section, to control the entrance, presence and exit of contract employers and contract employees in covered process areas.'),
+        'c6quote' => $Zfpf->encrypt_1c('The employer shall develop and implement safe work practices consistent with paragraph (f)(4) of this section, to control the entrance, presence and exit of contract employers and contract employees in covered process areas. [See also 29 CFR 1910.119(f)(4), which applies to contractors]'),
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     77 => array(
@@ -836,8 +836,7 @@ $psm_fragments = array(
         'c5name' => $Zfpf->encrypt_1c('Resolution'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(o)(4)'),
-        'c6quote' => $Zfpf->encrypt_1c('The employer shall promptly determine and document an appropriate response to each of the findings of the
-compliance audit, and document that deficiencies have been corrected.'),
+        'c6quote' => $Zfpf->encrypt_1c('The employer shall promptly determine and document an appropriate response to each of the findings of the compliance audit, and document that deficiencies have been corrected.'),
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     119 => array(

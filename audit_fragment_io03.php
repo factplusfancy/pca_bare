@@ -42,7 +42,7 @@ else
 
 // audit_fragment_i1m code
 // SPECIAL CASE: this code is in audit_fragment_io03.php because user can get here by pressing HTML button output by audit_io03.php...
-if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
+if (isset($_GET['audit_fragment_i1m'])) {
     // Additional security check: none possible here.
     if (isset($_SESSION['SR']))
         unset($_SESSION['SR']);
@@ -56,8 +56,6 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
     if (!$RRR)
         $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>No rules found. Contact app admin. Typically setup on installation.</p>');
     $OtherRules = '';
-    if (!isset($_GET['audit_fragment_i1m']))
-        $_GET['audit_fragment_i1m'] = 1; // Assume the first row in t0rule has k0rule == 1. Default to that.
     foreach ($SRR as $VR) {
         if ($_GET['audit_fragment_i1m'] == $VR['k0rule']) { // This plus "if (!isset($Conditions))" below should handle user tampering with $_GET.
             $RuleName = $Zfpf->decrypt_1c($VR['c5name']);
@@ -67,7 +65,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
             $OtherRules .= '<br /><a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m='.$VR['k0rule'].'">'.$Zfpf->decrypt_1c($VR['c5name']).'</a>';
     }
     if (!isset($Conditions))
-        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>No rules found. Contact app admin. Typically setup on installation.</p>');
+        $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>Rule or division method not found. Contact app admin. Typically setup on installation.</p>');
     $Message = '<h2>';
     if ($ReportType)
         $Message .= $ReportType.'</h2><h2>';
@@ -151,7 +149,7 @@ if (isset($_POST['audit_fragment_i1m']) or isset($_GET['audit_fragment_i1m'])) {
         $Message .= '</p>';
     }
     $Message .= '<p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
@@ -199,7 +197,7 @@ if (isset($_GET['choose_fragment_1'])) {
         <input type="submit" name="choose_fragment_2" value="Select division" /></p>
     </form><p>
     <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
@@ -255,7 +253,7 @@ if (isset($_POST['choose_fragment_2'])) {
     </form><p>
     <a class="toc" href="audit_fragment_io03.php?choose_fragment_1">Back to select division.</a></p><p>
     <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     $Zfpf->save_and_exit_1c();
 }
@@ -319,7 +317,7 @@ if (isset($_POST['choose_fragment_3'])) {
     $Message .= '<p>
     <a class="toc" href="audit_fragment_io03.php?choose_fragment_1">Back to select division.</a></p><p>
     <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
     unset($_SESSION['SR']);
     $Zfpf->clear_edit_lock_1c();
@@ -387,7 +385,7 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
             if ($RROr) foreach ($SROr as $KOr => $VOr) { // Each sample observation method (Om) could have Or for many Otid.
                 $_SESSION['SR']['t0obsresult'][$iOr] = $VOr;
                 $Or[$KAuFOm][$KOr] = '<p>
-                <i>Topic ID</i>: '.$Otid[$KOr].'<br />
+                <i>Object ID</i>: '.$Otid[$KOr].'<br />
                 <i>As-done method</i>: '.$Zfpf->decrypt_1c($VOr['c6obsmethod_as_done']).'<br />
                 <i>Result</i>: '.$Zfpf->decrypt_1c($VOr['c6obsresult']);
                 if ($Zfpf->decrypt_1c($VOr['c6bfn_supporting']) != '[Nothing has been recorded in this field.]') // Provide link to Or record, showing supporting documents.
@@ -431,7 +429,7 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
         if ($iOr) // At least one obsresult found, so display message below.
             $Message .= '<p>
                 Each observation record below includes its:<br />
-                - <a class="toc" href="glossary.php#obstopic" target="_blank">specific-observation-topic unique identifier (topic ID)</a>,<br />
+                - <a class="toc" href="glossary.php#obstopic" target="_blank">observation object unique identifier (object ID)</a>,<br />
                 - as-done method,<br />
                 - result,<br />
                 - supporting-documents link, if any, and <br />
@@ -487,7 +485,7 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
     $Message .= '<p'.$TopBorder.'>
     <a class="toc" href="audit_fragment_io03.php?audit_fragment_history_o1">History of this record</a></p><p>
     <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
-    <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+    <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
     echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();    
     $Zfpf->save_and_exit_1c();
 }
@@ -588,7 +586,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         </form><p>
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_o1">Back to compliance verification</a></p><p>
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
-        <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();  
         $Zfpf->save_and_exit_1c();
     }
@@ -646,7 +644,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         <a class="toc" href="audit_fragment_io03.php?choose_obsmethod_1">Back to choose sample observation methods.</a></p><p>
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_o1">Back to compliance verification</a></p><p>
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
-        <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();  
         $Zfpf->save_and_exit_1c();
     }
@@ -668,7 +666,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         Take no action and go...</p><p>
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_o1">Back to compliance verification</a></p><p>
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
-        <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         echo $Zfpf->xhtml_contents_header_1c().$Message.$Zfpf->xhtml_footer_1c();
         $Zfpf->save_and_exit_1c();
     }
@@ -697,7 +695,7 @@ if (isset($_SESSION['Scratch']['t0fragment']) and isset($_SESSION['Scratch']['t0
         The app removed the compliance verification for:</p><p>
         '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5name']).' -- '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c5citation']).'<br />'.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0fragment']['c6quote']).'</p><p>
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1">Back to all compliance verifications</a></p><p>
-        <a class="toc" href="audit_io03.php?audit_o1">Back to report intro</a></p>';
+        <a class="toc" href="audit_io03.php?audit_o1#bottom">Back to report intro</a></p>';
         $Zfpf->clear_edit_lock_1c();
         unset($_SESSION['Scratch']['t0fragment']);
         unset($_SESSION['Scratch']['t0audit_fragment']);

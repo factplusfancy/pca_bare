@@ -35,7 +35,7 @@ $practices = array( // Indent as done below for better display in HTML text area
 (3.2.1) isolate the work object from the rest of the '.HAZSUB_PROCESS_NAME_ZFPF.' and 
 (3.2.2) remove hazardous substances and energy from the work object, 
 (3.3) inspection, testing, and maintenance (ITM) that can be done without opening the primary-containment envelop of the '.HAZSUB_PROCESS_NAME_ZFPF.' and without creating unacceptable risks. 
-Items (3.1) and (3.2) above are covered under the "Inspection, testing, and maintenance (ITM) for safe operation and mechanical integrity" division of this PSM-CAP App. 
+Items (3.2) and (3.3) above are covered under the "Inspection, testing, and maintenance (ITM) for safe operation and mechanical integrity" division of this PSM-CAP App. 
 Option: provide more details in a practice document here.'),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -52,7 +52,7 @@ Option: provide more details in a practice document here.'),
         'c5name' => $Zfpf->encrypt_1c('Security and Access Control'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEECCC'),
-        'c6description' => $Zfpf->encrypt_1c('These may range from "authorized personnel only" signs and locked doors to surveillance, fences, and so forth, as the Owner/Operator deems prudent for the circumstances or as required by other authorities or rules. See also the emergency planning sections of this app. 
+        'c6description' => $Zfpf->encrypt_1c('These may range from sign in/out sheets, "authorized personnel only" signs, and locked doors to surveillance, fences, and so forth, as the Owner/Operator deems prudent for the circumstances or as required by other authorities or rules. See also the emergency planning sections of this app. 
 '.DOC_WHERE_KEPT_ZFPF),
         'c5require_file' => $Encrypted_document_i1m_php,
         'c5require_file_privileges' => $EncryptedLowPrivileges
@@ -77,19 +77,19 @@ Option: provide more details in a practice document here.'),
     (1D) housekeeping of, 
     (1E) heat or cold unsafe for people or equipment in, and 
     (1F) other hazards in 
-all areas containing the piping and equipment to be inspected, such as rooms, roofs, and platforms -- 
+all areas containing the equipment and piping to be inspected, such as rooms, roofs, and platforms -- 
 (1.1) if an area appears unsafe, don\'t enter (or leave immediately), 
 (1.2) immediately report any hazards, including access or egress problems, and 
 (1.3) report or fix any lighting or housekeeping problems, 
 (2) inspect/note/fix, as applicable, the '.HAZSUB_PROCESS_NAME_ZFPF.' 
     (2A) compressors, 
-    (2B) pumps (including '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pumps, secondary heat-transfer liquid pumps, and cooling-water pumps), 
+    (2B) pumps, including for '.HAZSUB_NAME_ADJECTIVE_ZFPF.' refrigerant, condenser cooling water, and secondary heat-transfer liquids, such as brine, glycol, water, and so forth, 
     (2C) condensers, 
     (2D) automatic purgers, 
     (2E) transfer systems, and 
-    (2F) their nearby piping and vessels 
+    (2F) their nearby piping, tanks, and vessels 
 for, if applicable -- 
-(2.1) ammonia, oil, or secondary heat-transfer liquid leaks, 
+(2.1) leaks of ammonia, oil, or secondary heat-transfer liquids, 
 (2.2) excessive oil-drip rate from shaft seals, 
 (2.3) too hot or too cold, 
 (2.4) excessive vibrations, 
@@ -105,7 +105,9 @@ for, if applicable --
 (2.12.2) lubricating-oil sight glasses, 
 (2.12.3) cooling water, or 
 (2.12.4) secondary heat-transfer liquids, 
-(2.13) inadequate flow of cooling water or secondary heat-transfer liquids, 
+(2.13) inadequate flows, levels, or pressures of 
+(2.13.1) condenser cooling water or 
+(2.13.2) secondary heat-transfer liquids, 
 (2.14) oil-draining needed, based on frost line or poor cooling, 
 (2.15) new exterior damage, such as cracks, dents, scratches, or impact marks, 
 (2.16) pressure-relief devices 
@@ -113,19 +115,21 @@ for, if applicable --
 (2.16.2) frosted (possible leak-by), 
 (2.16.3) visibly tampered with, broken ASME seal, or damaged, or 
 (2.16.4) that have opened at some time in the past, if equipped with an indicator, such as the device\'s LED indicator, a flow flag, or a gauge between a rupture disk and a pressure-relief valve, or 
-(2.17) maintenance needed (based on run-time hours or condition), 
+(2.17) maintenance needed, based on runtime hours or condition, 
 (3) inspect/note/fix any automatic purger for -- 
 (3.1) water level not at its normal fill mark in its water-bubble column or 
 (3.2) ammonia odors coming from the drain where water flows, 
 (4) inspect/note/fix and (if not logged by controls) record a quantitative value for, if applicable, the -- 
-(4.1) compressor 
-(4.1.1) suction pressure(s), 
-(4.1.2) discharge pressure(s), 
-(4.1.3) discharge temperature(s), 
-(4.1.4) oil temperature(s), 
-(4.1.5) oil level(s), typically in bullseye sight glasses,
-(4.1.6) oil-filter differential pressure(s), 
-(4.1.7) motor amps, 
+(4.1) compressor(s) 
+(4.1.1) suction pressure, 
+(4.1.2) discharge pressure, 
+(4.1.3) discharge temperature, 
+(4.1.4) motor current (amps), 
+(4.1.5) oil filter differential pressure, 
+(4.1.6) oil level, typically in bulls eye sight glass, 
+(4.1.7) oil pressure, typically the differential pressure that drives lubricant flow, 
+(4.1.8) oil temperature, 
+(4.1.9) capacity indicators, such as for the capacity and volume-ratio slide valves on screw compressors, 
 (4.2) oil levels in any oil reservoirs for pumps, such as the indicator rod\'s position, 
 (4.3) automatic purger counts, 
 (4.4) transfer-system counts, 
@@ -135,7 +139,8 @@ for, if applicable --
 (4.7.1) room air, 
 (4.7.2) secondary heat-transfer liquids, 
 (4.7.3) raw materials, or 
-(4.7.4) products, and 
+(4.7.4) products, 
+(4.8) outdoor ambient temperature, and 
 (5) acceptable ranges and shutoff methods, if not covered by the Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions document(s), in enough detail for a qualified daily inspector to decide when and how to -- 
 (5.1) call in assistance, such as a supervisor or a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor, and 
 (5.2) if safe, shut off equipment, for example by pressing the correct "off" button (but without having to hand-turn valve stems). 
@@ -224,7 +229,7 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c5name' => $Zfpf->encrypt_1c('Hot Work Permit and Sub-Procedures'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEEMMM'),
-        'c6description' => $Zfpf->encrypt_1c('These include: 
+        'c6description' => $Zfpf->encrypt_1c('These apply to everyone (employees and contractors) and include: 
 (1) the hot-work permit policy and form applicable to the '.HAZSUB_PROCESS_NAME_ZFPF.' and 
 (2) the Evacuating Ammonia for Hot Work sub-procedure description, which applies to hot-work on the '.HAZSUB_PROCESS_NAME_ZFPF.'. 
 Sub-procedure description also includes: (A) applicability, (B) roles, responsibilities, and required training, (C) special equipment required, including personal-protective equipment (PPE), (D) first aid and safety data sheet reference; and (E) safety warnings before the first step they apply to. 
@@ -236,7 +241,7 @@ Sub-procedure description also includes: (A) applicability, (B) roles, responsib
         'c5name' => $Zfpf->encrypt_1c('Lockout-Tagout, System-Opening Permit, and Sub-Procedures'),
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEENNN'),
-        'c6description' => $Zfpf->encrypt_1c('Valve stems on the '.HAZSUB_PROCESS_NAME_ZFPF.' shall not be turned by hand, unless following a written hazardous-substance procedure description or '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit. See: 
+        'c6description' => $Zfpf->encrypt_1c('Valve stems on the '.HAZSUB_PROCESS_NAME_ZFPF.' shall not be turned by hand, unless following a written hazardous-substance procedure description, a '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit, or the instructions of an emergency-response incident commander. This applies to everyone, employees and contractors. See: 
 (1) Lockout-tagout policy or similar, 
 (2) the '.HAZSUB_PROCESS_NAME_ZFPF.' opening permit form (and any templates for routine activities, see below), and 
 (3) the following sub-procedure descriptions: 
@@ -280,7 +285,7 @@ If written, each temporary-operation procedure description also includes (A) app
         'c5number' => $Zfpf->encrypt_1c('EEEQQQ'),
         'c6description' => $Zfpf->encrypt_1c('The Owner/Operator forbids '.HAZSUB_PROCESS_NAME_ZFPF.' emergency operations, unless they are part of a leak-mitigation or an emergency shutdown effort that is being completed per either 
 (1) a written hazardous-substance procedure description or 
-(2) the spoken instructions of an emergency-response incident commander, such as, often, the senior officer on a responding fire-department vehicle.'),
+(2) the instructions (spoken or written) of an emergency-response incident commander, such as the senior officer on a responding fire-department vehicle.'),
         'c5require_file' => $EncryptedNothing,
         'c5require_file_privileges' => $EncryptedNothing
     ),
@@ -318,7 +323,7 @@ Procedure descriptions include: (A) applicability, (B) roles, responsibilities, 
         'c2standardized' => '[Nothing has been recorded in this field.]',
         'c5number' => $Zfpf->encrypt_1c('EEESSS'),
         'c6description' => $Zfpf->encrypt_1c('Procedure descriptions covering: 
-(1) agreement on timing from managers and supervisors responsible anyone working in the areas protected by a safety system that will need to be disabled, 
+(1) agreement on timing from managers and supervisors responsible for anyone working in the areas protected by a safety system that will need to be disabled, 
 (2) "testing alarms" start and end notifications to everyone who may see or hear any alarms that will be triggered, 
 (3) immediately before disabling a safety system 
 (3.1) clearing all non-essential personnel from areas protected by a safety system, 
@@ -390,12 +395,13 @@ $EAPpractice = array(
 (C) good practices (Item 8), 
 (D) community-responder coordination (Item 9 -- in USA to meet 40 CFR 68.90, 68.93, and 68.96(a)), and 
 (E) identifying offsite "hazards which may result from ... releases" (Item 9.1.5 -- in USA to meet Clean Air Act 112(r)(1) General Duty Clause), 
-including, for anhydrous ammonia: 
-(1) "what to do if I smell ammonia or notice other hazards" -- such as how to notify facility management and individual move-to-safety, 
+* including, for anhydrous ammonia: 
+(1) "what to do if I smell ammonia or notice other hazards" -- such as how to notify facility management and individual move-to-safety and 
+* who will do the following and how (often an emergency coordinator is designated for each shift or on call after hours, and job titles for other tasks are also designated): 
 (2) determining and communicating routes to safe locations inside (shelter-in-place) or outside (evacuation), 
 (3) sweeps, if safe, while leaving and headcount, 
 (4) any needed shutdown of critical plant equipment before evacuating (may reference leak mitigation and emergency shutdown procedures), 
-(5) calls to needed emergency responders, such as the local fire department and a contractor, pre-qualified to provide emergency response, 
+(5) calls to needed emergency responders, such as the local fire department and a contractor pre-qualified to provide emergency response, 
 (6) any rescue or medical duties done by employees, 
 (7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to emergency-response authorities including 
 (7.1) local (typically 911), 

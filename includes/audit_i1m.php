@@ -38,16 +38,16 @@ if ($RowsReturned['t0audit'] > 0) {
             if ($V['k0user_of_certifier'] == 0)
                 $ProcessAudits .= $Zfpf->decrypt_1c($V['c5name']).' [working draft]';
             else
-                $ProcessAudits .= $Zfpf->decrypt_1c($V['c5name']).' as of '.$Zfpf->timestamp_to_display_1c($Zfpf->decrypt_1c($V['c5ts_as_of'])); // The "as of" date serves like a name.
+                $ProcessAudits .= $Zfpf->decrypt_1c($V['c5name']).' [issued with as of date: '.$Zfpf->timestamp_to_display_1c($Zfpf->decrypt_1c($V['c5ts_as_of'])).']'; // The "as of" date serves like a name.
         }
     }
 }
 $Message = '
-<form action="audit_io03.php" method="post">';
+<form action="audit_io03.php" method="post" enctype="multipart/form-data">';
 if ($ProcessAudits)
     $Message .= '<p><b>
     Reports for the currently selected process:</b>'.$ProcessAudits.'</p>';
-elseif (!isset($_SESSION['StatePicked']['t0process']))
+elseif (!isset($_SESSION['StatePicked']['t0process']['k0process']))
     $Message .= '<p><b>
     No process selected.</b> These documents (except templates) must be associated with a process.</p>';
 else
@@ -62,16 +62,21 @@ else
 if ($ProcessAudits or $TemplateAudits) {
     $Message .= '<p>
     <input type="submit" name="audit_o1" value="View selected" /></p>';
-    if (isset($_SESSION['StatePicked']['t0process']) and $UserGlobalDBMSpriv != LOW_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF)
+    if (isset($_SESSION['StatePicked']['t0process']['k0process']) and $UserGlobalDBMSpriv != LOW_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF)
         $Message .= '<p>
-        Create a draft report from the above-selected template or issued report.<br />
+        Create a draft report from the above-selected report, either issued or template.<br />
         <input type="submit" name="audit_template" value="Create draft from selected" /></p>';
 }
-if (isset($_SESSION['StatePicked']['t0process']) and $UserGlobalDBMSpriv != LOW_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF)
+if (isset($_SESSION['StatePicked']['t0process']['k0process']) and $UserGlobalDBMSpriv != LOW_PRIVILEGES_ZFPF and $UserPracticePrivileges == MAX_PRIVILEGES_ZFPF)
     $Message .= '<p>
+    Import a draft report from a JSON file that is compatible with the PSM-CAP App schema.<br />
+        Maximum file size '.MAX_FILE_SIZE_ZFPF/1000000 .' MB (megabytes).<br />
+            <input type="hidden" name="MAX_FILE_SIZE" value="'.MAX_FILE_SIZE_ZFPF.'" />
+            <input type="file" name="file_1_audit_json" /><br />
+            <input type="submit" name="audit_json_import" value="Create draft from JSON file" /></p><p>
     Creating a report from scratch is difficult, so try finding a template.<br />
     <input type="submit" name="audit_i0n" value="Create draft from scratch" /></p>';
-if ($UserGlobalDBMSpriv == LOW_PRIVILEGES_ZFPF and $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
+if ($UserGlobalDBMSpriv == LOW_PRIVILEGES_ZFPF or $UserPracticePrivileges != MAX_PRIVILEGES_ZFPF)
     $Message .= '<p>
     You don\'t have privileges to create a new report. Contact app admin.</p>';
 $Message .= '

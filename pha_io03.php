@@ -114,6 +114,12 @@ if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first'])
             break;
         }
     }
+    $DBMSresource = $Zfpf->credentials_connect_instance_1s();
+    if (isset($_POST['pha_import_template'])) {
+        $HighestTemplatePHAKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0pha', 't0pha', 99999);
+        if ($HighestTemplatePHAKey == 99999)
+            $ProblemMessage .= '<p>The PSM-CAP App is typically only setup to store 99,999 template PHAs, and that many may be stored already.</p>';
+    }
     if ($ProblemMessage) {
         echo $Zfpf->xhtml_contents_header_1c().'<h2>
         Problem importing a template PHA from a JSON file</h2>
@@ -124,6 +130,7 @@ if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first'])
             <input type="submit" value="Go back" /></p>
         </form>
         '.$Zfpf->xhtml_footer_1c();
+        $Zfpf->close_connection_1s($DBMSresource);
         $Zfpf->save_and_exit_1c();
     }
     if (isset($_POST['pha_import_replace_cwd']) and $_SESSION['SelectResults']['t0pha']) foreach ($_SESSION['SelectResults']['t0pha'] as $V) {
@@ -142,7 +149,6 @@ if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first'])
     $ImportFields = array('c6team_qualifications', 'c6background', 'c6method', 'c6prior_incident_id');
     $jsonPHAKey = key($ArrayPHA['t0pha']); // Verified above that $ArrayPHA['t0pha'] holds exactly one value.
     $Uploader = $Zfpf->current_user_info_1c();
-    $DBMSresource = $Zfpf->credentials_connect_instance_1s();
     if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first'])) {
         if (!isset($_SESSION['StatePicked']['t0process']['k0process']))
             $Zfpf->send_to_contents_1c(__FILE__, __LINE__);
@@ -152,8 +158,7 @@ if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first'])
         $PHARow['c6nymd_leader'] = $EncryptedNothing;
     }
     if (isset($_POST['pha_import_template'])) {
-        $HighestTemplatePHAKey = $Zfpf->get_highest_in_table($DBMSresource, 'k0pha', 't0pha', 99999);
-        $PHARow['k0pha'] = ++$HighestTemplatePHAKey; // Assign a new k0pha that is less than 10,000 but otherwise the highest k0pha.
+        $PHARow['k0pha'] = ++$HighestTemplatePHAKey; // Assign a new k0pha that is < 100000 but otherwise the highest k0pha.
         $PHARow['k0process'] = 0; // See schema -- 0 for template PHAs.
         $PHARow['k0user_of_leader'] = 0; // See schema.
         $PHARow['c6nymd_leader'] = $Zfpf->encrypt_1c('Template PHA imported '.$Zfpf->timestamp_to_display_1c(time()).' by '.$Uploader['NameTitle'].', '.$Uploader['Employer'].' '.$Uploader['WorkEmail']); // See schema.
@@ -248,7 +253,7 @@ if (isset($_POST['pha_import_replace_cwd']) or isset($_POST['pha_import_first'])
         }
         $Zfpf->insert_sql_1s($DBMSresource, 't0safeguard', $NewRow, FALSE);
     }
-    // t0action -- typically not in templates, but need to import a customized PHA that someone wants to use as a template or importing an existing PHA into a new deployment.
+    // t0action -- typically not in templates, but importing actions may be needed to import a customized PHA that someone wants to use as a template or to import an existing PHA into a new deployment.
     unset($NewRow);
     $NewRow['c5who_is_editing'] = $EncryptedNobody;
     $Count = 0;

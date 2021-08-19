@@ -19,44 +19,44 @@ To set up the app, you may:
 
 (1.1) Install Git, if not already installed. See:
     https://git-scm.com/downloads
-(1.1.1) On Ubuntu, to install the latest stable upstream Git version:
-    $ sudo add-apt-repository ppa:git-core/ppa
-    $ sudo apt-get update
-    $ sudo apt-get install git
-    https://git-scm.com/download/linux
+(1.1.1) On Ubuntu 20.04:
+    $ sudo apt install git
+    $ git config --global user.name "YOUR_NAME" 
 
 (1.2) For example, to clone from the command line, with a Unix-like operating system:
     $ git clone https://github.com/factplusfancy/pca_bare /var/www/html/pca
-
-(1.3) For background, see:
+(1.2.1) For background, see:
     https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
     https://git-scm.com/docs/git-clone
     https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 
-(2) If not using MySQL, customize class CoreZfpf,
-in PSM-CAP App file includes/CoreZfpf.php,
-for your database management system (DBMS).
-=> Getting help with this step:
-* There is a high probability that, free of charge, Fact Fancy, LLC, can help you
- and code the "wrappers" for non-MySQL deployments within 30 days, but
-* some coordination and testing would still be required on your part.
-
-(2.1) Determine which DBMS you can and want to use,
+(2) Determine which database management system (DBMS) you can and want to use,
 maybe by asking your organization's information-technology department.
-For a stand-alone deployment on one computer, you may
-install LAMP, MAMP or WAMP on that computer. For example, see:
-    https://ubuntu.com/server/docs/lamp-applications
-    https://www.mamp.info
-    https://www.wampserver.com/en/
-Notes:
-- PHP must be installed on the computer (the server) where this app will run.
-- As of 2020-07-25, this app runs on PHP 5 or higher, but
-safer to use a version supported by PHP, of course. See:
-    https://www.php.net/supported-versions.php.
-- This app can fairly easily be modified to run on almost any DBMS.
-- MySQL is its default DBMS.
 
-(2.2) If MySQL isn't the DBMS you will use,
+(2.1) For a stand-alone deployment on one computer, you may
+install LAMP, MAMP or WAMP on that computer. For example,
+    Linux: contact us for details. If Ubuntu 20.04, with MariaDB, 
+    these commands have worked for us, in terminal...
+        sudo apt update
+        sudo apt install apache2
+        sudo ufw enable
+        sudo ufw status verbose
+        sudo apt install mariadb-server
+        sudo apt install php php-mysql php-mbstring php-zip
+        sudo service apache2 restart
+        sudo mysql_secure_installation
+    Mac: https://www.mamp.info
+    Windows: https://www.wampserver.com/en/
+Notes:
+- PHP, including php-mbstring (multibyte strings) and php-zip (if Zipping downloaded files), 
+  must be installed on the computer (the server) where this app will run.
+- As of 2021-08-02, this app runs on PHP 5 or higher, but
+  safer to use a version supported by PHP, of course. See:
+    https://www.php.net/supported-versions.php
+- This app can fairly easily be modified to run on almost any DBMS.
+- MariaDB or MySQL is its default DBMS.
+
+(2.2) If MariaDB or MySQL isn't the DBMS you will use,
 create wrappers for your DBMS in all functions that use "mysqli"
 in PSM-CAP App file includes/CoreZfpf.php -- namely functions:
     connect_instance_1s
@@ -67,6 +67,10 @@ in PSM-CAP App file includes/CoreZfpf.php -- namely functions:
     select_sql_1s
     update_sql_1s
     delete_sql_1s
+=> Getting help with this step:
+* There is a high probability that, free of charge, Fact Fancy, LLC, can help you
+ and code the "wrappers" for non-mysqli deployments within 30 days, but
+* some coordination and testing would still be required on your part.
 
 (3) Customize your deployment, including its security.
 
@@ -122,7 +126,7 @@ For example, with a Unix-like operating system:
 Notes:
 - For your DBMS deployment, you will need the password for
 a username with administrative privileges to complete the steps below.
-- The default MySQL admin username is "root".
+- The default MariaDB or MySQL admin username is "root".
 
 (4.1) In whatever directory you put the app's files, point your Web browser
 at PSM-CAP App file setup.php and follow the instructions there.
