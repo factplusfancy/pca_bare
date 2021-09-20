@@ -8,7 +8,7 @@
 $AmmoniaRefrigerationAudit = array(
     1 => array(
         'k0audit' => 1, // For processes subject to OSHA PSM, the EPA's Program 3 Prevention Program, or equivalent.
-        'c5name' => $Zfpf->encrypt_1c('PSM audit and hazard review for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2021-06-18 template.'), // k0process is handled before SQL insert below.
+        'c5name' => $Zfpf->encrypt_1c('PSM audit and hazard review for anhydrous-ammonia mechanical refrigeration (ammonia refrigeration). 2021-09-16 template.'), // k0process is handled before SQL insert below.
         'c5ts_as_of' => $EncryptedNothing,
         'k0user_of_leader' => 0,
         'c6bfn_act_notice' => $EncryptedNothing,
@@ -64,7 +64,6 @@ in the USA, the following general-duty laws
 29 CFR 1910.119 -- Title 29, Code of Federal Regulations (CFR), Section 1910.119. This is the Process Safety Management (PSM) rule administered by the U.S. Department of Labor, Occupational Safety and Health Administration (OSHA). Federal Register (FR) publication and amendments: 57 FR 6403, February 24, 1992; 57 FR 7847, March 4, 1992; 61 FR 9238, March 7, 1996; 67 FR 67964, November 7, 2002; 76 FR 80738, December 27, 2011; 77 FR 17776, March 26, 2012; 78 FR 9313, February 8, 2013. Available from https://gpo.gov or https://osha.gov
 
 40 CFR 68 -- Title 40, Code of Federal Regulations, Part 68. This is the Chemical Accident Prevention (CAP) rule administered by the U.S. Environmental Protection Agency (EPA), which sometimes requires submission of a Risk Management Plan (RMP). Federal Register (FR) publication and amendments: 59 FR 4493, January 31, 1994. Redesignated at 61 FR 31717, June 20, 1996; 61 FR 31729, June 20, 1996; as amended at 62 FR 45132, August 25, 1997; 63 FR 645, January 6, 1998; 64 FR 980, January 6, 1999; 64 FR 28700, May 26, 1999; 65 FR 13250, March 13, 2000; 69 FR 18832, April 9, 2004; 82 FR 4594-4705, January 13, 2017; 84 FR 69843-69916 December 19, 2019. Available from https://gpo.gov or https://epa.gov
-
 State, provincial, and local codes
 
 Check for building (new and existing), electrical, energy, fire, fuel gas, hazardous substance, mechanical, plumbing, and zoning codes and other applicable rules in the jurisdiction where the facility is located. A few examples are listed below.
@@ -73,8 +72,9 @@ Check for building (new and existing), electrical, energy, fire, fuel gas, hazar
 
 Wisconsin Commercial Building Code -- Chapter SPS 361 to 365, Wisconsin Administrative Code. This adopts the International Mechanical Code and other International Code Council codes, with some exceptions for ammonia refrigeration in industrial occupancies. Available from the Legislative Reference Bureau https://legis.wisconsin.gov/lrb/
 
-SPS 345 (formerly Comm 45, ILHR 45, and Ind 45) -- Chapter SPS 345, Wisconsin Administrative Code. This is the Wisconsin mechanical-refrigeration code, administered by the Division of Industry Services (formerly Safety and Buildings), Department of Safety and Professional Services (formerly Commerce). This code has a long history, for example, a revised edition of Ind 45 was published in March 1963. In September 1983 it was revised and renamed ILHR 45, and subsequently revised effective: September 1, 1994; November 1, 1996 (and renamed Comm 45); July 1, 2002; November 1, 2003 (which adopted the increased relief-vent (RV) pipes sizes in ASHRAE Addendum 15c-2000); September 1, 2010; January 1, 2012 (only renamed SPS 345); June 1, 2012; and October 1, 2013. Since September 1, 2010, this code has referenced ASHRAE 15-2007 (including addenda a to i) and IIAR 2-2008, which in turn reference the ASME codes described below. Guidance and information on any updates are available at https://dsps.wi.gov. The current and older editions of SPS 345, Comm 45, ILHR 45, and Ind 45 may be obtained by contacting the Legislative Reference Bureau https://legis.wisconsin.gov/lrb/
+SPS 341 -- Chapter SPS 341, Boilers and Pressure Vessels, Wisconsin Administrative Code. Only Subchapter VI -- Repairs and Alterations, applies to pressure vessels in mechanical refrigeration systems. SPS 341 adopts the National Board Inspection Code. Guidance and information on any updates are available at https://dsps.wi.gov. The current and older editions may be obtained by contacting the Legislative Reference Bureau https://legis.wisconsin.gov/lrb/
 
+SPS 345 (formerly Comm 45, ILHR 45, and Ind 45) -- Chapter SPS 345, Mechanical Refrigeration, Wisconsin Administrative Code. This code is administered by the Division of Industry Services (formerly Safety and Buildings), Department of Safety and Professional Services (formerly Commerce). This code has a long history, for example, a revised edition of Ind 45 was published in March 1963. In September 1983 it was revised and renamed ILHR 45, and subsequently revised effective: September 1, 1994; November 1, 1996 (and renamed Comm 45); July 1, 2002; November 1, 2003 (which adopted the increased relief-vent (RV) pipes sizes in ASHRAE Addendum 15c-2000); September 1, 2010; January 1, 2012 (only renamed SPS 345); June 1, 2012; and October 1, 2013. Since September 1, 2010, this code has referenced ASHRAE 15-2007 (including addenda a to i) and IIAR 2-2008, which in turn reference the ASME codes described below. Guidance and information on any updates are available at https://dsps.wi.gov. The current and older editions of SPS 345, Comm 45, ILHR 45, and Ind 45 may be obtained by contacting the Legislative Reference Bureau https://legis.wisconsin.gov/lrb/
 Model building codes, industry standards, and so forth
 
 IMC -- International Mechanical Code (IMC). The IMC has been published every three years since 2000. IMC 2000 was adopted, in part, by Comm 45, Wisconsin Administrative Code, from November 1, 2003, to August 31, 2010. Regarding ammonia refrigeration, it has typically referenced and been mostly consistent with ASHRAE 15 and IIAR 2, with additional requirements. The IMC may be purchased from the International Code Council at https://www.iccsafe.org
@@ -87,23 +87,29 @@ ASHRAE 15 -- American National Standards Institute (ANSI)/American Society of He
 
 ASME Boiler and Pressure Vessel Code -- the American Society of Mechanical Engineers (ASME) has published this code since 1914. Recent editions include 2010, 2013, 2015, 2017, 2019 and publication planned every two years going forward, possibly with more recent interpretations or code cases. ASME publications may be purchased from https://www.asme.org
 
-ASME B31.5 -- "Refrigeration Piping and Heat Transfer Components." This code was separated from the power-piping code (B31.1) in 1962, and revised in 1966, 1974, 1978, 1983, 1987, 1989, 1992, 2001, 2006, 2010, 2013, 2016, 2019, and publication planned every three years going forward, possibly with more frequent addenda and interpretations. ASME B31.5 covers materials, design, fabrication, assembly, erection, testing, and inspection. ASME publications may be purchased from https://www.asme.org
+ASME B31.5, Refrigeration Piping and Heat Transfer Components -- This code was separated from the power-piping code (B31.1) in 1962, and revised in 1966, 1974, 1978, 1983, 1987, 1989, 1992, 2001, 2006, 2010, 2013, 2016, 2019, and publication planned every three years going forward, possibly with more frequent addenda and interpretations. ASME B31.5 covers materials, design, fabrication, assembly, erection, testing, and inspection. ASME publications may be purchased from https://www.asme.org
+
+API 579-1/ASME FFS-1, Fitness-For-Service -- This standard developed from an American Petroleum Institute (API) recommended practice published in 2000, and it was first published as a joint API/ASME standard in 2007. The next and latest edition was published in 2016. ASME publications may be purchased from https://www.asme.org
+
+ASME PCC-2, Repair of Pressure Equipment and Piping -- This standard covers temporary repair options, such as Article 3.6, Mechanical Clamp Repair, as well as long-term repair options, whose costs may be compared to replacement. The following editions have been published: 2006, 2008, 2011, 2015, and 2018. ASME publications may be purchased from https://www.asme.org
+
+NBIC, National Board Inspection Code -- The NBIC provides standards for installation, inspection, repairs, and alternations of boilers, pressure vessels, and pressure-relief devices. It was first published in 1946. New editions are published in July of odd numbered years. Applicability of the NBIC to ammonia mechanical refrigeration systems varies by jurisdiction. The NBIC may be purchased from https://www.nationalboard.org
 
 IIAR 1 -- ANSI/International Institute of Ammonia Refrigeration (IIAR), Standard 1, "Definitions and Terminology Used in IIAR Standards." The first edition was published in 2012. The next and latest edition was published in 2017. IIAR publications may be purchased from https://iiar.org
 
-IIAR 2 -- ANSI/IIAR, Standard 2, "Safe Design of Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in March 1974 as IIAR 74-2. Revised editions (or addenda) were published in 1984, December 1992, August 1999, October 2005, June 2008, August 2010, December 2012, November 2015 (named the 2014 edition), and July 2019 (named 2014 Addendum A). This standard was named "Equipment, Design, and Installation of Closed Circuit Ammonia Mechanical Refrigerating Systems" prior to the 2014 edition.
+IIAR 2 -- ANSI/IIAR, Standard 2, "Design of Safe Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in March 1974 as IIAR 74-2. Revised editions (or addenda) were published in 1984, December 1992, August 1999, October 2005, June 2008, August 2010, December 2012, November 2015 (named the 2014 edition), July 2019 (named 2014 Addendum A), and about September 10, 2021. This standard was named "Equipment, Design, and Installation of Closed Circuit Ammonia Mechanical Refrigerating Systems" prior to the 2014 edition. For the editions published from 2014 to 2019 it was named "Safe Design of Closed-Circuit Ammonia Refrigeration Systems".
 
 IIAR 3 -- ANSI/IIAR, Standard 3, "Ammonia Refrigeration Valves". IIAR 3-2005 was an "Informative Reference" of IIAR 2-2008. The first edition was published in 2005. Revised editions were published in 2012 and 2017.
 
-IIAR 4 -- ANSI/IIAR, Standard 4, "Installation of Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in 2015. This is the latest edition.
+IIAR 4 -- ANSI/IIAR, Standard 4, "Installation of Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in 2015. A revised edition was published in 2020.
 
 IIAR 5 -- ANSI/IIAR, Standard 5, "Start-up and Commissioning of Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in 2013. A revised edition was published in 2019.
 
-IIAR 6 -- ANSI/IIAR, Standard 6, "Inspection, Testing, and Maintenance of Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in May 2019.
+IIAR 6 -- ANSI/IIAR, Standard 6, "Inspection, Testing, and Maintenance of Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in May 2019. Do not use the fitness-for-service information in IIAR 6-2019, Chapters 10 and 11, for example, when assessing corroded or damaged vessels or piping, without also consulting the latest edition of API 579-1/ASME FFS-1, Fitness-For-Service, because the simplified methods in IIAR 6-2019 do not reproduce the limitations of the API 579-1/ASME FFS-1 methods, for example, corrosion or damage near nozzles, supports, cracks, grooves, gouges, or other areas that may experience additional stress.
 
-IIAR 7 -- ANSI/IIAR, Standard 7, "Developing Operating Procedures for Closed-Circuit Ammonia Mechanical Refrigerating Systems". The first edition was published in 2013. The next and latest edition was published in 2019.
+IIAR 7 -- ANSI/IIAR, Standard 7, "Developing Operating Procedures for Closed-Circuit Ammonia Mechanical Refrigerating Systems". The first edition was published in 2013. A revised edition was published in 2019.
 
-IIAR 8 -- ANSI/IIAR, Standard 8, "Decommissioning of Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in 2015. This is the latest edition.
+IIAR 8 -- ANSI/IIAR, Standard 8, "Decommissioning of Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in 2015. A revised edition was published in 2020.
 
 IIAR 9 -- ANSI/IIAR, Standard 9, "Minimum System Safety Requirements for Existing Closed-Circuit Ammonia Refrigeration Systems". The first edition was published in March 2020. This is the latest edition.
 
@@ -151,7 +157,7 @@ The compliance verifications included with this report cite only the OSHA PSM st
 - "regulated substance" for "highly hazardous chemical",
 - "stationary source" for "facility", 
 - in the definition of "catastrophic release", "presents imminent and substantial endangerment to public health and the environment" for "presents serious danger to employees in the workplace, and
-- for contractors, 40 CFR 68.87(b)(3), "the applicable provisions of subpart E [Emergency Response]" for "the applicable provisions of the emergency action plan", in the list of information that needs to be explained to contractors, which would typically only be relevant to emergency-response contractors";
+- for contractors, 40 CFR 68.87(b)(3), "the applicable provisions of subpart E [Emergency Response]" for "the applicable provisions of the emergency action plan", in the list of information that needs to be explained to contractors, which would typically only be relevant to emergency-response contractors;
 Also, compared to the OSHA PSM standard, the Program 3 Prevention Program doesn\'t have:
 - the phrase "in the workplace" or "on employees in the workplace" in the PHA content and incident investigation applicability requirements and
 - any injury and illness log requirement for contractors resembling 29 CFR 1910.119(h)(2)(vi).
@@ -183,7 +189,7 @@ If you have any questions or concerns about the scope of this audit and hazard r
     ),
     2 => array(
         'k0audit' => 2,  // For processes subject to general duty only or the EPA's Program 2 Prevention Program.
-        'c5name' => $Zfpf->encrypt_1c('General-duty only hazard review and compliance audit for anhydrous-ammonia mechanical refrigeration. 2021-06-18 template.'), // k0process is handled before SQL insert below.
+        'c5name' => $Zfpf->encrypt_1c('General-duty only hazard review and compliance audit for anhydrous-ammonia mechanical refrigeration. 2021-09-16 template.'), // k0process is handled before SQL insert below.
         'c5ts_as_of' => $EncryptedNothing,
         'k0user_of_leader' => 0,
         'c6bfn_act_notice' => $EncryptedNothing,

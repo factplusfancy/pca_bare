@@ -85,12 +85,10 @@ class cmsZfpf {
 (2.1.4) composition,<br />
 (2.1.5) any other relevant process parameters,<br />
 (2.2) failures of any needed utilities, for example compressed air, electrical (outages, blips, restoration...), or water,<br />
-(2.3) relevant external circumstances, such as<br />
-(2.3.1) earthquakes/seismic,<br />
-(2.3.2) substances stored or handled nearby and the corrosion, ignition sources, fires, or explosions they may cause or promote (cleaning, corrosive, combustible, oxidizers, and electrical equipment, transformers, and wires...),<br />
-(2.3.3) traffic (impacts from airplanes, carts, forklifts, trains, trucks...),<br />
-(2.3.4) vandalism, terrorism, or theft,<br />
-(2.3.5) weather (ice, humidity, hurricanes, rain, salinity/sea spray, sand or dust storms, snow, tornadoes, wind...), and so forth,<br />
+(2.3) relevant external circumstances and hazards, such as<br />
+(2.3.1) substances stored or handled nearby and the corrosion, ignition sources, fires, or explosions they may cause or promote (cleaning, corrosive, combustible, oxidizers, and electrical equipment, transformers, and wires...),<br />
+(2.3.2) traffic (impacts from airplanes, carts, forklifts, trains, trucks...), or<br />
+(2.3.3) avalanche/debris flow/landslide/mudslide, cold, earthquake, flood, hail, heat, humidity, ice, lightning, rain, salinity/sea spray, sand or dust storm, snow, terrorism/theft/vandalism, tsunami, volcanic activity, wildfire, and wind (including from hurricanes and tornadoes), and so forth<br />
 (3) protecting people (life safety), onsite or offsite, documentation, such as any needed<br />
 (3.1) locating and siting studies,<br />
 (3.1) assessments of explosions, fires, or leaks,<br />

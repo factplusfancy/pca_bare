@@ -635,7 +635,10 @@ $Schema = array(
         'k0obsresult', // Less than 100000 for templates.
         'k0audit',
         'k0obsmethod',
-        'c5_obstopic_id', // c5obstopic may be compressors, c5_obstopic_id may be Compressor 2 or an asset ID.
+        'c5_obstopic_id', // observation object unique identifier (object ID), see app file: glossary.php
+        // In other contexts, such as a maintenance management system, there would typically be a many-to-many relationship between
+        // an object ID and the observation results about it, such as to track the object, like a compressor, over time.
+        // But, for an infrequently and often uniquely completed audit, having an object ID for each observation result works.
         'c6obsmethod_as_done', // t0obsmethod:c6obsmethod may change, so record here how actually done for the recorded c6obsresult.
         'c6obsresult', // Result of c6obsmethod_as_done, the observation method "as done".
         'c6bfn_supporting', // supporting documents, photos...

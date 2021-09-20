@@ -663,13 +663,15 @@ For the all the condensers in the facility's ammonia-refrigeration system, which
 * See also the safeguards, including automated shutoffs, for:
 - compressors, ammonia-refrigerant, and
 - pumps, ammonia-refrigerant [IF APPLICABLE]."
-"Existing Safeguard"|"Crash, derailment, avalanche/debris flow/landslide/mudslide, flood, tsunami, volcano, and wildfire risks are reasonable."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
+"Existing Safeguard"|"Crash, derailment, avalanche/debris flow/landslide/mudslide, flood, salinity/sea spray, sand or dust storm, tsunami, volcano, and wildfire risks are reasonable."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
 The facility's ammonia-refrigeration system is:
 * [________________] miles away from the nearest airport,
 * [________________] feet away from the nearest railroad track, besides low-speed spurs,
 * adequately protected from vehicle traffic by barriers or distance,
 * not located in an area with avalanche/debris flow/landslide/mudslide hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
 * not located in a floodplain, 0.2% or higher annual risk [OR COMPARE TO 0.2% OR 1% ANNUAL-RISK FLOOD ELEVATION, DESCRIBE PROTECTION/MITIGATION AS NEEDED],
+* not located in an area with salinity/sea spray hazards, such as increased corrosion, including to steel inside reinforced concrete [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
+* not located in an area with sand or dust storm hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
 * not located in an area with tsunami hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
 * not located in an area with volcano hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
 * not located in an area with wildfire hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION]."
@@ -976,7 +978,7 @@ Taking into account that some ammonia leaks, either inside or outside the refrig
 - each exit or exit access doorway is equipped with panic hardware and swings open in the direction of egress travel, 
 - fire rating of doors is 
 > same as exterior wall, if to outside, or 
-> 1-hour, if to inside and the room is unsprinklered (IIAR 2-2019, 5.17.8 and 6.10; IIAR 9-2020 7.3.3 and 7.3.9), and 
+> 1-hour, if to inside and the room is unsprinklered (IIAR 2-2021, 5.16.6 and 6.10; IIAR 9-2020 7.3.3 and 7.3.9), and 
 - the room is kept tidy and its floors are not slippery, such as due to oil spills or similar, 
 * has neither open flames nor surfaces greater than 800 F (427 C) in the room, except: 
 - fuel-burning appliances that 
@@ -1005,7 +1007,7 @@ no ppm signal, such as due to a malfunction or a power loss on the dedicated-bra
 25 ppm -- activate audible (15 decibels above average-ambient and 5 decibels above expected maximum-ambient sound pressure) and visible alarms in the room and outside its doors (automatic reset allowed once concentration falls below 25 ppm), 
 50 ppm (preferably 25 ppm) -- notify Owner/Operator representatives, similarly to 'no ppm signal' above, 
 1000 ppm (preferably no higher than 150 ppm, which is half the immediately dangerous to life or health, IDLH, concentration) -- activate the room's emergency ventilation (manual reset required), and 
-40,000 ppm (preferably no higher than 15,000 ppm, which is approximately one tenth, 10%, of the lower flammability limit, LFL, of ammonia in dry air, but mixtures of ammonia gas and lubricating-oil mists are more flammable than ammonia alone) -- trigger the same response as the above-described E-stop (manual reset required) (IIAR 2-2019 6.13 and IIAR 9-2020 7.3.12),
+40,000 ppm (preferably no higher than 15,000 ppm, which is approximately one tenth, 10%, of the lower flammability limit, LFL, of ammonia in dry air, but mixtures of ammonia gas and lubricating-oil mists are more flammable than ammonia alone) -- trigger the same response as the above-described E-stop (manual reset required) (IIAR 2-2021 6.13 and IIAR 9-2020 7.3.12),
 * is well sealed, so that 
 - the fire ratings of its envelop (walls, floors, ceilings, and so forth) are maintained, 
 - air could not flow between the room and other interior spaces, including around or inside things that penetrate its envelop, such as piping, conduits, or ducts, and access panels for ducts were gasketed and tight fitting (IIAR 9-2020 7.3.2.1, 7.3.2.5, and 7.3.6.2),
@@ -1025,7 +1027,7 @@ no ppm signal, such as due to a malfunction or a power loss on the dedicated-bra
 - non-sparking blades, preferably Air Movement and Control Association (ACMA) Standard 99, type A or B (Spark A or B) spark-resistant construction, and 
 - totally-enclosed motors, unless the motor is very unlikely to get exposed to a flammable atmosphere while energized, for example outdoors and not in the exhaust-air stream or that shuts/stays off when the emergency-ventilation starts,
 * has an emergency-ventilation outlet(s) that discharges
-- upward [OPTION: ADD DETAILS, PER APPLICABLE CODE, SUCH AS 2,500 FEET PER MINUTE PER IIAR 2-2010 TO 2019], above the roof of the refrigerating-machinery room,
+- upward [OPTION: ADD DETAILS, PER APPLICABLE CODE, SUCH AS 2,500 FEET PER MINUTE PER IIAR 2-2010 TO 2021], above the roof of the refrigerating-machinery room,
 - adequately far from air intakes, doors, ladders, property boundaries, walkways, windows that are sometimes open, and work areas,
 - where it is reasonably unlikely to contaminate breathing air, in excess of 150 ppm, 220 ppm, or another reasonable target -- considering any nearby higher roofs and air recirculation (swirling and eddies) on the downwind side of the building with the ventilation outlet -- in
 > areas where people are routinely present or
@@ -1191,7 +1193,7 @@ In the facility's ammonia-refrigeration system,
 * a King valve, stop, is accessible from the floor and not in a cramped location and so
 - it would normally be accessible to emergency responders wearing self-contained breathing apparatus (SCBA) and protective suits.
 * Stop valves are also called hand valves or shutoff valves."
-"Existing Safeguard"|"Vehicle or heavy cart traffic unlikely to damage ammonia-refrigeration equipment, piping, or supports."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
+"Existing Safeguard"|"Vehicle or heavy cart traffic are unlikely to damage ammonia-refrigeration equipment, piping, or supports."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
 At the facility,
 * adequate guarding is in place where vehicle or heavy cart traffic comes close to ammonia-refrigeration equipment, piping, or supports, including
 - [NOTE AREAS WITH EQUIPMENT OR PIPING NEAR TRAFFIC THAT ESPECIALLY REQUIRES GUARDING]
@@ -1199,4 +1201,4 @@ At the facility,
 - in the refrigerating-machinery room, an authorized personnel only room, with less-frequent and carefully-done moving of heavy stuff,
 - in mechanical penthouses, or
 - above the roof,
-* thicker, Schedule 80, steel is used for 1-1/2' and smaller ammonia-refrigeration piping, except some tubing integral to compressor and other equipment packages."
+* pipe with thicker walls is used for any threaded and 1-1/2' and smaller ammonia-refrigeration piping, except some tubing integral to compressor and other equipment packages. See the applicable edition of IIAR 2."

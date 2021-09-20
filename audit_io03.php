@@ -65,10 +65,10 @@ if (isset($_POST['audit_i0n']) or isset($_POST['audit_template']) or isset($_POS
         'c5name' => 'Type of report',
         'c5ts_as_of' => '"As of" date and time',
         'k0user_of_leader' => 'Leader',
+        'c6audit_scope' => 'Scope',
         'c6bfn_act_notice' => 'Activity notice', 
         'c6howtoinstructions' => 'Instructions',
         'c6background' => 'Background',
-        'c6audit_scope' => 'Scope',
         'c6audit_method' => 'Method',
         'c6auditor_qualifications' => 'Qualifications',
         'c6bfn_auditor_notes' => 'Supporting documents', 
@@ -416,7 +416,7 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
     else
         $ReportType = '';
     // Extra left-hand contents only for o1 code
-    $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['oacv_buttons'] = 'Observations, actions, and compliance verifications';
+    $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['acvo_buttons'] = 'Actions, compliance verifications, and observations';
     $Message = '<h2>';
     if ($ReportType)
         $Message .= $ReportType.'</h2><h2>';
@@ -424,11 +424,12 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
     Report for<br />
     '.$Process['AEFullDescription'].'</h2>
     '.$Zfpf->select_to_o1_html_1e($htmlFormArray, 'audit_io03.php', $_SESSION['Selected'], $Display);
+    $Message .= '<p><a id="acvo_buttons"></a>';
     if ($_SESSION['Selected']['k0audit'] >= 100000) // Templates cannot have actions.
-        $Message .= '<p>
+        $Message .= '
         <a class="toc" href="audit_io03.php?view_audit_actions"><b>Actions, proposed or referenced, view.</b></a><br />
-        <a href="glossary.php#actions" target="_blank">Actions</a> may include observed deficiencies and resolution options.</p>';
-    $Message .= '<p>
+        <a href="glossary.php#actions" target="_blank">Actions</a> may include observed deficiencies and resolution options.</p><p>';
+    $Message .= '
         <a class="toc" href="audit_fragment_io03.php?audit_fragment_i1m=1"><b>Compliance verifications, view.</b></a><br />
         Lists <a href="glossary.php#fragment" target="_blank">rule fragments</a> and observations made to check compliance with them.</p><p>
         <a class="toc" href="obsresult_io03.php?obsresult_i1m"><b>Observations, view or input.</b></a><br />
@@ -467,7 +468,7 @@ if (isset($_POST['audit_o1']) or isset($_GET['audit_o1'])) {
             elseif ($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'] or $UserIsProcessPSMLeader) {
                 if ($_SESSION['t0user']['k0user'] == $_SESSION['Selected']['k0user_of_leader'])
                     $Message .= '<p>
-                    <a class="toc" href="audit_io03.php?leader_approval_1">Issue this report, including its observations and proposed actions, and permanently log the proposed actions in this app\'s action register.</a></p>'; // TO DO give option to issue report with rule-fragment compliance verifications as well.
+                    <a class="toc" href="audit_io03.php?leader_approval_1">Issue this report, including its observations and proposed actions, and permanently log the proposed actions in this app\'s action register.</a></p>';
                 else
                     $Message .= '<p>
                     An audit report can only be issued by its report leader. You are not the recorded report leader.</p>';
@@ -623,16 +624,16 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             if ($RROrA) foreach ($SROrA as $VOrA) {
                 $OrAKey = $VOrA['k0obsresult_action'];
                 $ArrayAudit['t0obsresult_action'][$OrAKey] = $VOrA;
-            }
-            if (!in_array($VOr['k0action'], $AKeys)) {
-                $AKey = $VOr['k0action'];
-                $AKeys[] = $AKey;
-                $Conditions[0] = array('k0action', '=', $AKey);
-                list($SRA, $RRA) = $Zfpf->select_sql_1s($DBMSresource, 't0action', $Conditions);
-                if ($RRA != 1)
-                    error_log(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.'. '.@$RRA.' t0action rows returned for k0action = '.@$AKey);
-                if ($RRA)
-                    $ArrayAudit['t0action'][$AKey] = $SRA[0];
+                if (!in_array($VOrA['k0action'], $AKeys)) {
+                    $AKey = $VOrA['k0action'];
+                    $AKeys[] = $AKey;
+                    $Conditions[0] = array('k0action', '=', $AKey);
+                    list($SRA, $RRA) = $Zfpf->select_sql_1s($DBMSresource, 't0action', $Conditions);
+                    if ($RRA != 1)
+                        error_log(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.'. '.@$RRA.' t0action rows returned for k0action = '.@$AKey);
+                    if ($RRA)
+                        $ArrayAudit['t0action'][$AKey] = $SRA[0];
+                }
             }
         }
         $Zfpf->close_connection_1s($DBMSresource);
@@ -776,7 +777,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         // Typical o1 code for introductory text fields, defined by $htmlFormArray here.
         $Display = $Zfpf->select_to_display_1e($htmlFormArray);
         $Display['k0user_of_leader'] = $ReportLeader['NameTitle'].', '.$ReportLeader['Employer'];
-        $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['obsresult'] = 'Observations';
+        $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['obsresult'] = 'Observation results';
         $ApprovalText = '<h1>';
         if ($ReportType)
             $ApprovalText .= $ReportType.'<br />';
@@ -784,73 +785,81 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         Report for<br />
         '.$Process['AEFullDescription'].'</h1>
         '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'<h1><a id="obsresult"></a>
-        <a class="toc" href="glossary.php#obstopic" target="_blank">Observation results</a></h1>';
+        <a class="toc" href="glossary.php#obstopic" target="_blank">Observation results</a></h1><p>
+        Sorted by sample observation methods, truncated, which are the subheadings below.</p>';
         // Get observation topics associated with the selected report.
         $DBMSresource = $Zfpf->credentials_connect_instance_1s();
         $Conditions[0] = array('k0audit', '=', $_SESSION['Selected']['k0audit']);
-        list($SRAuOt, $RRAuOt) = $Zfpf->select_sql_1s($DBMSresource, 't0audit_obstopic', $Conditions);
-        // List observation results by observation topic.
+        list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
+        if (!$RROr) {
+            echo $Zfpf->xhtml_contents_header_1c().'<h2>
+            No observation results found</h2><p>
+            An audit report cannot be issued without any observation results.</p><p>
+            <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>
+            '.$Zfpf->xhtml_footer_1c();
+            $Zfpf->save_and_exit_1c();
+        }
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
         $ccsaZfpf = new ccsaZfpf;
-        if ($RRAuOt) { // Disregard otherwise, unlimited potential inadequate report possibilities, the report leader is responsible for verifying quality before issuing.
-            foreach ($SRAuOt as $VAuOt)
-                $OtConditions[] = array('k0obstopic', '=', $VAuOt['k0obstopic'], 'OR');
-            unset($OtConditions[--$RRAuOt][3]); // remove the final, hanging, 'OR'.
-            list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', $OtConditions);
-            if ($RROt != ++$RRAuOt) // Pre-increment because decremented above.
-                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching the report to observation topics. Contact app admin.</p>');
-            foreach ($SROt as $KOt => $VOt) {
-                $OtName = $Zfpf->decrypt_1c($VOt['c5name']);
-                $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['Ot'.$KOt] = substr($OtName, 0, 20).'...'; // Truncate for left-hand contents.
-                $ApprovalText .= '<h2 class="topborder"><a id="Ot'.$KOt.'"></a>
-                '.$OtName.'</h2>';
-                // Get observation results (Or) associated with the selected observation topic (Ot).
-                // TO DO re-think report -- as is: an obsresult may be listed multiple times, under each applicable obstopic. 
-                // TO DO so -- list truncated obsresult under each obstopic, with hyperlinks to a single list of full obsresults.
-                $OrInOt = array();
-                $Conditions[0] = array('k0obstopic', '=', $VOt['k0obstopic']);
+        $htmlFormArray = $ccsaZfpf->html_form_array('obsresult', $Zfpf);
+        $Types = array('action' => 'Actions, proposed or referenced');
+        foreach ($SROr as $VOr)
+            $OmKeys[] = $VOr['k0obsmethod'];
+        array_multisort($SROr, $OmKeys); // Sample observation methods have keys ordered roughly following the PSM standard, see file includes/templates/nh3r_obsmethod.php
+        foreach  ($SROr as $VOr) {
+            if (!isset($OmKey) or $OmKey != $VOr['k0obsmethod']) {
+                $OmKey = $VOr['k0obsmethod'];
+                $Conditions[0] = array('k0obsmethod', '=', $VOr['k0obsmethod']);
+                list($SROm, $RROm) = $Zfpf->select_sql_1s($DBMSresource, 't0obsmethod', $Conditions);
+                if ($RROm != 1)
+                    $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching observation methods to results. Contact app admin.</p>');
+                $ApprovalText .= '<h2 class="topborder">
+                <b>'.substr($Zfpf->decrypt_1c($SROm[0]['c6obsmethod']), 0, 105).'</b>...'.'</h2>';
+                list($SRAuFOm, $RRAuFOm) = $Zfpf->select_sql_1s($DBMSresource, 't0audit_fragment_obsmethod', $Conditions);
                 list($SROtOm, $RROtOm) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic_obsmethod', $Conditions);
-                if ($RROtOm) foreach ($SROtOm as $VOtOm) {
-                    $Conditions[0] = array('k0obsmethod', '=', $VOtOm['k0obsmethod']);
-                    list($SROr, $RROr) = $Zfpf->select_sql_1s($DBMSresource, 't0obsresult', $Conditions);
-                    if ($RROr)
-                        $OrInOt = array_merge($OrInOt, $SROr);
-                }
-                $OtId = array();
-                if ($OrInOt) {
-                    foreach ($OrInOt as $VOr)
-                        $OtId[] = $Zfpf->decrypt_1c($VOr['c5_obstopic_id']);
-                    array_multisort($OtId, $OrInOt); // Sort observation results (Or) by their observation object unique identifier (object ID aka OtId aka c5_obstopic_id).
-                    // Group Or by OtId
-                    $PriorOtId = $OtId[0]; // array_multisort re-indexes numeric arrays, is this is the first OtId after sorting.
-                    $OrArray = array();
-                    foreach ($OrInOt as $KOr => $VOr) {
-                        if ($OtId[$KOr] == $PriorOtId)
-                            $OrArray[$PriorOtId][] = $VOr;
-                        else {
-                            $PriorOtId = $OtId[$KOr]; // Move to next OtId, they were sorted above.
-                            $OrArray[$PriorOtId][] = $VOr;
+                if ($RRAuFOm) {
+                    $ApprovalText .= '<p>
+                    <i>Related rule fragments:</i>';
+                    foreach ($SRAuFOm as $VAuFOm) {
+                        $Conditions[0] = array('k0audit_fragment', '=', $VAuFOm['k0audit_fragment'], 'AND');
+                        $Conditions[1] = array('k0audit', '=', $_SESSION['Selected']['k0audit']); // k0audit_fragment for other audits are included in $SRAuFOm
+                        list($SRAuF, $RRAuF) = $Zfpf->select_sql_1s($DBMSresource, 't0audit_fragment', $Conditions);
+                        unset($Conditions);
+                        if ($RRAuF) {
+                            if ($RRAuF > 1)
+                                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching a sample observation method to its audit-rule fragments associations. Contact app admin.</p>');
+                            $Conditions[0] = array('k0fragment', '=', $SRAuF[0]['k0fragment']);
+                            list($SRF, $RRF) = $Zfpf->select_sql_1s($DBMSresource, 't0fragment', $Conditions);
+                            if ($RRF != 1)
+                                $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching a sample observation method to rule fragments. Contact app admin.</p>');
+                                $Quote = $Zfpf->decrypt_1c($SRF[0]['c6quote']);
+                            $ApprovalText .= '<br />
+                            '.$Zfpf->decrypt_1c($SRF[0]['c5name']).', '.$Zfpf->decrypt_1c($SRF[0]['c5citation']).', ';
+                            if (strlen($Quote) > 100)
+                                $ApprovalText .= substr($Quote, 0, 100).'...';
+                            else
+                                $ApprovalText .= $Quote;
                         }
                     }
-                    foreach ($OrArray as $KOtId => $VOtId) { // $KOtId is the decrypted OtId
-                        $Omad = array();
-                        foreach ($VOtId as $VOr)
-                            $Omad[] = $Zfpf->decrypt_1c($VOr['c6obsmethod_as_done']);
-                        array_multisort($Omad, $VOtId); // Sort each Ot group of Or by Omad.
-                        $ApprovalText .= '<p>
-                        <b><i>Object ID</i>: '.$KOtId.'</b></p>';
-                        foreach ($VOtId as $KOr => $VOr) {
-                            $ApprovalText .= '<p>
-                            <i>As-done method:</i><br />'.$Omad[$KOr].'<br />
-                            <i>Result:</i><br /> '.$Zfpf->decrypt_1c($VOr['c6obsresult']).'<br />
-                            '.$Zfpf->html_uploaded_files_1e('c6bfn_supporting', 0, $VOr); // Returns list of uploaded files for this record, or "No uploaded..." message.
-                            $ApprovalText .= substr($ccsaZfpf->scenario_CCSA_Zfpf($VOr, $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', array('action' => 'Actions, proposed or referenced')), 3); // returns HTML action-name list for one obsresult, in a paragraph, with italicized 'Actions, proposed or referenced' as heading. substr(..., 3) clips off the starting paragraph tag.
-                        }
-                    }
+                    $ApprovalText .= '</p>';
                 }
-                else
-                    $ApprovalText .= '<p>No results found for this observation topic.</p>';
+                if ($RROtOm) {
+                    $ApprovalText .= '<p>
+                    <i>Related observation topics:</i>';
+                    foreach ($SROtOm as $VOtOm) {
+                        $Conditions[0] = array('k0obstopic', '=', $VOtOm['k0obstopic']);
+                        list($SROt, $RROt) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic', $Conditions);
+                        if ($RROt != 1)
+                            $Zfpf->send_to_contents_1c(__FILE__, __LINE__, '<p>An error occurred matching a sample observation method to observation topics. Contact app admin.</p>');
+                        $ApprovalText .= '<br />
+                        '.$Zfpf->decrypt_1c($SROt[0]['c5name']);
+                    }
+                    $ApprovalText .= '</p>';
+                }
             }
+            $Display = $Zfpf->select_to_display_1e($htmlFormArray, $VOr);
+            $ApprovalText .= $Zfpf->select_to_o1_html_1e($htmlFormArray, 'obsresult_io03.php', $VOr, $Display, ' class="topborder"');
+            $ApprovalText .= $ccsaZfpf->scenario_CCSA_Zfpf($VOr, $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types);
         }
         $Zfpf->close_connection_1s($DBMSresource);
         // Get list of all actions in report and show the details of each.

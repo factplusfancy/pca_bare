@@ -565,7 +565,7 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
     Observations of<br />
     '.$Process['AEFullDescription'].'</h2><p>
     <i>Sample observation method:</i><br />
-    '.$Zfpf->decrypt_1c($_SESSION['Scratch']['t0obsmethod']['c6obsmethod']).'</p>';
+    '.nl2br($Zfpf->decrypt_1c($_SESSION['Scratch']['t0obsmethod']['c6obsmethod'])).'</p>';
     unset($Conditions[1]);
     list($SROtOm, $RROtOm) = $Zfpf->select_sql_1s($DBMSresource, 't0obstopic_obsmethod', $Conditions);
     if ($RROtOm) {

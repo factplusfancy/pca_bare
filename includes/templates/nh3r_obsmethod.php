@@ -163,7 +163,7 @@ Quality depends on detailed measurements and calculations beyond the scope, so n
 (4.8) intake(s) only serve the room, 
 (5) ventilation flow patterns, including sweeps the room without excessive short-circuiting, 
 (6) a reasonably safe discharge location(s), direction, method, and speed, such as
-(6.1) upward at 2,500 feet per minute or faster (per IIAR 2 from the 2010 to at least the 2019 editions) above the roof of the room,
+(6.1) upward at 2,500 feet per minute or faster (per IIAR 2 from the 2010 to at least the 2021 editions) above the roof of the room,
 (6.2) adequately far from air intakes, doors, ladders, property boundaries, walkways, windows that are sometimes open, and work areas,
 (6.3) where it is reasonably unlikely to contaminate breathing air, in excess of 150 ppm, 220 ppm, or another reasonable target -- considering any nearby higher roofs and air recirculation (swirling and eddies) on the downwind side of the building with the ventilation outlet -- in
 (6.3.1) areas where people are routinely present or
@@ -682,7 +682,7 @@ Asked about this during tours and discussions.')
 (17.1) sealed only with a valve and not also with a threaded cap or plug or 
 (17.2) unlocked and in an place that thieves or vandals could access without more trouble than cutting a lock, 
 (18) equipment-enclosure or guarding problems, including 
-(18.1) not suitable for location and its physical, chemical, biological, or other environmental challenges (IIAR 2-2019 7.2.6, IIAR 9-2020 7.2.11.1), 
+(18.1) not suitable for location and its physical, chemical, biological, or other environmental challenges (IIAR 2-2021 7.2.5, IIAR 9-2020 7.2.11.1), 
 (18.2) inadequate protection of people from moving parts, electricity, dangerous heat, and so forth, and 
 (18.3) inadequate access (or other provisions) for inspection, testing, and maintenance, 
 (19) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' piping or equipment
@@ -699,9 +699,9 @@ Asked about this during tours and discussions.')
 (20.4) not suitable for service in the '.HAZSUB_PROCESS_NAME_ZFPF.' (IIAR 9-2020 7.4.7),
 (21) ammonia sensors were not installed, in rooms or areas where they were required by the applicable building code or by the facility\'s insurance carrier, or the ammonia sensors didn\'t trigger the following if required, typically at 25 parts per million by volume (ppm),
 (21.1) audible and visible alarms in the room(s) where the sensors detected ammonia,
-(21.2) notification of Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list) (IIAR 2-2019 7.2.3), and 
+(21.2) notification of Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so alarms in an always-attended location or the alarm system can call out to multiple people\'s phones or a reliable answering service with a call list) (IIAR 2-2021 7.2.3), and 
 (21.3) shut off of any liquid and hot gas ammonia supplies to equipment in the rooms,
-(22) industrial occupancies that were not separated from other occupancy classifications by a well-sealed envelope (walls, floors, ceilings, and so forth), and that contained, or that were open to mechanical penthouses which contained, '.HAZSUB_NAME_ADJECTIVE_ZFPF.' piping or equipment (IIAR 2-2019 7.2.1), or 
+(22) industrial occupancies that were not separated from other occupancy classifications by a well-sealed envelope (walls, floors, ceilings, and so forth), and that contained, or that were open to mechanical penthouses which contained, '.HAZSUB_NAME_ADJECTIVE_ZFPF.' piping or equipment (IIAR 2-2021 7.2.1), or 
 (23) ammonia odors.')
     ),
     55 => array(
@@ -733,10 +733,10 @@ Asked about this during tours and discussions.')
 (4.5.1.1) local emergency responders and 
 (4.5.1.2) Owner/Operator representatives qualified to muster assistance in emergencies and likely to be reachable on holidays and off hours (so multiple names and phone numbers or a reliable answering service with a call list), 
 (4.5.2) the '.HAZSUB_NAME_ADJECTIVE_ZFPF.' quantity, 
-(4.5.3) the type and quantity of lubricating oil in the '.HAZSUB_PROCESS_NAME_ZFPF.', 
-(4.5.4) the field test pressure(s) applied, and also, sometimes optionally, 
+(4.5.3) the type and (sometimes optionally) quantity of lubricating oil in the '.HAZSUB_PROCESS_NAME_ZFPF.', 
+(4.5.4) the deign or field test pressure(s), and also, sometimes optionally, 
 (4.5.5) the name, address, and 24-hour service number for the facility\'s primary '.HAZSUB_PROCESS_NAME_ZFPF.' contractor, and 
-(4.5.6) any required permits to operate or similar (IIAR 2-2019 5.14, 5.15, 6.15, and Appendix J; IIAR 9-2020 7.2.9.1, 7.2.10, 7.3.11, and 7.3.12), 
+(4.5.6) any required permits to operate or similar (IIAR 2-2021 5.14, 6.15, and Appendix J; IIAR 9-2020 7.2.9.1, 7.2.10, 7.3.11, and 7.3.12), 
 (5) safe '.HAZSUB_NAME_ADJECTIVE_ZFPF.' storage, including 
 (5.1) only stored in cylinders or pressure vessels designed and labeled by their manufacturer for this service and 
 (5.2) no transportation cylinders, vessels, or similar were left connected to the '.HAZSUB_PROCESS_NAME_ZFPF.', except during monitored charging, 
@@ -752,7 +752,7 @@ Asked about this during tours and discussions.')
 (7.5) each exit or exit access doorway was equipped with panic hardware and swung open in the direction of egress travel, 
 (7.6) fire rating of doors was 
 (7.6.1) same as exterior wall, if to outside, or 
-(7.6.2) 1-hour, if to inside and the room was unsprinklered (IIAR 2-2019, 5.17.8 and 6.10; IIAR 9-2020 7.3.3 and 7.3.9), and 
+(7.6.2) 1-hour, if to inside and the room was unsprinklered (IIAR 2-2021, 5.16.6 and 6.10; IIAR 9-2020 7.3.3 and 7.3.9), and 
 (7.7) the room was tidy and its floors were not slippery, such as due to oil spills or similar, 
 (8) neither open flames nor surfaces greater than 800 F (427 C) were in the room, except: 
 (8.1) fuel-burning appliances that 
@@ -775,7 +775,7 @@ Asked about this during tours and discussions.')
 (11.4.2) 25 ppm -- activate audible (15 decibels above average-ambient and 5 decibels above expected maximum-ambient sound pressure) and visible alarms in the room and outside its doors (automatic reset allowed once concentration falls below 25 ppm), 
 (11.4.3) 50 ppm (preferably 25 ppm) -- notify Owner/Operator representatives, similarly to "no ppm signal" above, 
 (11.4.4) 1000 ppm (preferably no higher than 150 ppm, which is half the immediately dangerous to life or health, IDLH, concentration) -- activate the room\'s emergency ventilation (manual reset required), and 
-(11.4.5) 40,000 ppm (preferably no higher than 15,000 ppm, which is approximately one tenth, 10%, of the lower flammability limit, LFL, of ammonia in dry air, but mixtures of ammonia gas and lubricating-oil mists are more flammable than ammonia alone) -- trigger the same response as the above-described E-stop (manual reset required) (IIAR 2-2019 6.13 and IIAR 9-2020 7.3.12), and 
+(11.4.5) 40,000 ppm (preferably no higher than 15,000 ppm, which is approximately one tenth, 10%, of the lower flammability limit, LFL, of ammonia in dry air, but mixtures of ammonia gas and lubricating-oil mists are more flammable than ammonia alone) -- trigger the same response as the above-described E-stop (manual reset required) (IIAR 2-2021 6.13 and IIAR 9-2020 7.3.12), and 
 (12) no exposed wiring and covers installed on a sample of electrical panels or junction boxes.')
     ),
     56 => array(
@@ -785,11 +785,11 @@ Asked about this during tours and discussions.')
 (3) ventilation flow for pits and tunnels 
 (3.1) swept them well, including their lowest areas, 
 (3.2) facilitated safe egress, such as flowed from exit routes towards likely leak locations, and 
-(3.3) accounted for the volume of any rooms they exhausted through (IIAR 2-2019 7).')
+(3.3) accounted for the volume of any rooms they exhausted through (IIAR 2-2021 7).')
     ),
     57 => array(
         'c6obsmethod' => $Zfpf->encrypt_1c('External hazards, protection, and security -- discussions, documents, and tours -- with the responsible individual(s), per the Owner/Operator management system, 
-(1) reviewed external hazards that may influence designing, building, maintaining, and securing the facility, such as avalanche/debris flow/landslide/mudslide, cold, earthquake, flood, hail, heat, ice, lightning, rain, snow, terrorism/theft/vandalism, tsunami, volcanic activity, wildfire, and wind (including from hurricanes and tornadoes), for example by reviewing 
+(1) reviewed external hazards that may influence designing, building, maintaining, and securing the facility, such as avalanche/debris flow/landslide/mudslide, cold, earthquake, flood, hail, heat, humidity, ice, lightning, rain, salinity/sea spray, sand or dust storm, snow, terrorism/theft/vandalism, tsunami, volcanic activity, wildfire, and wind (including from hurricanes and tornadoes), for example by reviewing 
 (1.1) multi-hazard maps (such as, in the USA, the National Risk Index for Natural Hazards and the ASCE 7 Hazard Tool), 
 (1.2) flood maps (in the USA, published by FEMA), 
 (1.3) seismic maps (such as, in the USA, USGS Seismic Hazard Maps), and 

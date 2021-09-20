@@ -379,13 +379,18 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
     // Additional security check
     if ((isset($_POST['cms_i0n']) and $who_is_editing != '[A new database row is being created.]') or ($who_is_editing != '[A new database row is being created.]' and !$EditAuth) or ($who_is_editing == '[A new database row is being created.]' and $User['GlobalDBMSPrivileges'] == LOW_PRIVILEGES_ZFPF))
         $Zfpf->send_to_contents_1c(__FILE__, __LINE__); // Don't eject
+    if ($_SESSION['Scratch']['PlainText']['SecurityToken'] == 'cm_applies_i1m.php')
+        $Heading = '<h1>
+        Change-Management Applicability Determination</h1>';
+    else
+        $Heading = '<h1>
+        Change-Management System</h1>';
     if ($Zfpf->decrypt_1c($_SESSION['Selected']['c5affected_entity']) != $Nothing) // Only true for i0n case.
         $AE = $Zfpf->affected_entity_info_1c(); // Ensures $_SESSION['Selected']['c5affected_entity'] and $_SESSION['Selected']['k0affected_entity'] are defined.
     if (isset($_POST['cm_applies_o1_from']) or (isset($_POST['cms_o1_from']) and $_SESSION['t0user']['k0user'] == $AE['AELeader_k0user']) or isset($_POST['cm_applies_approval_c1'])) // SPECIAL CASES, edit lock approvals and task assignments, below.
         $Zfpf->edit_lock_1c('change_management'); // This re-does SELECT query...
     elseif ($who_is_editing != '[Nobody is editing.]' and $who_is_editing != '[A new database row is being created.]' and $who_is_editing != substr($Zfpf->user_identification_1c(), 0, C5_MAX_BYTES_ZFPF)) {
-        echo $Zfpf->xhtml_contents_header_1c().'<h2>
-        Change-Management System</h2>
+        echo $Zfpf->xhtml_contents_header_1c().$Heading.'
         <p><b>'.$who_is_editing.' is editing the record you selected.</b><br />
         If needed, contact them to coordinate editing this record. You will not be able to edit it until they are done.</p>
         <form action="cms_io03.php" method="post"><p>
@@ -839,7 +844,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
                         $Display[$KA] = 'Not yet approved.';
                     elseif ($KA == 'k0user_of_project_manager')
                         $Display[$KA] = 'None assigned. Optional.';
-                    elseif ($KA == 'k0user_of_psr' and $_SESSION['t0user']['k0user'] == $AE['AELeader_k0user']) // In this case $AE will be properly set. Only AELeader can edit startup authorization (PSR) fields.
+                    elseif ($KA == 'k0user_of_psr' and $AE and $_SESSION['t0user']['k0user'] == $AE['AELeader_k0user']) // In this case $AE will be properly set. Only AELeader can edit startup authorization (PSR) fields.
                         $Display[$KA] = $AE['AELeaderNameTitle'].', '.$AE['AELeaderEmployer'];
                     else {
                         // These cases cannot be above three plus k0user_of_initiator, which is always assigned here.
@@ -879,8 +884,8 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
             }
             elseif ($KA == 'c6cm_applies_checks')
                 // Don't allow editing of c5name, c6description, c5affected_entity, or cm_applies_checks if applicability determination is approved
-                // And, if  not approved, only by the affected-entity leader, change project manager, or change initiator.
-                if ($_SESSION['Selected']['k0user_of_applic_approver'] or ($_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_project_manager'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_initiator'])) {
+                // And, if not approved, only allow editing by the affected-entity leader, change project manager, or change initiator.
+                if ($_SESSION['Selected']['k0user_of_applic_approver'] or ($AE and $_SESSION['t0user']['k0user'] != $AE['AELeader_k0user'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_project_manager'] and $_SESSION['t0user']['k0user'] != $_SESSION['Selected']['k0user_of_initiator'])) {
                     $htmlFormArray['c5name'][1] = '';
                     $htmlFormArray['c6description'][1] = '';
                     $htmlFormArray['c5affected_entity'][1] = '';
@@ -962,10 +967,8 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
     // END uploads_files special case
     if (isset($Display) and isset($_SESSION['Scratch']['htmlFormArray'])) { // This is simplification instead of repeating above $_POST cases or nesting within them.
         // Create HTML form
-        echo $Zfpf->xhtml_contents_header_1c('Change');
         // To upload files via PHP, the following form attributes are required: method="post" enctype="multipart/form-data"
-        echo '<h1>
-        Change-Management System</h1>
+        echo $Zfpf->xhtml_contents_header_1c('Change').$Heading.'
         <form action="cms_io03.php" method="post" enctype="multipart/form-data" >';
         // Add "Generate an activity notice" option, for i1 display, if not a new record. Do here to keep out of history table.
         $htmlFormArray = $Zfpf->decrypt_decode_1c($_SESSION['Scratch']['htmlFormArray']);
@@ -1057,8 +1060,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
         }
         // SPECIAL CASE: who_is_editing check
         if ($OldWhoIsEditing != '[Nobody is editing.]' and $OldWhoIsEditing != '[A new database row is being created.]' and $OldWhoIsEditing != substr($Zfpf->user_identification_1c(), 0, C5_MAX_BYTES_ZFPF)) {
-            echo $Zfpf->xhtml_contents_header_1c().'<h2>
-            Change-Management System</h2>
+            echo $Zfpf->xhtml_contents_header_1c().$Heading.'
             <p><b>'.$OldWhoIsEditing.' is editing the record you selected.</b><br />
             If needed, contact them to coordinate editing this record. You will not be able to edit it until they are done.</p>
             <form action="practice_o1.php" method="post"><p>
@@ -1109,8 +1111,7 @@ if (isset($_SESSION['Selected']['k0change_management'])) {
         $DistributionList .= '</p>';
         $Body = $Zfpf->email_body_append_1c($Body, $AE['AEFullDescription'], FALSE, $DistributionList);
         $EmailSent = $Zfpf->send_email_1c($EmailAddresses, $Subject, $Body);
-        echo $Zfpf->xhtml_contents_header_1c('Change').'<h1>
-        Change-Management System</h1><p>
+        echo $Zfpf->xhtml_contents_header_1c('Change').$Heading.'<p>
         The updates you just reviewed have been recorded. Do not "startup" the change until the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader has authorized startup.</p>';
         if ($EmailSent)
             echo '<p>The PSM-CAP App just tried to email you and the affected-entity '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader, check with them to expedite.</p>';

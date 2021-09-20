@@ -385,9 +385,9 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
             if ($RROr) foreach ($SROr as $KOr => $VOr) { // Each sample observation method (Om) could have Or for many Otid.
                 $_SESSION['SR']['t0obsresult'][$iOr] = $VOr;
                 $Or[$KAuFOm][$KOr] = '<p>
-                <i>Object ID</i>: '.$Otid[$KOr].'<br />
-                <i>As-done method</i>: '.$Zfpf->decrypt_1c($VOr['c6obsmethod_as_done']).'<br />
-                <i>Result</i>: '.$Zfpf->decrypt_1c($VOr['c6obsresult']);
+                <b><i>Object ID</i></b>: <br />'.$Otid[$KOr].'<br />
+                <b><i>As-done method</i></b>: <br />'.nl2br($Zfpf->decrypt_1c($VOr['c6obsmethod_as_done'])).'<br />
+                <b><i>Result</i></b>: <br />'.nl2br($Zfpf->decrypt_1c($VOr['c6obsresult']));
                 if ($Zfpf->decrypt_1c($VOr['c6bfn_supporting']) != '[Nothing has been recorded in this field.]') // Provide link to Or record, showing supporting documents.
                     $Or[$KAuFOm][$KOr] .= '<br /><a class="toc" href="obsresult_io03.php?obsresult_o1='.$iOr++.'">[View supporting documents in record.]</a>';
                 // Get any actions (A) associated with each observation result (Or).
@@ -420,7 +420,7 @@ if (isset($_POST['audit_fragment_o1']) or isset($_GET['audit_fragment_o1'])) { /
             $OmConditions[0] = array('k0obsmethod', '=', $VAuFOm['k0obsmethod']);
             list($SROm, $RROm) = $Zfpf->select_sql_1s($DBMSresource, 't0obsmethod', $OmConditions);
             if ($RROm == 1) // Should be exactly 1
-                $Om[$KAuFOm] = $Zfpf->decrypt_1c($SROm[0]['c6obsmethod']);  // $Om[$KAuFOm] should always be populated here, but
+                $Om[$KAuFOm] = nl2br($Zfpf->decrypt_1c($SROm[0]['c6obsmethod']));  // $Om[$KAuFOm] should always be populated here, but
             else {                                                         // if not log error and 
                 $Om[$KAuFOm] = '[Nothing has been recorded in this field.]'; // set $Om[$KAuFOm] so keys match in array_multisort below.
                 error_log(@$Zfpf->error_prefix_1c().__FILE__.':'.__LINE__.' t0obsmethod rows returned: '.@$RROm);

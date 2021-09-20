@@ -20,7 +20,7 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     3 => array(
-        'c5name' => $Zfpf->encrypt_1c('Applicability'),
+        'c5name' => $Zfpf->encrypt_1c('Applicability, OSHA PSM'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(a)'),
         'c6quote' => $Zfpf->encrypt_1c('(a) Application. (1) This section applies to the following: (i) A process which involves a chemical at or above the specified threshold quantities listed in appendix A to this section; (ii) A process which involves a flammable liquid or gas (as defined in 1910.1200(c) of this part) on site in one location, in a quantity of 10,000 pounds (4535.9 kg) or more except for: (A) Hydrocarbon fuels used solely for workplace consumption as a fuel (e.g., propane used for comfort heating, gasoline for vehicle refueling), if such fuels are not a part of a process containing another highly hazardous chemical covered by this standard; (B) Flammable liquids stored in atmospheric tanks or transferred which are kept below their normal boiling point without benefit of chilling or refrigeration. (2) This section does not apply to: (i) Retail facilities; (ii) Oil or gas well drilling or servicing operations; or, (iii) Normally unoccupied remote facilities.'),
@@ -287,21 +287,21 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     41 => array(
-        'c5name' => $Zfpf->encrypt_1c('Resolution'),
+        'c5name' => $Zfpf->encrypt_1c('Resolution, PHA'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(e)(5)'),
         'c6quote' => $Zfpf->encrypt_1c('The employer shall establish a system to promptly address the team\'s findings and recommendations; assure that the recommendations are resolved in a timely manner and that the resolution is documented; document what actions are to be taken; complete actions as soon as possible; develop a written schedule of when these actions are to be completed; communicate the actions to operating, maintenance and other employees whose work assignments are in the process and who may be affected by the recommendations or actions.'),
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     42 => array(
-        'c5name' => $Zfpf->encrypt_1c('Update and Revalidate'),
+        'c5name' => $Zfpf->encrypt_1c('Update and Revalidate, PHA'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(e)(6)'),
         'c6quote' => $Zfpf->encrypt_1c('At least every five (5) years after the completion of the initial process hazard analysis, the process hazard analysis shall be updated and revalidated by a team meeting the requirements in paragraph (e)(4) of this section, to assure that the process hazard analysis is consistent with the current process.'),
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     43 => array(
-        'c5name' => $Zfpf->encrypt_1c('Retention'),
+        'c5name' => $Zfpf->encrypt_1c('Retention, PHA'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(e)(7)'),
         'c6quote' => $Zfpf->encrypt_1c('Employers shall retain process hazards analyses and updates or revalidations for each process covered by this section, as well as the documented resolution of recommendations described in paragraph (e)(5) of this section for the life of the process.'),
@@ -595,7 +595,7 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     85 => array(
-        'c5name' => $Zfpf->encrypt_1c('PSR Applicability'),
+        'c5name' => $Zfpf->encrypt_1c('Applicability, PSR'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(i)(1)'),
         'c6quote' => $Zfpf->encrypt_1c('Pre-startup safety review [PSR]. (1) The employer shall perform a pre-startup safety review for new facilities and for modified facilities when the modification is significant enough to require a change in the process safety information.'),
@@ -609,7 +609,7 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     87 => array(
-        'c5name' => $Zfpf->encrypt_1c('Applicability, Mechanical Integrity'),
+        'c5name' => $Zfpf->encrypt_1c('Applicability, ITM'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(j)(1)'),
         'c6quote' => $Zfpf->encrypt_1c('Mechanical integrity -- (1) Application. Paragraphs (j)(2) through (j)(6) of this section apply to the following process equipment: (i) Pressure vessels and storage tanks; (ii) Piping systems (including piping components such as valves); (iii) Relief and vent systems and devices; (iv) Emergency shutdown systems; (v) Controls (including monitoring devices and sensors, alarms, and interlocks) and, (vi) Pumps.'),
@@ -630,7 +630,7 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     90 => array(
-        'c5name' => $Zfpf->encrypt_1c('Inspection and Testing.'),
+        'c5name' => $Zfpf->encrypt_1c('Inspection and Testing'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(j)(4)'),
         'c6quote' => $Zfpf->encrypt_1c('Inspection and testing. (i) Inspections and tests shall be performed on process equipment. (ii) Inspection and testing procedures shall follow recognized and generally accepted good engineering practices. (iii) The frequency of inspections and tests of process equipment shall be consistent with applicable manufacturers\' recommendations and good engineering practices, and more frequently if determined to be necessary by prior operating experience. (iv) The employer shall document each inspection and test that has been performed on process equipment. The documentation shall identify the date of the inspection or test, the name of the person who performed the inspection or test, the serial number or other identifier of the equipment on which the inspection or test was performed, a description of the inspection or test performed, and the results of the inspection or test.'),
@@ -672,7 +672,7 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),*/
     95 => array(
-        'c5name' => $Zfpf->encrypt_1c('Resolution'),
+        'c5name' => $Zfpf->encrypt_1c('Resolution, ITM'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(j)(5)'),
         'c6quote' => $Zfpf->encrypt_1c('Equipment deficiencies. The employer shall correct deficiencies in equipment that are outside acceptable limits (defined by the process safety information in paragraph (d) of this section) before further use or in a safe and timely manner when necessary means are taken to assure safe operation.'),
@@ -686,7 +686,7 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     97 => array(
-        'c5name' => $Zfpf->encrypt_1c('Design and Installation Good Practices'),
+        'c5name' => $Zfpf->encrypt_1c('Design, Construction, Fabrication, and Installation Good Practices'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(j)(6)(i) and (ii) [Mechanical Integrity]'),
         'c6quote' => $Zfpf->encrypt_1c('(i) In the construction of new plants and equipment, the employer shall assure that equipment as it is fabricated is suitable for the process application for which they will be used. (ii) Appropriate checks and inspections shall be performed to assure that equipment is installed properly and consistent with design specifications and the manufacturer\'s instructions.'),
@@ -707,7 +707,7 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     100 => array(
-        'c5name' => $Zfpf->encrypt_1c('MOC Applicability'),
+        'c5name' => $Zfpf->encrypt_1c('Applicability, MOC'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(l)(1)'),
         'c6quote' => $Zfpf->encrypt_1c('Management of change [MOC]. (1) The employer shall establish and implement written procedures to manage changes (except for "replacements in kind") to process chemicals, technology, equipment, and procedures; and, changes to facilities that affect a covered process. [Relevant definitions from 29 CFR 1910.119(b): "Replacement in kind" means a replacement which satisfies the design specification. "Facility" means the buildings, containers or equipment which contain a process. "Process" means any activity involving a highly hazardous chemical including any use, storage, manufacturing, handling, or the on-site movement of such chemicals, or combination of these activities. For purposes of this definition, any group of vessels which are interconnected and separate vessels which are located such that a highly hazardous chemical could be involved in a potential release shall be considered a single process.]'),
@@ -763,14 +763,14 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     108 => array(
-        'c5name' => $Zfpf->encrypt_1c('Report Content'),
+        'c5name' => $Zfpf->encrypt_1c('Report, Incident Investigation'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(m)(4)'),
         'c6quote' => $Zfpf->encrypt_1c('A report shall be prepared at the conclusion of the investigation which includes at a minimum: (i) Date of incident; (ii) Date investigation began; (iii) A description of the incident; (iv) The factors that contributed to the incident; and, (v) Any recommendations resulting from the investigation.'),
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     109 => array(
-        'c5name' => $Zfpf->encrypt_1c('Resolution'),
+        'c5name' => $Zfpf->encrypt_1c('Resolution, Incident Investigation'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(m)(5)'),
         'c6quote' => $Zfpf->encrypt_1c('The employer shall establish a system to promptly address and resolve the incident report findings and recommendations. Resolutions and corrective actions shall be documented.'),
@@ -784,7 +784,7 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     111 => array(
-        'c5name' => $Zfpf->encrypt_1c('Retention'),
+        'c5name' => $Zfpf->encrypt_1c('Retention, Incident Investigation'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(m)(7)'),
         'c6quote' => $Zfpf->encrypt_1c('Incident investigation reports shall be retained for five years.'),
@@ -826,21 +826,21 @@ $psm_fragments = array(
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     117 => array(
-        'c5name' => $Zfpf->encrypt_1c('Report'),
+        'c5name' => $Zfpf->encrypt_1c('Report, Audit'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(o)(3)'),
         'c6quote' => $Zfpf->encrypt_1c('A report of the findings of the audit shall be developed.'),
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     118 => array(
-        'c5name' => $Zfpf->encrypt_1c('Resolution'),
+        'c5name' => $Zfpf->encrypt_1c('Resolution, Audit'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(o)(4)'),
         'c6quote' => $Zfpf->encrypt_1c('The employer shall promptly determine and document an appropriate response to each of the findings of the compliance audit, and document that deficiencies have been corrected.'),
         'c5source' => $Zfpf->encrypt_1c('29 CFR Chapter XVII (2015-07-01)')
     ),
     119 => array(
-        'c5name' => $Zfpf->encrypt_1c('Retention'),
+        'c5name' => $Zfpf->encrypt_1c('Retention, Audit'),
         'c5superseded' => $EncryptedNothing,
         'c5citation' => $Zfpf->encrypt_1c('29 CFR 1910.119(o)(5)'),
         'c6quote' => $Zfpf->encrypt_1c('Employers shall retain the two (2) most recent compliance audit reports.'),

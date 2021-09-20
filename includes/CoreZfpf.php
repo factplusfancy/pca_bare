@@ -750,16 +750,13 @@ class CoreZfpf {
 
     ////////////////////////////////////////////////////////////////////////////
     // This function should be called at the beginning of each served PHP file in the web-app, except setup.php, logon.php, and logoff.php.
-    // This function starts the session and then, if $this->password_check_1c() had already been called, 
-    // it checks if the correct password was supplied; otherwise, it ejects the user
+    // If $this->password_check_1c() had already been called, 
+    // this function checks if the correct password was supplied; otherwise, it ejects the user
     // or calls $this->password_check_1c() under certain conditions.
     // The goal is to prevent an impostor from jumping on a terminal while a user takes a coffee break,
     // and -- even if the impostor successfully does this -- to kick the impostor off after a specified period if time.
     // As well as to serve as a backstop against session hijacking.
     public function session_check_1c() {
-        // TO DO FOR PRODUCTION VERSION -- comment out - START.
-        // unset($_SESSION['t0user']); // Calling unset($_SESSION) here wipes out $_GET
-        // TO DO FOR PRODUCTION VERSION -- comment out - END.
         $DBMSresource = $this->credentials_connect_instance_1s(LOW_PRIVILEGES_ZFPF); // Only used for SQL selects below.
         if (!isset($_SESSION['t0user'])) {
             $SessionID = session_id();
@@ -1158,17 +1155,22 @@ class CoreZfpf {
                     $EmailAddressString .= $V.', ';
             if ($EmailAddressString) {
                 $EmailAddressString = substr($EmailAddressString, 0, -2); // remove the final, hanging, comma space.
-                // TO DO Email server setup posts:
-                // TO DO Worked on WAMP, http://stackoverflow.com/questions/7820225/how-to-send-email-from-local-wamp-server-using-php
-                // TO DO Worked on Ubuntu, https://www.linux.com/learn/install-and-configure-postfix-mail-server
-                // TO DO uncomment line below once an email server is setup
+                // TO DO FOR PRODUCTION VERSION uncomment line below once an email server is setup
                 return mail($EmailAddressString, $Subject, $Body, $Headers);
-                // return TRUE; // Uncomment this if line above in commented out.
-                // For development: variables below are used to echo email parameters to browser in xhtml_footer_1c
-                // $_SESSION['EmailTest']['EmailAddresses'] = $EmailAddressString;
-                // $_SESSION['EmailTest']['Headers'] = $Headers;
-                // $_SESSION['EmailTest']['Subject'] = $Subject;
-                // $_SESSION['EmailTest']['Message'] = $Body;
+                // TO DO FOR PRODUCTION VERSION -- comment out - START.
+                // Email server setup posts:
+                // Worked on WAMP, http://stackoverflow.com/questions/7820225/how-to-send-email-from-local-wamp-server-using-php
+                // Worked on Ubuntu, https://www.linux.com/learn/install-and-configure-postfix-mail-server 
+                /*
+                    return TRUE;
+                /*
+                    // For development: variables below are used to echo email parameters to browser in xhtml_footer_1c
+                    $_SESSION['EmailTest']['EmailAddresses'] = $EmailAddressString;
+                    $_SESSION['EmailTest']['Headers'] = $Headers;
+                    $_SESSION['EmailTest']['Subject'] = $Subject;
+                    $_SESSION['EmailTest']['Message'] = $Body;
+                //*/
+                // TO DO FOR PRODUCTION VERSION -- comment out - END.
             }
         }
         return FALSE;

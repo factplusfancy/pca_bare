@@ -391,7 +391,7 @@ $EAPpractice = array(
         'c5number' => $Zfpf->encrypt_1c('LLLAAA'),
         'c6description' => $Zfpf->encrypt_1c('Plan that addresses 
 (A) employee safety (Items 1 to 6 and 10 -- in USA to meet 29 CFR 1910.38), 
-(B) release reporting (Item 7 -- in USA to meet CERCLA and EPCRA), 
+(B) release reporting (Item 7 -- in USA to meet CERCLA, EPCRA, and Chemical Safety Board, CSB, rules), 
 (C) good practices (Item 8), 
 (D) community-responder coordination (Item 9 -- in USA to meet 40 CFR 68.90, 68.93, and 68.96(a)), and 
 (E) identifying offsite "hazards which may result from ... releases" (Item 9.1.5 -- in USA to meet Clean Air Act 112(r)(1) General Duty Clause), 
@@ -403,11 +403,11 @@ $EAPpractice = array(
 (4) any needed shutdown of critical plant equipment before evacuating (may reference leak mitigation and emergency shutdown procedures), 
 (5) calls to needed emergency responders, such as the local fire department and a contractor pre-qualified to provide emergency response, 
 (6) any rescue or medical duties done by employees, 
-(7) in the USA, within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to emergency-response authorities including 
+(7) in the USA, as soon as practical and within 15 minutes of discovering that 100 pounds or more of anhydrous ammonia has leaked within a 24-hour period, calls to emergency-response authorities including 
 (7.1) local (typically 911), 
 (7.2) state, and 
 (7.3) federal (the National Response Center, NRC, at 1-800-424-8802),
-(7.3.1) and emailing the NRC identification number to report@csb.gov within 30-minutes of submitting the report to NRC,
+(7.3.1) and emailing the NRC identification number to report@csb.gov within 30-minutes of submitting the report to NRC, if a fatality, injury that required inpatient hospitalization, or property damage of $1 million or more (onsite or offsite) occurs and if these are discovered after reporting to NRC, updating the NRC before emailing the CSB,
 (8) greeting and briefing emergency responders (conditions, actions taken or underway, and needs),  
 (8.1) keeping in a prearranged location or giving emergency responders the information they need, such as 
 (8.1.1) the Emergency Action Plan,
