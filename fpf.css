@@ -102,7 +102,7 @@ a.hnb {
 text-align: center;
 text-decoration: none;
 color: black;
-float:left;
+float: left;
 min-width: 3em;
 margin: 0;
 padding: 3px 6px;
@@ -127,7 +127,7 @@ div.footer {
 font-size: 115%;
 font-family: Helvetica, Arial, sans-serif;
 text-align: center;
-clear:left;
+clear: left;
 margin: 0 0 2% 0;
 padding: 0.2em 0 0.2em 0;
 border-top: 0.06em solid black;

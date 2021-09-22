@@ -7,7 +7,6 @@
 require 'directory_path_settings.php';
 require INCLUDES_DIRECTORY_PATH_ZFPF.'/CoreZfpf.php';
 $Zfpf = new CoreZfpf;
-$Zfpf->session_check_1c();
 
 require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
 $ccsaZfpf = new ccsaZfpf; // Needed below

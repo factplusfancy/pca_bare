@@ -149,7 +149,7 @@ This cause includes:
 - airplane crash, 
 - debris flow, mudslide, or volcanic flows (lahars, lava, pyroclastic, etc.),
 - hail,
-- hit with hammer, maybe because its stuck,
+- hit with hammer, maybe because it is stuck,
 - train derailment,
 - truck or other vehicle hits,
 - waves (storm, tsunami, and so forth),
@@ -705,7 +705,7 @@ The facility's ammonia-refrigeration system has the following in place.
 * If run-time clocks are reset by a power outage or blip, controls stagger them on restart so that needed defrosting happens soon but all evaporators do not defrost at once."
 "Existing Safeguard"|"Defrost, water, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 [DESCRIBE ANY WATER DEFROSTING, AUTOMATED OR ROUTINELY DONE, ON THE AMMONIA-REFRIGERATION SYSTEM.]"
-"Existing Safeguard"|"Emergency-action plan, equipment, and training, for employees and contractors, is adequate and increases awareness."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
+"Existing Safeguard"|"Emergency-action plan, equipment, and training, for employees and contractors, are adequate and increase awareness."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 The written emergency-action plan, or documents it references, describe:
 * training that includes
 - ammonia and safety awareness, covering 
@@ -1193,7 +1193,7 @@ In the facility's ammonia-refrigeration system,
 * a King valve, stop, is accessible from the floor and not in a cramped location and so
 - it would normally be accessible to emergency responders wearing self-contained breathing apparatus (SCBA) and protective suits.
 * Stop valves are also called hand valves or shutoff valves."
-"Existing Safeguard"|"Vehicle or heavy cart traffic are unlikely to damage ammonia-refrigeration equipment, piping, or supports."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
+"Existing Safeguard"|"Vehicle or heavy cart traffic is unlikely to damage ammonia-refrigeration equipment, piping, or supports."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
 At the facility,
 * adequate guarding is in place where vehicle or heavy cart traffic comes close to ammonia-refrigeration equipment, piping, or supports, including
 - [NOTE AREAS WITH EQUIPMENT OR PIPING NEAR TRAFFIC THAT ESPECIALLY REQUIRES GUARDING]
