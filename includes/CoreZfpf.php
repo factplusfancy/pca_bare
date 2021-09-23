@@ -838,8 +838,13 @@ class CoreZfpf {
             header('Content-Type: text/html; charset=utf-8'); // This is intended to help prevent cross-site scripting (XSS)
         // TO DO FOR PRODUCTION VERSION comment out line below. Use in development to validate all but allowed HTML5 as XHTML 1.0 Strict.  See Design Decisions document for allowed HTML5 (file: 0read_me_PSM-CAP_Design_Decisions...)
         // $Return = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> <html xmlns="http://www.w3.org/1999/xhtml">';
-        $Return = '<!DOCTYPE html> <html lang="en"> '; // This is the DOCTYPE for HTML5, second markup declares the language as English.
-        $Return .= ' 
+        $Return = '<!DOCTYPE html> 
+        <html lang="en"> '; // This is the DOCTYPE for HTML5, second markup declares the language as English.
+        $Return .= '
+        <!-- 
+        // *** LEGAL NOTICES *** 
+        // Copyright 2019-2021 Fact Fancy, LLC. All rights reserved. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
+        -->
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta content="text/html; charset=utf-8" http-equiv="content-type" />
