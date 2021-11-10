@@ -104,16 +104,16 @@ $htmlFormArray = array(
         array('Gas', 'Liquid', 'Liquid and gas', 'Other (powders, slurries...)')
     ),
     'c6mechanism_leaked' => array(
-        '<a id="c6mechanism_leaked"></a><b>Mechanism that leaked</b> or almost leaked for near misses. Describe:<br />
+        '<a id="c6mechanism_leaked"></a><b>Mechanism that leaked</b> or almost leaked for near misses, if applicable. Describe:<br />
         (A) the equipment package this mechanism was part of, such as compressor, pump, vessel, valve, piping...,<br />
         (B) the mechanism itself, such as valve discharging to the atmosphere, joint (bolted, brazed, threaded, welded...), shaft seal, wall of pipe, vessel, valve body, hose...),<br />
         (C) relevant materials and methods of the mechanism, including any gaskets, springs, fabrication methods...,<br />
         (D) other significant details, such as was the leak from a connection for adding or removing material, draining oil, pressure relief...',
-        REQUIRED_FIELD_ZFPF,
+        '',
         C6SHORT_MAX_BYTES_ZFPF
     ),
     'c6circumstances' => array(
-        '<a id="c6circumstances"></a><b>Weather conditions (as much detail as available) and circumstances leading up to the incident</b> (include only job titles of any people involved, number to distinguish them if needed)',
+        '<a id="c6circumstances"></a><b>Circumstances leading up to the incident, including weather conditions</b>. Include only job titles of any people involved; number to distinguish them if needed.',
         REQUIRED_FIELD_ZFPF, 
         C6SHORT_MAX_BYTES_ZFPF
     ),
@@ -128,7 +128,7 @@ $htmlFormArray = array(
         C6SHORT_MAX_BYTES_ZFPF
     ),
     'c6mitigating' => array(
-        '<a id="c6mitigating"></a><b>Mitigating acts or circumstances</b>. Describe safeguards, decisions, responses, or other circumstances (automated or human) that helped control the incident',
+        '<a id="c6mitigating"></a><b>Mitigating acts or circumstances</b>. Describe safeguards, decisions, responses (automated or human), or other circumstances that helped control the incident',
         REQUIRED_FIELD_ZFPF,
         C6SHORT_MAX_BYTES_ZFPF
     ),
@@ -144,15 +144,15 @@ $htmlFormArray = array(
         (H) lost production or product losses,<br />
         (I) news reports or other effects on reputation,<br />
         (J) other significant negative consequences, or<br />
-        none -- for near misses',
+        none, such as for most near misses',
         REQUIRED_FIELD_ZFPF,
         C6SHORT_MAX_BYTES_ZFPF
     ),
     'c6root_cause' => array(
-        '<a id="c6root_cause"></a><b>Root cause and additional contributing causes of the incident, its likelihood, or its severity.</b><br /> Describe any particular problem or contributing shortcomings that led to the incident. Consider the following rough types of causes.<br />
-        (A) People: administrative controls, unauthorized changes, contractor qualifications, human factors, procedures, training, and so forth.<br />
-        (B) Things in/of/for the '.HAZSUB_PROCESS_NAME_ZFPF.': design, fabrication, construction, maintenance, aging, corrosion, expansion or contraction (of materials in the '.HAZSUB_PROCESS_NAME_ZFPF.' or its containment envelope), shocks, vibrations, and so forth of equipment, piping, vessels, supports (including structures and buildings), controls, safety systems, labeling, lighting, and so forth.<br />
-        (C) External events: earthquake, lightning strike, electrical power surge or outage, external explosion or fire, flooding, high winds (hurricane, sand storm, tornado), train derailment, airplane crash, failure of cooling, compressed air, or other utilities, and so forth.',
+        '<a id="c6root_cause"></a><b>Cause assessment</b>. Describe factors that contributed to the incident, its likelihood, or its severity, including any underlying or root causes. Assess why anything that should have helped prevent or mitigate this incident, including Owner/Operator management and governmental authorities, did not adequately do so.<br />Consider the following rough types of causes.<br />
+        (A) External events: electrical power surge or outage, external explosion or fire, train derailment, airplane crash, failure of cooling, compressed air, or other utilities, avalanche/debris flow/landslide/mudslide, cold, earthquake, flood, hail, heat, humidity, ice, lightning, rain, salinity/sea spray, sand or dust storm, snow, terrorism/theft/vandalism, tsunami, volcanic activity, wildfire, and wind (including from hurricanes and tornadoes), and so forth.<br />
+        (B) People: administrative controls, changes made by people, contractor qualifications, human factors, procedures, training, audits, inspections, oversight by management or regulators, and so forth.<br />
+        (C) Things in/of/for the '.HAZSUB_PROCESS_NAME_ZFPF.': design, fabrication, construction, maintenance, aging, corrosion, expansion or contraction (of materials inside the '.HAZSUB_PROCESS_NAME_ZFPF.' or in its containment envelope), shocks, vibrations, and so forth of equipment, piping, vessels, supports (including structures and buildings), controls, safety systems, labeling, lighting, and so forth.',
         REQUIRED_FIELD_ZFPF,
         C6SHORT_MAX_BYTES_ZFPF
     ),
@@ -188,15 +188,15 @@ if (!isset($_POST['incident_i2']) and !isset($_POST['incident_history_o1']))
         'c5state_of_leaked_hs' => 'Physical state',
         'c6mechanism_leaked' => 'Mechanism',
         'c6circumstances' => 'Circumstances',
-        'c6events_actions' => 'Events and activities',
-        'c6loss_damage' => 'Losses and damage',
         'c6proximate_cause' => 'Proximate cause',
+        'c6events_actions' => 'Events and activities',
         'c6mitigating' => 'Mitigating acts',
-        'c6root_cause' => 'Root cause',
+        'c6loss_damage' => 'Losses and damage',
+        'c6root_cause' => 'Cause assessment',
         'c6bfn_supporting' => 'Supporting documents',
         'c6affected_personel' => 'Communicating with stakeholders',
         'c6bfn_review_attendance' => 'Stakeholder-communications documents',
-        'actions' => 'Actions' // SPECIAL CASE, id="actions" used below
+        'action' => 'Actions' // SPECIAL CASE, id="action" used below, generated by ccsaZfpf::scenario_CCSA_Zfpf, based on its required $Types array key definition above.
     );
 
 // The if clauses below determine which HTML button the user pressed.
@@ -319,8 +319,7 @@ if (isset($_POST['incident_o1'])) {
         $NoAddButton = FALSE; // Bootstrap on $Issued variable in function below
     echo $Zfpf->xhtml_contents_header_1c('Investigation').'<h2>
     Incident-Investigation Report</h2>
-    '.$Zfpf->select_to_o1_html_1e($htmlFormArray, 'incident_io03.php', $_SESSION['Selected'], $Display).'
-    <a id="actions"></a>'.$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, TRUE, 'incident', $Types);
+    '.$Zfpf->select_to_o1_html_1e($htmlFormArray, 'incident_io03.php', $_SESSION['Selected'], $Display).$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, TRUE, 'incident', $Types);
     // Check if anyone else is editing the selected row and check user privileges. See messages to the user below regarding privileges.
     $Status = $Zfpf->decrypt_1c($_SESSION['Selected']['c5status']);
     $who_is_editing = $Zfpf->decrypt_1c($_SESSION['Selected']['c5who_is_editing']);
@@ -532,8 +531,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
             $NoAddButton = FALSE;
         $ApprovalText = '<h1>
         Incident Investigation: Team Leader Approval of Report</h1>
-        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'
-        <a id="actions"></a>'.$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
+        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
         <b>By clicking "Approve investigation report" below, as the leader of the team that prepared the above-described incident-investigation report for '.$Process['AEFullDescription'].', I am confirming that:<br />
          - I have been, since I started leading the incident investigation that this report documents, and I am now qualified to lead this incident investigation,<br />
          - I am qualified to approve this report, and<br />
@@ -617,8 +615,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
             $NoAddButton = FALSE;
         $ApprovalText = '<h1>
         Incident Investigation: Canceling Team Leader Approval of Report</h1>
-        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'
-        <a id="actions"></a>'.$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
+        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
         <b>By clicking "Cancel team-leader approval" below, as the team leader for the above-described incident-investigation report for '.$Process['AEFullDescription'].', I cancel the team-leader approval.</b></p><p>
         This report had been approved by: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_leader']).'<br />
         with approval Timestamp: '.date('\Y\e\a\r Y, \M\o\n\t\h n, \D\a\y j, \T\i\m\e H:i:s', $Zfpf->decrypt_1c($_SESSION['Selected']['c5ts_leader'])).'</p><p>
@@ -700,8 +697,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
             $NoAddButton = FALSE;
         $ApprovalText = '<h1>
         Incident investigation: '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approval of report</h1>
-        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'
-        <a id="actions"></a>'.$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
+        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
         <b>BE CAREFUL:</b> Approving this report permanently logs its proposed actions in this app\'s action register, allowing other reports to reference them. You may cancel your approval of this report later, but doing this will <b>not</b> remove its proposed actions from the action register. The action register allows resolving actions without completing them, via its "resolution method" field, if a proposed action turns out to be unneeded or counterproductive.</p><p>
         <b>By clicking "Approve report" below, as the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$Process['AEFullDescription'].', I am confirming that:<br />
          - I carefully reviewed this incident-investigation report,<br />
@@ -801,8 +797,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
             $NoAddButton = FALSE;
         $ApprovalText = '<h1>
         Incident investigation: canceling '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader approval of report</h1>
-        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).'
-        <a id="actions"></a>'.$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
+        '.$Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $_SESSION['Selected'], $Display).$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], $NoAddButton, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
         <b>By clicking "Cancel owner-approval" below, as the '.HAZSUB_PROCESS_NAME_ZFPF.' '.PROGRAM_LEADER_ADJECTIVE_ZFPF.' leader for '.$Process['AEFullDescription'].', I cancel the owner approval of the above incident-investigation report.</b></p><p>
         Canceling owner approval will <b>not</b> remove the previously-approved report\'s proposed actions from the action register. The action register allows resolving actions without completing them, via its "resolution method" field, if a proposed action turns out to be unneeded or counterproductive.</p><p>
         This report had been approved by: '.$Zfpf->decrypt_1c($_SESSION['Selected']['c6nymd_ae_leader']).'<br />
@@ -928,8 +923,7 @@ if (isset($_SESSION['Selected']['k0incident'])) {
         echo $Zfpf->make_html_form_1e($htmlFormArray, $Display);
         require INCLUDES_DIRECTORY_PATH_ZFPF.'/ccsaZfpf.php';
         $ccsaZfpf = new ccsaZfpf;
-        echo '<a id="actions"></a>
-        '.$ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], FALSE, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
+        echo $ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Selected'], FALSE, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'incident', $Types).'<p>
             <input type="submit" name="incident_i2" value="Review what you typed into form" /><br />
             If you only wanted to upload files, you are done.</p>
         </form>'; // upload_files special case 3 of 3.

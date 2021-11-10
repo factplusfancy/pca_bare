@@ -40,10 +40,10 @@ $practices = array( // Indent as done below for better display in HTML text area
 (4.3) To meet good practices, inspection and testing must be done often enough, or with enough quality control, to assure that the likelihood and severity of one incorrect result does not create unacceptable risks. 
 (5) The PSM-CAP compliance practices for ITM, like all PSM-CAP compliance practices, may be modified based on documented operating experience or manufacturer recommendations. 
 (6) "inspect/note/fix" means 
-(6.1) check for and resolve access or egress problems, hazards, or inadequate lighting in areas where the inspection will be done, 
+(6.1) check for and resolve (safely and with any needed assistance) access or egress problems, hazards, or inadequate lighting in areas where the inspection will be done, 
 (6.2) complete lockout-tagout and other safe-work practices, as needed for the inspection, 
 (6.3) inspect using sight, hearing, touch, or smell and, if needed, common tools, such as belt-tension gauges, flashlights, magnifying glasses, or mirrors, 
-(6.4) record the status, especially any problems and at least "Ok" if no problems found, but 
+(6.4) record the status, especially any problems and at least "ok" if you found no problems, but 
 (6.5) only proceed with a fix if qualified and authorized by the responsible individual(s), per the Owner/Operator management system. 
 (7) ITM frequencies may typically be modified within at least plus or minus one fourth (25%), but typically not more than six months, of the recommended frequencies, unless rules (laws, codes...), manufacturer recommendations, or operating experience indicate otherwise. See IIAR 6-2019, Table 5.2, for additional detail. 
 Option: provide more details on the above topics in a practice document here.'),
@@ -694,7 +694,7 @@ See work order or similar.'.DOC_WHERE_KEPT_ZFPF),
 (2.2.4) louvers or dampers don\'t open properly, 
 (2.2.5) air-flow-verification device(s), such as sail switch, vane switch, or anemometer, indicates inadequate air flow, 
 (2.2.6) "not working right" (including alarms), or 
-(2.2.7) maintenance needed, based on runtime hours or condition, and then 
+(2.2.7) maintenance needed, based on run hours or condition, and then 
 (2.3) turn the switch back to "auto" (see lockout-tagout and Safety-System Testing or Disabling for Maintenance safe-work practices), 
 (3) fan drives, including any belts, pulleys, couplings, fasteners, and shafts -- 
 (3.1) inspect/note/fix if missing, loose (measure belt tensions), worn, excessive shaft float/end play, or other problem, 

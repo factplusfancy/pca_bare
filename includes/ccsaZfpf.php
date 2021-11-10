@@ -121,7 +121,7 @@ class ccsaZfpf {
     }
 
     // Function for junction tables in scenarios; includes cause, consequence, safeguard, action (CCSA) i1m code
-    public function scenario_CCSA_Zfpf($SelectedRow, $Issued, $User, $UserPracticePrivileges, $Zfpf, $Form = TRUE, $TableRoot = 'scenario', $Types = FALSE) {
+    public function scenario_CCSA_Zfpf($SelectedRow, $Issued, $User, $UserPracticePrivileges, $Zfpf, $Form = TRUE, $TableRoot = 'scenario', $Types = FALSE, $ccsa_anchor = TRUE) {
         if (isset($_SESSION['SelectResults']))
             unset($_SESSION['SelectResults']);
         $EditLocked = TRUE; // This always sets this variable, for using on issuing PHA or elsewhere.
@@ -143,8 +143,11 @@ class ccsaZfpf {
             if ($Form)
                 $Message .= '
                 <form action="'.$KA.'_io03.php" method="post">';
-            $Message .= '<p>
-                <a id="'.$KA.'"></a><i>'.$VA.':</i><br />'; // Using this anchor is optional.
+            $Message .= '<p>';
+            if ($ccsa_anchor)
+                $Message .= '
+                <a id="'.$KA.'"></a>';
+            $Message .= '<i>'.$VA.':</i><br />';
             list($_SESSION['SelectResults']['t0'.$TableRoot.'_'.$KA], $RRCount) = $Zfpf->select_sql_1s($DBMSresource, 't0'.$TableRoot.'_'.$KA, $ConditionsA); // RR here means rows returned.
             if ($RRCount) {
                 foreach ($_SESSION['SelectResults']['t0'.$TableRoot.'_'.$KA] as $KB => $VB) {
@@ -167,6 +170,9 @@ class ccsaZfpf {
                         if ($KB == 0)
                             $Message .= 'checked="checked" '; // Select the first document by default to ensure something is posted (unless a hacker is tampering).
                         $Message .= '/>';
+                    }
+                    else {
+                        $Message .= '* ';
                     }
                     $Message .= $Name[$KB].'<br />';
                 }

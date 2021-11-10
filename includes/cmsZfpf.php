@@ -93,7 +93,7 @@ class cmsZfpf {
 (3.1) locating and siting studies,<br />
 (3.1) assessments of explosions, fires, or leaks,<br />
 (3.2) code-required separations, and/or<br />
-(3.3) separation of '.HAZSUB_NAME_ADJECTIVE_ZFPF.' equipment and piping, installed as part of the change, from people to the extent practical (for example by locating them in machinery rooms or penthouses, above roofs, or outdoors),<br />
+(3.3) separation of '.HAZSUB_NAME_ADJECTIVE_ZFPF.' equipment and piping, installed as part of the change, from people to the extent practical (for example by locating them in machinery rooms or penthouses, above roofs, or outdoors and adequately far from air intakes and building openings),<br />
 (4) fastening and joining procedures, including welding-procedure specifications and qualification records,<br />
 (5) insulation and paint specifications, covering any needed corrosion-under-insulation prevention,<br />
 (6) documentation of post-design changes (change orders), and so forth,<br />

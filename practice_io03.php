@@ -208,7 +208,7 @@ if (isset($_POST['practice_templates_yes_confirm_post_1e'])) {
     $Zfpf->close_connection_1s($DBMSresource);
     unset($_SESSION['Selected']);
     unset($_SESSION['Post']);
-    echo $Zfpf->xhtml_contents_header_1c('Training').'<p>
+    echo $Zfpf->xhtml_contents_header_1c().'<p>
     The updates you just reviewed have been recorded. Please review the practice (including any required files) to verify.</p>
     <form action="practice_io03.php" method="post"><p>
         <input type="submit" name="practice_templates_i1m" value="Back to practices list" /></p>

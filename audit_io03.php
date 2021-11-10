@@ -859,7 +859,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
             }
             $Display = $Zfpf->select_to_display_1e($htmlFormArray, $VOr);
             $ApprovalText .= $Zfpf->select_to_o1_html_1e($htmlFormArray, 'obsresult_io03.php', $VOr, $Display, ' class="topborder"');
-            $ApprovalText .= $ccsaZfpf->scenario_CCSA_Zfpf($VOr, $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types);
+            $ApprovalText .= $ccsaZfpf->scenario_CCSA_Zfpf($VOr, $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types, FALSE);
         }
         $Zfpf->close_connection_1s($DBMSresource);
         // Get list of all actions in report and show the details of each.
@@ -892,7 +892,7 @@ if (isset($_SESSION['Selected']['k0audit'])) {
         $FixedLeftContents .= '</p><p>
         <a class="toc" href="audit_io03.php?audit_o1#bottom">Go back</a></p>';
         // The second FALSE below, in function CoreZfpf::xhtml_contents_header_1c, means no log-off button, encourage "go back" to clear edit locks.
-        echo $Zfpf->xhtml_contents_header_1c(FALSE, FALSE, $FixedLeftContents).$ApprovalText.'
+        echo $Zfpf->xhtml_contents_header_1c('Confirm Approval', FALSE, $FixedLeftContents).$ApprovalText.'
         <form action="audit_io03.php" method="post"><p>
             <input type="submit" name="'.$ConfirmationButtonName.'" value="'.$ConfirmationButtonValue.'" /></p>
         </form><p>

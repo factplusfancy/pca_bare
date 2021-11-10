@@ -755,7 +755,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
                     $ScenarioName[] = $Zfpf->decrypt_1c($VB['c5name']);
                 array_multisort($ScenarioName, $SRSc); // Sort alphabetically by name.
                 foreach ($ScenarioName as $KB => $VB)
-                    $ApprovalText .= '<a class="toc" href="#scenario_'.$KA.'_'.$KB.'">'.$VB.'</a><br />';
+                    $ApprovalText .= '<a class="toc" href="#scenario_'.$KA.'_'.$KB.'">* '.$VB.'</a><br />';
                 $ApprovalText .= '</p>';
                 foreach ($SRSc as $KB => $VB) {
                     $htmlFormArray = $ccsaZfpf->html_form_array('scenario_'.$KA.'_'.$KB, $Zfpf, 'scenario', $arZfpf);
@@ -763,7 +763,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
                     $ApprovalText .= $Zfpf->select_to_o1_html_1e($htmlFormArray, FALSE, $VB, $Display).'<p>
                     <i>Risk Ranking:</i><br />
                     '.$Zfpf->risk_rank_1c($Zfpf->decrypt_1c($VB['c5severity']), $Zfpf->decrypt_1c($VB['c5likelihood'])).'</p>
-                    '.$ccsaZfpf->scenario_CCSA_Zfpf($VB, $Issued, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'scenario', $Types).'<p class="bottomborder"> </p>';
+                    '.$ccsaZfpf->scenario_CCSA_Zfpf($VB, $Issued, $User, $UserPracticePrivileges, $Zfpf, FALSE, 'scenario', $Types, FALSE).'<p class="bottomborder"> </p>';
                 }
             }
         }
@@ -775,7 +775,7 @@ if (isset($_SESSION['Selected']['k0pha'])) {
                 $ApprovalText .= '<a id="CCSA_'.$KA.'"><h2 class="topborder" style="page-break-before: always">'.$VA.'</h2></a>';
                 $ApprovalText .= '<p>';
                 foreach ($SRccsa as $KB => $VB)
-                    $ApprovalText .= '<a class="toc" href="#ccsa_'.$KA.'_'.$KB.'">'.$Zfpf->decrypt_1c($VB['c5name']).'</a><br />';
+                    $ApprovalText .= '<a class="toc" href="#ccsa_'.$KA.'_'.$KB.'">* '.$Zfpf->decrypt_1c($VB['c5name']).'</a><br />';
                 $ApprovalText .= '</p>';
                 $_SESSION['Scratch']['PlainText']['left_hand_contents_on_page_anchors']['CCSA_'.$KA] = $VA;
                 foreach ($SRccsa as $KB => $VB) {

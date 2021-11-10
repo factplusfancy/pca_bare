@@ -24,15 +24,16 @@
 - oil accumulation on ammonia side of oil-cooling heat exchanger,
 - stop valve closed,
 * for all compressors, oil-circulation problems.
-* Oil circulation problems may result from a:
-- filter gasket failure,
+* Oil circulation problems may result from:
 - filter clogged,
+- filter gasket failure,
 - float problem in oil-return piping from an oil separator (typically for reciprocating compressors),
-- oil leak,
 - oil control valve problem,
 - oil feed valve closed accidentally,
-- oil pressure control not set properly, or
-- oil pump problem, on a screw compressor, while it is starting."
+- oil leak,
+- oil pressure control not set properly,
+- oil pump problem, on a screw compressor, while it is starting or operating for booster compressors, or
+- oil separater problem, perhaps due to a problem with its coalescing filter/element, if any."
 "Possible Cause"|"Compressor starved -- little or no inlet-gas flow and low-suction pressure shutoff does not work."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Concrete cracking, creep, efflorescence, sagging, or spalling."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Condensation"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Moisture condenses onto surfaces when they are below the dew point of the air that touches them, for example,
@@ -43,23 +44,32 @@
 * walls of vessels and piping, including level columns, near the liquid level, if they contain liquid below the dew point of the air near their exteriors."
 "Possible Cause"|"Control valve allows too little or no flow, including expansion, gas-powered, motorized, and solenoid valves and regulators."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes,
 - hand-expansion valve opened too few turns,
-- hot-gas supply to gas-powered valves inadequate or controls problem (not applicable to the facility),
+- hot-gas supply to gas-powered valves inadequate or controls problem,
 - motor or motor-control problem,
 - orifice, for minimum flow, plugged or too small,
 - solenoid coil problem on spring-closed (solenoid opened) regulators or valves,
 - relief regulator or valve -- for hydrostatic or liquid pressure relief -- allows inadequate flow or opens at a pressure that is too high,
 - regulator or solenoid valve pilot tube or passage clogged or other problem,
-- thermostatic-expansion valve bulb, tubing, or mechanical problem,
+- thermostatic-expansion valve -- bulb, tubing, or other problem,
 - and so forth."
 "Possible Cause"|"Control valve allows too much flow or remains fully open -- but not including shocks from expansion valves too far open."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes,
 - hand-expansion valve opened too many turns,
-- gas-powered valves controls problem or rapid leak-by pilot hot-gas solenoid (not applicable to the facility),
+- gas-powered valves controls problem or rapid leak-by pilot hot-gas solenoid,
 - leak by valve-seat seal,
+- manual-opening stem (jacking stem) holds valve partly or fully open,
 - motor or motor-control problem, on motorized valves,
 - spring problem with spring-closed regulators or valves, like solenoid valves and many pressure regulators,
-- thermostatic-expansion valve bulb, tubing, or mechanical problem,
+- thermostatic-expansion valve -- bulb, tubing, or other problem,
 - and so forth."
-"Possible Cause"|"Controls are confusing, cumbersome, difficult, or inadequate -- such as too dim, exposed, loud, quiet, sensitive, or small."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Controls do not account for human factors."
+"Possible Cause"|"Controls or instrumentation are broken, confusing, cumbersome, difficult, inadequate, incorrect, miscalibrated, or not connected -- including too dim, exposed, loud, quiet, sensitive, slow, or small."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes controls or instrumentation that:
+* inadequately account for human factors,
+* do not read correctly from the desired location because
+- installed in wrong location,
+- blockage, leak, or interference between sensor/instrument and desired measurement location, such as
+> service valves left shut, isolating the sensor/instrument from the desired measurement location,
+- interference or poor connection (wiring, wireless signal...) between sensor/instrument and controls processor or displays,
+- something needed was not installed, 
+- and so forth."
 "Possible Cause"|"Cooling-water treatment or spray patterns for evaporative condensers is inadequate."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes anything that causes 
 * evaporative-condenser coil corrosion or erosion, such as
 - water corrosive to coil exterior surface, typically galvanized or stainless steel,
@@ -78,14 +88,14 @@
 * corrosive materials are mixed, stored, transferred, or used nearby or
 * cleaning or sanitizing with corrosive materials.
 "
-"Possible Cause"|"Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, for faster production or to keep temperatures adequately low in product or room air."
-"Possible Cause"|"Defrost, hot gas, timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Some examples are below.
+"Possible Cause"|"Defrost, hot gas, method or timing is unsafe normally, at the start or end of a power outage or blip, when loads are low, etc. [APPLICABLE?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Some examples are below.
 * An ammonia-refrigerant suction control valve rapidly opens (or regulates at a lower pressure) at the start of a power outage,
 - if the evaporator was defrosting and filled with hot gas and some liquid (that condensed during defrosting) when the power fails,
 > the hot gas, possibly mixed with liquid, may cause shocks in the downstream suction piping, including from vapor-propelled liquid slugs.
 * An ammonia-refrigerant hot-gas or liquid solenoid valve opens before adequate pump down, either normally, when power is restored after an outage or blip, or when loads are low. In these cases, vapor-propelled liquid slugs or condensation-induced shocks may occur if:
 - liquid enters a coil or piping that is mostly filled with hot gas, due to controls shortcoming or human error, such as defrosting before a power outage or blip and the controls immediately start cooling when the power outage or blip ends,
 - hot gas enters a coil or piping that is partly filled with liquid, due to controls shortcoming, human error, or low loads.
+* See the PHA Cause named 'Liquid accumulation in hot-gas or suction piping' or similar.
 * See the U.S. Chemical Safety and Hazard Investigation Board (CSB) report and safety bulletin on the
 - 2010 ammonia leak, at the Millard Refrigerated Services, Theodore, Alabama, for example
 - CSB, January 2015, Hydraulic Shock Safety Bulletin, Key Lessons for Preventing Hydraulic Shock in Industrial Refrigeration Systems.
@@ -97,7 +107,8 @@
 - cold air entering the cooled room,
 - less heat generated in or entering the cooled room,
 - and so forth."
-"Possible Cause"|"Defrost, using water, time for pump down is either inadequate normally or unsafely reduced. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* The pump-down time might be reduced:
+"Possible Cause"|"Defrost, hot gas, time for pump down, soft gas, defrost, equalization (bleed), or freeze on (rechill) is unsafely reduced. [APPLICABLE?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, for faster production or to keep temperatures adequately low in product or room air."
+"Possible Cause"|"Defrost, using water, method or time for pump down, defrosting, and any needed drying, equalization (bleed), or freeze on (rechill) is either inadequate normally, at the start or end of a power outage or blip, or when loads are low,  or is unsafely changed. [APPLICABLE?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* The pump-down time might be reduced:
 - for faster production or
 - to keep temperatures adequately low in product or room air.
 * Low loads may cause liquid in a coil and piping to evaporate slower than expected, so that
@@ -126,17 +137,18 @@
 * and so forth."
 "Possible Cause"|"Expansion valve open too much, shock each time solenoid valve opens."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Fasteners, hangers, rods, or other support components -- loose or missing."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
-"Possible Cause"|"Filter or strainer clogged."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"On suction piping, this may lengthen the time needed for pump down.
+"Possible Cause"|"Filter or strainer clogged or not working as intended."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"On suction piping, this may lengthen the time needed for pump down.
 This cause includes:
 * filters for
 - lubricating oil, including for the ammonia-refrigerant compressors,
 - cooling-water for evaporative condensers,
-- and so forth, and
+- and so forth,
 * strainers, typically upstream of control valves, on ammonia-refrigerant
 - hot-gas piping,
 - liquid piping,
 - suction piping,
-- and so forth."
+- and so forth, and
+* coalescing filters/elements on compressor oil separators, if any."
 "Possible Cause"|"Fire, nearby and severe, or worse, and the resulting heat and temperatures."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes all types fires, if close enough, such as
 - building fires,
 - transportation-related fires,
@@ -187,6 +199,7 @@ This cause includes:
 * air entry into the ammonia-refrigeration system during or after maintenance, such as by
 - inadequate isolation methods or 
 - inadequate evacuation and/or purging before returning opened equipment or piping to service.
+* caps, plugs, blind flanges, gauges, or other instruments are not properly reinstalled after service, such as draining oil, purging, venting ammonia prior to system opening, and so forth, or they never were installed, so that piping is open to the atmosphere with only a valve containing the ammonia refrigerant.
 * compressors,
 * condenser spray nozzles, such that
 - water spray erodes galvanized finish on condenser coils.
@@ -215,14 +228,16 @@ This cause includes:
 "Possible Cause"|"Level signal wrong -- higher than actual, or float switch stuck in high position."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Level signal wrong -- lower than actual, or float switch stuck in low position."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Lightning strike"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
-"Possible Cause"|"Liquid accumulation in hot-gas piping."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* Ammonia-refrigerant hot gas may condense into a liquid when there is little or no flow in hot-gas defrost (HGD) piping, between defrosts, and so may need to be safely drained before enough accumulates to cause vapor propelled liquid slugs. 
+"Possible Cause"|"Liquid accumulation in hot-gas or suction piping."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* Ammonia-refrigerant hot gas may condense into a liquid when there is little or no flow in hot-gas defrost (HGD) piping, between defrosts, and so may need to be safely drained before enough accumulates to cause vapor propelled liquid slugs. 
+* Suction piping often carries some ammonia-refrigerant liquid, along with lower pressure gas, and so needs to be built so that this liquid safely flows to gas-liquid separation vessels, such as accumulators, recirculators, or suction traps. 
 * The following may result in shocks.
 - HGD piping that does not pitch to
 > a liquid drainer or
 > compressor-discharge piping that would evaporate most liquid that drains into it, or carry the liquid to the condensers (typically high-stage discharge, HSD, piping).
 - A liquid drainer on hot-gas piping does not drain liquid, due to
 > a stop valve to/from it is left closed (human error),
-> mechanical jam or plugging."
+> mechanical jam or plugging.
+- Suction piping that both accumulates liquid, in low spots or periods of low gas flow, and also accelerates this liquid into a slug when gas flows increase."
 "Possible Cause"|"Loads added without properly evaluating."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, additional:
 * equipment installed on a roof or floor, 
 * piping installed on a rack or hanger, or
@@ -230,7 +245,12 @@ This cause includes:
 "Possible Cause"|"Mechanical jam or plugging -- moving part stuck, pilot tube or orifice plugged, and so forth."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes a control valve that is stuck:
 * closed,
 * fully open, or
-* partly open."
+* partly open.
+If a check valve fails mostly open on a pump discharge, consider if:
+* a transfer-system pump, that it would rotate in the reverse direction due to the pressure drop between a compressor suction and discharge (or other large pressure drop), during a rapid leak by its outlet check valve, could spin so fast that
+- the pump-to-motor shaft seal could leak or
+- vibrations could crack open the pump housing leading to a rapid leak, which
+> is more likely with a gear pump than a centrifugal pump."
 "Possible Cause"|"Normal activity that is reasonably safe with proper precautions."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Includes,
 * startup after a long shutdown, when ammonia-refrigerant compressor-suction pressures are high.
 "
@@ -251,7 +271,10 @@ This cause includes:
 * water is not drained from water traps that completely fill with water and 
 - start to block RV piping,
 - fills RV piping enough to cause shocks via vapor-propelled liquid slugs, if a pressure-relief valve opens,
-* inlet piping, including any valves, creates too much friction at needed pressure-relief flows, causing unacceptable pressures in the protected equipment or piping,
+* inlet to a pressure-relief system is located where liquid may be present, and the relief system isn't built for liquid or two-phase flow,
+* inlet piping, including any valves, creates too much friction at needed pressure-relief flows, causing
+- chattering or other excessive valve opening and closing, when pressure relief is needed, 
+- unacceptable pressures in the protected equipment or piping,
 * a pressure-relief device is too small for the equipment (including vessels) and piping that it protects, under a reasonable design scenario or during an actual incident,
 * RV piping is not sized to handle all pressure-relief valves connected to it fully discharging into it at once, such as during a major fire,
 * an additional pressure-relief valve outlet is tied into existing RV piping that cannot handle the additional flows, if multiple relief valves on the existing RV piping open at once,
@@ -303,13 +326,29 @@ that damages
 - severe fires or other sources of similar or higher temperatures.
 * Includes temperature or humidity changes from:
 - cleaning, clean-in-place, and other sanitation,
-- routine shutdowns."
+- defrosting,
+- routine shutdowns,
+- weather or other ambient conditions.
+* Includes all affects of these temperature or humidity changes, such as
+- condensation from gas to liquid, for example 
+> ammonia-refrigerant,
+> humidity in air,
+- freezing,
+- refrigeration load changes,
+- thermal contraction or expansion of equipment, fasteners, piping, supports,
+- and so forth."
 "Possible Cause"|"Valve-seat seal failure (seat-gasket degraded, debris on seat, not tight enough, etc.)"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Cause"|"Valve-stem seal failure (packing damage, not tight enough, etc.)"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
-"Possible Cause"|"Vehicle moves unexpectedly."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example,
-* tanker truck during transfers, such as ammonia charging, 
-* parking brakes not set,
-* wheels not chocked."
+"Possible Cause"|"Vehicle moves unexpectedly."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example, for transfers, such as ammonia charging,
+* tanker truck (loading or unloading) driver and others assisting forget to
+- set parking brakes,
+- chock wheels,
+- disconnect and stow hose before driving away,
+* another vehicle 
+- rolls over a transfer hose, 
+- hits the tanker truck,
+- hits the transfer connection (such as the ammonia charging port),
+- and so forth."
 "Possible Cause"|"Vessel or piping temperature is below its minimum design metal temperature (MDMT)."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"For example,
 * during normal operations or
 * an upset condition, such as
@@ -334,7 +373,7 @@ that damages
 - copper based anti-seize,
 - wrong lubricating oil (to thick or thin, cannot handle the temperature, and so forth),
 - acid or caustic."
-"Possible Consequence"|"Compressor contains liquid ammonia refrigerant, when it starts, due to condensation while off."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* This includes condensation
+"Possible Consequence"|"Compressor contains liquid ammonia refrigerant, when it starts, due to refrigerant condensation while off."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* This includes refrigerant condensation
 - in the compressor or 
 - near the compressor that drained into it.
 * It can happen when a cold draft blows against a compressor, its oil separator, or its discharge piping."
@@ -355,21 +394,21 @@ that damages
 - fire or explosions where the compressor is located.
 * If ammonia leaks across a heat exchanger into lower-pressure piping, the pressure-relief systems on the ammonia piping will not typically prevent the lower pressure piping from exploding or bursting open. 
 - The lower-pressure piping needs to be open to the atmosphere or protected by its own, lower-pressure, pressure-relief devices."
-"Possible Consequence"|"Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* Includes things that cause stop valves to:
+"Possible Consequence"|"Hinders emergency actions -- communications, move-to-safety, headcount, closing valves in/from safe locations, and so forth."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* Includes anything that causes stop valves to:
 - get stuck open,
 - leak by, such a due to poor seat seals."
-"Possible Consequence"|"Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* Includes things that cause stop valves to:
+"Possible Consequence"|"Hinders emergency response -- firefighting, entry into unsafe places for rescue, stopping leaks, and so forth."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* Includes anything that causes stop valves to:
 - get stuck open,
 - leak by, such a due to poor seat seals."
 "Possible Consequence"|"Hinders maintenance or increases the need for repairs."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"* For example,
 - damage to insulation or paint, from bumps or scratches, which can lead to rusting of underlying steel.
-* Includes things that cause stop valves to:
+* Includes anything that causes stop valves to:
 - get stuck open,
 - leak by, such a due to poor seat seals."
-"Possible Consequence"|"Hinders operations. [UPDATE - SYSTEM SPECIFIC]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"This includes things that
-* damage products or raw materials, such as in cold storage,
-* reduce production or
-* increase the operation of:
+"Possible Consequence"|"Hinders operations. [UPDATE - VERY SYSTEM SPECIFIC]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"This includes anything that
+* damages products or raw materials, such as in cold storage,
+* reduces production or
+* increases the operation of:
 - automatic purgers,
 - transfer systems for liquid-ammonia refrigerant. [IF PRESENT]"
 "Possible Consequence"|"Hinders safety, security, health, or environmental protection."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
@@ -433,11 +472,6 @@ that damages
 "
 "Possible Consequence"|"Overpressure in equipment or piping."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
 "Possible Consequence"|"Pressure-relief system discharges liquid ammonia to the atmosphere, so more is released."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Nothing has been recorded in this field.]"
-"Possible Consequence"|"Pump spins in reverse direction at much higher than its design speed. [IF APPLICABLE, ADD LEAK CONSEQUENCES TO SCENARIO]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Examples included the following.
-* A transfer-system pump, which would be turned in the reverse direction by the pressure drop between a compressor suction and discharge, if rapid leak by its outlet check valve occurred, could spin so fast that 
-- the pump-to-motor shaft seal could leak or
-- vibrations could crack open the pump housing leading to a rapid leak, which
-> is more likely with a gear pump than a centrifugal pump."
 "Possible Consequence"|"Severity increases, such as injuries or fatalities more likely due to leak, fire, explosion, weak condition, or unusual load."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"This includes combinations like:
 * a material is weakened or brittle, such as from corrosion or cold and
 * it is shocked or strained by an unusual force, such as someone stepping or dropping something on it."
@@ -467,7 +501,7 @@ See IIAR 6-2019, Appendix C, Water Contamination in Ammonia Refrigeration System
 - nine of the fatalities involved ammonia-piping opening, liquid transfer (typically charging), or oil draining.
 END SEE ALSO.]"
 "Existing Safeguard"|"Air and water contamination of the ammonia refrigerant is kept adequately low."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
-* Procedures, including for tie-in of new equipment and piping, and system-opening permits (also called line-breaking permits) call for evacuating most air from equipment and piping that was opened to the atmosphere, before returning them to service.
+* Procedures, including for tie-in of new equipment and piping, and system-opening permits (also called line-breaking permits) call for evacuating most air from equipment and piping before placing them into service or returning equipment or piping that was opened to service.
 * The suction pressure of ammonia-refrigerant compressors is kept above atmospheric pressure (not in a vacuum), normally and during known unusual circumstances to date, making air and water contamination less likely.
 [OTHERWISE, DESCRIBE ANY NEEDED WATER TESTING OF THE AMMONIA REFRIGERANT. SEE IIAR 6-2019, APPENDIX C.]"
 "Existing Safeguard"|"Air-cooling equipment and piping are adequately built, controlled, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
@@ -485,7 +519,8 @@ The facility's change-management policies include:
 * developing commissioning and decommissioning procedures as needed before equipment or piping is added (tie-in) or removed from the refrigeration system,
 * in its change-management applicability checklist, asking if a change will alter:
 - traffic patterns near its ammonia-refrigeration system, such as by rearranging storage racks,
-- the number, qualifications, or authority of personnel with process safety, operations, or maintenance responsibilities -- such that changes to ammonia-refrigeration system chemicals, technology, equipment, procedures, or facilities are needed to accommodate these organizational changes. (See March 31, 2009, OSHA interpretation, memo to Regional Administrators.)"
+- the number, qualifications, or authority of personnel with process safety, operations, or maintenance responsibilities -- such that changes to ammonia-refrigeration system chemicals, technology, equipment, procedures, or facilities are needed to accommodate these organizational changes. (See March 31, 2009, OSHA interpretation, memo to Regional Administrators.)
+* See the PHA safeguard named: Separation of ammonia refrigeration from people is adequate and considered in change management."
 "Existing Safeguard"|"Charging ammonia -- equipment, piping, and procedures are adequate."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 * The facility's permanently installed refrigeration-system charging piping helps avoid 
 - leaks from the refrigeration system if a hose or connections leaks and
@@ -505,6 +540,7 @@ because it includes, in the desired direction of flow:
 - documenting understanding of this procedure, by the tanker-truck driver and the facility employee and/or contractor involved, such as by sign-offs in the procedure or other training records,
 - covers needed items, such as
 > verifying that the tanker truck holds refrigerant grade anhydrous ammonia (meeting IIAR 2, latest edition or equivalent),
+> verifying that the tanker truck can deliver the ammonia against the pressure in the ammonia-refrigeration system, where the charging port is located,
 > confirming the quantity to be added,
 > an upper limit to the liquid level in the high-pressure receiver, when charging should be stopped,
 > establishing communication methods between the driver and the facility employee and/or contractor involved, as needed, such as hand signals or radios,
@@ -649,7 +685,7 @@ For the all the condensers in the facility's ammonia-refrigeration system, which
 [VERIFY ABOVE]"
 "Existing Safeguard"|"Controls automate ammonia-refrigeration operations adequately, considering procedures, staffing, and training."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Improves Instrumentation, Controls, or Machinery Reliability
 * For the facility's ammonia-refrigeration system, this includes
-- adjusting for refrigeration load changes, such as production partial or full shutdowns,
+- adjusting for refrigeration load changes, such as production partial or full shutdowns [OTHERWISE NEED LOW-LOAD BEGIN AND END PROCEDURE (AKA FRIDAY SHUTDOWN AND MONDAY RESTART PROCEDURE) OR SIMILAR, IN THE SAFE-WORK PRACTICES... SAFEGUARD],
 - unloading compressors before they start,
 - shutting down safely if there is:
 > a partial or full electrical-power loss, such as a circuit breaker trips or a power outage affects the entire facility,
@@ -675,7 +711,7 @@ The facility's ammonia-refrigeration system is:
 * not located in an area with tsunami hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
 * not located in an area with volcano hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION],
 * not located in an area with wildfire hazards [OR DESCRIBE HAZARDS AND PROTECTION/MITIGATION]."
-"Existing Safeguard"|"Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
+"Existing Safeguard"|"Defrost, hot gas, is built and controlled adequately to handle a reasonable range of circumstances. [APPLICABLE?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 The facility's ammonia-refrigeration system has the following in place.
 * Hot-gas defrost (HGD) piping pitches to
 - a liquid drainer,
@@ -703,8 +739,24 @@ The facility's ammonia-refrigeration system has the following in place.
 > freeze on (also called rechill) before fans start, as needed to prevent water droplets from blowing onto people, product, etc.,
 > staggering of valve openings, to avoid excessive flows in piping headers or to vessels,
 * If run-time clocks are reset by a power outage or blip, controls stagger them on restart so that needed defrosting happens soon but all evaporators do not defrost at once."
-"Existing Safeguard"|"Defrost, water, is built and controlled adequately to handle a reasonable range of circumstances. [OK?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
+"Existing Safeguard"|"Defrost, water, is built and controlled adequately to handle a reasonable range of circumstances. [APPLICABLE?]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 [DESCRIBE ANY WATER DEFROSTING, AUTOMATED OR ROUTINELY DONE, ON THE AMMONIA-REFRIGERATION SYSTEM.]"
+"Existing Safeguard"|"Electrical, chemical, fuel, and mechanical equipment or materials that could damage the ammonia-refrigeration system are adequately built, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
+The PHA team only did a limited check for failures that could affect the ammonia-refrigeration system, including the following.
+[START EXAMPLES]
+* Boiler, flammable gas, or steam explosions. See also the fire, insurance, and other inspection, testing, and maintenance on these systems.
+* Fire reasonably likely to be more severe than pressure-relief design scenarios due to any the following located near -- or in the same room as -- ammonia-refrigeration pressure vessels:
+- combustible or flammable liquid piping or storage or
+- electrical transformers containing oil.
+* Stacks, such a for boilers and or relief vents, falling on ammonia-refrigeration equipment or piping.
+[END EXAMPLES]
+[DETAIL ANY APPLICABLE EXISTING SAFEGUARDS OR ADD RECOMMENDED ACTIONS.]
+[START EXAMPLES]
+The safety of other mechanical systems at the facility, including controls, ducts, equipment, piping, or power supplies for boilers, compressed air, heating, combustible or flammable gases or liquids (oil, natural gas...), non-ammonia refrigeration and air conditioning, steam, ventilation, or water,
+- is reasonably demonstrated by their as-built documentation and inspection, testing, and maintenance records.
+[END EXAMPLES]
+* See also the safeguard on: 
+- Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout."
 "Existing Safeguard"|"Emergency-action plan, equipment, and training, for employees and contractors, are adequate and increase awareness."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 The written emergency-action plan, or documents it references, describe:
 * training that includes
@@ -722,6 +774,7 @@ The written emergency-action plan, or documents it references, describe:
 > assessing and communicating routes to safe gathering places, either outside or inside (shelter-in-place),
 > calling in needed resources, and
 > head count,
+* evacuation routes and gathering places intended to minimize risks from leaks, fires, smoke, vehicle traffic, and other known potential hazards, considering prevailing winds and the location of these hazards,
 * leak mitigation and emergency shutdown, [SEE SAMPLE COMPLIANCE PRACTICE AND HAZARDOUS-SUBSTANCE PROCEDURE]
 * small-leak notifications, investigation, and actions, [SEE SAMPLE COMPLIANCE PRACTICE AND HAZARDOUS-SUBSTANCE PROCEDURE, AND 
 - IF LIQUIDS ARE COOLED BY THE AMMONIA-REFRIGERATION SYSTEM, ENSURE THE SMALL-LEAK PROCEDURE (OR SIMILAR) WARNS AGAINST AND DESCRIBES HOW TO AVOID TRAPPING AMMONIA IN LOWER-PRESSURE LIQUID PIPING INTO WHICH AMMONIA LEAKED] (to avoid incidents like described in the 2018 Technical Safety BC report about the 2017 Fernie, British Columbia, incident),
@@ -749,17 +802,23 @@ The written emergency-action plan, or documents it references, describe:
 * All equipment in the ammonia-refrigeration system was supplied by reputable manufacturers, including
 - [REFERENCE A COMPONENT LIST, CHANGE-MANAGEMENT DOCUMENTATION, OR LIST FOR AT LEAST MAJOR PACKAGES: COMPRESSORS, PUMPS, VESSELS...]
 * In the facility's ammonia-refrigeration system:
+- all valves have stainless-steel stems, including control-valve manual-opening stems,
 - control valves do not trap liquid ammonia if controls fail or there is a power outage because 
 > the solenoid valves and regulators allow flow in the reverse direction, 
 > no motorized valves are located upstream of solenoid valves,
 > no ammonia-refrigerant pumps are located upstream of solenoid valves or motorized valves, including on piping for liquid-injection cooling, unless appropriate safeguards are in place, such as minimum-flow bypass or pressure relief for the pump discharge,
-- the automatic King valve has adequate safeguards to avoid shocks when it re-opens (pressure equalization) [PROVIDE DETAILS ON HOW, IF ONE IS INSTALLED],
-- all valves have stainless-steel stems, including control-valve manual-opening stems,
+- control valves, including the automatic King valve, have adequate safeguards to avoid shocks when they open, such as due to their small size, downstream hand-expansion valves, pilot valves, pressure equalization, or slow opening [PROVIDE DETAILS ON THE AUTO-KING VALVE, IF ONE IS INSTALLED],
+- equipment, piping, and supports are built to withstand reasonably anticipated temperature changes or environmental conditions, including
+> the resulting thermal contraction and expansion,
+> low-temperature modeling documents this, if needed,
+- gas-flow speeds in vessels, at their maximum operating level, are slow enough for adequate gas-liquid separation where needed, such as in vessels that feed compressors (accumulators, recirculators, suction traps...) and so
+> prevent liquid droplets, entrained in gas, from reaching compressor suction inlets,
 - interior erosion of the steel primary-containment envelope is negligible because 
 > flow speeds in ammonia-refrigerant piping are below erosional speeds and
 > pressure-vessel inlets are built to avoid erosional impingement against the interior of the vessel's walls,
-- gas-flow speeds in vessels, at their maximum operating level, are slow enough for adequate gas-liquid separation where needed, such as in vessels that feed compressors (accumulators, recirculators, suction traps...) and so
-> prevent liquid droplets, entrained in gas, from reaching compressor suction inlets,
+- suction piping, which often carries some ammonia-refrigerant liquid, along with lower pressure gas, is built so that this liquid safely flows to gas-liquid separation vessels (accumulators, recirculators, suction traps...), 
+> preferably this is done by pitching the suction piping so it drains liquid by gravity, over its entire length from the outlets of cooling or heating equipment (evaporators or condensers) to a gas-liquid separation vessel,
+> otherwise this is done by ensuring that gas flows cause safe liquid flows, under all anticipated conditions, in suction piping that does not drain by gravity,
 - [IF APPLICABLE] on the [TYPE] chillers, preventing corrosion by the cooled liquid, fatigue by different steel types expanding differently, and brittle fracture are accomplished by
 > [REVIEW MATERIALS OF PLATES OR TUBES AND TUBE SHEETS FOR THESE FAILURES, CONSIDER 
 (1) LIQUID IN CONTACT WITH PLATES OR TUBES 
@@ -779,7 +838,7 @@ AND SO ON.]"
 - wind indicators,
 - and so forth.
 * Fire inspectors, with local authorities, routinely inspect the facility."
-"Existing Safeguard"|"Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system and its safety systems are adequate."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
+"Existing Safeguard"|"Inspection, testing, and maintenance (ITM) of the ammonia-refrigeration system, its safety systems, and its supports are adequate."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 [COMPARE ITM SCHEDULES AND PROCEDURES TO sample_ammonia-refrigeration_ITM... FILE POSTED AT https://factplusfancy.com/armp OR TO IIAR 6.]
 This ITM includes, at least the following.
 * Daily inspection of
@@ -801,9 +860,10 @@ This ITM includes, at least the following.
 - anything else unusual the inspector notices.
 * Automatic-purger and transfer-system counts [ARE LOGGED DAILY UNLESS LOGGED BY CONTROLS.]
 * Liquids that are cooled or heated are tested and treated as needed based on operating experience, quality standards, chemical-supplier recommendations, or equipment-manufacturer recommendations (for example, for glycol, the freeze-point, via refractive index or specific gravity, pH, any corrosion inhibitors, and any biocides.)
+* Oil and vibration analysis, including for compressors and their motors, based on manufacturer recommendations or documented operating experience.
 * Yearly ITM on:
 - condenser(s), per manufacturer recommendations,
-- clean-in-place and hot-gas defrost -- inspecting equipment and piping while they go through one complete cleaning or defrost cycle, from closing to re-opening the liquid-solenoid valve,
+- clean-in-place and hot-gas defrost -- inspecting equipment and piping while they go through one complete cleaning or defrost cycle, from when refrigeration shuts off (liquid ammonia control valve closes) to when equipment has cooled down after refrigeration restarts,
 - insulation and paint on ammonia-refrigeration equipment, piping, and supports -- visual inspection and properly repairing as needed,
 - safety shutoffs for rotating-electrical equipment, such as compressors, fans (if applicable), and pumps,
 - safety systems, such as alarms, ammonia-in-air sensors, ventilation, and safety showers,
@@ -826,23 +886,6 @@ START EXAMPLES WHICH MAY BE OPTIONAL:
 * PROVIDE DETAILS, SUCH AS HOW SENSORS ARE LOCATED TO BE LIKELY TO DETECT LEAKS.]
 END EXAMPLES]
 * ppm means parts per million by volume, ammonia concentration in air."
-"Existing Safeguard"|"Mechanical systems, that could damage ammonia refrigeration, are adequately built, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
-The PHA team only did a limited check for failures that could affect the ammonia-refrigeration system, including the following.
-[START EXAMPLES]
-* Boiler, flammable gas, or steam explosions. See also the fire, insurance, and other inspection, testing, and maintenance on these systems.
-* Fire more likely or severe than pressure-relief design scenarios due to:
-- any combustible-liquid piping passing through or storage in
-> the ammonia refrigerating machinery room or
-> other locations with ammonia-refrigeration pressure vessels.
-* Stacks, such a for boilers and or relief vents, falling on ammonia-refrigeration equipment or piping.
-[END EXAMPLES]
-[DETAIL ANY APPLICABLE EXISTING SAFEGUARDS OR ADD RECOMMENDED ACTIONS.]
-[START EXAMPLES]
-The safety of other mechanical systems at the facility, including controls, ducts, equipment, piping, or power supplies for boilers, compressed air, heating, combustible or flammable gases or liquids (oil, natural gas...), non-ammonia refrigeration and air conditioning, steam, ventilation, or water,
-- is reasonably demonstrated by their as-built documentation and inspection, testing, and maintenance records.
-[END EXAMPLES]
-* See also the safeguard on: 
-- Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout."
 "Existing Safeguard"|"Metal-fatigue prevention is adequate to avoid all but small leaks."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 [SOMETIMES APPLICABLE TO:
 
@@ -936,9 +979,13 @@ At the facility, this includes monitoring
 - by noticing an ammonia odor when near or sampling the fluid or
 - by chemistry changes."
 "Existing Safeguard"|"Pump safety shutoffs are adequate, for both ammonia and cooling-water pumps, including for their motors."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Improves Instrumentation, Controls, or Machinery Reliability
-For the ammonia-refrigerant pumps at the facility, this includes
-* pump shutoff if the level is too low in the vessel that feeds the pump, to avoid:
-- low pump-suction pressure and cavitation in the pump, near its impeller."
+For all pumps that serve the ammonia-refrigeration system at the facility [OR DESCRIBE IF COOLING WATER OR OTHER PUMPS HAVE DIFFERENT SHUTOFFS, CONSIDER ANY TRANSFER OR LIQUID-INJECTION COOLING PUMPS], electrical power to the pump motor is shut off if the:
+* level is too low in the vessel that feeds the pump, to avoid:
+- low pump-suction pressure and cavitation in the pump, near its impeller,
+* electrical current flow (amps) to pump motors is too high (circuit breaker or fuse),
+* oil-supply inadequate for seal where the shaft from the motor enters the pump housing, such as in the oil reservoir for this seal [IF APPLICABLE, DESCRIBE WHICH PUMPS HAVE THIS],
+* temperature in pump motors is too high (thermal protection) [ASSESS IF PRESENT OR NEEDED],
+* [VIBRATION SENSORS, IF ANY DESCRIBE WHERE]."
 "Existing Safeguard"|"Pumps, ammonia-refrigerant, and their piping are adequately built, controlled, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 In the facility's ammonia-refrigeration system, this includes: 
 * adequate piping for
@@ -965,7 +1012,7 @@ Notes:
 - seal leaks, and
 - possibly, but rarely, a crack or rupture of its housing, causing a rapid oil and ammonia leak.
 "
-"Existing Safeguard"|"Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
+"Existing Safeguard"|"Refrigerating-machinery room and its safety systems are adequately built, controlled, located, inspected, tested, and maintained."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 Taking into account that some ammonia leaks, either inside or outside the refrigerating-machinery room (the room) for the facility's ammonia-refrigeration system, cannot practically be controlled by the room's safety systems and so would require incident-specific evacuation or shelter-in-place -- the room:
 * was built per [CODE CITATION, IF ANY],
 * is adjacent to [DESCRIBE SURROUNDINGS],
@@ -1045,7 +1092,7 @@ For additional information see the:
 * [EMERGENCY ACTION PLAN OR OTHER DOCUMENT], 
 * process-safety information for as-built documentation, and
 * maintenance-management system for ITM scheduling, methods, and documentation."
-"Existing Safeguard"|"Replacement parts for the ammonia-refrigeration system, including controls, electrical, and motors, are fit for their service."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
+"Existing Safeguard"|"Replacement parts for the ammonia-refrigeration system, its safety systems, and its supports, including for controls, electrical, and motors, are fit for their service."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 Replacement parts, for the facility's ammonia-refrigeration system, are: 
 * parts that the original equipment manufacturer (OEM) recommends as a replacement-in-kind for the old part,
 * parts recommended by the OEM or another reputable manufacturer as a substitute that meets 
@@ -1053,7 +1100,7 @@ Replacement parts, for the facility's ammonia-refrigeration system, are:
 - the service requirements for this part, but
 - only if this manufacturer recommendation is confirmed by the facility's qualified ammonia-refrigeration system contractor or the responsible individual(s), per the Owner/Operator management system, or
 * otherwise, change management is required to use a replacement part that does not meet the design specification for the old part."
-"Existing Safeguard"|"Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, mechanical, and lockout-tagout."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
+"Existing Safeguard"|"Safe-work practices, including for confined spaces, electrical, hot work, lifts and vehicles, lockout-tagout, and mechanical."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 The Owner/Operator has implemented policies, notifications, and training as needed at the facility for the following.
 * Ammonia-refrigeration system.
 - All facility employees and contractors are notified or trained that only authorized personnel can touch the ammonia-refrigeration system, including:
@@ -1065,7 +1112,8 @@ The Owner/Operator has implemented policies, notifications, and training as need
 > a system-opening permit (also called line-breaking permit) and/or
 > a procedure for the activity that is described in writing and approved by the facility's qualified ammonia-refrigeration system contractor or the responsible individual(s), per the Owner/Operator management system, such as for routine oil draining or for tie-in of new equipment;
 - the above address and, as needed, have warnings about:
-> verifying no leak-by (backflow across) check valves when compressors or pumps are shutoff,
+> pre-work inspection for damage or other circumstances that may require stopping and modifying the procedures and work, including problems with the work location, problems with any hoses or other equipment needed for the work, or problems with or affecting the equipment or piping that need to be opened and/or worked on,
+> verifying no leak-by (backflow across) check valves when compressors or pumps are shutoff, including discharge and suction check valves, as applicable,
 > ammonia buildup under rarely opened seal caps, covering valve stems without hand wheels,
 > packing leaks, especially when valves are moved off their fully back-seated position,
 > loosening threaded bonnets when turning the stems of control or stop valves, if applicable,
@@ -1116,7 +1164,7 @@ See the facility's plans, programs, and records for
 "Existing Safeguard"|"Safety, training, contractor, and human-resources policies and programs are adequate, including for process safety."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Administrative
 * See the Owner/Operator's policies and programs for the facility on:
 - safety, training, contractors, and human resources, which also cover
-> substance abuse or other potential causes of inadequate performance and
+> excessive fatigue or stress, mental health, substance abuse, and other potential causes of inadequate performance and
 > communications and consequences if safety or other rules are not followed,
 - ammonia-refrigeration process-safety management (PSM), in particular
 > employee participation,
@@ -1155,10 +1203,13 @@ For/at the facility, the ammonia-refrigeration system:
 * [AMMONIA REFRIGERATION EQUIPMENT OR PIPING IS ALL LOCATED IN THE REFRIGERATING-MACHINERY ROOM, IN MECHANICAL PENTHOUSES, ABOVE ROOFS, OR OUTDOORS
 -- OR --
 DESCRIBE ANY EQUIPMENT THAT IS NOT];
-* change management includes documenting that ammonia-refrigeration equipment and piping, installed as part of a change, were separated from people to the extent practical, such as by locating them in refrigerating-machinery rooms, mechanical penthouses, above roofs, or outdoors.
+* change management includes documenting that ammonia-refrigeration equipment and piping, installed as part of a change, were 
+- separated from people to the extent practical, such as 
+> by locating them in refrigerating-machinery rooms, mechanical penthouses, above roofs, or outdoors and
+> adequately far from air intakes and building openings, including doors and sometimes open windows.
 [VERIFY ABOVE.]
 * Tornado shelters and access to them [CONSIDER THEIR SEPARATION FROM AMMONIA REFRIGERATION.]"
-"Existing Safeguard"|"Sight glasses -- none are linear or tubular, and all are built and inspected properly."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
+"Existing Safeguard"|"Sight glasses -- none are linear or tubular, and all are built, installed, and inspected properly and replaced as needed."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 See the facility's maintenance-management system."
 "Existing Safeguard"|"Temperatures of equipment and piping are kept above their minimum design metal temperature (MDMT)."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering and Administrative Combined
 The facility's ammonia-refrigeration system:
@@ -1193,10 +1244,10 @@ In the facility's ammonia-refrigeration system,
 * a King valve, stop, is accessible from the floor and not in a cramped location and so
 - it would normally be accessible to emergency responders wearing self-contained breathing apparatus (SCBA) and protective suits.
 * Stop valves are also called hand valves or shutoff valves."
-"Existing Safeguard"|"Vehicle or heavy cart traffic is unlikely to damage ammonia-refrigeration equipment, piping, or supports."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
+"Existing Safeguard"|"Vehicle or heavy cart traffic is unlikely to damage ammonia-refrigeration equipment, piping, supports, or their insulation or paint."|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"[Not applicable]"|"Safeguard Type: Engineering: Greater Separation
 At the facility,
 * adequate guarding is in place where vehicle or heavy cart traffic comes close to ammonia-refrigeration equipment, piping, or supports, including
-- [NOTE AREAS WITH EQUIPMENT OR PIPING NEAR TRAFFIC THAT ESPECIALLY REQUIRES GUARDING]
+- [NOTE AREAS WITH EQUIPMENT, PIPING, OR SUPPORTS NEAR TRAFFIC THAT ESPECIALLY REQUIRES GUARDING]
 * most ammonia-refrigeration equipment and piping is located
 - in the refrigerating-machinery room, an authorized personnel only room, with less-frequent and carefully-done moving of heavy stuff,
 - in mechanical penthouses, or

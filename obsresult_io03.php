@@ -484,7 +484,7 @@ if (isset($_GET['obsresult_o1']) or isset($_POST['obsresult_o1'])) { // isset($_
     $Display = $Zfpf->select_to_display_1e($htmlFormArray, $_SESSION['Scratch']['t0obsresult'], TRUE);
     $Message .= $Zfpf->select_to_o1_html_1e($htmlFormArray, 'obsresult_io03.php', $_SESSION['Scratch']['t0obsresult'], $Display, ' class="topborder"');
     if ($_SESSION['Selected']['k0audit'] >= 100000) // Template audits cannot have actions.
-        $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Scratch']['t0obsresult'], $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, TRUE, 'obsresult', $Types);
+        $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Scratch']['t0obsresult'], $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, TRUE, 'obsresult', $Types, FALSE);
         // ccsaZfpf::scenario_CCSA_Zfpf (with 6th parameter TRUE):
         // - returns HTML for list of actions to select from and
         // - sets $_SESSION['SelectResults'] and uses it if needed.
@@ -590,7 +590,7 @@ if (isset($_GET['Om_all_Or_o1']) or isset($_POST['Om_all_Or_o1'])) {
             $Display = $Zfpf->select_to_display_1e($htmlFormArray, $VOr); // Cannot allow downloads form here (3rd parameter default of FALSE) because $_SESSION['Scratch']['t0obsresult'] is not set. 
             $Message .= $Zfpf->select_to_o1_html_1e($htmlFormArray, 'obsresult_io03.php', $VOr, $Display, ' class="topborder"');
             if ($_SESSION['Selected']['k0audit'] >= 100000) // Template audits cannot have actions.
-                $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($VOr, $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types);
+                $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($VOr, $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types, FALSE);
                 // ccsaZfpf::scenario_CCSA_Zfpf (with 6th parameter FALSE): returns a list of action names in this observation. 
                 // Cannot provide radio-button list of actions (6th parameter TRUE) because $_SESSION['SR']['t0obsresult'] is not set here.
             $_SESSION['SR']['t0obsresult'][$i] = $VOr;
@@ -705,7 +705,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         $Display = $Zfpf->select_to_display_1e($htmlFormArray, $_SESSION['Scratch']['t0obsresult'], TRUE);
         $Message .= $Zfpf->select_to_o1_html_1e($htmlFormArray, 'obsresult_io03.php', $_SESSION['Scratch']['t0obsresult'], $Display);
         if ($_SESSION['Selected']['k0audit'] >= 100000) // Template audits cannot have actions.
-            $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Scratch']['t0obsresult'], $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types);
+            $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Scratch']['t0obsresult'], $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types, FALSE);
         $Message .= '
         <form action="obsresult_io03.php" method="post"><p>
             <input type="submit" name="obsresult_delete_2" value="Remove observation" /></p>
@@ -791,7 +791,7 @@ if (isset($_SESSION['Scratch']['t0obsresult'])) {
         Use exactly the same characters for each <a class="toc" href="glossary.php#obstopic" target="_blank">Observation object unique identifiers (object ID)</a>, whenever written. For example, an observation topic could be "Refrigerating-Machinery Room Tour", with "Compressor RC1" as the object ID, and another topic could be "People with Management Responsibilities" with "Plant Manager" as the object ID. When making an observation, be guided by the sample observation method, but record the as-done observation method.</p>
         <form action="obsresult_io03.php" method="post" enctype="multipart/form-data" >'; // upload_files special case 2 of 3. To upload files via PHP, the following form attributes are required: method="post" enctype="multipart/form-data"
         $Message .= $Zfpf->make_html_form_1e($Zfpf->decrypt_decode_1c($_SESSION['Scratch']['htmlFormArray']), $Display, $_SESSION['Scratch']['t0obsresult']); // SPECIAL CASE $_SESSION['Scratch']['t0obsresult'] is selected row. Only relevant when the selected row contains c6bfn fields.
-        $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Scratch']['t0obsresult'], $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types);
+        $Message .= $ccsaZfpf->scenario_CCSA_Zfpf($_SESSION['Scratch']['t0obsresult'], $_SESSION['Selected']['k0user_of_certifier'], $User, $UserPracticePrivileges, $Zfpf, FALSE, 'obsresult', $Types, FALSE);
         $Message .= '<p>
             <input type="submit" name="obsresult_i2" value="Review what you typed into form" /><br />
             If you only wanted to upload files, you are done.</p>

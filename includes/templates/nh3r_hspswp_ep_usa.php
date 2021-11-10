@@ -81,7 +81,7 @@ all areas containing the equipment and piping to be inspected, such as rooms, ro
 (1.1) if an area appears unsafe, don\'t enter (or leave immediately), 
 (1.2) immediately report any hazards, including access or egress problems, and 
 (1.3) report or fix any lighting or housekeeping problems, 
-(2) inspect/note/fix, as applicable, the '.HAZSUB_PROCESS_NAME_ZFPF.' 
+(2) inspect/note/fix -- as defined in the Inspection, Testing, and Maintenance (ITM) Procedures Background compliance practice -- as applicable, the '.HAZSUB_PROCESS_NAME_ZFPF.' 
     (2A) compressors, 
     (2B) pumps, including for '.HAZSUB_NAME_ADJECTIVE_ZFPF.' refrigerant, condenser cooling water, and secondary heat-transfer liquids, such as brine, glycol, water, and so forth, 
     (2C) condensers, 
@@ -115,32 +115,38 @@ for, if applicable --
 (2.16.2) frosted (possible leak-by), 
 (2.16.3) visibly tampered with, broken ASME seal, or damaged, or 
 (2.16.4) that have opened at some time in the past, if equipped with an indicator, such as the device\'s LED indicator, a flow flag, or a gauge between a rupture disk and a pressure-relief valve, or 
-(2.17) maintenance needed, based on runtime hours or condition, 
+(2.17) maintenance needed, based on run hours or condition, 
 (3) inspect/note/fix any automatic purger for -- 
 (3.1) water level not at its normal fill mark in its water-bubble column or 
 (3.2) ammonia odors coming from the drain where water flows, 
 (4) inspect/note/fix and (if not logged by controls) record a quantitative value for, if applicable, the -- 
 (4.1) compressor(s) 
-(4.1.1) suction pressure, 
-(4.1.2) discharge pressure, 
-(4.1.3) discharge temperature, 
-(4.1.4) motor current (amps), 
-(4.1.5) oil filter differential pressure, 
-(4.1.6) oil level, typically in bulls eye sight glass, 
-(4.1.7) oil pressure, typically the differential pressure that drives lubricant flow, 
-(4.1.8) oil temperature, 
-(4.1.9) capacity indicators, such as for the capacity and volume-ratio slide valves on screw compressors, 
+(4.1.1) capacity indicators, such as for the capacity and volume-ratio slide valves on screw compressors, 
+(4.1.2) suction pressure, 
+(4.1.3) suction temperature (optional: helps discover compressor or other problems, like leak-by a hot-gas-defrost solenoid valve), 
+(4.1.4) discharge pressure, 
+(4.1.5) discharge temperature, 
+(4.1.6) motor current (amps), 
+(4.1.7) motor run hours (optional but needed for run-hour based maintenance), 
+(4.1.8) oil filter differential pressure, 
+(4.1.9) oil level, typically in bulls eye sight glass, 
+(4.1.10) oil pressure, typically the differential pressure that drives lubricant flow, 
+(4.1.11) oil temperature, 
 (4.2) oil levels in any oil reservoirs for pumps, such as the indicator rod\'s position, 
 (4.3) automatic purger counts, 
 (4.4) transfer-system counts, 
 (4.5) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' pump discharge pressure(s), 
 (4.6) '.HAZSUB_NAME_ADJECTIVE_ZFPF.' levels in major vessels (option: calculate total inventory routinely to help discover small leaks), 
-(4.7) temperatures of things that need to be cooled (or heated), as needed for production quality, such as 
+(4.7) temperatures of things that need to be cooled (or heated), such as 
 (4.7.1) room air, 
 (4.7.2) secondary heat-transfer liquids, 
 (4.7.3) raw materials, or 
 (4.7.4) products, 
-(4.8) outdoor ambient temperature, and 
+(4.8) any lubricating oil added to compressors or pumps, amount and type (per Owner/Operator procedures), 
+(4.9) outdoor ambient temperatures, dry bulb and wet bulb and/or relative humidity, 
+(4.10) condenser make-up water flow (meter reading, totalizer, or similar) and if needed condenser inlet and outlet water temperatures (all optional but helpful if troubleshooting high refrigerant-condensing pressures), 
+(4.11) ammonia-refrigerant liquid temperature in condenser-drain (CD) piping (optional: comparing to the refrigerant-condensing pressure helps discover problems with purging non-condensable gases and provides redundancy when comparing trends to the wet-bulb and dry-bulb temperatures to discover condenser problems), 
+(4.12) motor run hours for any refrigerant, condenser water, and other pumps (optional but needed for run-hour based maintenance), 
 (5) acceptable ranges and shutoff methods, if not covered by the Operating Limits, Deviation Consequences, Controls, Safety Systems, and Corrective Actions document(s), in enough detail for a qualified daily inspector to decide when and how to -- 
 (5.1) call in assistance, such as a supervisor or a qualified '.HAZSUB_PROCESS_NAME_ZFPF.' contractor, and 
 (5.2) if safe, shut off equipment, for example by pressing the correct "off" button (but without having to hand-turn valve stems). 
